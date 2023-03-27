@@ -28,6 +28,7 @@ import (
 	_ "k8s.io/client-go/plugin/pkg/client/auth"
 
 	kubeflow "github.com/kubeflow/mpi-operator/pkg/apis/kubeflow/v2beta1"
+	rayjobapi "github.com/ray-project/kuberay/ray-operator/apis/ray/v1alpha1"
 	zaplog "go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	schedulingv1 "k8s.io/api/scheduling/v1"
@@ -70,6 +71,7 @@ func init() {
 	utilruntime.Must(kueue.AddToScheme(scheme))
 	utilruntime.Must(config.AddToScheme(scheme))
 	utilruntime.Must(kubeflow.AddToScheme(scheme))
+	utilruntime.Must(rayjobapi.AddToScheme(scheme))
 	// +kubebuilder:scaffold:scheme
 }
 
@@ -154,6 +156,9 @@ func setupIndexes(ctx context.Context, mgr ctrl.Manager) {
 	}
 	if err := mpijob.SetupIndexes(ctx, mgr.GetFieldIndexer()); err != nil {
 		setupLog.Error(err, "Unable to setup mpijob indexes")
+	}
+	if err := rayjob.SetupIndexes(ctx, mgr.GetFieldIndexer()); err != nil {
+		setupLog.Error(err, "Unable to setup rayjob indexes")
 	}
 }
 
