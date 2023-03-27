@@ -26,8 +26,9 @@ func Quantity(q resource.Quantity) *resource.Quantity {
 }
 
 var (
-	Int32  = pointer.Int32
-	Int64  = pointer.Int64
-	Bool   = pointer.Bool
-	String = pointer.String
+	Int32     = pointer.Int32
+	Int64     = pointer.Int64
+	Bool      = pointer.Bool
+	BoolDeref = pointer.BoolDeref
+	String    = pointer.String
 )

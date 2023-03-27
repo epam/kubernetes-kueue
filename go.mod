@@ -11,6 +11,7 @@ require (
 	github.com/onsi/gomega v1.27.4
 	github.com/open-policy-agent/cert-controller v0.7.0
 	github.com/prometheus/client_golang v1.14.0
+	github.com/ray-project/kuberay/ray-operator v0.0.0-20230325052402-082389edf7cd
 	go.uber.org/zap v1.24.0
 	k8s.io/api v0.26.3
 	k8s.io/apimachinery v0.26.3
@@ -77,3 +78,5 @@ require (
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
+
+replace github.com/ray-project/kuberay/ray-operator => github.com/epam/kuberay/ray-operator v0.0.0-20230307151218-de21add1de48
