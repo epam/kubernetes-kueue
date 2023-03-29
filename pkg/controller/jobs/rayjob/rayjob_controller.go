@@ -233,6 +233,11 @@ func (j *RayJob) PodsReady() bool {
 // SetupWithManager sets up the controller with the Manager. It indexes workloads
 // based on the owning jobs.
 func (r *RayJobReconciler) SetupWithManager(mgr ctrl.Manager) error {
+	if !r.EnableRay {
+		mgr.GetLogger().Info("RayJob integration is not enabled")
+		return nil
+	}
+
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&rayjobapi.RayJob{}).
 		Owns(&kueue.Workload{}).

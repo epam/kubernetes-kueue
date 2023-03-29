@@ -50,6 +50,7 @@ import (
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
 	"sigs.k8s.io/kueue/pkg/controller/jobs/job"
 	"sigs.k8s.io/kueue/pkg/controller/jobs/mpijob"
+	"sigs.k8s.io/kueue/pkg/controller/jobs/rayjob"
 	"sigs.k8s.io/kueue/pkg/metrics"
 	"sigs.k8s.io/kueue/pkg/queue"
 	"sigs.k8s.io/kueue/pkg/scheduler"
@@ -123,7 +124,7 @@ func main() {
 	queues := queue.NewManager(mgr.GetClient(), cCache)
 
 	ctx := ctrl.SetupSignalHandler()
-	setupIndexes(ctx, mgr)
+	setupIndexes(ctx, mgr, &cfg)
 
 	setupProbeEndpoints(mgr)
 	// Cert won't be ready until manager starts, so start a goroutine here which
@@ -147,7 +148,7 @@ func main() {
 	}
 }
 
-func setupIndexes(ctx context.Context, mgr ctrl.Manager) {
+func setupIndexes(ctx context.Context, mgr ctrl.Manager, cfg *config.Configuration) {
 	if err := indexer.Setup(ctx, mgr.GetFieldIndexer()); err != nil {
 		setupLog.Error(err, "Unable to setup core api indexes")
 	}
@@ -157,8 +158,10 @@ func setupIndexes(ctx context.Context, mgr ctrl.Manager) {
 	if err := mpijob.SetupIndexes(ctx, mgr.GetFieldIndexer()); err != nil {
 		setupLog.Error(err, "Unable to setup mpijob indexes")
 	}
-	if err := rayjob.SetupIndexes(ctx, mgr.GetFieldIndexer()); err != nil {
-		setupLog.Error(err, "Unable to setup rayjob indexes")
+	if cfg.EnableRayIntegration {
+		if err := rayjob.SetupIndexes(ctx, mgr.GetFieldIndexer()); err != nil {
+			setupLog.Error(err, "Unable to setup rayjob indexes")
+		}
 	}
 }
 
@@ -174,6 +177,7 @@ func setupControllers(mgr ctrl.Manager, cCache *cache.Cache, queues *queue.Manag
 		os.Exit(1)
 	}
 	manageJobsWithoutQueueName := cfg.ManageJobsWithoutQueueName
+	enableRay := cfg.EnableRayIntegration
 	if err := job.NewReconciler(mgr.GetScheme(),
 		mgr.GetClient(),
 		mgr.GetEventRecorderFor(constants.JobControllerName),
@@ -189,6 +193,16 @@ func setupControllers(mgr ctrl.Manager, cCache *cache.Cache, queues *queue.Manag
 		jobframework.WithManageJobsWithoutQueueName(manageJobsWithoutQueueName),
 		jobframework.WithWaitForPodsReady(waitForPodsReady(cfg)),
 	).SetupWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create controller", "controller", "RayJob")
+		os.Exit(1)
+	}
+	if err := rayjob.NewReconciler(mgr.GetScheme(),
+		mgr.GetClient(),
+		mgr.GetEventRecorderFor(constants.KueueName+"-mpijob-controller"),
+		jobframework.WithManageJobsWithoutQueueName(manageJobsWithoutQueueName),
+		jobframework.WithEnableRay(enableRay),
+		jobframework.WithWaitForPodsReady(waitForPodsReady(cfg)),
+	).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "unable to create controller", "controller", "MPIJob")
 		os.Exit(1)
 	}
@@ -202,6 +216,13 @@ func setupControllers(mgr ctrl.Manager, cCache *cache.Cache, queues *queue.Manag
 	}
 	if err := mpijob.SetupMPIJobWebhook(mgr, jobframework.WithManageJobsWithoutQueueName(manageJobsWithoutQueueName)); err != nil {
 		setupLog.Error(err, "Unable to create webhook", "webhook", "MPIJob")
+		os.Exit(1)
+	}
+	if err := rayjob.SetupRayJobWebhook(mgr,
+		jobframework.WithManageJobsWithoutQueueName(manageJobsWithoutQueueName),
+		jobframework.WithEnableRay(enableRay),
+	); err != nil {
+		setupLog.Error(err, "Unable to create webhook", "webhook", "RayJob")
 		os.Exit(1)
 	}
 	// +kubebuilder:scaffold:builder

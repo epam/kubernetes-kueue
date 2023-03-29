@@ -55,6 +55,10 @@ type Configuration struct {
 	// ClientConnection provides additional configuration options for Kubernetes
 	// API server client.
 	ClientConnection *ClientConnection `json:"clientConnection,omitempty"`
+
+	// EnableRayIntegration enables ray jobs support
+	// TODO: is the need for this temporary?
+	EnableRayIntegration bool `json:"enableRayIntegration"`
 }
 
 type WaitForPodsReady struct {
