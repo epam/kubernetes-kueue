@@ -41,11 +41,18 @@ type JobReconciler struct {
 	record                     record.EventRecorder
 	manageJobsWithoutQueueName bool
 	waitForPodsReady           bool
+
+	// EnableRay if true the reay reconciler will be active,
+	// ther might be a better solution to pass the options to
+	// the concrete reconcilers, however since this is temporary
+	// it should be fine for now
+	EnableRay bool
 }
 
 type Options struct {
 	ManageJobsWithoutQueueName bool
 	WaitForPodsReady           bool
+	EnableRay                  bool
 }
 
 // Option configures the reconciler.
@@ -68,6 +75,13 @@ func WithWaitForPodsReady(f bool) Option {
 	}
 }
 
+// WithEnableRay indicates if the rayJob reconciler should be enabled
+func WithEnableRay(f bool) Option {
+	return func(o *Options) {
+		o.EnableRay = f
+	}
+}
+
 var DefaultOptions = Options{}
 
 func NewReconciler(
@@ -86,6 +100,7 @@ func NewReconciler(
 		record:                     record,
 		manageJobsWithoutQueueName: options.ManageJobsWithoutQueueName,
 		waitForPodsReady:           options.WaitForPodsReady,
+		EnableRay:                  options.EnableRay,
 	}
 }
 

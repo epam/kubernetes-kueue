@@ -32,6 +32,7 @@ import (
 
 type RayJobWebhook struct {
 	manageJobsWithoutQueueName bool
+	enableRay                  bool
 }
 
 // SetupWebhook configures the webhook for rayjobapi RayJob.
@@ -42,6 +43,7 @@ func SetupRayJobWebhook(mgr ctrl.Manager, opts ...jobframework.Option) error {
 	}
 	wh := &RayJobWebhook{
 		manageJobsWithoutQueueName: options.ManageJobsWithoutQueueName,
+		enableRay:                  options.EnableRay,
 	}
 	return ctrl.NewWebhookManagedBy(mgr).
 		For(&rayjobapi.RayJob{}).
@@ -58,6 +60,10 @@ var _ webhook.CustomDefaulter = &RayJobWebhook{}
 func (w *RayJobWebhook) Default(ctx context.Context, obj runtime.Object) error {
 	job := obj.(*rayjobapi.RayJob)
 	log := ctrl.LoggerFrom(ctx).WithName("job-webhook")
+	if !w.enableRay {
+		log.V(5).Info("RayJob integration id not enabled", "job", klog.KObj(job))
+		return nil
+	}
 	log.V(5).Info("Applying defaults", "job", klog.KObj(job))
 
 	jobframework.ApplyDefaultForSuspend((*RayJob)(job), w.manageJobsWithoutQueueName)
@@ -72,6 +78,10 @@ var _ webhook.CustomValidator = &RayJobWebhook{}
 func (w *RayJobWebhook) ValidateCreate(ctx context.Context, obj runtime.Object) error {
 	job := obj.(*rayjobapi.RayJob)
 	log := ctrl.LoggerFrom(ctx).WithName("job-webhook")
+	if !w.enableRay {
+		log.V(5).Info("RayJob integration id not enabled", "job", klog.KObj(job))
+		return nil
+	}
 	log.Info("Validating create", "job", klog.KObj(job))
 	return w.validateCreate(job).ToAggregate()
 }
@@ -114,6 +124,10 @@ func (w *RayJobWebhook) ValidateUpdate(ctx context.Context, oldObj, newObj runti
 	oldJob := oldObj.(*rayjobapi.RayJob)
 	newJob := newObj.(*rayjobapi.RayJob)
 	log := ctrl.LoggerFrom(ctx).WithName("job-webhook")
+	if !w.enableRay {
+		log.V(5).Info("RayJob integration id not enabled", "newJob", klog.KObj(newJob))
+		return nil
+	}
 	log.Info("Validating update", "job", klog.KObj(newJob))
 	allErrors := jobframework.ValidateUpdateForQueueName((*RayJob)(oldJob), (*RayJob)(newJob))
 	allErrors = append(allErrors, w.validateCreate(newJob)...)
