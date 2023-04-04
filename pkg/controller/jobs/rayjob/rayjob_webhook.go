@@ -65,7 +65,6 @@ func (w *RayJobWebhook) Default(ctx context.Context, obj runtime.Object) error {
 		return nil
 	}
 	log.V(5).Info("Applying defaults", "job", klog.KObj(job))
-
 	jobframework.ApplyDefaultForSuspend((*RayJob)(job), w.manageJobsWithoutQueueName)
 	return nil
 }
@@ -111,7 +110,7 @@ func (w *RayJobWebhook) validateCreate(job *rayjobapi.RayJob) field.ErrorList {
 		}
 		// should limit the worker count to 8 - 1 (max podSets num - cluster head)
 		if len(clusterSpec.WorkerGroupSpecs) > 7 {
-			allErrors = append(allErrors, field.Invalid(clusterSpecPath.Child("workerGroupSpecs"), clusterSpec.EnableInTreeAutoscaling, "a kueue managed job should define at most 7 worker groups"))
+			allErrors = append(allErrors, field.TooMany(clusterSpecPath.Child("workerGroupSpecs"), len(clusterSpec.WorkerGroupSpecs), 7))
 		}
 	}
 
@@ -128,10 +127,13 @@ func (w *RayJobWebhook) ValidateUpdate(ctx context.Context, oldObj, newObj runti
 		log.V(5).Info("RayJob integration id not enabled", "newJob", klog.KObj(newJob))
 		return nil
 	}
-	log.Info("Validating update", "job", klog.KObj(newJob))
-	allErrors := jobframework.ValidateUpdateForQueueName((*RayJob)(oldJob), (*RayJob)(newJob))
-	allErrors = append(allErrors, w.validateCreate(newJob)...)
-	return allErrors.ToAggregate()
+	if w.manageJobsWithoutQueueName || jobframework.QueueName((*RayJob)(newJob)) != "" {
+		log.Info("Validating update", "job", klog.KObj(newJob))
+		allErrors := jobframework.ValidateUpdateForQueueName((*RayJob)(oldJob), (*RayJob)(newJob))
+		allErrors = append(allErrors, w.validateCreate(newJob)...)
+		return allErrors.ToAggregate()
+	}
+	return nil
 }
 
 // ValidateDelete implements webhook.CustomValidator so a webhook will be registered for the type
