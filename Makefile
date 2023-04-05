@@ -144,7 +144,7 @@ test: generate fmt vet gotestsum ## Run tests.
 	$(GOTESTSUM) --junitfile $(ARTIFACTS)/junit.xml -- $(GO_TEST_FLAGS) $(shell go list ./... | grep -v '/test/') -coverprofile $(ARTIFACTS)/cover.out
 
 .PHONY: test-integration
-test-integration: manifests generate fmt vet envtest ginkgo mpi-operator-crd ## Run tests.
+test-integration: manifests generate fmt vet envtest ginkgo mpi-operator-crd ray-operator-crd ## Run tests.
 	KUBEBUILDER_ASSETS="$(shell $(ENVTEST) use $(ENVTEST_K8S_VERSION) -p path)" \
 	$(GINKGO) --junit-report=junit.xml --output-dir=$(ARTIFACTS) -v $(INTEGRATION_TARGET)
 
@@ -281,3 +281,13 @@ mpi-operator-crd:
 	GOPATH=/tmp GO111MODULE=on $(GO_CMD) install github.com/kubeflow/mpi-operator/cmd/mpi-operator@$(MPI_VERSION)
 	mkdir -p $(shell pwd)/dep-crds/mpi-operator/
 	cp -f /tmp/pkg/mod/github.com/kubeflow/mpi-operator@$(MPI_VERSION)/manifests/base/* $(shell pwd)/dep-crds/mpi-operator/
+
+
+# TODO: revisit this when kueue-integration is accepted in ray upstream
+RAYTEMP := $(shell mktemp -d)
+.PHONY: ray-operator-crd
+ray-operator-crd:
+	git clone --depth=1 -b kueue-integration --filter=blob:none --sparse https://github.com/epam/kuberay.git $(RAYTEMP)
+	git -C $(RAYTEMP) sparse-checkout set ray-operator/config/crd/bases
+	mkdir -p $(shell pwd)/dep-crds/ray-operator/
+	cp -f $(RAYTEMP)/ray-operator/config/crd/bases/* $(shell pwd)/dep-crds/ray-operator/
