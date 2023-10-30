@@ -382,7 +382,7 @@ The default is 15 min.</p>
 <a href="#kueue-x-k8s-io-v1beta1-CheckState"><code>CheckState</code></a>
 </td>
 <td>
-   <p>status of the condition, one of True, False, Unknown.</p>
+   <p>state of the admissionCheck, one of Pending, Ready, Retry, Rejected</p>
 </td>
 </tr>
 <tr><td><code>lastTransitionTime</code> <B>[Required]</B><br/>
@@ -691,6 +691,20 @@ lower priority first.</p>
 </td>
 <td>
    <p>admissionChecks lists the AdmissionChecks required by this ClusterQueue</p>
+</td>
+</tr>
+<tr><td><code>stopPolicy</code><br/>
+<a href="#kueue-x-k8s-io-v1beta1-StopPolicy"><code>StopPolicy</code></a>
+</td>
+<td>
+   <p>stopPolicy - if set the ClusterQueue is considered Inactive, no new reservation being
+made.</p>
+<p>Depending on its value, its associated workloads will:</p>
+<ul>
+<li>StopNow - Admitted workloads are evicted and Reserving workloads will cancel the reservation.</li>
+<li>WaitForAdmitted - Admitted workloads will run to completion and Reserving workloads will cancel the reservation.</li>
+<li>WaitForAdmitted - Admitted and Reserving workloads will run to completion.</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -1540,6 +1554,18 @@ words, it's the used quota that is over the nominalQuota.</p>
 </tr>
 </tbody>
 </table>
+
+## `StopPolicy`     {#kueue-x-k8s-io-v1beta1-StopPolicy}
+    
+(Alias of `string`)
+
+**Appears in:**
+
+- [ClusterQueueSpec](#kueue-x-k8s-io-v1beta1-ClusterQueueSpec)
+
+
+
+
 
 ## `WorkloadSpec`     {#kueue-x-k8s-io-v1beta1-WorkloadSpec}
     
