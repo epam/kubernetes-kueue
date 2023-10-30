@@ -267,6 +267,10 @@ const (
 	// WorkloadEvictedByAdmissionCheck indicates that the workload was evicted
 	// beacuse at least one admission check transitioned to False.
 	WorkloadEvictedByAdmissionCheck = "AdmissionCheck"
+
+	// WorkloadEvictedByClusterQueueStop indicates that the workload was evicted
+	// beacuse the ClusterQueue is Stopped.
+	WorkloadEvictedByClusterQueueStop = "ClusterQueueStop"
 )
 
 // +genclient
