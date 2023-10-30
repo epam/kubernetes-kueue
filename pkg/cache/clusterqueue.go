@@ -48,6 +48,7 @@ type ClusterQueue struct {
 	hasMissingFlavors                   bool
 	hasMissingOrInactiveAdmissionChecks bool
 	admittedWorkloadsCount              int
+	isStopped                           bool
 }
 
 // Cohort is a set of ClusterQueues that can borrow resources from each other.
@@ -156,6 +157,8 @@ func (c *ClusterQueue) update(in *kueue.ClusterQueue, resourceFlavors map[kueue.
 	}
 	c.NamespaceSelector = nsSelector
 
+	c.isStopped = len(in.Spec.StopPolicy) > 0
+
 	c.AdmissionChecks = sets.New(in.Spec.AdmissionChecks...)
 
 	c.Usage = filterQuantities(c.Usage, in.Spec.ResourceGroups)
@@ -241,7 +244,7 @@ func (c *ClusterQueue) UpdateRGByResource() {
 
 func (c *ClusterQueue) updateQueueStatus() {
 	status := active
-	if c.hasMissingFlavors || c.hasMissingOrInactiveAdmissionChecks {
+	if c.hasMissingFlavors || c.hasMissingOrInactiveAdmissionChecks || c.isStopped {
 		status = pending
 	}
 	if c.Status == terminating {
@@ -263,9 +266,10 @@ func (c *ClusterQueue) inactiveReason() (string, string) {
 			return "FlavorNotFoundAndCheckNotFoundOrInactive", "Can't admit new workloads; some resourceFlavors are not found and admissionChecks are not found or inactive"
 		case c.hasMissingFlavors:
 			return "FlavorNotFound", "Can't admit new workloads; some resourceFlavors are not found"
-		default:
+		case c.hasMissingOrInactiveAdmissionChecks:
 			return "CheckNotFoundOrInactive", "Can't admit new workloads; some admissionChecks are not found or inactive"
-
+		default:
+			return "Stopped", "Can't admit new workloads; the ClusterQueue is Stopped"
 		}
 	}
 	return "Ready", "Can admit new flavors"
