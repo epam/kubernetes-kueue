@@ -61,7 +61,7 @@ func TestAPIs(t *testing.T) {
 	)
 }
 
-func managerSetup(opts ...jobframework.Option) framework.ManagerSetup {
+func managerSetup(configuration *config.Configuration, opts ...jobframework.Option) framework.ManagerSetup {
 	return func(mgr manager.Manager, ctx context.Context) {
 		err := indexer.Setup(ctx, mgr.GetFieldIndexer())
 		gomega.Expect(err).NotTo(gomega.HaveOccurred())
@@ -90,7 +90,9 @@ func managerSetup(opts ...jobframework.Option) framework.ManagerSetup {
 		cCache := cache.New(mgr.GetClient())
 		queues := queue.NewManager(mgr.GetClient(), cCache)
 
-		configuration := &config.Configuration{}
+		if configuration == nil {
+			configuration = &config.Configuration{}
+		}
 		mgr.GetScheme().Default(configuration)
 
 		failedCtrl, err := core.SetupControllers(mgr, queues, cCache, configuration)
