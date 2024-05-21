@@ -19,7 +19,6 @@ package resume
 import (
 	"github.com/spf13/cobra"
 	"k8s.io/cli-runtime/pkg/genericiooptions"
-
 	"sigs.k8s.io/kueue/cmd/kueuectl/app/options"
 	"sigs.k8s.io/kueue/cmd/kueuectl/app/util"
 )
@@ -42,6 +41,7 @@ func NewWorkloadCmd(clientGetter util.ClientGetter, streams genericiooptions.IOS
 		Long:                  wlLong,
 		Example:               wlExample,
 		Args:                  cobra.MatchAll(cobra.ExactArgs(1), cobra.OnlyValidArgs),
+		ValidArgsFunction:     util.WorkloadNameCompletionFunc(clientGetter, false),
 		Run: func(cmd *cobra.Command, args []string) {
 			cobra.CheckErr(o.Complete(clientGetter, cmd, args))
 			cobra.CheckErr(o.Run(cmd.Context()))

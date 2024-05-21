@@ -52,7 +52,7 @@ func NewDefaultKueuectlCmd() *cobra.Command {
 
 func NewKueuectlCmd(o KueuectlOptions) *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "kueue",
+		Use:   "kueuectl",
 		Short: "Controls Kueue queueing manager",
 	}
 
