@@ -165,6 +165,10 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 	})
 
 	ginkgo.AfterEach(func() {
+		gomega.Expect(util.DeleteAllJobsetsInNamespace(ctx, k8sManagerClient, managerNs)).To(gomega.Succeed())
+		gomega.Expect(util.DeleteAllJobsetsInNamespace(ctx, k8sWorker1Client, worker1Ns)).To(gomega.Succeed())
+		gomega.Expect(util.DeleteAllJobsetsInNamespace(ctx, k8sWorker2Client, worker2Ns)).To(gomega.Succeed())
+
 		gomega.Expect(util.DeleteNamespace(ctx, k8sManagerClient, managerNs)).To(gomega.Succeed())
 		gomega.Expect(util.DeleteNamespace(ctx, k8sWorker1Client, worker1Ns)).To(gomega.Succeed())
 		gomega.Expect(util.DeleteNamespace(ctx, k8sWorker2Client, worker2Ns)).To(gomega.Succeed())
