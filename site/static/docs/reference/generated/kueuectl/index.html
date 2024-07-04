@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kueuectl Reference Docs</title>
+<link rel="icon" href="/images/favicon.png">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="node_modules/highlight.js/styles/default.css" type="text/css">
+<link rel="stylesheet" href="stylesheet.css" type="text/css">
+</head>
+<body>
+<div id="sidebar-wrapper" class="side-nav side-bar-nav"><ul><li class="nav-level-1 strong-nav"><a href="#-strong-getting-started-strong-" class="nav-item"><strong>GETTING STARTED</strong></a></li></ul><ul><li class="nav-level-1"><a href="#create" class="nav-item">create</a></li><ul id="create-nav" style="display: none;"><li class="nav-level-2"><a href="#-em-clusterqueue-em-" class="nav-item"><em>clusterqueue</em></a></li><li class="nav-level-2"><a href="#-em-localqueue-em-" class="nav-item"><em>localqueue</em></a></li></ul></ul><ul><li class="nav-level-1"><a href="#list" class="nav-item">list</a></li><ul id="list-nav" style="display: none;"><li class="nav-level-2"><a href="#-em-clusterqueue-em--1" class="nav-item"><em>clusterqueue</em></a></li><li class="nav-level-2"><a href="#-em-localqueue-em--2" class="nav-item"><em>localqueue</em></a></li><li class="nav-level-2"><a href="#-em-workload-em-" class="nav-item"><em>workload</em></a></li></ul></ul><ul><li class="nav-level-1"><a href="#resume" class="nav-item">resume</a></li><ul id="resume-nav" style="display: none;"><li class="nav-level-2"><a href="#-em-clusterqueue-em--3" class="nav-item"><em>clusterqueue</em></a></li><li class="nav-level-2"><a href="#-em-localqueue-em--4" class="nav-item"><em>localqueue</em></a></li><li class="nav-level-2"><a href="#-em-workload-em--5" class="nav-item"><em>workload</em></a></li></ul></ul><ul><li class="nav-level-1"><a href="#stop" class="nav-item">stop</a></li><ul id="stop-nav" style="display: none;"><li class="nav-level-2"><a href="#-em-clusterqueue-em--6" class="nav-item"><em>clusterqueue</em></a></li><li class="nav-level-2"><a href="#-em-localqueue-em--7" class="nav-item"><em>localqueue</em></a></li><li class="nav-level-2"><a href="#-em-workload-em--8" class="nav-item"><em>workload</em></a></li></ul></ul><ul><li class="nav-level-1 strong-nav"><a href="#-strong-path-through-to-kubectl-strong-" class="nav-item"><strong>PATH-THROUGH TO KUBECTL</strong></a></li></ul><ul><li class="nav-level-1"><a href="#get" class="nav-item">get</a></li><ul id="get-nav" style="display: none;"><li class="nav-level-2"><a href="#-em-clusterqueue-em--9" class="nav-item"><em>clusterqueue</em></a></li><li class="nav-level-2"><a href="#-em-localqueue-em--10" class="nav-item"><em>localqueue</em></a></li><li class="nav-level-2"><a href="#-em-resourceflavor-em-" class="nav-item"><em>resourceflavor</em></a></li><li class="nav-level-2"><a href="#-em-workload-em--11" class="nav-item"><em>workload</em></a></li></ul></ul><ul><li class="nav-level-1"><a href="#describe" class="nav-item">describe</a></li><ul id="describe-nav" style="display: none;"><li class="nav-level-2"><a href="#-em-clusterqueue-em--12" class="nav-item"><em>clusterqueue</em></a></li><li class="nav-level-2"><a href="#-em-localqueue-em--13" class="nav-item"><em>localqueue</em></a></li><li class="nav-level-2"><a href="#-em-resourceflavor-em--14" class="nav-item"><em>resourceflavor</em></a></li><li class="nav-level-2"><a href="#-em-workload-em--15" class="nav-item"><em>workload</em></a></li></ul></ul><ul><li class="nav-level-1"><a href="#edit" class="nav-item">edit</a></li><ul id="edit-nav" style="display: none;"><li class="nav-level-2"><a href="#-em-clusterqueue-em--16" class="nav-item"><em>clusterqueue</em></a></li><li class="nav-level-2"><a href="#-em-localqueue-em--17" class="nav-item"><em>localqueue</em></a></li><li class="nav-level-2"><a href="#-em-resourceflavor-em--18" class="nav-item"><em>resourceflavor</em></a></li><li class="nav-level-2"><a href="#-em-workload-em--19" class="nav-item"><em>workload</em></a></li></ul></ul><ul><li class="nav-level-1"><a href="#patch" class="nav-item">patch</a></li><ul id="patch-nav" style="display: none;"><li class="nav-level-2"><a href="#-em-clusterqueue-em--20" class="nav-item"><em>clusterqueue</em></a></li><li class="nav-level-2"><a href="#-em-localqueue-em--21" class="nav-item"><em>localqueue</em></a></li><li class="nav-level-2"><a href="#-em-resourceflavor-em--22" class="nav-item"><em>resourceflavor</em></a></li><li class="nav-level-2"><a href="#-em-workload-em--23" class="nav-item"><em>workload</em></a></li></ul></ul><ul><li class="nav-level-1"><a href="#delete" class="nav-item">delete</a></li><ul id="delete-nav" style="display: none;"><li class="nav-level-2"><a href="#-em-clusterqueue-em--24" class="nav-item"><em>clusterqueue</em></a></li><li class="nav-level-2"><a href="#-em-localqueue-em--25" class="nav-item"><em>localqueue</em></a></li><li class="nav-level-2"><a href="#-em-resourceflavor-em--26" class="nav-item"><em>resourceflavor</em></a></li><li class="nav-level-2"><a href="#-em-workload-em--27" class="nav-item"><em>workload</em></a></li></ul></ul><ul><li class="nav-level-1 strong-nav"><a href="#-strong-version-strong-" class="nav-item"><strong>VERSION</strong></a></li></ul><ul><li class="nav-level-1"><a href="#version" class="nav-item">version</a></li></ul><br/><div class="copyright"><a href="https://github.com/kubernetes-sigs/kueue">Copyright 2024 The Kubernetes Authors.</a></div></div>
+<div id="wrapper">
+<div id="code-tabs-wrapper" class="code-tabs"><ul class="code-tab-list"><li class="code-tab" id="example">example</li></ul></div>
+<div id="page-content-wrapper" class="body-content container-fluid"><h1 id="-strong-getting-started-strong-"><strong>GETTING STARTED</strong></h1>
+<p>This section contains the most basic commands for creating, listing,
+resuming and stopping a resource in a Kubernetes cluster.</p>
+<hr>
+<h1 id="create">create</h1>
+<blockquote class="code-block example">
+<p> Create local queue</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl create localqueue <span class="hljs-keyword">my</span>-<span class="hljs-keyword">local</span>-queue -c <span class="hljs-keyword">my</span>-cluster-queue
+</code></pre>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl create</code></p>
+<h3 id="flags">Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Shorthand</th>
+<th>Default</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dry-run</td>
+<td></td>
+<td>none</td>
+<td>Must be &quot;none&quot;, &quot;server&quot;, or &quot;client&quot;. If client strategy, only print the object that would be sent, without sending it. If server strategy, submit server-side request without persisting the resource. </td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="-em-clusterqueue-em-"><em>clusterqueue</em></h2>
+<blockquote class="code-block example">
+<p> Create a ClusterQueue</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl <span class="hljs-keyword">create</span> clusterqueue my-<span class="hljs-keyword">cluster</span>-queue
+</code></pre>
+<blockquote class="code-block example">
+<p> Create a ClusterQueue with cohort, namespace selector and other details</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl create clusterqueue my-cluster-queue \
+<span class="hljs-attribute">--cohort</span>=cohortname \
+<span class="hljs-attribute">--queuing-strategy</span>=StrictFIFO \
+<span class="hljs-attribute">--namespace-selector</span>=fooX=barX,fooY=barY \
+<span class="hljs-attribute">--reclaim-within-cohort</span>=Any \
+<span class="hljs-attribute">--preemption-within-cluster-queue</span>=LowerPriority
+</code></pre>
+<blockquote class="code-block example">
+<p> Create a ClusterQueue with nominal quota and one resource flavor named alpha</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl <span class="hljs-keyword">create</span> clusterqueue my-<span class="hljs-keyword">cluster</span>-queue --nominal-quota=alpha:cpu=<span class="hljs-number">9</span>;memory=36Gi
+</code></pre>
+<blockquote class="code-block example">
+<p> Create a ClusterQueue with multiple resource flavors named alpha and beta</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl create clusterqueue my-cluster-queue \
+--nominal-quota=alpha:cpu=<span class="hljs-number">9</span>;memory=<span class="hljs-number">36</span>Gi;nvidia.com/gpu=<span class="hljs-number">10</span>,beta:cpu=<span class="hljs-number">18</span>;memory=<span class="hljs-number">72</span>Gi;nvidia.com/gpu=<span class="hljs-number">20</span>, \
+--borrowing-limit=alpha:cpu=<span class="hljs-number">1</span>;memory=<span class="hljs-number">1</span>Gi;nvidia.com/gpu=<span class="hljs-number">1</span>,beta:cpu=<span class="hljs-number">2</span>;memory=<span class="hljs-number">2</span>Gi;nvidia.com/gpu=<span class="hljs-number">2</span> \
+--lending-limit=alpha:cpu=<span class="hljs-number">1</span>;memory=<span class="hljs-number">1</span>Gi;nvidia.com/gpu=<span class="hljs-number">1</span>,beta:cpu=<span class="hljs-number">2</span>;memory=<span class="hljs-number">2</span>Gi;nvidia.com/gpu=<span class="hljs-number">2</span>
+</code></pre>
+<p>Creates a ClusterQueue with the given name.</p>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl create clusterqueue NAME [--cohort=cohortname] [--queuing-strategy=StrictFIFO|BestEffortFIFO] [--namespace-selector=selector] [--reclaim-within-cohort=Never|Any|LowerPriority|LowerOrNewerEqualPriority] [--preemption-within-cluster-queue=Never|Any|LowerPriority|LowerOrNewerEqualPriority] [--nominal-quota=rfname1:resource1=value;resource2=value;resource3=value,rfname2:resource1=value;resource2=value] [--borrowing-limit=rfname1:resource1=value;resource2=value;resource3=value,rfname2:resource1=value;resource2=value] [--lending-limit=rfname1:resource1=value;resource2=value;resource3=value,rfname2:resource1=value;resource2=value] [--dry-run=server|client|none]</code></p>
+<h3 id="flags">Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Shorthand</th>
+<th>Default</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allow-missing-template-keys</td>
+<td></td>
+<td>true</td>
+<td>If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. </td>
+</tr>
+<tr>
+<td>borrowing-limit</td>
+<td></td>
+<td>[]</td>
+<td>The maximum amount of quota for the <span>[</span>flavor, resource<span>]</span> combination that this ClusterQueue is allowed to borrow from the unused quota of other ClusterQueues in the same cohort. </td>
+</tr>
+<tr>
+<td>cohort</td>
+<td></td>
+<td></td>
+<td>The cohort that this ClusterQueue belongs to. </td>
+</tr>
+<tr>
+<td>lending-limit</td>
+<td></td>
+<td>[]</td>
+<td>The maximum amount of unused quota for the <span>[</span>flavor, resource<span>]</span> combination that this ClusterQueue can lend to other ClusterQueues in the same cohort. </td>
+</tr>
+<tr>
+<td>namespace-selector</td>
+<td></td>
+<td>[]</td>
+<td>Defines which namespaces are allowed to submit workloads to this clusterQueue. </td>
+</tr>
+<tr>
+<td>nominal-quota</td>
+<td></td>
+<td>[]</td>
+<td>The quantity of this resource that is available for Workloads admitted by this ClusterQueue at a point in time. </td>
+</tr>
+<tr>
+<td>output</td>
+<td>o</td>
+<td></td>
+<td>Output format. One of: (json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file). </td>
+</tr>
+<tr>
+<td>preemption-within-cluster-queue</td>
+<td></td>
+<td></td>
+<td>Determines whether a pending Workload that doesn&#39;t fit within the nominal quota for its ClusterQueue, can preempt active Workloads in the ClusterQueue. </td>
+</tr>
+<tr>
+<td>queuing-strategy</td>
+<td></td>
+<td></td>
+<td>The queueing strategy of the workloads across the queues in this ClusterQueue. </td>
+</tr>
+<tr>
+<td>reclaim-within-cohort</td>
+<td></td>
+<td></td>
+<td>Determines whether a pending Workload can preempt Workloads from other ClusterQueues in the cohort that are using more than their nominal quota. </td>
+</tr>
+<tr>
+<td>show-managed-fields</td>
+<td></td>
+<td>false</td>
+<td>If true, keep the managedFields when printing objects in JSON or YAML format. </td>
+</tr>
+<tr>
+<td>template</td>
+<td></td>
+<td></td>
+<td>Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates <span>[</span><a href="http://golang.org/pkg/text/template/#pkg-overview">http://golang.org/pkg/text/template/#pkg-overview</a><span>]</span>. </td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="-em-localqueue-em-"><em>localqueue</em></h2>
+<blockquote class="code-block example">
+<p> Create a local queue</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl create localqueue <span class="hljs-keyword">my</span>-<span class="hljs-keyword">local</span>-queue -c <span class="hljs-keyword">my</span>-cluster-queue
+</code></pre>
+<blockquote class="code-block example">
+<p> Create a local queue with unknown cluster queue</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl create localqueue <span class="hljs-keyword">my</span>-<span class="hljs-keyword">local</span>-queue -c <span class="hljs-keyword">my</span>-cluster-queue -i
+</code></pre>
+<p>Create a local queue with the given name in the specified namespace.</p>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl create localqueue NAME -c CLUSTER_QUEUE_NAME [--ignore-unknown-cq] [--dry-run STRATEGY]</code></p>
+<h3 id="flags">Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Shorthand</th>
+<th>Default</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allow-missing-template-keys</td>
+<td></td>
+<td>true</td>
+<td>If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. </td>
+</tr>
+<tr>
+<td>clusterqueue</td>
+<td>c</td>
+<td></td>
+<td>The cluster queue name which will be associated with the local queue (required). </td>
+</tr>
+<tr>
+<td>ignore-unknown-cq</td>
+<td>i</td>
+<td>false</td>
+<td>Ignore unknown cluster queue. </td>
+</tr>
+<tr>
+<td>output</td>
+<td>o</td>
+<td></td>
+<td>Output format. One of: (json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file). </td>
+</tr>
+<tr>
+<td>show-managed-fields</td>
+<td></td>
+<td>false</td>
+<td>If true, keep the managedFields when printing objects in JSON or YAML format. </td>
+</tr>
+<tr>
+<td>template</td>
+<td></td>
+<td></td>
+<td>Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates <span>[</span><a href="http://golang.org/pkg/text/template/#pkg-overview">http://golang.org/pkg/text/template/#pkg-overview</a><span>]</span>. </td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="list">list</h1>
+<blockquote class="code-block example">
+<p> List LocalQueue</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl <span class="hljs-built_in">list</span> localqueue
+</code></pre>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl list</code></p>
+<hr>
+<h2 id="-em-clusterqueue-em--1"><em>clusterqueue</em></h2>
+<blockquote class="code-block example">
+<p> List ClusterQueue</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl <span class="hljs-built_in">list</span> clusterqueue
+</code></pre>
+<p>Lists all ClusterQueues, potentially limiting output to those that are active/inactive and matching the label selector.</p>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl list clusterqueue [--selector key1=value1] [--field-selector key1=value1] [--active=true|false]</code></p>
+<h3 id="flags">Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Shorthand</th>
+<th>Default</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>active</td>
+<td></td>
+<td>[]</td>
+<td>Filter by active status. Valid values: &#39;true&#39; and &#39;false&#39;. </td>
+</tr>
+<tr>
+<td>allow-missing-template-keys</td>
+<td></td>
+<td>true</td>
+<td>If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. </td>
+</tr>
+<tr>
+<td>field-selector</td>
+<td></td>
+<td></td>
+<td>Selector (field query) to filter on, supports &#39;=&#39;, &#39;==&#39;, and &#39;!=&#39;.(e.g. --field-selector key1=value1,key2=value2). The server only supports a limited number of field queries per type. </td>
+</tr>
+<tr>
+<td>output</td>
+<td>o</td>
+<td></td>
+<td>Output format. One of: (json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file). </td>
+</tr>
+<tr>
+<td>selector</td>
+<td>l</td>
+<td></td>
+<td>Selector (label query) to filter on, supports &#39;=&#39;, &#39;==&#39;, and &#39;!=&#39;.(e.g. -l key1=value1,key2=value2). Matching objects must satisfy all of the specified label constraints. </td>
+</tr>
+<tr>
+<td>show-managed-fields</td>
+<td></td>
+<td>false</td>
+<td>If true, keep the managedFields when printing objects in JSON or YAML format. </td>
+</tr>
+<tr>
+<td>template</td>
+<td></td>
+<td></td>
+<td>Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates <span>[</span><a href="http://golang.org/pkg/text/template/#pkg-overview">http://golang.org/pkg/text/template/#pkg-overview</a><span>]</span>. </td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="-em-localqueue-em--2"><em>localqueue</em></h2>
+<blockquote class="code-block example">
+<p> List LocalQueue</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl <span class="hljs-built_in">list</span> localqueue
+</code></pre>
+<p>Lists LocalQueues that match the given criteria: point to a specific CQ, 
+being active/inactive, belonging to the specified namespace, matching 
+the label selector or the field selector.</p>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl list localqueue [-–clusterqueue CLUSTER_QUEUE_NAME] [--selector key1=value1] [--field-selector key1=value1] [--all-namespaces]</code></p>
+<h3 id="flags">Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Shorthand</th>
+<th>Default</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>all-namespaces</td>
+<td>A</td>
+<td>false</td>
+<td>If present, list the requested object(s) across all namespaces. Namespace in current context is ignored even if specified with --namespace. </td>
+</tr>
+<tr>
+<td>allow-missing-template-keys</td>
+<td></td>
+<td>true</td>
+<td>If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. </td>
+</tr>
+<tr>
+<td>clusterqueue</td>
+<td>c</td>
+<td></td>
+<td>Filter by cluster queue name which is associated with the resource. </td>
+</tr>
+<tr>
+<td>field-selector</td>
+<td></td>
+<td></td>
+<td>Selector (field query) to filter on, supports &#39;=&#39;, &#39;==&#39;, and &#39;!=&#39;.(e.g. --field-selector key1=value1,key2=value2). The server only supports a limited number of field queries per type. </td>
+</tr>
+<tr>
+<td>output</td>
+<td>o</td>
+<td></td>
+<td>Output format. One of: (json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file). </td>
+</tr>
+<tr>
+<td>selector</td>
+<td>l</td>
+<td></td>
+<td>Selector (label query) to filter on, supports &#39;=&#39;, &#39;==&#39;, and &#39;!=&#39;.(e.g. -l key1=value1,key2=value2). Matching objects must satisfy all of the specified label constraints. </td>
+</tr>
+<tr>
+<td>show-managed-fields</td>
+<td></td>
+<td>false</td>
+<td>If true, keep the managedFields when printing objects in JSON or YAML format. </td>
+</tr>
+<tr>
+<td>template</td>
+<td></td>
+<td></td>
+<td>Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates <span>[</span><a href="http://golang.org/pkg/text/template/#pkg-overview">http://golang.org/pkg/text/template/#pkg-overview</a><span>]</span>. </td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="-em-workload-em-"><em>workload</em></h2>
+<blockquote class="code-block example">
+<p> List Workload</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl <span class="hljs-built_in">list</span> workload
+</code></pre>
+<p>Lists Workloads that match the provided criteria.</p>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl list workload [--clusterqueue CLUSTER_QUEUE_NAME] [--localqueue LOCAL_QUEUE_NAME] [--status STATUS] [--selector key1=value1] [--field-selector key1=value1] [--all-namespaces] [--for TYPE[.API-GROUP]/NAME]</code></p>
+<h3 id="flags">Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Shorthand</th>
+<th>Default</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>all-namespaces</td>
+<td>A</td>
+<td>false</td>
+<td>If present, list the requested object(s) across all namespaces. Namespace in current context is ignored even if specified with --namespace. </td>
+</tr>
+<tr>
+<td>allow-missing-template-keys</td>
+<td></td>
+<td>true</td>
+<td>If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. </td>
+</tr>
+<tr>
+<td>clusterqueue</td>
+<td>c</td>
+<td></td>
+<td>Filter by cluster queue name which is associated with the resource. </td>
+</tr>
+<tr>
+<td>field-selector</td>
+<td></td>
+<td></td>
+<td>Selector (field query) to filter on, supports &#39;=&#39;, &#39;==&#39;, and &#39;!=&#39;.(e.g. --field-selector key1=value1,key2=value2). The server only supports a limited number of field queries per type. </td>
+</tr>
+<tr>
+<td>for</td>
+<td></td>
+<td></td>
+<td>Filter workloads to only those pertaining to the specified resource. </td>
+</tr>
+<tr>
+<td>localqueue</td>
+<td>q</td>
+<td></td>
+<td>Filter by local queue name which is associated with the resource. </td>
+</tr>
+<tr>
+<td>output</td>
+<td>o</td>
+<td></td>
+<td>Output format. One of: (json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file). </td>
+</tr>
+<tr>
+<td>selector</td>
+<td>l</td>
+<td></td>
+<td>Selector (label query) to filter on, supports &#39;=&#39;, &#39;==&#39;, and &#39;!=&#39;.(e.g. -l key1=value1,key2=value2). Matching objects must satisfy all of the specified label constraints. </td>
+</tr>
+<tr>
+<td>show-managed-fields</td>
+<td></td>
+<td>false</td>
+<td>If true, keep the managedFields when printing objects in JSON or YAML format. </td>
+</tr>
+<tr>
+<td>status</td>
+<td></td>
+<td>[]</td>
+<td>Filter workloads by status. Must be &quot;all&quot;, &quot;pending&quot;, &quot;admitted&quot; or &quot;finished&quot; </td>
+</tr>
+<tr>
+<td>template</td>
+<td></td>
+<td></td>
+<td>Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates <span>[</span><a href="http://golang.org/pkg/text/template/#pkg-overview">http://golang.org/pkg/text/template/#pkg-overview</a><span>]</span>. </td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="resume">resume</h1>
+<blockquote class="code-block example">
+<p> Resume the workload</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl resume workload <span class="hljs-keyword">my</span>-workload
+</code></pre>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl resume</code></p>
+<h3 id="flags">Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Shorthand</th>
+<th>Default</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dry-run</td>
+<td></td>
+<td>none</td>
+<td>Must be &quot;none&quot;, &quot;server&quot;, or &quot;client&quot;. If client strategy, only print the object that would be sent, without sending it. If server strategy, submit server-side request without persisting the resource. </td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="-em-clusterqueue-em--3"><em>clusterqueue</em></h2>
+<blockquote class="code-block example">
+<p> Resume the clusterqueue</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl resume clusterqueue <span class="hljs-keyword">my</span>-clusterqueue
+</code></pre>
+<p>Resumes the previously held ClusterQueue.</p>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl resume clusterqueue NAME</code></p>
+<h3 id="flags">Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Shorthand</th>
+<th>Default</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allow-missing-template-keys</td>
+<td></td>
+<td>true</td>
+<td>If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. </td>
+</tr>
+<tr>
+<td>output</td>
+<td>o</td>
+<td></td>
+<td>Output format. One of: (json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file). </td>
+</tr>
+<tr>
+<td>show-managed-fields</td>
+<td></td>
+<td>false</td>
+<td>If true, keep the managedFields when printing objects in JSON or YAML format. </td>
+</tr>
+<tr>
+<td>template</td>
+<td></td>
+<td></td>
+<td>Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates <span>[</span><a href="http://golang.org/pkg/text/template/#pkg-overview">http://golang.org/pkg/text/template/#pkg-overview</a><span>]</span>. </td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="-em-localqueue-em--4"><em>localqueue</em></h2>
+<blockquote class="code-block example">
+<p> Resume the localqueue</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl resume localqueue <span class="hljs-keyword">my</span>-localqueue
+</code></pre>
+<p>Resumes the previously held LocalQueue.</p>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl resume localqueue NAME</code></p>
+<h3 id="flags">Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Shorthand</th>
+<th>Default</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allow-missing-template-keys</td>
+<td></td>
+<td>true</td>
+<td>If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. </td>
+</tr>
+<tr>
+<td>output</td>
+<td>o</td>
+<td></td>
+<td>Output format. One of: (json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file). </td>
+</tr>
+<tr>
+<td>show-managed-fields</td>
+<td></td>
+<td>false</td>
+<td>If true, keep the managedFields when printing objects in JSON or YAML format. </td>
+</tr>
+<tr>
+<td>template</td>
+<td></td>
+<td></td>
+<td>Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates <span>[</span><a href="http://golang.org/pkg/text/template/#pkg-overview">http://golang.org/pkg/text/template/#pkg-overview</a><span>]</span>. </td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="-em-workload-em--5"><em>workload</em></h2>
+<blockquote class="code-block example">
+<p> Resume the workload</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl resume workload <span class="hljs-keyword">my</span>-workload
+</code></pre>
+<p>Resumes the Workload, allowing its admission according to regular ClusterQueue rules.</p>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl resume workload NAME [--namespace NAMESPACE] [--dry-run STRATEGY]</code></p>
+<h3 id="flags">Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Shorthand</th>
+<th>Default</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allow-missing-template-keys</td>
+<td></td>
+<td>true</td>
+<td>If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. </td>
+</tr>
+<tr>
+<td>output</td>
+<td>o</td>
+<td></td>
+<td>Output format. One of: (json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file). </td>
+</tr>
+<tr>
+<td>show-managed-fields</td>
+<td></td>
+<td>false</td>
+<td>If true, keep the managedFields when printing objects in JSON or YAML format. </td>
+</tr>
+<tr>
+<td>template</td>
+<td></td>
+<td></td>
+<td>Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates <span>[</span><a href="http://golang.org/pkg/text/template/#pkg-overview">http://golang.org/pkg/text/template/#pkg-overview</a><span>]</span>. </td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="stop">stop</h1>
+<blockquote class="code-block example">
+<p> Stop the workload</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl stop workload <span class="hljs-keyword">my</span>-workload
+</code></pre>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl stop</code></p>
+<h3 id="flags">Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Shorthand</th>
+<th>Default</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dry-run</td>
+<td></td>
+<td>none</td>
+<td>Must be &quot;none&quot;, &quot;server&quot;, or &quot;client&quot;. If client strategy, only print the object that would be sent, without sending it. If server strategy, submit server-side request without persisting the resource. </td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="-em-clusterqueue-em--6"><em>clusterqueue</em></h2>
+<blockquote class="code-block example">
+<p> Stop the clusterqueue</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl stop clusterqueue <span class="hljs-keyword">my</span>-clusterqueue
+</code></pre>
+<p>Puts the given ClusterQueue on hold.</p>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl stop clusterqueue NAME [--keep-already-running]</code></p>
+<h3 id="flags">Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Shorthand</th>
+<th>Default</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allow-missing-template-keys</td>
+<td></td>
+<td>true</td>
+<td>If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. </td>
+</tr>
+<tr>
+<td>keep-already-running</td>
+<td></td>
+<td>false</td>
+<td>Indicates whether to keep already running workloads. </td>
+</tr>
+<tr>
+<td>output</td>
+<td>o</td>
+<td></td>
+<td>Output format. One of: (json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file). </td>
+</tr>
+<tr>
+<td>show-managed-fields</td>
+<td></td>
+<td>false</td>
+<td>If true, keep the managedFields when printing objects in JSON or YAML format. </td>
+</tr>
+<tr>
+<td>template</td>
+<td></td>
+<td></td>
+<td>Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates <span>[</span><a href="http://golang.org/pkg/text/template/#pkg-overview">http://golang.org/pkg/text/template/#pkg-overview</a><span>]</span>. </td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="-em-localqueue-em--7"><em>localqueue</em></h2>
+<blockquote class="code-block example">
+<p> Stop the localqueue</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl stop localqueue <span class="hljs-keyword">my</span>-localqueue
+</code></pre>
+<p>Puts the given LocalQueue on hold.</p>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl stop localqueue NAME [--keep-already-running]</code></p>
+<h3 id="flags">Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Shorthand</th>
+<th>Default</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allow-missing-template-keys</td>
+<td></td>
+<td>true</td>
+<td>If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. </td>
+</tr>
+<tr>
+<td>keep-already-running</td>
+<td></td>
+<td>false</td>
+<td>Indicates whether to keep already running workloads. </td>
+</tr>
+<tr>
+<td>output</td>
+<td>o</td>
+<td></td>
+<td>Output format. One of: (json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file). </td>
+</tr>
+<tr>
+<td>show-managed-fields</td>
+<td></td>
+<td>false</td>
+<td>If true, keep the managedFields when printing objects in JSON or YAML format. </td>
+</tr>
+<tr>
+<td>template</td>
+<td></td>
+<td></td>
+<td>Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates <span>[</span><a href="http://golang.org/pkg/text/template/#pkg-overview">http://golang.org/pkg/text/template/#pkg-overview</a><span>]</span>. </td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="-em-workload-em--8"><em>workload</em></h2>
+<blockquote class="code-block example">
+<p> Stop the workload</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl stop workload <span class="hljs-keyword">my</span>-workload
+</code></pre>
+<p>Puts the given Workload on hold. The Workload will not be admitted and 
+if it is already admitted it will be put back to queue just as if it 
+was preempted (using .spec.active field).</p>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl stop workload NAME [--namespace NAMESPACE] [--dry-run STRATEGY]</code></p>
+<h3 id="flags">Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Shorthand</th>
+<th>Default</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allow-missing-template-keys</td>
+<td></td>
+<td>true</td>
+<td>If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. </td>
+</tr>
+<tr>
+<td>output</td>
+<td>o</td>
+<td></td>
+<td>Output format. One of: (json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file). </td>
+</tr>
+<tr>
+<td>show-managed-fields</td>
+<td></td>
+<td>false</td>
+<td>If true, keep the managedFields when printing objects in JSON or YAML format. </td>
+</tr>
+<tr>
+<td>template</td>
+<td></td>
+<td></td>
+<td>Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates <span>[</span><a href="http://golang.org/pkg/text/template/#pkg-overview">http://golang.org/pkg/text/template/#pkg-overview</a><span>]</span>. </td>
+</tr>
+</tbody>
+</table>
+<h1 id="-strong-path-through-to-kubectl-strong-"><strong>PATH-THROUGH TO KUBECTL</strong></h1>
+<p>This section contains commands for getting, describing, editing, 
+patching, and deleting resources in a Kubernetes cluster.</p>
+<hr>
+<h1 id="get">get</h1>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl get</code></p>
+<hr>
+<h2 id="-em-clusterqueue-em--9"><em>clusterqueue</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl get clusterqueue</code></p>
+<hr>
+<h2 id="-em-localqueue-em--10"><em>localqueue</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl get localqueue</code></p>
+<hr>
+<h2 id="-em-resourceflavor-em-"><em>resourceflavor</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl get resourceflavor</code></p>
+<hr>
+<h2 id="-em-workload-em--11"><em>workload</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl get workload</code></p>
+<hr>
+<h1 id="describe">describe</h1>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl describe</code></p>
+<hr>
+<h2 id="-em-clusterqueue-em--12"><em>clusterqueue</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl describe clusterqueue</code></p>
+<hr>
+<h2 id="-em-localqueue-em--13"><em>localqueue</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl describe localqueue</code></p>
+<hr>
+<h2 id="-em-resourceflavor-em--14"><em>resourceflavor</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl describe resourceflavor</code></p>
+<hr>
+<h2 id="-em-workload-em--15"><em>workload</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl describe workload</code></p>
+<hr>
+<h1 id="edit">edit</h1>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl edit</code></p>
+<hr>
+<h2 id="-em-clusterqueue-em--16"><em>clusterqueue</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl edit clusterqueue</code></p>
+<hr>
+<h2 id="-em-localqueue-em--17"><em>localqueue</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl edit localqueue</code></p>
+<hr>
+<h2 id="-em-resourceflavor-em--18"><em>resourceflavor</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl edit resourceflavor</code></p>
+<hr>
+<h2 id="-em-workload-em--19"><em>workload</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl edit workload</code></p>
+<hr>
+<h1 id="patch">patch</h1>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl patch</code></p>
+<hr>
+<h2 id="-em-clusterqueue-em--20"><em>clusterqueue</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl patch clusterqueue</code></p>
+<hr>
+<h2 id="-em-localqueue-em--21"><em>localqueue</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl patch localqueue</code></p>
+<hr>
+<h2 id="-em-resourceflavor-em--22"><em>resourceflavor</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl patch resourceflavor</code></p>
+<hr>
+<h2 id="-em-workload-em--23"><em>workload</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl patch workload</code></p>
+<hr>
+<h1 id="delete">delete</h1>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl delete</code></p>
+<hr>
+<h2 id="-em-clusterqueue-em--24"><em>clusterqueue</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl delete clusterqueue</code></p>
+<hr>
+<h2 id="-em-localqueue-em--25"><em>localqueue</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl delete localqueue</code></p>
+<hr>
+<h2 id="-em-resourceflavor-em--26"><em>resourceflavor</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl delete resourceflavor</code></p>
+<hr>
+<h2 id="-em-workload-em--27"><em>workload</em></h2>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl delete workload</code></p>
+<h1 id="-strong-version-strong-"><strong>VERSION</strong></h1>
+<hr>
+<h1 id="version">version</h1>
+<blockquote class="code-block example">
+<p> Prints the client version and the kueue controller manager image, if installed</p>
+</blockquote>
+<pre class="code-block example"><code class="lang-shell">kueuectl <span class="hljs-built_in">version</span>
+</code></pre>
+<h3 id="usage">Usage</h3>
+<p><code>$ kueuectl version</code></p>
+</div>
+</div>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/jquery.scrollto/jquery.scrollTo.min.js"></script>
+<script src="navData.js"></script>
+<script src="scroll.js"></script>
+<!--<script src="actions.js"></script>-->
+<script src="tabvisibility.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+categories:
+  - name: GETTING STARTED
+    include: _getting_started.md
+    commands:
+      - create
+      - list
+      - resume
+      - stop
+  - name: PATH-THROUGH TO KUBECTL
+    include: _path_through.md
+    commands:
+      - get
+      - describe
+      - edit
+      - patch
+      - delete
+  - name: VERSION
+    commands:
+      - version

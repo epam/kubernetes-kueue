@@ -48,6 +48,8 @@ endif
 
 PROJECT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
 ARTIFACTS ?= $(PROJECT_DIR)/bin
+WEBROOT ?= $(PROJECT_DIR)/site
+
 # Use distroless as minimal base image to package the manager binary
 # Refer to https://github.com/GoogleContainerTools/distroless for more details
 BASE_IMAGE ?= gcr.io/distroless/static:nonroot
@@ -171,8 +173,8 @@ shell-lint: ## Run shell linting.
 	$(PROJECT_DIR)/hack/verify-shellcheck.sh
 
 .PHONY: verify
-verify: gomod-verify ci-lint fmt-verify shell-lint toc-verify manifests generate update-helm generate-apiref prepare-release-branch
-	git --no-pager diff --exit-code config/components apis charts/kueue/templates client-go site/
+verify: gomod-verify ci-lint fmt-verify shell-lint toc-verify manifests generate update-helm generate-apiref prepare-release-branch kueuectl-docs-copy
+	git --no-pager diff --exit-code config/components apis charts/kueue/templates client-go $(WEBROOT)/
 
 ##@ Build
 
@@ -252,7 +254,7 @@ undeploy: ## Undeploy controller from the K8s cluster specified in ~/.kube/confi
 
 .PHONY: site-server
 site-server: hugo
-	(cd site; $(HUGO) server)
+	(cd $(WEBROOT); $(HUGO) server)
 
 ##@ Release
 .PHONY: artifacts
@@ -277,7 +279,7 @@ artifacts: kustomize yq helm ## Generate release artifacts.
 
 .PHONY: prepare-release-branch
 prepare-release-branch: yq kustomize ## Prepare the release branch with the release version.
-	$(SED) -r 's/v[0-9]+\.[0-9]+\.[0-9]+/$(RELEASE_VERSION)/g' -i README.md -i site/hugo.toml
+	$(SED) -r 's/v[0-9]+\.[0-9]+\.[0-9]+/$(RELEASE_VERSION)/g' -i README.md -i $(WEBROOT)/hugo.toml
 	$(YQ) e '.appVersion = "$(RELEASE_VERSION)"' -i charts/kueue/Chart.yaml
 	@$(call clean-manifests)
 
@@ -324,4 +326,40 @@ kueuectl:
 
 .PHONY: generate-apiref
 generate-apiref: genref
-	cd $(PROJECT_DIR)/hack/genref/ && $(GENREF) -o $(PROJECT_DIR)/site/content/en/docs/reference
+	cd $(PROJECT_DIR)/hack/genref/ && $(GENREF) -o $(WEBROOT)/content/en/docs/reference
+
+KUEUECTL_DOCS=$(PROJECT_DIR)/cmd/kueuectl-docs
+KUEUECTL_DOCS_GEN=$(PROJECT_DIR)/cmd/kueuectl-docs/generators
+KUEUECTL_DOCS_SRC=$(KUEUECTL_DOCS_GEN)/build
+KUEUECTL_DOCS_DST=$(WEBROOT)/static/docs/reference/generated/kueuectl
+KUEUECTL_DOCS_SRC_FRONT=$(KUEUECTL_DOCS_SRC)/node_modules/font-awesome
+KUEUECTL_DOCS_DST_FONT=$(KUEUECTL_DOCS_DST)/node_modules/font-awesome
+
+# Build kueuectl docs
+
+kueuectl-docs: kueuectl-docs-clean
+	cd $(KUEUECTL_DOCS) && go mod download && go run main.go
+	mkdir -p $(KUEUECTL_DOCS_SRC)
+	docker run -v $(KUEUECTL_DOCS_GEN)/includes:/source \
+ 		-v $(KUEUECTL_DOCS_GEN)/build:/build \
+ 		-v $(KUEUECTL_DOCS_GEN)/:/manifest \
+ 		brianpursley/brodocs:latest
+
+kueuectl-docs-clean:
+	sudo rm -f main
+	sudo rm -rf $(KUEUECTL_DOCS_GEN)/includes
+	sudo rm -rf $(KUEUECTL_DOCS_GEN)/build
+	sudo rm -rf $(KUEUECTL_DOCS_GEN)/manifest.json
+
+kueuectl-docs-copy: kueuectl-docs
+	cp $(KUEUECTL_DOCS_SRC)/index.html $(KUEUECTL_DOCS_DST)/index.html
+	cp $(KUEUECTL_DOCS_SRC)/navData.js $(KUEUECTL_DOCS_DST)/navData.js
+	cp $(KUEUECTL_DOCS_SRC)/scroll.js $(KUEUECTL_DOCS_DST)/scroll.js
+	cp $(KUEUECTL_DOCS_SRC)/stylesheet.css $(KUEUECTL_DOCS_DST)/stylesheet.css
+	cp $(KUEUECTL_DOCS_SRC)/tabvisibility.js $(KUEUECTL_DOCS_DST)/tabvisibility.js
+	cp $(KUEUECTL_DOCS_SRC)/node_modules/bootstrap/dist/css/bootstrap.min.css $(KUEUECTL_DOCS_DST)/node_modules/bootstrap/dist/css/bootstrap.min.css
+	cp $(KUEUECTL_DOCS_SRC)/node_modules/highlight.js/styles/default.css $(KUEUECTL_DOCS_DST)/node_modules/highlight.js/styles/default.css
+	cp $(KUEUECTL_DOCS_SRC)/node_modules/jquery.scrollto/jquery.scrollTo.min.js $(KUEUECTL_DOCS_DST)/node_modules/jquery.scrollto/jquery.scrollTo.min.js
+	cp $(KUEUECTL_DOCS_SRC)/node_modules/jquery/dist/jquery.min.js $(KUEUECTL_DOCS_DST)/node_modules/jquery/dist/jquery.min.js
+	cp $(KUEUECTL_DOCS_SRC_FRONT)/css/font-awesome.min.css $(KUEUECTL_DOCS_DST_FONT)/css/font-awesome.min.css
+	cp -r $(KUEUECTL_DOCS_SRC_FRONT)/fonts $(KUEUECTL_DOCS_DST_FONT)
