@@ -7,7 +7,7 @@ ML/AI/Batch Jobs Made Easy
 ## Getting Started
 
 ### Prerequisites
-- go version v1.22.3+
+- go version v1.22.4+
 - kubectl version v1.27+.
 - Access to a Kubernetes v1.27+ cluster.
 
