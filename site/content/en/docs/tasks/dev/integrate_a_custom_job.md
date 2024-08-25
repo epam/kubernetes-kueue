@@ -63,7 +63,23 @@ Add your framework name to `.integrations.frameworks` in [controller_manager_con
 
 Add RBAC Authorization for your CRD using [kubebuilder marker comments](https://book.kubebuilder.io/reference/markers/rbac.html).
 
-Write a go `func init()` that invokes the jobframework `RegisterIntegration()` function.
+Write a go `func init()` that invokes the jobframework `RegisterIntegration(name string, cb IntegrationCallbacks)` function.
+
+The minimum required callbacks that must be implemented are as follows:
+
+```go
+// IntegrationCallbacks groups a set of callbacks used to integrate a new framework.
+type IntegrationCallbacks struct {
+   // NewJob creates a new instance of job
+   NewJob func () GenericJob
+   // NewReconciler creates a new reconciler
+   NewReconciler ReconcilerFactory
+   // SetupWebhook sets up the framework's webhook with the controllers manager
+   SetupWebhook func (mgr ctrl.Manager, opts ...Option) error
+   // JobType holds an object of the type managed by the integration's webhook
+   JobType runtime.Object
+}
+```
 
 ### Job Framework
 

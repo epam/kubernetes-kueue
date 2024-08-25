@@ -74,10 +74,13 @@ type IntegrationCallbacks struct {
 	IsManagingObjectsOwner func(ref *metav1.OwnerReference) bool
 	// CanSupportIntegration returns true if the integration meets any additional condition
 	// like the Kubernetes version.
+	// (this callback is optional)
 	CanSupportIntegration func(opts ...Option) (bool, error)
-	// The job's MultiKueue adapter (optional)
+	// The job's MultiKueue adapter
+	// (this callback is optional)
 	MultiKueueAdapter MultiKueueAdapter
 	// The list of integration that need to be enabled along with the current one.
+	// (this callback is optional)
 	DependencyList []string
 	// PodLabelSelector returns the label selector used by pods for the job.
 	PodLabelSelector string
