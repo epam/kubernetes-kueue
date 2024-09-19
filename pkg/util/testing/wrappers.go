@@ -280,6 +280,20 @@ func (w *WorkloadWrapper) Label(k, v string) *WorkloadWrapper {
 	return w
 }
 
+func (w *WorkloadWrapper) PodLabel(k, v string) *WorkloadWrapper {
+
+	for i, ps := range w.Spec.PodSets {
+		if ps.Template.Labels == nil {
+			ps.Template.Labels = make(map[string]string)
+		}
+		ps.Template.Labels[k] = v
+
+		w.Spec.PodSets[i] = ps
+	}
+
+	return w
+}
+
 func (w *WorkloadWrapper) AdmissionChecks(checks ...kueue.AdmissionCheckState) *WorkloadWrapper {
 	w.Status.AdmissionChecks = checks
 	return w

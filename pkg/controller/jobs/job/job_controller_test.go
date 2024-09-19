@@ -1944,6 +1944,7 @@ func TestReconciler(t *testing.T) {
 				Obj(),
 			workloads: []kueue.Workload{
 				*baseWorkloadWrapper.Clone().
+					PodLabel("testingKey", "testingVal").
 					Admitted(true).
 					Condition(metav1.Condition{
 						Type:   kueue.WorkloadEvicted,
@@ -1953,10 +1954,12 @@ func TestReconciler(t *testing.T) {
 			},
 			wantJob: *baseJobWrapper.Clone().
 				Suspend(true).
+				PodLabel("testingKey", "testingVal").
 				Active(10).
 				Obj(),
 			wantWorkloads: []kueue.Workload{
 				*baseWorkloadWrapper.Clone().
+					PodLabel("testingKey", "testingVal").
 					Admitted(true).
 					Condition(metav1.Condition{
 						Type:   kueue.WorkloadEvicted,
