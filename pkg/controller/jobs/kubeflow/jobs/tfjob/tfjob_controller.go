@@ -32,8 +32,6 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/builder"
 	"sigs.k8s.io/controller-runtime/pkg/client"
-	"sigs.k8s.io/controller-runtime/pkg/event"
-	"sigs.k8s.io/controller-runtime/pkg/handler"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta1"
@@ -86,12 +84,7 @@ func NewJob() jobframework.GenericJob {
 }
 
 var NewReconciler = jobframework.NewGenericReconcilerFactory(NewJob, func(b *builder.Builder, c client.Client) *builder.Builder {
-	prebuiltWlHndl := &handler.Funcs{
-		CreateFunc: func(ctx context.Context, tce event.CreateEvent, trli workqueue.TypedRateLimitingInterface[reconcile.Request]) {
-			queueReconcileJobsWaitingForPrebuiltWorkload(ctx, c, tce.Object, trli)
-		},
-	}
-	return b.Watches(&kueue.Workload{}, prebuiltWlHndl)
+	return b.Watches(&kueue.Workload{}, jobframework.PrebuiltWorkloadHndl[*kftraining.TFJobList, *kftraining.TFJob](c))
 })
 
 func isTFJob(owner *metav1.OwnerReference) bool {

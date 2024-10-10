@@ -38,7 +38,6 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta1"
-	"sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/controller/core/indexer"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
 	"sigs.k8s.io/kueue/pkg/podset"
@@ -98,7 +97,7 @@ type parentWorkloadHandler struct {
 
 func (h *parentWorkloadHandler) Create(ctx context.Context, e event.CreateEvent, q workqueue.TypedRateLimitingInterface[reconcile.Request]) {
 	h.queueReconcileForChildJob(ctx, e.Object, q)
-	h.queueReconcileJobsWaitingForPrebuiltWorkload(ctx, e.Object, q)
+	jobframework.QueueReconcileJobsWaitingForPrebuiltWorkload[*batchv1.JobList, *batchv1.Job](ctx, h.client, e.Object, q)
 }
 
 func (h *parentWorkloadHandler) Update(ctx context.Context, e event.UpdateEvent, q workqueue.TypedRateLimitingInterface[reconcile.Request]) {
@@ -135,31 +134,6 @@ func (h *parentWorkloadHandler) queueReconcileForChildJob(ctx context.Context, o
 		q.Add(reconcile.Request{
 			NamespacedName: types.NamespacedName{
 				Name:      childJob.Name,
-				Namespace: w.Namespace,
-			},
-		})
-	}
-}
-
-func (h *parentWorkloadHandler) queueReconcileJobsWaitingForPrebuiltWorkload(ctx context.Context, object client.Object, q workqueue.TypedRateLimitingInterface[reconcile.Request]) {
-	w, ok := object.(*kueue.Workload)
-	if !ok || len(w.OwnerReferences) > 0 {
-		return
-	}
-
-	log := ctrl.LoggerFrom(ctx).WithValues("workload", klog.KObj(w))
-	ctx = ctrl.LoggerInto(ctx, log)
-	log.V(5).Info("Queueing reconcile for prebuilt workload waiting jobs")
-	var waitingJobs batchv1.JobList
-	if err := h.client.List(ctx, &waitingJobs, client.InNamespace(w.Namespace), client.MatchingLabels{constants.PrebuiltWorkloadLabel: w.Name}); err != nil {
-		log.Error(err, "Unable to list waiting jobs")
-		return
-	}
-	for _, waitingJob := range waitingJobs.Items {
-		log.V(5).Info("Queueing reconcile for waiting job", "job", klog.KObj(&waitingJob))
-		q.Add(reconcile.Request{
-			NamespacedName: types.NamespacedName{
-				Name:      waitingJob.Name,
 				Namespace: w.Namespace,
 			},
 		})
