@@ -236,7 +236,7 @@ func TestSnapshot(t *testing.T) {
 								AllocatableResourceGeneration: 2,
 								ResourceGroups: []ResourceGroup{
 									{
-										CoveredResources: sets.New(corev1.ResourceCPU),
+										CoveredResources: []corev1.ResourceName{corev1.ResourceCPU},
 										Flavors:          []kueue.ResourceFlavorReference{"demand", "spot"},
 										LabelKeys:        sets.New("instance"),
 									},
@@ -275,12 +275,12 @@ func TestSnapshot(t *testing.T) {
 								AllocatableResourceGeneration: 1,
 								ResourceGroups: []ResourceGroup{
 									{
-										CoveredResources: sets.New(corev1.ResourceCPU),
+										CoveredResources: []corev1.ResourceName{corev1.ResourceCPU},
 										Flavors:          []kueue.ResourceFlavorReference{"spot"},
 										LabelKeys:        sets.New("instance"),
 									},
 									{
-										CoveredResources: sets.New[corev1.ResourceName]("example.com/gpu"),
+										CoveredResources: []corev1.ResourceName{"example.com/gpu"},
 										Flavors:          []kueue.ResourceFlavorReference{"default"},
 									},
 								},
@@ -334,7 +334,7 @@ func TestSnapshot(t *testing.T) {
 								AllocatableResourceGeneration: 1,
 								ResourceGroups: []ResourceGroup{
 									{
-										CoveredResources: sets.New(corev1.ResourceCPU),
+										CoveredResources: []corev1.ResourceName{corev1.ResourceCPU},
 										Flavors:          []kueue.ResourceFlavorReference{"default"},
 									},
 								},
@@ -481,7 +481,7 @@ func TestSnapshot(t *testing.T) {
 								AllocatableResourceGeneration: 2,
 								ResourceGroups: []ResourceGroup{
 									{
-										CoveredResources: sets.New(corev1.ResourceCPU),
+										CoveredResources: []corev1.ResourceName{corev1.ResourceCPU},
 										Flavors:          []kueue.ResourceFlavorReference{"arm", "x86"},
 										LabelKeys:        sets.New("arch"),
 									},
@@ -534,7 +534,7 @@ func TestSnapshot(t *testing.T) {
 								AllocatableResourceGeneration: 1,
 								ResourceGroups: []ResourceGroup{
 									{
-										CoveredResources: sets.New(corev1.ResourceCPU),
+										CoveredResources: []corev1.ResourceName{corev1.ResourceCPU},
 										Flavors:          []kueue.ResourceFlavorReference{"arm", "x86"},
 										LabelKeys:        sets.New("arch"),
 									},
@@ -636,7 +636,7 @@ func TestSnapshot(t *testing.T) {
 								AllocatableResourceGeneration: 2,
 								ResourceGroups: []ResourceGroup{
 									{
-										CoveredResources: sets.New(corev1.ResourceCPU),
+										CoveredResources: []corev1.ResourceName{corev1.ResourceCPU},
 										Flavors:          []kueue.ResourceFlavorReference{"arm", "x86"},
 										LabelKeys:        sets.New("arch"),
 									},
@@ -689,7 +689,7 @@ func TestSnapshot(t *testing.T) {
 								AllocatableResourceGeneration: 1,
 								ResourceGroups: []ResourceGroup{
 									{
-										CoveredResources: sets.New(corev1.ResourceCPU),
+										CoveredResources: []corev1.ResourceName{corev1.ResourceCPU},
 										Flavors:          []kueue.ResourceFlavorReference{"arm", "x86"},
 										LabelKeys:        sets.New("arch"),
 									},
@@ -752,7 +752,7 @@ func TestSnapshot(t *testing.T) {
 							AllocatableResourceGeneration: 2,
 							ResourceGroups: []ResourceGroup{
 								{
-									CoveredResources: sets.New(corev1.ResourceCPU),
+									CoveredResources: []corev1.ResourceName{corev1.ResourceCPU},
 									Flavors:          []kueue.ResourceFlavorReference{"arm", "x86"},
 								},
 							},
@@ -838,7 +838,7 @@ func TestSnapshot(t *testing.T) {
 							AllocatableResourceGeneration: 2,
 							ResourceGroups: []ResourceGroup{
 								{
-									CoveredResources: sets.New(corev1.ResourceCPU),
+									CoveredResources: []corev1.ResourceName{corev1.ResourceCPU},
 									Flavors:          []kueue.ResourceFlavorReference{"arm"},
 								},
 							},
@@ -905,7 +905,7 @@ func TestSnapshot(t *testing.T) {
 			for _, cq := range snapshot.ClusterQueues {
 				for i := range cq.ResourceGroups {
 					rg := &cq.ResourceGroups[i]
-					for rName := range rg.CoveredResources {
+					for _, rName := range rg.CoveredResources {
 						if cq.RGByResource(rName) != rg {
 							t.Errorf("RGByResource[%s] does return its resource group", rName)
 						}

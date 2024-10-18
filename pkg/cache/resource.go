@@ -27,7 +27,7 @@ import (
 )
 
 type ResourceGroup struct {
-	CoveredResources sets.Set[corev1.ResourceName]
+	CoveredResources []corev1.ResourceName
 	Flavors          []kueue.ResourceFlavorReference
 	// The set of key labels from all flavors.
 	// Those keys define the affinity terms of a workload
@@ -37,7 +37,7 @@ type ResourceGroup struct {
 
 func (rg *ResourceGroup) Clone() ResourceGroup {
 	return ResourceGroup{
-		CoveredResources: rg.CoveredResources.Clone(),
+		CoveredResources: append(make([]corev1.ResourceName, 0, len(rg.CoveredResources)), rg.CoveredResources...),
 		Flavors:          rg.Flavors,
 		LabelKeys:        rg.LabelKeys.Clone(),
 	}
@@ -90,7 +90,7 @@ func flavorResources(r resourceGroupNode) []resources.FlavorResource {
 	frs := make([]resources.FlavorResource, 0, flavorResourceCount(r.resourceGroups()))
 	for _, rg := range r.resourceGroups() {
 		for _, f := range rg.Flavors {
-			for r := range rg.CoveredResources {
+			for _, r := range rg.CoveredResources {
 				frs = append(frs, resources.FlavorResource{Flavor: f, Resource: r})
 			}
 		}

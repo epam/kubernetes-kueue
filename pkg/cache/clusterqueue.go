@@ -199,7 +199,7 @@ func createdResourceGroups(kueueRgs []kueue.ResourceGroup) []ResourceGroup {
 	rgs := make([]ResourceGroup, len(kueueRgs))
 	for i, kueueRg := range kueueRgs {
 		rgs[i] = ResourceGroup{
-			CoveredResources: sets.New(kueueRg.CoveredResources...),
+			CoveredResources: append(make([]corev1.ResourceName, 0, len(kueueRg.CoveredResources)), kueueRg.CoveredResources...),
 			Flavors:          make([]kueue.ResourceFlavorReference, 0, len(kueueRg.Flavors)),
 		}
 		for _, fIn := range kueueRg.Flavors {

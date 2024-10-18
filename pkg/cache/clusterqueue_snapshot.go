@@ -17,6 +17,8 @@ limitations under the License.
 package cache
 
 import (
+	"slices"
+
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
 	"k8s.io/apimachinery/pkg/labels"
@@ -55,7 +57,7 @@ type ClusterQueueSnapshot struct {
 // for the resource, or nil if the CQ doesn't provide this resource.
 func (c *ClusterQueueSnapshot) RGByResource(resource corev1.ResourceName) *ResourceGroup {
 	for i := range c.ResourceGroups {
-		if c.ResourceGroups[i].CoveredResources.Has(resource) {
+		if slices.Contains(c.ResourceGroups[i].CoveredResources, resource) {
 			return &c.ResourceGroups[i]
 		}
 	}
