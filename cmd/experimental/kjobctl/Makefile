@@ -22,7 +22,8 @@ GIT_TAG ?= $(shell git describe --tags --dirty --always)
 DOCKER_BUILDX_CMD ?= docker buildx
 IMAGE_BUILD_CMD ?= $(DOCKER_BUILDX_CMD) build
 STAGING_IMAGE_REGISTRY ?= us-central1-docker.pkg.dev/k8s-staging-images
-IMAGE_REGISTRY ?= $(STAGING_IMAGE_REGISTRY)/kjob
+IMAGE_PROJECT ?= kjob
+IMAGE_REGISTRY ?= $(STAGING_IMAGE_REGISTRY)/$(IMAGE_PROJECT)
 PLATFORMS ?= linux/amd64,linux/arm64,linux/s390x,linux/ppc64le
 
 PROJECT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
@@ -178,7 +179,7 @@ SLURM_INIT_IMAGE_REPO ?= $(IMAGE_REGISTRY)/$(SLURM_INIT_IMAGE_NAME)
 SLURM_INIT_IMAGE_TAG ?= $(SLURM_INIT_IMAGE_REPO):$(GIT_TAG)
 .PHONY: slurm-init-image-build
 slurm-init-image-build:
-	$(IMAGE_BUILD_CMD) -t $(SLURM_INIT_IMAGE_TAG) --platform=$(PLATFORMS) $(PUSH) $(PROJECT_DIR)/images/slurm-init
+	$(shell cd $(PROJECT_DIR)/cmd/slurm-init && $(IMAGE_BUILD_CMD) -t $(SLURM_INIT_IMAGE_TAG) --platform=$(PLATFORMS) $(PUSH) .)
 
 .PHONY: kubectl-kjob
 kubectl-kjob: embeded-manifest ## Build kubectl-kjob binary file to bin directory.
