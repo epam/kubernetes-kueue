@@ -48,16 +48,18 @@ type Reconciler struct {
 }
 
 func (r *Reconciler) Reconcile(ctx context.Context, req reconcile.Request) (reconcile.Result, error) {
-	sts := &appsv1.StatefulSet{}
-	err := r.client.Get(ctx, req.NamespacedName, sts)
-	if err != nil {
-		// we'll ignore not-found errors, since there is nothing to do.
-		return ctrl.Result{}, client.IgnoreNotFound(err)
-	}
-
-	log := ctrl.LoggerFrom(ctx).WithValues("statefulset", klog.KObj(sts))
+	log := ctrl.LoggerFrom(ctx).WithValues("statefulset", klog.KRef(req.Namespace, req.Name))
 	ctx = ctrl.LoggerInto(ctx, log)
 	log.V(2).Info("Reconciling StatefulSet")
+
+	sts := &appsv1.StatefulSet{}
+	err := r.client.Get(ctx, req.NamespacedName, sts)
+	if client.IgnoreNotFound(err) != nil {
+		return ctrl.Result{}, err
+	}
+	if err != nil {
+		sts = nil
+	}
 
 	err = r.fetchAndFinalizePods(ctx, sts)
 	if err != nil {
@@ -82,7 +84,7 @@ func (r *Reconciler) finalizePods(ctx context.Context, sts *appsv1.StatefulSet, 
 	return parallelize.Until(ctx, len(pods), func(i int) error {
 		pod := &pods[i]
 		return client.IgnoreNotFound(clientutil.Patch(ctx, r.client, pod, true, func() (bool, error) {
-			if finalizePod(sts, pod) {
+			if sts == nil || finalizePod(sts, pod) {
 				log.V(3).Info(
 					"Finalizing pod in group",
 					"pod", klog.KObj(pod),
@@ -144,8 +146,8 @@ func (r *Reconciler) Update(e event.UpdateEvent) bool {
 	return r.handle(e.ObjectNew)
 }
 
-func (r *Reconciler) Delete(event.DeleteEvent) bool {
-	return false
+func (r *Reconciler) Delete(e event.DeleteEvent) bool {
+	return r.handle(e.Object)
 }
 
 func (r *Reconciler) handle(obj client.Object) bool {

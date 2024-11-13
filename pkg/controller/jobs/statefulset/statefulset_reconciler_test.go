@@ -48,6 +48,38 @@ func TestReconciler(t *testing.T) {
 		wantPods        []corev1.Pod
 		wantErr         error
 	}{
+		"statefulset not found": {
+			pods: []corev1.Pod{
+				*testingjobspod.MakePod("pod1", "ns").
+					Label(pod.GroupNameLabel, GetWorkloadName("sts")).
+					KueueFinalizer().
+					StatusPhase(corev1.PodSucceeded).
+					Obj(),
+				*testingjobspod.MakePod("pod2", "ns").
+					Label(pod.GroupNameLabel, GetWorkloadName("sts")).
+					KueueFinalizer().
+					StatusPhase(corev1.PodFailed).
+					Obj(),
+				*testingjobspod.MakePod("pod3", "ns").
+					Label(pod.GroupNameLabel, GetWorkloadName("sts")).
+					KueueFinalizer().
+					Obj(),
+			},
+			wantPods: []corev1.Pod{
+				*testingjobspod.MakePod("pod1", "ns").
+					Label(pod.GroupNameLabel, GetWorkloadName("sts")).
+					StatusPhase(corev1.PodSucceeded).
+					Obj(),
+				*testingjobspod.MakePod("pod2", "ns").
+					Label(pod.GroupNameLabel, GetWorkloadName("sts")).
+					StatusPhase(corev1.PodFailed).
+					Obj(),
+				*testingjobspod.MakePod("pod3", "ns").
+					Label(pod.GroupNameLabel, GetWorkloadName("sts")).
+					KueueFinalizer().
+					Obj(),
+			},
+		},
 		"statefulset with finished pods": {
 			statefulSet: *statefulsettesting.MakeStatefulSet("sts", "ns").
 				Replicas(0).
