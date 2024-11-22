@@ -79,6 +79,7 @@ func (r *rfReconciler) setupWithManager(mgr ctrl.Manager, cache *cache.Cache, cf
 		Named(TASResourceFlavorController).
 		For(&kueue.ResourceFlavor{}).
 		Watches(&corev1.Node{}, &nodeHandler).
+		Watches(&kueuealpha.Topology{}, &topologyHandler{cache: r.cache, tasCache: r.tasCache, queues: r.queues}).
 		WithOptions(controller.Options{NeedLeaderElection: ptr.To(false)}).
 		WithEventFilter(r).
 		Complete(core.WithLeadingManager(mgr, r, &kueue.ResourceFlavor{}, cfg))
@@ -132,6 +133,64 @@ func (h *nodeHandler) queueReconcileForNode(node *corev1.Node, q workqueue.Typed
 }
 
 func (h *nodeHandler) Generic(context.Context, event.GenericEvent, workqueue.TypedRateLimitingInterface[reconcile.Request]) {
+}
+
+var _ handler.EventHandler = (*topologyHandler)(nil)
+
+// topologyHandler handles node update events.
+type topologyHandler struct {
+	cache    *cache.Cache
+	tasCache *cache.TASCache
+	queues   *queue.Manager
+}
+
+func (h *topologyHandler) Create(_ context.Context, e event.CreateEvent, q workqueue.TypedRateLimitingInterface[reconcile.Request]) {
+	topology, isTopology := e.Object.(*kueuealpha.Topology)
+	if !isTopology || topology == nil {
+		return
+	}
+	// trigger reconcile for TAS flavors affected by the node being created or updated
+	for name, flavor := range h.tasCache.Clone() {
+		if flavor.TopologyName == kueue.TopologyReference(topology.Name) {
+			q.AddAfter(reconcile.Request{NamespacedName: types.NamespacedName{Name: string(name)}}, nodeBatchPeriod)
+		}
+	}
+}
+
+func (h *topologyHandler) Update(ctx context.Context, e event.UpdateEvent, q workqueue.TypedRateLimitingInterface[reconcile.Request]) {
+	newTopology, isNewTopology := e.ObjectNew.(*kueuealpha.Topology)
+	if !isNewTopology || newTopology == nil {
+		return
+	}
+	flavors := make(map[kueue.ResourceFlavorReference]*cache.TASFlavorCache)
+	for name, flavor := range h.tasCache.Clone() {
+		if flavor.TopologyName == kueue.TopologyReference(newTopology.Name) {
+			flavors[name] = h.tasCache.NewTASFlavorCache(flavor.TopologyName, utiltas.Levels(newTopology), flavor.NodeLabels)
+		}
+	}
+	h.tasCache.BatchUpdate(flavors)
+
+	// requeue inadmissible workloads as a change to the resource flavor
+	// or the set of nodes can allow admitting a workload which was
+	// previously inadmissible.
+	if cqNames := h.cache.ActiveClusterQueues(); len(cqNames) > 0 {
+		h.queues.QueueInadmissibleWorkloads(ctx, cqNames)
+	}
+}
+
+func (h *topologyHandler) Delete(_ context.Context, e event.DeleteEvent, _ workqueue.TypedRateLimitingInterface[reconcile.Request]) {
+	topology, isTopology := e.Object.(*kueuealpha.Topology)
+	if !isTopology || topology == nil {
+		return
+	}
+	for name, flavor := range h.tasCache.Clone() {
+		if flavor.TopologyName == kueue.TopologyReference(topology.Name) {
+			h.tasCache.Delete(name)
+		}
+	}
+}
+
+func (h *topologyHandler) Generic(context.Context, event.GenericEvent, workqueue.TypedRateLimitingInterface[reconcile.Request]) {
 }
 
 func (r *rfReconciler) Reconcile(ctx context.Context, req reconcile.Request) (reconcile.Result, error) {

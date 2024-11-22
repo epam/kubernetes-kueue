@@ -57,6 +57,26 @@ func (t *TASCache) Set(name kueue.ResourceFlavorReference, info *TASFlavorCache)
 	t.flavors[name] = info
 }
 
+func (t *TASCache) BatchUpdate(flavors map[kueue.ResourceFlavorReference]*TASFlavorCache) bool {
+	t.Lock()
+	defer t.Unlock()
+	var updated bool
+	for name, info := range flavors {
+		if t.update(name, info) {
+			updated = true
+		}
+	}
+	return updated
+}
+
+func (t *TASCache) update(name kueue.ResourceFlavorReference, new *TASFlavorCache) bool {
+	if old, found := t.flavors[name]; !found || !old.isEqual(new) {
+		t.flavors[name] = new
+		return true
+	}
+	return false
+}
+
 func (t *TASCache) Delete(name kueue.ResourceFlavorReference) {
 	t.Lock()
 	defer t.Unlock()

@@ -33,8 +33,9 @@ import (
 )
 
 const (
-	tasBlockLabel = "cloud.com/topology-block"
-	tasRackLabel  = "cloud.com/topology-rack"
+	tasBlockLabel    = "cloud.com/topology-block"
+	tasRackLabel     = "cloud.com/topology-rack"
+	tasHostnameLabel = "kubernetes.io/hostname"
 )
 
 var _ = ginkgo.Describe("Topology Aware Scheduling", ginkgo.Ordered, func() {
@@ -304,6 +305,27 @@ var _ = ginkgo.Describe("Topology Aware Scheduling", ginkgo.Ordered, func() {
 							},
 						},
 					},
+					{
+						ObjectMeta: metav1.ObjectMeta{
+							Name: "h1",
+							Labels: map[string]string{
+								"node-group":     "tas",
+								tasHostnameLabel: "h1",
+							},
+						},
+						Status: corev1.NodeStatus{
+							Allocatable: corev1.ResourceList{
+								corev1.ResourceCPU:    resource.MustParse("1"),
+								corev1.ResourceMemory: resource.MustParse("1Gi"),
+							},
+							Conditions: []corev1.NodeCondition{
+								{
+									Type:   corev1.NodeReady,
+									Status: corev1.ConditionTrue,
+								},
+							},
+						},
+					},
 				}
 				for _, node := range nodes {
 					gomega.Expect(k8sClient.Create(ctx, &node)).Should(gomega.Succeed())
@@ -512,6 +534,66 @@ var _ = ginkgo.Describe("Topology Aware Scheduling", ginkgo.Ordered, func() {
 							},
 						},
 					))
+				})
+			})
+
+			ginkgo.It("should admit workload after update topology", func() {
+				ginkgo.By("verify the workload is admitted", func() {
+					createdTopology := &kueuealpha.Topology{}
+					gomega.Eventually(func(g gomega.Gomega) {
+						g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(topology), createdTopology)).To(gomega.Succeed())
+						createdTopology.Spec.Levels = []kueuealpha.TopologyLevel{{NodeLabel: tasHostnameLabel}}
+						g.Expect(k8sClient.Update(ctx, createdTopology)).To(gomega.Succeed())
+					}, util.Timeout, util.Interval).Should(gomega.Succeed())
+				})
+
+				var wl *kueue.Workload
+				ginkgo.By("creating a workload which requires block and can fit", func() {
+					wl = testing.MakeWorkload("wl1", ns.Name).
+						Queue(localQueue.Name).Request(corev1.ResourceCPU, "1").Obj()
+					wl.Spec.PodSets[0].Count = 1
+					wl.Spec.PodSets[0].TopologyRequest = &kueue.PodSetTopologyRequest{
+						Required: ptr.To(tasHostnameLabel),
+					}
+					gomega.Expect(k8sClient.Create(ctx, wl)).Should(gomega.Succeed())
+				})
+
+				ginkgo.By("verify the workload is admitted", func() {
+					util.ExpectWorkloadsToBeAdmitted(ctx, k8sClient, wl)
+					util.ExpectReservingActiveWorkloadsMetric(clusterQueue, 1)
+				})
+
+				ginkgo.By("verify admission for the workload1", func() {
+					gomega.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(wl), wl)).To(gomega.Succeed())
+					gomega.Expect(wl.Status.Admission.PodSetAssignments[0].TopologyAssignment).Should(gomega.BeComparableTo(
+						&kueue.TopologyAssignment{
+							Levels: []string{tasHostnameLabel},
+							Domains: []kueue.TopologyDomainAssignment{
+								{Count: 1, Values: []string{"h1"}},
+							},
+						},
+					))
+				})
+			})
+
+			ginkgo.It("should not admit workload after deletion topology", func() {
+				ginkgo.By("delete topology", func() {
+					util.ExpectObjectToBeDeleted(ctx, k8sClient, topology, true)
+				})
+
+				var wl *kueue.Workload
+				ginkgo.By("creating a workload which requires block and can fit", func() {
+					wl = testing.MakeWorkload("wl", ns.Name).
+						Queue(localQueue.Name).Request(corev1.ResourceCPU, "1").Obj()
+					wl.Spec.PodSets[0].Count = 2
+					wl.Spec.PodSets[0].TopologyRequest = &kueue.PodSetTopologyRequest{
+						Required: ptr.To(tasBlockLabel),
+					}
+					gomega.Expect(k8sClient.Create(ctx, wl)).Should(gomega.Succeed())
+				})
+
+				ginkgo.By("verify the workload is inadmissible", func() {
+					util.ExpectPendingWorkloadsMetric(clusterQueue, 0, 1)
 				})
 			})
 		})
