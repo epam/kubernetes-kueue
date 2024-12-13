@@ -3806,7 +3806,7 @@ func TestSnapshotError(t *testing.T) {
 	cache.AddOrUpdateResourceFlavor(&flavor)
 	if flavor.Spec.TopologyName != nil {
 		tasFlavorCache := cache.tasCache.NewTASFlavorCache(*flavor.Spec.TopologyName, []string{corev1.LabelHostname}, flavor.Spec.NodeLabels, flavor.Spec.Tolerations)
-		cache.tasCache.Set(kueue.ResourceFlavorReference(flavor.Name), tasFlavorCache)
+		cache.tasCache.SetFlavor(kueue.ResourceFlavorReference(flavor.Name), tasFlavorCache)
 	}
 	if err := cache.AddClusterQueue(ctx, &clusterQueue); err != nil {
 		t.Fatalf("failed to add CQ: %v", err)

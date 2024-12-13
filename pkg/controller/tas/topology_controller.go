@@ -21,6 +21,7 @@ import (
 
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/client-go/util/workqueue"
+	"k8s.io/klog/v2"
 	"k8s.io/utils/ptr"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
@@ -36,7 +37,9 @@ import (
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta1"
 	"sigs.k8s.io/kueue/pkg/cache"
 	"sigs.k8s.io/kueue/pkg/controller/core"
+	"sigs.k8s.io/kueue/pkg/controller/tas/indexer"
 	"sigs.k8s.io/kueue/pkg/queue"
+	utiltas "sigs.k8s.io/kueue/pkg/util/tas"
 )
 
 const (
@@ -92,7 +95,7 @@ func (r topologyReconciler) Reconcile(ctx context.Context, req reconcile.Request
 	if !topology.DeletionTimestamp.IsZero() {
 		if controllerutil.ContainsFinalizer(topology, kueue.ResourceInUseFinalizerName) {
 			var flavors []kueue.ResourceFlavorReference
-			for flName, flCache := range r.tasCache.Clone() {
+			for flName, flCache := range r.tasCache.CloneFlavors() {
 				if flCache.TopologyName == kueue.TopologyReference(topology.Name) {
 					flavors = append(flavors, flName)
 				}
@@ -123,7 +126,28 @@ func (r *topologyReconciler) Generic(event.GenericEvent) bool {
 	return false
 }
 
-func (r *topologyReconciler) Create(event.CreateEvent) bool {
+func (r *topologyReconciler) Create(e event.CreateEvent) bool {
+	topology, isTopology := e.Object.(*kueuealpha.Topology)
+	if !isTopology {
+		return true
+	}
+	defer r.queues.NotifyTopologyUpdateWatchers(nil, topology)
+	topologyName := kueue.TopologyReference(topology.Name)
+	r.tasCache.SetTopology(topologyName, utiltas.Levels(topology))
+
+	ctx := context.Background()
+
+	flavors := &kueue.ResourceFlavorList{}
+	if err := r.client.List(ctx, flavors, client.MatchingFields{indexer.ResourceFlavorTopologyNameKey: topology.Name}); err != nil {
+		log := ctrl.LoggerFrom(ctx).WithValues("topology", klog.KObj(topology))
+		log.Error(err, "Could not list resource flavors")
+		return true
+	}
+
+	for _, flv := range flavors.Items {
+		r.cache.AddOrUpdateTopologyForFlavor(&flv)
+	}
+
 	return true
 }
 
@@ -139,8 +163,10 @@ func (r *topologyReconciler) Delete(e event.DeleteEvent) bool {
 	defer r.queues.NotifyTopologyUpdateWatchers(topology, nil)
 	// Update the cache to account for the deleted topology, before notifying
 	// the listeners.
-	for flName, flCache := range r.tasCache.Clone() {
-		if kueue.TopologyReference(topology.Name) == flCache.TopologyName {
+	topologyName := kueue.TopologyReference(topology.Name)
+	r.tasCache.DeleteTopology(topologyName)
+	for flName, flCache := range r.tasCache.CloneFlavors() {
+		if topologyName == flCache.TopologyName {
 			r.cache.DeleteTopologyForFlavor(flName)
 		}
 	}

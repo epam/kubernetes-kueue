@@ -305,7 +305,7 @@ func (c *clusterQueue) inactiveReason() (string, string) {
 				messages = append(messages, "TAS is not supported with ProvisioningRequest admission check")
 			}
 			for tasFlavor, topology := range c.tasFlavors {
-				if c.tasCache.Get(tasFlavor) == nil {
+				if c.tasCache.GetFlavor(tasFlavor) == nil {
 					reasons = append(reasons, kueue.ClusterQueueActiveReasonTopologyNotFound)
 					messages = append(messages, fmt.Sprintf("there is no Topology %q for TAS flavor %q", topology, tasFlavor))
 				}
@@ -326,7 +326,7 @@ func (c *clusterQueue) isTASViolated() bool {
 		return false
 	}
 	for tasFlavor := range c.tasFlavors {
-		if c.tasCache.Get(tasFlavor) == nil {
+		if c.tasCache.GetFlavor(tasFlavor) == nil {
 			return true
 		}
 	}
@@ -570,7 +570,7 @@ func (c *clusterQueue) tasFlavorCache(flvName kueue.ResourceFlavorReference) *TA
 	if c.tasCache == nil {
 		return nil
 	}
-	return c.tasCache.Get(flvName)
+	return c.tasCache.GetFlavor(flvName)
 }
 
 func updateFlavorUsage(newUsage resources.FlavorResourceQuantities, oldUsage resources.FlavorResourceQuantities, m int64) {

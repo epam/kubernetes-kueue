@@ -32,6 +32,7 @@ import (
 	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/metrics"
 	"sigs.k8s.io/kueue/pkg/resources"
+	utiltas "sigs.k8s.io/kueue/pkg/util/tas"
 	utiltesting "sigs.k8s.io/kueue/pkg/util/testing"
 	"sigs.k8s.io/kueue/pkg/workload"
 )
@@ -1099,9 +1100,10 @@ func TestClusterQueueReadinessWithTAS(t *testing.T) {
 
 			rf := utiltesting.MakeResourceFlavor("tas-flavor").TopologyName(topology.Name).Obj()
 			cqCache.AddOrUpdateResourceFlavor(rf)
+			cqCache.TASCache().SetTopology(kueue.TopologyReference(topology.Name), utiltas.Levels(topology))
 
 			if !tc.skipTopology {
-				cqCache.AddOrUpdateTopologyForFlavor(topology, rf)
+				cqCache.AddOrUpdateTopologyForFlavor(rf)
 			}
 
 			mkAC := utiltesting.MakeAdmissionCheck("mk-check").ControllerName(kueue.MultiKueueControllerName).Active(metav1.ConditionTrue).Obj()

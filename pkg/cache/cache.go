@@ -41,7 +41,6 @@ import (
 	"sigs.k8s.io/kueue/pkg/hierarchy"
 	"sigs.k8s.io/kueue/pkg/metrics"
 	"sigs.k8s.io/kueue/pkg/resources"
-	utiltas "sigs.k8s.io/kueue/pkg/util/tas"
 	"sigs.k8s.io/kueue/pkg/workload"
 )
 
@@ -260,19 +259,27 @@ func (c *Cache) DeleteResourceFlavor(rf *kueue.ResourceFlavor) sets.Set[string] 
 	return c.updateClusterQueues()
 }
 
-func (c *Cache) AddOrUpdateTopologyForFlavor(topology *kueuealpha.Topology, flv *kueue.ResourceFlavor) sets.Set[string] {
+func (c *Cache) AddOrUpdateTopologyForFlavor(flv *kueue.ResourceFlavor) bool {
 	c.Lock()
 	defer c.Unlock()
-	levels := utiltas.Levels(topology)
-	tasInfo := c.tasCache.NewTASFlavorCache(kueue.TopologyReference(topology.Name), levels, flv.Spec.NodeLabels, flv.Spec.Tolerations)
-	c.tasCache.Set(kueue.ResourceFlavorReference(flv.Name), tasInfo)
-	return c.updateClusterQueues()
+	if flv.Spec.TopologyName == nil {
+		return false
+	}
+	topologyName := *flv.Spec.TopologyName
+	levels, ok := c.tasCache.GetTopology(topologyName)
+	if !ok {
+		return false
+	}
+	tasInfo := c.tasCache.NewTASFlavorCache(topologyName, levels, flv.Spec.NodeLabels, flv.Spec.Tolerations)
+	c.tasCache.SetFlavor(kueue.ResourceFlavorReference(flv.Name), tasInfo)
+	c.updateClusterQueues()
+	return true
 }
 
 func (c *Cache) DeleteTopologyForFlavor(flv kueue.ResourceFlavorReference) sets.Set[string] {
 	c.Lock()
 	defer c.Unlock()
-	c.tasCache.Delete(flv)
+	c.tasCache.DeleteFlavor(flv)
 	return c.updateClusterQueues()
 }
 

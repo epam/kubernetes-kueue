@@ -99,7 +99,7 @@ func (c *Cache) Snapshot(ctx context.Context) (*Snapshot, error) {
 	}
 	tasSnapshots := make(map[kueue.ResourceFlavorReference]*TASFlavorSnapshot)
 	if features.Enabled(features.TopologyAwareScheduling) {
-		for key, cache := range c.tasCache.Clone() {
+		for key, cache := range c.tasCache.CloneFlavors() {
 			s, err := cache.snapshot(ctx)
 			if err != nil {
 				return nil, fmt.Errorf("%w: failed to construct snapshot for TAS flavor: %q", err, key)

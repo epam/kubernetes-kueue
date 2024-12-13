@@ -4687,7 +4687,7 @@ func TestScheduleForTAS(t *testing.T) {
 					tasCache := cqCache.TASCache()
 					levels := utiltas.Levels(&t)
 					tasFlavorCache := tasCache.NewTASFlavorCache(*flavor.Spec.TopologyName, levels, flavor.Spec.NodeLabels, flavor.Spec.Tolerations)
-					tasCache.Set(kueue.ResourceFlavorReference(flavor.Name), tasFlavorCache)
+					tasCache.SetFlavor(kueue.ResourceFlavorReference(flavor.Name), tasFlavorCache)
 				}
 			}
 			for _, cq := range tc.clusterQueues {

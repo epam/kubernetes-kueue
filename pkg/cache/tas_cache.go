@@ -27,37 +27,65 @@ import (
 
 type TASCache struct {
 	sync.RWMutex
-	client  client.Client
-	flavors map[kueue.ResourceFlavorReference]*TASFlavorCache
+	client     client.Client
+	topologies map[kueue.TopologyReference][]string
+	flavors    map[kueue.ResourceFlavorReference]*TASFlavorCache
 }
 
 func NewTASCache(client client.Client) TASCache {
 	return TASCache{
-		client:  client,
-		flavors: make(map[kueue.ResourceFlavorReference]*TASFlavorCache),
+		client:     client,
+		topologies: make(map[kueue.TopologyReference][]string),
+		flavors:    make(map[kueue.ResourceFlavorReference]*TASFlavorCache),
 	}
 }
 
-func (t *TASCache) Get(name kueue.ResourceFlavorReference) *TASFlavorCache {
+func (t *TASCache) GetTopology(name kueue.TopologyReference) ([]string, bool) {
+	t.RLock()
+	defer t.RUnlock()
+	levels, ok := t.topologies[name]
+	return levels, ok
+}
+
+// CloneTopologies returns a shallow copy of the map
+func (t *TASCache) CloneTopologies() map[kueue.TopologyReference][]string {
+	t.RLock()
+	defer t.RUnlock()
+	return maps.Clone(t.topologies)
+}
+
+func (t *TASCache) SetTopology(name kueue.TopologyReference, levels []string) {
+	t.Lock()
+	defer t.Unlock()
+	t.topologies[name] = levels
+}
+
+func (t *TASCache) DeleteTopology(name kueue.TopologyReference) {
+	t.Lock()
+	defer t.Unlock()
+	delete(t.topologies, name)
+}
+
+func (t *TASCache) GetFlavor(name kueue.ResourceFlavorReference) *TASFlavorCache {
 	t.RLock()
 	defer t.RUnlock()
 	return t.flavors[name]
 }
 
-// Clone returns a shallow copy of the map
-func (t *TASCache) Clone() map[kueue.ResourceFlavorReference]*TASFlavorCache {
+// CloneFlavors returns a shallow copy of the map
+func (t *TASCache) CloneFlavors() map[kueue.ResourceFlavorReference]*TASFlavorCache {
 	t.RLock()
 	defer t.RUnlock()
 	return maps.Clone(t.flavors)
 }
 
-func (t *TASCache) Set(name kueue.ResourceFlavorReference, info *TASFlavorCache) {
+func (t *TASCache) SetFlavor(name kueue.ResourceFlavorReference, info *TASFlavorCache) {
 	t.Lock()
 	defer t.Unlock()
 	t.flavors[name] = info
 }
 
-func (t *TASCache) Delete(name kueue.ResourceFlavorReference) {
+func (t *TASCache) DeleteFlavor(name kueue.ResourceFlavorReference) {
 	t.Lock()
 	defer t.Unlock()
 	delete(t.flavors, name)
