@@ -51,6 +51,7 @@ func init() {
 		JobType:                &rayv1.RayCluster{},
 		AddToScheme:            rayv1.AddToScheme,
 		IsManagingObjectsOwner: isRayCluster,
+		MultiKueueAdapter:      &multikueueAdapter{},
 	}))
 }
 
