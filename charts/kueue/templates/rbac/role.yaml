@@ -280,7 +280,14 @@ rules:
     verbs:
       - get
       - list
+      - patch
       - watch
+  - apiGroups:
+      - leaderworkerset.x-k8s.io
+    resources:
+      - leaderworkersets/finalizers
+    verbs:
+      - patch
   - apiGroups:
       - node.k8s.io
     resources:

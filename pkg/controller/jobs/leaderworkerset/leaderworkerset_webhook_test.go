@@ -36,6 +36,14 @@ import (
 	testingleaderworkerset "sigs.k8s.io/kueue/pkg/util/testingjobs/leaderworkerset"
 )
 
+const (
+	testDefaultNSName    = "default"
+	testDefaultQueueName = "default"
+
+	testNSName  = "test-ns"
+	testLWSName = "test-lws"
+)
+
 func TestDefault(t *testing.T) {
 	testCases := map[string]struct {
 		lws                        *leaderworkersetv1.LeaderWorkerSet
@@ -48,12 +56,12 @@ func TestDefault(t *testing.T) {
 		"LocalQueueDefaulting enabled, default lq is created, job doesn't have queue label": {
 			localQueueDefaulting: true,
 			defaultLqExist:       true,
-			lws: testingleaderworkerset.MakeLeaderWorkerSet("test-lws", "default").
+			lws: testingleaderworkerset.MakeLeaderWorkerSet(testLWSName, testDefaultNSName).
 				LeaderTemplate(corev1.PodTemplateSpec{}).
 				Obj(),
-			want: testingleaderworkerset.MakeLeaderWorkerSet("test-lws", "default").
+			want: testingleaderworkerset.MakeLeaderWorkerSet(testLWSName, testDefaultNSName).
 				LeaderTemplate(corev1.PodTemplateSpec{}).
-				Queue("default").
+				Queue(testDefaultQueueName).
 				LeaderTemplateSpecAnnotation(podcontroller.SuspendedByParentAnnotation, FrameworkName).
 				LeaderTemplateSpecAnnotation(podcontroller.GroupServingAnnotation, "true").
 				WorkerTemplateSpecAnnotation(podcontroller.SuspendedByParentAnnotation, FrameworkName).
@@ -63,11 +71,11 @@ func TestDefault(t *testing.T) {
 		"LocalQueueDefaulting enabled, default lq is created, job has queue label": {
 			localQueueDefaulting: true,
 			defaultLqExist:       true,
-			lws: testingleaderworkerset.MakeLeaderWorkerSet("test-lws", "").
+			lws: testingleaderworkerset.MakeLeaderWorkerSet(testLWSName, testNSName).
 				LeaderTemplate(corev1.PodTemplateSpec{}).
 				Queue("test-queue").
 				Obj(),
-			want: testingleaderworkerset.MakeLeaderWorkerSet("test-lws", "").
+			want: testingleaderworkerset.MakeLeaderWorkerSet(testLWSName, testNSName).
 				LeaderTemplate(corev1.PodTemplateSpec{}).
 				Queue("test-queue").
 				LeaderTemplateSpecAnnotation(podcontroller.SuspendedByParentAnnotation, FrameworkName).
@@ -79,10 +87,10 @@ func TestDefault(t *testing.T) {
 		"LocalQueueDefaulting enabled, default lq isn't created, job doesn't have queue label": {
 			localQueueDefaulting: true,
 			defaultLqExist:       false,
-			lws: testingleaderworkerset.MakeLeaderWorkerSet("test-lws", "").
+			lws: testingleaderworkerset.MakeLeaderWorkerSet(testLWSName, testNSName).
 				LeaderTemplate(corev1.PodTemplateSpec{}).
 				Obj(),
-			want: testingleaderworkerset.MakeLeaderWorkerSet("test-lws", "").
+			want: testingleaderworkerset.MakeLeaderWorkerSet(testLWSName, testNSName).
 				LeaderTemplate(corev1.PodTemplateSpec{}).
 				Obj(),
 		},
@@ -99,7 +107,7 @@ func TestDefault(t *testing.T) {
 			cqCache := cache.New(cli)
 			queueManager := queue.NewManager(cli, cqCache)
 			if tc.defaultLqExist {
-				if err := queueManager.AddLocalQueue(ctx, utiltesting.MakeLocalQueue("default", "default").
+				if err := queueManager.AddLocalQueue(ctx, utiltesting.MakeLocalQueue(testDefaultQueueName, testDefaultNSName).
 					ClusterQueue("cluster-queue").Obj()); err != nil {
 					t.Fatalf("failed to create default local queue: %s", err)
 				}
@@ -128,18 +136,18 @@ func TestValidateCreate(t *testing.T) {
 		wantWarns admission.Warnings
 	}{
 		"without queue": {
-			lws: testingleaderworkerset.MakeLeaderWorkerSet("test-lws", "").
+			lws: testingleaderworkerset.MakeLeaderWorkerSet(testLWSName, testNSName).
 				LeaderTemplate(corev1.PodTemplateSpec{}).
 				Obj(),
 		},
 		"valid queue name": {
-			lws: testingleaderworkerset.MakeLeaderWorkerSet("test-lws", "").
+			lws: testingleaderworkerset.MakeLeaderWorkerSet(testLWSName, testNSName).
 				LeaderTemplate(corev1.PodTemplateSpec{}).
 				Queue("test-queue").
 				Obj(),
 		},
 		"invalid queue name": {
-			lws: testingleaderworkerset.MakeLeaderWorkerSet("test-lws", "").
+			lws: testingleaderworkerset.MakeLeaderWorkerSet(testLWSName, testNSName).
 				LeaderTemplate(corev1.PodTemplateSpec{}).
 				Queue("test/queue").
 				Obj(),
@@ -177,13 +185,13 @@ func TestValidateUpdate(t *testing.T) {
 		wantErr error
 	}{
 		"no changes": {
-			oldObj: testingleaderworkerset.MakeLeaderWorkerSet("test-lws", "").
+			oldObj: testingleaderworkerset.MakeLeaderWorkerSet(testLWSName, testNSName).
 				LeaderTemplate(corev1.PodTemplateSpec{}).
 				Queue("test-queue").
 				LeaderTemplateSpecAnnotation(podcontroller.SuspendedByParentAnnotation, FrameworkName).
 				WorkerTemplateSpecAnnotation(podcontroller.SuspendedByParentAnnotation, FrameworkName).
 				Obj(),
-			newObj: testingleaderworkerset.MakeLeaderWorkerSet("test-lws", "").
+			newObj: testingleaderworkerset.MakeLeaderWorkerSet(testLWSName, testNSName).
 				LeaderTemplate(corev1.PodTemplateSpec{}).
 				Queue("test-queue").
 				LeaderTemplateSpecAnnotation(podcontroller.SuspendedByParentAnnotation, FrameworkName).
@@ -191,11 +199,11 @@ func TestValidateUpdate(t *testing.T) {
 				Obj(),
 		},
 		"change queue name": {
-			oldObj: testingleaderworkerset.MakeLeaderWorkerSet("test-lws", "").
+			oldObj: testingleaderworkerset.MakeLeaderWorkerSet(testLWSName, testNSName).
 				LeaderTemplate(corev1.PodTemplateSpec{}).
 				Queue("test-queue").
 				Obj(),
-			newObj: testingleaderworkerset.MakeLeaderWorkerSet("test-lws", "").
+			newObj: testingleaderworkerset.MakeLeaderWorkerSet(testLWSName, testNSName).
 				LeaderTemplate(corev1.PodTemplateSpec{}).
 				Queue("new-test-queue").
 				Obj(),

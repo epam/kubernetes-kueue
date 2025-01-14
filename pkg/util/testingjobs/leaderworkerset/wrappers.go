@@ -19,6 +19,7 @@ package leaderworkerset
 import (
 	"fmt"
 	"strconv"
+	"time"
 
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
@@ -26,9 +27,11 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/utils/ptr"
+	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	leaderworkersetv1 "sigs.k8s.io/lws/api/leaderworkerset/v1"
 
-	"sigs.k8s.io/kueue/pkg/controller/constants"
+	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta1"
+	controllerconsts "sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
 	"sigs.k8s.io/kueue/pkg/controller/jobs/pod"
 )
@@ -83,7 +86,7 @@ func (w *LeaderWorkerSetWrapper) Label(k, v string) *LeaderWorkerSetWrapper {
 
 // Queue updates the queue name of the LeaderWorkerSet
 func (w *LeaderWorkerSetWrapper) Queue(q string) *LeaderWorkerSetWrapper {
-	return w.Label(constants.QueueLabel, q)
+	return w.Label(controllerconsts.QueueLabel, q)
 }
 
 // Name updated the name of the LeaderWorkerSet
@@ -112,7 +115,7 @@ func (w *LeaderWorkerSetWrapper) WorkerTemplateSpecAnnotation(k, v string) *Lead
 
 // WorkerTemplateSpecQueue updates the queue name of the pod template spec of the LeaderWorkerSet
 func (w *LeaderWorkerSetWrapper) WorkerTemplateSpecQueue(q string) *LeaderWorkerSetWrapper {
-	return w.WorkerTemplateSpecLabel(constants.QueueLabel, q)
+	return w.WorkerTemplateSpecLabel(controllerconsts.QueueLabel, q)
 }
 
 // LeaderTemplateSpecAnnotation sets the annotation of the pod template spec of the LeaderLeaderSet
@@ -178,5 +181,15 @@ func (w *LeaderWorkerSetWrapper) Limit(r corev1.ResourceName, v string) *LeaderW
 // LeaderTemplate sets the leader template of the LeaderWorkerSet.
 func (w *LeaderWorkerSetWrapper) LeaderTemplate(leader corev1.PodTemplateSpec) *LeaderWorkerSetWrapper {
 	w.Spec.LeaderWorkerTemplate.LeaderTemplate = &leader
+	return w
+}
+
+func (w *LeaderWorkerSetWrapper) KueueFinalizer() *LeaderWorkerSetWrapper {
+	controllerutil.AddFinalizer(&w.LeaderWorkerSet, kueue.ResourceInUseFinalizerName)
+	return w
+}
+
+func (w *LeaderWorkerSetWrapper) DeletionTimestamp(t time.Time) *LeaderWorkerSetWrapper {
+	w.LeaderWorkerSet.DeletionTimestamp = &metav1.Time{Time: t}
 	return w
 }
