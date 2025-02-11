@@ -29,7 +29,6 @@ import (
 	"k8s.io/klog/v2"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
-	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/event"
 	"sigs.k8s.io/controller-runtime/pkg/handler"
 	"sigs.k8s.io/controller-runtime/pkg/predicate"
@@ -39,7 +38,7 @@ import (
 	podcontroller "sigs.k8s.io/kueue/pkg/controller/jobs/pod"
 	clientutil "sigs.k8s.io/kueue/pkg/util/client"
 	"sigs.k8s.io/kueue/pkg/util/parallelize"
-	utilpod "sigs.k8s.io/kueue/pkg/util/pod"
+	urilstatefulset "sigs.k8s.io/kueue/pkg/util/statefulset"
 )
 
 const (
@@ -100,7 +99,7 @@ func (r *Reconciler) finalizePods(ctx context.Context, sts *appsv1.StatefulSet, 
 func (r *Reconciler) finalizePod(ctx context.Context, sts *appsv1.StatefulSet, pod *corev1.Pod) error {
 	log := ctrl.LoggerFrom(ctx)
 	return client.IgnoreNotFound(clientutil.Patch(ctx, r.client, pod, true, func() (bool, error) {
-		if ungateAndFinalize(sts, pod) {
+		if urilstatefulset.UngateAndFinalizePod(sts, pod) {
 			log.V(3).Info(
 				"Finalizing pod in group",
 				"pod", klog.KObj(pod),
@@ -110,29 +109,6 @@ func (r *Reconciler) finalizePod(ctx context.Context, sts *appsv1.StatefulSet, p
 		}
 		return false, nil
 	}))
-}
-
-func ungateAndFinalize(sts *appsv1.StatefulSet, pod *corev1.Pod) bool {
-	var updated bool
-
-	if shouldUngate(sts, pod) && utilpod.Ungate(pod, podcontroller.SchedulingGateName) {
-		updated = true
-	}
-
-	if shouldFinalize(sts, pod) && controllerutil.RemoveFinalizer(pod, podcontroller.PodFinalizer) {
-		updated = true
-	}
-
-	return updated
-}
-
-func shouldUngate(sts *appsv1.StatefulSet, pod *corev1.Pod) bool {
-	return sts == nil || sts.Status.CurrentRevision != sts.Status.UpdateRevision &&
-		sts.Status.CurrentRevision == pod.Labels[appsv1.ControllerRevisionHashLabelKey]
-}
-
-func shouldFinalize(sts *appsv1.StatefulSet, pod *corev1.Pod) bool {
-	return shouldUngate(sts, pod) || utilpod.IsTerminated(pod)
 }
 
 func (r *Reconciler) SetupWithManager(mgr ctrl.Manager) error {
