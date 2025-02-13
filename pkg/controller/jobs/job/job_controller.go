@@ -255,8 +255,10 @@ func (j *Job) PodSets() ([]kueue.PodSet, error) {
 			Template: *cleanManagedLabels(j.Spec.Template.DeepCopy()),
 			Count:    j.podsCount(),
 			MinCount: j.minPodsCount(),
-			TopologyRequest: jobframework.PodSetTopologyRequest(&j.Spec.Template.ObjectMeta,
-				ptr.To(batchv1.JobCompletionIndexAnnotation), nil, nil),
+			TopologyRequest: jobframework.PodSetTopologyRequest(
+				&j.Spec.Template.ObjectMeta,
+				jobframework.WithPodIndexLabel(batchv1.JobCompletionIndexAnnotation),
+			),
 		},
 	}, nil
 }

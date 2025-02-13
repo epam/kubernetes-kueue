@@ -652,7 +652,10 @@ func constructPodSet(p *corev1.Pod) kueue.PodSet {
 		Template: corev1.PodTemplateSpec{
 			Spec: *p.Spec.DeepCopy(),
 		},
-		TopologyRequest: jobframework.PodSetTopologyRequest(&p.ObjectMeta, ptr.To(kueuealpha.PodGroupPodIndexLabel), nil, nil),
+		TopologyRequest: jobframework.PodSetTopologyRequest(
+			&p.ObjectMeta,
+			jobframework.WithPodIndexLabel(kueuealpha.PodGroupPodIndexLabel),
+		),
 	}
 }
 

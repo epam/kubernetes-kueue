@@ -88,6 +88,30 @@ var _ = ginkgo.Describe("TopologyAwareScheduling for LeaderWorkerSet", func() {
 					Replicas(replicas).
 					Size(size).
 					Queue(localQueue.Name).
+					LeaderTemplate(corev1.PodTemplateSpec{
+						ObjectMeta: metav1.ObjectMeta{
+							Annotations: map[string]string{
+								kueuealpha.PodSetRequiredTopologyAnnotation: testing.DefaultBlockTopologyLevel,
+							},
+						},
+						Spec: corev1.PodSpec{
+							Containers: []corev1.Container{
+								{
+									Name:  "c",
+									Image: util.E2eTestSleepImage,
+									Args:  []string{"10m"},
+									Resources: corev1.ResourceRequirements{
+										Limits: map[corev1.ResourceName]resource.Quantity{
+											extraResource: resource.MustParse("1"),
+										},
+										Requests: map[corev1.ResourceName]resource.Quantity{
+											extraResource: resource.MustParse("1"),
+										},
+									},
+								},
+							},
+						},
+					}).
 					WorkerTemplate(corev1.PodTemplateSpec{
 						ObjectMeta: metav1.ObjectMeta{
 							Annotations: map[string]string{

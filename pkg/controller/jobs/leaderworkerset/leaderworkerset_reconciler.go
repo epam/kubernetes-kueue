@@ -126,11 +126,12 @@ func (r *Reconciler) createPrebuildWorkload(ctx context.Context, lws *leaderwork
 }
 
 func (r *Reconciler) constructWorkload(lws *leaderworkersetv1.LeaderWorkerSet, index int32) *kueue.Workload {
-	return podcontroller.NewGroupWorkload(GetWorkloadName(lws.UID, lws.Name, fmt.Sprint(index)), lws, r.podSets(lws), r.labelKeysToCopy)
+	return podcontroller.NewGroupWorkload(GetWorkloadName(lws.UID, lws.Name, fmt.Sprint(index)), lws, r.podSets(lws, index), r.labelKeysToCopy)
 }
 
-func (r *Reconciler) podSets(lws *leaderworkersetv1.LeaderWorkerSet) []kueue.PodSet {
+func (r *Reconciler) podSets(lws *leaderworkersetv1.LeaderWorkerSet, index int32) []kueue.PodSet {
 	podSets := make([]kueue.PodSet, 0, 2)
+	ringName := fmt.Sprintf("group%d", index)
 
 	if lws.Spec.LeaderWorkerTemplate.LeaderTemplate != nil {
 		podSets = append(podSets, kueue.PodSet{
@@ -141,9 +142,8 @@ func (r *Reconciler) podSets(lws *leaderworkersetv1.LeaderWorkerSet) []kueue.Pod
 			},
 			TopologyRequest: jobframework.PodSetTopologyRequest(
 				&lws.Spec.LeaderWorkerTemplate.LeaderTemplate.ObjectMeta,
-				ptr.To(leaderworkersetv1.WorkerIndexLabelKey),
-				nil,
-				nil,
+				jobframework.WithPodIndexLabel(leaderworkersetv1.WorkerIndexLabelKey),
+				jobframework.WithRingName(ringName),
 			),
 		})
 	}
@@ -166,9 +166,8 @@ func (r *Reconciler) podSets(lws *leaderworkersetv1.LeaderWorkerSet) []kueue.Pod
 		},
 		TopologyRequest: jobframework.PodSetTopologyRequest(
 			&lws.Spec.LeaderWorkerTemplate.WorkerTemplate.ObjectMeta,
-			ptr.To(leaderworkersetv1.WorkerIndexLabelKey),
-			nil,
-			nil,
+			jobframework.WithPodIndexLabel(leaderworkersetv1.WorkerIndexLabelKey),
+			jobframework.WithRingName(ringName),
 		),
 	})
 

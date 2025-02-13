@@ -124,9 +124,12 @@ func (j *JobSet) PodSets() ([]kueue.PodSet, error) {
 			Name:     replicatedJob.Name,
 			Template: *replicatedJob.Template.Spec.Template.DeepCopy(),
 			Count:    podsCount(&replicatedJob),
-			TopologyRequest: jobframework.PodSetTopologyRequest(&replicatedJob.Template.Spec.Template.ObjectMeta,
-				ptr.To(batchv1.JobCompletionIndexAnnotation), ptr.To(jobsetapi.JobIndexKey),
-				ptr.To(replicatedJob.Replicas)),
+			TopologyRequest: jobframework.PodSetTopologyRequest(
+				&replicatedJob.Template.Spec.Template.ObjectMeta,
+				jobframework.WithPodIndexLabel(batchv1.JobCompletionIndexAnnotation),
+				jobframework.WithSubGroupIndexLabel(jobsetapi.JobIndexKey),
+				jobframework.WithSubGroupCount(replicatedJob.Replicas),
+			),
 		}
 	}
 	return podSets, nil
