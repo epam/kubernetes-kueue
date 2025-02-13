@@ -278,6 +278,7 @@ func TestReconciler(t *testing.T) {
 		"should create prebuild workload with required topology annotation": {
 			leaderWorkerSet: leaderworkerset.MakeLeaderWorkerSet(testLWS, testNS).
 				UID(testUID).
+				Replicas(2).
 				Size(3).
 				LeaderTemplate(corev1.PodTemplateSpec{
 					ObjectMeta: metav1.ObjectMeta{
@@ -306,6 +307,7 @@ func TestReconciler(t *testing.T) {
 				Obj(),
 			wantLeaderWorkerSet: leaderworkerset.MakeLeaderWorkerSet(testLWS, testNS).
 				UID(testUID).
+				Replicas(2).
 				Size(3).
 				LeaderTemplate(corev1.PodTemplateSpec{
 					ObjectMeta: metav1.ObjectMeta{
@@ -350,6 +352,7 @@ func TestReconciler(t *testing.T) {
 							TopologyRequest: &kueue.PodSetTopologyRequest{
 								Required:      ptr.To("cloud.com/block"),
 								PodIndexLabel: ptr.To(leaderworkersetv1.WorkerIndexLabelKey),
+								RingName:      ptr.To(fmt.Sprintf("group0")),
 							},
 						},
 						kueue.PodSet{
@@ -365,6 +368,45 @@ func TestReconciler(t *testing.T) {
 							TopologyRequest: &kueue.PodSetTopologyRequest{
 								Required:      ptr.To("cloud.com/block"),
 								PodIndexLabel: ptr.To(leaderworkersetv1.WorkerIndexLabelKey),
+								RingName:      ptr.To(fmt.Sprintf("group0")),
+							},
+						},
+					).
+					Obj(),
+				*utiltesting.MakeWorkload(GetWorkloadName(types.UID(testUID), testLWS, "1"), testNS).
+					Annotation(podcontroller.IsGroupWorkloadAnnotationKey, podcontroller.IsGroupWorkloadAnnotationValue).
+					Finalizers(kueue.ResourceInUseFinalizerName).
+					PodSets(
+						kueue.PodSet{
+							Name: leaderPodSetName,
+							Template: corev1.PodTemplateSpec{
+								Spec: corev1.PodSpec{
+									Containers: []corev1.Container{
+										{Name: "c", Image: "pause"},
+									},
+								},
+							},
+							Count: 1,
+							TopologyRequest: &kueue.PodSetTopologyRequest{
+								Required:      ptr.To("cloud.com/block"),
+								PodIndexLabel: ptr.To(leaderworkersetv1.WorkerIndexLabelKey),
+								RingName:      ptr.To(fmt.Sprintf("group1")),
+							},
+						},
+						kueue.PodSet{
+							Name: workerPodSetName,
+							Template: corev1.PodTemplateSpec{
+								Spec: corev1.PodSpec{
+									Containers: []corev1.Container{
+										{Name: "c", Image: "pause"},
+									},
+								},
+							},
+							Count: 2,
+							TopologyRequest: &kueue.PodSetTopologyRequest{
+								Required:      ptr.To("cloud.com/block"),
+								PodIndexLabel: ptr.To(leaderworkersetv1.WorkerIndexLabelKey),
+								RingName:      ptr.To(fmt.Sprintf("group1")),
 							},
 						},
 					).
@@ -379,6 +421,16 @@ func TestReconciler(t *testing.T) {
 						"Created Workload: %s/%s",
 						testNS,
 						GetWorkloadName(types.UID(testUID), testLWS, "0"),
+					),
+				},
+				{
+					Key:       types.NamespacedName{Name: testLWS, Namespace: testNS},
+					EventType: corev1.EventTypeNormal,
+					Reason:    jobframework.ReasonCreatedWorkload,
+					Message: fmt.Sprintf(
+						"Created Workload: %s/%s",
+						testNS,
+						GetWorkloadName(types.UID(testUID), testLWS, "1"),
 					),
 				},
 			},

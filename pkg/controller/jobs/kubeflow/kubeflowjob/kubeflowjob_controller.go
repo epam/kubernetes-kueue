@@ -107,8 +107,10 @@ func (j *KubeflowJob) PodSets() ([]kueue.PodSet, error) {
 			Name:     strings.ToLower(string(replicaType)),
 			Template: *j.KFJobControl.ReplicaSpecs()[replicaType].Template.DeepCopy(),
 			Count:    podsCount(j.KFJobControl.ReplicaSpecs(), replicaType),
-			TopologyRequest: jobframework.PodSetTopologyRequest(&j.KFJobControl.ReplicaSpecs()[replicaType].Template.ObjectMeta,
-				ptr.To(kftraining.ReplicaIndexLabel), nil, nil),
+			TopologyRequest: jobframework.PodSetTopologyRequest(
+				&j.KFJobControl.ReplicaSpecs()[replicaType].Template.ObjectMeta,
+				jobframework.WithPodIndexLabel(kftraining.ReplicaIndexLabel),
+			),
 		}
 	}
 	return podSets, nil

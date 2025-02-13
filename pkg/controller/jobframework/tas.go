@@ -23,16 +23,56 @@ import (
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta1"
 )
 
-func PodSetTopologyRequest(meta *metav1.ObjectMeta, podIndexLabel *string, subGroupIndexLabel *string, subGroupCount *int32) *kueue.PodSetTopologyRequest {
+type podSetTopologyRequestOptions struct {
+	podIndexLabel      *string
+	subGroupIndexLabel *string
+	subGroupCount      *int32
+	ringName           *string
+}
+
+type PodSetTopologyRequestOption func(*podSetTopologyRequestOptions)
+
+func WithPodIndexLabel(podIndexLabel string) PodSetTopologyRequestOption {
+	return func(opts *podSetTopologyRequestOptions) {
+		opts.podIndexLabel = &podIndexLabel
+	}
+}
+
+func WithSubGroupIndexLabel(subGroupIndexLabel string) PodSetTopologyRequestOption {
+	return func(opts *podSetTopologyRequestOptions) {
+		opts.subGroupIndexLabel = &subGroupIndexLabel
+	}
+}
+
+func WithSubGroupCount(subGroupCount int32) PodSetTopologyRequestOption {
+	return func(opts *podSetTopologyRequestOptions) {
+		opts.subGroupCount = &subGroupCount
+	}
+}
+
+func WithRingName(ringName string) PodSetTopologyRequestOption {
+	return func(psTopologyReq *podSetTopologyRequestOptions) {
+		psTopologyReq.ringName = &ringName
+	}
+}
+
+func PodSetTopologyRequest(meta *metav1.ObjectMeta, opts ...PodSetTopologyRequestOption) *kueue.PodSetTopologyRequest {
 	requiredValue, requiredFound := meta.Annotations[kueuealpha.PodSetRequiredTopologyAnnotation]
 	preferredValue, preferredFound := meta.Annotations[kueuealpha.PodSetPreferredTopologyAnnotation]
 
 	if requiredFound || preferredFound {
-		psTopologyReq := &kueue.PodSetTopologyRequest{
-			PodIndexLabel:      podIndexLabel,
-			SubGroupIndexLabel: subGroupIndexLabel,
-			SubGroupCount:      subGroupCount,
+		options := podSetTopologyRequestOptions{}
+		for _, opt := range opts {
+			opt(&options)
 		}
+
+		psTopologyReq := &kueue.PodSetTopologyRequest{
+			PodIndexLabel:      options.podIndexLabel,
+			SubGroupIndexLabel: options.subGroupIndexLabel,
+			SubGroupCount:      options.subGroupCount,
+			RingName:           options.ringName,
+		}
+
 		if requiredFound {
 			psTopologyReq.Required = &requiredValue
 		} else {

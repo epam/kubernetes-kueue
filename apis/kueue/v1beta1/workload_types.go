@@ -116,6 +116,15 @@ type PodSetTopologyRequest struct {
 	// SubGroupIndexLabel indicates the count of replicated Jobs (groups) within a PodSet.
 	// For example, in the context of JobSet this value is read from jobset.sigs.k8s.io/replicatedjob-replicas.
 	SubGroupCount *int32 `json:"subGroupCount,omitempty"`
+
+	// RingName specifies the communication ring that the PodSet belongs to.
+	// In NCCL-based distributed training, GPUs within a PodSet communicate
+	// in a ring topology, where each pod exchanges data only with its adjacent
+	// pods. The value represents the ring group name, ensuring that all pods
+	// in a logical worker set (LWS) are assigned to the same communication ring.
+	//
+	// +optional
+	RingName *string `json:"ringName,omitempty"`
 }
 
 type Admission struct {
