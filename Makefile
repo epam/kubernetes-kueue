@@ -377,6 +377,8 @@ importer-image-build:
 		--build-arg BASE_IMAGE=$(BASE_IMAGE) \
 		--build-arg BUILDER_IMAGE=$(BUILDER_IMAGE) \
 		--build-arg CGO_ENABLED=$(CGO_ENABLED) \
+		--build-arg GIT_TAG=$(GIT_TAG) \
+		--build-arg GIT_COMMIT=$(GIT_COMMIT) \
 		$(PUSH) \
 		$(IMAGE_BUILD_EXTRA_OPTS) \
 		-f ./cmd/importer/Dockerfile ./

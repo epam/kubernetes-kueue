@@ -1,22 +1,19 @@
-ARG BUILDER_IMAGE
-ARG BASE_IMAGE
-# Build the manager binary
+ARG BUILDER_IMAGE=golang:1.24
+ARG BASE_IMAGE=gcr.io/distroless/static:nonroot
+# compilation stage for the importer binary
 FROM --platform=${BUILDPLATFORM} ${BUILDER_IMAGE} AS builder
-
-ARG CGO_ENABLED
-ARG TARGETARCH
-
 WORKDIR /workspace
-
-# Copy the go source
+# fetch dependencies first, for iterative development
+COPY go.mod go.sum ./
+RUN go mod download
+# copy the rest of the sources and build
 COPY . .
+ARG GIT_TAG GIT_COMMIT TARGETARCH CGO_ENABLED=0
+RUN make importer-build GIT_TAG="${GIT_TAG}" GIT_COMMIT="${GIT_COMMIT}" GO_BUILD_ENV="GOARCH=${TARGETARCH} CGO_ENABLED=${CGO_ENABLED}"
 
-# Build
-RUN make importer-build GO_BUILD_ENV='CGO_ENABLED=${CGO_ENABLED} GOOS=linux GOARCH=${TARGETARCH}'
-
-FROM --platform=${BUILDPLATFORM} ${BASE_IMAGE}
+# final image, implicitly --platform=${TARGETPLATFORM}
+FROM ${BASE_IMAGE}
 WORKDIR /
-COPY --from=builder /workspace/bin/importer .
 USER 65532:65532
-
 ENTRYPOINT ["/importer"]
+COPY --from=builder /workspace/bin/importer /importer
