@@ -16,5 +16,6 @@ configMapGenerator:
 images:
 - name: importer
   newName: us-central1-docker.pkg.dev/k8s-staging-images/kueue/importer
+  newTag: main
 
 namespace: kueue-importer

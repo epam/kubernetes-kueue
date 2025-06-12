@@ -162,7 +162,7 @@ Make the created image accessible by your cluster.
 ```
 You can use the image that you built in step one or one of images published in
 https://us-central1-docker.pkg.dev/k8s-staging-images/kueue/importer, for example:
-`us-central1-docker.pkg.dev/k8s-staging-images/kueue/importer:main-latest`
+`us-central1-docker.pkg.dev/k8s-staging-images/kueue/importer:main`
 
 3. Update the importer args in `cmd/importer/run-in-cluster/importer.yaml` as needed.
 
@@ -178,7 +178,7 @@ Note: `dry-run` is set to `false` by default.
 6. Deploy the configuration:
 
 ```bash
- kubectl apply -k cmd/importer/run-in-cluster/
+kubectl apply -k cmd/importer/run-in-cluster/
 ```
 
 And check the logs
