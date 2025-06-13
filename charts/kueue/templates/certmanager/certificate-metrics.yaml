@@ -1,0 +1,20 @@
+{{- if .Values.enableCertManager }}
+# The following manifests contain a metrics certificate CR.
+# More document can be found at https://docs.cert-manager.io
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  labels:
+  {{- include "kueue.labels" . | nindent 4 }}
+  name: '{{ include "kueue.fullname" . }}-metrics-certs' # this name should match the one appeared in kustomizeconfig.yaml
+  namespace: '{{ .Release.Namespace }}'
+spec:
+  dnsNames:
+  - '{{ include "kueue.fullname" . }}-webhook-service.{{ .Release.Namespace }}.svc'
+  - '{{ include "kueue.fullname" . }}-webhook-service.{{ .Release.Namespace }}.svc.{{ .Values.kubernetesClusterDomain }}'
+  commonName: kueue-metrics
+  issuerRef:
+    kind: Issuer
+    name: '{{ include "kueue.fullname" . }}-selfsigned-issuer'
+  secretName: '{{ include "kueue.fullname" . }}-metrics-server-cert'
+{{- end }}
