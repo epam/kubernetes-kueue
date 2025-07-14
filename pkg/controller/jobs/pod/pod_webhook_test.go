@@ -642,9 +642,10 @@ func TestGetRoleHash(t *testing.T) {
 func TestValidateCreate(t *testing.T) {
 	t.Cleanup(jobframework.EnableIntegrationsForTest(t, "batch/job"))
 	testCases := map[string]struct {
-		pod       *corev1.Pod
-		wantErr   error
-		wantWarns admission.Warnings
+		pod                     *corev1.Pod
+		wantErr                 error
+		wantWarns               admission.Warnings
+		topologyAwareScheduling bool
 	}{
 		"pod owner is managed by kueue": {
 			pod: testingpod.MakePod("test-pod", "test-ns").
@@ -723,6 +724,7 @@ func TestValidateCreate(t *testing.T) {
 				ManagedByKueueLabel().
 				Annotation(kueuealpha.PodSetRequiredTopologyAnnotation, "cloud.com/block").
 				Obj(),
+			topologyAwareScheduling: true,
 		},
 		"invalid topology request": {
 			pod: testingpod.MakePod("test-pod", "test-ns").
@@ -736,6 +738,7 @@ func TestValidateCreate(t *testing.T) {
 					Field: "metadata.annotations",
 				},
 			}.ToAggregate(),
+			topologyAwareScheduling: true,
 		},
 		"prebuilt workload for pod": {
 			pod: testingpod.MakePod("test-pod", "test-ns").
@@ -766,6 +769,8 @@ func TestValidateCreate(t *testing.T) {
 
 	for name, tc := range testCases {
 		t.Run(name, func(t *testing.T) {
+			features.SetFeatureGateDuringTest(t, features.TopologyAwareScheduling, tc.topologyAwareScheduling)
+
 			builder := utiltesting.NewClientBuilder()
 			cli := builder.Build()
 

@@ -32,6 +32,7 @@ import (
 	"sigs.k8s.io/kueue/pkg/cache"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework/webhook"
+	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/queue"
 )
 
@@ -96,10 +97,14 @@ func (w *RayClusterWebhook) ValidateCreate(ctx context.Context, obj runtime.Obje
 	job := obj.(*rayv1.RayCluster)
 	log := ctrl.LoggerFrom(ctx).WithName("raycluster-webhook")
 	log.V(10).Info("Validating create")
-	return nil, w.validateCreate(job).ToAggregate()
+	validationErrs, err := w.validateCreate(job)
+	if err != nil {
+		return nil, err
+	}
+	return nil, validationErrs.ToAggregate()
 }
 
-func (w *RayClusterWebhook) validateCreate(job *rayv1.RayCluster) field.ErrorList {
+func (w *RayClusterWebhook) validateCreate(job *rayv1.RayCluster) (field.ErrorList, error) {
 	var allErrors field.ErrorList
 	kueueJob := (*RayCluster)(job)
 
@@ -127,19 +132,33 @@ func (w *RayClusterWebhook) validateCreate(job *rayv1.RayCluster) field.ErrorLis
 	}
 
 	allErrors = append(allErrors, jobframework.ValidateJobOnCreate(kueueJob)...)
-	allErrors = append(allErrors, w.validateTopologyRequest(kueueJob)...)
+	if features.Enabled(features.TopologyAwareScheduling) {
+		validationErrs, err := w.validateTopologyRequest(kueueJob)
+		if err != nil {
+			return nil, err
+		}
+		allErrors = append(allErrors, validationErrs...)
+	}
 
-	return allErrors
+	return allErrors, nil
 }
 
-func (w *RayClusterWebhook) validateTopologyRequest(rayJob *RayCluster) field.ErrorList {
+func (w *RayClusterWebhook) validateTopologyRequest(rayJob *RayCluster) (field.ErrorList, error) {
 	var allErrs field.ErrorList
-	allErrs = append(allErrs, jobframework.ValidateTASPodSetRequest(headGroupMetaPath, &rayJob.Spec.HeadGroupSpec.Template.ObjectMeta)...)
+	validationErrs, err := jobframework.ValidateTASPodSetRequest(headGroupMetaPath, &rayJob.Spec.HeadGroupSpec.Template.ObjectMeta, rayJob.PodSets)
+	if err != nil {
+		return nil, err
+	}
+	allErrs = append(allErrs, validationErrs...)
 	for i := range rayJob.Spec.WorkerGroupSpecs {
 		workerGroupMetaPath := workerGroupSpecsPath.Index(i).Child("template", "metadata")
-		allErrs = append(allErrs, jobframework.ValidateTASPodSetRequest(workerGroupMetaPath, &rayJob.Spec.WorkerGroupSpecs[i].Template.ObjectMeta)...)
+		validationErrs, err := jobframework.ValidateTASPodSetRequest(workerGroupMetaPath, &rayJob.Spec.WorkerGroupSpecs[i].Template.ObjectMeta, rayJob.PodSets)
+		if err != nil {
+			return nil, err
+		}
+		allErrs = append(allErrs, validationErrs...)
 	}
-	return allErrs
+	return allErrs, nil
 }
 
 // ValidateUpdate implements webhook.CustomValidator so a webhook will be registered for the type
@@ -150,7 +169,11 @@ func (w *RayClusterWebhook) ValidateUpdate(ctx context.Context, oldObj, newObj r
 	if w.manageJobsWithoutQueueName || jobframework.QueueName((*RayCluster)(newJob)) != "" {
 		log.Info("Validating update")
 		allErrors := jobframework.ValidateJobOnUpdate((*RayCluster)(oldJob), (*RayCluster)(newJob), w.queues.DefaultLocalQueueExist)
-		allErrors = append(allErrors, w.validateCreate(newJob)...)
+		validationErrs, err := w.validateCreate(newJob)
+		if err != nil {
+			return nil, err
+		}
+		allErrors = append(allErrors, validationErrs...)
 		return nil, allErrors.ToAggregate()
 	}
 	return nil, nil

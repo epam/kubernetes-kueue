@@ -32,9 +32,11 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/webhook/admission"
 	leaderworkersetv1 "sigs.k8s.io/lws/api/leaderworkerset/v1"
 
+	kueuebeta "sigs.k8s.io/kueue/apis/kueue/v1beta1"
 	"sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
 	podconstants "sigs.k8s.io/kueue/pkg/controller/jobs/pod/constants"
+	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/queue"
 )
 
@@ -120,9 +122,12 @@ func (wh *Webhook) ValidateCreate(ctx context.Context, obj runtime.Object) (warn
 	log := ctrl.LoggerFrom(ctx).WithName("leaderworkerset-webhook")
 	log.V(5).Info("Validating create")
 
-	allErrs := validateCreate(lws)
+	validationErrs, err := validateCreate(lws)
+	if err != nil {
+		return nil, err
+	}
 
-	return nil, allErrs.ToAggregate()
+	return nil, validationErrs.ToAggregate()
 }
 
 func (wh *Webhook) ValidateUpdate(ctx context.Context, oldObj, newObj runtime.Object) (warnings admission.Warnings, err error) {
@@ -132,7 +137,10 @@ func (wh *Webhook) ValidateUpdate(ctx context.Context, oldObj, newObj runtime.Ob
 	log := ctrl.LoggerFrom(ctx).WithName("leaderworkerset-webhook")
 	log.V(5).Info("Validating update")
 
-	allErrs := validateCreate(newLeaderWorkerSet)
+	allErrs, err := validateCreate(newLeaderWorkerSet)
+	if err != nil {
+		return nil, err
+	}
 
 	allErrs = append(allErrs, apivalidation.ValidateImmutableField(
 		jobframework.QueueNameForObject(newLeaderWorkerSet.Object()),
@@ -177,20 +185,38 @@ func GetWorkloadName(uid types.UID, name string, groupIndex string) string {
 	return jobframework.GetWorkloadNameForOwnerWithGVK(fmt.Sprintf("%s-%s", name, groupIndex), uid, gvk)
 }
 
-func validateCreate(lws *LeaderWorkerSet) field.ErrorList {
+func validateCreate(lws *LeaderWorkerSet) (field.ErrorList, error) {
 	var allErrs field.ErrorList
 	allErrs = append(allErrs, jobframework.ValidateQueueName(lws.Object())...)
-	allErrs = append(allErrs, validateTopologyRequest(lws)...)
-	return allErrs
+	if features.Enabled(features.TopologyAwareScheduling) {
+		validationErrs, err := validateTopologyRequest(lws)
+		if err != nil {
+			return nil, err
+		}
+		allErrs = append(allErrs, validationErrs...)
+	}
+	return allErrs, nil
 }
 
-func validateTopologyRequest(lws *LeaderWorkerSet) field.ErrorList {
+func validateTopologyRequest(lws *LeaderWorkerSet) (field.ErrorList, error) {
 	var allErrs field.ErrorList
-	if lws.Spec.LeaderWorkerTemplate.LeaderTemplate != nil {
-		allErrs = append(allErrs, jobframework.ValidateTASPodSetRequest(leaderTemplateMetaPath, &lws.Spec.LeaderWorkerTemplate.LeaderTemplate.ObjectMeta)...)
+	lwsv1 := leaderworkersetv1.LeaderWorkerSet(*lws)
+	podSetsFunc := func() ([]kueuebeta.PodSet, error) {
+		return podSets(&lwsv1)
 	}
-	allErrs = append(allErrs, jobframework.ValidateTASPodSetRequest(workerTemplateMetaPath, &lws.Spec.LeaderWorkerTemplate.WorkerTemplate.ObjectMeta)...)
-	return allErrs
+	if lws.Spec.LeaderWorkerTemplate.LeaderTemplate != nil {
+		validationErrs, err := jobframework.ValidateTASPodSetRequest(leaderTemplateMetaPath, &lws.Spec.LeaderWorkerTemplate.LeaderTemplate.ObjectMeta, podSetsFunc)
+		if err != nil {
+			return nil, err
+		}
+		allErrs = append(allErrs, validationErrs...)
+	}
+	validationErrs, err := jobframework.ValidateTASPodSetRequest(workerTemplateMetaPath, &lws.Spec.LeaderWorkerTemplate.WorkerTemplate.ObjectMeta, podSetsFunc)
+	if err != nil {
+		return nil, err
+	}
+	allErrs = append(allErrs, validationErrs...)
+	return allErrs, nil
 }
 
 func validateImmutablePodTemplateSpec(newPodTemplateSpec *corev1.PodTemplateSpec, oldPodTemplateSpec *corev1.PodTemplateSpec, fieldPath *field.Path) field.ErrorList {

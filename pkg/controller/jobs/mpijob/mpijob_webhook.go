@@ -31,6 +31,7 @@ import (
 	"sigs.k8s.io/kueue/pkg/cache"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework/webhook"
+	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/queue"
 	"sigs.k8s.io/kueue/pkg/util/kubeversion"
 )
@@ -96,7 +97,11 @@ func (w *MpiJobWebhook) ValidateCreate(ctx context.Context, obj runtime.Object) 
 	mpiJob := fromObject(obj)
 	log := ctrl.LoggerFrom(ctx).WithName("mpijob-webhook")
 	log.Info("Validating create")
-	return nil, w.validateCommon(mpiJob).ToAggregate()
+	validationErrs, err := w.validateCommon(mpiJob)
+	if err != nil {
+		return nil, err
+	}
+	return nil, validationErrs.ToAggregate()
 }
 
 // ValidateUpdate implements webhook.CustomValidator so a webhook will be registered for the type
@@ -106,7 +111,11 @@ func (w *MpiJobWebhook) ValidateUpdate(ctx context.Context, oldObj, newObj runti
 	log := ctrl.LoggerFrom(ctx).WithName("mpijob-webhook")
 	log.Info("Validating update")
 	allErrs := jobframework.ValidateJobOnUpdate(oldMpiJob, newMpiJob, w.queues.DefaultLocalQueueExist)
-	allErrs = append(allErrs, w.validateCommon(newMpiJob)...)
+	validationErrs, err := w.validateCommon(newMpiJob)
+	if err != nil {
+		return nil, err
+	}
+	allErrs = append(allErrs, validationErrs...)
 	return nil, allErrs.ToAggregate()
 }
 
@@ -115,21 +124,31 @@ func (w *MpiJobWebhook) ValidateDelete(context.Context, runtime.Object) (admissi
 	return nil, nil
 }
 
-func (w *MpiJobWebhook) validateCommon(mpiJob *MPIJob) field.ErrorList {
+func (w *MpiJobWebhook) validateCommon(mpiJob *MPIJob) (field.ErrorList, error) {
 	var allErrs field.ErrorList
 	allErrs = jobframework.ValidateJobOnCreate(mpiJob)
-	allErrs = append(allErrs, w.validateTopologyRequest(mpiJob)...)
-	return allErrs
+	if features.Enabled(features.TopologyAwareScheduling) {
+		validationErrs, err := w.validateTopologyRequest(mpiJob)
+		if err != nil {
+			return nil, err
+		}
+		allErrs = append(allErrs, validationErrs...)
+	}
+	return allErrs, nil
 }
 
-func (w *MpiJobWebhook) validateTopologyRequest(mpiJob *MPIJob) field.ErrorList {
+func (w *MpiJobWebhook) validateTopologyRequest(mpiJob *MPIJob) (field.ErrorList, error) {
 	var allErrs field.ErrorList
 	for replicaType, replicaSpec := range mpiJob.Spec.MPIReplicaSpecs {
 		replicaMetaPath := mpiReplicaSpecsPath.Key(string(replicaType)).Child("template", "metadata")
-		allErrs = append(allErrs, jobframework.ValidateTASPodSetRequest(replicaMetaPath, &replicaSpec.Template.ObjectMeta)...)
+		validationErrs, err := jobframework.ValidateTASPodSetRequest(replicaMetaPath, &replicaSpec.Template.ObjectMeta, mpiJob.PodSets)
+		if err != nil {
+			return nil, err
+		}
+		allErrs = append(allErrs, validationErrs...)
 	}
 	sort.Slice(allErrs, func(i, j int) bool {
 		return allErrs[i].Field < allErrs[j].Field
 	})
-	return allErrs
+	return allErrs, nil
 }

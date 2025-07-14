@@ -225,7 +225,11 @@ func (w *PodWebhook) ValidateCreate(ctx context.Context, obj runtime.Object) (ad
 	log.V(5).Info("Validating create")
 
 	allErrs := jobframework.ValidateJobOnCreate(pod)
-	allErrs = append(allErrs, validateCommon(pod)...)
+	validationErrs, err := validateCommon(pod)
+	if err != nil {
+		return nil, err
+	}
+	allErrs = append(allErrs, validationErrs...)
 
 	if warn := warningForPodManagedLabel(pod); warn != "" {
 		warnings = append(warnings, warn)
@@ -243,7 +247,11 @@ func (w *PodWebhook) ValidateUpdate(ctx context.Context, oldObj, newObj runtime.
 	log.V(5).Info("Validating update")
 
 	allErrs := jobframework.ValidateJobOnUpdate(oldPod, newPod, w.queues.DefaultLocalQueueExist)
-	allErrs = append(allErrs, validateCommon(newPod)...)
+	validationErrs, err := validateCommon(newPod)
+	if err != nil {
+		return nil, err
+	}
+	allErrs = append(allErrs, validationErrs...)
 	allErrs = append(allErrs, validateUpdateForRetriableInGroupAnnotation(oldPod, newPod)...)
 
 	if podGroupName(oldPod.pod) != "" {
@@ -263,12 +271,18 @@ func (w *PodWebhook) ValidateDelete(context.Context, runtime.Object) (admission.
 	return nil, nil
 }
 
-func validateCommon(pod *Pod) field.ErrorList {
+func validateCommon(pod *Pod) (field.ErrorList, error) {
 	allErrs := validateManagedLabel(pod)
 	allErrs = append(allErrs, validatePodGroupMetadata(pod)...)
-	allErrs = append(allErrs, validateTopologyRequest(pod)...)
+	if features.Enabled(features.TopologyAwareScheduling) {
+		validationErrs, err := validateTopologyRequest(pod)
+		if err != nil {
+			return nil, err
+		}
+		allErrs = append(allErrs, validationErrs...)
+	}
 	allErrs = append(allErrs, validatePrebuiltWorkloadName(pod)...)
-	return allErrs
+	return allErrs, nil
 }
 
 func validateManagedLabel(pod *Pod) field.ErrorList {
@@ -326,8 +340,8 @@ func validatePodGroupMetadata(p *Pod) field.ErrorList {
 	return allErrs
 }
 
-func validateTopologyRequest(pod *Pod) field.ErrorList {
-	return jobframework.ValidateTASPodSetRequest(metaPath, &pod.pod.ObjectMeta)
+func validateTopologyRequest(pod *Pod) (field.ErrorList, error) {
+	return jobframework.ValidateTASPodSetRequest(metaPath, &pod.pod.ObjectMeta, nil)
 }
 
 func validateUpdateForRetriableInGroupAnnotation(oldPod, newPod *Pod) field.ErrorList {
