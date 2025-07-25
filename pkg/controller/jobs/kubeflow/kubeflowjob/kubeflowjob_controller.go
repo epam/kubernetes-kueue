@@ -17,6 +17,7 @@ limitations under the License.
 package kubeflowjob
 
 import (
+	utilpodset "sigs.k8s.io/kueue/pkg/util/podset"
 	"sort"
 
 	kftraining "github.com/kubeflow/training-operator/pkg/apis/kubeflow.org/v1"
@@ -182,24 +183,43 @@ func (j *KubeflowJob) OrderedReplicaTypes() []kftraining.ReplicaType {
 }
 
 func (j *KubeflowJob) ValidateOnCreate() (field.ErrorList, error) {
+	if !features.Enabled(features.TopologyAwareScheduling) {
+		return nil, nil
+	}
+
 	var allErrs field.ErrorList
 	replicaTypes := j.OrderedReplicaTypes()
 	for _, replicaType := range replicaTypes {
 		replicaSpecsPath := field.NewPath("spec", j.KFJobControl.ReplicaSpecsFieldName())
-		if features.Enabled(features.TopologyAwareScheduling) {
-			validationErrs, err := jobframework.ValidateTASPodSetRequest(
-				replicaSpecsPath.Key(string(replicaType)).Child("template", "metadata"),
-				&j.KFJobControl.ReplicaSpecs()[replicaType].Template.ObjectMeta, j.PodSets,
-			)
-			if err != nil {
-				return nil, err
-			}
-			allErrs = append(allErrs, validationErrs...)
-		}
+		validationErrs := jobframework.ValidateTASPodSetRequest(
+			replicaSpecsPath.Key(string(replicaType)).Child("template", "metadata"),
+			&j.KFJobControl.ReplicaSpecs()[replicaType].Template.ObjectMeta,
+		)
+		allErrs = append(allErrs, validationErrs...)
 	}
 	sort.Slice(allErrs, func(i, j int) bool {
 		return allErrs[i].Field < allErrs[j].Field
 	})
+	if len(allErrs) > 0 {
+		return allErrs, nil
+	}
+
+	podSets, err := j.PodSets()
+	if err != nil {
+		return nil, err
+	}
+
+	for _, replicaType := range replicaTypes {
+		replicaSpecsPath := field.NewPath("spec", j.KFJobControl.ReplicaSpecsFieldName())
+		podSet := utilpodset.FindPodSetByName(podSets, kueue.PodSetReference(replicaType))
+		validationErrs := jobframework.ValidateSliceSizeAnnotationUpperBound(
+			replicaSpecsPath.Key(string(replicaType)).Child("template", "metadata"),
+			&j.KFJobControl.ReplicaSpecs()[replicaType].Template.ObjectMeta,
+			podSet,
+		)
+		allErrs = append(allErrs, validationErrs...)
+	}
+
 	return allErrs, nil
 }
 

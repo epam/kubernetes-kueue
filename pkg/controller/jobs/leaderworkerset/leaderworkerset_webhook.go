@@ -19,6 +19,7 @@ package leaderworkerset
 import (
 	"context"
 	"fmt"
+	"sigs.k8s.io/kueue/pkg/util/podset"
 
 	corev1 "k8s.io/api/core/v1"
 	apivalidation "k8s.io/apimachinery/pkg/api/validation"
@@ -32,7 +33,6 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/webhook/admission"
 	leaderworkersetv1 "sigs.k8s.io/lws/api/leaderworkerset/v1"
 
-	kueuebeta "sigs.k8s.io/kueue/apis/kueue/v1beta1"
 	"sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
 	podconstants "sigs.k8s.io/kueue/pkg/controller/jobs/pod/constants"
@@ -200,22 +200,30 @@ func validateCreate(lws *LeaderWorkerSet) (field.ErrorList, error) {
 
 func validateTopologyRequest(lws *LeaderWorkerSet) (field.ErrorList, error) {
 	var allErrs field.ErrorList
-	lwsv1 := leaderworkersetv1.LeaderWorkerSet(*lws)
-	podSetsFunc := func() ([]kueuebeta.PodSet, error) {
-		return podSets(&lwsv1)
-	}
 	if lws.Spec.LeaderWorkerTemplate.LeaderTemplate != nil {
-		validationErrs, err := jobframework.ValidateTASPodSetRequest(leaderTemplateMetaPath, &lws.Spec.LeaderWorkerTemplate.LeaderTemplate.ObjectMeta, podSetsFunc)
-		if err != nil {
-			return nil, err
-		}
-		allErrs = append(allErrs, validationErrs...)
+		allErrs = append(allErrs, jobframework.ValidateTASPodSetRequest(leaderTemplateMetaPath, &lws.Spec.LeaderWorkerTemplate.LeaderTemplate.ObjectMeta)...)
 	}
-	validationErrs, err := jobframework.ValidateTASPodSetRequest(workerTemplateMetaPath, &lws.Spec.LeaderWorkerTemplate.WorkerTemplate.ObjectMeta, podSetsFunc)
+	allErrs = append(allErrs, jobframework.ValidateTASPodSetRequest(workerTemplateMetaPath, &lws.Spec.LeaderWorkerTemplate.WorkerTemplate.ObjectMeta)...)
+	if len(allErrs) > 0 {
+		return allErrs, nil
+	}
+
+	podSets, err := podSets(lws.Object().(*leaderworkersetv1.LeaderWorkerSet))
 	if err != nil {
 		return nil, err
 	}
-	allErrs = append(allErrs, validationErrs...)
+
+	if lws.Spec.LeaderWorkerTemplate.LeaderTemplate != nil {
+		leaderPodSet := podset.FindPodSetByName(podSets, leaderPodSetName)
+		allErrs = append(allErrs, jobframework.ValidateSliceSizeAnnotationUpperBound(leaderTemplateMetaPath,
+			&lws.Spec.LeaderWorkerTemplate.LeaderTemplate.ObjectMeta, leaderPodSet)...)
+	}
+
+	// TODO: Create function to calculate worker podSet name
+	workerPodSet := podset.FindPodSetByName(podSets, workerPodSetName)
+	allErrs = append(allErrs, jobframework.ValidateSliceSizeAnnotationUpperBound(workerTemplatePath,
+		&lws.Spec.LeaderWorkerTemplate.WorkerTemplate.ObjectMeta, workerPodSet)...)
+
 	return allErrs, nil
 }
 

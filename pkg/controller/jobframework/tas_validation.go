@@ -30,7 +30,7 @@ import (
 
 type podSetsFunc func() ([]kueuebeta.PodSet, error)
 
-func ValidateTASPodSetRequest(replicaPath *field.Path, replicaMetadata *metav1.ObjectMeta, getPodSets podSetsFunc) (field.ErrorList, error) {
+func ValidateTASPodSetRequest(replicaPath *field.Path, replicaMetadata *metav1.ObjectMeta) field.ErrorList {
 	var allErrs field.ErrorList
 	requiredValue, requiredFound := replicaMetadata.Annotations[kueuealpha.PodSetRequiredTopologyAnnotation]
 	preferredValue, preferredFound := replicaMetadata.Annotations[kueuealpha.PodSetPreferredTopologyAnnotation]
@@ -135,37 +135,29 @@ func validateSliceSizeAnnotation(annotationsPath *field.Path, replicaMetadata *m
 	return nil
 }
 
-func validateSliceSizeAnnotationUpperBound(annotationsPath *field.Path, replicaMetadata *metav1.ObjectMeta, getPodSets podSetsFunc) (field.ErrorList, error) {
+func ValidateSliceSizeAnnotationUpperBound(annotationsPath *field.Path, replicaMetadata *metav1.ObjectMeta, podSet *kueuebeta.PodSet) field.ErrorList {
 	sliceSizeValue, sliceSizeFound := replicaMetadata.Annotations[kueuealpha.PodSetSliceSizeAnnotation]
-	if !sliceSizeFound || getPodSets == nil {
-		return nil, nil
+	if !sliceSizeFound || podSet == nil {
+		return nil
 	}
 
 	val, err := strconv.ParseInt(sliceSizeValue, 10, 32)
-	//nolint:nilerr // the error is handled in field.ErrorList
 	if err != nil {
 		return field.ErrorList{
 			field.Invalid(
 				annotationsPath.Key(kueuealpha.PodSetSliceSizeAnnotation), sliceSizeValue, "must be a numeric value",
 			),
-		}, nil
-	}
-
-	podSets, err := getPodSets()
-	if err != nil {
-		return nil, fmt.Errorf("failed to get PodSets during slice size validation: %w", err)
-	}
-
-	for _, podSet := range podSets {
-		if int32(val) > podSet.Count {
-			return field.ErrorList{
-				field.Invalid(
-					annotationsPath.Key(kueuealpha.PodSetSliceSizeAnnotation), sliceSizeValue,
-					fmt.Sprintf("must not be greater than pod set count %d", podSet.Count),
-				),
-			}, nil
 		}
 	}
 
-	return nil, nil
+	if int32(val) > podSet.Count {
+		return field.ErrorList{
+			field.Invalid(
+				annotationsPath.Key(kueuealpha.PodSetSliceSizeAnnotation), sliceSizeValue,
+				fmt.Sprintf("must not be greater than pod set count %d", podSet.Count),
+			),
+		}
+	}
+
+	return nil
 }

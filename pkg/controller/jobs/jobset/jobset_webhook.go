@@ -18,6 +18,8 @@ package jobset
 
 import (
 	"context"
+	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta1"
+	"sigs.k8s.io/kueue/pkg/util/podset"
 
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -142,10 +144,23 @@ func (w *JobSetWebhook) validateTopologyRequest(jobSet *JobSet) (field.ErrorList
 
 	for i := range jobSet.Spec.ReplicatedJobs {
 		replicaMetaPath := replicatedJobsPath.Index(i).Child("template", "metadata")
-		validationErrs, err := jobframework.ValidateTASPodSetRequest(replicaMetaPath, &jobSet.Spec.ReplicatedJobs[i].Template.Spec.Template.ObjectMeta, jobSet.PodSets)
-		if err != nil {
-			return nil, err
-		}
+		validationErrs := jobframework.ValidateTASPodSetRequest(replicaMetaPath, &jobSet.Spec.ReplicatedJobs[i].Template.Spec.Template.ObjectMeta)
+		allErrs = append(allErrs, validationErrs...)
+	}
+
+	if len(allErrs) > 0 {
+		return allErrs, nil
+	}
+
+	podSets, err := jobSet.PodSets()
+	if err != nil {
+		return nil, err
+	}
+
+	for i, rj := range jobSet.Spec.ReplicatedJobs {
+		replicaMetaPath := replicatedJobsPath.Index(i).Child("template", "metadata")
+		podSet := podset.FindPodSetByName(podSets, kueue.PodSetReference(rj.Name))
+		validationErrs := jobframework.ValidateSliceSizeAnnotationUpperBound(replicaMetaPath, &jobSet.Spec.ReplicatedJobs[i].Template.Spec.Template.ObjectMeta, podSet)
 		allErrs = append(allErrs, validationErrs...)
 	}
 
