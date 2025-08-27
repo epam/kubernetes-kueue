@@ -85,7 +85,7 @@ type Scheduler struct {
 	schedulingCycle int64
 
 	// Stubs.
-	applyAdmission func(context.Context, *kueue.Workload) error
+	applyAdmission func(context.Context, *kueue.Workload, func() (bool, error)) error
 }
 
 type options struct {
@@ -314,11 +314,13 @@ func (s *Scheduler) schedule(ctx context.Context) wait.SpeedSignal {
 		}
 		if !s.cache.PodsReadyForAllAdmittedWorkloads(log) {
 			log.V(5).Info("Waiting for all admitted workloads to be in the PodsReady condition")
-			// If WaitForPodsReady is enabled and WaitForPodsReady.BlockAdmission is true
-			// Block admission until all currently admitted workloads are in
-			// PodsReady condition if the waitForPodsReady is enabled
-			workload.UnsetQuotaReservationWithCondition(e.Obj, "Waiting", "waiting for all admitted workloads to be in PodsReady condition", s.clock.Now())
-			if err := workload.ApplyAdmissionStatus(ctx, s.client, e.Obj, false, s.clock); err != nil {
+			err := workload.PatchAdmissionStatus(ctx, s.client, e.Obj, false, s.clock, func() (bool, error) {
+				// If WaitForPodsReady is enabled and WaitForPodsReady.BlockAdmission is true
+				// Block admission until all currently admitted workloads are in
+				// PodsReady condition if the waitForPodsReady is enabled
+				return workload.UnsetQuotaReservationWithCondition(e.Obj, "Waiting", "waiting for all admitted workloads to be in PodsReady condition", s.clock.Now()), nil
+			})
+			if err != nil {
 				log.Error(err, "Could not update Workload status")
 			}
 			s.cache.WaitForPodsReady(ctx)
@@ -612,53 +614,52 @@ func (s *Scheduler) admit(ctx context.Context, e *entry, cq *cache.ClusterQueueS
 		PodSetAssignments: e.assignment.ToAPI(),
 	}
 
-	workload.SetQuotaReservation(newWorkload, admission, s.clock)
-	if workload.HasAllChecks(newWorkload, workload.AdmissionChecksForWorkload(log, newWorkload, cq.AdmissionChecks)) {
-		// sync Admitted, ignore the result since an API update is always done.
-		_ = workload.SyncAdmittedCondition(newWorkload, s.clock.Now())
-	}
-	if err := s.cache.AssumeWorkload(log, newWorkload); err != nil {
-		return err
-	}
-	e.status = assumed
-	log.V(2).Info("Workload assumed in the cache")
-
-	if afs.Enabled(s.admissionFairSharing) {
-		s.updateEntryPenalty(log, e, add)
-
-		// Trigger LocalQueue reconciler to apply any pending penalties
-		s.queues.NotifyWorkloadUpdateWatchers(e.Obj, newWorkload)
-	}
-
-	s.admissionRoutineWrapper.Run(func() {
-		err := s.applyAdmission(ctx, newWorkload)
-		if err == nil {
-			// Record metrics and events for quota reservation and admission
-			s.recordWorkloadAdmissionMetrics(newWorkload, e.Obj, admission)
-
-			log.V(2).Info("Workload successfully admitted and assigned flavors", "assignments", admission.PodSetAssignments)
-			return
+	err := s.applyAdmission(ctx, newWorkload, func() (bool, error) {
+		workload.SetQuotaReservation(newWorkload, admission, s.clock)
+		if workload.HasAllChecks(newWorkload, workload.AdmissionChecksForWorkload(log, newWorkload, cq.AdmissionChecks)) {
+			// sync Admitted, ignore the result since an API update is always done.
+			_ = workload.SyncAdmittedCondition(newWorkload, s.clock.Now())
 		}
-		// Ignore errors because the workload or clusterQueue could have been deleted
-		// by an event.
-		_ = s.cache.ForgetWorkload(log, newWorkload)
+		if err := s.cache.AssumeWorkload(log, newWorkload); err != nil {
+			return false, err
+		}
+		e.status = assumed
+		log.V(2).Info("Workload assumed in the cache")
+
 		if afs.Enabled(s.admissionFairSharing) {
-			s.updateEntryPenalty(log, e, subtract)
-		}
-		if apierrors.IsNotFound(err) {
-			log.V(2).Info("Workload not admitted because it was deleted")
-			return
-		}
+			s.updateEntryPenalty(log, e, add)
 
-		log.Error(err, errCouldNotAdmitWL)
-		s.requeueAndUpdate(ctx, *e)
+			// Trigger LocalQueue reconciler to apply any pending penalties
+			s.queues.NotifyWorkloadUpdateWatchers(e.Obj, newWorkload)
+		}
+		return true, nil
 	})
+	if err == nil {
+		// Record metrics and events for quota reservation and admission
+		s.recordWorkloadAdmissionMetrics(newWorkload, e.Obj, admission)
+
+		log.V(2).Info("Workload successfully admitted and assigned flavors", "assignments", admission.PodSetAssignments)
+		return nil
+	}
+	// Ignore errors because the workload or clusterQueue could have been deleted
+	// by an event.
+	_ = s.cache.ForgetWorkload(log, newWorkload)
+	if afs.Enabled(s.admissionFairSharing) {
+		s.updateEntryPenalty(log, e, subtract)
+	}
+	if apierrors.IsNotFound(err) {
+		log.V(2).Info("Workload not admitted because it was deleted")
+		return nil
+	}
+
+	log.Error(err, errCouldNotAdmitWL)
+	s.requeueAndUpdate(ctx, *e)
 
 	return nil
 }
 
-func (s *Scheduler) applyAdmissionWithSSA(ctx context.Context, w *kueue.Workload) error {
-	return workload.ApplyAdmissionStatus(ctx, s.client, w, false, s.clock)
+func (s *Scheduler) applyAdmissionWithSSA(ctx context.Context, w *kueue.Workload, update func() (bool, error)) error {
+	return workload.PatchAdmissionStatus(ctx, s.client, w, false, s.clock, update)
 }
 
 type entryOrdering struct {

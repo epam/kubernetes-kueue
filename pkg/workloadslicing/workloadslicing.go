@@ -98,7 +98,7 @@ func Finish(ctx context.Context, clnt client.Client, workloadSlice *kueue.Worklo
 	if apimeta.IsStatusConditionTrue(workloadSlice.Status.Conditions, kueue.WorkloadFinished) {
 		return nil
 	}
-	if err := clientutil.PatchStatus(ctx, clnt, workloadSlice, func() (bool, error) {
+	if err := clientutil.PatchStatus(ctx, clnt, workloadSlice, true, func() (bool, error) {
 		return apimeta.SetStatusCondition(&workloadSlice.Status.Conditions, metav1.Condition{
 			Type:    kueue.WorkloadFinished,
 			Status:  metav1.ConditionTrue,

@@ -183,7 +183,7 @@ func (j *Job) Stop(ctx context.Context, c client.Client, podSetsInfo []podset.Po
 
 	// Reset start time if necessary, so we can update the scheduling directives.
 	if j.Status.StartTime != nil {
-		if err := clientutil.PatchStatus(ctx, c, object, func() (bool, error) {
+		if err := clientutil.PatchStatus(ctx, c, object, true, func() (bool, error) {
 			j.Status.StartTime = nil
 			return true, nil
 		}); err != nil {

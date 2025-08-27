@@ -121,7 +121,7 @@ func (a adapter[PtrT, T]) SyncJob(
 			return nil
 		}
 
-		return clientutil.PatchStatus(ctx, localClient, localJob, func() (bool, error) {
+		return clientutil.PatchStatus(ctx, localClient, localJob, true, func() (bool, error) {
 			// if the remote exists, just copy the status
 			a.copyStatus(localJob, remoteJob)
 			return true, nil

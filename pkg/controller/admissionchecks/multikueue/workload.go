@@ -418,7 +418,7 @@ func (w *wlReconciler) reconcileGroup(ctx context.Context, group *wlGroup) (reco
 			group.local.Status.ClusterName = &reservingRemote
 			group.local.Status.NominatedClusterNames = nil
 
-			if err := workload.ApplyAdmissionStatus(ctx, w.client, group.local, true, w.clock); err != nil {
+			if err := workload.PatchAdmissionStatus(ctx, w.client, group.local, true, w.clock); err != nil {
 				log.V(2).Error(err, "Failed to patch workload", "workload", klog.KObj(group.local))
 				return reconcile.Result{}, err
 			}
@@ -458,7 +458,7 @@ func (w *wlReconciler) nominateAndSynchronizeWorkers(ctx context.Context, group 
 		}
 		if group.local.Status.ClusterName == nil && !equality.Semantic.DeepEqual(group.local.Status.NominatedClusterNames, nominatedWorkers) {
 			group.local.Status.NominatedClusterNames = nominatedWorkers
-			if err := workload.ApplyAdmissionStatus(ctx, w.client, group.local, true, w.clock); err != nil {
+			if err := workload.PatchAdmissionStatus(ctx, w.client, group.local, true, w.clock); err != nil {
 				log.V(2).Error(err, "Failed to patch nominated clusters", "workload", klog.KObj(group.local))
 				return reconcile.Result{}, err
 			}
@@ -483,7 +483,7 @@ func (w *wlReconciler) nominateAndSynchronizeWorkers(ctx context.Context, group 
 		nominatedWorkers = append(group.local.Status.NominatedClusterNames, nextNominatedWorkers...)
 		w.roundStartTimes[key] = now
 		group.local.Status.NominatedClusterNames = nominatedWorkers
-		if err := workload.ApplyAdmissionStatus(ctx, w.client, group.local, true, w.clock); err != nil {
+		if err := workload.PatchAdmissionStatus(ctx, w.client, group.local, true, w.clock); err != nil {
 			log.V(2).Error(err, "Failed to patch nominated clusters", "workload", klog.KObj(group.local))
 			return reconcile.Result{}, err
 		}

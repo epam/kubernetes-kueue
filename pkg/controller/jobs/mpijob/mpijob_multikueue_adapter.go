@@ -64,7 +64,7 @@ func (b *multiKueueAdapter) SyncJob(ctx context.Context, localClient client.Clie
 			return nil
 		}
 
-		return clientutil.PatchStatus(ctx, localClient, &localJob, func() (bool, error) {
+		return clientutil.PatchStatus(ctx, localClient, &localJob, true, func() (bool, error) {
 			localJob.Status = remoteJob.Status
 			return true, nil
 		})

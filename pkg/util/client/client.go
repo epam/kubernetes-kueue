@@ -43,8 +43,8 @@ func Patch(ctx context.Context, c client.Client, obj client.Object, strict bool,
 // PatchStatus applies the merge patch of client.Object status.
 // The resourceVersion will be part of the patch, make this call fail if
 // client.Object was changed.
-func PatchStatus(ctx context.Context, c client.Client, obj client.Object, update func() (bool, error)) error {
-	return updateAndPatch(obj, true, update, func(patch client.Patch) error {
+func PatchStatus(ctx context.Context, c client.Client, obj client.Object, strict bool, update func() (bool, error)) error {
+	return updateAndPatch(obj, strict, update, func(patch client.Patch) error {
 		return c.Status().Patch(ctx, obj, patch)
 	})
 }

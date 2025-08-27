@@ -837,6 +837,23 @@ func admissionChecksStatusPatch(w *kueue.Workload, wlCopy *kueue.Workload, c clo
 	}
 }
 
+// PatchAdmissionStatus updated all the admission related status fields of a workload with SMP
+// or SSA depends on WorkloadRequestUseMergePatch feature gate.
+// If strict is true, resourceVersion will be part of the patch, make this call fail if Workload
+// was changed.
+// After the `WorkloadRequestUseMergePatch` GA, we can remove this function and use
+// `clientutil.PatchStatus` instead.
+func PatchAdmissionStatus(ctx context.Context, c client.Client, w *kueue.Workload, strict bool, clk clock.Clock, update func() (bool, error)) error {
+	if features.Enabled(features.WorkloadRequestUseMergePatch) {
+		return clientutil.PatchStatus(ctx, c, w, strict, update)
+	}
+	updated, err := update()
+	if err != nil || !updated {
+		return err
+	}
+	return ApplyAdmissionStatus(ctx, c, w, strict, clk)
+}
+
 // ApplyAdmissionStatus updated all the admission related status fields of a workload with SSA.
 // If strict is true, resourceVersion will be part of the patch, make this call fail if Workload
 // was changed.
@@ -1082,9 +1099,12 @@ func AdmissionChecksForWorkload(log logr.Logger, wl *kueue.Workload, admissionCh
 }
 
 func Evict(ctx context.Context, c client.Client, recorder record.EventRecorder, wl *kueue.Workload, reason, underlyingCause, msg string, clock clock.Clock) error {
-	prepareForEviction(wl, clock.Now(), reason, msg)
-	reportWorkloadEvictedOnce := workloadEvictionStateInc(wl, reason, underlyingCause)
-	if err := ApplyAdmissionStatus(ctx, c, wl, true, clock); err != nil {
+	var reportWorkloadEvictedOnce bool
+	if err := PatchAdmissionStatus(ctx, c, wl, true, clock, func() (bool, error) {
+		prepareForEviction(wl, clock.Now(), reason, msg)
+		reportWorkloadEvictedOnce = workloadEvictionStateInc(wl, reason, underlyingCause)
+		return true, nil
+	}); err != nil {
 		return err
 	}
 	if wl.Status.Admission == nil {
