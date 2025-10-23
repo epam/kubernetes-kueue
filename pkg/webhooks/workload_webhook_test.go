@@ -40,6 +40,64 @@ const (
 	testWorkloadNamespace = "test-ns"
 )
 
+func TestDefault(t *testing.T) {
+	testCases := map[string]struct {
+		input   *kueue.Workload
+		want    *kueue.Workload
+		wantErr error
+	}{
+		"pod with queue nil ns selector": {
+			input: utiltestingapi.MakeWorkload("wl", metav1.NamespaceDefault).
+				PodSets(
+					*utiltestingapi.MakePodSet("ps", 1).
+						PodSpec(corev1.PodSpec{
+							Containers: []corev1.Container{
+								{
+									Env: []corev1.EnvVar{
+										{Name: "test", Value: "first"},
+										{Name: "test", Value: "second"},
+									},
+								},
+							},
+						}).
+						Obj(),
+				).
+				Obj(),
+			want: utiltestingapi.MakeWorkload("wl", metav1.NamespaceDefault).
+				PodSets(
+					*utiltestingapi.MakePodSet("ps", 1).
+						PodSpec(corev1.PodSpec{
+							Containers: []corev1.Container{
+								{
+									Env: []corev1.EnvVar{
+										{Name: "test", Value: "second"},
+									},
+								},
+							},
+						}).
+						Obj(),
+				).
+				Obj(),
+		},
+	}
+
+	for name, tc := range testCases {
+		t.Run(name, func(t *testing.T) {
+			ctx, _ := utiltesting.ContextWithLog(t)
+
+			w := &WorkloadWebhook{}
+
+			if err := w.Default(ctx, tc.input); err != nil {
+				t.Errorf("Failed to set defaults for kueue.Workload: %s", err)
+			}
+
+			if diff := cmp.Diff(tc.want, tc.input); len(diff) != 0 {
+				t.Errorf("Workloads mismatch (-want,+got):\n%s", diff)
+			}
+		})
+	}
+}
+
 func TestValidateWorkload(t *testing.T) {
 	specPath := field.NewPath("spec")
 	podSetsPath := specPath.Child("podSets")

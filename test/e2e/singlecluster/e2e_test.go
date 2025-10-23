@@ -123,6 +123,64 @@ var _ = ginkgo.Describe("Kueue", func() {
 			util.ExpectAllPodsInNamespaceDeleted(ctx, k8sClient, ns)
 		})
 
+		ginkgo.It("should admit workload even if PodSet template has duplicate env variables", func() {
+			ginkgo.By("Creating a job with no requests, will set the resource flavors selectors when admitted ", func() {
+				job := testingjob.MakeJob("job", ns.Name).
+					Queue(kueue.LocalQueueName(localQueue.Name)).
+					Parallelism(1).
+					Request(corev1.ResourceCPU, "1").
+					Containers(corev1.Container{
+						Name:      "c",
+						Image:     "pause",
+						Resources: corev1.ResourceRequirements{Requests: corev1.ResourceList{}, Limits: corev1.ResourceList{}},
+						Env: []corev1.EnvVar{
+							{
+								Name:  "TEST_VAR",
+								Value: "fist",
+							},
+							{
+								Name:  "DUPLICATE_TEST_VAR",
+								Value: "fist",
+							},
+							{
+								Name:  "DUPLICATE_TEST_VAR",
+								Value: "second",
+							},
+						},
+					}).
+					Obj()
+
+				ginkgo.By("Creating a job", func() {
+					util.MustCreate(ctx, k8sClient, job)
+				})
+
+				wlKey := client.ObjectKey{
+					Namespace: job.Namespace,
+					Name:      workloadjob.GetWorkloadNameForJob(job.Name, job.UID),
+				}
+				wl := &kueue.Workload{}
+
+				ginkgo.By("Checking that the workload is admitted and have not duplicate variables", func() {
+					gomega.Eventually(func(g gomega.Gomega) {
+						g.Expect(k8sClient.Get(ctx, wlKey, wl)).Should(gomega.Succeed())
+						g.Expect(wl.Spec.PodSets).Should(gomega.HaveLen(1))
+						g.Expect(wl.Spec.PodSets[0].Template.Spec.Containers).Should(gomega.HaveLen(1))
+						g.Expect(wl.Spec.PodSets[0].Template.Spec.Containers[0].Env).Should(gomega.BeComparableTo([]corev1.EnvVar{
+							{
+								Name:  "TEST_VAR",
+								Value: "fist",
+							},
+							{
+								Name:  "DUPLICATE_TEST_VAR",
+								Value: "second",
+							},
+						}))
+						g.Expect(workload.IsAdmitted(wl)).Should(gomega.BeTrue())
+					}, util.Timeout, util.Interval).Should(gomega.Succeed())
+				})
+			})
+		})
+
 		ginkgo.It("Should allow to schedule Jobs via CronJob", func() {
 			cronJob := &batchv1.CronJob{
 				ObjectMeta: metav1.ObjectMeta{

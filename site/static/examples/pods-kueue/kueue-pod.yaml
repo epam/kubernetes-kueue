@@ -11,8 +11,13 @@ spec:
       command:
         - sleep
       args:
-        - 3s
+        - 3600s
       resources:
         requests:
           cpu: 3
+      env:
+        - name: DEMO
+          value: "Hello from the environment"
+        - name: DEMO
+          value: "Such a sweet sorrow"
   restartPolicy: OnFailure

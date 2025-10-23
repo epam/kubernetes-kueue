@@ -19,6 +19,7 @@ package webhooks
 import (
 	"context"
 	"fmt"
+	"maps"
 	"slices"
 	"strconv"
 
@@ -69,7 +70,23 @@ func (w *WorkloadWebhook) Default(ctx context.Context, obj runtime.Object) error
 		}
 	}
 
+	w.filterEnvVariables(wl)
+
 	return nil
+}
+
+func (w *WorkloadWebhook) filterEnvVariables(wl *kueue.Workload) {
+	for pi := range wl.Spec.PodSets {
+		ps := &wl.Spec.PodSets[pi]
+		for ci := range ps.Template.Spec.Containers {
+			c := &ps.Template.Spec.Containers[ci]
+			vars := make(map[string]corev1.EnvVar, len(c.Env))
+			for _, env := range c.Env {
+				vars[env.Name] = env
+			}
+			c.Env = slices.Collect(maps.Values(vars))
+		}
+	}
 }
 
 // +kubebuilder:webhook:path=/validate-kueue-x-k8s-io-v1beta1-workload,mutating=false,failurePolicy=fail,sideEffects=None,groups=kueue.x-k8s.io,resources=workloads;workloads/status,verbs=create;update,versions=v1beta1,name=vworkload.kb.io,admissionReviewVersions=v1
