@@ -163,6 +163,25 @@ spec:
                   flavorFungibility defines whether a workload should try the next flavor
                   before borrowing or preempting in the flavor being evaluated.
                 properties:
+                  preference:
+                    default: BorrowingOverPreemption
+                    description: |-
+                      preference selects the order between minimizing preemption and avoiding borrowing
+                      when both policies are set to TryNextFlavor. The possible values are:
+
+                      - `BorrowingOverPreemption` (default): prefer lower borrowing distance before preferring lower preemption mode.
+                      - `PreemptionOverBorrowing`: prefer lower preemption mode before preferring lower borrowing distance.
+
+                      Deprecated values from earlier releases are not supported; please use the names above.
+                    enum:
+                    - BorrowingOverPreemption
+                    - PreemptionOverBorrowing
+                    type: string
+                    x-kubernetes-validations:
+                    - message: preference can only be set when both whenCanBorrow
+                        and whenCanPreempt are TryNextFlavor
+                      rule: self.preference == null || (self.whenCanBorrow == 'TryNextFlavor'
+                        && self.whenCanPreempt == 'TryNextFlavor')
                   whenCanBorrow:
                     default: MayStopSearch
                     description: |-
@@ -929,6 +948,23 @@ spec:
                   flavorFungibility defines whether a workload should try the next flavor
                   before borrowing or preempting in the flavor being evaluated.
                 properties:
+                  preference:
+                    default: BorrowingOverPreemption
+                    description: |-
+                      preference selects the order between minimizing preemption and avoiding borrowing
+                      when both policies are set to TryNextFlavor. The possible values are:
+
+                      - `BorrowingOverPreemption` (default): prefer lower borrowing distance before preferring lower preemption mode.
+                      - `PreemptionOverBorrowing`: prefer lower preemption mode before preferring lower borrowing distance.
+                    enum:
+                    - BorrowingOverPreemption
+                    - PreemptionOverBorrowing
+                    type: string
+                    x-kubernetes-validations:
+                    - message: preference can only be set when both whenCanBorrow
+                        and whenCanPreempt are TryNextFlavor
+                      rule: self.preference == null || (self.whenCanBorrow == 'TryNextFlavor'
+                        && self.whenCanPreempt == 'TryNextFlavor')
                   whenCanBorrow:
                     default: MayStopSearch
                     description: |-

@@ -388,6 +388,13 @@ const (
 	TryNextFlavor FlavorFungibilityPolicy = "TryNextFlavor"
 )
 
+type FlavorFungibilityPreference string
+
+const (
+	BorrowingOverPreemption FlavorFungibilityPreference = "BorrowingOverPreemption"
+	PreemptionOverBorrowing FlavorFungibilityPreference = "PreemptionOverBorrowing"
+)
+
 // FlavorFungibility determines whether a workload should try the next flavor
 // before borrowing or preempting in current flavor.
 type FlavorFungibility struct {
@@ -414,6 +421,19 @@ type FlavorFungibility struct {
 	// +kubebuilder:validation:Enum={MayStopSearch,TryNextFlavor,Preempt}
 	// +kubebuilder:default="TryNextFlavor"
 	WhenCanPreempt FlavorFungibilityPolicy `json:"whenCanPreempt,omitempty"`
+	// preference selects the order between minimizing preemption and avoiding borrowing
+	// when both policies are set to TryNextFlavor. The possible values are:
+	//
+	// - `BorrowingOverPreemption` (default): prefer lower borrowing distance before preferring lower preemption mode.
+	// - `PreemptionOverBorrowing`: prefer lower preemption mode before preferring lower borrowing distance.
+	//
+	// Deprecated values from earlier releases are not supported; please use the names above.
+	//
+	// +kubebuilder:validation:Enum={BorrowingOverPreemption,PreemptionOverBorrowing}
+	// +kubebuilder:default=BorrowingOverPreemption
+	// +kubebuilder:validation:XValidation:rule="self.preference == null || (self.whenCanBorrow == 'TryNextFlavor' && self.whenCanPreempt == 'TryNextFlavor')",message="preference can only be set when both whenCanBorrow and whenCanPreempt are TryNextFlavor"
+	// +optional
+	Preference *FlavorFungibilityPreference `json:"preference,omitempty"`
 }
 
 // ClusterQueuePreemption contains policies to preempt Workloads from this

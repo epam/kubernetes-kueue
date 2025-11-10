@@ -379,24 +379,89 @@ func isPreferred(a, b granularMode, fungibilityConfig kueue.FlavorFungibility) b
 		return true
 	}
 
-	if !features.Enabled(features.FlavorFungibilityImplicitPreferenceDefault) {
-		if a.preemptionMode != b.preemptionMode {
-			return a.preemptionMode > b.preemptionMode
-		} else {
-			return a.borrowingLevel.betterThan(b.borrowingLevel)
+	preferBorrowingFirst := func() bool {
+		severityA := preemptionSeverity(a.preemptionMode)
+		severityB := preemptionSeverity(b.preemptionMode)
+		if severityA != severityB {
+			return severityA < severityB
 		}
-	}
-
-	if fungibilityConfig.WhenCanBorrow == kueue.TryNextFlavor {
 		if a.borrowingLevel != b.borrowingLevel {
 			return a.borrowingLevel.betterThan(b.borrowingLevel)
 		}
 		return a.preemptionMode > b.preemptionMode
-	} else {
-		if a.preemptionMode != b.preemptionMode {
-			return a.preemptionMode > b.preemptionMode
+	}
+	preferPreemptionFirst := func() bool {
+		if a.borrowingLevel != b.borrowingLevel {
+			return a.borrowingLevel.betterThan(b.borrowingLevel)
 		}
-		return a.borrowingLevel.betterThan(b.borrowingLevel)
+		severityA := preemptionSeverity(a.preemptionMode)
+		severityB := preemptionSeverity(b.preemptionMode)
+		if severityA != severityB {
+			return severityA < severityB
+		}
+		return a.preemptionMode > b.preemptionMode
+	}
+	preferPreemptionWithBorrowDistance := func() bool {
+		if a.borrowingLevel != b.borrowingLevel {
+			return a.borrowingLevel.betterThan(b.borrowingLevel)
+		}
+		rankA := preemptionRank(a.preemptionMode)
+		rankB := preemptionRank(b.preemptionMode)
+		if rankA != rankB {
+			return rankA < rankB
+		}
+		return a.preemptionMode > b.preemptionMode
+	}
+
+	usePreference := fungibilityConfig.WhenCanBorrow == kueue.TryNextFlavor && fungibilityConfig.WhenCanPreempt == kueue.TryNextFlavor
+	if !usePreference {
+		if features.Enabled(features.FlavorFungibilityImplicitPreferenceDefault) && fungibilityConfig.WhenCanBorrow == kueue.TryNextFlavor {
+			return preferBorrowingFirst()
+		}
+		return preferPreemptionFirst()
+	}
+
+	switch effectivePreference(fungibilityConfig) {
+	case kueue.PreemptionOverBorrowing:
+		return preferPreemptionWithBorrowDistance()
+	default:
+		return preferBorrowingFirst()
+	}
+}
+
+func effectivePreference(fungibilityConfig kueue.FlavorFungibility) kueue.FlavorFungibilityPreference {
+	if fungibilityConfig.Preference != nil {
+		return *fungibilityConfig.Preference
+	}
+	if features.Enabled(features.FlavorFungibilityImplicitPreferenceDefault) {
+		return kueue.PreemptionOverBorrowing
+	}
+	return kueue.BorrowingOverPreemption
+}
+
+func preemptionRank(mode preemptionMode) int {
+	switch mode {
+	case fit:
+		return 3
+	case reclaim, preempt:
+		return 2
+	case noPreemptionCandidates:
+		return 1
+	default:
+		return 0
+	}
+}
+
+func preemptionSeverity(mode preemptionMode) int {
+	switch mode {
+	case fit:
+		return 0
+	case reclaim, preempt:
+		return 1
+	case noPreemptionCandidates:
+		return 2
+	default:
+		return 3
 	}
 }
 

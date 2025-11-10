@@ -1375,10 +1375,34 @@ to fit in current flavor.</li>
 </ul>
 </td>
 </tr>
+<tr><td><code>preference</code><br/>
+<a href="#kueue-x-k8s-io-v1beta2-FlavorFungibilityPreference"><code>FlavorFungibilityPreference</code></a>
+</td>
+<td>
+   <p>preference selects the order between minimizing preemption and avoiding borrowing
+when both policies are set to TryNextFlavor. The possible values are:</p>
+<ul>
+<li><code>BorrowingOverPreemption</code> (default): prefer lower borrowing distance before preferring lower preemption mode.</li>
+<li><code>PreemptionOverBorrowing</code>: prefer lower preemption mode before preferring lower borrowing distance.</li>
+</ul>
+</td>
+</tr>
 </tbody>
 </table>
 
 ## `FlavorFungibilityPolicy`     {#kueue-x-k8s-io-v1beta2-FlavorFungibilityPolicy}
+    
+(Alias of `string`)
+
+**Appears in:**
+
+- [FlavorFungibility](#kueue-x-k8s-io-v1beta2-FlavorFungibility)
+
+
+
+
+
+## `FlavorFungibilityPreference`     {#kueue-x-k8s-io-v1beta2-FlavorFungibilityPreference}
     
 (Alias of `string`)
 

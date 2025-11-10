@@ -59,6 +59,29 @@ func TestValidateClusterQueue(t *testing.T) {
 			},
 		},
 		{
+			name: "flavor fungibility preference allowed when both policies are TryNextFlavor",
+			clusterQueue: utiltestingapi.MakeClusterQueue("cluster-queue").
+				FlavorFungibility(kueue.FlavorFungibility{
+					WhenCanBorrow:  kueue.TryNextFlavor,
+					WhenCanPreempt: kueue.TryNextFlavor,
+					Preference:     ptr.To(kueue.BorrowingOverPreemption),
+				}).
+				Obj(),
+		},
+		{
+			name: "flavor fungibility preference requires both policies TryNextFlavor",
+			clusterQueue: utiltestingapi.MakeClusterQueue("cluster-queue").
+				FlavorFungibility(kueue.FlavorFungibility{
+					WhenCanBorrow:  kueue.MayStopSearch,
+					WhenCanPreempt: kueue.TryNextFlavor,
+					Preference:     ptr.To(kueue.BorrowingOverPreemption),
+				}).
+				Obj(),
+			wantErr: field.ErrorList{
+				field.Invalid(specPath.Child("flavorFungibility").Child("preference"), kueue.BorrowingOverPreemption, `preference "BorrowingOverPreemption" requires both whenCanBorrow and whenCanPreempt to be TryNextFlavor`),
+			},
+		},
+		{
 			name: "admissionChecks defined",
 			clusterQueue: utiltestingapi.MakeClusterQueue("cluster-queue").
 				AdmissionChecks("ac1").
