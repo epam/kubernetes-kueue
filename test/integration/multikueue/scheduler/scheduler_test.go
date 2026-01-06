@@ -33,6 +33,7 @@ import (
 
 	config "sigs.k8s.io/kueue/apis/config/v1beta2"
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
+	"sigs.k8s.io/kueue/pkg/controller/constants"
 	workloadjob "sigs.k8s.io/kueue/pkg/controller/jobs/job"
 	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/util/testing"
@@ -569,6 +570,108 @@ var _ = ginkgo.Describe("MultiKueue with scheduler", ginkgo.Label("area:multikue
 			gomega.Eventually(func(g gomega.Gomega) {
 				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, lowWlKey, &kueue.Workload{})).To(testing.BeNotFoundError())
 				g.Expect(worker2TestCluster.client.Get(worker2TestCluster.ctx, lowWlKey, &kueue.Workload{})).To(testing.BeNotFoundError())
+			}, util.Timeout, util.Interval).Should(gomega.Succeed())
+		})
+	})
+
+	ginkgo.It("should preempt a running high-priority workload when the kueue.x-k8s.io/priority-class label changes", func() {
+		managerJob1 := testingjob.MakeJob("job1", managerNs.Name).
+			WorkloadPriorityClass(managerHighWPC.Name).
+			Queue(kueue.LocalQueueName(managerLq.Name)).
+			RequestAndLimit(corev1.ResourceCPU, "2").
+			RequestAndLimit(corev1.ResourceMemory, "1G").
+			Obj()
+		ginkgo.By("Creating the first high-priority job", func() {
+			util.MustCreate(managerTestCluster.ctx, managerTestCluster.client, managerJob1)
+		})
+
+		job1Key := client.ObjectKeyFromObject(managerJob1)
+		wl1Key := types.NamespacedName{Name: workloadjob.GetWorkloadNameForJob(managerJob1.Name, managerJob1.UID), Namespace: managerNs.Name}
+
+		managerWl1 := &kueue.Workload{}
+		workerWl1 := &kueue.Workload{}
+
+		ginkgo.By("Checking that the first high-priority workload is created and admitted in the manager cluster", func() {
+			gomega.Eventually(func(g gomega.Gomega) {
+				g.Expect(managerTestCluster.client.Get(managerTestCluster.ctx, wl1Key, managerWl1)).To(gomega.Succeed())
+				g.Expect(workload.IsAdmitted(managerWl1)).To(gomega.BeTrue())
+			}, util.Timeout, util.Interval).Should(gomega.Succeed())
+		})
+
+		ginkgo.By("Checking that the first high-priority workload is created in worker1 and not in worker2, and that its spec matches the manager workload", func() {
+			gomega.Eventually(func(g gomega.Gomega) {
+				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, wl1Key, workerWl1)).To(gomega.Succeed())
+				g.Expect(workload.IsAdmitted(workerWl1)).To(gomega.BeTrue())
+				g.Expect(workerWl1.Spec).To(gomega.BeComparableTo(managerWl1.Spec))
+				g.Expect(worker2TestCluster.client.Get(worker2TestCluster.ctx, wl1Key, &kueue.Workload{})).To(testing.BeNotFoundError())
+			}, util.Timeout, util.Interval).Should(gomega.Succeed())
+		})
+
+		workerJob1 := &batchv1.Job{}
+
+		ginkgo.By("Updating the worker first job status to active=1", func() {
+			startTime := metav1.NewTime(time.Now().Truncate(time.Second))
+			gomega.Eventually(func(g gomega.Gomega) {
+				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, job1Key, workerJob1)).To(gomega.Succeed())
+				workerJob1.Status.StartTime = &startTime
+				workerJob1.Status.Active = 1
+				workerJob1.Status.Ready = ptr.To[int32](1)
+				g.Expect(worker1TestCluster.client.Status().Update(worker1TestCluster.ctx, workerJob1)).To(gomega.Succeed())
+			}, util.Timeout, util.Interval).Should(gomega.Succeed())
+
+			gomega.Eventually(func(g gomega.Gomega) {
+				g.Expect(managerTestCluster.client.Get(managerTestCluster.ctx, job1Key, managerJob1)).To(gomega.Succeed())
+				g.Expect(managerJob1.Status.StartTime).To(gomega.Equal(&startTime))
+				g.Expect(managerJob1.Status.Active).To(gomega.Equal(int32(1)))
+				g.Expect(ptr.Deref(managerJob1.Status.Ready, 0)).To(gomega.Equal(int32(1)))
+			}, util.Timeout, util.Interval).Should(gomega.Succeed())
+		})
+
+		job2 := testingjob.MakeJob("job2", managerNs.Name).
+			WorkloadPriorityClass(managerHighWPC.Name).
+			Queue(kueue.LocalQueueName(managerLq.Name)).
+			RequestAndLimit(corev1.ResourceCPU, "1").
+			RequestAndLimit(corev1.ResourceMemory, "2G").
+			Obj()
+		ginkgo.By("Creating the second high-priority job", func() {
+			util.MustCreate(managerTestCluster.ctx, managerTestCluster.client, job2)
+		})
+
+		//job2Key := client.ObjectKeyFromObject(job2)
+		managerWl2 := &kueue.Workload{}
+
+		ginkgo.By("Checking that the second high-priority workload is created and pending in the manager cluster", func() {
+			gomega.Eventually(func(g gomega.Gomega) {
+				g.Expect(managerTestCluster.client.Get(managerTestCluster.ctx, wl1Key, managerWl2)).To(gomega.Succeed())
+				g.Expect(workload.IsAdmitted(managerWl2)).To(gomega.BeTrue())
+			}, util.Timeout, util.Interval).Should(gomega.Succeed())
+		})
+
+		ginkgo.By("Checking that the manager and worker first workload is still admitted", func() {
+			util.ExpectWorkloadsToBeAdmitted(managerTestCluster.ctx, managerTestCluster.client, managerWl1, workerWl1)
+		})
+
+		ginkgo.By("Updating the first job's kueue.x-k8s.io/priority-class label to low", func() {
+			gomega.Eventually(func(g gomega.Gomega) {
+				g.Expect(managerTestCluster.client.Get(managerTestCluster.ctx, job1Key, managerJob1)).Should(gomega.Succeed())
+				managerJob1.Labels[constants.WorkloadPriorityClassLabel] = managerLowWPC.Name
+				g.Expect(managerTestCluster.client.Update(managerTestCluster.ctx, managerJob1)).Should(gomega.Succeed())
+			}, util.Timeout, util.Interval).Should(gomega.Succeed())
+		})
+
+		ginkgo.By("Checking that the manager first job is suspended and kueue.x-k8s.io/priority-class label changed to low", func() {
+			gomega.Eventually(func(g gomega.Gomega) {
+				g.Expect(managerTestCluster.client.Get(managerTestCluster.ctx, job1Key, managerJob1)).To(gomega.Succeed())
+				g.Expect(managerJob1.Spec.Suspend).To(gomega.Equal(ptr.To(true)))
+				g.Expect(managerJob1.Labels[constants.WorkloadPriorityClassLabel]).To(gomega.Equal(managerLowWPC.Name))
+			}, util.Timeout, util.Interval).Should(gomega.Succeed())
+		})
+
+		ginkgo.By("Checking that the worker first job is suspended and kueue.x-k8s.io/priority-class label changed to low", func() {
+			gomega.Eventually(func(g gomega.Gomega) {
+				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, job1Key, workerJob1)).To(gomega.Succeed())
+				g.Expect(workerJob1.Spec.Suspend).To(gomega.Equal(ptr.To(true)))
+				g.Expect(workerJob1.Labels[constants.WorkloadPriorityClassLabel]).To(gomega.Equal(managerLowWPC.Name))
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
 		})
 	})
