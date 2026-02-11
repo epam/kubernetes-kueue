@@ -1,0 +1,14 @@
+priorityBoostController:
+  image:
+    repository: us-central1-docker.pkg.dev/k8s-staging-images/kueue/priority-boost-controller
+    tag: main
+    pullPolicy: Always
+  imagePullSecrets: []
+  config:
+    # minAdmitDuration is the minimum time a workload must remain admitted before
+    # it can be preempted by same-priority workloads. Set to "0" to disable.
+    minAdmitDuration: "30m"
+    # boostValue is the priority boost applied during the minAdmitDuration window.
+    boostValue: 100000
+kueue:
+  enabled: false
