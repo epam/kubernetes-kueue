@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: priority-boost-controller-config
+  namespace: kueue-system
+data:
+  controller_manager_config.yaml: |
+    # minAdmitDuration is the minimum time a workload must remain admitted before
+    # it can be preempted by same-priority workloads. Set to "0" to disable.
+    # Examples: "30m", "1h".
+    minAdmitDuration: "30m"
+    # boostValue is the priority boost applied during the minAdmitDuration window.
+    boostValue: 100000
