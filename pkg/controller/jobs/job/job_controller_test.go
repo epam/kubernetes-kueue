@@ -38,6 +38,7 @@ import (
 
 	configapi "sigs.k8s.io/kueue/apis/config/v1beta2"
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
+	schdcache "sigs.k8s.io/kueue/pkg/cache/scheduler"
 	"sigs.k8s.io/kueue/pkg/constants"
 	controllerconsts "sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
@@ -4016,7 +4017,7 @@ func TestReconciler(t *testing.T) {
 				}
 				recorder := &utiltesting.EventRecorder{}
 				reconciler, err := NewReconciler(ctx, kClient, indexer, recorder,
-					append(tc.reconcilerOptions, jobframework.WithClock(testingclock.NewFakeClock(now)))...)
+					append(tc.reconcilerOptions, jobframework.WithCache(schdcache.New(kClient)), jobframework.WithClock(testingclock.NewFakeClock(now)))...)
 				if err != nil {
 					t.Errorf("Error creating the reconciler: %v", err)
 				}

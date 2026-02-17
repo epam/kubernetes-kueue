@@ -45,11 +45,13 @@ import (
 	configapi "sigs.k8s.io/kueue/apis/config/v1beta2"
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
 	mocks "sigs.k8s.io/kueue/internal/mocks/controller/jobframework"
+	schdcache "sigs.k8s.io/kueue/pkg/cache/scheduler"
 	kueueconstants "sigs.k8s.io/kueue/pkg/constants"
 	"sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/controller/core/indexer"
 	"sigs.k8s.io/kueue/pkg/controller/jobs/job"
 	"sigs.k8s.io/kueue/pkg/features"
+	"sigs.k8s.io/kueue/pkg/metrics"
 	"sigs.k8s.io/kueue/pkg/util/kubeversion"
 	utiltesting "sigs.k8s.io/kueue/pkg/util/testing"
 	utiltestingapi "sigs.k8s.io/kueue/pkg/util/testing/v1beta2"
@@ -1050,6 +1052,13 @@ func TestFindAncestorJobManagedByKueue(t *testing.T) {
 
 func TestProcessOptions(t *testing.T) {
 	fakeClock := testingclock.NewFakeClock(time.Now())
+	lqMetricsConfig := metrics.NewLocalQueueMetricsConfig(&configapi.LocalQueueMetrics{
+		Enable: true,
+		LocalQueueSelector: &metav1.LabelSelector{
+			MatchLabels: map[string]string{"key": "value"},
+		},
+	},
+	)
 	cases := map[string]struct {
 		inputOpts []Option
 		wantOpts  Options
@@ -1061,6 +1070,7 @@ func TestProcessOptions(t *testing.T) {
 				WithKubeServerVersion(&kubeversion.ServerVersionFetcher{}),
 				WithLabelKeysToCopy([]string{"toCopyKey"}),
 				WithClock(fakeClock),
+				WithLocalQueueMetrics(lqMetricsConfig),
 			},
 			wantOpts: Options{
 				ManageJobsWithoutQueueName: true,
@@ -1069,6 +1079,7 @@ func TestProcessOptions(t *testing.T) {
 				IntegrationOptions:         nil,
 				LabelKeysToCopy:            []string{"toCopyKey"},
 				Clock:                      fakeClock,
+				LqMetrics:                  lqMetricsConfig,
 			},
 		},
 		"a single option is passed": {
@@ -1222,6 +1233,7 @@ func TestReconcileGenericJobWithWaitForPodsReady(t *testing.T) {
 			options := []Option{
 				WithClock(fakeClock),
 				WithWaitForPodsReady(&configapi.WaitForPodsReady{}),
+				WithCache(schdcache.New(cl)),
 			}
 			recorder := &utiltesting.EventRecorder{}
 			r := NewReconciler(cl, recorder, options...)

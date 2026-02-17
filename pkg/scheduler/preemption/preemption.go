@@ -70,6 +70,7 @@ type Preemptor struct {
 	roleTracker            *roletracker.RoleTracker
 	customLabels           *metrics.CustomLabels
 	preemptionExpectations *expectations.Store
+	lqMetrics              *metrics.LocalQueueMetricsConfig
 }
 
 type preemptionCtx struct {
@@ -90,6 +91,7 @@ func New(
 	fs *config.FairSharing,
 	enabledAfs bool,
 	clock clock.Clock,
+	lqMetrics *metrics.LocalQueueMetricsConfig,
 	tracker *roletracker.RoleTracker,
 	preemptionExpectations *expectations.Store,
 	customLabels *metrics.CustomLabels,
@@ -105,6 +107,7 @@ func New(
 		roleTracker:            tracker,
 		customLabels:           customLabels,
 		preemptionExpectations: preemptionExpectations,
+		lqMetrics:              lqMetrics,
 	}
 	return p
 }
@@ -178,7 +181,7 @@ func preemptionMessage(preemptor *kueue.Workload, reason, preemptorPath, preempt
 }
 
 // IssuePreemptions marks the target workloads as evicted.
-func (p *Preemptor) IssuePreemptions(ctx context.Context, preemptor *workload.Info, targets []*Target, snap *schdcache.ClusterQueueSnapshot) (preempted int, failedPreemptions int, exampleError error) {
+func (p *Preemptor) IssuePreemptions(ctx context.Context, cache *schdcache.Cache, preemptor *workload.Info, targets []*Target, snap *schdcache.ClusterQueueSnapshot) (preempted int, failedPreemptions int, exampleError error) {
 	log := ctrl.LoggerFrom(ctx)
 	errCh := routine.NewErrorChannel()
 	ctx, cancel := context.WithCancel(ctx)
@@ -208,8 +211,9 @@ func (p *Preemptor) IssuePreemptions(ctx context.Context, preemptor *workload.In
 
 		message := preemptionMessage(preemptor.Obj, target.Reason, preemptorPath, preempteePath)
 		wlCopy := target.WorkloadInfo.Obj.DeepCopy()
+		exposeLqMetrics := p.lqMetrics.ShouldExposeLocalQueueMetricsForWorkload(log, cache, wlCopy)
 		err := workload.Evict(
-			ctx, p.client, p.recorder, wlCopy, kueue.WorkloadEvictedByPreemption, message, "", p.clock, p.roleTracker, p.customLabels,
+			ctx, p.client, p.recorder, wlCopy, kueue.WorkloadEvictedByPreemption, message, "", p.clock, exposeLqMetrics, p.roleTracker, p.customLabels,
 			workload.WithCustomPrepare(func(wl *kueue.Workload) {
 				workload.SetPreemptedCondition(wl, p.clock.Now(), target.Reason, message)
 			}),

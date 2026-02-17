@@ -104,6 +104,13 @@ func WithCustomLabels(cl *metrics.CustomLabels) Option {
 	}
 }
 
+// WithLocalQueueMetrics sets the configuration for local queue metrics.
+func WithLocalQueueMetrics(value *metrics.LocalQueueMetricsConfig) Option {
+	return func(m *Manager) {
+		m.lqMetrics = value
+	}
+}
+
 // SetDRAReconcileChannel sets the DRA reconcile channel after manager creation.
 func (m *Manager) SetDRAReconcileChannel(ch chan<- event.TypedGenericEvent[*kueue.Workload]) {
 	m.draReconcileChannel = ch
@@ -147,6 +154,7 @@ type Manager struct {
 
 	roleTracker  *roletracker.RoleTracker
 	customLabels *metrics.CustomLabels
+	lqMetrics    *metrics.LocalQueueMetricsConfig
 
 	requeuer inadmissibleRequeuer
 }

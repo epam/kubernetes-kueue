@@ -36,12 +36,17 @@ type LocalQueue struct {
 	admittedUsage      resources.FlavorResourceQuantities
 	// values extracted from K8s labels/annotations, used as custom Prometheus metric labels
 	customMetricLabelValues []string
+	labels                  map[string]string
 }
 
 func (q *LocalQueue) GetAdmittedUsage() corev1.ResourceList {
 	q.RLock()
 	defer q.RUnlock()
 	return q.admittedUsage.FlattenFlavors().ToResourceList()
+}
+
+func (q *LocalQueue) GetLabels() map[string]string {
+	return q.labels
 }
 
 func (q *LocalQueue) resetFlavorsAndResources(cqUsage resources.FlavorResourceQuantities, cqAdmittedUsage resources.FlavorResourceQuantities) {

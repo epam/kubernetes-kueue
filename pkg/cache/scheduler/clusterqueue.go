@@ -100,6 +100,8 @@ type clusterQueue struct {
 
 	// values extracted from K8s labels/annotations, used as custom Prometheus metric labels
 	customMetricLabelValues []string
+
+	lqMetrics *metrics.LocalQueueMetricsConfig
 }
 
 func (c *clusterQueue) GetName() kueue.ClusterQueueReference {
@@ -556,7 +558,7 @@ func (c *clusterQueue) updateWorkloadUsage(log logr.Logger, wi *workload.Info, o
 			lq.updateAdmittedUsage(frUsage, op)
 			lq.admittedWorkloads += op.asSignedOne()
 		}
-		if features.Enabled(features.LocalQueueMetrics) {
+		if c.lqMetrics.ShouldExposeLocalQueueMetrics(lq.labels) {
 			lq.reportActiveWorkloads(c.roleTracker)
 		}
 	}
@@ -604,6 +606,7 @@ func (c *clusterQueue) addLocalQueue(q *kueue.LocalQueue, customLabelValues []st
 		reservingWorkloads:      0,
 		totalReserved:           make(resources.FlavorResourceQuantities),
 		customMetricLabelValues: customLabelValues,
+		labels:                  q.GetLabels(),
 	}
 	qImpl.resetFlavorsAndResources(c.resourceNode.Usage, c.AdmittedUsage)
 	for _, wl := range c.Workloads {
@@ -618,7 +621,7 @@ func (c *clusterQueue) addLocalQueue(q *kueue.LocalQueue, customLabelValues []st
 		}
 	}
 	c.localQueues[qKey] = qImpl
-	if features.Enabled(features.LocalQueueMetrics) {
+	if c.lqMetrics.ShouldExposeLocalQueueMetrics(q.GetLabels()) {
 		qImpl.reportActiveWorkloads(c.roleTracker)
 	}
 	return nil

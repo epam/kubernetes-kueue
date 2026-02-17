@@ -117,6 +117,13 @@ func WithCustomLabels(cl *metrics.CustomLabels) Option {
 	}
 }
 
+// WithLocalQueueMetrics sets the configuration for local queue metrics.
+func WithLocalQueueMetrics(value *metrics.LocalQueueMetricsConfig) Option {
+	return func(c *Cache) {
+		c.lqMetrics = value
+	}
+}
+
 // Cache keeps track of the Workloads that got admitted through ClusterQueues.
 type Cache struct {
 	sync.RWMutex
@@ -139,6 +146,7 @@ type Cache struct {
 
 	roleTracker  *roletracker.RoleTracker
 	customLabels *metrics.CustomLabels
+	lqMetrics    *metrics.LocalQueueMetricsConfig
 }
 
 func New(client client.Client, options ...Option) *Cache {
@@ -171,6 +179,7 @@ func (c *Cache) newClusterQueue(log logr.Logger, cq *kueue.ClusterQueue) (*clust
 		AdmissionScope:      cq.Spec.AdmissionScope,
 
 		roleTracker: c.roleTracker,
+		lqMetrics:   c.lqMetrics,
 	}
 	c.hm.AddClusterQueue(cqImpl)
 	c.hm.UpdateClusterQueueEdge(kueue.ClusterQueueReference(cq.Name), cq.Spec.CohortName)
@@ -434,6 +443,7 @@ func (c *Cache) AddClusterQueue(ctx context.Context, cq *kueue.ClusterQueue) err
 			admittedWorkloads:  0,
 			totalReserved:      make(resources.FlavorResourceQuantities),
 			admittedUsage:      make(resources.FlavorResourceQuantities),
+			labels:             q.GetLabels(),
 		}
 		if features.Enabled(features.CustomMetricLabels) {
 			qImpl.customMetricLabelValues = c.customLabels.ExtractValues(q.Labels, q.Annotations)
@@ -571,6 +581,14 @@ func (c *Cache) GetCacheLocalQueue(cqName kueue.ClusterQueueReference, lqKey que
 		return cacheLq, nil
 	}
 	return nil, errQNotFound
+}
+
+func (c *Cache) GetLocalQueueLabels(cqName kueue.ClusterQueueReference, lqKey queue.LocalQueueReference) (map[string]string, error) {
+	lq, err := c.GetCacheLocalQueue(cqName, lqKey)
+	if err != nil {
+		return nil, err
+	}
+	return lq.labels, nil
 }
 
 func (c *Cache) ClusterQueueUsesAdmissionFairSharing(cqName kueue.ClusterQueueReference) bool {
@@ -994,8 +1012,8 @@ func (c *Cache) ResyncGaugeMetrics() {
 		if c.resourceMetricsEnabled {
 			cq.reportResourceMetrics(c.fairSharingEnabled)
 		}
-		if features.Enabled(features.LocalQueueMetrics) {
-			for _, lq := range cq.localQueues {
+		for _, lq := range cq.localQueues {
+			if c.lqMetrics.ShouldExposeLocalQueueMetrics(lq.labels) {
 				lq.reportActiveWorkloads(c.roleTracker)
 				lq.reportResourceMetrics(cq.resourceNode.Quotas, c.roleTracker)
 			}

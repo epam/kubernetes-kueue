@@ -22,6 +22,7 @@ import (
 	configapi "sigs.k8s.io/kueue/apis/config/v1beta2"
 	qcache "sigs.k8s.io/kueue/pkg/cache/queue"
 	schdcache "sigs.k8s.io/kueue/pkg/cache/scheduler"
+	"sigs.k8s.io/kueue/pkg/metrics"
 	"sigs.k8s.io/kueue/pkg/util/roletracker"
 )
 
@@ -39,7 +40,7 @@ func SetupControllers(mgr ctrl.Manager, queues *qcache.Manager, cache *schdcache
 	if ctrlName, err := topologyUngater.setupWithManager(mgr, cfg); err != nil {
 		return ctrlName, err
 	}
-	nodeRec := newNodeReconciler(mgr.GetClient(), recorder, cache, roleTracker, WithWatchers(rfRec))
+	nodeRec := newNodeReconciler(mgr.GetClient(), recorder, cache, metrics.NewLocalQueueMetricsConfig(cfg.Metrics.LocalQueueMetrics), roleTracker, WithWatchers(rfRec))
 	if ctrlName, err := nodeRec.SetupWithManager(mgr, cfg); err != nil {
 		return ctrlName, err
 	}

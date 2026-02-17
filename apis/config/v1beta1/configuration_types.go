@@ -190,6 +190,10 @@ type ControllerMetrics struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=8
 	CustomLabels []ControllerMetricsCustomLabel `json:"customLabels,omitempty"`
+
+	// LocalQueueMetrics is a configuration that provides LocalQueue metrics options.
+	// +optional
+	LocalQueueMetrics *LocalQueueMetrics `json:"localQueueMetrics,omitempty"`
 }
 
 // ControllerMetricsCustomLabel defines a Kubernetes label or annotation to promote
@@ -212,6 +216,18 @@ type ControllerMetricsCustomLabel struct {
 	// Mutually exclusive with SourceLabelKey.
 	// +optional
 	SourceAnnotationKey string `json:"sourceAnnotationKey,omitempty"`
+}
+
+// LocalQueueMetrics defines the configuration options for local queue metrics.
+// If left empty, then metrics will expose for all local queues across namespaces.
+type LocalQueueMetrics struct {
+	// Enable is a knob to allow metrics to be exposed for local queues. Defaults to true.
+	// +optional
+	Enable bool `json:"enable,omitempty"`
+
+	// LocalQueueSelector can be used to choose the local queues that need metrics to be collected.
+	// +optional
+	LocalQueueSelector *metav1.LabelSelector `json:"localQueueSelector,omitempty"`
 }
 
 // ControllerHealth defines the health configs.

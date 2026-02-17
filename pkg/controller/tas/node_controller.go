@@ -53,6 +53,7 @@ import (
 	"sigs.k8s.io/kueue/pkg/controller/core"
 	"sigs.k8s.io/kueue/pkg/controller/tas/indexer"
 	"sigs.k8s.io/kueue/pkg/features"
+	"sigs.k8s.io/kueue/pkg/metrics"
 	utilclient "sigs.k8s.io/kueue/pkg/util/client"
 	utilpod "sigs.k8s.io/kueue/pkg/util/pod"
 	"sigs.k8s.io/kueue/pkg/util/roletracker"
@@ -126,6 +127,7 @@ type nodeReconciler struct {
 	logName     string
 	recorder    record.EventRecorder
 	roleTracker *roletracker.RoleTracker
+	lqMetrics   *metrics.LocalQueueMetricsConfig
 	watchers    []NodeUpdateWatcher
 }
 
@@ -236,6 +238,7 @@ func newNodeReconciler(
 	client client.Client,
 	recorder record.EventRecorder,
 	cache *schdcache.Cache,
+	lqMetrics *metrics.LocalQueueMetricsConfig,
 	roleTracker *roletracker.RoleTracker,
 	opts ...NodeReconcilerOption,
 ) *nodeReconciler {
@@ -250,6 +253,7 @@ func newNodeReconciler(
 		clock:       clock.RealClock{},
 		recorder:    recorder,
 		roleTracker: roleTracker,
+		lqMetrics:   lqMetrics,
 		watchers:    options.watchers,
 	}
 }
@@ -407,7 +411,8 @@ func (r *nodeReconciler) evictWorkloadIfNeeded(ctx context.Context, wl *kueue.Wo
 		log.V(3).Info("Evicting workload due to multiple node failures")
 		allUnhealthyNodeNames := append(unhealthyNodeNames, nodeName)
 		evictionMsg := fmt.Sprintf(nodeMultipleFailuresEvictionMessageFormat, strings.Join(allUnhealthyNodeNames, ", "))
-		if evictionErr := workload.Evict(ctx, r.client, r.recorder, wl, kueue.WorkloadEvictedDueToNodeFailures, evictionMsg, "", r.clock, r.roleTracker, nil); evictionErr != nil {
+		exposeLqMetrics := r.lqMetrics.ShouldExposeLocalQueueMetricsForWorkload(log, r.cache, wl)
+		if evictionErr := workload.Evict(ctx, r.client, r.recorder, wl, kueue.WorkloadEvictedDueToNodeFailures, evictionMsg, "", r.clock, exposeLqMetrics, r.roleTracker, nil); evictionErr != nil {
 			log.Error(evictionErr, "Failed to complete eviction process")
 			return false, evictionErr
 		} else {

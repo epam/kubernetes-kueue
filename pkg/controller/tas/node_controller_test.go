@@ -35,6 +35,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
+	schdcache "sigs.k8s.io/kueue/pkg/cache/scheduler"
 	"sigs.k8s.io/kueue/pkg/constants"
 	coreindexer "sigs.k8s.io/kueue/pkg/controller/core/indexer"
 	podconstants "sigs.k8s.io/kueue/pkg/controller/jobs/pod/constants"
@@ -912,7 +913,7 @@ func TestNodeFailureReconciler(t *testing.T) {
 			}
 			cl := clientBuilder.Build()
 			recorder := &utiltesting.EventRecorder{}
-			r := newNodeReconciler(cl, recorder, nil, nil)
+			r := newNodeReconciler(cl, recorder, schdcache.New(cl), nil, nil)
 			r.clock = fakeClock
 
 			var result reconcile.Result
@@ -1092,7 +1093,7 @@ func TestGetWorkloadStatus(t *testing.T) {
 			}
 			cl := clientBuilder.Build()
 
-			reconciler := newNodeReconciler(cl, &utiltesting.EventRecorder{}, nil, nil)
+			reconciler := newNodeReconciler(cl, &utiltesting.EventRecorder{}, nil, nil, nil)
 			wl := &kueue.Workload{}
 			_ = cl.Get(ctx, wlKey, wl)
 
