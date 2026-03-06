@@ -286,8 +286,10 @@ func waitForDeploymentAvailability(ctx context.Context, k8sClient client.Client,
 	ginkgo.GinkgoHelper()
 	waitStart := time.Now()
 	ginkgo.By(fmt.Sprintf("Waiting for availability of deployment: %q", key))
+	deployment := &appsv1.Deployment{}
+	pods := &corev1.PodList{}
+
 	gomega.Eventually(func(g gomega.Gomega) {
-		deployment := &appsv1.Deployment{}
 		g.Expect(k8sClient.Get(ctx, key, deployment)).To(gomega.Succeed())
 		desiredReplicas := ptr.Deref(deployment.Spec.Replicas, 0)
 		g.Expect(deployment.Status.ObservedGeneration).To(gomega.Equal(deployment.Generation))
@@ -307,7 +309,6 @@ func waitForDeploymentAvailability(ctx context.Context, k8sClient client.Client,
 			ginkgo.By(fmt.Sprintf("Checking no restarts for the controller: %q", key))
 			selector, err := metav1.LabelSelectorAsSelector(deployment.Spec.Selector)
 			g.Expect(err).NotTo(gomega.HaveOccurred())
-			pods := &corev1.PodList{}
 			g.Expect(k8sClient.List(ctx, pods,
 				client.InNamespace(key.Namespace),
 				client.MatchingLabelsSelector{Selector: selector},
@@ -426,8 +427,11 @@ func waitForKueueControllerReadyWithWebhookEndpoints(ctx context.Context, k8sCli
 	waitStart := time.Now()
 	ginkgo.By(fmt.Sprintf("Waiting for ready pods and webhook endpoints: %q", key))
 
+	deployment := &appsv1.Deployment{}
+	pods := &corev1.PodList{}
+	endpointSlices := &discoveryv1.EndpointSliceList{}
+
 	gomega.Eventually(func(g gomega.Gomega) {
-		deployment := &appsv1.Deployment{}
 		g.Expect(k8sClient.Get(ctx, key, deployment)).To(gomega.Succeed())
 		desiredReplicas := ptr.Deref(deployment.Spec.Replicas, 0)
 
@@ -437,7 +441,6 @@ func waitForKueueControllerReadyWithWebhookEndpoints(ctx context.Context, k8sCli
 		selector, err := metav1.LabelSelectorAsSelector(deployment.Spec.Selector)
 		g.Expect(err).NotTo(gomega.HaveOccurred())
 
-		pods := &corev1.PodList{}
 		g.Expect(k8sClient.List(ctx, pods,
 			client.InNamespace(key.Namespace),
 			client.MatchingLabelsSelector{Selector: selector},
@@ -452,7 +455,6 @@ func waitForKueueControllerReadyWithWebhookEndpoints(ctx context.Context, k8sCli
 		g.Expect(readyPodIPs).To(gomega.HaveLen(int(desiredReplicas)),
 			fmt.Sprintf("ready pods: %d, desired: %d", readyPodIPs.Len(), desiredReplicas))
 
-		endpointSlices := &discoveryv1.EndpointSliceList{}
 		g.Expect(k8sClient.List(ctx, endpointSlices,
 			client.InNamespace(key.Namespace),
 			client.MatchingLabels{discoveryv1.LabelServiceName: "kueue-webhook-service"},
@@ -680,8 +682,8 @@ func WaitForPrometheusAvailability(ctx context.Context, k8sClient client.Client)
 	ginkgo.GinkgoHelper()
 	key := types.NamespacedName{Namespace: "monitoring", Name: "prometheus-prometheus"}
 	ginkgo.By(fmt.Sprintf("Waiting for availability of StatefulSet: %q", key))
+	sts := &appsv1.StatefulSet{}
 	gomega.Eventually(func(g gomega.Gomega) {
-		sts := &appsv1.StatefulSet{}
 		g.Expect(k8sClient.Get(ctx, key, sts)).To(gomega.Succeed())
 		desiredReplicas := ptr.Deref(sts.Spec.Replicas, 1)
 		g.Expect(sts.Status.ReadyReplicas).To(gomega.Equal(desiredReplicas))

@@ -266,10 +266,11 @@ var _ = ginkgo.Describe("MultiKueue Cluster Role Sharing", ginkgo.Label("area:mu
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
 		})
 
+		createdJob := batchv1.Job{}
+
 		ginkgo.By("updating the multikueue worker job status", func() {
 			startTime := metav1.NewTime(time.Now().Truncate(time.Second))
 			gomega.Eventually(func(g gomega.Gomega) {
-				createdJob := batchv1.Job{}
 				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, client.ObjectKeyFromObject(jobMk), &createdJob)).To(gomega.Succeed())
 				createdJob.Status.StartTime = &startTime
 				createdJob.Status.Active = 1
@@ -278,7 +279,6 @@ var _ = ginkgo.Describe("MultiKueue Cluster Role Sharing", ginkgo.Label("area:mu
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
 
 			gomega.Eventually(func(g gomega.Gomega) {
-				createdJob := batchv1.Job{}
 				g.Expect(managerTestCluster.client.Get(managerTestCluster.ctx, client.ObjectKeyFromObject(jobMk), &createdJob)).To(gomega.Succeed())
 				g.Expect(ptr.Deref(createdJob.Status.StartTime, metav1.Time{})).To(gomega.Equal(startTime))
 				g.Expect(ptr.Deref(createdJob.Status.Ready, 0)).To(gomega.Equal(int32(1)))
@@ -288,7 +288,6 @@ var _ = ginkgo.Describe("MultiKueue Cluster Role Sharing", ginkgo.Label("area:mu
 		ginkgo.By("updating the regular worker job status", func() {
 			startTime := metav1.NewTime(time.Now().Truncate(time.Second))
 			gomega.Eventually(func(g gomega.Gomega) {
-				createdJob := batchv1.Job{}
 				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, client.ObjectKeyFromObject(jobNonMk), &createdJob)).To(gomega.Succeed())
 				createdJob.Status.StartTime = &startTime
 				createdJob.Status.Active = 1
@@ -312,7 +311,6 @@ var _ = ginkgo.Describe("MultiKueue Cluster Role Sharing", ginkgo.Label("area:mu
 		}
 		ginkgo.By("finishing the multikueue worker job", func() {
 			gomega.Eventually(func(g gomega.Gomega) {
-				createdJob := batchv1.Job{}
 				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, client.ObjectKeyFromObject(jobMk), &createdJob)).To(gomega.Succeed())
 				createdJob.Status.Conditions = append(createdJob.Status.Conditions,
 					batchv1.JobCondition{
@@ -344,7 +342,6 @@ var _ = ginkgo.Describe("MultiKueue Cluster Role Sharing", ginkgo.Label("area:mu
 
 		ginkgo.By("finishing the regular worker job", func() {
 			gomega.Eventually(func(g gomega.Gomega) {
-				createdJob := batchv1.Job{}
 				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, client.ObjectKeyFromObject(jobNonMk), &createdJob)).To(gomega.Succeed())
 				createdJob.Status.Conditions = append(createdJob.Status.Conditions,
 					batchv1.JobCondition{
@@ -361,8 +358,8 @@ var _ = ginkgo.Describe("MultiKueue Cluster Role Sharing", ginkgo.Label("area:mu
 				g.Expect(worker1TestCluster.client.Status().Update(worker1TestCluster.ctx, &createdJob)).To(gomega.Succeed())
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
 
+			createdWorkload := &kueue.Workload{}
 			gomega.Eventually(func(g gomega.Gomega) {
-				createdWorkload := &kueue.Workload{}
 				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, wlNonMkLookupKey, createdWorkload)).To(gomega.Succeed())
 				g.Expect(apimeta.FindStatusCondition(createdWorkload.Status.Conditions, kueue.WorkloadFinished)).To(gomega.BeComparableTo(&metav1.Condition{
 					Type:    kueue.WorkloadFinished,
@@ -445,10 +442,11 @@ var _ = ginkgo.Describe("MultiKueue Cluster Role Sharing", ginkgo.Label("area:mu
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
 		})
 
+		createdJob := batchv1.Job{}
+
 		ginkgo.By("updating the multikueue manager job status", func() {
 			startTime := metav1.NewTime(time.Now().Truncate(time.Second))
 			gomega.Eventually(func(g gomega.Gomega) {
-				createdJob := batchv1.Job{}
 				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, client.ObjectKeyFromObject(jobMk), &createdJob)).To(gomega.Succeed())
 				createdJob.Status.StartTime = &startTime
 				createdJob.Status.Active = 1
@@ -457,7 +455,6 @@ var _ = ginkgo.Describe("MultiKueue Cluster Role Sharing", ginkgo.Label("area:mu
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
 
 			gomega.Eventually(func(g gomega.Gomega) {
-				createdJob := batchv1.Job{}
 				g.Expect(managerTestCluster.client.Get(managerTestCluster.ctx, client.ObjectKeyFromObject(jobMk), &createdJob)).To(gomega.Succeed())
 				g.Expect(ptr.Deref(createdJob.Status.StartTime, metav1.Time{})).To(gomega.Equal(startTime))
 				g.Expect(ptr.Deref(createdJob.Status.Ready, 0)).To(gomega.Equal(int32(1)))
@@ -467,7 +464,6 @@ var _ = ginkgo.Describe("MultiKueue Cluster Role Sharing", ginkgo.Label("area:mu
 		ginkgo.By("updating the regular worker job status", func() {
 			startTime := metav1.NewTime(time.Now().Truncate(time.Second))
 			gomega.Eventually(func(g gomega.Gomega) {
-				createdJob := batchv1.Job{}
 				g.Expect(managerTestCluster.client.Get(managerTestCluster.ctx, client.ObjectKeyFromObject(jobNonMk), &createdJob)).To(gomega.Succeed())
 				createdJob.Status.StartTime = &startTime
 				createdJob.Status.Active = 1
@@ -491,7 +487,6 @@ var _ = ginkgo.Describe("MultiKueue Cluster Role Sharing", ginkgo.Label("area:mu
 		}
 		ginkgo.By("finishing the multikueue worker job", func() {
 			gomega.Eventually(func(g gomega.Gomega) {
-				createdJob := batchv1.Job{}
 				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, client.ObjectKeyFromObject(jobMk), &createdJob)).To(gomega.Succeed())
 				createdJob.Status.Conditions = append(createdJob.Status.Conditions,
 					batchv1.JobCondition{
@@ -523,7 +518,6 @@ var _ = ginkgo.Describe("MultiKueue Cluster Role Sharing", ginkgo.Label("area:mu
 
 		ginkgo.By("finishing the regular manager job", func() {
 			gomega.Eventually(func(g gomega.Gomega) {
-				createdJob := batchv1.Job{}
 				g.Expect(managerTestCluster.client.Get(managerTestCluster.ctx, client.ObjectKeyFromObject(jobNonMk), &createdJob)).To(gomega.Succeed())
 				createdJob.Status.Conditions = append(createdJob.Status.Conditions,
 					batchv1.JobCondition{
@@ -540,8 +534,8 @@ var _ = ginkgo.Describe("MultiKueue Cluster Role Sharing", ginkgo.Label("area:mu
 				g.Expect(managerTestCluster.client.Status().Update(managerTestCluster.ctx, &createdJob)).To(gomega.Succeed())
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
 
+			createdWorkload := &kueue.Workload{}
 			gomega.Eventually(func(g gomega.Gomega) {
-				createdWorkload := &kueue.Workload{}
 				g.Expect(managerTestCluster.client.Get(managerTestCluster.ctx, wlNonMkLookupKey, createdWorkload)).To(gomega.Succeed())
 				g.Expect(apimeta.FindStatusCondition(createdWorkload.Status.Conditions, kueue.WorkloadFinished)).To(gomega.BeComparableTo(&metav1.Condition{
 					Type:    kueue.WorkloadFinished,

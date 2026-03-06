@@ -226,9 +226,11 @@ var _ = ginkgo.Describe("MultiKueue with ProvisioningRequest", ginkgo.Label("are
 			util.SetQuotaReservation(managerTestCluster.ctx, managerTestCluster.client, managerWlKey, admission)
 		})
 
+		managerWl := &kueue.Workload{}
+		workerWl := &kueue.Workload{}
+
 		ginkgo.By("verifying workload is created on worker cluster", func() {
 			gomega.Eventually(func(g gomega.Gomega) {
-				workerWl := &kueue.Workload{}
 				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, worker1WlKey, workerWl)).To(gomega.Succeed())
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
 		})
@@ -272,7 +274,6 @@ var _ = ginkgo.Describe("MultiKueue with ProvisioningRequest", ginkgo.Label("are
 
 		ginkgo.By("verifying the workload is admitted on worker", func() {
 			gomega.Eventually(func(g gomega.Gomega) {
-				workerWl := &kueue.Workload{}
 				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, worker1WlKey, workerWl)).To(gomega.Succeed())
 				g.Expect(workerWl.Status.Admission).NotTo(gomega.BeNil())
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
@@ -280,7 +281,6 @@ var _ = ginkgo.Describe("MultiKueue with ProvisioningRequest", ginkgo.Label("are
 
 		ginkgo.By("verifying the workload is admitted on manager", func() {
 			gomega.Eventually(func(g gomega.Gomega) {
-				managerWl := &kueue.Workload{}
 				g.Expect(managerTestCluster.client.Get(managerTestCluster.ctx, managerWlKey, managerWl)).To(gomega.Succeed())
 				g.Expect(managerWl.Status.Admission).NotTo(gomega.BeNil())
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
@@ -324,7 +324,6 @@ var _ = ginkgo.Describe("MultiKueue with ProvisioningRequest", ginkgo.Label("are
 		ginkgo.By("verifying workloads are created on both worker clusters", func() {
 			gomega.Eventually(func(g gomega.Gomega) {
 				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, worker1WlKey, worker1Wl)).To(gomega.Succeed())
-				worker2Wl := &kueue.Workload{}
 				g.Expect(worker2TestCluster.client.Get(worker2TestCluster.ctx, worker2WlKey, worker2Wl)).To(gomega.Succeed())
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
 		})

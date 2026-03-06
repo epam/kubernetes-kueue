@@ -645,8 +645,8 @@ var _ = ginkgo.Describe("LeaderWorkerSet integration", ginkgo.Label("area:single
 			})
 
 			ginkgo.By("Waiting for replicas to be ready again", func() {
+				createdLeaderWorkerSet := &leaderworkersetv1.LeaderWorkerSet{}
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdLeaderWorkerSet := &leaderworkersetv1.LeaderWorkerSet{}
 					g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(lws), createdLeaderWorkerSet)).To(gomega.Succeed())
 					g.Expect(createdLeaderWorkerSet.Status.ReadyReplicas).To(gomega.Equal(int32(2)))
 					g.Expect(createdLeaderWorkerSet.Status.Conditions).To(utiltesting.HaveConditionStatusTrueAndReason("Available", "AllGroupsReady"))
@@ -1071,8 +1071,8 @@ var _ = ginkgo.Describe("LeaderWorkerSet integration", ginkgo.Label("area:single
 			})
 
 			ginkgo.By("Wait for all pods to be recreated with new UIDs", func() {
+				pods := &corev1.PodList{}
 				gomega.Eventually(func(g gomega.Gomega) {
-					pods := &corev1.PodList{}
 					g.Expect(k8sClient.List(ctx, pods, client.MatchingLabels{
 						leaderworkersetv1.SetNameLabelKey: lws.Name,
 					}, client.InNamespace(lws.Namespace))).Should(gomega.Succeed())
@@ -1162,8 +1162,8 @@ var _ = ginkgo.Describe("LeaderWorkerSet integration", ginkgo.Label("area:single
 			})
 
 			ginkgo.By("Verify if only the deleted pod was recreated", func() {
+				pods := &corev1.PodList{}
 				gomega.Eventually(func(g gomega.Gomega) {
-					pods := &corev1.PodList{}
 					g.Expect(k8sClient.List(ctx, pods, client.MatchingLabels{
 						leaderworkersetv1.SetNameLabelKey: lws.Name,
 					}, client.InNamespace(lws.Namespace))).Should(gomega.Succeed())

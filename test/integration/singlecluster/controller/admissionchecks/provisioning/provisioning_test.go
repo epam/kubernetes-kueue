@@ -351,8 +351,9 @@ var _ = ginkgo.Describe("Provisioning", ginkgo.Label("controller:provisioning", 
 				gomega.Eventually(func(g gomega.Gomega) {
 					g.Expect(k8sClient.Get(ctx, wlKey, &updatedWl)).To(gomega.Succeed())
 					g.Expect(workload.IsEvictedByDeactivation(&updatedWl)).To(gomega.BeTrue())
-					util.ExpectEvictedWorkloadsTotalMetric(cq.Name, "Deactivated", "AdmissionCheck", "", 1)
 				}, util.Timeout, util.Interval).Should(gomega.Succeed())
+
+				util.ExpectEvictedWorkloadsTotalMetric(cq.Name, "Deactivated", "AdmissionCheck", "", 1)
 			})
 		})
 
@@ -407,7 +408,6 @@ var _ = ginkgo.Describe("Provisioning", ginkgo.Label("controller:provisioning", 
 
 				gomega.Eventually(func(g gomega.Gomega) {
 					g.Expect(k8sClient.Get(ctx, wlKey, &updatedWl)).To(gomega.Succeed())
-
 					g.Expect(workload.IsEvictedByDeactivation(&updatedWl)).To(gomega.BeTrue())
 				}, util.Timeout, util.Interval).Should(gomega.Succeed())
 
@@ -481,11 +481,7 @@ var _ = ginkgo.Describe("Provisioning", ginkgo.Label("controller:provisioning", 
 			})
 
 			ginkgo.By("Marking the workload as Finished", func() {
-				gomega.Eventually(func(g gomega.Gomega) {
-					g.Expect(k8sClient.Get(ctx, wlKey, &updatedWl)).To(gomega.Succeed())
-				}, util.Timeout, util.Interval).Should(gomega.Succeed())
-
-				util.FinishWorkloads(ctx, k8sClient, &updatedWl)
+				util.FinishWorkloadsByKey(ctx, k8sClient, wlKey)
 			})
 
 			ginkgo.By("Setting the ProvisioningRequest as CapacityRevoked", func() {
@@ -594,8 +590,7 @@ var _ = ginkgo.Describe("Provisioning", ginkgo.Label("controller:provisioning", 
 
 			ginkgo.By("Checking that the config values are propagated", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
-					err := k8sClient.Get(ctx, provReqKey, &createdRequest)
-					g.Expect(err).To(gomega.Succeed())
+					g.Expect(k8sClient.Get(ctx, provReqKey, &createdRequest)).To(gomega.Succeed())
 					g.Expect(createdRequest.Spec.ProvisioningClassName).To(gomega.Equal("provisioning-class-updated"))
 					g.Expect(createdRequest.Spec.Parameters).To(gomega.BeComparableTo(map[string]autoscaling.Parameter{
 						"p1":                "v1updated",
@@ -1068,10 +1063,10 @@ var _ = ginkgo.Describe("Provisioning", ginkgo.Label("controller:provisioning", 
 
 				gomega.Eventually(func(g gomega.Gomega) {
 					g.Expect(k8sClient.Get(ctx, wlKey, &updatedWl)).To(gomega.Succeed())
-
 					g.Expect(workload.IsEvictedByDeactivation(&updatedWl)).To(gomega.BeTrue())
-					util.ExpectEvictedWorkloadsTotalMetric(cq.Name, "Deactivated", "AdmissionCheck", "", 1)
 				}, util.Timeout, util.Interval).Should(gomega.Succeed())
+
+				util.ExpectEvictedWorkloadsTotalMetric(cq.Name, "Deactivated", "AdmissionCheck", "", 1)
 			})
 		})
 

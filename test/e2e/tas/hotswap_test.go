@@ -712,9 +712,9 @@ func waitForDummyWorkloadToRunOnNode(node *corev1.Node, lq *kueue.LocalQueue) {
 			Image(util.GetAgnHostImage(), util.BehaviorExitFast).
 			Obj()
 		util.MustCreate(ctx, k8sClient, dummyJob)
+		createdDummyJob := &batchv1.Job{}
 		gomega.Eventually(func(g gomega.Gomega) {
-			var createdDummyJob batchv1.Job
-			g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(dummyJob), &createdDummyJob)).To(gomega.Succeed())
+			g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(dummyJob), createdDummyJob)).To(gomega.Succeed())
 			g.Expect(createdDummyJob.Status.Conditions).To(gomega.ContainElement(gomega.BeComparableTo(batchv1.JobCondition{
 				Type:   batchv1.JobComplete,
 				Status: corev1.ConditionTrue,

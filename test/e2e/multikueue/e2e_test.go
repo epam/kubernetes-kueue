@@ -267,10 +267,11 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 				Obj()
 			// Since it requires 2G of memory, this pod can only be admitted in worker 2.
 
+			createdPod := &corev1.Pod{}
+
 			ginkgo.By("Creating the pod", func() {
 				util.MustCreate(ctx, k8sManagerClient, pod)
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdPod := &corev1.Pod{}
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(pod), createdPod)).To(gomega.Succeed())
 				}, util.Timeout, util.Interval).Should(gomega.Succeed())
 			})
@@ -287,7 +288,6 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 				)
 
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdPod := &corev1.Pod{}
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(pod), createdPod)).To(gomega.Succeed())
 					g.Expect(utilpod.HasGate(createdPod, podconstants.SchedulingGateName)).To(gomega.BeTrue())
 				}, util.Timeout, util.Interval).Should(gomega.Succeed())
@@ -322,8 +322,7 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 			}
 			ginkgo.By("Waiting for the pod to get status updates", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdPod := corev1.Pod{}
-					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(pod), &createdPod)).To(gomega.Succeed())
+					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(pod), createdPod)).To(gomega.Succeed())
 					g.Expect(createdPod.Status.Phase).To(gomega.Equal(corev1.PodSucceeded))
 					g.Expect(createdPod.Status.Conditions).To(gomega.BeComparableTo(finishPodConditions, util.IgnorePodConditionTimestampsMessageAndObservedGeneration))
 				}, util.MediumTimeout, util.Interval).Should(gomega.Succeed())
@@ -342,10 +341,11 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 				Queue(managerLq.Name).
 				Obj()
 
+			createdDeployment := &appsv1.Deployment{}
+
 			ginkgo.By("Creating the deployment", func() {
 				util.MustCreate(ctx, k8sManagerClient, deployment)
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdDeployment := &appsv1.Deployment{}
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(deployment), createdDeployment)).To(gomega.Succeed())
 				}, util.Timeout, util.Interval).Should(gomega.Succeed())
 			})
@@ -378,8 +378,7 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 
 			ginkgo.By("Waiting for the deployment to get status updates", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdDeployment := appsv1.Deployment{}
-					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(deployment), &createdDeployment)).To(gomega.Succeed())
+					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(deployment), createdDeployment)).To(gomega.Succeed())
 					g.Expect(createdDeployment.Status.ReadyReplicas).To(gomega.Equal(int32(3)))
 					g.Expect(createdDeployment.Status.Replicas).To(gomega.Equal(int32(3)))
 					g.Expect(createdDeployment.Status.UpdatedReplicas).To(gomega.Equal(int32(3)))
@@ -388,7 +387,6 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 			})
 
 			ginkgo.By("Increasing the replica count on the deployment", func() {
-				createdDeployment := &appsv1.Deployment{}
 				gomega.Eventually(func(g gomega.Gomega) {
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(deployment), createdDeployment)).To(gomega.Succeed())
 					createdDeployment.Spec.Replicas = ptr.To[int32](4)
@@ -396,7 +394,6 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 				}, util.MediumTimeout, util.Interval).Should(gomega.Succeed())
 
 				ginkgo.By("Wait for replicas ready", func() {
-					createdDeployment := &appsv1.Deployment{}
 					gomega.Eventually(func(g gomega.Gomega) {
 						g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(deployment), createdDeployment)).To(gomega.Succeed())
 						g.Expect(createdDeployment.Status.ReadyReplicas).To(gomega.Equal(int32(4)))
@@ -409,7 +406,6 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 			})
 
 			ginkgo.By("Decreasing the replica count on the deployment", func() {
-				createdDeployment := &appsv1.Deployment{}
 				gomega.Eventually(func(g gomega.Gomega) {
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(deployment), createdDeployment)).To(gomega.Succeed())
 					createdDeployment.Spec.Replicas = ptr.To[int32](2)
@@ -417,7 +413,6 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 				}, util.MediumTimeout, util.Interval).Should(gomega.Succeed())
 
 				ginkgo.By("Wait for replicas ready", func() {
-					createdDeployment := &appsv1.Deployment{}
 					gomega.Eventually(func(g gomega.Gomega) {
 						g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(deployment), createdDeployment)).To(gomega.Succeed())
 						g.Expect(createdDeployment.Status.ReadyReplicas).To(gomega.Equal(int32(2)))
@@ -431,8 +426,8 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 
 			ginkgo.By("Deleting the deployment all pods should be deleted", func() {
 				gomega.Expect(k8sManagerClient.Delete(ctx, deployment)).Should(gomega.Succeed())
+				pods := &corev1.PodList{}
 				for _, workerClient := range kubernetesClients {
-					pods := &corev1.PodList{}
 					gomega.Eventually(func(g gomega.Gomega) {
 						g.Expect(workerClient.List(ctx, pods, client.InNamespace(managerNs.Namespace), client.MatchingLabels(deployment.Spec.Selector.MatchLabels))).To(gomega.Succeed())
 						g.Expect(pods.Items).To(gomega.BeEmpty())
@@ -460,24 +455,25 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 
 			waitForJobAdmitted(wlLookupKey, multiKueueAc.Name, "worker1")
 
+			workerSts := &appsv1.StatefulSet{}
+
 			ginkgo.By("Waiting for StatefulSet to be synced to worker cluster", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
-					workerSts := &appsv1.StatefulSet{}
 					g.Expect(k8sWorker1Client.Get(ctx, client.ObjectKeyFromObject(statefulset), workerSts)).To(gomega.Succeed())
 				}, util.Timeout, util.Interval).Should(gomega.Succeed())
 			})
 
 			ginkgo.By("Waiting for all replicas to be ready on worker cluster", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
-					workerSts := &appsv1.StatefulSet{}
 					g.Expect(k8sWorker1Client.Get(ctx, client.ObjectKeyFromObject(statefulset), workerSts)).To(gomega.Succeed())
 					g.Expect(workerSts.Status.ReadyReplicas).To(gomega.Equal(int32(3)))
 				}, util.MediumTimeout, util.Interval).Should(gomega.Succeed())
 			})
 
+			pods := &corev1.PodList{}
+
 			ginkgo.By("Verifying pods on management cluster remain gated", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
-					pods := &corev1.PodList{}
 					g.Expect(k8sManagerClient.List(ctx, pods, client.InNamespace(managerNs.Name), client.MatchingLabels{
 						podconstants.GroupNameLabel: workloadstatefulset.GetWorkloadName(statefulset.UID, statefulset.Name),
 					})).To(gomega.Succeed())
@@ -522,8 +518,8 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 			}
 
 			ginkgo.By("Verifying both workloads are admitted on worker2", func() {
+				wl0 := &kueue.Workload{}
 				gomega.Eventually(func(g gomega.Gomega) {
-					wl0 := &kueue.Workload{}
 					g.Expect(k8sWorker2Client.Get(ctx, wlLookupKey0, wl0)).To(gomega.Succeed())
 					g.Expect(workload.IsAdmitted(wl0)).To(gomega.BeTrue())
 					wl1 := &kueue.Workload{}
@@ -532,24 +528,24 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 				}, util.MediumTimeout, util.Interval).Should(gomega.Succeed())
 			})
 
+			workerLWS := &leaderworkersetv1.LeaderWorkerSet{}
+
 			ginkgo.By("Waiting for LWS to be synced to worker cluster", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
-					workerLWS := &leaderworkersetv1.LeaderWorkerSet{}
 					g.Expect(k8sWorker2Client.Get(ctx, client.ObjectKeyFromObject(lws), workerLWS)).To(gomega.Succeed())
 				}, util.Timeout, util.Interval).Should(gomega.Succeed())
 			})
 
 			ginkgo.By("Waiting for all replicas to be ready on worker cluster", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
-					workerLWS := &leaderworkersetv1.LeaderWorkerSet{}
 					g.Expect(k8sWorker2Client.Get(ctx, client.ObjectKeyFromObject(lws), workerLWS)).To(gomega.Succeed())
 					g.Expect(workerLWS.Status.ReadyReplicas).To(gomega.Equal(int32(2)))
 				}, util.MediumTimeout, util.Interval).Should(gomega.Succeed())
 			})
 
 			ginkgo.By("Verifying pods on management cluster remain gated", func() {
+				pods := &corev1.PodList{}
 				gomega.Eventually(func(g gomega.Gomega) {
-					pods := &corev1.PodList{}
 					g.Expect(k8sManagerClient.List(ctx, pods, client.InNamespace(managerNs.Name), client.MatchingLabels{
 						leaderworkersetv1.SetNameLabelKey: lws.Name,
 					})).To(gomega.Succeed())
@@ -620,15 +616,15 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 			})
 
 			ginkgo.By("Verifying LWS is synced to worker cluster", func() {
+				workerLWS := &leaderworkersetv1.LeaderWorkerSet{}
 				gomega.Eventually(func(g gomega.Gomega) {
-					workerLWS := &leaderworkersetv1.LeaderWorkerSet{}
 					g.Expect(k8sWorker2Client.Get(ctx, client.ObjectKeyFromObject(lws), workerLWS)).To(gomega.Succeed())
 				}, util.Timeout, util.Interval).Should(gomega.Succeed())
 			})
 
 			ginkgo.By("Verifying follower workloads are dispatched to the same worker cluster", func() {
+				primaryWl := &kueue.Workload{}
 				gomega.Eventually(func(g gomega.Gomega) {
-					primaryWl := &kueue.Workload{}
 					g.Expect(k8sManagerClient.Get(ctx, wlKeys[0], primaryWl)).To(gomega.Succeed())
 					g.Expect(primaryWl.Status.ClusterName).ToNot(gomega.BeNil())
 					for _, key := range wlKeys[1:] {
@@ -725,10 +721,11 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 				Image(util.GetAgnHostImage(), util.BehaviorWaitForDeletion).
 				Obj()
 
+			createdJob := &batchv1.Job{}
+
 			ginkgo.By("Creating the job", func() {
 				util.MustCreate(ctx, k8sManagerClient, job)
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdJob := &batchv1.Job{}
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(job), createdJob)).To(gomega.Succeed())
 					g.Expect(ptr.Deref(createdJob.Spec.ManagedBy, "")).To(gomega.BeEquivalentTo(kueue.MultiKueueControllerName))
 				}, util.Timeout, util.Interval).Should(gomega.Succeed())
@@ -747,7 +744,6 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 				)
 
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdJob := &batchv1.Job{}
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(job), createdJob)).To(gomega.Succeed())
 					g.Expect(ptr.Deref(createdJob.Spec.Suspend, false)).To(gomega.BeFalse())
 				}, util.Timeout, util.Interval).Should(gomega.Succeed())
@@ -755,8 +751,7 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 
 			ginkgo.By("Waiting for the job to get status updates", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdJob := batchv1.Job{}
-					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(job), &createdJob)).To(gomega.Succeed())
+					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(job), createdJob)).To(gomega.Succeed())
 					g.Expect(createdJob.Status.StartTime).NotTo(gomega.BeNil())
 					g.Expect(createdJob.Status.Active).To(gomega.Equal(int32(1)))
 					g.Expect(createdJob.Status.CompletionTime).To(gomega.BeNil())
@@ -779,7 +774,6 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 				expectObjectToBeDeletedOnWorkerClusters(ctx, createdLeaderWorkload)
 				expectObjectToBeDeletedOnWorkerClusters(ctx, job)
 
-				createdJob := &batchv1.Job{}
 				gomega.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(job), createdJob)).To(gomega.Succeed())
 				gomega.Expect(createdJob.Status.Conditions).To(gomega.ContainElement(gomega.BeComparableTo(
 					batchv1.JobCondition{
@@ -930,7 +924,6 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 					g.Expect(k8sWorker2Client.Get(ctx, wlKey, workerWorkload)).To(gomega.Succeed())
 					g.Expect(workload.IsAdmitted(workerWorkload)).To(gomega.BeTrue())
 					g.Expect(workerWorkload.Spec).To(gomega.BeComparableTo(managerWl.Spec))
-
 					g.Expect(k8sWorker1Client.Get(ctx, wlKey, workerWorkload)).To(utiltesting.BeNotFoundError())
 				}, util.Timeout, util.Interval).Should(gomega.Succeed())
 			})
@@ -1221,7 +1214,6 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
 					createdJobset := &jobset.JobSet{}
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(jobSet), createdJobset)).To(gomega.Succeed())
-
 					g.Expect(createdJobset.Status.ReplicatedJobsStatus).To(gomega.BeComparableTo([]jobset.ReplicatedJobStatus{
 						{
 							Name:   "replicated-job-1",
@@ -1240,7 +1232,6 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 			ginkgo.By("Waiting for the jobSet to finish", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
 					g.Expect(k8sManagerClient.Get(ctx, wlLookupKey, createdLeaderWorkload)).To(gomega.Succeed())
-
 					g.Expect(apimeta.FindStatusCondition(createdLeaderWorkload.Status.Conditions, kueue.WorkloadFinished)).To(gomega.BeComparableTo(&metav1.Condition{
 						Type:    kueue.WorkloadFinished,
 						Status:  metav1.ConditionTrue,
@@ -1296,8 +1287,8 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 			waitForJobAdmitted(wlLookupKey, multiKueueAc.Name, "worker1")
 
 			ginkgo.By("Waiting for the appwrapper to get status updates", func() {
+				createdAppWrapper := &awv1beta2.AppWrapper{}
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdAppWrapper := &awv1beta2.AppWrapper{}
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(aw), createdAppWrapper)).To(gomega.Succeed())
 					g.Expect(createdAppWrapper.Status.Phase).To(gomega.Equal(awv1beta2.AppWrapperRunning))
 				}, util.MediumTimeout, util.Interval).Should(gomega.Succeed())
@@ -1311,7 +1302,6 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 			ginkgo.By("Waiting for the appwrapper to finish", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
 					g.Expect(k8sManagerClient.Get(ctx, wlLookupKey, createdWorkload)).To(gomega.Succeed())
-
 					g.Expect(apimeta.FindStatusCondition(createdWorkload.Status.Conditions, kueue.WorkloadFinished)).To(gomega.BeComparableTo(&metav1.Condition{
 						Type:    kueue.WorkloadFinished,
 						Status:  metav1.ConditionTrue,
@@ -1360,8 +1350,8 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 			waitForJobAdmitted(wlLookupKey, multiKueueAc.Name, "worker2")
 
 			ginkgo.By("Waiting for the PyTorchJob to finish", func() {
+				createdPyTorchJob := &kftraining.PyTorchJob{}
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdPyTorchJob := &kftraining.PyTorchJob{}
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(pyTorchJob), createdPyTorchJob)).To(gomega.Succeed())
 					g.Expect(createdPyTorchJob.Status.ReplicaStatuses[kftraining.PyTorchJobReplicaTypeMaster]).To(gomega.BeComparableTo(
 						&kftraining.ReplicaStatus{
@@ -1425,8 +1415,8 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 			waitForJobAdmitted(wlLookupKey, multiKueueAc.Name, "worker1")
 
 			ginkgo.By("Waiting for the MPIJob to finish", func() {
+				createdMPIJob := &kfmpi.MPIJob{}
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdMPIJob := &kfmpi.MPIJob{}
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(mpijob), createdMPIJob)).To(gomega.Succeed())
 					g.Expect(createdMPIJob.Status.ReplicaStatuses[kfmpi.MPIReplicaTypeLauncher]).To(gomega.BeComparableTo(
 						&kfmpi.ReplicaStatus{
@@ -1475,8 +1465,8 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 			waitForJobAdmitted(wlLookupKey, multiKueueAc.Name, "worker1")
 
 			ginkgo.By("Waiting for the RayJob to finish", func() {
+				createdRayJob := &rayv1.RayJob{}
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdRayJob := &rayv1.RayJob{}
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(rayjob), createdRayJob)).To(gomega.Succeed())
 					g.Expect(createdRayJob.Status.JobDeploymentStatus).To(gomega.Equal(rayv1.JobDeploymentStatusComplete))
 					finishReasonMessage := "Job finished successfully."
@@ -1517,8 +1507,8 @@ var _ = ginkgo.Describe("MultiKueue", func() {
 			waitForJobAdmitted(wlLookupKey, multiKueueAc.Name, "worker1")
 
 			ginkgo.By("Checking the RayCluster is ready", func() {
+				createdRayCluster := &rayv1.RayCluster{}
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdRayCluster := &rayv1.RayCluster{}
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(raycluster), createdRayCluster)).To(gomega.Succeed())
 					g.Expect(createdRayCluster.Status.DesiredWorkerReplicas).To(gomega.Equal(int32(1)))
 					g.Expect(createdRayCluster.Status.ReadyWorkerReplicas).To(gomega.Equal(int32(1)))
@@ -1657,8 +1647,8 @@ app = HelloWorld.bind()`,
 			waitForJobAdmitted(wlLookupKey, multiKueueAc.Name, "worker1")
 
 			ginkgo.By("Checking the TrainJob is ready", func() {
+				createdTrainJob := &kftrainer.TrainJob{}
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdTrainJob := &kftrainer.TrainJob{}
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(trainjob), createdTrainJob)).To(gomega.Succeed())
 					g.Expect(ptr.Deref(createdTrainJob.Spec.Suspend, false)).To(gomega.BeFalse())
 				}, util.VeryLongTimeout, util.Interval).Should(gomega.Succeed())
@@ -1697,10 +1687,11 @@ app = HelloWorld.bind()`,
 				Image(util.GetAgnHostImage(), util.BehaviorWaitForDeletion).
 				Obj()
 
+			createdJob := &batchv1.Job{}
+
 			ginkgo.By("Creating the job", func() {
 				util.MustCreate(ctx, k8sManagerClient, job)
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdJob := &batchv1.Job{}
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(job), createdJob)).To(gomega.Succeed())
 					g.Expect(ptr.Deref(createdJob.Spec.ManagedBy, "")).To(gomega.BeEquivalentTo(kueue.MultiKueueControllerName))
 				}, util.Timeout, util.Interval).Should(gomega.Succeed())
@@ -1712,7 +1703,6 @@ app = HelloWorld.bind()`,
 
 			ginkgo.By("Waiting for the manager's job unsuspended", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdJob := &batchv1.Job{}
 					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(job), createdJob)).To(gomega.Succeed())
 					g.Expect(ptr.Deref(createdJob.Spec.Suspend, false)).To(gomega.BeFalse())
 				}, util.Timeout, util.Interval).Should(gomega.Succeed())
@@ -1720,8 +1710,7 @@ app = HelloWorld.bind()`,
 
 			ginkgo.By("Waiting for the job to get status updates", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdJob := batchv1.Job{}
-					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(job), &createdJob)).To(gomega.Succeed())
+					g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(job), createdJob)).To(gomega.Succeed())
 					g.Expect(createdJob.Status.StartTime).NotTo(gomega.BeNil())
 					g.Expect(createdJob.Status.Active).To(gomega.Equal(int32(1)))
 					g.Expect(createdJob.Status.CompletionTime).To(gomega.BeNil())
@@ -1744,7 +1733,6 @@ app = HelloWorld.bind()`,
 				expectObjectToBeDeletedOnWorkerClusters(ctx, createdLeaderWorkload)
 				expectObjectToBeDeletedOnWorkerClusters(ctx, job)
 
-				createdJob := &batchv1.Job{}
 				gomega.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(job), createdJob)).To(gomega.Succeed())
 				gomega.Expect(createdJob.Status.Conditions).To(gomega.ContainElement(gomega.BeComparableTo(
 					batchv1.JobCondition{
@@ -1943,9 +1931,9 @@ app = HelloWorld.bind()`,
 				}, util.Timeout, util.Interval).Should(gomega.Succeed())
 			})
 			worker3MkClusterKey := client.ObjectKeyFromObject(workerCluster3)
+			createdCluster := &kueue.MultiKueueCluster{}
 			ginkgo.By("checking MultiKueueCluster status", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdCluster := &kueue.MultiKueueCluster{}
 					g.Expect(k8sManagerClient.Get(ctx, worker3MkClusterKey, createdCluster)).To(gomega.Succeed())
 					g.Expect(createdCluster.Status.Conditions).To(gomega.ContainElement(gomega.BeComparableTo(
 						metav1.Condition{
@@ -1966,14 +1954,13 @@ app = HelloWorld.bind()`,
 			})
 			ginkgo.By("checking ClusterProfile exists", func() {
 				clusterProfileKey := client.ObjectKeyFromObject(cp)
+				createdClusterProfile := &inventoryv1alpha1.ClusterProfile{}
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdClusterProfile := &inventoryv1alpha1.ClusterProfile{}
 					g.Expect(k8sManagerClient.Get(ctx, clusterProfileKey, createdClusterProfile)).To(gomega.Succeed())
 				}, util.MediumTimeout, util.Interval).Should(gomega.Succeed())
 			})
 			ginkgo.By("triggering MultiKueueCluster reconciliation", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdCluster := &kueue.MultiKueueCluster{}
 					g.Expect(k8sManagerClient.Get(ctx, worker3MkClusterKey, createdCluster)).To(gomega.Succeed())
 					createdCluster.Spec.ClusterSource.ClusterProfileRef = &kueue.ClusterProfileReference{Name: "clusterprofile3"}
 					g.Expect(k8sManagerClient.Update(ctx, createdCluster)).To(gomega.Succeed())
@@ -1982,7 +1969,6 @@ app = HelloWorld.bind()`,
 			worker3MkClusterKey = client.ObjectKeyFromObject(workerCluster3)
 			ginkgo.By("checking MultiKueueCluster status again", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
-					createdCluster := &kueue.MultiKueueCluster{}
 					g.Expect(k8sManagerClient.Get(ctx, worker3MkClusterKey, createdCluster)).To(gomega.Succeed())
 					g.Expect(createdCluster.Status.Conditions).To(gomega.ContainElement(gomega.BeComparableTo(
 						metav1.Condition{
@@ -2157,10 +2143,10 @@ app = HelloWorld.bind()`,
 			})
 
 			mkc := []*kueue.MultiKueueCluster{workerCluster1, workerCluster2}
+			createdCluster := &kueue.MultiKueueCluster{}
 			ginkgo.By("Update existing worker clusters to use ClusterProfiles", func() {
 				for _, wc := range mkc {
 					gomega.Eventually(func(g gomega.Gomega) {
-						createdCluster := &kueue.MultiKueueCluster{}
 						g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(wc), createdCluster)).To(gomega.Succeed())
 						createdCluster.Spec.ClusterSource.KubeConfig = nil
 						createdCluster.Spec.ClusterSource.ClusterProfileRef = &kueue.ClusterProfileReference{Name: wc.Name}
@@ -2179,9 +2165,9 @@ app = HelloWorld.bind()`,
 				secrets := []string{"multikueue1-cp", "multikueue2-cp"}
 				workerClusterNames := []string{worker1ClusterName, worker2ClusterName}
 				workerCAData := [][]byte{worker1Cfg.CAData, worker2Cfg.CAData}
+				createdCp := &inventoryv1alpha1.ClusterProfile{}
 				for i, wc := range mkc {
 					gomega.Eventually(func(g gomega.Gomega) {
-						createdCp := &inventoryv1alpha1.ClusterProfile{}
 						g.Expect(k8sManagerClient.Get(ctx, client.ObjectKey{Namespace: kueueNS, Name: wc.Name}, createdCp)).To(gomega.Succeed())
 						createdCp.Status.AccessProviders = []inventoryv1alpha1.AccessProvider{
 							{
@@ -2208,7 +2194,6 @@ app = HelloWorld.bind()`,
 			ginkgo.By("Check MultiKueueCluster status", func() {
 				for _, wc := range mkc {
 					gomega.Eventually(func(g gomega.Gomega) {
-						createdCluster := &kueue.MultiKueueCluster{}
 						g.Expect(k8sManagerClient.Get(ctx, client.ObjectKeyFromObject(wc), createdCluster)).To(gomega.Succeed())
 						g.Expect(createdCluster.Status.Conditions).To(gomega.ContainElement(gomega.BeComparableTo(
 							metav1.Condition{
@@ -2428,8 +2413,8 @@ func ensurePodWorkloadsRunning(deployment *appsv1.Deployment, managerNs corev1.N
 		workerCluster := kubernetesClients[GetMultiKueueClusterNameFromAdmissionCheckMessage(admissionCheckMessage)]
 
 		// Worker pods should be in "Running" phase
+		createdPod := &corev1.Pod{}
 		gomega.Eventually(func(g gomega.Gomega) {
-			createdPod := &corev1.Pod{}
 			g.Expect(workerCluster.Get(ctx, client.ObjectKey{Namespace: pod.Namespace, Name: pod.Name}, createdPod)).To(gomega.Succeed())
 			g.Expect(createdPod.Status.Phase).Should(gomega.Equal(corev1.PodRunning))
 		}, util.Timeout, util.Interval).Should(gomega.Succeed())
