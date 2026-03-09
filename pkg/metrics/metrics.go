@@ -20,6 +20,7 @@ import (
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
+	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"sigs.k8s.io/controller-runtime/pkg/metrics"
 
@@ -254,6 +255,10 @@ var (
 	// +metricsdoc:group=cohort
 	// +metricsdoc:labels=cohort="the name of the Cohort",flavor="the resource flavor name",resource="the resource name",replica_role="one of `leader`, `follower`, or `standalone`"
 	CohortSubtreeQuota *prometheus.GaugeVec
+
+	// +metricsdoc:group=cohort
+	// +metricsdoc:labels=cohort="the name of the Cohort",flavor="the resource flavor name",resource="the resource name",replica_role="one of `leader`, `follower`, or `standalone`"
+	CohortSubtreeBorrowingLimit *prometheus.GaugeVec
 )
 
 func trackGaugeVec(g *prometheus.GaugeVec) *prometheus.GaugeVec {
@@ -728,6 +733,16 @@ If the Cohort has a weight of zero and is borrowing, this will return NaN.`,
 			Help:      `Reports the cohort's nominal quota aggregated within the cohort's subtree. The values are reported per resource and flavor`,
 		}, []string{"cohort", "flavor", "resource", "replica_role"},
 	))
+
+	CohortSubtreeBorrowingLimit = trackGaugeVec(prometheus.NewGaugeVec(
+		prometheus.GaugeOpts{
+			Subsystem: constants.KueueName,
+			Name:      "cohort_subtree_borrowing_limit",
+			Help: `Reports the maximum amount of resources that the Cohort subtree 
+(its child Cohorts and ClusterQueues) can borrow from its parent subtree.
+The values are reported per resource and flavor`,
+		}, []string{"cohort", "flavor", "resource", "replica_role"},
+	))
 }
 
 func init() {
@@ -914,6 +929,7 @@ func ClearLocalQueueMetrics(lq LocalQueueReference) {
 }
 
 func ClearCohortMetrics(cohortName string) {
+	CohortSubtreeBorrowingLimit.DeletePartialMatch(prometheus.Labels{"cohort": cohortName})
 	CohortSubtreeQuota.DeletePartialMatch(prometheus.Labels{"cohort": cohortName})
 	CohortWeightedShare.DeletePartialMatch(prometheus.Labels{"cohort": cohortName})
 }
@@ -965,21 +981,38 @@ func ReportClusterQueueQuotas(cohort kueue.CohortReference, queue, flavor, resou
 	ClusterQueueResourceLendingLimit.WithLabelValues(labels...).Set(lending)
 }
 
-func ReportCohortSubtreeQuota(cohort kueue.CohortReference, flavor, resource string, quota float64, tracker *roletracker.RoleTracker) {
-	CohortSubtreeQuota.WithLabelValues(string(cohort), flavor, resource, roletracker.GetRole(tracker)).Set(quota)
+func ReportCohortSubtreeQuota(cohort kueue.CohortReference, flavor kueue.ResourceFlavorReference, resource corev1.ResourceName, quota int64, tracker *roletracker.RoleTracker) {
+	CohortSubtreeQuota.WithLabelValues(string(cohort), string(flavor), string(resource), roletracker.GetRole(tracker)).Set(float64(quota))
 }
 
-func ClearCohortSubtreeQuota(cohort kueue.CohortReference, flavor, resource string) {
+func ClearCohortSubtreeQuota(cohort kueue.CohortReference, flavor kueue.ResourceFlavorReference, resource corev1.ResourceName) {
 	lbls := prometheus.Labels{
 		"cohort": string(cohort),
 	}
 	if len(flavor) != 0 {
-		lbls["flavor"] = flavor
+		lbls["flavor"] = string(flavor)
 	}
 	if len(resource) != 0 {
-		lbls["resource"] = resource
+		lbls["resource"] = string(resource)
 	}
 	CohortSubtreeQuota.DeletePartialMatch(lbls)
+}
+
+func ReportCohortSubtreeBorrowingLimit(cohort kueue.CohortReference, flavor kueue.ResourceFlavorReference, resource corev1.ResourceName, borrowing int64, tracker *roletracker.RoleTracker) {
+	CohortSubtreeBorrowingLimit.WithLabelValues(string(cohort), string(flavor), string(resource), roletracker.GetRole(tracker)).Set(float64(borrowing))
+}
+
+func ClearCohortSubtreeBorrowingLimit(cohort kueue.CohortReference, flavor kueue.ResourceFlavorReference, resource corev1.ResourceName) {
+	lbls := prometheus.Labels{
+		"cohort": string(cohort),
+	}
+	if len(flavor) != 0 {
+		lbls["flavor"] = string(flavor)
+	}
+	if len(resource) != 0 {
+		lbls["resource"] = string(resource)
+	}
+	CohortSubtreeBorrowingLimit.DeletePartialMatch(lbls)
 }
 
 func ReportClusterQueueResourceReservations(cohort kueue.CohortReference, queue, flavor, resource string, usage float64, customLabelValues []string, tracker *roletracker.RoleTracker) {
@@ -1145,6 +1178,7 @@ func Register() {
 		ClusterQueueResourceLendingLimit,
 		ClusterQueueWeightedShare,
 		CohortWeightedShare,
+		CohortSubtreeBorrowingLimit,
 		CohortSubtreeQuota,
 	)
 	if features.Enabled(features.LocalQueueMetrics) {
