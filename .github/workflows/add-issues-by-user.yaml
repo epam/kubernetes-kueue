@@ -37,6 +37,7 @@ on:
           - IrvingMg
           - mszadkow
           - mykysha
+          - reruno
       status:
         description: 'Status'
         required: true
