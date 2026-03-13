@@ -508,8 +508,14 @@ func (w *wlReconciler) reconcileGroup(ctx context.Context, group *wlGroup) (reco
 func (w *wlReconciler) nominateAndSynchronizeWorkers(ctx context.Context, group *wlGroup) (reconcile.Result, error) {
 	log := ctrl.LoggerFrom(ctx).WithValues("op", "nominateAndSynchronizeWorkers")
 	log.V(3).Info("Nominate and Synchronize Worker Clusters")
-	var nominatedWorkers []string
 
+	// check nonMK AdmissionChecks are Ready before nominating clusters, to avoid nominating clusters for workloads that are not fully admitted yet.
+	if ready, ac := allNonMKAdmissionChecksReady(group.local, group.acName); !ready {
+		log.V(3).Info("Waiting for all non-MultiKueue admission checks to be ready before nominating clusters", "admissionCheck", ac)
+		return reconcile.Result{}, nil
+	}
+
+	var nominatedWorkers []string
 	// For elastic workloads, retrieve the remote cluster where the original workload was scheduled.
 	// For now, new workload slices will continue to be assigned to the same cluster.
 	// In the future, we may introduce more nuanced remote workload propagation policies,
@@ -790,4 +796,17 @@ func cloneForCreate(orig *kueue.Workload, origin string) *kueue.Workload {
 	remoteWl.Labels[kueue.MultiKueueOriginLabel] = origin
 	orig.Spec.DeepCopyInto(&remoteWl.Spec)
 	return remoteWl
+}
+
+func allNonMKAdmissionChecksReady(wl *kueue.Workload, mkACName kueue.AdmissionCheckReference) (bool, []kueue.AdmissionCheckReference) {
+	var notReady []kueue.AdmissionCheckReference
+	for _, ac := range wl.Status.AdmissionChecks {
+		if ac.Name == mkACName {
+			continue
+		}
+		if ac.State != kueue.CheckStateReady {
+			notReady = append(notReady, ac.Name)
+		}
+	}
+	return len(notReady) == 0, notReady
 }
