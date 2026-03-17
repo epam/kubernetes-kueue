@@ -485,6 +485,13 @@ func SetFeatureGateDuringTest(tb testing.TB, f featuregate.Feature, value bool) 
 	featuregatetesting.SetFeatureGateDuringTest(tb, utilfeature.DefaultFeatureGate, f, value)
 }
 
+// SetFeatureGatesDuringTest is a helper method to override feature gates in tests.
+func SetFeatureGatesDuringTest(tb testing.TB, gates map[featuregate.Feature]bool) {
+	for f, value := range gates {
+		SetFeatureGateDuringTest(tb, f, value)
+	}
+}
+
 // Enabled is helper for `utilfeature.DefaultFeatureGate.Enabled()`
 func Enabled(f featuregate.Feature) bool {
 	return utilfeature.DefaultFeatureGate.Enabled(f)
