@@ -328,6 +328,14 @@ const (
 	//
 	// Enables gating the admission of workloads based on annotations.
 	AdmissionGatedBy featuregate.Feature = "AdmissionGatedBy"
+
+	// owner: @mbobrovskyi
+	//
+	// issue: https://github.com/kubernetes-sigs/kueue/issues/9872
+	//
+	// ShortWorkloadNames ensures that generated Workload names do not exceed
+	// 63 characters, making them compatible with Kubernetes label value limits.
+	ShortWorkloadNames featuregate.Feature = "ShortWorkloadNames"
 )
 
 func init() {
@@ -507,6 +515,9 @@ var defaultVersionedFeatureGates = map[featuregate.Feature]featuregate.Versioned
 		{Version: version.MustParse("0.17"), Default: false, PreRelease: featuregate.Alpha},
 	},
 	AdmissionGatedBy: {
+		{Version: version.MustParse("0.17"), Default: false, PreRelease: featuregate.Alpha},
+	},
+	ShortWorkloadNames: {
 		{Version: version.MustParse("0.17"), Default: false, PreRelease: featuregate.Alpha},
 	},
 }
