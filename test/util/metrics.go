@@ -312,3 +312,27 @@ func ExpectCohortSubtreeQuotaGaugeMetricCleaned(cohortName, flavor, resource str
 	ginkgo.GinkgoHelper()
 	ExpectCohortSubtreeQuotaGaugeMetric(cohortName, flavor, resource, 0)
 }
+
+func ExpectCohortInfoMetric(cohortName, parentCohort, rootCohort string) {
+	ginkgo.GinkgoHelper()
+	metric := metrics.CohortInfo.WithLabelValues(cohortName, parentCohort, rootCohort, roletracker.RoleStandalone)
+	expectGaugeMetric(metric, gomega.Equal(float64(1)))
+}
+
+func ExpectClusterQueueInfoMetric(cqName, parentCohort, rootCohort string) {
+	ginkgo.GinkgoHelper()
+	metric := metrics.ClusterQueueInfo.WithLabelValues(cqName, parentCohort, rootCohort, roletracker.RoleStandalone)
+	expectGaugeMetric(metric, gomega.Equal(float64(1)))
+}
+
+func ExpectCohortInfoMetricCleaned(cohortName, parentCohort, rootCohort string) {
+	ginkgo.GinkgoHelper()
+	metric := metrics.CohortInfo.WithLabelValues(cohortName, parentCohort, rootCohort, roletracker.RoleStandalone)
+	expectGaugeMetric(metric, gomega.Equal(float64(0)))
+}
+
+func ExpectClusterQueueInfoMetricCleaned(cqName, parentCohort, rootCohort string) {
+	ginkgo.GinkgoHelper()
+	metric := metrics.ClusterQueueInfo.WithLabelValues(cqName, parentCohort, rootCohort, roletracker.RoleStandalone)
+	expectGaugeMetric(metric, gomega.Equal(float64(0)))
+}

@@ -456,6 +456,7 @@ func (c *Cache) AddClusterQueue(ctx context.Context, cq *kueue.ClusterQueue) err
 		}
 	}
 
+	cqImpl.reportInfoMetric()
 	return nil
 }
 
@@ -480,6 +481,7 @@ func (c *Cache) UpdateClusterQueue(log logr.Logger, cq *kueue.ClusterQueue) erro
 		}
 		qImpl.resetFlavorsAndResources(cqImpl.resourceNode.Usage, cqImpl.AdmittedUsage)
 	}
+	cqImpl.reportInfoMetric()
 	return nil
 }
 
@@ -520,19 +522,52 @@ func (c *Cache) AddOrUpdateCohort(apiCohort *kueue.Cohort) error {
 	cohort := c.hm.Cohort(cohortName)
 	oldParent := cohort.Parent()
 	c.hm.UpdateCohortEdge(cohortName, apiCohort.Spec.ParentName)
-	return cohort.updateCohort(apiCohort, oldParent)
+	if err := cohort.updateCohort(apiCohort, oldParent); err != nil {
+		return err
+	}
+	c.reportInfoMetricsSubtree(cohort)
+	return nil
 }
 
 func (c *Cache) DeleteCohort(cohortName kueue.CohortReference) {
 	c.Lock()
 	defer c.Unlock()
+
+	// Keep reference in case the node still needs explicit clear when fully gone.
+	oldCohort := c.hm.Cohort(cohortName)
+
 	c.hm.DeleteCohort(cohortName)
 
-	// If the cohort still exists after deletion, it means
-	// that it has one or more children referencing it.
-	// We need to run update algorithm.
-	if cohort := c.hm.Cohort(cohortName); cohort != nil {
-		updateCohortResourceNode(cohort)
+	// Cover if transferred to an implicit cohort node with transferred children
+	remaining := c.hm.Cohort(cohortName)
+	if remaining != nil {
+		updateCohortResourceNode(remaining)
+		c.reportInfoMetricsSubtree(remaining)
+		return
+	}
+
+	// explicit cleanup when fully removed
+	if oldCohort != nil {
+		metrics.ClearCohortInfo(oldCohort.Name)
+	}
+}
+
+func (c *Cache) reportInfoMetricsSubtree(root *cohort) {
+	if root == nil {
+		return
+	}
+
+	stack := []*cohort{root}
+	for len(stack) > 0 {
+		last := len(stack) - 1
+		ch := stack[last]
+		stack = stack[:last]
+
+		ch.reportInfoMetric(c.roleTracker)
+		for _, cq := range ch.ChildCQs() {
+			cq.reportInfoMetric()
+		}
+		stack = append(stack, ch.ChildCohorts()...)
 	}
 }
 
@@ -957,6 +992,7 @@ func (c *Cache) ResyncGaugeMetrics() {
 	defer c.RUnlock()
 	for _, cq := range c.hm.ClusterQueues() {
 		metrics.ReportClusterQueueStatus(cq.Name, cq.Status, cq.customMetricLabelValues, c.roleTracker)
+		cq.reportInfoMetric()
 		cq.reportActiveWorkloads()
 		if c.resourceMetricsEnabled {
 			cq.reportResourceMetrics(c.fairSharingEnabled)
@@ -968,6 +1004,11 @@ func (c *Cache) ResyncGaugeMetrics() {
 			}
 		}
 	}
+
+	for _, cohort := range c.hm.Cohorts() {
+		cohort.reportInfoMetric(c.roleTracker)
+	}
+
 	if c.fairSharingEnabled {
 		for _, cohort := range c.hm.Cohorts() {
 			drs := dominantResourceShare(cohort, nil)
