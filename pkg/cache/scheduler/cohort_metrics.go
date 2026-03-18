@@ -31,7 +31,7 @@ import (
 	"sigs.k8s.io/kueue/pkg/workload"
 )
 
-type cohortMetricPoint struct {
+type cohortResourceMetricPoint struct {
 	cohortName      kueue.CohortReference
 	flavorResource  resources.FlavorResource
 	quotaQty        int64
@@ -46,7 +46,7 @@ func (c *Cache) RecordCohortMetrics(log logr.Logger, cohortName kueue.CohortRefe
 	log = c.withCohortLogger(log, cohortName)
 	log.V(4).Info("Recording metrics for cohort")
 
-	points := c.collectCohortMetricPoints(cohortName, false)
+	points := c.collectCohortResourceMetrics(cohortName, false)
 	for _, p := range points {
 		c.applyCohortMetricPoint(p)
 	}
@@ -61,26 +61,26 @@ func (c *Cache) ClearCohortMetrics(log logr.Logger, cohortName kueue.CohortRefer
 	log = c.withCohortLogger(log, cohortName)
 	log.V(4).Info("Clearing metrics for cohort")
 
-	points := c.collectCohortMetricPoints(cohortName, true)
+	points := c.collectCohortResourceMetrics(cohortName, true)
 	for _, p := range points {
 		c.applyCohortMetricPoint(p)
 	}
 }
 
-// collectCohortMetricPoints prepares subtree metric points for the target cohort
+// collectCohortResourceMetrics prepares subtree metric points for the target cohort
 // and all cohorts on the path from the target to the root.
 // When simulateRemoval=true, it computes post-removal subtree values by subtracting
 // the target cohort's subtree contribution from each cohort's current subtree totals.
 // This is used when clearing metrics so ancestor subtree gauges are updated too,
 // rather than left with stale values after the target cohort is removed.
-func (c *Cache) collectCohortMetricPoints(cohortName kueue.CohortReference, simulateRemoval bool) []cohortMetricPoint {
+func (c *Cache) collectCohortResourceMetrics(cohortName kueue.CohortReference, simulateRemoval bool) []cohortResourceMetricPoint {
 	c.RLock()
 	defer c.RUnlock()
 
 	ch := c.hm.Cohort(cohortName)
 	if ch == nil || hierarchy.HasCycle(ch) {
 		if simulateRemoval {
-			return []cohortMetricPoint{{cohortName: cohortName}}
+			return []cohortResourceMetricPoint{{cohortName: cohortName}}
 		}
 		return nil
 	}
@@ -90,7 +90,7 @@ func (c *Cache) collectCohortMetricPoints(cohortName kueue.CohortReference, simu
 	reservationMemo := newSubtreeReservationMemo()
 	chSubtreeReservations := reservationMemo.total(ch)
 
-	var points []cohortMetricPoint
+	var points []cohortResourceMetricPoint
 	for ancestor := range ch.PathSelfToRoot() {
 		ancestorSubtreeQuota := ancestor.resourceNode.SubtreeQuota
 		ancestorSubtreeReservations := reservationMemo.total(ancestor)
@@ -101,7 +101,7 @@ func (c *Cache) collectCohortMetricPoints(cohortName kueue.CohortReference, simu
 		}
 
 		for fr := range flavorResourceKeys(ancestorSubtreeQuota, ancestorSubtreeReservations) {
-			points = append(points, cohortMetricPoint{
+			points = append(points, cohortResourceMetricPoint{
 				cohortName:      ancestor.Name,
 				flavorResource:  fr,
 				quotaQty:        ancestorSubtreeQuota[fr],
@@ -123,7 +123,7 @@ func flavorResourceKeys(quota, reservations resources.FlavorResourceQuantities) 
 	return keys
 }
 
-func (c *Cache) applyCohortMetricPoint(p cohortMetricPoint) {
+func (c *Cache) applyCohortMetricPoint(p cohortResourceMetricPoint) {
 	flavor := p.flavorResource.Flavor
 	resource := p.flavorResource.Resource
 
@@ -193,5 +193,56 @@ func (c *Cache) ReportCohortSubtreeAdmittedWorkload(log logr.Logger, wl *kueue.W
 			c.customLabels.CohortGet(ancestor),
 			c.roleTracker,
 		)
+	}
+}
+
+// RecordClusterQueueInfoMetric reports the ClusterQueueInfo gauge for a single CQ.
+func (c *Cache) RecordClusterQueueInfoMetric(cqName kueue.ClusterQueueReference, customLabelValues []string) {
+	parentCohort, rootCohort := c.ClusterQueueHierarchyInfo(cqName)
+	metrics.ClearClusterQueueInfo(cqName)
+	metrics.ReportClusterQueueInfo(cqName, parentCohort, rootCohort, customLabelValues, c.roleTracker)
+}
+
+// ReportCohortSelfInfoMetric reports the info gauge for a single cohort and its
+// direct child CQs without clearing old series. Use this when hierarchy labels
+// have not changed and no stale series need removal.
+func (c *Cache) ReportCohortSelfInfoMetric(cohortName kueue.CohortReference) {
+	c.RLock()
+	points := c.hm.CohortInfoPoints(cohortName)
+	c.RUnlock()
+	// Report without clearing — caller guarantees no stale series.
+	for _, p := range points {
+		if p.CohortName != nil {
+			customLabels := c.customLabels.CohortGet(*p.CohortName)
+			metrics.ReportCohortInfo(*p.CohortName, p.ParentCohortName, p.RootCohortName, customLabels, c.roleTracker)
+		}
+		if p.ClusterQueueName != nil {
+			customLabels := c.customLabels.CQGet(*p.ClusterQueueName)
+			metrics.ReportClusterQueueInfo(*p.ClusterQueueName, p.ParentCohortName, p.RootCohortName, customLabels, c.roleTracker)
+		}
+	}
+}
+
+func (c *Cache) applyCohortInfoMetricPoints(p hierarchy.InfoPoint) {
+	if p.CohortName != nil {
+		customLabels := c.customLabels.CohortGet(*p.CohortName)
+		metrics.ClearCohortInfo(*p.CohortName)
+		metrics.ReportCohortInfo(*p.CohortName, p.ParentCohortName, p.RootCohortName, customLabels, c.roleTracker)
+	}
+	if p.ClusterQueueName != nil {
+		customLabels := c.customLabels.CQGet(*p.ClusterQueueName)
+		metrics.ClearClusterQueueInfo(*p.ClusterQueueName)
+		metrics.ReportClusterQueueInfo(*p.ClusterQueueName, p.ParentCohortName, p.RootCohortName, customLabels, c.roleTracker)
+	}
+}
+
+// RecordCohortSubtreeInfoMetrics reports info gauges.
+// Called from controllers after cohort mutations.
+func (c *Cache) RecordCohortSubtreeInfoMetrics(cohortName kueue.CohortReference) {
+	c.RLock()
+	points := c.hm.CohortSubtreeInfoPoints(cohortName)
+	c.RUnlock()
+	for _, p := range points {
+		c.applyCohortInfoMetricPoints(p)
 	}
 }
