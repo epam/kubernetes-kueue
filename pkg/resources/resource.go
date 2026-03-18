@@ -51,3 +51,12 @@ func (frq FlavorResourceQuantities) FlattenFlavors() Requests {
 	}
 	return result
 }
+
+// SubNonNegative returns max(frq-other, 0) for keys present in frq.
+func (frq FlavorResourceQuantities) SubNonNegative(other FlavorResourceQuantities) FlavorResourceQuantities {
+	result := make(FlavorResourceQuantities, len(frq))
+	for fr, qty := range frq {
+		result[fr] = max(qty-other[fr], 0)
+	}
+	return result
+}
