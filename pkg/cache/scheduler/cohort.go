@@ -21,6 +21,8 @@ import (
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
 	"sigs.k8s.io/kueue/pkg/cache/hierarchy"
+	"sigs.k8s.io/kueue/pkg/metrics"
+	"sigs.k8s.io/kueue/pkg/util/roletracker"
 )
 
 // cohort is a set of ClusterQueues that can borrow resources from each other.
@@ -62,6 +64,19 @@ func (c *cohort) getRootUnsafe() *cohort {
 		return c
 	}
 	return c.Parent().getRootUnsafe()
+}
+
+func (c *cohort) reportInfoMetric(tracker *roletracker.RoleTracker) {
+	if hierarchy.HasCycle(c) {
+		metrics.ClearCohortInfo(c.Name)
+		return
+	}
+
+	var parentName kueue.CohortReference
+	if c.HasParent() {
+		parentName = c.Parent().Name
+	}
+	metrics.ReportCohortInfo(c.Name, parentName, c.getRootUnsafe().Name, tracker)
 }
 
 // implement flatResourceNode/hierarchicalResourceNode interfaces

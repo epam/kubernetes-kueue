@@ -340,3 +340,27 @@ func ExpectCohortSubtreeAdmittedActiveWorkloadsGaugeMetric(cohortName kueue.Coho
 	lvs := []string{string(cohortName), roletracker.RoleStandalone}
 	expectGaugeMetric(metrics.CohortSubtreeAdmittedActiveWorkloads, lvs, gomega.Equal(count))
 }
+
+func ExpectCohortInfoMetric(cohortName, parentCohort, rootCohort string) {
+	ginkgo.GinkgoHelper()
+	lvs := []string{cohortName, parentCohort, rootCohort, roletracker.RoleStandalone}
+	expectGaugeMetric(metrics.CohortInfo, lvs, gomega.Equal(float64(1)))
+}
+
+func ExpectClusterQueueInfoMetric(cqName, parentCohort, rootCohort string) {
+	ginkgo.GinkgoHelper()
+	lvs := []string{cqName, parentCohort, rootCohort, roletracker.RoleStandalone}
+	expectGaugeMetric(metrics.ClusterQueueInfo, lvs, gomega.Equal(float64(1)))
+}
+
+func ExpectCohortInfoMetricCleaned(cohortName, parentCohort, rootCohort string) {
+	ginkgo.GinkgoHelper()
+	lvs := []string{cohortName, parentCohort, rootCohort, roletracker.RoleStandalone}
+	expectGaugeMetric(metrics.CohortInfo, lvs, gomega.Equal(float64(0)))
+}
+
+func ExpectClusterQueueInfoMetricCleaned(cqName, parentCohort, rootCohort string) {
+	ginkgo.GinkgoHelper()
+	lvs := []string{cqName, parentCohort, rootCohort, roletracker.RoleStandalone}
+	expectGaugeMetric(metrics.ClusterQueueInfo, lvs, gomega.Equal(float64(0)))
+}
