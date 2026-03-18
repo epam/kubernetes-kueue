@@ -193,6 +193,10 @@ func (r *ClusterQueueReconciler) Reconcile(ctx context.Context, req ctrl.Request
 		}
 
 		r.cache.RecordCohortMetrics(log, cqObj.Spec.CohortName)
+		r.cache.RecordClusterQueueInfoMetric(
+			kueue.ClusterQueueReference(cqObj.Name),
+			r.customLabels.CQGet(kueue.ClusterQueueReference(cqObj.Name)),
+		)
 	} else {
 		if !r.cache.ClusterQueueTerminating(kueue.ClusterQueueReference(cqObj.Name)) {
 			r.cache.TerminateClusterQueue(kueue.ClusterQueueReference(cqObj.Name))

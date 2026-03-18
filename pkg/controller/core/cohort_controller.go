@@ -186,6 +186,7 @@ func (r *CohortReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 			r.qManager.DeleteCohort(kueue.CohortReference(req.Name))
 			metrics.ClearCohortMetrics(kueue.CohortReference(req.Name))
 			metrics.ClearCohortAdmittedWorkloadsMetrics(kueue.CohortReference(req.Name))
+			metrics.ClearCohortInfo(kueue.CohortReference(req.Name))
 			if features.Enabled(features.CustomMetricLabels) {
 				r.customLabels.CohortDelete(kueue.CohortReference(req.Name))
 			}
@@ -200,13 +201,24 @@ func (r *CohortReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 	}
 
 	log.V(2).Info("Cohort is being created or updated", "resources", cohort.Spec.ResourceGroups)
-	if err := r.cache.AddOrUpdateCohort(&cohort); err != nil {
+	hierarchyChanged, err := r.cache.AddOrUpdateCohort(&cohort)
+	if err != nil {
 		log.V(2).Error(err, "Error adding or updating cohort in the cache")
+	}
+	if hierarchyChanged {
+		cohortRef := kueue.CohortReference(cohort.Name)
+		if cohort.Spec.ParentName != "" {
+			// cover implicit cohort creation with potential children transfer
+			cohortRef = cohort.Spec.ParentName
+		}
+		r.cache.RecordCohortSubtreeInfoMetrics(cohortRef)
+	} else {
+		r.cache.ReportCohortSelfInfoMetric(kueue.CohortReference(req.Name))
 	}
 	r.cache.RecordCohortMetrics(log, kueue.CohortReference(req.Name))
 	r.qManager.AddOrUpdateCohort(ctx, &cohort)
 
-	err := r.updateCohortStatusIfChanged(ctx, &cohort)
+	err = r.updateCohortStatusIfChanged(ctx, &cohort)
 	return ctrl.Result{}, client.IgnoreNotFound(err)
 }
 

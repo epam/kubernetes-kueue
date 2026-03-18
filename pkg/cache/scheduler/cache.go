@@ -490,6 +490,11 @@ func (c *Cache) UpdateClusterQueue(log logr.Logger, cq *kueue.ClusterQueue) erro
 		}
 		qImpl.resetFlavorsAndResources(cqImpl.resourceNode.Usage, cqImpl.AdmittedUsage)
 	}
+
+	// If old parent was implicit and got removed, clear its info metric.
+	if oldParent != nil && c.hm.Cohort(oldParent.Name) == nil {
+		metrics.ClearCohortInfo(oldParent.Name)
+	}
 	return nil
 }
 
@@ -529,8 +534,19 @@ func (c *Cache) AddOrUpdateCohort(apiCohort *kueue.Cohort) error {
 	c.hm.AddCohort(cohortName)
 	cohort := c.hm.Cohort(cohortName)
 	oldParent := cohort.Parent()
+	var oldParentName kueue.CohortReference
+	if oldParent != nil {
+		oldParentName = oldParent.Name
+	}
 	c.hm.UpdateCohortEdge(cohortName, apiCohort.Spec.ParentName)
-	return cohort.updateCohort(apiCohort, oldParent)
+	if err := cohort.updateCohort(apiCohort, oldParent); err != nil {
+		return err
+	}
+	// If the old parent was removed (implicit with no children), clear its metrics.
+	if oldParentName != "" && c.hm.Cohort(oldParentName) == nil {
+		metrics.ClearCohortInfo(oldParentName)
+	}
+	return nil
 }
 
 func (c *Cache) DeleteCohort(cohortName kueue.CohortReference) {
@@ -543,11 +559,8 @@ func (c *Cache) DeleteCohort(cohortName kueue.CohortReference) {
 
 	c.hm.DeleteCohort(cohortName)
 
-	// If the cohort still exists after deletion, it means
-	// that it has one or more children referencing it.
-	// We need to run update algorithm.
-	if cohort := c.hm.Cohort(cohortName); cohort != nil {
-		updateCohortResourceNode(cohort)
+	if remaining := c.hm.Cohort(cohortName); remaining != nil {
+		updateCohortResourceNode(remaining)
 	}
 }
 
@@ -1001,12 +1014,38 @@ func (c *Cache) MatchingClusterQueues(nsLabels map[string]string) sets.Set[kueue
 	return cqs
 }
 
+// ClusterQueueHierarchyInfo returns hierarchy labels for a CQ.
+func (c *Cache) ClusterQueueHierarchyInfo(cqName kueue.ClusterQueueReference) (parentCohort, rootCohort kueue.CohortReference) {
+	c.RLock()
+	defer c.RUnlock()
+	cq := c.hm.ClusterQueue(cqName)
+	if cq == nil || !cq.HasParent() {
+		return "", ""
+	}
+	parent := cq.Parent()
+	parentCohort = parent.GetName()
+	rootCohort = parent.getRootUnsafe().Name
+
+	return parentCohort, rootCohort
+}
+
 // ResyncGaugeMetrics re-reports CQ/LQ status, active workload, resource, and weighted share gauge metrics.
 func (c *Cache) ResyncGaugeMetrics() {
 	c.RLock()
 	defer c.RUnlock()
+
+	// Bulk-reset info metrics once, then set without per-entity deletes.
+	metrics.ClusterQueueInfo.Reset()
+	metrics.CohortInfo.Reset()
+
 	for _, cq := range c.hm.ClusterQueues() {
 		metrics.ReportClusterQueueStatus(cq.Name, cq.Status, cq.customMetricLabelValues, c.roleTracker)
+		var parentCohort, rootCohort kueue.CohortReference
+		if cq.HasParent() {
+			parentCohort = cq.Parent().GetName()
+			rootCohort = cq.Parent().getRootUnsafe().Name
+		}
+		metrics.ReportClusterQueueInfo(cq.Name, parentCohort, rootCohort, cq.customMetricLabelValues, c.roleTracker)
 		cq.reportActiveWorkloads()
 		if c.resourceMetricsEnabled {
 			cq.reportResourceMetrics(c.fairSharingEnabled)
@@ -1018,14 +1057,16 @@ func (c *Cache) ResyncGaugeMetrics() {
 			}
 		}
 	}
-	if c.fairSharingEnabled {
-		for _, cohort := range c.hm.Cohorts() {
+
+	for _, cohort := range c.hm.Cohorts() {
+		var parentName kueue.CohortReference
+		if cohort.HasParent() {
+			parentName = cohort.Parent().Name
+			metrics.ReportCohortInfo(cohort.Name, parentName, cohort.getRootUnsafe().Name, c.customLabels.CohortGet(cohort.Name), c.roleTracker)
+		}
+		if c.fairSharingEnabled {
 			drs := dominantResourceShare(cohort, nil)
-			var customLabelValues []string
-			if features.Enabled(features.CustomMetricLabels) {
-				customLabelValues = c.customLabels.CohortGet(cohort.Name)
-			}
-			metrics.ReportCohortWeightedShare(cohort.Name, drs.PreciseWeightedShare(), customLabelValues, c.roleTracker)
+			metrics.ReportCohortWeightedShare(cohort.Name, drs.PreciseWeightedShare(), c.customLabels.CohortGet(cohort.Name), c.roleTracker)
 		}
 	}
 }

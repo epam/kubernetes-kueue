@@ -664,6 +664,9 @@ var _ = ginkgo.Describe("CustomMetricLabels", ginkgo.Label("controller:clusterqu
 				g.Expect(updatedWl.Status.Admission).ToNot(gomega.BeNil())
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
 
+			ginkgo.By("verifying CohortInfo includes custom_team=data-eng")
+			util.ExpectCohortInfoMetric(cohort.Name, "", cohort.Name, 1, "data-eng")
+
 			ginkgo.By("verifying CohortSubtreeQuota includes custom_team=data-eng")
 			util.ExpectCohortSubtreeQuotaGaugeMetric(cohort.Name, defaultFlavor.Name, corev1.ResourceCPU.String(), 5_000, "data-eng")
 
@@ -719,6 +722,8 @@ var _ = ginkgo.Describe("CustomMetricLabels", ginkgo.Label("controller:clusterqu
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
 
 			util.ExpectCohortSubtreeAdmittedWorkloadsTotalMetric(kueue.CohortReference(cohort.Name), "", 1, "data-eng")
+			util.ExpectCohortInfoMetric(cohort.Name, "", cohort.Name, 1, "data-eng")
+			// check cohort metrics too while we're at it
 
 			gomega.Eventually(func(g gomega.Gomega) {
 				var updatedCohort kueue.Cohort
@@ -728,7 +733,9 @@ var _ = ginkgo.Describe("CustomMetricLabels", ginkgo.Label("controller:clusterqu
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
 
 			util.ExpectCohortSubtreeAdmittedWorkloadsTotalMetric(kueue.CohortReference(cohort.Name), "", 1, "data-eng")
+			util.ExpectCohortInfoMetric(cohort.Name, "", cohort.Name, 1, "data-eng")
 			util.ExpectCohortSubtreeAdmittedWorkloadsTotalMetric(kueue.CohortReference(cohort.Name), "", 0, "data-test")
+			util.ExpectCohortInfoMetric(cohort.Name, "", cohort.Name, 0, "data-test")
 		})
 	})
 
