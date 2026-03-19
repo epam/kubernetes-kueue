@@ -31,6 +31,8 @@ type cohort struct {
 	resourceNode resourceNode
 
 	FairWeight float64
+
+	admittedWorkloadsCount int
 }
 
 func newCohort(name kueue.CohortReference) *cohort {
@@ -94,5 +96,24 @@ func (c *cohort) PathSelfToRoot() iter.Seq[*cohort] {
 			}
 			cohort = cohort.Parent()
 		}
+	}
+}
+
+func (c *cohort) applyAdmittedWorkloadUsageDelta(op usageOp) {
+	for ancestor := range c.PathSelfToRoot() {
+		ancestor.admittedWorkloadsCount += op.asSignedOne()
+	}
+}
+
+func (c *cohort) removeAdmittedWorkloadUsage() {
+	if c == nil {
+		return
+	}
+	if hierarchy.HasCycle(c) {
+		return
+	}
+	count := c.admittedWorkloadsCount
+	for ancestor := range c.PathSelfToRoot() {
+		ancestor.admittedWorkloadsCount -= count
 	}
 }

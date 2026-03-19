@@ -494,6 +494,9 @@ func (c *clusterQueue) deleteWorkload(log logr.Logger, wlKey workload.Reference)
 }
 
 func (c *clusterQueue) reportActiveWorkloads() {
+	for ancestor := range c.Parent().PathSelfToRoot() {
+		metrics.ReportCohortSubtreeAdmittedActiveWorkloads(ancestor.Name, c.admittedWorkloadsCount, c.customMetricLabelValues, c.roleTracker)
+	}
 	metrics.ReportAdmittedActiveWorkloads(c.Name, c.admittedWorkloadsCount, c.customMetricLabelValues, c.roleTracker)
 	metrics.ReportReservingActiveWorkloads(c.Name, len(c.Workloads), c.customMetricLabelValues, c.roleTracker)
 }
@@ -548,6 +551,7 @@ func (c *clusterQueue) updateWorkloadUsage(log logr.Logger, wi *workload.Info, o
 	c.updateWorkloadTASUsage(log, wi, op)
 	if admitted {
 		updateFlavorUsage(frUsage, c.AdmittedUsage, op)
+		c.Parent().applyAdmittedWorkloadUsageDelta(op)
 		c.admittedWorkloadsCount += op.asSignedOne()
 	}
 	qKey := queue.KeyFromWorkload(wi.Obj)
