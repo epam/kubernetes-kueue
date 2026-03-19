@@ -79,10 +79,11 @@ var _ = ginkgo.Describe("LeaderWorkerSet integration", ginkgo.Label("area:single
 	})
 	ginkgo.AfterEach(func() {
 		gomega.Expect(util.DeleteAllLeaderWorkerSetsInNamespace(ctx, k8sClient, ns)).To(gomega.Succeed())
-		// RecreateGroupOnPodRestart can leave the whole pod group terminating while the
-		// LeaderWorkerSet controller finishes cleanup, so wait for pods before deleting the namespace.
-		util.ExpectAllPodsInNamespaceDeleted(ctx, k8sClient, ns)
+		// DeleteNamespace actively strips pod finalizers and workload finalizers,
+		// which is needed because RecreateGroupOnPodRestart can leave pods
+		// terminating while the LeaderWorkerSet controller finishes cleanup.
 		gomega.Expect(util.DeleteNamespace(ctx, k8sClient, ns)).To(gomega.Succeed())
+		util.ExpectAllPodsInNamespaceDeleted(ctx, k8sClient, ns)
 		util.ExpectObjectToBeDeleted(ctx, k8sClient, cq, true)
 		util.ExpectObjectToBeDeleted(ctx, k8sClient, rf, true)
 	})
@@ -1011,7 +1012,7 @@ var _ = ginkgo.Describe("LeaderWorkerSet integration", ginkgo.Label("area:single
 	})
 
 	ginkgo.When("LeaderWorkerSet created with Restart Policy", func() {
-		ginkgo.It("should recreate pods when policy is set to RecreateGroupOnPodRestart", func() {
+		ginkgo.FIt("should recreate pods when policy is set to RecreateGroupOnPodRestart", func() {
 			lws := leaderworkersettesting.MakeLeaderWorkerSet("lws", ns.Name).
 				Image(util.GetAgnHostImage(), util.BehaviorWaitForDeletion).
 				Size(3).

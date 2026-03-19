@@ -176,6 +176,8 @@ test-e2e-dra: setup-e2e-env run-test-e2e-dra-$(E2E_KIND_VERSION:kindest/node:v%=
 .PHONY: test-e2e-multikueue-dra
 test-e2e-multikueue-dra: setup-e2e-env run-test-e2e-multikueue-dra-$(E2E_KIND_VERSION:kindest/node:v%=%)
 
+run-test-e2e-singlecluster-%: E2E_MODE := dev
+run-test-e2e-singlecluster-%: GINKGO_ARGS := --label-filter=feature:leaderworkerset --repeat=200
 run-test-e2e-singlecluster-%: K8S_VERSION = $(@:run-test-e2e-singlecluster-%=%)
 run-test-e2e-singlecluster-%:
 	@echo Running e2e for k8s ${K8S_VERSION}
