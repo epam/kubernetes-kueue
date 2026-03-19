@@ -31,6 +31,8 @@ type cohort struct {
 	resourceNode resourceNode
 
 	FairWeight float64
+
+	admittedWorkloadsCount int
 }
 
 func newCohort(name kueue.CohortReference) *cohort {

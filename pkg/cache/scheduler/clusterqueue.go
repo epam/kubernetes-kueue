@@ -492,6 +492,11 @@ func (c *clusterQueue) deleteWorkload(log logr.Logger, wlKey workload.Reference)
 }
 
 func (c *clusterQueue) reportActiveWorkloads() {
+	if c.HasParent() {
+		for ancestor := range c.Parent().PathSelfToRoot() {
+			metrics.ReportCohortSubtreeAdmittedActiveWorkloads(ancestor.Name, c.admittedWorkloadsCount, c.customMetricLabelValues, c.roleTracker)
+		}
+	}
 	metrics.ReportAdmittedActiveWorkloads(c.Name, c.admittedWorkloadsCount, c.customMetricLabelValues, c.roleTracker)
 	metrics.ReportReservingActiveWorkloads(c.Name, len(c.Workloads), c.customMetricLabelValues, c.roleTracker)
 }
@@ -544,17 +549,23 @@ func (c *clusterQueue) updateWorkloadUsage(log logr.Logger, wi *workload.Info, o
 		}
 	}
 	c.updateWorkloadTASUsage(log, wi, op)
+	signedOne := op.asSignedOne()
 	if admitted {
 		updateFlavorUsage(frUsage, c.AdmittedUsage, op)
-		c.admittedWorkloadsCount += op.asSignedOne()
+		if c.HasParent() {
+			for ancestor := range c.Parent().PathSelfToRoot() {
+				ancestor.admittedWorkloadsCount += signedOne
+			}
+		}
+		c.admittedWorkloadsCount += signedOne
 	}
 	qKey := queue.KeyFromWorkload(wi.Obj)
 	if lq, ok := c.localQueues[qKey]; ok {
 		updateFlavorUsage(frUsage, lq.totalReserved, op)
-		lq.reservingWorkloads += op.asSignedOne()
+		lq.reservingWorkloads += signedOne
 		if admitted {
 			lq.updateAdmittedUsage(frUsage, op)
-			lq.admittedWorkloads += op.asSignedOne()
+			lq.admittedWorkloads += signedOne
 		}
 		if features.Enabled(features.LocalQueueMetrics) {
 			lq.reportActiveWorkloads(c.roleTracker)
