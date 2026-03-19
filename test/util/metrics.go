@@ -328,3 +328,9 @@ func ExpectCohortSubtreeResourceReservationsGaugeMetricCleaned(cohortName, flavo
 	ginkgo.GinkgoHelper()
 	ExpectCohortSubtreeResourceReservationsGaugeMetric(cohortName, flavor, resource, 0)
 }
+
+func ExpectAdmittedActiveWorkloadsGaugeMetric(clusterQueue kueue.ClusterQueueReference, count float64) {
+	ginkgo.GinkgoHelper()
+	lvs := []string{string(clusterQueue), roletracker.RoleStandalone}
+	expectGaugeMetric(metrics.AdmittedActiveWorkloads, lvs, gomega.Equal(count))
+}
