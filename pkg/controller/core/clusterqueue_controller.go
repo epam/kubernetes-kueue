@@ -51,7 +51,6 @@ import (
 	"sigs.k8s.io/kueue/pkg/constants"
 	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/metrics"
-	"sigs.k8s.io/kueue/pkg/util/resource"
 	"sigs.k8s.io/kueue/pkg/util/roletracker"
 	utilslices "sigs.k8s.io/kueue/pkg/util/slices"
 	"sigs.k8s.io/kueue/pkg/workload"
@@ -349,7 +348,7 @@ func (r *ClusterQueueReconciler) Create(e event.TypedCreateEvent[*kueue.ClusterQ
 	}
 
 	if r.reportResourceMetrics {
-		recordResourceMetrics(e.Object, r.roleTracker, r.customLabels)
+		r.cache.RecordClusterQueueResourceMetrics(log, kueue.ClusterQueueReference(e.Object.Name), r.fairSharingEnabled)
 	}
 
 	return true
@@ -411,7 +410,7 @@ func (r *ClusterQueueReconciler) Update(e event.TypedUpdateEvent[*kueue.ClusterQ
 	}
 
 	if r.reportResourceMetrics {
-		updateResourceMetrics(e.ObjectOld, e.ObjectNew, r.roleTracker, r.customLabels)
+		updateResourceMetrics(r.logger(), r.cache, e.ObjectOld, e.ObjectNew, r.fairSharingEnabled)
 	}
 	return true
 }
@@ -421,40 +420,7 @@ func (r *ClusterQueueReconciler) Generic(e event.TypedGenericEvent[*kueue.Cluste
 	return true
 }
 
-func recordResourceMetrics(cq *kueue.ClusterQueue, tracker *roletracker.RoleTracker, customLabels *metrics.CustomLabels) {
-	cqCustomLabels := customLabels.CQGet(kueue.ClusterQueueReference(cq.Name))
-	for rgi := range cq.Spec.ResourceGroups {
-		rg := &cq.Spec.ResourceGroups[rgi]
-		for fqi := range rg.Flavors {
-			fq := &rg.Flavors[fqi]
-			for ri := range fq.Resources {
-				r := &fq.Resources[ri]
-				nominal := resource.QuantityToFloat(&r.NominalQuota)
-				borrow := resource.QuantityToFloat(r.BorrowingLimit)
-				lend := resource.QuantityToFloat(r.LendingLimit)
-				metrics.ReportClusterQueueQuotas(cq.Spec.CohortName, cq.Name, string(fq.Name), string(r.Name), nominal, borrow, lend, cqCustomLabels, tracker)
-			}
-		}
-	}
-
-	for fri := range cq.Status.FlavorsReservation {
-		fr := &cq.Status.FlavorsReservation[fri]
-		for ri := range fr.Resources {
-			r := &fr.Resources[ri]
-			metrics.ReportClusterQueueResourceReservations(cq.Spec.CohortName, cq.Name, string(fr.Name), string(r.Name), resource.QuantityToFloat(&r.Total), cqCustomLabels, tracker)
-		}
-	}
-
-	for fui := range cq.Status.FlavorsUsage {
-		fu := &cq.Status.FlavorsUsage[fui]
-		for ri := range fu.Resources {
-			r := &fu.Resources[ri]
-			metrics.ReportClusterQueueResourceUsage(cq.Spec.CohortName, cq.Name, string(fu.Name), string(r.Name), resource.QuantityToFloat(&r.Total), cqCustomLabels, tracker)
-		}
-	}
-}
-
-func updateResourceMetrics(oldCq, newCq *kueue.ClusterQueue, tracker *roletracker.RoleTracker, customLabels *metrics.CustomLabels) {
+func updateResourceMetrics(log logr.Logger, cache *schdcache.Cache, oldCq, newCq *kueue.ClusterQueue, fairSharingEnabled bool) {
 	// if the cohort changed, drop all the old metrics
 	if oldCq.Spec.CohortName != newCq.Spec.CohortName {
 		metrics.ClearClusterQueueResourceMetrics(oldCq.Name)
@@ -462,7 +428,7 @@ func updateResourceMetrics(oldCq, newCq *kueue.ClusterQueue, tracker *roletracke
 		// selective remove
 		clearOldResourceQuotas(oldCq, newCq)
 	}
-	recordResourceMetrics(newCq, tracker, customLabels)
+	cache.RecordClusterQueueResourceMetrics(log, kueue.ClusterQueueReference(newCq.Name), fairSharingEnabled)
 }
 
 func clearOldResourceQuotas(oldCq, newCq *kueue.ClusterQueue) {
