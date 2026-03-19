@@ -38,6 +38,7 @@ on:
           - mszadkow
           - mykysha
           - reruno
+          - ivnovakov
       status:
         description: 'Status'
         required: true
