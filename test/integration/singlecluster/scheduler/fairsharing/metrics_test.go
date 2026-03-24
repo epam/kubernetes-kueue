@@ -28,7 +28,6 @@ import (
 
 	config "sigs.k8s.io/kueue/apis/config/v1beta2"
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
-	"sigs.k8s.io/kueue/pkg/metrics"
 	utiltestingapi "sigs.k8s.io/kueue/pkg/util/testing/v1beta2"
 	"sigs.k8s.io/kueue/pkg/workload"
 	"sigs.k8s.io/kueue/test/util"
@@ -125,7 +124,6 @@ var _ = ginkgo.Describe("Cohorts", func() {
 				util.ExpectObjectToBeDeleted(ctx, k8sClient, cq, true)
 			}
 			for _, cohort := range cohorts {
-				metrics.ClearCohortMetrics(kueue.CohortReference(cohort.Name))
 				util.ExpectObjectToBeDeleted(ctx, k8sClient, cohort, true)
 			}
 			util.ExpectObjectToBeDeleted(ctx, k8sClient, defaultFlavor, true)
@@ -458,7 +456,7 @@ var _ = ginkgo.Describe("Cohorts", func() {
 			})
 		})
 
-		ginkgo.XIt("correctly handles cohort metrics when workload admitted with admission check", func() {
+		ginkgo.It("correctly handles cohort metrics when workload admitted with admission check", func() {
 			const (
 				numWorkloadsForCQ1 = 5
 				numWorkloadsForCQ2 = 2
@@ -625,6 +623,52 @@ var _ = ginkgo.Describe("Cohorts", func() {
 				util.ExpectCohortSubtreeAdmittedWorkloadsTotalMetric("root", "low", numWorkloadsForCQ2)
 				util.ExpectCohortSubtreeAdmittedWorkloadsTotalMetric("ch1", "high", numWorkloadsForCQ1)
 				util.ExpectCohortSubtreeAdmittedWorkloadsTotalMetric("ch2", "low", numWorkloadsForCQ2)
+			})
+		})
+
+		ginkgo.It("should clear metrics for root cohort", func() {
+			ginkgo.By("Creating Cohorts", func() {
+				createCohort(utiltestingapi.MakeCohort("ch1").
+					Parent("root").
+					ResourceGroup(
+						*utiltestingapi.MakeFlavorQuotas(flavor1.Name).
+							Resource(corev1.ResourceCPU, "5").
+							Obj(),
+					).Obj())
+			})
+
+			ginkgo.By("Create ClusterQueues", func() {
+				createQueue(utiltestingapi.MakeClusterQueue("cq1").
+					Cohort("ch1").
+					ResourceGroup(
+						*utiltestingapi.MakeFlavorQuotas(flavor1.Name).
+							Resource(corev1.ResourceCPU, "5").
+							Obj(),
+					).Obj())
+			})
+
+			ginkgo.By("Creating Workloads", func() {
+				for range 5 {
+					createWorkload(
+						utiltestingapi.MakeWorkloadWithGeneratedName("workload-", ns.Name).
+							Queue("cq1").
+							Request(corev1.ResourceCPU, "1").
+							Obj(),
+					)
+				}
+			})
+
+			ginkgo.By("Checking that only cq2 Workloads admitted", func() {
+				util.ExpectCohortSubtreeAdmittedWorkloadsTotalMetric("root", "", 5)
+				util.ExpectCohortSubtreeAdmittedWorkloadsTotalMetric("ch1", "", 5)
+			})
+
+			ginkgo.By("Deleting Cohorts except root", func() {
+				for _, cohort := range cohorts {
+					util.ExpectObjectToBeDeleted(ctx, k8sClient, cohort, true)
+					util.ExpectCohortSubtreeAdmittedWorkloadsTotalMetric("ch1", "", 0)
+					util.ExpectCohortSubtreeAdmittedWorkloadsTotalMetric("root", "", 5)
+				}
 			})
 		})
 
