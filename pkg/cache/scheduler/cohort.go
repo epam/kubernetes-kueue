@@ -107,3 +107,15 @@ func (c *cohort) updateAdmittedWorkloadsCount(delta int) {
 		ancestor.admittedWorkloadsCount += delta
 	}
 }
+
+func (c *cohort) hasCQInSubtree() bool {
+	if len(c.ChildCQs()) > 0 {
+		return true
+	}
+	for _, childCohort := range c.ChildCohorts() {
+		if childCohort.hasCQInSubtree() {
+			return true
+		}
+	}
+	return false
+}

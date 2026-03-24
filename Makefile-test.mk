@@ -118,6 +118,7 @@ test-integration-run:
 
 .PHONY: test-integration-baseline
 test-integration-baseline: INTEGRATION_FILTERS= --label-filter="!slow && !redundant"
+test-integration-baseline: GINKGO_ARGS= --repeat=200
 test-integration-baseline: test-integration ## Run baseline integration tests for singlecluster suites.
 
 .PHONY: test-integration-extended

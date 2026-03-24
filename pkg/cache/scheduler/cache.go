@@ -516,9 +516,16 @@ func (c *Cache) DeleteClusterQueue(cq *kueue.ClusterQueue) {
 	c.hm.DeleteClusterQueue(cqName)
 	metrics.ClearCacheMetrics(cq.Name)
 
-	// Update cohort resources after deletion
 	if parent != nil {
+		// Update cohort resources after deletion.
 		updateCohortTreeResourcesIfNoCycle(parent)
+		// Clear metrics for the cohort and its ancestors if no children.
+		for ancestor := range parent.PathSelfToRoot() {
+			if ancestor.hasCQInSubtree() {
+				break
+			}
+			metrics.ClearCohortAdmittedWorkloadsMetrics(ancestor.Name)
+		}
 	}
 }
 
@@ -537,11 +544,22 @@ func (c *Cache) DeleteCohort(cohortName kueue.CohortReference) {
 	c.Lock()
 	defer c.Unlock()
 
+	var parent *cohort
 	if cohort := c.hm.Cohort(cohortName); cohort != nil {
 		cohort.updateAdmittedWorkloadsCount(-cohort.admittedWorkloadsCount)
+		metrics.ClearCohortAdmittedWorkloadsMetrics(cohort.Name)
+		parent = cohort.Parent()
 	}
 
 	c.hm.DeleteCohort(cohortName)
+
+	for ancestor := range parent.PathSelfToRoot() {
+		// Clear metrics for the cohort and its ancestors if no children.
+		if ancestor.hasCQInSubtree() {
+			break
+		}
+		metrics.ClearCohortAdmittedWorkloadsMetrics(ancestor.Name)
+	}
 
 	// If the cohort still exists after deletion, it means
 	// that it has one or more children referencing it.
