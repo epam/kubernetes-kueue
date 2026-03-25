@@ -23,6 +23,7 @@ import (
 	"github.com/google/go-cmp/cmp/cmpopts"
 	appsv1 "k8s.io/api/apps/v1"
 	"k8s.io/apimachinery/pkg/util/validation/field"
+	"k8s.io/component-base/featuregate"
 	"sigs.k8s.io/controller-runtime/pkg/webhook/admission"
 
 	qcache "sigs.k8s.io/kueue/pkg/cache/queue"
@@ -39,7 +40,7 @@ import (
 func TestDefault(t *testing.T) {
 	testCases := map[string]struct {
 		deployment           *appsv1.Deployment
-		localQueueDefaulting bool
+		featureGates         map[featuregate.Feature]bool
 		defaultLqExist       bool
 		want                 *appsv1.Deployment
 	}{
@@ -75,7 +76,7 @@ func TestDefault(t *testing.T) {
 			want:       testingdeployment.MakeDeployment("test-pod", "").PodTemplateSpecQueue("test-queue").Obj(),
 		},
 		"LocalQueueDefaulting enabled, default lq is created, job doesn't have queue label": {
-			localQueueDefaulting: true,
+			featureGates: map[featuregate.Feature]bool{features.LocalQueueDefaulting: true},
 			defaultLqExist:       true,
 			deployment:           testingdeployment.MakeDeployment("test-pod", "default").Obj(),
 			want: testingdeployment.MakeDeployment("test-pod", "default").
@@ -86,7 +87,7 @@ func TestDefault(t *testing.T) {
 				Obj(),
 		},
 		"LocalQueueDefaulting enabled, default lq is created, job has queue label": {
-			localQueueDefaulting: true,
+			featureGates: map[featuregate.Feature]bool{features.LocalQueueDefaulting: true},
 			defaultLqExist:       true,
 			deployment:           testingdeployment.MakeDeployment("test-pod", "").Queue("test-queue").Obj(),
 			want: testingdeployment.MakeDeployment("test-pod", "").
@@ -97,7 +98,7 @@ func TestDefault(t *testing.T) {
 				Obj(),
 		},
 		"LocalQueueDefaulting enabled, default lq isn't created, job doesn't have queue label": {
-			localQueueDefaulting: true,
+			featureGates: map[featuregate.Feature]bool{features.LocalQueueDefaulting: true},
 			defaultLqExist:       false,
 			deployment:           testingdeployment.MakeDeployment("test-pod", "").Obj(),
 			want: testingdeployment.MakeDeployment("test-pod", "").
@@ -148,7 +149,7 @@ func TestDefault(t *testing.T) {
 	for name, tc := range testCases {
 		t.Run(name, func(t *testing.T) {
 			ctx, _ := utiltesting.ContextWithLog(t)
-			features.SetFeatureGateDuringTest(t, features.LocalQueueDefaulting, tc.localQueueDefaulting)
+			features.SetFeatureGatesDuringTest(t, tc.featureGates)
 			t.Cleanup(jobframework.EnableIntegrationsForTest(t, "pod"))
 			builder := utiltesting.NewClientBuilder()
 			client := builder.Build()

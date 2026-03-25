@@ -84,9 +84,7 @@ func TestGenerateWorkloadName(t *testing.T) {
 	}
 	for name, tc := range testCases {
 		t.Run(name, func(t *testing.T) {
-			for fg, enabled := range tc.featureGates {
-				features.SetFeatureGateDuringTest(t, fg, enabled)
-			}
+			features.SetFeatureGatesDuringTest(t, tc.featureGates)
 			got := generateWorkloadName(tc.ownerName, tc.ownerUID, tc.ownerGVK, tc.generation)
 			if diff := cmp.Diff(tc.want, got, cmpopts.EquateErrors()); len(diff) != 0 {
 				t.Fatalf("Unexpected workloadName (-want,+got):\n%s", diff)
