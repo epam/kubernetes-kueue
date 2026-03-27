@@ -51,7 +51,6 @@ import (
 	"sigs.k8s.io/kueue/pkg/metrics"
 	afs "sigs.k8s.io/kueue/pkg/util/admissionfairsharing"
 	utilqueue "sigs.k8s.io/kueue/pkg/util/queue"
-	"sigs.k8s.io/kueue/pkg/util/resource"
 	"sigs.k8s.io/kueue/pkg/util/roletracker"
 )
 
@@ -259,13 +258,16 @@ func (r *LocalQueueReconciler) Create(e event.TypedCreateEvent[*kueue.LocalQueue
 	}
 
 	if r.lqMetrics.ShouldExposeLocalQueueMetrics(e.Object.GetLabels()) {
-		recordLocalQueueUsageMetrics(e.Object, r.roleTracker, r.customLabels)
+		r.cache.RecordLocalQueueResourceMetrics(log, e.Object.Spec.ClusterQueue, utilqueue.Key(e.Object))
 	}
 
 	return true
 }
 
 func (r *LocalQueueReconciler) Delete(e event.TypedDeleteEvent[*kueue.LocalQueue]) bool {
+	log := r.logger().WithValues("localQueue", klog.KObj(e.Object))
+	log.V(2).Info("LocalQueue delete event")
+
 	if r.lqMetrics.IsEnabled() {
 		metrics.ClearLocalQueueResourceMetrics(localQueueReferenceFromLocalQueue(e.Object))
 	}
@@ -279,8 +281,6 @@ func (r *LocalQueueReconciler) Delete(e event.TypedDeleteEvent[*kueue.LocalQueue
 		r.customLabels.LQDelete(utilqueue.Key(e.Object))
 	}
 
-	log := r.logger().WithValues("localQueue", klog.KObj(e.Object))
-	log.V(2).Info("LocalQueue delete event")
 	r.queues.DeleteLocalQueue(log, e.Object)
 	r.cache.DeleteLocalQueue(e.Object)
 	return true
@@ -299,7 +299,7 @@ func (r *LocalQueueReconciler) Update(e event.TypedUpdateEvent[*kueue.LocalQueue
 	}
 
 	if r.lqMetrics.ShouldExposeLocalQueueMetrics(e.ObjectNew.GetLabels()) {
-		updateLocalQueueResourceMetrics(e.ObjectNew, r.roleTracker, r.customLabels)
+		updateLocalQueueResourceMetrics(log, r.cache, e.ObjectNew)
 	} else if r.lqMetrics.ShouldExposeLocalQueueMetrics(e.ObjectOld.GetLabels()) {
 		clearLocalQueueMetrics(e.ObjectOld)
 	}
@@ -418,23 +418,10 @@ func localQueueReferenceFromLocalQueue(lq *kueue.LocalQueue) metrics.LocalQueueR
 	}
 }
 
-func recordLocalQueueUsageMetrics(queue *kueue.LocalQueue, tracker *roletracker.RoleTracker, cl *metrics.CustomLabels) {
-	lqKey := utilqueue.Key(queue)
-	for _, flavor := range queue.Status.FlavorsUsage {
-		for _, r := range flavor.Resources {
-			metrics.ReportLocalQueueResourceUsage(localQueueReferenceFromLocalQueue(queue), string(flavor.Name), string(r.Name), resource.QuantityToFloat(&r.Total), cl.LQGet(lqKey), tracker)
-		}
-	}
-	for _, flavor := range queue.Status.FlavorsReservation {
-		for _, r := range flavor.Resources {
-			metrics.ReportLocalQueueResourceReservations(localQueueReferenceFromLocalQueue(queue), string(flavor.Name), string(r.Name), resource.QuantityToFloat(&r.Total), cl.LQGet(lqKey), tracker)
-		}
-	}
-}
-
-func updateLocalQueueResourceMetrics(queue *kueue.LocalQueue, tracker *roletracker.RoleTracker, cl *metrics.CustomLabels) {
-	metrics.ClearLocalQueueResourceMetrics(localQueueReferenceFromLocalQueue(queue))
-	recordLocalQueueUsageMetrics(queue, tracker, cl)
+func updateLocalQueueResourceMetrics(log logr.Logger, cache *schdcache.Cache, queue *kueue.LocalQueue) {
+	lqRef := localQueueReferenceFromLocalQueue(queue)
+	metrics.ClearLocalQueueResourceMetrics(lqRef)
+	cache.RecordLocalQueueResourceMetrics(log, queue.Spec.ClusterQueue, utilqueue.Key(queue))
 }
 
 func clearLocalQueueMetrics(lq *kueue.LocalQueue) {

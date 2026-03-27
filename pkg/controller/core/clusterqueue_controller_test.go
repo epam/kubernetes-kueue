@@ -333,6 +333,23 @@ func resourceDataPoint(cohort, name, flavor, res string, v float64) testingmetri
 	}
 }
 
+func workloadForReservation(cqName string, reservation []kueue.FlavorUsage, t time.Time) *kueue.Workload {
+	psa := utiltestingapi.MakePodSetAssignment(kueue.DefaultPodSetName)
+	for _, fu := range reservation {
+		for _, ru := range fu.Resources {
+			psa = psa.Assignment(ru.Name, fu.Name, ru.Total.String())
+		}
+	}
+	return utiltestingapi.MakeWorkload("test-wl", "").
+		ReserveQuotaAt(
+			utiltestingapi.MakeAdmission(cqName).
+				PodSets(psa.Obj()).Obj(),
+			t,
+		).
+		AdmittedAt(true, t).
+		Obj()
+}
+
 func TestRecordResourceMetrics(t *testing.T) {
 	baseQueue := &kueue.ClusterQueue{
 		ObjectMeta: metav1.ObjectMeta{
@@ -543,6 +560,9 @@ func TestRecordResourceMetrics(t *testing.T) {
 				BorrowingDPs: []testingmetrics.MetricDataPoint{
 					resourceDataPoint("cohort", "name", "flavor", string(corev1.ResourceCPU), 2),
 				},
+				UsageDPs: []testingmetrics.MetricDataPoint{
+					resourceDataPoint("cohort", "name", "flavor", string(corev1.ResourceCPU), 0),
+				},
 			},
 		},
 	}
@@ -554,14 +574,31 @@ func TestRecordResourceMetrics(t *testing.T) {
 
 	for name, tc := range testCases {
 		t.Run(name, func(t *testing.T) {
-			recordResourceMetrics(tc.queue, nil, nil)
+			ctx, log := utiltesting.ContextWithLog(t)
+
+			cl := utiltesting.NewClientBuilder().Build()
+			cqCache := schdcache.New(cl)
+			err := cqCache.AddClusterQueue(ctx, tc.queue.DeepCopy())
+			if err != nil {
+				t.Errorf("Unexpected error err=%s", err.Error())
+			}
+
+			wl := workloadForReservation("name", tc.queue.Status.FlavorsReservation, time.Now())
+			cqCache.AddOrUpdateWorkload(log, wl)
+
+			cqCache.RecordClusterQueueResourceMetrics(log, kueue.ClusterQueueReference(tc.queue.Name), false)
 			gotMetrics := allMetricsForQueue(tc.queue.Name)
 			if diff := cmp.Diff(tc.wantMetrics, gotMetrics, opts...); len(diff) != 0 {
 				t.Errorf("Unexpected metrics (-want,+got):\n%s", diff)
 			}
 
 			if tc.updatedQueue != nil {
-				updateResourceMetrics(tc.queue, tc.updatedQueue, nil, nil)
+				wl := workloadForReservation("name", tc.updatedQueue.Status.FlavorsReservation, time.Now())
+				cqCache.AddOrUpdateWorkload(log, wl)
+				if err := cqCache.UpdateClusterQueue(log, tc.updatedQueue); err != nil {
+					t.Fatalf("Updating clusterQueue in cache: %v", err)
+				}
+				updateResourceMetrics(ctrl.Log, cqCache, tc.queue, tc.updatedQueue, false)
 				gotMetricsAfterUpdate := allMetricsForQueue(tc.queue.Name)
 				if diff := cmp.Diff(tc.wantUpdatedMetrics, gotMetricsAfterUpdate, opts...); len(diff) != 0 {
 					t.Errorf("Unexpected metrics (-want,+got):\n%s", diff)
