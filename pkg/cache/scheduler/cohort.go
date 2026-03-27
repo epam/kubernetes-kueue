@@ -99,21 +99,11 @@ func (c *cohort) PathSelfToRoot() iter.Seq[*cohort] {
 	}
 }
 
-func (c *cohort) applyAdmittedWorkloadUsageDelta(op usageOp) {
-	for ancestor := range c.PathSelfToRoot() {
-		ancestor.admittedWorkloadsCount += op.asSignedOne()
-	}
-}
-
-func (c *cohort) removeAdmittedWorkloadUsage() {
-	if c == nil {
+func (c *cohort) updateAdmittedWorkloadsCount(delta int) {
+	if c == nil || hierarchy.HasCycle(c) {
 		return
 	}
-	if hierarchy.HasCycle(c) {
-		return
-	}
-	count := c.admittedWorkloadsCount
 	for ancestor := range c.PathSelfToRoot() {
-		ancestor.admittedWorkloadsCount -= count
+		ancestor.admittedWorkloadsCount += delta
 	}
 }

@@ -551,7 +551,7 @@ func (c *clusterQueue) updateWorkloadUsage(log logr.Logger, wi *workload.Info, o
 	c.updateWorkloadTASUsage(log, wi, op)
 	if admitted {
 		updateFlavorUsage(frUsage, c.AdmittedUsage, op)
-		c.Parent().applyAdmittedWorkloadUsageDelta(op)
+		c.Parent().updateAdmittedWorkloadsCount(op.asSignedOne())
 		c.admittedWorkloadsCount += op.asSignedOne()
 	}
 	qKey := queue.KeyFromWorkload(wi.Obj)
