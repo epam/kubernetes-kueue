@@ -762,7 +762,7 @@ If the Cohort has a weight of zero and is borrowing, this will return NaN.`,
 		prometheus.GaugeOpts{
 			Subsystem: constants.KueueName,
 			Name:      "cohort_subtree_admitted_active_workloads",
-			Help:      "The number of admitted Workloads that are active (unsuspended and not finished), per cohort's subtree",
+			Help:      "The number of admitted Workloads that are active, per cohort's subtree",
 		}, append([]string{"cohort", "replica_role"}, extraLabels...),
 	))
 }
