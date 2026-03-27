@@ -66,7 +66,7 @@ func (c *cohort) getRootUnsafe() *cohort {
 	return c.Parent().getRootUnsafe()
 }
 
-func (c *cohort) reportInfoMetric(tracker *roletracker.RoleTracker) {
+func (c *cohort) reportInfoMetric(customLabelValues []string, tracker *roletracker.RoleTracker) {
 	if hierarchy.HasCycle(c) {
 		metrics.ClearCohortInfo(c.Name)
 		return
@@ -76,7 +76,7 @@ func (c *cohort) reportInfoMetric(tracker *roletracker.RoleTracker) {
 	if c.HasParent() {
 		parentName = c.Parent().Name
 	}
-	metrics.ReportCohortInfo(c.Name, parentName, c.getRootUnsafe().Name, tracker)
+	metrics.ReportCohortInfo(c.Name, parentName, c.getRootUnsafe().Name, customLabelValues, tracker)
 }
 
 // implement flatResourceNode/hierarchicalResourceNode interfaces

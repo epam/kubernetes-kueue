@@ -341,26 +341,26 @@ func ExpectCohortSubtreeAdmittedActiveWorkloadsGaugeMetric(cohortName kueue.Coho
 	expectGaugeMetric(metrics.CohortSubtreeAdmittedActiveWorkloads, lvs, gomega.Equal(count))
 }
 
-func ExpectCohortInfoMetric(cohortName, parentCohort, rootCohort string) {
+func ExpectCohortInfoMetric(cohortName, parentCohort, rootCohort string, customLabels ...string) {
 	ginkgo.GinkgoHelper()
-	lvs := []string{cohortName, parentCohort, rootCohort, roletracker.RoleStandalone}
+	lvs := append([]string{cohortName, parentCohort, rootCohort, roletracker.RoleStandalone}, customLabels...)
 	expectGaugeMetric(metrics.CohortInfo, lvs, gomega.Equal(float64(1)))
 }
 
-func ExpectClusterQueueInfoMetric(cqName, parentCohort, rootCohort string) {
+func ExpectClusterQueueInfoMetric(cqName, parentCohort, rootCohort string, customLabels ...string) {
 	ginkgo.GinkgoHelper()
-	lvs := []string{cqName, parentCohort, rootCohort, roletracker.RoleStandalone}
+	lvs := append([]string{cqName, parentCohort, rootCohort, roletracker.RoleStandalone}, customLabels...)
 	expectGaugeMetric(metrics.ClusterQueueInfo, lvs, gomega.Equal(float64(1)))
 }
 
-func ExpectCohortInfoMetricCleaned(cohortName, parentCohort, rootCohort string) {
+func ExpectCohortInfoMetricCleaned(cohortName, parentCohort, rootCohort string, customLabels ...string) {
 	ginkgo.GinkgoHelper()
-	lvs := []string{cohortName, parentCohort, rootCohort, roletracker.RoleStandalone}
+	lvs := append([]string{cohortName, parentCohort, rootCohort, roletracker.RoleStandalone}, customLabels...)
 	expectGaugeMetric(metrics.CohortInfo, lvs, gomega.Equal(float64(0)))
 }
 
-func ExpectClusterQueueInfoMetricCleaned(cqName, parentCohort, rootCohort string) {
+func ExpectClusterQueueInfoMetricCleaned(cqName, parentCohort, rootCohort string, customLabels ...string) {
 	ginkgo.GinkgoHelper()
-	lvs := []string{cqName, parentCohort, rootCohort, roletracker.RoleStandalone}
+	lvs := append([]string{cqName, parentCohort, rootCohort, roletracker.RoleStandalone}, customLabels...)
 	expectGaugeMetric(metrics.ClusterQueueInfo, lvs, gomega.Equal(float64(0)))
 }

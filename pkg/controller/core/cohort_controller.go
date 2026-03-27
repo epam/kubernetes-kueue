@@ -186,6 +186,7 @@ func (r *CohortReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 			r.qManager.DeleteCohort(kueue.CohortReference(req.Name))
 			metrics.ClearCohortMetrics(kueue.CohortReference(req.Name))
 			metrics.ClearCohortAdmittedWorkloadsMetrics(kueue.CohortReference(req.Name))
+			metrics.ClearCohortInfo(kueue.CohortReference(req.Name))
 			if features.Enabled(features.CustomMetricLabels) {
 				r.customLabels.CohortDelete(kueue.CohortReference(req.Name))
 			}

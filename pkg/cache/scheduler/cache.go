@@ -466,7 +466,7 @@ func (c *Cache) AddClusterQueue(ctx context.Context, cq *kueue.ClusterQueue) err
 		}
 	}
 
-	cqImpl.reportInfoMetric()
+	cqImpl.reportInfoMetric(c.customLabels.CQGet(kueue.ClusterQueueReference(cq.Name)))
 	return nil
 }
 
@@ -491,7 +491,7 @@ func (c *Cache) UpdateClusterQueue(log logr.Logger, cq *kueue.ClusterQueue) erro
 		}
 		qImpl.resetFlavorsAndResources(cqImpl.resourceNode.Usage, cqImpl.AdmittedUsage)
 	}
-	cqImpl.reportInfoMetric()
+	cqImpl.reportInfoMetric(cqImpl.customMetricLabelValues)
 	return nil
 }
 
@@ -535,7 +535,19 @@ func (c *Cache) AddOrUpdateCohort(apiCohort *kueue.Cohort) error {
 	if err := cohort.updateCohort(apiCohort, oldParent); err != nil {
 		return err
 	}
-	c.reportInfoMetricsSubtree(cohort)
+
+	// If reparenting removed an implicit old parent, there should be no cohort present in the cache,
+	// clear leaked info metric.
+	if oldParent != nil && oldParent != cohort.Parent() && c.hm.Cohort(oldParent.Name) == nil {
+		metrics.ClearCohortInfo(oldParent.Name)
+	}
+
+	// cover implicit cohort creation with potential children transfer
+	reportRoot := cohort
+	if parent := cohort.Parent(); parent != nil {
+		reportRoot = parent
+	}
+	c.reportInfoMetricsSubtree(reportRoot)
 	return nil
 }
 
@@ -546,7 +558,6 @@ func (c *Cache) DeleteCohort(cohortName kueue.CohortReference) {
 	if cohort := c.hm.Cohort(cohortName); cohort != nil {
 		cohort.updateAdmittedWorkloadsCount(-cohort.admittedWorkloadsCount)
 	}
-
 
 	// Keep reference in case the node still needs explicit clear when fully gone.
 	oldCohort := c.hm.Cohort(cohortName)
@@ -571,6 +582,9 @@ func (c *Cache) reportInfoMetricsSubtree(root *cohort) {
 	if root == nil {
 		return
 	}
+	if hierarchy.HasCycle(root) {
+		return
+	}
 
 	stack := []*cohort{root}
 	for len(stack) > 0 {
@@ -578,9 +592,9 @@ func (c *Cache) reportInfoMetricsSubtree(root *cohort) {
 		ch := stack[last]
 		stack = stack[:last]
 
-		ch.reportInfoMetric(c.roleTracker)
+		ch.reportInfoMetric(c.customLabels.CohortGet(ch.Name), c.roleTracker)
 		for _, cq := range ch.ChildCQs() {
-			cq.reportInfoMetric()
+			cq.reportInfoMetric(c.customLabels.CQGet(cq.Name))
 		}
 		stack = append(stack, ch.ChildCohorts()...)
 	}
@@ -1040,9 +1054,14 @@ func (c *Cache) MatchingClusterQueues(nsLabels map[string]string) sets.Set[kueue
 func (c *Cache) ResyncGaugeMetrics() {
 	c.RLock()
 	defer c.RUnlock()
+
+	// Bulk-reset info metrics once, then set without per-entity deletes.
+	metrics.ClusterQueueInfo.Reset()
+	metrics.CohortInfo.Reset()
+
 	for _, cq := range c.hm.ClusterQueues() {
 		metrics.ReportClusterQueueStatus(cq.Name, cq.Status, cq.customMetricLabelValues, c.roleTracker)
-		cq.reportInfoMetric()
+		cq.reportInfoMetric(cq.customMetricLabelValues)
 		cq.reportActiveWorkloads()
 		if c.resourceMetricsEnabled {
 			cq.reportResourceMetrics(c.fairSharingEnabled)
@@ -1056,17 +1075,13 @@ func (c *Cache) ResyncGaugeMetrics() {
 	}
 
 	for _, cohort := range c.hm.Cohorts() {
-		cohort.reportInfoMetric(c.roleTracker)
+		cohort.reportInfoMetric(c.customLabels.CohortGet(cohort.Name), c.roleTracker)
 	}
 
 	if c.fairSharingEnabled {
 		for _, cohort := range c.hm.Cohorts() {
 			drs := dominantResourceShare(cohort, nil)
-			var customLabelValues []string
-			if features.Enabled(features.CustomMetricLabels) {
-				customLabelValues = c.customLabels.CohortGet(cohort.Name)
-			}
-			metrics.ReportCohortWeightedShare(cohort.Name, drs.PreciseWeightedShare(), customLabelValues, c.roleTracker)
+			metrics.ReportCohortWeightedShare(cohort.Name, drs.PreciseWeightedShare(), c.customLabels.CohortGet(cohort.Name), c.roleTracker)
 		}
 	}
 }

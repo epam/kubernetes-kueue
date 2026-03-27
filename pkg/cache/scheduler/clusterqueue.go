@@ -501,7 +501,7 @@ func (c *clusterQueue) reportActiveWorkloads() {
 	metrics.ReportReservingActiveWorkloads(c.Name, len(c.Workloads), c.customMetricLabelValues, c.roleTracker)
 }
 
-func (c *clusterQueue) reportInfoMetric() {
+func (c *clusterQueue) reportInfoMetric(customLabels []string) {
 	var parentCohort, rootCohort kueue.CohortReference
 	if c.HasParent() {
 		parentCohort = c.Parent().GetName()
@@ -509,7 +509,7 @@ func (c *clusterQueue) reportInfoMetric() {
 			rootCohort = c.Parent().getRootUnsafe().Name
 		}
 	}
-	metrics.ReportClusterQueueInfo(c.Name, parentCohort, rootCohort, c.roleTracker)
+	metrics.ReportClusterQueueInfo(c.Name, parentCohort, rootCohort, customLabels, c.roleTracker)
 }
 
 func (c *clusterQueue) reportResourceMetrics(fairSharingEnabled bool) {

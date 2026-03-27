@@ -779,7 +779,7 @@ If the Cohort has a weight of zero and is borrowing, this will return NaN.`,
 			Subsystem: constants.KueueName,
 			Name:      "cohort_info",
 			Help:      `Reports Cohort hierarchy information. The metric has value 1 and can be joined using labels.`,
-		}, []string{"cohort", "parent_cohort", "root_cohort", "replica_role"},
+		}, append([]string{"cohort", "parent_cohort", "root_cohort", "replica_role"}, extraLabels...),
 	))
 
 	ClusterQueueInfo = trackGaugeVec(prometheus.NewGaugeVec(
@@ -787,7 +787,7 @@ If the Cohort has a weight of zero and is borrowing, this will return NaN.`,
 			Subsystem: constants.KueueName,
 			Name:      "cluster_queue_info",
 			Help:      `Reports ClusterQueue hierarchy information. The metric has value 1 and can be joined using labels.`,
-		}, []string{"cluster_queue", "parent_cohort", "root_cohort", "replica_role"},
+		}, append([]string{"cluster_queue", "parent_cohort", "root_cohort", "replica_role"}, extraLabels...),
 	))
 }
 
@@ -975,7 +975,6 @@ func ClearLocalQueueMetrics(lq LocalQueueReference) {
 }
 
 func ClearCohortMetrics(cohortName kueue.CohortReference) {
-	CohortInfo.DeletePartialMatch(prometheus.Labels{"cohort": string(cohortName)})
 	CohortSubtreeQuota.DeletePartialMatch(prometheus.Labels{"cohort": string(cohortName)})
 	CohortWeightedShare.DeletePartialMatch(prometheus.Labels{"cohort": string(cohortName)})
 	CohortSubtreeResourceReservations.DeletePartialMatch(prometheus.Labels{"cohort": string(cohortName)})
@@ -1070,20 +1069,22 @@ func ClearCohortSubtreeResourceReservations(cohort kueue.CohortReference, flavor
 	CohortSubtreeResourceReservations.DeletePartialMatch(lbls)
 }
 
-func ReportCohortInfo(cohort, parentCohort, rootCohort kueue.CohortReference, tracker *roletracker.RoleTracker) {
+func ReportCohortInfo(cohort, parentCohort, rootCohort kueue.CohortReference, customLabelValues []string, tracker *roletracker.RoleTracker) {
 	// Ensure there is at most one series per Cohort by replacing previous label combinations.
 	CohortInfo.DeletePartialMatch(prometheus.Labels{"cohort": string(cohort)})
-	CohortInfo.WithLabelValues(string(cohort), string(parentCohort), string(rootCohort), roletracker.GetRole(tracker)).Set(1)
+	labels := append([]string{string(cohort), string(parentCohort), string(rootCohort), roletracker.GetRole(tracker)}, customLabelValues...)
+	CohortInfo.WithLabelValues(labels...).Set(1)
 }
 
 func ClearCohortInfo(cohort kueue.CohortReference) {
 	CohortInfo.DeletePartialMatch(prometheus.Labels{"cohort": string(cohort)})
 }
 
-func ReportClusterQueueInfo(cqName kueue.ClusterQueueReference, parentCohort, rootCohort kueue.CohortReference, tracker *roletracker.RoleTracker) {
+func ReportClusterQueueInfo(cqName kueue.ClusterQueueReference, parentCohort, rootCohort kueue.CohortReference, customLabelValues []string, tracker *roletracker.RoleTracker) {
 	// Ensure there is at most one series per ClusterQueue by replacing previous label combinations.
 	ClusterQueueInfo.DeletePartialMatch(prometheus.Labels{"cluster_queue": string(cqName)})
-	ClusterQueueInfo.WithLabelValues(string(cqName), string(parentCohort), string(rootCohort), roletracker.GetRole(tracker)).Set(1)
+	labels := append([]string{string(cqName), string(parentCohort), string(rootCohort), roletracker.GetRole(tracker)}, customLabelValues...)
+	ClusterQueueInfo.WithLabelValues(labels...).Set(1)
 }
 
 func ClearClusterQueueInfo(cqName kueue.ClusterQueueReference) {

@@ -471,6 +471,7 @@ var _ = ginkgo.Describe("Cohorts", func() {
 				util.ExpectCohortSubtreeQuotaGaugeMetricCleaned("ch0", flavor1.Name, corev1.ResourceCPU.String())
 				util.ExpectCohortSubtreeQuotaGaugeMetricCleaned("ch0", flavor1.Name, "nvidia.com/gpu")
 
+				util.ExpectCohortInfoMetricCleaned("ch0", "", "ch0")
 				util.ExpectClusterQueueInfoMetric("cq1", "ch1", "ch1")
 				util.ExpectClusterQueueInfoMetricCleaned("cq1", "ch0", "ch0")
 			})
@@ -491,6 +492,8 @@ var _ = ginkgo.Describe("Cohorts", func() {
 				util.ExpectCohortSubtreeQuotaGaugeMetric("ch1", flavor1.Name, corev1.ResourceCPU.String(), 5_000)
 				util.ExpectCohortSubtreeQuotaGaugeMetric("ch1", flavor1.Name, "nvidia.com/gpu", 1)
 
+				util.ExpectCohortInfoMetric("ch1", "", "ch1")
+				util.ExpectCohortInfoMetric("ch2", "", "ch2")
 				util.ExpectClusterQueueInfoMetric("cq1", "ch2", "ch2")
 				util.ExpectClusterQueueInfoMetricCleaned("cq1", "ch1", "ch1")
 			})
@@ -519,14 +522,17 @@ var _ = ginkgo.Describe("Cohorts", func() {
 				util.ExpectClusterQueueInfoMetric("qdeep", "c", "a")
 			})
 
-			ginkgo.By("Creating root2 and reparenting a under root2", func() {
+			ginkgo.By("Creating root2", func() {
 				createCohort(utiltestingapi.MakeCohort("root2").
 					ResourceGroup(
 						*utiltestingapi.MakeFlavorQuotas(defaultFlavor.Name).
 							Resource(corev1.ResourceCPU, "1").
 							Obj(),
 					).Obj())
+				util.ExpectCohortInfoMetric("root2", "", "root2")
+			})
 
+			ginkgo.By("reparenting cohort a under root2", func() {
 				var a kueue.Cohort
 				gomega.Eventually(func(g gomega.Gomega) {
 					g.Expect(k8sClient.Get(ctx, client.ObjectKey{Name: "a"}, &a)).To(gomega.Succeed())
@@ -534,7 +540,6 @@ var _ = ginkgo.Describe("Cohorts", func() {
 					g.Expect(k8sClient.Update(ctx, &a)).To(gomega.Succeed())
 				}, util.Timeout, util.ShortInterval).Should(gomega.Succeed())
 
-				util.ExpectCohortInfoMetric("root2", "", "root2")
 				util.ExpectCohortInfoMetric("a", "root2", "root2")
 				util.ExpectCohortInfoMetric("b", "a", "root2")
 				util.ExpectCohortInfoMetric("c", "b", "root2")
