@@ -583,14 +583,6 @@ func (c *Cache) GetCacheLocalQueue(cqName kueue.ClusterQueueReference, lqKey que
 	return nil, errQNotFound
 }
 
-func (c *Cache) GetLocalQueueLabels(cqName kueue.ClusterQueueReference, lqKey queue.LocalQueueReference) (map[string]string, error) {
-	lq, err := c.GetCacheLocalQueue(cqName, lqKey)
-	if err != nil {
-		return nil, err
-	}
-	return lq.GetLabels(), nil
-}
-
 func (c *Cache) ClusterQueueUsesAdmissionFairSharing(cqName kueue.ClusterQueueReference) bool {
 	c.RLock()
 	defer c.RUnlock()
@@ -1041,4 +1033,21 @@ func resourceFloat(name corev1.ResourceName, v int64) float64 {
 // Key is the key used to index the queue.
 func queueKey(q *kueue.LocalQueue) queue.LocalQueueReference {
 	return queue.NewLocalQueueReference(q.Namespace, kueue.LocalQueueName(q.Name))
+}
+
+// ShouldExposeLocalQueueMetricsForWorkload determines if LocalQueue metric reporting should be made for the associated LocalQueue.
+func (c *Cache) ShouldExposeLocalQueueMetricsForWorkload(log logr.Logger, wl *kueue.Workload) bool {
+	if !c.lqMetrics.IsEnabled() {
+		return false
+	}
+	if wl.Status.Admission == nil {
+		log.V(5).Info("Skip the update for local queue metrics for a workload without admission", "workload", klog.KObj(wl))
+		return false
+	}
+	lq, err := c.GetCacheLocalQueue(wl.Status.Admission.ClusterQueue, queue.KeyFromWorkload(wl))
+	if err != nil {
+		log.Error(err, "Failed to get LocalQueue for metrics", "localQueue", klog.KRef(wl.Namespace, string(wl.Spec.QueueName)))
+		return false
+	}
+	return lq.shouldExposeMetrics(c.lqMetrics)
 }

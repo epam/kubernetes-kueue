@@ -70,7 +70,6 @@ type Preemptor struct {
 	roleTracker            *roletracker.RoleTracker
 	customLabels           *metrics.CustomLabels
 	preemptionExpectations *expectations.Store
-	lqMetrics              *metrics.LocalQueueMetricsConfig
 }
 
 type preemptionCtx struct {
@@ -91,7 +90,6 @@ func New(
 	fs *config.FairSharing,
 	enabledAfs bool,
 	clock clock.Clock,
-	lqMetrics *metrics.LocalQueueMetricsConfig,
 	tracker *roletracker.RoleTracker,
 	preemptionExpectations *expectations.Store,
 	customLabels *metrics.CustomLabels,
@@ -107,7 +105,6 @@ func New(
 		roleTracker:            tracker,
 		customLabels:           customLabels,
 		preemptionExpectations: preemptionExpectations,
-		lqMetrics:              lqMetrics,
 	}
 	return p
 }
@@ -211,7 +208,7 @@ func (p *Preemptor) IssuePreemptions(ctx context.Context, cache *schdcache.Cache
 
 		message := preemptionMessage(preemptor.Obj, target.Reason, preemptorPath, preempteePath)
 		wlCopy := target.WorkloadInfo.Obj.DeepCopy()
-		exposeLqMetrics := p.lqMetrics.ShouldExposeLocalQueueMetricsForWorkload(log, cache, wlCopy)
+		exposeLqMetrics := cache.ShouldExposeLocalQueueMetricsForWorkload(log, wlCopy)
 		err := workload.Evict(
 			ctx, p.client, p.recorder, wlCopy, kueue.WorkloadEvictedByPreemption, message, "", p.clock, exposeLqMetrics, p.roleTracker, p.customLabels,
 			workload.WithCustomPrepare(func(wl *kueue.Workload) {

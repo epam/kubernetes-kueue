@@ -83,7 +83,6 @@ type Scheduler struct {
 	clock                   clock.Clock
 	roleTracker             *roletracker.RoleTracker
 	customLabels            *metrics.CustomLabels
-	lqMetrics               *metrics.LocalQueueMetricsConfig
 
 	// schedulingCycle identifies the number of scheduling
 	// attempts since the last restart.
@@ -98,7 +97,6 @@ type options struct {
 	roleTracker                 *roletracker.RoleTracker
 	preemptionExpectations      *expectations.Store
 	customLabels                *metrics.CustomLabels
-	lqMetrics                   *metrics.LocalQueueMetricsConfig
 }
 
 // Option configures the reconciler.
@@ -158,13 +156,6 @@ func WithCustomLabels(cl *metrics.CustomLabels) Option {
 	}
 }
 
-// WithLocalQueueMetrics sets the configuration for local queue metrics.
-func WithLocalQueueMetrics(value *metrics.LocalQueueMetricsConfig) Option {
-	return func(o *options) {
-		o.lqMetrics = value
-	}
-}
-
 func New(queues *qcache.Manager, cache *schdcache.Cache, cl client.Client, recorder record.EventRecorder, opts ...Option) *Scheduler {
 	options := defaultOptions
 	for _, opt := range opts {
@@ -179,14 +170,13 @@ func New(queues *qcache.Manager, cache *schdcache.Cache, cl client.Client, recor
 		cache:                   cache,
 		client:                  cl,
 		recorder:                recorder,
-		preemptor:               preemption.New(cl, wo, recorder, options.fairSharing, afs.Enabled(options.admissionFairSharing), options.clock, options.lqMetrics, options.roleTracker, options.preemptionExpectations, options.customLabels),
+		preemptor:               preemption.New(cl, wo, recorder, options.fairSharing, afs.Enabled(options.admissionFairSharing), options.clock, options.roleTracker, options.preemptionExpectations, options.customLabels),
 		admissionRoutineWrapper: routine.DefaultWrapper,
 		workloadOrdering:        wo,
 		clock:                   options.clock,
 		admissionFairSharing:    options.admissionFairSharing,
 		roleTracker:             options.roleTracker,
 		customLabels:            options.customLabels,
-		lqMetrics:               options.lqMetrics,
 	}
 	return s
 }
@@ -653,7 +643,7 @@ func (s *Scheduler) evictWorkloadAfterFailedTASReplacement(ctx context.Context, 
 	unhealthyNodesCsv := strings.Join(unhealthyNodes, ",")
 	log.V(3).Info("Evicting workload after failed try to find a node replacement; TASFailedNodeReplacementFailFast enabled", "unhealthyNodes", unhealthyNodes)
 	msg := fmt.Sprintf("Workload was evicted as there was no replacement for unhealthy node(s): %s", unhealthyNodesCsv)
-	exposeLqMetrics := s.lqMetrics.ShouldExposeLocalQueueMetricsForWorkload(log, s.cache, wl)
+	exposeLqMetrics := s.cache.ShouldExposeLocalQueueMetricsForWorkload(log, wl)
 	if err := workload.Evict(
 		ctx, s.client, s.recorder, wl, kueue.WorkloadEvictedDueToNodeFailures, msg, "", s.clock, exposeLqMetrics, s.roleTracker, s.customLabels,
 		workload.EvictWithLooseOnApply(), workload.EvictWithRetryOnConflictForPatch(),
@@ -902,7 +892,7 @@ func (s *Scheduler) recordQuotaReservationMetrics(log logr.Logger, newWorkload, 
 	priorityClassName := workload.PriorityClassName(newWorkload)
 	metrics.QuotaReservedWorkload(admission.ClusterQueue, priorityClassName, waitTime, s.customLabels.CQGet(admission.ClusterQueue), s.roleTracker)
 	lqRef := metrics.LQRefFromWorkload(newWorkload)
-	if s.lqMetrics.ShouldExposeLocalQueueMetricsForWorkload(log, s.cache, newWorkload) {
+	if s.cache.ShouldExposeLocalQueueMetricsForWorkload(log, newWorkload) {
 		metrics.LocalQueueQuotaReservedWorkload(lqRef, priorityClassName, waitTime, s.customLabels.LQGet(utilqueue.KeyFromWorkload(newWorkload)), s.roleTracker)
 	}
 }
@@ -919,7 +909,7 @@ func (s *Scheduler) recordWorkloadAdmissionEvents(log logr.Logger, newWorkload, 
 	cqCustomLabels := s.customLabels.CQGet(admission.ClusterQueue)
 	s.cache.ReportCohortSubtreeAdmittedWorkload(log, newWorkload)
 	metrics.AdmittedWorkload(admission.ClusterQueue, priorityClassName, waitTime, cqCustomLabels, s.roleTracker)
-	shouldExposeLqMetrics := s.lqMetrics.ShouldExposeLocalQueueMetricsForWorkload(log, s.cache, newWorkload)
+	shouldExposeLqMetrics := s.cache.ShouldExposeLocalQueueMetricsForWorkload(log, newWorkload)
 	if shouldExposeLqMetrics {
 		lqRef := metrics.LQRefFromWorkload(newWorkload)
 		lqCustomLabels := s.customLabels.LQGet(utilqueue.KeyFromWorkload(newWorkload))

@@ -911,7 +911,7 @@ func TestNodeFailureReconciler(t *testing.T) {
 			}
 			cl := clientBuilder.Build()
 			recorder := &utiltesting.EventRecorder{}
-			r := newNodeReconciler(cl, recorder, schdcache.New(cl), nil, nil)
+			r := newNodeReconciler(cl, recorder, schdcache.New(cl), nil)
 			r.clock = fakeClock
 
 			var result reconcile.Result
@@ -1089,7 +1089,7 @@ func TestGetWorkloadStatus(t *testing.T) {
 			}
 			cl := clientBuilder.Build()
 
-			reconciler := newNodeReconciler(cl, &utiltesting.EventRecorder{}, nil, nil, nil)
+			reconciler := newNodeReconciler(cl, &utiltesting.EventRecorder{}, nil, nil)
 			wl := &kueue.Workload{}
 			_ = cl.Get(ctx, wlKey, wl)
 

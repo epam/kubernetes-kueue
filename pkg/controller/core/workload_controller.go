@@ -133,13 +133,6 @@ func WithPreemptionExpectations(value *expectations.Store) Option {
 	}
 }
 
-// WithWorkloadLocalQueueMetrics sets the configuration for local queue metrics.
-func WithWorkloadLocalQueueMetrics(value *metrics.LocalQueueMetricsConfig) Option {
-	return func(r *WorkloadReconciler) {
-		r.lqMetrics = value
-	}
-}
-
 type WorkloadUpdateWatcher interface {
 	NotifyWorkloadUpdate(oldWl, newWl *kueue.Workload)
 }
@@ -160,7 +153,6 @@ type WorkloadReconciler struct {
 	roleTracker            *roletracker.RoleTracker
 	preemptionExpectations *expectations.Store
 	customLabels           *metrics.CustomLabels
-	lqMetrics              *metrics.LocalQueueMetricsConfig
 }
 
 var _ reconcile.Reconciler = (*WorkloadReconciler)(nil)
@@ -473,7 +465,7 @@ func (r *WorkloadReconciler) Reconcile(ctx context.Context, req ctrl.Request) (c
 		}
 		if updated {
 			if evicted {
-				exposeLqMetrics := r.lqMetrics.ShouldExposeLocalQueueMetricsForWorkload(log, r.cache, &wl)
+				exposeLqMetrics := r.cache.ShouldExposeLocalQueueMetricsForWorkload(log, &wl)
 				if err := workload.Evict(ctx, r.client, r.recorder, &wl, reason, message, underlyingCause, r.clock, exposeLqMetrics, r.roleTracker, r.customLabels, workload.WithCustomPrepare(prepare)); err != nil {
 					if !apierrors.IsNotFound(err) {
 						return ctrl.Result{}, fmt.Errorf("setting eviction: %w", err)
@@ -550,7 +542,7 @@ func (r *WorkloadReconciler) Reconcile(ctx context.Context, req ctrl.Request) (c
 			r.cache.ReportCohortSubtreeAdmittedWorkload(log, &wl)
 			metrics.AdmittedWorkload(cqName, priorityClassName, queuedWaitTime, r.customLabels.CQGet(cqName), r.roleTracker)
 			metrics.ReportAdmissionChecksWaitTime(cqName, priorityClassName, quotaReservedWaitTime, r.customLabels.CQGet(cqName), r.roleTracker)
-			if r.lqMetrics.ShouldExposeLocalQueueMetricsForWorkload(log, r.cache, &wl) {
+			if r.cache.ShouldExposeLocalQueueMetricsForWorkload(log, &wl) {
 				lqRef := metrics.LQRefFromWorkload(&wl)
 				lqKey := qutil.KeyFromWorkload(&wl)
 				metrics.LocalQueueAdmittedWorkload(
@@ -739,7 +731,7 @@ func (r *WorkloadReconciler) reconcileCheckBasedEviction(ctx context.Context, wl
 	}
 	// at this point we know a Workload has at least one Retry AdmissionCheck
 	message := "At least one admission check is false"
-	exposeLqMetrics := r.lqMetrics.ShouldExposeLocalQueueMetricsForWorkload(log, r.cache, wl)
+	exposeLqMetrics := r.cache.ShouldExposeLocalQueueMetricsForWorkload(log, wl)
 	if err := workload.Evict(ctx, r.client, r.recorder, wl, kueue.WorkloadEvictedByAdmissionCheck, message, "", r.clock, exposeLqMetrics, r.roleTracker, r.customLabels); err != nil {
 		return false, err
 	}
@@ -807,7 +799,7 @@ func (r *WorkloadReconciler) reconcileOnLocalQueueActiveState(ctx context.Contex
 			return false, nil
 		}
 		log.V(3).Info("Workload is evicted because the LocalQueue is stopped", "localQueue", klog.KRef(wl.Namespace, string(wl.Spec.QueueName)))
-		exposeLqMetrics := r.lqMetrics.ShouldExposeLocalQueueMetricsForWorkload(log, r.cache, wl)
+		exposeLqMetrics := r.cache.ShouldExposeLocalQueueMetricsForWorkload(log, wl)
 		err := workload.Evict(ctx, r.client, r.recorder, wl, kueue.WorkloadEvictedByLocalQueueStopped, "The LocalQueue is stopped", "", r.clock, exposeLqMetrics, r.roleTracker, r.customLabels)
 		return true, err
 	}
@@ -850,7 +842,7 @@ func (r *WorkloadReconciler) reconcileOnClusterQueueActiveState(ctx context.Cont
 		}
 		log.V(3).Info("Workload is evicted because the ClusterQueue is stopped", "clusterQueue", klog.KRef("", string(cqName)))
 		message := "The ClusterQueue is stopped"
-		exposeLqMetrics := r.lqMetrics.ShouldExposeLocalQueueMetricsForWorkload(log, r.cache, wl)
+		exposeLqMetrics := r.cache.ShouldExposeLocalQueueMetricsForWorkload(log, wl)
 		err := workload.Evict(ctx, r.client, r.recorder, wl, kueue.WorkloadEvictedByClusterQueueStopped, message, "", r.clock, exposeLqMetrics, r.roleTracker, r.customLabels)
 		return true, err
 	}
@@ -981,7 +973,7 @@ func (r *WorkloadReconciler) reconcileNotReadyTimeout(ctx context.Context, req c
 	// Increments a re-queueing count and update a time to be re-queued.
 	log.V(2).Info("Start the eviction of the workload due to exceeding the PodsReady timeout")
 	message := fmt.Sprintf("Exceeded the PodsReady timeout %s", req.String())
-	exposeLqMetrics := r.lqMetrics.ShouldExposeLocalQueueMetricsForWorkload(log, r.cache, wl)
+	exposeLqMetrics := r.cache.ShouldExposeLocalQueueMetricsForWorkload(log, wl)
 	err = workload.Evict(ctx, r.client, r.recorder, wl, kueue.WorkloadEvictedByPodsReadyTimeout, message, underlyingCause, r.clock, exposeLqMetrics, r.roleTracker, r.customLabels, workload.WithCustomPrepare(func(wl *kueue.Workload) {
 		workload.UpdateRequeueState(wl, r.waitForPodsReady.requeuingBackoffBaseSeconds, int32(r.waitForPodsReady.requeuingBackoffMaxDuration.Seconds()), r.clock)
 	}))
@@ -1223,7 +1215,7 @@ func (r *WorkloadReconciler) reportFinishedWorkload(log logr.Logger, wl *kueue.W
 	cqName := ptr.Deref(wl.Status.Admission, kueue.Admission{}).ClusterQueue
 	metrics.IncrementFinishedWorkloadTotal(cqName, priorityClassName, r.customLabels.CQGet(cqName), r.roleTracker)
 	lqRef := metrics.LQRefFromWorkload(wl)
-	if r.lqMetrics.ShouldExposeLocalQueueMetricsForWorkload(log, r.cache, wl) {
+	if r.cache.ShouldExposeLocalQueueMetricsForWorkload(log, wl) {
 		metrics.IncrementLocalQueueFinishedWorkloadTotal(lqRef, priorityClassName, r.customLabels.LQGet(qutil.KeyFromWorkload(wl)), r.roleTracker)
 	}
 }

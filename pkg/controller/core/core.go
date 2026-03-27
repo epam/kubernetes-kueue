@@ -98,7 +98,6 @@ func SetupControllers(mgr ctrl.Manager, qManager *qcache.Manager, cc *schdcache.
 		WithWorkloadRoleTracker(roleTracker),
 		WithPreemptionExpectations(preemptionExpectations),
 		WithWorkloadCustomLabels(customLabels),
-		WithWorkloadLocalQueueMetrics(lqMetrics),
 	)
 	if features.Enabled(features.DynamicResourceAllocation) {
 		qManager.SetDRAReconcileChannel(workloadRec.GetDRAReconcileChannel())

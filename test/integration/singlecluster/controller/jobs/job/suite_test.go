@@ -109,7 +109,7 @@ func managerAndControllersSetup(
 		cCache := schdcache.New(mgr.GetClient(), schdcache.WithLocalQueueMetrics(lqMetrics))
 		queues := util.NewManagerForIntegrationTests(ctx, mgr.GetClient(), cCache, qcache.WithLocalQueueMetrics(lqMetrics))
 
-		opts = append(opts, jobframework.WithCache(cCache), jobframework.WithLocalQueueMetrics(lqMetrics))
+		opts = append(opts, jobframework.WithCache(cCache))
 		managerSetup(opts...)(ctx, mgr)
 
 		failedCtrl, err := core.SetupControllers(mgr, queues, cCache, configuration, nil, preemptexpectations.New(), nil)
@@ -125,7 +125,7 @@ func managerAndControllersSetup(
 
 		if enableScheduler {
 			sched := scheduler.New(queues, cCache, mgr.GetClient(), mgr.GetEventRecorderFor(constants.AdmissionName),
-				scheduler.WithPreemptionExpectations(preemptexpectations.New()), scheduler.WithLocalQueueMetrics(lqMetrics))
+				scheduler.WithPreemptionExpectations(preemptexpectations.New()))
 			err = sched.Start(ctx)
 			gomega.Expect(err).NotTo(gomega.HaveOccurred())
 		}

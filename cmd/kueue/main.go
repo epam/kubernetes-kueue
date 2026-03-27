@@ -362,7 +362,7 @@ func main() {
 
 	preemptionExpectations := preemptexpectations.New()
 
-	if err := setupControllers(ctx, mgr, cCache, queues, &cfg, serverVersionFetcher, roleTracker, preemptionExpectations, customLabels, lqMetrics); err != nil {
+	if err := setupControllers(ctx, mgr, cCache, queues, &cfg, serverVersionFetcher, roleTracker, preemptionExpectations, customLabels); err != nil {
 		setupLog.Error(err, "Unable to setup controllers")
 		os.Exit(1)
 	}
@@ -384,7 +384,7 @@ func main() {
 		}()
 	}
 
-	if err := setupScheduler(mgr, cCache, queues, &cfg, roleTracker, preemptionExpectations, customLabels, lqMetrics); err != nil {
+	if err := setupScheduler(mgr, cCache, queues, &cfg, roleTracker, preemptionExpectations, customLabels); err != nil {
 		setupLog.Error(err, "Could not setup scheduler")
 		os.Exit(1)
 	}
@@ -429,7 +429,7 @@ func setupIndexes(ctx context.Context, mgr ctrl.Manager, cfg *configapi.Configur
 
 func setupControllers(ctx context.Context, mgr ctrl.Manager, cCache *schdcache.Cache, queues *qcache.Manager,
 	cfg *configapi.Configuration, serverVersionFetcher *kubeversion.ServerVersionFetcher, roleTracker *roletracker.RoleTracker,
-	preemptionExpectations *expectations.Store, customLabels *metrics.CustomLabels, lqMetrics *metrics.LocalQueueMetricsConfig) error {
+	preemptionExpectations *expectations.Store, customLabels *metrics.CustomLabels) error {
 	if failedCtrl, err := core.SetupControllers(mgr, queues, cCache, cfg, roleTracker, preemptionExpectations, customLabels); err != nil {
 		return fmt.Errorf("unable to create controller %s: %w", failedCtrl, err)
 	}
@@ -509,7 +509,6 @@ func setupControllers(ctx context.Context, mgr ctrl.Manager, cCache *schdcache.C
 		jobframework.WithObjectRetentionPolicies(cfg.ObjectRetentionPolicies),
 		jobframework.WithRoleTracker(roleTracker),
 		jobframework.WithCustomLabels(customLabels),
-		jobframework.WithLocalQueueMetrics(lqMetrics),
 	}
 	nsSelector, err := metav1.LabelSelectorAsSelector(cfg.ManagedJobsNamespaceSelector)
 	if err != nil {
@@ -555,7 +554,6 @@ func setupProbeEndpoints(mgr ctrl.Manager, certsReady <-chan struct{}) error {
 
 func setupScheduler(mgr ctrl.Manager, cCache *schdcache.Cache, queues *qcache.Manager, cfg *configapi.Configuration,
 	roleTracker *roletracker.RoleTracker, preemptionExpectations *expectations.Store, customLabels *metrics.CustomLabels,
-	lqMetrics *metrics.LocalQueueMetricsConfig,
 ) error {
 	sched := scheduler.New(
 		queues,
@@ -568,7 +566,6 @@ func setupScheduler(mgr ctrl.Manager, cCache *schdcache.Cache, queues *qcache.Ma
 		scheduler.WithRoleTracker(roleTracker),
 		scheduler.WithPreemptionExpectations(preemptionExpectations),
 		scheduler.WithCustomLabels(customLabels),
-		scheduler.WithLocalQueueMetrics(lqMetrics),
 	)
 	if err := mgr.Add(sched); err != nil {
 		return fmt.Errorf("unable to add scheduler to manager: %w", err)

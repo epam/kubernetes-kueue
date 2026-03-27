@@ -151,7 +151,7 @@ func managerAndControllerSetup(controllersCfg *config.Configuration, options ...
 		}
 
 		if opts.runScheduler {
-			sched := scheduler.New(queues, cCache, mgr.GetClient(), mgr.GetEventRecorderFor(constants.AdmissionName), scheduler.WithPreemptionExpectations(preemptionExpectations), scheduler.WithCustomLabels(customLabels), scheduler.WithLocalQueueMetrics(lqMetrics))
+			sched := scheduler.New(queues, cCache, mgr.GetClient(), mgr.GetEventRecorderFor(constants.AdmissionName), scheduler.WithPreemptionExpectations(preemptionExpectations), scheduler.WithCustomLabels(customLabels))
 			err = sched.Start(ctx)
 			gomega.Expect(err).NotTo(gomega.HaveOccurred())
 		}

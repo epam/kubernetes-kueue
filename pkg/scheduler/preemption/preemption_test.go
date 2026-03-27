@@ -4134,7 +4134,7 @@ func TestPreemption(t *testing.T) {
 					t.Fatalf("Failed adding kueue scheme: %v", err)
 				}
 				recorder := broadcaster.NewRecorder(scheme, corev1.EventSource{Component: constants.AdmissionName})
-				preemptor := New(cl, workload.Ordering{}, recorder, nil, false, clocktesting.NewFakeClock(now), nil, nil, preemptexpectations.New(), nil)
+				preemptor := New(cl, workload.Ordering{}, recorder, nil, false, clocktesting.NewFakeClock(now), nil, preemptexpectations.New(), nil)
 
 				beforeSnapshot, err := cqCache.Snapshot(ctx)
 				if err != nil {
@@ -4356,7 +4356,7 @@ func TestPreemptionWhenWorkloadModifiedConcurrently(t *testing.T) {
 					t.Fatalf("Failed adding kueue scheme: %v", err)
 				}
 				recorder := broadcaster.NewRecorder(scheme, corev1.EventSource{Component: constants.AdmissionName})
-				preemptor := New(cl, workload.Ordering{}, recorder, nil, false, clocktesting.NewFakeClock(now), nil, nil, preemptexpectations.New(), nil)
+				preemptor := New(cl, workload.Ordering{}, recorder, nil, false, clocktesting.NewFakeClock(now), nil, preemptexpectations.New(), nil)
 
 				beforeSnapshot, err := cqCache.Snapshot(ctx)
 				if err != nil {
@@ -4481,7 +4481,7 @@ func TestIssuePreemptionsSkipsDuplicate(t *testing.T) {
 					t.Fatalf("Failed adding kueue scheme: %v", err)
 				}
 				recorder := broadcaster.NewRecorder(scheme, corev1.EventSource{Component: constants.AdmissionName})
-				preemptor := New(cl, workload.Ordering{}, recorder, nil, false, clocktesting.NewFakeClock(now), nil, nil, store, nil)
+				preemptor := New(cl, workload.Ordering{}, recorder, nil, false, clocktesting.NewFakeClock(now), nil, store, nil)
 
 				snapshot, err := cqCache.Snapshot(ctx)
 				if err != nil {
