@@ -183,6 +183,9 @@ func (c *Cache) newClusterQueue(log logr.Logger, cq *kueue.ClusterQueue) (*clust
 	}
 	c.hm.AddClusterQueue(cqImpl)
 	c.hm.UpdateClusterQueueEdge(kueue.ClusterQueueReference(cq.Name), cq.Spec.CohortName)
+	if cqImpl.HasParent() {
+		cqImpl.Parent().invalidateHasCQInSubtreeCache()
+	}
 	if features.Enabled(features.CustomMetricLabels) {
 		cqImpl.customMetricLabelValues = c.customLabels.ExtractValues(cq.Labels, cq.Annotations)
 	}
@@ -478,6 +481,13 @@ func (c *Cache) UpdateClusterQueue(log logr.Logger, cq *kueue.ClusterQueue) erro
 	}
 	oldParent := cqImpl.Parent()
 	c.hm.UpdateClusterQueueEdge(kueue.ClusterQueueReference(cq.Name), cq.Spec.CohortName)
+	// Invalidate cache for both old and new parent
+	if oldParent != nil {
+		oldParent.invalidateHasCQInSubtreeCache()
+	}
+	if cqImpl.HasParent() && cqImpl.Parent() != oldParent {
+		cqImpl.Parent().invalidateHasCQInSubtreeCache()
+	}
 	if features.Enabled(features.CustomMetricLabels) {
 		cqImpl.customMetricLabelValues = c.customLabels.ExtractValues(cq.Labels, cq.Annotations)
 	}
@@ -517,6 +527,8 @@ func (c *Cache) DeleteClusterQueue(cq *kueue.ClusterQueue) {
 	metrics.ClearCacheMetrics(cq.Name)
 
 	if parent != nil {
+		// Invalidate cache after removing CQ from cohort
+		parent.invalidateHasCQInSubtreeCache()
 		// Update cohort resources after deletion.
 		updateCohortTreeResourcesIfNoCycle(parent)
 		// Clear metrics for the cohort and its ancestors if no children.
@@ -537,6 +549,13 @@ func (c *Cache) AddOrUpdateCohort(apiCohort *kueue.Cohort) error {
 	cohort := c.hm.Cohort(cohortName)
 	oldParent := cohort.Parent()
 	c.hm.UpdateCohortEdge(cohortName, apiCohort.Spec.ParentName)
+	// Invalidate cache for both old and new parent
+	if oldParent != nil {
+		oldParent.invalidateHasCQInSubtreeCache()
+	}
+	if cohort.HasParent() && cohort.Parent() != oldParent {
+		cohort.Parent().invalidateHasCQInSubtreeCache()
+	}
 	return cohort.updateCohort(apiCohort, oldParent)
 }
 
@@ -552,6 +571,11 @@ func (c *Cache) DeleteCohort(cohortName kueue.CohortReference) {
 	}
 
 	c.hm.DeleteCohort(cohortName)
+
+	if parent != nil {
+		// Invalidate cache after removing cohort from parent
+		parent.invalidateHasCQInSubtreeCache()
+	}
 
 	for ancestor := range parent.PathSelfToRoot() {
 		// Clear metrics for the cohort and its ancestors if no children.
