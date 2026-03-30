@@ -48,7 +48,12 @@ function startup {
 }
 
 trap cleanup EXIT
-startup &
+# With E2E_SKIP_IMAGE_RELOAD, wait for kind before prepare_docker_images so lifecycle files exist.
+if [[ "${E2E_MODE}" == "dev" ]] && ! e2e_is_truthy "${E2E_SKIP_IMAGE_RELOAD}"; then
+    startup
+else
+    startup &
+fi
 prepare_docker_images
 wait
 kind_load "$KIND_CLUSTER_NAME" ""

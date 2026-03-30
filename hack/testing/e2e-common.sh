@@ -37,6 +37,11 @@ export E2E_ENFORCE_OPERATOR_UPDATE="${E2E_ENFORCE_OPERATOR_UPDATE:-false}"
 # When set to value "true", skip Kueue re-install in E2E_MODE=dev if the controller deployment already exists.
 export E2E_SKIP_REINSTALL="${E2E_SKIP_REINSTALL:-false}"
 
+# When truthy with E2E_MODE=dev, skip docker pulls and kind image loads for kind clusters that were reused
+# (see e2e-kind-lifecycle-* under ARTIFACTS). The Kueue image (IMAGE_TAG) is still loaded unless
+# E2E_SKIP_REINSTALL is also truthy. Ignored in E2E_MODE=ci (clusters are always created fresh).
+export E2E_SKIP_IMAGE_RELOAD="${E2E_SKIP_IMAGE_RELOAD:-false}"
+
 export KIND_VERSION="${E2E_KIND_VERSION/"kindest/node:v"/}"
 
 function e2e_is_truthy {
@@ -44,6 +49,43 @@ function e2e_is_truthy {
         1|true|TRUE|True|yes|YES|Yes|y|Y|on|ON|On) return 1 ;;
         *) return 0 ;;
     esac
+}
+
+function e2e_kind_cluster_lifecycle_path {
+    echo "${ARTIFACTS}/e2e-kind-lifecycle-${1}"
+}
+
+function e2e_record_kind_cluster_lifecycle {
+    local name=$1
+    local state=$2
+    [[ -n "${ARTIFACTS:-}" ]] || return 0
+    mkdir -p "${ARTIFACTS}"
+    printf '%s\n' "${state}" > "$(e2e_kind_cluster_lifecycle_path "${name}")"
+}
+
+function e2e_should_skip_prepare_docker_images {
+    [[ "${E2E_MODE}" == "dev" ]] || return 1
+    # e2e_is_truthy returns shell exit 0 for falsy env values (see e2e_is_truthy).
+    if e2e_is_truthy "${E2E_SKIP_IMAGE_RELOAD}"; then
+        return 1
+    fi
+    local -a clusters=()
+    if [[ -n "${MANAGER_KIND_CLUSTER_NAME:-}" ]]; then
+        clusters=("${MANAGER_KIND_CLUSTER_NAME}" "${WORKER1_KIND_CLUSTER_NAME}" "${WORKER2_KIND_CLUSTER_NAME}")
+    else
+        clusters=("${KIND_CLUSTER_NAME}")
+    fi
+    local c state
+    for c in "${clusters[@]}"; do
+        state=$(cat "$(e2e_kind_cluster_lifecycle_path "${c}")" 2>/dev/null || true)
+        [[ "${state}" == "reused" ]] || return 1
+    done
+    return 0
+}
+
+function e2e_is_kueue_controller_image_ref {
+    local image=${1:-}
+    [[ -n "${IMAGE_TAG:-}" && "${image}" == "${IMAGE_TAG}" ]]
 }
 
 function e2e_deployment_exists {
@@ -253,11 +295,13 @@ function ensure_kind_cluster {
         if kind_cluster_exists "$name"; then
             echo "Reusing kind cluster: $name (E2E_MODE=dev)"
             kind_write_kubeconfig "$name" "$kubeconfig"
+            e2e_record_kind_cluster_lifecycle "$name" reused
             return 0
         fi
 
         echo "Creating kind cluster (E2E_MODE=dev): $name"
         cluster_create "$name" "$cfg" "$kubeconfig"
+        e2e_record_kind_cluster_lifecycle "$name" created
         return 0
     fi
 
@@ -267,6 +311,7 @@ function ensure_kind_cluster {
         cluster_cleanup "$name"
     fi
     cluster_create "$name" "$cfg" "$kubeconfig"
+    e2e_record_kind_cluster_lifecycle "$name" created
 }
 
 # $1 cluster name
@@ -365,6 +410,10 @@ function cluster_create {
 }
 
 function prepare_docker_images {
+    if e2e_should_skip_prepare_docker_images; then
+        echo "Skipping prepare_docker_images (E2E_SKIP_IMAGE_RELOAD, kind cluster(s) reused)"
+        return 0
+    fi
     docker pull "$E2E_TEST_AGNHOST_IMAGE_OLD_WITH_SHA"
     docker pull "$E2E_TEST_AGNHOST_IMAGE_WITH_SHA"
 
@@ -479,6 +528,22 @@ function kind_load {
 # $1 cluster
 # $2 image
 function cluster_kind_load_image {
+    if [[ "${E2E_MODE}" == "dev" ]] && ! e2e_is_truthy "${E2E_SKIP_IMAGE_RELOAD}"; then
+        local lifecycle
+        lifecycle=$(cat "$(e2e_kind_cluster_lifecycle_path "$1")" 2>/dev/null || true)
+        if [[ "${lifecycle}" == "reused" ]]; then
+            if e2e_is_kueue_controller_image_ref "$2"; then
+                if ! e2e_is_truthy "${E2E_SKIP_REINSTALL}"; then
+                    echo "Skipping load of Kueue image '$2' to cluster '$1' (E2E_SKIP_IMAGE_RELOAD and E2E_SKIP_REINSTALL)"
+                    return 0
+                fi
+            else
+                echo "Skipping load of '$2' to cluster '$1' (E2E_SKIP_IMAGE_RELOAD, cluster reused)"
+                return 0
+            fi
+        fi
+    fi
+
     # filter out 'control-plane' node, use only worker nodes to load image
     worker_nodes=$($KIND get nodes --name "$1" | grep -v 'control-plane')
     if [[ -z "$worker_nodes" ]]; then
@@ -1072,6 +1137,15 @@ function install_dra_example_driver {
         fi
         if [[ -n "${installed_version}" && -n "${expected_version}" ]]; then
             echo "DRA example driver installed version (${installed_version}) does not match requested (${expected_version}); upgrading."
+        fi
+    fi
+
+    if [[ "${E2E_MODE}" == "dev" ]] && ! e2e_is_truthy "${E2E_SKIP_IMAGE_RELOAD}"; then
+        local lf
+        lf=$(cat "$(e2e_kind_cluster_lifecycle_path "$name")" 2>/dev/null || true)
+        if [[ "${lf}" == "reused" ]] && $HELM list --kubeconfig="${kubeconfig}" -n dra-example-driver 2>/dev/null | grep -Fq dra-example-driver; then
+            echo "Skipping DRA example driver install (E2E_SKIP_IMAGE_RELOAD, reused cluster, helm release present)"
+            return 0
         fi
     fi
 

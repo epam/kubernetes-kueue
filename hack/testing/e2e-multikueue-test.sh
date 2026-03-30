@@ -90,10 +90,15 @@ function kueue_deploy {
 }
 
 trap cleanup EXIT
-startup 
+startup
+if [[ "${E2E_MODE}" == "dev" ]] && ! e2e_is_truthy "${E2E_SKIP_IMAGE_RELOAD}"; then
+    for job in $(jobs -p); do
+        wait "$job" || { echo "Cluster creation failed!"; exit 1; }
+    done
+fi
 prepare_docker_images
-for job in $(jobs -p); do 
-    wait "$job" || { echo "Cluster creation failed!"; exit 1; } 
+for job in $(jobs -p); do
+    wait "$job" || { echo "Cluster creation failed!"; exit 1; }
 done # wait for clusters creation
 
 kind_load "$MANAGER_KIND_CLUSTER_NAME" "$MANAGER_KUBECONFIG" &

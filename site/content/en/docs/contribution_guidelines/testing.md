@@ -136,11 +136,17 @@ E2E_MODE=dev GINKGO_ARGS="--until-it-fails" make kind-image-build  test-e2e
 # Skip reinstallation of kueue (works only in dev mode)
 E2E_MODE=dev E2E_SKIP_REINSTALL=true make kind-image-build test-e2e
 E2E_MODE=dev E2E_SKIP_REINSTALL=true make kind-image-build test-multikueue-e2e
+
+# Skip docker pulls and loading images into kind when reusing an existing cluster (dev only).
+# Still loads the Kueue image (IMAGE_TAG) unless you also set E2E_SKIP_REINSTALL=true.
+E2E_MODE=dev E2E_SKIP_IMAGE_RELOAD=true make kind-image-build test-e2e
+E2E_MODE=dev E2E_SKIP_REINSTALL=true E2E_SKIP_IMAGE_RELOAD=true make kind-image-build test-e2e
 ```
 
 {{% alert title="Note" color="primary" %}}
 When reusing a kept cluster in `E2E_MODE=dev`, external operators (MPI, KubeRay, etc.) are installed only once.
 To force re-installing them on every run, set `E2E_ENFORCE_OPERATOR_UPDATE=true`.
+`E2E_SKIP_IMAGE_RELOAD=true` skips pulling dependency images and importing them into kind for clusters that were reused (not newly created). It does not apply in `E2E_MODE=ci`. After changing operator versions or if workloads fail with missing images, recreate the kind cluster or unset `E2E_SKIP_IMAGE_RELOAD`.
 {{% /alert %}}
 
 To delete the kept cluster(s) afterwards:
