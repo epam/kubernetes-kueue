@@ -24,10 +24,36 @@ import (
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
 )
 
+type ComparePodSetSlicesOptions struct {
+	ignoreTolerations  bool
+	ignoreNodeSelector bool
+}
+
+type ComparePodSetSlicesOption func(*ComparePodSetSlicesOptions)
+
+func WithIgnoreTolerations() ComparePodSetSlicesOption {
+	return func(options *ComparePodSetSlicesOptions) {
+		options.ignoreTolerations = true
+	}
+}
+
+func WithIgnoreNodeSelector() ComparePodSetSlicesOption {
+	return func(options *ComparePodSetSlicesOptions) {
+		options.ignoreNodeSelector = true
+	}
+}
+
 // TODO: Revisit this, maybe we should extend the check to everything that could potentially impact
 // the workload scheduling (priority, nodeSelectors(when suspended), tolerations and maybe more)
-func comparePodTemplate(a, b *corev1.PodSpec, ignoreTolerations bool) bool {
-	if !ignoreTolerations && !equality.Semantic.DeepEqual(a.Tolerations, b.Tolerations) {
+func comparePodTemplate(a, b *corev1.PodSpec, options ...ComparePodSetSlicesOption) bool {
+	opts := &ComparePodSetSlicesOptions{}
+	for _, opt := range options {
+		opt(opts)
+	}
+	if !opts.ignoreTolerations && !equality.Semantic.DeepEqual(a.Tolerations, b.Tolerations) {
+		return false
+	}
+	if !opts.ignoreNodeSelector && !equality.Semantic.DeepEqual(a.NodeSelector, b.NodeSelector) {
 		return false
 	}
 	if !equality.Semantic.DeepEqual(a.InitContainers, b.InitContainers) {
@@ -36,7 +62,7 @@ func comparePodTemplate(a, b *corev1.PodSpec, ignoreTolerations bool) bool {
 	return equality.Semantic.DeepEqual(a.Containers, b.Containers)
 }
 
-func ComparePodSets(a, b *kueue.PodSet, ignoreTolerations bool) bool {
+func ComparePodSets(a, b *kueue.PodSet, options ...ComparePodSetSlicesOption) bool {
 	if a.Count != b.Count {
 		return false
 	}
@@ -44,15 +70,15 @@ func ComparePodSets(a, b *kueue.PodSet, ignoreTolerations bool) bool {
 		return false
 	}
 
-	return comparePodTemplate(&a.Template.Spec, &b.Template.Spec, ignoreTolerations)
+	return comparePodTemplate(&a.Template.Spec, &b.Template.Spec, options...)
 }
 
-func ComparePodSetSlices(a, b []kueue.PodSet, ignoreTolerations bool) bool {
+func ComparePodSetSlices(a, b []kueue.PodSet, options ...ComparePodSetSlicesOption) bool {
 	if len(a) != len(b) {
 		return false
 	}
 	for i := range a {
-		if !ComparePodSets(&a[i], &b[i], ignoreTolerations) {
+		if !ComparePodSets(&a[i], &b[i], options...) {
 			return false
 		}
 	}

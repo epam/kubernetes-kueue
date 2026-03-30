@@ -180,23 +180,6 @@ func (wh *Webhook) ValidateUpdate(ctx context.Context, oldObj, newObj *leaderwor
 		allErrs = append(allErrs, webhook.ValidateAdmissionGatedByAnnotationOnUpdate(oldLeaderWorkerSet.Object(), newLeaderWorkerSet.Object())...)
 	}
 
-	suspend, err := jobframework.WorkloadShouldBeSuspended(ctx, newLeaderWorkerSet.Object(), wh.client, wh.manageJobsWithoutQueueName, wh.managedJobsNamespaceSelector)
-	if err != nil {
-		return nil, err
-	}
-	if suspend {
-		allErrs = append(allErrs, validateImmutablePodTemplateSpec(
-			newLeaderWorkerSet.Spec.LeaderWorkerTemplate.LeaderTemplate,
-			oldLeaderWorkerSet.Spec.LeaderWorkerTemplate.LeaderTemplate,
-			leaderTemplatePath,
-		)...)
-		allErrs = append(allErrs, validateImmutablePodTemplateSpec(
-			&newLeaderWorkerSet.Spec.LeaderWorkerTemplate.WorkerTemplate,
-			&oldLeaderWorkerSet.Spec.LeaderWorkerTemplate.WorkerTemplate,
-			workerTemplatePath,
-		)...)
-	}
-
 	return warnings, allErrs.ToAggregate()
 }
 
@@ -261,14 +244,4 @@ func validateTopologyRequest(lws *LeaderWorkerSet) (field.ErrorList, error) {
 	}
 
 	return nil, podSetsErr
-}
-
-func validateImmutablePodTemplateSpec(newPodTemplateSpec *corev1.PodTemplateSpec, oldPodTemplateSpec *corev1.PodTemplateSpec, fieldPath *field.Path) field.ErrorList {
-	var allErrors field.ErrorList
-	if newPodTemplateSpec == nil || oldPodTemplateSpec == nil {
-		allErrors = append(allErrors, apivalidation.ValidateImmutableField(newPodTemplateSpec, oldPodTemplateSpec, fieldPath)...)
-	} else {
-		allErrors = append(allErrors, jobframework.ValidateImmutablePodGroupPodSpec(&newPodTemplateSpec.Spec, &oldPodTemplateSpec.Spec, fieldPath.Child("spec"))...)
-	}
-	return allErrors
 }
