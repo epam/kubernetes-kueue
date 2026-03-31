@@ -1,5 +1,5 @@
 # Build stage
-FROM node:25-slim AS builder
+FROM --platform=${BUILDPLATFORM} node:25-slim AS builder
 
 # Set working directory
 WORKDIR /app
@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Runtime stage
-FROM node:25-slim AS runtime
+FROM --platform=${TARGETPLATFORM} node:25-slim AS runtime
 
 WORKDIR /app
 

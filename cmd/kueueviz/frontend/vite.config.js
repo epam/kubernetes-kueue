@@ -10,6 +10,11 @@ export default defineConfig({
   build: {
     outDir: 'build', // Same output directory as react-scripts
     sourcemap: true,
+    minify: 'esbuild',
+    cssMinify: 'esbuild',
+  },
+  css: {
+    transformer: 'postcss',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
