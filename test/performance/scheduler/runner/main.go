@@ -262,7 +262,16 @@ func main() {
 	}
 }
 
-func runCommand(ctx context.Context, workDir, cmdPath, kubeconfig string, withCPUProf, withLogs, logToFile bool, logLevel int, enableTAS bool, errCh chan<- error, wg *sync.WaitGroup, metricsPort int) error {
+func runCommand(
+	ctx context.Context,
+	workDir, cmdPath, kubeconfig string,
+	withCPUProf, withLogs, logToFile bool,
+	logLevel int,
+	enableTAS bool,
+	errCh chan<- error,
+	wg *sync.WaitGroup,
+	metricsPort int,
+) error {
 	log := ctrl.LoggerFrom(ctx).WithName("Run command")
 
 	cmd := exec.CommandContext(ctx, cmdPath, "--kubeconfig", filepath.Join(workDir, kubeconfig))

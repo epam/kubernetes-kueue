@@ -408,7 +408,16 @@ func setupIndexes(ctx context.Context, mgr ctrl.Manager, cfg *configapi.Configur
 	return jobframework.SetupIndexes(ctx, mgr.GetFieldIndexer(), opts...)
 }
 
-func setupControllers(ctx context.Context, mgr ctrl.Manager, cCache *schdcache.Cache, queues *qcache.Manager, cfg *configapi.Configuration, serverVersionFetcher *kubeversion.ServerVersionFetcher, roleTracker *roletracker.RoleTracker, preemptionExpectations *expectations.Store) error {
+func setupControllers(
+	ctx context.Context,
+	mgr ctrl.Manager,
+	cCache *schdcache.Cache,
+	queues *qcache.Manager,
+	cfg *configapi.Configuration,
+	serverVersionFetcher *kubeversion.ServerVersionFetcher,
+	roleTracker *roletracker.RoleTracker,
+	preemptionExpectations *expectations.Store,
+) error {
 	if failedCtrl, err := core.SetupControllers(mgr, queues, cCache, cfg, roleTracker, preemptionExpectations); err != nil {
 		return fmt.Errorf("unable to create controller %s: %w", failedCtrl, err)
 	}
@@ -530,7 +539,14 @@ func setupProbeEndpoints(mgr ctrl.Manager, certsReady <-chan struct{}) error {
 	return nil
 }
 
-func setupScheduler(mgr ctrl.Manager, cCache *schdcache.Cache, queues *qcache.Manager, cfg *configapi.Configuration, roleTracker *roletracker.RoleTracker, preemptionExpectations *expectations.Store) error {
+func setupScheduler(
+	mgr ctrl.Manager,
+	cCache *schdcache.Cache,
+	queues *qcache.Manager,
+	cfg *configapi.Configuration,
+	roleTracker *roletracker.RoleTracker,
+	preemptionExpectations *expectations.Store,
+) error {
 	sched := scheduler.New(
 		queues,
 		cCache,

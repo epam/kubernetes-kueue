@@ -473,7 +473,14 @@ func (r *WorkloadReconciler) Reconcile(ctx context.Context, req ctrl.Request) (c
 			queuedWaitTime := workload.QueuedWaitTime(&wl, r.clock)
 			quotaReservedCondition := apimeta.FindStatusCondition(wl.Status.Conditions, kueue.WorkloadQuotaReserved)
 			quotaReservedWaitTime := r.clock.Since(quotaReservedCondition.LastTransitionTime.Time)
-			r.recorder.Eventf(&wl, corev1.EventTypeNormal, "Admitted", "Admitted by ClusterQueue %v, wait time since reservation was %.0fs", wl.Status.Admission.ClusterQueue, quotaReservedWaitTime.Seconds())
+			r.recorder.Eventf(
+				&wl,
+				corev1.EventTypeNormal,
+				"Admitted",
+				"Admitted by ClusterQueue %v, wait time since reservation was %.0fs",
+				wl.Status.Admission.ClusterQueue,
+				quotaReservedWaitTime.Seconds(),
+			)
 			priorityClassName := workload.PriorityClassName(&wl)
 			metrics.AdmittedWorkload(cqName, priorityClassName, queuedWaitTime, r.roleTracker)
 			metrics.ReportAdmissionChecksWaitTime(cqName, priorityClassName, quotaReservedWaitTime, r.roleTracker)
@@ -584,7 +591,11 @@ func (r *WorkloadReconciler) reconcileMaxExecutionTime(ctx context.Context, wl *
 		return 0, nil
 	}
 
-	remainingTime := time.Duration(*wl.Spec.MaximumExecutionTimeSeconds-ptr.Deref(wl.Status.AccumulatedPastExecutionTimeSeconds, 0))*time.Second - r.clock.Since(admittedCondition.LastTransitionTime.Time)
+	remainingTime := time.Duration(
+		*wl.Spec.MaximumExecutionTimeSeconds-ptr.Deref(wl.Status.AccumulatedPastExecutionTimeSeconds, 0),
+	)*time.Second - r.clock.Since(
+		admittedCondition.LastTransitionTime.Time,
+	)
 	if remainingTime > 0 {
 		return remainingTime, nil
 	}

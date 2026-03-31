@@ -416,14 +416,17 @@ var _ = ginkgo.Describe("MultiKueue with scheduler", ginkgo.Label("area:multikue
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
 		})
 
-		ginkgo.By("Checking that the high-priority workload is created in worker1 and not in worker2, and that its spec matches the manager workload (MultiKueueBatchJobWithManagedBy disabled)", func() {
-			gomega.Eventually(func(g gomega.Gomega) {
-				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, highWlKey, workerHighWorkload)).To(gomega.Succeed())
-				g.Expect(workload.IsAdmitted(workerHighWorkload)).To(gomega.BeTrue())
-				g.Expect(workerHighWorkload.Spec).To(gomega.BeComparableTo(managerHighWl.Spec))
-				g.Expect(worker2TestCluster.client.Get(worker2TestCluster.ctx, highWlKey, &kueue.Workload{})).To(testing.BeNotFoundError())
-			}, util.Timeout, util.Interval).Should(gomega.Succeed())
-		})
+		ginkgo.By(
+			"Checking that the high-priority workload is created in worker1 and not in worker2, and that its spec matches the manager workload (MultiKueueBatchJobWithManagedBy disabled)",
+			func() {
+				gomega.Eventually(func(g gomega.Gomega) {
+					g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, highWlKey, workerHighWorkload)).To(gomega.Succeed())
+					g.Expect(workload.IsAdmitted(workerHighWorkload)).To(gomega.BeTrue())
+					g.Expect(workerHighWorkload.Spec).To(gomega.BeComparableTo(managerHighWl.Spec))
+					g.Expect(worker2TestCluster.client.Get(worker2TestCluster.ctx, highWlKey, &kueue.Workload{})).To(testing.BeNotFoundError())
+				}, util.Timeout, util.Interval).Should(gomega.Succeed())
+			},
+		)
 
 		ginkgo.By("Checking that the low-priority workload is preempted in the manager cluster", func() {
 			gomega.Eventually(func(g gomega.Gomega) {
@@ -549,14 +552,17 @@ var _ = ginkgo.Describe("MultiKueue with scheduler", ginkgo.Label("area:multikue
 			}, util.Timeout, util.Interval).Should(gomega.Succeed())
 		})
 
-		ginkgo.By("Checking that the high-priority workload is created in worker1 and not in worker2, and that its spec matches the manager workload (MultiKueueBatchJobWithManagedBy disabled)", func() {
-			gomega.Eventually(func(g gomega.Gomega) {
-				g.Expect(worker2TestCluster.client.Get(worker2TestCluster.ctx, highWlKey, workerHighWorkload)).To(gomega.Succeed())
-				g.Expect(workload.IsAdmitted(workerHighWorkload)).To(gomega.BeTrue())
-				g.Expect(workerHighWorkload.Spec).To(gomega.BeComparableTo(managerHighWl.Spec))
-				g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, highWlKey, &kueue.Workload{})).To(testing.BeNotFoundError())
-			}, util.Timeout, util.Interval).Should(gomega.Succeed())
-		})
+		ginkgo.By(
+			"Checking that the high-priority workload is created in worker1 and not in worker2, and that its spec matches the manager workload (MultiKueueBatchJobWithManagedBy disabled)",
+			func() {
+				gomega.Eventually(func(g gomega.Gomega) {
+					g.Expect(worker2TestCluster.client.Get(worker2TestCluster.ctx, highWlKey, workerHighWorkload)).To(gomega.Succeed())
+					g.Expect(workload.IsAdmitted(workerHighWorkload)).To(gomega.BeTrue())
+					g.Expect(workerHighWorkload.Spec).To(gomega.BeComparableTo(managerHighWl.Spec))
+					g.Expect(worker1TestCluster.client.Get(worker1TestCluster.ctx, highWlKey, &kueue.Workload{})).To(testing.BeNotFoundError())
+				}, util.Timeout, util.Interval).Should(gomega.Succeed())
+			},
+		)
 
 		ginkgo.By("Checking that the low-priority workload is preempted in the manager cluster", func() {
 			gomega.Eventually(func(g gomega.Gomega) {

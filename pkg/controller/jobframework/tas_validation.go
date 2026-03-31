@@ -80,7 +80,13 @@ func ValidateTASPodSetRequest(replicaPath *field.Path, replicaMetadata *metav1.O
 		}
 
 		if !preferredFound && !requiredFound {
-			allErrs = append(allErrs, field.Forbidden(annotationsPath.Key(kueue.PodSetGroupName), fmt.Sprintf("may not be set when neither '%s' nor '%s' is specified", kueue.PodSetPreferredTopologyAnnotation, kueue.PodSetRequiredTopologyAnnotation)))
+			allErrs = append(
+				allErrs,
+				field.Forbidden(
+					annotationsPath.Key(kueue.PodSetGroupName),
+					fmt.Sprintf("may not be set when neither '%s' nor '%s' is specified", kueue.PodSetPreferredTopologyAnnotation, kueue.PodSetRequiredTopologyAnnotation),
+				),
+			)
 		}
 	}
 
@@ -95,7 +101,10 @@ func ValidateTASPodSetRequest(replicaPath *field.Path, replicaMetadata *metav1.O
 		allErrs = append(allErrs, field.Required(annotationsPath.Key(kueue.PodSetSliceSizeAnnotation), fmt.Sprintf("must be set when '%s' is specified", kueue.PodSetSliceRequiredTopologyAnnotation)))
 	}
 	if !sliceRequiredFound && sliceSizeFound {
-		allErrs = append(allErrs, field.Forbidden(annotationsPath.Key(kueue.PodSetSliceSizeAnnotation), fmt.Sprintf("may not be set when '%s' is not specified", kueue.PodSetSliceRequiredTopologyAnnotation)))
+		allErrs = append(
+			allErrs,
+			field.Forbidden(annotationsPath.Key(kueue.PodSetSliceSizeAnnotation), fmt.Sprintf("may not be set when '%s' is not specified", kueue.PodSetSliceRequiredTopologyAnnotation)),
+		)
 	}
 
 	return allErrs

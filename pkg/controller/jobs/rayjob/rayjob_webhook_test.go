@@ -509,8 +509,16 @@ func TestValidateCreate(t *testing.T) {
 				).
 				Obj(),
 			wantErr: field.ErrorList{
-				field.Invalid(field.NewPath("spec.rayClusterSpec.headGroupSpec.template.metadata.annotations"), field.OmitValueType{}, "must specify 'kueue.x-k8s.io/podset-required-topology' or 'kueue.x-k8s.io/podset-preferred-topology' topology consistent with 'spec.rayClusterSpec.workerGroupSpecs[0].template.metadata.annotations' in group 'groupname'"),
-				field.Invalid(field.NewPath("spec.rayClusterSpec.workerGroupSpecs[0].template.metadata.annotations"), field.OmitValueType{}, "must specify 'kueue.x-k8s.io/podset-required-topology' or 'kueue.x-k8s.io/podset-preferred-topology' topology consistent with 'spec.rayClusterSpec.headGroupSpec.template.metadata.annotations' in group 'groupname'"),
+				field.Invalid(
+					field.NewPath("spec.rayClusterSpec.headGroupSpec.template.metadata.annotations"),
+					field.OmitValueType{},
+					"must specify 'kueue.x-k8s.io/podset-required-topology' or 'kueue.x-k8s.io/podset-preferred-topology' topology consistent with 'spec.rayClusterSpec.workerGroupSpecs[0].template.metadata.annotations' in group 'groupname'",
+				),
+				field.Invalid(
+					field.NewPath("spec.rayClusterSpec.workerGroupSpecs[0].template.metadata.annotations"),
+					field.OmitValueType{},
+					"must specify 'kueue.x-k8s.io/podset-required-topology' or 'kueue.x-k8s.io/podset-preferred-topology' topology consistent with 'spec.rayClusterSpec.headGroupSpec.template.metadata.annotations' in group 'groupname'",
+				),
 			}.ToAggregate(),
 			featureGates: map[featuregate.Feature]bool{features.TopologyAwareScheduling: true},
 		},
@@ -542,8 +550,16 @@ func TestValidateCreate(t *testing.T) {
 				).
 				Obj(),
 			wantErr: field.ErrorList{
-				field.Invalid(field.NewPath("spec.rayClusterSpec.headGroupSpec.template.metadata.annotations"), field.OmitValueType{}, "must specify 'kueue.x-k8s.io/podset-required-topology' or 'kueue.x-k8s.io/podset-preferred-topology' topology consistent with 'spec.rayClusterSpec.workerGroupSpecs[0].template.metadata.annotations' in group 'groupname'"),
-				field.Invalid(field.NewPath("spec.rayClusterSpec.workerGroupSpecs[0].template.metadata.annotations"), field.OmitValueType{}, "must specify 'kueue.x-k8s.io/podset-required-topology' or 'kueue.x-k8s.io/podset-preferred-topology' topology consistent with 'spec.rayClusterSpec.headGroupSpec.template.metadata.annotations' in group 'groupname'"),
+				field.Invalid(
+					field.NewPath("spec.rayClusterSpec.headGroupSpec.template.metadata.annotations"),
+					field.OmitValueType{},
+					"must specify 'kueue.x-k8s.io/podset-required-topology' or 'kueue.x-k8s.io/podset-preferred-topology' topology consistent with 'spec.rayClusterSpec.workerGroupSpecs[0].template.metadata.annotations' in group 'groupname'",
+				),
+				field.Invalid(
+					field.NewPath("spec.rayClusterSpec.workerGroupSpecs[0].template.metadata.annotations"),
+					field.OmitValueType{},
+					"must specify 'kueue.x-k8s.io/podset-required-topology' or 'kueue.x-k8s.io/podset-preferred-topology' topology consistent with 'spec.rayClusterSpec.headGroupSpec.template.metadata.annotations' in group 'groupname'",
+				),
 			}.ToAggregate(),
 			featureGates: map[featuregate.Feature]bool{features.TopologyAwareScheduling: true},
 		},
@@ -575,8 +591,16 @@ func TestValidateCreate(t *testing.T) {
 				).
 				Obj(),
 			wantErr: field.ErrorList{
-				field.Invalid(field.NewPath("spec.rayClusterSpec.headGroupSpec.template.metadata.annotations"), field.OmitValueType{}, "must specify 'kueue.x-k8s.io/podset-required-topology' or 'kueue.x-k8s.io/podset-preferred-topology' topology consistent with 'spec.rayClusterSpec.workerGroupSpecs[0].template.metadata.annotations' in group 'groupname'"),
-				field.Invalid(field.NewPath("spec.rayClusterSpec.workerGroupSpecs[0].template.metadata.annotations"), field.OmitValueType{}, "must specify 'kueue.x-k8s.io/podset-required-topology' or 'kueue.x-k8s.io/podset-preferred-topology' topology consistent with 'spec.rayClusterSpec.headGroupSpec.template.metadata.annotations' in group 'groupname'"),
+				field.Invalid(
+					field.NewPath("spec.rayClusterSpec.headGroupSpec.template.metadata.annotations"),
+					field.OmitValueType{},
+					"must specify 'kueue.x-k8s.io/podset-required-topology' or 'kueue.x-k8s.io/podset-preferred-topology' topology consistent with 'spec.rayClusterSpec.workerGroupSpecs[0].template.metadata.annotations' in group 'groupname'",
+				),
+				field.Invalid(
+					field.NewPath("spec.rayClusterSpec.workerGroupSpecs[0].template.metadata.annotations"),
+					field.OmitValueType{},
+					"must specify 'kueue.x-k8s.io/podset-required-topology' or 'kueue.x-k8s.io/podset-preferred-topology' topology consistent with 'spec.rayClusterSpec.headGroupSpec.template.metadata.annotations' in group 'groupname'",
+				),
 			}.ToAggregate(),
 			featureGates: map[featuregate.Feature]bool{features.TopologyAwareScheduling: true},
 		},

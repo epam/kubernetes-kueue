@@ -389,7 +389,13 @@ func dropExcludedResources(input corev1.ResourceList, excludedPrefixes []string)
 	return res
 }
 
-func (i *Info) CalcLocalQueueFSUsage(ctx context.Context, c client.Client, resWeights map[corev1.ResourceName]float64, afsEntryPenalties *queueafs.AfsEntryPenalties, afsConsumedResources *queueafs.AfsConsumedResources) (float64, error) {
+func (i *Info) CalcLocalQueueFSUsage(
+	ctx context.Context,
+	c client.Client,
+	resWeights map[corev1.ResourceName]float64,
+	afsEntryPenalties *queueafs.AfsEntryPenalties,
+	afsConsumedResources *queueafs.AfsConsumedResources,
+) (float64, error) {
 	lqKey := queue.KeyFromWorkload(i.Obj)
 
 	consumed := corev1.ResourceList{}
@@ -1508,7 +1514,17 @@ func EvictWithRetryOnConflictForPatch() EvictOption {
 	}
 }
 
-func Evict(ctx context.Context, c client.Client, recorder record.EventRecorder, wl *kueue.Workload, reason, msg string, underlyingCause kueue.EvictionUnderlyingCause, clock clock.Clock, tracker *roletracker.RoleTracker, options ...EvictOption) error {
+func Evict(
+	ctx context.Context,
+	c client.Client,
+	recorder record.EventRecorder,
+	wl *kueue.Workload,
+	reason, msg string,
+	underlyingCause kueue.EvictionUnderlyingCause,
+	clock clock.Clock,
+	tracker *roletracker.RoleTracker,
+	options ...EvictOption,
+) error {
 	opts := DefaultEvictOptions()
 	for _, opt := range options {
 		opt(opts)
@@ -1616,7 +1632,14 @@ func resetUnhealthyNodes(w *kueue.Workload) {
 	w.Status.UnhealthyNodes = nil
 }
 
-func reportEvictedWorkload(recorder record.EventRecorder, wl *kueue.Workload, cqName kueue.ClusterQueueReference, reason, message string, underlyingCause kueue.EvictionUnderlyingCause, tracker *roletracker.RoleTracker) {
+func reportEvictedWorkload(
+	recorder record.EventRecorder,
+	wl *kueue.Workload,
+	cqName kueue.ClusterQueueReference,
+	reason, message string,
+	underlyingCause kueue.EvictionUnderlyingCause,
+	tracker *roletracker.RoleTracker,
+) {
 	priorityClassName := PriorityClassName(wl)
 	metrics.ReportEvictedWorkloads(cqName, reason, string(underlyingCause), priorityClassName, tracker)
 	if podsReadyToEvictionTime := workloadsWithPodsReadyToEvictedTime(wl); podsReadyToEvictionTime != nil {

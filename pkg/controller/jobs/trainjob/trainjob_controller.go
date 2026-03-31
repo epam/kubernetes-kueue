@@ -87,7 +87,13 @@ const controllerName = "trainjob"
 var reconciler trainJobReconciler
 var _ jobframework.JobReconcilerInterface = (*trainJobReconciler)(nil)
 
-func NewReconciler(ctx context.Context, client client.Client, indexer client.FieldIndexer, eventRecorder record.EventRecorder, opts ...jobframework.Option) (jobframework.JobReconcilerInterface, error) {
+func NewReconciler(
+	ctx context.Context,
+	client client.Client,
+	indexer client.FieldIndexer,
+	eventRecorder record.EventRecorder,
+	opts ...jobframework.Option,
+) (jobframework.JobReconcilerInterface, error) {
 	runtimes, err := kftrainerruntimecore.New(ctx, client, indexer)
 	if err != nil {
 		return nil, err

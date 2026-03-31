@@ -38,7 +38,14 @@ const (
 
 // SetupControllers sets up the core controllers. It returns the name of the
 // controller that failed to create and an error, if any.
-func SetupControllers(mgr ctrl.Manager, qManager *qcache.Manager, cc *schdcache.Cache, cfg *configapi.Configuration, roleTracker *roletracker.RoleTracker, preemptionExpectations *expectations.Store) (string, error) {
+func SetupControllers(
+	mgr ctrl.Manager,
+	qManager *qcache.Manager,
+	cc *schdcache.Cache,
+	cfg *configapi.Configuration,
+	roleTracker *roletracker.RoleTracker,
+	preemptionExpectations *expectations.Store,
+) (string, error) {
 	rfRec := NewResourceFlavorReconciler(mgr.GetClient(), qManager, cc, roleTracker)
 	if err := rfRec.SetupWithManager(mgr, cfg); err != nil {
 		return "ResourceFlavor", err
