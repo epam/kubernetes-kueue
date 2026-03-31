@@ -425,7 +425,7 @@ kueueviz-image-push: kueueviz-image-build
 
 # Build a docker local us-central1-docker.pkg.dev/k8s-staging-images/kueue/kueueviz image
 .PHONY: kueueviz-image
-kueueviz-image: VIZ_PLATFORMS=linux/ppc64le
+kueueviz-image: VIZ_PLATFORMS=$(HOST_IMAGE_PLATFORM)
 kueueviz-image: PUSH=--load
 kueueviz-image: kueueviz-image-build
 
