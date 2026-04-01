@@ -969,7 +969,7 @@ func TestFairPreemptions(t *testing.T) {
 				}
 			}
 			for _, cohort := range tc.cohorts {
-				if err := cqCache.AddOrUpdateCohort(cohort); err != nil {
+				if _, err := cqCache.AddOrUpdateCohort(cohort); err != nil {
 					t.Fatalf("Couldn't add Cohort to cache: %v", err)
 				}
 			}

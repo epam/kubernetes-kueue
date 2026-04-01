@@ -527,26 +527,43 @@ func (c *Cache) DeleteClusterQueue(cq *kueue.ClusterQueue) {
 	}
 }
 
-func (c *Cache) AddOrUpdateCohort(apiCohort *kueue.Cohort) error {
+// AddOrUpdateCohort returns (hierarchyChanged, error), hierarchyChanged is true
+// when the cohort's parent or root cohort changed.
+func (c *Cache) AddOrUpdateCohort(apiCohort *kueue.Cohort) (bool, error) {
 	c.Lock()
 	defer c.Unlock()
 	cohortName := kueue.CohortReference(apiCohort.Name)
 	c.hm.AddCohort(cohortName)
 	cohort := c.hm.Cohort(cohortName)
 	oldParent := cohort.Parent()
-	var oldParentName kueue.CohortReference
+	var oldParentName, oldRootName kueue.CohortReference
 	if oldParent != nil {
 		oldParentName = oldParent.Name
 	}
+	if !hierarchy.HasCycle(cohort) {
+		oldRootName = cohort.getRootUnsafe().Name
+	}
+
 	c.hm.UpdateCohortEdge(cohortName, apiCohort.Spec.ParentName)
 	if err := cohort.updateCohort(apiCohort, oldParent); err != nil {
-		return err
+		return false, err
 	}
+
 	// If the old parent was removed (implicit with no children), clear its metrics.
 	if oldParentName != "" && c.hm.Cohort(oldParentName) == nil {
 		metrics.ClearCohortInfo(oldParentName)
 	}
-	return nil
+
+	var newParentName, newRootName kueue.CohortReference
+	if cohort.HasParent() {
+		newParentName = cohort.Parent().Name
+	}
+	if !hierarchy.HasCycle(cohort) {
+		newRootName = cohort.getRootUnsafe().Name
+	}
+
+	hierarchyChanged := oldParentName != newParentName || oldRootName != newRootName
+	return hierarchyChanged, nil
 }
 
 func (c *Cache) DeleteCohort(cohortName kueue.CohortReference) {

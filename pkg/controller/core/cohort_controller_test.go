@@ -47,7 +47,7 @@ func TestCohortReconcileCohortNotFoundDelete(t *testing.T) {
 	reconciler := NewCohortReconciler(cl, cache, qManager)
 
 	cohort := utiltestingapi.MakeCohort("cohort").Obj()
-	_ = cache.AddOrUpdateCohort(cohort)
+	_, _ = cache.AddOrUpdateCohort(cohort)
 	qManager.AddOrUpdateCohort(ctx, cohort)
 	snapshot, err := cache.Snapshot(ctx)
 	if err != nil {
@@ -163,7 +163,7 @@ func TestCohortReconcileErrorOtherThanNotFoundNotDeleted(t *testing.T) {
 	qManager := qcache.NewManagerForUnitTests(cl, cache)
 	reconciler := NewCohortReconciler(cl, cache, qManager)
 	cohort := utiltestingapi.MakeCohort("cohort").Obj()
-	_ = cache.AddOrUpdateCohort(cohort)
+	_, _ = cache.AddOrUpdateCohort(cohort)
 	qManager.AddOrUpdateCohort(ctx, cohort)
 	snapshot, err := cache.Snapshot(ctx)
 	if err != nil {
