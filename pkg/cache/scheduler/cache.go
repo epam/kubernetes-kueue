@@ -529,28 +529,33 @@ func (c *Cache) DeleteClusterQueue(cq *kueue.ClusterQueue) {
 	}
 }
 
-func (c *Cache) AddOrUpdateCohort(apiCohort *kueue.Cohort) error {
+// AddOrUpdateCohort adds a cohort to the cache or updates its hierarchy and properties if it already exists.
+// Returns a boolean indicating if the cohort hierarchy has changed, and an error if any issue occurs during the update.
+func (c *Cache) AddOrUpdateCohort(apiCohort *kueue.Cohort) (bool, error) {
 	c.Lock()
 	defer c.Unlock()
 	cohortName := kueue.CohortReference(apiCohort.Name)
 	c.hm.AddCohort(cohortName)
 	cohort := c.hm.Cohort(cohortName)
 	oldParent := cohort.Parent()
+
+	c.hm.UpdateCohortEdge(cohortName, apiCohort.Spec.ParentName)
+	if err := cohort.updateCohort(apiCohort, oldParent); err != nil {
+		return false, err
+	}
+	c.handleParentUpdate(oldParent)
+
 	var oldParentName kueue.CohortReference
 	if oldParent != nil {
 		oldParentName = oldParent.Name
 	}
-	c.hm.UpdateCohortEdge(cohortName, apiCohort.Spec.ParentName)
-	err := cohort.updateCohort(apiCohort, oldParent)
-	if err != nil {
-		return err
-	}
-	c.handleParentUpdate(oldParent)
+
 	// If the old parent was removed (implicit with no children), clear its metrics.
 	if oldParentName != "" && c.hm.Cohort(oldParentName) == nil {
 		metrics.ClearCohortInfo(oldParentName)
 	}
-	return nil
+
+	return oldParentName != apiCohort.Spec.ParentName, nil
 }
 
 func (c *Cache) DeleteCohort(cohortName kueue.CohortReference) {

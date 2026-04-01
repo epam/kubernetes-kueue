@@ -703,6 +703,47 @@ func TestRecordCohortSubtreeInfoMetrics(t *testing.T) {
 		expectGaugeValue(t, kueuemetrics.ClusterQueueInfo, cqMetricInfoLabels("cq-a", "child-a", "implicit-root"), 1)
 	})
 
+	t.Run("reparenting from implicit parent clears removed implicit parent info", func(t *testing.T) {
+		fixture := newCohortMetricsFixture(t)
+		cache := fixture.cache
+		ctx, log := fixture.ctx, fixture.log
+
+		setupRecordMetricsHierarchy(ctx, t, log, cache,
+			[]*kueue.ResourceFlavor{
+				utiltestingapi.MakeResourceFlavor("default").Obj(),
+			},
+			[]*kueue.Cohort{
+				utiltestingapi.MakeCohort("child").
+					Parent("implicit-parent").
+					ResourceGroup(*utiltestingapi.MakeFlavorQuotas("default").
+						Resource(corev1.ResourceCPU, "10").Obj()).
+					Obj(),
+			},
+			[]*kueue.ClusterQueue{},
+		)
+
+		clearCohortMetricsForTest(t, "child", "implicit-parent", "new-implicit-parent")
+
+		cache.RecordCohortSubtreeInfoMetrics("implicit-parent")
+		expectGaugeValue(t, kueuemetrics.CohortInfo, cohortMetricInfoLabels("implicit-parent", "", "implicit-parent"), 1)
+		expectGaugeValue(t, kueuemetrics.CohortInfo, cohortMetricInfoLabels("child", "implicit-parent", "implicit-parent"), 1)
+
+		_, err := cache.AddOrUpdateCohort(utiltestingapi.MakeCohort("child").
+			Parent("new-implicit-parent").
+			ResourceGroup(*utiltestingapi.MakeFlavorQuotas("default").
+				Resource(corev1.ResourceCPU, "10").Obj()).
+			Obj())
+		if err != nil {
+			t.Fatalf("reparenting child: %v", err)
+		}
+
+		cache.RecordCohortSubtreeInfoMetrics("new-implicit-parent")
+
+		expectGaugeCount(t, kueuemetrics.CohortInfo, 0, cohortMetricInfoLabels("implicit-parent", "", "implicit-parent"))
+		expectGaugeValue(t, kueuemetrics.CohortInfo, cohortMetricInfoLabels("new-implicit-parent", "", "new-implicit-parent"), 1)
+		expectGaugeValue(t, kueuemetrics.CohortInfo, cohortMetricInfoLabels("child", "new-implicit-parent", "new-implicit-parent"), 1)
+	})
+
 	t.Run("clears stale series before reporting updated hierarchy", func(t *testing.T) {
 		fixture := newCohortMetricsFixture(t)
 		cache := fixture.cache
@@ -784,7 +825,7 @@ func setupRecordMetricsHierarchy(
 	}
 
 	for _, ch := range cohorts {
-		if err := cache.AddOrUpdateCohort(ch); err != nil {
+		if _, err := cache.AddOrUpdateCohort(ch); err != nil {
 			t.Fatalf("adding cohort %q: %v", ch.Name, err)
 		}
 	}

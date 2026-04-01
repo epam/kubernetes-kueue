@@ -782,7 +782,7 @@ func TestSnapshot(t *testing.T) {
 				}
 			}
 			for _, cohort := range tc.cohorts {
-				_ = cache.AddOrUpdateCohort(cohort)
+				_, _ = cache.AddOrUpdateCohort(cohort)
 			}
 			for _, rf := range tc.rfs {
 				cache.AddOrUpdateResourceFlavor(log, rf)
