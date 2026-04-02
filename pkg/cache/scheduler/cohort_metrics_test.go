@@ -393,7 +393,7 @@ func setupRecordMetricsHierarchy(
 	}
 
 	for _, ch := range cohorts {
-		if err := cache.AddOrUpdateCohort(ch); err != nil {
+		if _, err := cache.AddOrUpdateCohort(ch); err != nil {
 			t.Fatalf("adding cohort %q: %v", ch.Name, err)
 		}
 	}
