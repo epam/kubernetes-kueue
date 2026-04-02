@@ -3337,7 +3337,7 @@ func TestAssignFlavors(t *testing.T) {
 				cache.AddOrUpdateResourceFlavor(log, rf)
 			}
 
-			if err := cache.AddOrUpdateCohort(utiltestingapi.MakeCohort(tc.clusterQueue.Spec.CohortName).Obj()); err != nil {
+			if _, err := cache.AddOrUpdateCohort(utiltestingapi.MakeCohort(tc.clusterQueue.Spec.CohortName).Obj()); err != nil {
 				t.Fatalf("Failed to create a cohort")
 			}
 
@@ -3845,7 +3845,7 @@ func TestHierarchical(t *testing.T) {
 			}
 			cache := schdcache.New(utiltesting.NewFakeClient())
 			for _, cohort := range cohorts {
-				if err := cache.AddOrUpdateCohort(cohort); err != nil {
+				if _, err := cache.AddOrUpdateCohort(cohort); err != nil {
 					t.Fatalf("Couldn't add Cohort to cache: %v", err)
 				}
 			}

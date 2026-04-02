@@ -6711,7 +6711,7 @@ func TestScheduleForTASCohorts(t *testing.T) {
 					}
 				}
 				for _, cohort := range tc.cohorts {
-					if err := cqCache.AddOrUpdateCohort(&cohort); err != nil {
+					if _, err := cqCache.AddOrUpdateCohort(&cohort); err != nil {
 						t.Fatalf("Inserting Cohort %s in cache: %v", cohort.Name, err)
 					}
 				}

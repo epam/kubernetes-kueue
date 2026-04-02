@@ -749,7 +749,7 @@ func TestDominantResourceShare(t *testing.T) {
 			}
 
 			for _, cohort := range tc.cohorts {
-				_ = cache.AddOrUpdateCohort(cohort)
+				_, _ = cache.AddOrUpdateCohort(cohort)
 			}
 
 			snapshot, err := cache.Snapshot(ctx)
