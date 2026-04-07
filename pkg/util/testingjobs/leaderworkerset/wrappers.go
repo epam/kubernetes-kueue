@@ -182,6 +182,13 @@ func (w *LeaderWorkerSetWrapper) WorkerTemplateSpecPodGroupNameLabel(
 	return w.WorkerTemplateSpecLabel(podconstants.GroupNameLabel, gvk)
 }
 
+func (w *LeaderWorkerSetWrapper) WorkerTemplateSpecPodGroupNameAnnotation(
+	ownerName string, ownerUID types.UID, ownerGVK schema.GroupVersionKind,
+) *LeaderWorkerSetWrapper {
+	gvk := jobframework.GetWorkloadNameForOwnerWithGVK(ownerName, ownerUID, ownerGVK)
+	return w.WorkerTemplateSpecAnnotation(podconstants.GroupNameAnnotation, gvk)
+}
+
 func (w *LeaderWorkerSetWrapper) WorkerTemplateSpecPodGroupTotalCountAnnotation(replicas int32) *LeaderWorkerSetWrapper {
 	return w.WorkerTemplateSpecAnnotation(podconstants.GroupTotalCountAnnotation, fmt.Sprint(replicas))
 }

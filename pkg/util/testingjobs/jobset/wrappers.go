@@ -121,6 +121,15 @@ func (j *JobSetWrapper) Label(k, v string) *JobSetWrapper {
 	return j
 }
 
+// Annotation sets an annotation to the JobSet.
+func (j *JobSetWrapper) Annotation(k, v string) *JobSetWrapper {
+	if j.ObjectMeta.Annotations == nil {
+		j.ObjectMeta.Annotations = make(map[string]string, 1)
+	}
+	j.ObjectMeta.Annotations[k] = v
+	return j
+}
+
 // Annotations sets annotations to the JobSet.
 func (j *JobSetWrapper) Annotations(annotations map[string]string) *JobSetWrapper {
 	j.ObjectMeta.Annotations = annotations

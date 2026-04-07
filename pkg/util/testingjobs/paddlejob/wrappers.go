@@ -125,6 +125,15 @@ func (j *PaddleJobWrapper) Label(key, value string) *PaddleJobWrapper {
 	return j
 }
 
+// Annotation sets an annotation key and value
+func (j *PaddleJobWrapper) Annotation(key, value string) *PaddleJobWrapper {
+	if j.Annotations == nil {
+		j.Annotations = make(map[string]string, 1)
+	}
+	j.Annotations[key] = value
+	return j
+}
+
 // PriorityClass updates job priorityclass.
 func (j *PaddleJobWrapper) PriorityClass(pc string) *PaddleJobWrapper {
 	if j.Spec.RunPolicy.SchedulingPolicy == nil {

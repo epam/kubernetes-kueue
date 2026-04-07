@@ -560,10 +560,10 @@ func SetupIndexes(ctx context.Context, indexer client.FieldIndexer) error {
 }
 
 func (p *Pod) Finalize(ctx context.Context, c client.Client) error {
-	groupName := podGroupName(p.pod)
+	groupName, hasGroup := GetPodGroupName(&p.pod)
 
 	var podsInGroup corev1.PodList
-	if groupName == "" {
+	if !hasGroup {
 		podsInGroup.Items = append(podsInGroup.Items, *p.Object().(*corev1.Pod))
 	} else {
 		if err := c.List(ctx, &podsInGroup, client.MatchingFields{
@@ -594,16 +594,45 @@ func (p *Pod) Skip(ctx context.Context) bool {
 	return false
 }
 
-// podGroupName returns a value of GroupNameLabel for the pod object.
-// Returns an empty string if there's no such label.
-func podGroupName(p corev1.Pod) string {
-	return p.GetLabels()[podconstants.GroupNameLabel]
+// GetPodGroupName returns the pod group name for the given pod. It reads the
+// GroupNameLabel, or when the WorkloadIdentifierAnnotations feature gate is
+// enabled it first reads the GroupNameAnnotation and then falls back to the label.
+// The boolean reports whether a name was found. If not, the returned string is empty.
+func GetPodGroupName(p *corev1.Pod) (string, bool) {
+	if features.Enabled(features.WorkloadIdentifierAnnotations) {
+		name := cmp.Or(p.Annotations[podconstants.GroupNameAnnotation], p.Labels[podconstants.GroupNameLabel])
+		return name, name != ""
+	}
+
+	name, found := p.Labels[podconstants.GroupNameLabel]
+	return name, found
+}
+
+// SetPodGroupName stores the pod group name on the given pod.
+// When the WorkloadIdentifierAnnotations feature gate is enabled
+// the name is written to the GroupNameAnnotation. Otherwise,
+// it is written to the GroupNameLabel.
+func SetPodGroupName(p *corev1.Pod, groupName string) {
+	if features.Enabled(features.WorkloadIdentifierAnnotations) {
+		if p.Annotations == nil {
+			p.Annotations = make(map[string]string, 1)
+		}
+		p.Annotations[podconstants.GroupNameAnnotation] = groupName
+	} else {
+		if p.Labels == nil {
+			p.Labels = make(map[string]string, 1)
+		}
+		p.Labels[podconstants.GroupNameLabel] = groupName
+	}
 }
 
 // groupTotalCount returns the value of GroupTotalCountAnnotation for the pod being reconciled at the moment.
 // It doesn't check if the whole group has the same total group count annotation value.
 func (p *Pod) groupTotalCount() (int, error) {
-	if podGroupName(p.pod) == "" {
+	if _, hasGroup := GetPodGroupName(&p.pod); !hasGroup {
+		if features.Enabled(features.WorkloadIdentifierAnnotations) {
+			return 0, fmt.Errorf("pod doesn't have a '%s' annotation", podconstants.GroupNameAnnotation)
+		}
 		return 0, fmt.Errorf("pod doesn't have a '%s' label", podconstants.GroupNameLabel)
 	}
 
@@ -647,7 +676,7 @@ func (p *Pod) Load(ctx context.Context, c client.Client, key *types.NamespacedNa
 
 		// If the key.Namespace doesn't contain a "group/" prefix, even though
 		// the pod has a group name, there's something wrong with the event handler.
-		if podGroupName(p.pod) != "" {
+		if _, hasGroup := GetPodGroupName(&p.pod); hasGroup {
 			return false, errIncorrectReconcileRequest
 		}
 
@@ -798,7 +827,8 @@ func (p *Pod) validatePodGroupMetadata(r record.EventRecorder, activePods []core
 	_, useFastAdmission := p.pod.GetAnnotations()[podconstants.GroupFastAdmissionAnnotationKey]
 
 	if !useFastAdmission && len(activePods) < groupTotalCount {
-		errMsg := fmt.Sprintf("'%s' group has fewer runnable pods than expected", podGroupName(p.pod))
+		groupName, _ := GetPodGroupName(&p.pod)
+		errMsg := fmt.Sprintf("'%s' group has fewer runnable pods than expected", groupName)
 		r.Eventf(p.Object(), corev1.EventTypeWarning, jobframework.ReasonErrWorkloadCompose, errMsg)
 		return jobframework.UnretryableError(errMsg)
 	}
@@ -1121,7 +1151,7 @@ func (p *Pod) ConstructComposableWorkload(ctx context.Context, c client.Client, 
 }
 
 func (p *Pod) workloadName() string {
-	if prebuiltWorkloadName, usePrebuiltWorkload := jobframework.PrebuiltWorkloadFor(p); usePrebuiltWorkload {
+	if prebuiltWorkloadName, usePrebuiltWorkload := jobframework.PrebuiltWorkloadFor(p.Object()); usePrebuiltWorkload {
 		return prebuiltWorkloadName
 	}
 
@@ -1129,7 +1159,8 @@ func (p *Pod) workloadName() string {
 		return GetWorkloadNameForPod(p.pod.GetName(), p.pod.GetUID())
 	}
 
-	return podGroupName(p.pod)
+	groupName, _ := GetPodGroupName(&p.pod)
+	return groupName
 }
 
 func (p *Pod) ListChildWorkloads(ctx context.Context, c client.Client, key types.NamespacedName) (*kueue.WorkloadList, error) {
@@ -1165,14 +1196,14 @@ func (p *Pod) ListChildWorkloads(ctx context.Context, c client.Client, key types
 func (p *Pod) FindMatchingWorkloads(ctx context.Context, c client.Client, r record.EventRecorder) (*kueue.Workload, []*kueue.Workload, error) {
 	log := ctrl.LoggerFrom(ctx)
 
-	groupName := podGroupName(p.pod)
-	if groupName == "" {
+	groupName, hasGroup := GetPodGroupName(&p.pod)
+	if !hasGroup {
 		return jobframework.FindMatchingWorkloads(ctx, c, p)
 	}
 
 	// Find a matching workload first if there is one.
-	workload := &kueue.Workload{}
-	if err := c.Get(ctx, types.NamespacedName{Name: groupName, Namespace: p.pod.GetNamespace()}, workload); err != nil {
+	wl := &kueue.Workload{}
+	if err := c.Get(ctx, types.NamespacedName{Name: groupName, Namespace: p.pod.GetNamespace()}, wl); err != nil {
 		if apierrors.IsNotFound(err) {
 			return nil, nil, nil
 		}
@@ -1181,8 +1212,8 @@ func (p *Pod) FindMatchingWorkloads(ctx context.Context, c client.Client, r reco
 	}
 
 	defaultDuration := int32(-1)
-	if ptr.Deref(workload.Spec.MaximumExecutionTimeSeconds, defaultDuration) != ptr.Deref(jobframework.MaximumExecutionTimeSeconds(p), defaultDuration) {
-		return nil, []*kueue.Workload{workload}, nil
+	if ptr.Deref(wl.Spec.MaximumExecutionTimeSeconds, defaultDuration) != ptr.Deref(jobframework.MaximumExecutionTimeSeconds(p), defaultDuration) {
+		return nil, []*kueue.Workload{wl}, nil
 	}
 
 	// Cleanup excess pods for each workload pod set (role)
@@ -1193,7 +1224,7 @@ func (p *Pod) FindMatchingWorkloads(ctx context.Context, c client.Client, r reco
 	var excessActivePods []corev1.Pod
 	var replacedInactivePods []corev1.Pod
 
-	for _, ps := range workload.Spec.PodSets {
+	for _, ps := range wl.Spec.PodSets {
 		// Find all the active and inactive pods of the role
 		var roleHashErrors []error
 		hasRoleFunc := func(p *corev1.Pod) bool {
@@ -1236,8 +1267,8 @@ func (p *Pod) FindMatchingWorkloads(ctx context.Context, c client.Client, r reco
 		return nil, nil, err
 	}
 
-	if len(keptPods) == 0 || !p.equivalentToWorkload(workload, jobPodSets) {
-		return nil, []*kueue.Workload{workload}, nil
+	if len(keptPods) == 0 || !p.equivalentToWorkload(wl, jobPodSets) {
+		return nil, []*kueue.Workload{wl}, nil
 	}
 
 	// Do not clean up more pods until observing previous operations
@@ -1247,7 +1278,7 @@ func (p *Pod) FindMatchingWorkloads(ctx context.Context, c client.Client, r reco
 
 	p.absentPods = absentPods
 	p.list.Items = keptPods
-	if err := p.EnsureWorkloadOwnedByAllMembers(ctx, c, r, workload); err != nil {
+	if err := p.EnsureWorkloadOwnedByAllMembers(ctx, c, r, wl); err != nil {
 		return nil, nil, err
 	}
 
@@ -1258,7 +1289,7 @@ func (p *Pod) FindMatchingWorkloads(ctx context.Context, c client.Client, r reco
 	if err := p.finalizePods(ctx, c, replacedInactivePods); err != nil {
 		return nil, nil, err
 	}
-	return workload, []*kueue.Workload{}, nil
+	return wl, []*kueue.Workload{}, nil
 }
 
 func (p *Pod) equivalentToWorkload(wl *kueue.Workload, jobPodSets []kueue.PodSet) bool {

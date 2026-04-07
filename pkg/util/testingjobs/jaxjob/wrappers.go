@@ -114,6 +114,15 @@ func (j *JAXJobWrapper) Label(key, value string) *JAXJobWrapper {
 	return j
 }
 
+// Annotation sets an annotation key and value
+func (j *JAXJobWrapper) Annotation(key, value string) *JAXJobWrapper {
+	if j.Annotations == nil {
+		j.Annotations = make(map[string]string, 1)
+	}
+	j.Annotations[key] = value
+	return j
+}
+
 // PriorityClass updates job priorityclass.
 func (j *JAXJobWrapper) PriorityClass(pc string) *JAXJobWrapper {
 	if j.Spec.RunPolicy.SchedulingPolicy == nil {

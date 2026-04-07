@@ -125,6 +125,15 @@ func (j *XGBoostJobWrapper) Label(key, value string) *XGBoostJobWrapper {
 	return j
 }
 
+// Annotation sets an annotation key and value
+func (j *XGBoostJobWrapper) Annotation(key, value string) *XGBoostJobWrapper {
+	if j.Annotations == nil {
+		j.Annotations = make(map[string]string, 1)
+	}
+	j.Annotations[key] = value
+	return j
+}
+
 // PriorityClass updates job priorityclass.
 func (j *XGBoostJobWrapper) PriorityClass(pc string) *XGBoostJobWrapper {
 	if j.Spec.RunPolicy.SchedulingPolicy == nil {

@@ -198,6 +198,7 @@ func (ss *StatefulSetWrapper) UpdateRevision(updateRevision string) *StatefulSet
 	return ss
 }
 
+// FIXME
 func (ss *StatefulSetWrapper) PodTemplateSpecPodGroupNameLabel(
 	ownerName string, ownerUID types.UID, ownerGVK schema.GroupVersionKind,
 ) *StatefulSetWrapper {

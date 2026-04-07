@@ -30,10 +30,7 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
-	"sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
-	podconstants "sigs.k8s.io/kueue/pkg/controller/jobs/pod/constants"
 	"sigs.k8s.io/kueue/pkg/util/api"
 	clientutil "sigs.k8s.io/kueue/pkg/util/client"
 )
@@ -51,11 +48,11 @@ func (b *multiKueueAdapter) SyncJob(ctx context.Context, localClient client.Clie
 		return err
 	}
 
-	if !isPodAPartOfGroup(localPod) {
+	groupName, hasGroup := GetPodGroupName(&localPod)
+	if !hasGroup {
 		return syncLocalPodWithRemote(ctx, localClient, remoteClient, &localPod, workloadName, origin, &log)
 	}
 
-	groupName := podGroupName(localPod)
 	return syncPodGroup(ctx, localClient, remoteClient, key, workloadName, origin, groupName)
 }
 
@@ -66,20 +63,23 @@ func (b *multiKueueAdapter) DeleteRemoteObject(ctx context.Context, remoteClient
 		return client.IgnoreNotFound(err)
 	}
 
-	if !isPodAPartOfGroup(pod) {
+	groupName, hasGroup := GetPodGroupName(&pod)
+	if !hasGroup {
 		return client.IgnoreNotFound(remoteClient.Delete(ctx, &pod))
 	}
 
-	groupName := podGroupName(pod)
 	podGroup := &corev1.PodList{}
-	err = remoteClient.List(ctx, podGroup, client.InNamespace(key.Namespace), client.MatchingLabels{podconstants.GroupNameLabel: groupName})
+	err = remoteClient.List(ctx, podGroup, client.InNamespace(key.Namespace))
 	if err != nil {
 		return err
 	}
 
 	for _, remotePod := range podGroup.Items {
-		if err = client.IgnoreNotFound(remoteClient.Delete(ctx, &remotePod)); err != nil {
-			return err
+		remoteGroupName, _ := GetPodGroupName(&remotePod)
+		if remoteGroupName == groupName {
+			if err = client.IgnoreNotFound(remoteClient.Delete(ctx, &remotePod)); err != nil {
+				return err
+			}
 		}
 	}
 
@@ -106,7 +106,7 @@ func (*multiKueueAdapter) WorkloadKeysFor(o runtime.Object) ([]types.NamespacedN
 		return nil, errors.New("not a pod")
 	}
 
-	prebuiltWl, hasPrebuiltWorkload := pod.Labels[constants.PrebuiltWorkloadLabel]
+	prebuiltWl, hasPrebuiltWorkload := jobframework.PrebuiltWorkloadFor(pod)
 	if !hasPrebuiltWorkload {
 		return nil, fmt.Errorf("no prebuilt workload found for pod: %s", klog.KObj(pod))
 	}
@@ -114,16 +114,11 @@ func (*multiKueueAdapter) WorkloadKeysFor(o runtime.Object) ([]types.NamespacedN
 	return []types.NamespacedName{{Name: prebuiltWl, Namespace: pod.Namespace}}, nil
 }
 
-// isPodAPartOfGroup checks if a pod belongs to a group by verifying the presence of a group name label.
-func isPodAPartOfGroup(p corev1.Pod) bool {
-	return podGroupName(p) != ""
-}
-
 func syncPodGroup(ctx context.Context, localClient client.Client, remoteClient client.Client, key types.NamespacedName, workloadName, origin, groupName string) error {
 	log := ctrl.LoggerFrom(ctx)
 
 	localPodGroup := &corev1.PodList{}
-	err := localClient.List(ctx, localPodGroup, client.InNamespace(key.Namespace), client.MatchingLabels{podconstants.GroupNameLabel: groupName})
+	err := localClient.List(ctx, localPodGroup, client.InNamespace(key.Namespace), client.MatchingFields{PodGroupNameCacheKey: groupName})
 	if err != nil {
 		return err
 	}
@@ -175,12 +170,8 @@ func syncLocalPodWithRemote(
 		Spec:       *localPod.Spec.DeepCopy(),
 	}
 
-	// add the prebuilt workload
-	if remotePod.Labels == nil {
-		remotePod.Labels = map[string]string{}
-	}
-	remotePod.Labels[constants.PrebuiltWorkloadLabel] = workloadName
-	remotePod.Labels[kueue.MultiKueueOriginLabel] = origin
+	// Add prebuilt workload name and multikueue origin
+	jobframework.SetMultiKueueMeta(&remotePod, workloadName, origin)
 
 	if err = remoteClient.Create(ctx, &remotePod); err != nil {
 		log.Error(err, "Failed to create remote pod", "podName", remotePod.Name)

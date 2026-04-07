@@ -67,9 +67,18 @@ func (aw *AppWrapperWrapper) DeepCopy() *AppWrapperWrapper {
 // Label sets a label of the AppWrapper
 func (aw *AppWrapperWrapper) Label(k, v string) *AppWrapperWrapper {
 	if aw.Labels == nil {
-		aw.Labels = make(map[string]string)
+		aw.Labels = make(map[string]string, 1)
 	}
 	aw.Labels[k] = v
+	return aw
+}
+
+// Annotation sets an annotation of the AppWrapper
+func (aw *AppWrapperWrapper) Annotation(k, v string) *AppWrapperWrapper {
+	if aw.ObjectMeta.Annotations == nil {
+		aw.ObjectMeta.Annotations = make(map[string]string, 1)
+	}
+	aw.ObjectMeta.Annotations[k] = v
 	return aw
 }
 

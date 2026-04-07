@@ -166,6 +166,15 @@ func (j *TFJobWrapper) Label(key, value string) *TFJobWrapper {
 	return j
 }
 
+// Annotation sets an annotation key and value
+func (j *TFJobWrapper) Annotation(key, value string) *TFJobWrapper {
+	if j.Annotations == nil {
+		j.Annotations = make(map[string]string, 1)
+	}
+	j.Annotations[key] = value
+	return j
+}
+
 // Queue updates the queue name of the job.
 func (j *TFJobWrapper) Queue(queue string) *TFJobWrapper {
 	if j.Labels == nil {

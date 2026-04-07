@@ -211,12 +211,17 @@ func TestMultiKueueAdapter(t *testing.T) {
 	}
 	for name, tc := range cases {
 		t.Run(name, func(t *testing.T) {
-			managerBuilder := utiltesting.NewClientBuilder().WithInterceptorFuncs(interceptor.Funcs{SubResourcePatch: utiltesting.TreatSSAAsStrategicMerge})
+			managerBuilder := utiltesting.NewClientBuilder().
+				WithInterceptorFuncs(interceptor.Funcs{SubResourcePatch: utiltesting.TreatSSAAsStrategicMerge}).
+				WithIndex(&corev1.Pod{}, PodGroupNameCacheKey, IndexPodGroupName)
 			managerBuilder = managerBuilder.WithLists(&corev1.PodList{Items: tc.managersPods})
 			managerBuilder = managerBuilder.WithStatusSubresource(slices.Map(tc.managersPods, func(w *corev1.Pod) client.Object { return w })...)
 			managerClient := managerBuilder.Build()
 
-			workerBuilder := utiltesting.NewClientBuilder().WithInterceptorFuncs(interceptor.Funcs{SubResourcePatch: utiltesting.TreatSSAAsStrategicMerge})
+			workerBuilder := utiltesting.NewClientBuilder().
+				WithInterceptorFuncs(interceptor.Funcs{SubResourcePatch: utiltesting.TreatSSAAsStrategicMerge}).
+				WithIndex(&corev1.Pod{}, PodGroupNameCacheKey, IndexPodGroupName)
+
 			workerBuilder = workerBuilder.WithLists(&corev1.PodList{Items: tc.workerPods})
 			workerClient := workerBuilder.Build()
 

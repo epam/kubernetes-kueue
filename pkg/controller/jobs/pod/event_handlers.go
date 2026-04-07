@@ -43,9 +43,9 @@ var (
 )
 
 func reconcileRequestForPod(p *corev1.Pod) reconcile.Request {
-	groupName := p.GetLabels()[podconstants.GroupNameLabel]
+	groupName, hasGroup := GetPodGroupName(p)
 
-	if groupName == "" {
+	if !hasGroup {
 		return reconcile.Request{
 			NamespacedName: types.NamespacedName{
 				Namespace: p.Namespace,
@@ -83,10 +83,10 @@ func (h *podEventHandler) Delete(ctx context.Context, e event.DeleteEvent, q wor
 
 	log := ctrl.LoggerFrom(ctx).WithValues("pod", klog.KObj(p))
 
-	if g, isGroup := p.Labels[podconstants.GroupNameLabel]; isGroup {
+	if groupName, hasGroup := GetPodGroupName(p); hasGroup {
 		// If the watch was temporarily unavailable, it is possible that the object reported in the event still
 		// has a finalizer, but we can consider this Pod cleaned up, as it is being deleted.
-		h.cleanedUpPodsExpectations.ObservedUID(log, types.NamespacedName{Namespace: p.Namespace, Name: g}, p.UID)
+		h.cleanedUpPodsExpectations.ObservedUID(log, types.NamespacedName{Namespace: p.Namespace, Name: groupName}, p.UID)
 	}
 
 	log.V(5).Info("Queueing reconcile for pod")
@@ -105,9 +105,9 @@ func (h *podEventHandler) queueReconcileForPod(ctx context.Context, object clien
 
 	log := ctrl.LoggerFrom(ctx).WithValues("pod", klog.KObj(p))
 
-	if g, isGroup := p.Labels[podconstants.GroupNameLabel]; isGroup {
+	if groupName, hasGroup := GetPodGroupName(p); hasGroup {
 		if !slices.Contains(p.Finalizers, podconstants.PodFinalizer) {
-			h.cleanedUpPodsExpectations.ObservedUID(log, types.NamespacedName{Namespace: p.Namespace, Name: g}, p.UID)
+			h.cleanedUpPodsExpectations.ObservedUID(log, types.NamespacedName{Namespace: p.Namespace, Name: groupName}, p.UID)
 		}
 	}
 

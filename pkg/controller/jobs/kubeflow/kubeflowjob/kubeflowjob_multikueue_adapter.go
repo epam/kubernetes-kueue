@@ -29,7 +29,6 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
-	"sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
 	clientutil "sigs.k8s.io/kueue/pkg/util/client"
 )
@@ -118,14 +117,8 @@ func (a adapter[PtrT, T]) SyncJob(
 	remoteJob = PtrT(new(T))
 	a.copySpec(remoteJob, localJob)
 
-	// add the prebuilt workload
-	labels := remoteJob.GetLabels()
-	if remoteJob.GetLabels() == nil {
-		labels = make(map[string]string, 2)
-	}
-	labels[constants.PrebuiltWorkloadLabel] = workloadName
-	labels[kueue.MultiKueueOriginLabel] = origin
-	remoteJob.SetLabels(labels)
+	// Add prebuilt workload name and multikueue origin
+	jobframework.SetMultiKueueMeta(remoteJob, workloadName, origin)
 
 	// clearing the managedBy enables the controller to take over
 	a.fromObject(remoteJob).SetManagedBy(nil)
@@ -150,7 +143,7 @@ func (a adapter[PtrT, T]) WorkloadKeysFor(o runtime.Object) ([]types.NamespacedN
 		return nil, fmt.Errorf("not a %s", a.gvk.Kind)
 	}
 
-	prebuiltWl, hasPrebuiltWorkload := job.GetLabels()[constants.PrebuiltWorkloadLabel]
+	prebuiltWl, hasPrebuiltWorkload := jobframework.PrebuiltWorkloadFor(job)
 	if !hasPrebuiltWorkload {
 		return nil, fmt.Errorf("no prebuilt workload found for %s: %s", a.gvk.Kind, klog.KObj(job))
 	}

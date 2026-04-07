@@ -139,6 +139,15 @@ func (j *MPIJobWrapper) Label(key, value string) *MPIJobWrapper {
 	return j
 }
 
+// Annotation sets an annotation key and value
+func (j *MPIJobWrapper) Annotation(key, value string) *MPIJobWrapper {
+	if j.Annotations == nil {
+		j.Annotations = make(map[string]string, 1)
+	}
+	j.Annotations[key] = value
+	return j
+}
+
 // PriorityClass updates job priorityclass.
 func (j *MPIJobWrapper) PriorityClass(pc string) *MPIJobWrapper {
 	if j.Spec.RunPolicy.SchedulingPolicy == nil {

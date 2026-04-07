@@ -32,6 +32,7 @@ import (
 	"sigs.k8s.io/kueue/pkg/constants"
 	controllerconsts "sigs.k8s.io/kueue/pkg/controller/constants"
 	podconstants "sigs.k8s.io/kueue/pkg/controller/jobs/pod/constants"
+	"sigs.k8s.io/kueue/pkg/features"
 	utiltesting "sigs.k8s.io/kueue/pkg/util/testing"
 )
 
@@ -123,6 +124,9 @@ func (p *PodWrapper) SuspendedByParent(controller string) *PodWrapper {
 }
 
 func (p *PodWrapper) PrebuiltWorkload(name string) *PodWrapper {
+	if features.Enabled(features.WorkloadIdentifierAnnotations) {
+		return p.Annotation(controllerconsts.PrebuiltWorkloadAnnotation, name)
+	}
 	return p.Label(controllerconsts.PrebuiltWorkloadLabel, name)
 }
 
@@ -144,8 +148,11 @@ func (p *PodWrapper) Namespace(n string) *PodWrapper {
 	return p
 }
 
-// Group updates the pod.GroupNameLabel of the Pod
+// Group updates the GroupName of the Pod
 func (p *PodWrapper) Group(g string) *PodWrapper {
+	if features.Enabled(features.WorkloadIdentifierAnnotations) {
+		return p.Annotation(podconstants.GroupNameAnnotation, g)
+	}
 	return p.Label(podconstants.GroupNameLabel, g)
 }
 
