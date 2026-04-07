@@ -40,6 +40,8 @@ import (
 	cmputil "sigs.k8s.io/kueue/pkg/util/cmp"
 	"sigs.k8s.io/kueue/pkg/util/pod"
 	"sigs.k8s.io/kueue/pkg/workload"
+	workloadevict "sigs.k8s.io/kueue/pkg/workload/evict"
+	workloadfinish "sigs.k8s.io/kueue/pkg/workload/finish"
 )
 
 // Workload slicing refers to a specialized Kueue feature designed to support workload scaling up.
@@ -132,7 +134,7 @@ func FindNotFinishedWorkloads(ctx context.Context, clnt client.Client, jobObject
 
 	// Filter out workloads with activated "Finished" condition.
 	return slices.DeleteFunc(list.Items, func(w kueue.Workload) bool {
-		return workload.IsFinished(&w)
+		return workloadfinish.IsFinished(&w)
 	}), nil
 }
 
@@ -226,13 +228,13 @@ func EnsureWorkloadSlices(
 		newWorkloadAdmittedAsReplacement := workload.HasQuotaReservation(&newWorkload) &&
 			replacementKey != nil && *replacementKey == oldWorkloadKey
 		shouldFinishOldSlice := !workload.HasQuotaReservation(&oldWorkload) ||
-			workload.IsEvicted(&oldWorkload) ||
+			workloadevict.IsEvicted(&oldWorkload) ||
 			newWorkloadAdmittedAsReplacement
 		if shouldFinishOldSlice {
 			// Finish the old workload slice as out of sync.
 			reason := kueue.WorkloadFinishedReasonOutOfSync
 			message := "The workload slice is out of sync with its parent job"
-			if err := workload.Finish(ctx, clnt, &oldWorkload, reason, message, clk); err != nil {
+			if err := workloadfinish.Finish(ctx, clnt, &oldWorkload, reason, message, clk); err != nil {
 				return nil, true, err
 			}
 		}
