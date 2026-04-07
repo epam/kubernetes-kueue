@@ -31,6 +31,7 @@ import (
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
 	"sigs.k8s.io/kueue/pkg/controller/constants"
+	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/podset"
 	"sigs.k8s.io/kueue/pkg/util/admissioncheck"
 	"sigs.k8s.io/kueue/pkg/util/maps"
@@ -226,9 +227,43 @@ func WorkloadPriorityClassName(object client.Object) string {
 	return ""
 }
 
-func PrebuiltWorkloadFor(job GenericJob) (string, bool) {
-	name, found := job.Object().GetLabels()[constants.PrebuiltWorkloadLabel]
-	return name, found
+func PrebuiltWorkloadFor(obj client.Object) string {
+	if features.Enabled(features.WorkloadIdentifierAnnotations) {
+		if name := obj.GetAnnotations()[constants.PrebuiltWorkloadAnnotation]; name != "" {
+			return name
+		}
+	}
+	return obj.GetLabels()[constants.PrebuiltWorkloadLabel]
+}
+
+func SetPrebuiltWorkloadName(obj client.Object, workloadName string) {
+	if features.Enabled(features.WorkloadIdentifierAnnotations) {
+		delete(obj.GetLabels(), constants.PrebuiltWorkloadLabel)
+		annotations := obj.GetAnnotations()
+		if annotations == nil {
+			annotations = make(map[string]string, 1)
+		}
+		annotations[constants.PrebuiltWorkloadAnnotation] = workloadName
+		obj.SetAnnotations(annotations)
+	} else {
+		labels := obj.GetLabels()
+		if labels == nil {
+			labels = make(map[string]string, 1)
+		}
+		labels[constants.PrebuiltWorkloadLabel] = workloadName
+		obj.SetLabels(labels)
+	}
+}
+
+func SetMultiKueueMeta(obj client.Object, workloadName, origin string) {
+	labels := obj.GetLabels()
+	if labels == nil {
+		labels = make(map[string]string, 1)
+	}
+	labels[kueue.MultiKueueOriginLabel] = origin
+	obj.SetLabels(labels)
+
+	SetPrebuiltWorkloadName(obj, workloadName)
 }
 
 func NewWorkload(name string, obj client.Object, podSets []kueue.PodSet, labelKeysToCopy []string) *kueue.Workload {

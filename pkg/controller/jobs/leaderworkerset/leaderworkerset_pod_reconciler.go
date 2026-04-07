@@ -35,8 +35,9 @@ import (
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
 	"sigs.k8s.io/kueue/pkg/constants"
-	controllerconstants "sigs.k8s.io/kueue/pkg/controller/constants"
+	ctrlconstants "sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
+	podcontroller "sigs.k8s.io/kueue/pkg/controller/jobs/pod"
 	podconstants "sigs.k8s.io/kueue/pkg/controller/jobs/pod/constants"
 	clientutil "sigs.k8s.io/kueue/pkg/util/client"
 	utilpod "sigs.k8s.io/kueue/pkg/util/pod"
@@ -93,7 +94,7 @@ func (r *PodReconciler) Reconcile(ctx context.Context, req reconcile.Request) (r
 					"Finalizing leaderworkerset pod in group",
 					"leaderworkerset", pod.Labels[leaderworkersetv1.SetNameLabelKey],
 					"pod", klog.KObj(pod),
-					"group", pod.Labels[podconstants.GroupNameLabel],
+					"group", podcontroller.GetPodGroupName(pod),
 				)
 			}
 			return removed, nil
@@ -105,7 +106,7 @@ func (r *PodReconciler) Reconcile(ctx context.Context, req reconcile.Request) (r
 				return false, err
 			}
 			if updated {
-				log.V(3).Info("Updating pod in group", "pod", klog.KObj(pod), "group", pod.Labels[podconstants.GroupNameLabel])
+				log.V(3).Info("Updating pod in group", "pod", klog.KObj(pod), "group", podcontroller.GetPodGroupName(pod))
 			}
 			return updated, nil
 		}))
@@ -116,7 +117,7 @@ func (r *PodReconciler) Reconcile(ctx context.Context, req reconcile.Request) (r
 
 func (r *PodReconciler) setDefault(ctx context.Context, pod *corev1.Pod) (bool, error) {
 	// If queue label already exist nothing to update.
-	if _, ok := pod.Labels[controllerconstants.QueueLabel]; ok {
+	if _, ok := pod.Labels[ctrlconstants.QueueLabel]; ok {
 		return false, nil
 	}
 
@@ -140,9 +141,9 @@ func (r *PodReconciler) setDefault(ctx context.Context, pod *corev1.Pod) (bool, 
 	wlName := GetWorkloadName(GetOwnerUID(lws), lws.Name, pod.Labels[leaderworkersetv1.GroupIndexLabelKey])
 
 	pod.Labels[constants.ManagedByKueueLabelKey] = constants.ManagedByKueueLabelValue
-	pod.Labels[controllerconstants.QueueLabel] = string(queueName)
-	pod.Labels[podconstants.GroupNameLabel] = wlName
-	pod.Labels[controllerconstants.PrebuiltWorkloadLabel] = wlName
+	pod.Labels[ctrlconstants.QueueLabel] = string(queueName)
+	jobframework.SetPrebuiltWorkloadName(pod, wlName)
+	podcontroller.SetPodGroupName(pod, wlName)
 	pod.Annotations[podconstants.GroupTotalCountAnnotation] = fmt.Sprint(ptr.Deref(lws.Spec.LeaderWorkerTemplate.Size, 1))
 	pod.Annotations[podconstants.RoleHashAnnotation] = string(kueue.DefaultPodSetName)
 

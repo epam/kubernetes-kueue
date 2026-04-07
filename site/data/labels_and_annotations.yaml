@@ -169,6 +169,20 @@
     [Plain Pods](/docs/tasks/run/plain_pods/).
   description: |
     The label key indicates the name of the group of Pods that should be admitted together.
+  note: |
+    When the `WorkloadIdentifierAnnotations` feature gate is enabled, this label is read only as a fallback.
+    When the feature gate is disabled, the label is used for both reading and writing.
+
+- key: kueue.x-k8s.io/pod-group-name
+  type: Annotation
+  example: '`kueue.x-k8s.io/pod-group-name: "my-pod-group-name"`'
+  used_on: |
+    [Plain Pods](/docs/tasks/run/plain_pods/).
+  description: |
+    The annotation key indicates the name of the group of Pods that should be admitted together.
+  note: |
+    This annotation is read and written only when the `WorkloadIdentifierAnnotations` feature gate is enabled.
+    When the gate is disabled, the label with the same key is used instead.
 
 - key: kueue.x-k8s.io/pod-group-pod-index
   type: Label
@@ -337,11 +351,28 @@
     Kueue-managed Jobs.
   description: |
     The label key of the job holds the name of the pre-built workload to be used.
-    The intended use of prebuilt workload is to create the Job once the workload
-    is created. In other scenarios the behavior is undefined.
+    The intended use of prebuilt workload is to create the Job once the workload is created.
+    In other scenarios the behavior is undefined.
   note: |
     When using `kueue.x-k8s.io/pod-group-name`, the prebuilt workload name
     and the Pod group name should be the same.
+
+    When the `WorkloadIdentifierAnnotations` feature gate is enabled, this label is read only as a fallback.
+
+- key: kueue.x-k8s.io/prebuilt-workload-name
+  type: Annotation
+  example: '`kueue.x-k8s.io/prebuilt-workload-name: "my-prebuilt-workload-name"`'
+  used_on: |
+    Kueue-managed Jobs.
+  description: |
+    The annotation key of the job holds the name of the pre-built workload to be used.
+    The intended use of prebuilt workload is to create the Job once the workload is created.
+    In other scenarios the behavior is undefined.
+  note: |
+    When using `kueue.x-k8s.io/pod-group-name`, the prebuilt workload name and the Pod group name should be the same.
+    
+    This annotation is read and written only when the `WorkloadIdentifierAnnotations` feature gate is enabled.
+    When the gate is disabled, the label with the same key is used instead.
 
 - key: kueue.x-k8s.io/priority-boost
   type: Annotation
