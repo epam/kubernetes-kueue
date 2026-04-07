@@ -76,7 +76,7 @@ func (p *PodWrapper) ResourceVersion(version string) *PodWrapper {
 func (p *PodWrapper) MakeGroup(count int) []*corev1.Pod {
 	var pods []*corev1.Pod
 	for i := range count {
-		pod := p.Clone().Group(p.Pod.Name).GroupTotalCount(strconv.Itoa(count))
+		pod := p.Clone().GroupNameLabel(p.Pod.Name).GroupTotalCount(strconv.Itoa(count))
 		pod.Pod.Name += fmt.Sprintf("-%d", i)
 		pods = append(pods, pod.Obj())
 	}
@@ -86,7 +86,17 @@ func (p *PodWrapper) MakeGroup(count int) []*corev1.Pod {
 func (p *PodWrapper) MakePodGroupWrappers(count int) []*PodWrapper {
 	var pods []*PodWrapper
 	for i := range count {
-		pod := p.Clone().Group(p.Pod.Name).GroupTotalCount(strconv.Itoa(count))
+		pod := p.Clone().GroupNameLabel(p.Pod.Name).GroupTotalCount(strconv.Itoa(count))
+		pod.Pod.Name += fmt.Sprintf("-%d", i)
+		pods = append(pods, pod)
+	}
+	return pods
+}
+
+func (p *PodWrapper) MakePodGroupWrappersWithWorkloadAnnotations(count int) []*PodWrapper {
+	var pods []*PodWrapper
+	for i := range count {
+		pod := p.Clone().GroupNameAnnotation(p.Pod.Name).GroupTotalCount(strconv.Itoa(count))
 		pod.Pod.Name += fmt.Sprintf("-%d", i)
 		pods = append(pods, pod)
 	}
@@ -98,7 +108,7 @@ func (p *PodWrapper) MakeIndexedGroup(count int) []*corev1.Pod {
 	var pods []*corev1.Pod
 	for i := range count {
 		pod := p.Clone().
-			Group(p.Pod.Name).
+			GroupNameLabel(p.Pod.Name).
 			GroupTotalCount(strconv.Itoa(count)).
 			GroupIndex(strconv.Itoa(i))
 		pod.Pod.Name += fmt.Sprintf("-%d", i)
@@ -121,8 +131,12 @@ func (p *PodWrapper) SuspendedByParent(controller string) *PodWrapper {
 	return p.Annotation(podconstants.SuspendedByParentAnnotation, controller)
 }
 
-func (p *PodWrapper) PrebuiltWorkload(name string) *PodWrapper {
+func (p *PodWrapper) PrebuiltWorkloadLabel(name string) *PodWrapper {
 	return p.Label(controllerconsts.PrebuiltWorkloadLabel, name)
+}
+
+func (p *PodWrapper) PrebuiltWorkloadAnnotation(name string) *PodWrapper {
+	return p.Annotation(controllerconsts.PrebuiltWorkloadAnnotation, name)
 }
 
 // PriorityClass updates the priority class name of the Pod
@@ -143,9 +157,14 @@ func (p *PodWrapper) Namespace(n string) *PodWrapper {
 	return p
 }
 
-// Group updates the pod.GroupNameLabel of the Pod
-func (p *PodWrapper) Group(g string) *PodWrapper {
+// GroupNameLabel updates GroupNameLabel of the Pod
+func (p *PodWrapper) GroupNameLabel(g string) *PodWrapper {
 	return p.Label(podconstants.GroupNameLabel, g)
+}
+
+// GroupNameAnnotation updates GroupNameAnnotation of the Pod
+func (p *PodWrapper) GroupNameAnnotation(g string) *PodWrapper {
+	return p.Annotation(podconstants.GroupNameAnnotation, g)
 }
 
 // GroupTotalCount updates the pod.GroupTotalCountAnnotation of the Pod

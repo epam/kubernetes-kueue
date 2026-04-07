@@ -26,11 +26,12 @@ import (
 	awv1beta2 "github.com/project-codeflare/appwrapper/api/v1beta2"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
+	"k8s.io/component-base/featuregate"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/client/interceptor"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
-	"sigs.k8s.io/kueue/pkg/controller/constants"
+	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/util/slices"
 	utiltesting "sigs.k8s.io/kueue/pkg/util/testing"
 	utiltestingaw "sigs.k8s.io/kueue/pkg/util/testingjobs/appwrapper"
@@ -63,6 +64,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 		wantError               error
 		wantManagersAppWrappers []awv1beta2.AppWrapper
 		wantWorkerAppWrappers   []awv1beta2.AppWrapper
+		featureGates            map[featuregate.Feature]bool
 	}{
 
 		"sync creates missing remote appwrapper": {
@@ -78,7 +80,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			wantWorkerAppWrappers: []awv1beta2.AppWrapper{
 				*baseAppWrapperBuilder.DeepCopy().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					Obj(),
 			},
@@ -89,7 +91,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			workerAppWrappers: []awv1beta2.AppWrapper{
 				*baseAppWrapperBuilder.DeepCopy().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					SetPhase(awv1beta2.AppWrapperSuspended).
 					Obj(),
@@ -106,7 +108,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			wantWorkerAppWrappers: []awv1beta2.AppWrapper{
 				*baseAppWrapperBuilder.DeepCopy().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					SetPhase(awv1beta2.AppWrapperSuspended).
 					Obj(),
@@ -118,7 +120,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			workerAppWrappers: []awv1beta2.AppWrapper{
 				*baseAppWrapperBuilder.DeepCopy().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					SetPhase(awv1beta2.AppWrapperSuspended).
 					Obj(),
@@ -135,7 +137,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			wantWorkerAppWrappers: []awv1beta2.AppWrapper{
 				*baseAppWrapperBuilder.DeepCopy().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					SetPhase(awv1beta2.AppWrapperSuspended).
 					Obj(),
@@ -144,7 +146,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 		"remote appwrapper is deleted": {
 			workerAppWrappers: []awv1beta2.AppWrapper{
 				*baseAppWrapperBuilder.DeepCopy().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					Obj(),
 			},
@@ -189,9 +191,28 @@ func TestMultiKueueAdapter(t *testing.T) {
 				*baseAppWrapperManagedByKueueBuilder.DeepCopy().Obj(),
 			},
 		},
+		"sync creates missing remote appwrapper, WorkloadIdentifierAnnotations enabled": {
+			featureGates: map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: true},
+			managersAppWrappers: []awv1beta2.AppWrapper{
+				*baseAppWrapperManagedByKueueBuilder.DeepCopy().Obj(),
+			},
+			operation: func(ctx context.Context, adapter *multiKueueAdapter, managerClient, workerClient client.Client) error {
+				return adapter.SyncJob(ctx, managerClient, workerClient, types.NamespacedName{Name: "aw1", Namespace: TestNamespace}, "wl1", "origin1")
+			},
+			wantManagersAppWrappers: []awv1beta2.AppWrapper{
+				*baseAppWrapperManagedByKueueBuilder.DeepCopy().Obj(),
+			},
+			wantWorkerAppWrappers: []awv1beta2.AppWrapper{
+				*baseAppWrapperBuilder.DeepCopy().
+					PrebuiltWorkloadAnnotation("wl1").
+					Label(kueue.MultiKueueOriginLabel, "origin1").
+					Obj(),
+			},
+		},
 	}
 	for name, tc := range cases {
 		t.Run(name, func(t *testing.T) {
+			features.SetFeatureGatesDuringTest(t, tc.featureGates)
 			managerBuilder := utiltesting.NewClientBuilder(awv1beta2.AddToScheme).WithInterceptorFuncs(interceptor.Funcs{SubResourcePatch: utiltesting.TreatSSAAsStrategicMerge})
 			managerBuilder = managerBuilder.WithLists(&awv1beta2.AppWrapperList{Items: tc.managersAppWrappers})
 			managerBuilder = managerBuilder.WithStatusSubresource(slices.Map(tc.managersAppWrappers, func(w *awv1beta2.AppWrapper) client.Object { return w })...)

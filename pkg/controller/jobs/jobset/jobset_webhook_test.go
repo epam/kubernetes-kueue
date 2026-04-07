@@ -40,7 +40,8 @@ import (
 )
 
 var (
-	labelsPath         = field.NewPath("metadata", "labels")
+	metadataPath       = field.NewPath("metadata")
+	labelsPath         = metadataPath.Child("labels")
 	queueNameLabelPath = labelsPath.Key(constants.QueueLabel)
 )
 
@@ -63,8 +64,21 @@ func TestValidateCreate(t *testing.T) {
 		},
 		{
 			name:    "with prebuilt workload",
-			job:     testingutil.MakeJobSet("job", "default").Queue("queue").Label(constants.PrebuiltWorkloadLabel, "prebuilt-workload").Obj(),
+			job:     testingutil.MakeJobSet("job", "default").Queue("queue").PrebuiltWorkloadLabel("prebuilt-workload").Obj(),
 			wantErr: nil,
+		},
+		{
+			name:         "valid prebuilt workload annotation, WorkloadIdentifierAnnotations enabled",
+			job:          testingutil.MakeJobSet("job", "default").Queue("queue").PrebuiltWorkloadAnnotation("prebuilt-workload").Obj(),
+			featureGates: map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: true},
+			wantErr:      nil,
+		},
+		{
+			name: "different prebuilt workload label and annotation, label ignored, WorkloadIdentifierAnnotations enabled",
+			job: testingutil.MakeJobSet("job", "default").Queue("queue").
+				PrebuiltWorkloadLabel("prebuilt-workload-label").
+				PrebuiltWorkloadAnnotation("prebuilt-workload-annotation").Obj(),
+			featureGates: map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: true},
 		},
 		{
 			name: "valid topology request",

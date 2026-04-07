@@ -27,13 +27,14 @@ import (
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
+	"k8s.io/component-base/featuregate"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/client/interceptor"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
-	"sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
 	"sigs.k8s.io/kueue/pkg/controller/jobs/kubeflow/kubeflowjob"
+	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/util/slices"
 	utiltesting "sigs.k8s.io/kueue/pkg/util/testing"
 	kfutiltesting "sigs.k8s.io/kueue/pkg/util/testingjobs/paddlejob"
@@ -61,6 +62,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 		wantError              error
 		wantManagersPaddleJobs []kftraining.PaddleJob
 		wantWorkerPaddleJobs   []kftraining.PaddleJob
+		featureGates           map[featuregate.Feature]bool
 	}{
 		"sync creates missing remote PaddleJob": {
 			managersPaddleJobs: []kftraining.PaddleJob{
@@ -76,7 +78,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			wantWorkerPaddleJobs: []kftraining.PaddleJob{
 				*paddleJobBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					Obj(),
 			},
@@ -87,7 +89,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			workerPaddleJobs: []kftraining.PaddleJob{
 				*paddleJobBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					StatusConditions(kftraining.JobCondition{Type: kftraining.JobSucceeded, Status: corev1.ConditionTrue}).
 					Obj(),
@@ -103,7 +105,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			wantWorkerPaddleJobs: []kftraining.PaddleJob{
 				*paddleJobBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					StatusConditions(kftraining.JobCondition{Type: kftraining.JobSucceeded, Status: corev1.ConditionTrue}).
 					Obj(),
@@ -117,7 +119,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			workerPaddleJobs: []kftraining.PaddleJob{
 				*paddleJobBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					Suspend(true).
 					StatusConditions(kftraining.JobCondition{Type: kftraining.JobSucceeded, Status: corev1.ConditionTrue}).
@@ -134,7 +136,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			wantWorkerPaddleJobs: []kftraining.PaddleJob{
 				*paddleJobBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					Suspend(true).
 					StatusConditions(kftraining.JobCondition{Type: kftraining.JobSucceeded, Status: corev1.ConditionTrue}).
@@ -144,7 +146,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 		"remote PaddleJob is deleted": {
 			workerPaddleJobs: []kftraining.PaddleJob{
 				*paddleJobBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					Obj(),
 			},
@@ -188,9 +190,28 @@ func TestMultiKueueAdapter(t *testing.T) {
 				*paddleJobManagedByKueueBuilder.DeepCopy(),
 			},
 		},
+		"sync creates missing remote paddlejob, WorkloadIdentifierAnnotations enabled": {
+			featureGates: map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: true},
+			managersPaddleJobs: []kftraining.PaddleJob{
+				*paddleJobBuilder.Clone().Obj(),
+			},
+			operation: func(ctx context.Context, adapter jobframework.MultiKueueAdapter, managerClient, workerClient client.Client) error {
+				return adapter.SyncJob(ctx, managerClient, workerClient, types.NamespacedName{Name: "paddlejob1", Namespace: TestNamespace}, "wl1", "origin1")
+			},
+			wantManagersPaddleJobs: []kftraining.PaddleJob{
+				*paddleJobBuilder.Clone().Obj(),
+			},
+			wantWorkerPaddleJobs: []kftraining.PaddleJob{
+				*paddleJobBuilder.Clone().
+					PrebuiltWorkloadAnnotation("wl1").
+					Label(kueue.MultiKueueOriginLabel, "origin1").
+					Obj(),
+			},
+		},
 	}
 	for name, tc := range cases {
 		t.Run(name, func(t *testing.T) {
+			features.SetFeatureGatesDuringTest(t, tc.featureGates)
 			managerBuilder := utiltesting.NewClientBuilder(kftraining.AddToScheme).WithInterceptorFuncs(interceptor.Funcs{SubResourcePatch: utiltesting.TreatSSAAsStrategicMerge})
 			managerBuilder = managerBuilder.WithLists(&kftraining.PaddleJobList{Items: tc.managersPaddleJobs})
 			managerBuilder = managerBuilder.WithStatusSubresource(slices.Map(tc.managersPaddleJobs, func(w *kftraining.PaddleJob) client.Object { return w })...)

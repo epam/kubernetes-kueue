@@ -133,6 +133,16 @@ func (j *ClusterWrapper) Queue(queue string) *ClusterWrapper {
 	return j
 }
 
+// PrebuiltWorkloadLabel updates PrebuiltWorkloadLabel of the job
+func (j *ClusterWrapper) PrebuiltWorkloadLabel(prebuiltWorkload string) *ClusterWrapper {
+	return j.Label(constants.PrebuiltWorkloadLabel, prebuiltWorkload)
+}
+
+// PrebuiltWorkloadAnnotation updates PrebuiltWorkloadAnnotation of the job
+func (j *ClusterWrapper) PrebuiltWorkloadAnnotation(prebuiltWorkload string) *ClusterWrapper {
+	return j.SetAnnotation(constants.PrebuiltWorkloadAnnotation, prebuiltWorkload)
+}
+
 func (j *ClusterWrapper) SetAnnotation(key, content string) *ClusterWrapper {
 	j.Annotations[key] = content
 	return j

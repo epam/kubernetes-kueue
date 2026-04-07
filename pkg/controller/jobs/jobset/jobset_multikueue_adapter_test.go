@@ -25,12 +25,13 @@ import (
 	"github.com/google/go-cmp/cmp/cmpopts"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
+	"k8s.io/component-base/featuregate"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/client/interceptor"
 	jobsetapi "sigs.k8s.io/jobset/api/jobset/v1alpha2"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
-	"sigs.k8s.io/kueue/pkg/controller/constants"
+	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/util/slices"
 	utiltesting "sigs.k8s.io/kueue/pkg/util/testing"
 	utiltestingjobset "sigs.k8s.io/kueue/pkg/util/testingjobs/jobset"
@@ -58,6 +59,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 		wantError           error
 		wantManagersJobSets []jobsetapi.JobSet
 		wantWorkerJobSets   []jobsetapi.JobSet
+		featureGates        map[featuregate.Feature]bool
 	}{
 
 		"sync creates missing remote jobset": {
@@ -73,7 +75,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			wantWorkerJobSets: []jobsetapi.JobSet{
 				*baseJobSetBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					Obj(),
 			},
@@ -84,7 +86,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			workerJobSets: []jobsetapi.JobSet{
 				*baseJobSetBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					JobsStatus(
 						jobsetapi.ReplicatedJobStatus{
@@ -122,7 +124,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			wantWorkerJobSets: []jobsetapi.JobSet{
 				*baseJobSetBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					JobsStatus(
 						jobsetapi.ReplicatedJobStatus{
@@ -147,7 +149,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			workerJobSets: []jobsetapi.JobSet{
 				*baseJobSetBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					Suspend(true).
 					JobsStatus(
@@ -187,7 +189,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			wantWorkerJobSets: []jobsetapi.JobSet{
 				*baseJobSetBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					Suspend(true).
 					JobsStatus(
@@ -208,7 +210,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 		"remote jobset is deleted": {
 			workerJobSets: []jobsetapi.JobSet{
 				*baseJobSetBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					JobsStatus(
 						jobsetapi.ReplicatedJobStatus{
@@ -265,9 +267,28 @@ func TestMultiKueueAdapter(t *testing.T) {
 				*baseJobSetManagedByKueueBuilder.Clone().Obj(),
 			},
 		},
+		"sync creates missing remote jobset, WorkloadIdentifierAnnotations enabled": {
+			featureGates: map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: true},
+			managersJobSets: []jobsetapi.JobSet{
+				*baseJobSetManagedByKueueBuilder.Clone().Obj(),
+			},
+			operation: func(ctx context.Context, adapter *multiKueueAdapter, managerClient, workerClient client.Client) error {
+				return adapter.SyncJob(ctx, managerClient, workerClient, types.NamespacedName{Name: "jobset1", Namespace: TestNamespace}, "wl1", "origin1")
+			},
+			wantManagersJobSets: []jobsetapi.JobSet{
+				*baseJobSetManagedByKueueBuilder.Clone().Obj(),
+			},
+			wantWorkerJobSets: []jobsetapi.JobSet{
+				*baseJobSetBuilder.Clone().
+					PrebuiltWorkloadAnnotation("wl1").
+					Label(kueue.MultiKueueOriginLabel, "origin1").
+					Obj(),
+			},
+		},
 	}
 	for name, tc := range cases {
 		t.Run(name, func(t *testing.T) {
+			features.SetFeatureGatesDuringTest(t, tc.featureGates)
 			managerBuilder := utiltesting.NewClientBuilder(jobsetapi.AddToScheme).WithInterceptorFuncs(interceptor.Funcs{SubResourcePatch: utiltesting.TreatSSAAsStrategicMerge})
 			managerBuilder = managerBuilder.WithLists(&jobsetapi.JobSetList{Items: tc.managersJobSets})
 			managerBuilder = managerBuilder.WithStatusSubresource(slices.Map(tc.managersJobSets, func(w *jobsetapi.JobSet) client.Object { return w })...)

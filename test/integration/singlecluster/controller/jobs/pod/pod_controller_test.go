@@ -40,6 +40,7 @@ import (
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
 	podcontroller "sigs.k8s.io/kueue/pkg/controller/jobs/pod"
 	podconstants "sigs.k8s.io/kueue/pkg/controller/jobs/pod/constants"
+	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/util/tas"
 	utiltesting "sigs.k8s.io/kueue/pkg/util/testing"
 	utiltestingapi "sigs.k8s.io/kueue/pkg/util/testing/v1beta2"
@@ -583,7 +584,7 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 				pod := testingpod.MakePod(podName, ns.Name).
 					Request(corev1.ResourceCPU, "1").
 					Queue(lq.Name).
-					PrebuiltWorkload(workloadName).
+					PrebuiltWorkloadLabel(workloadName).
 					Obj()
 
 				ginkgo.By("Creating pod with queue-name", func() {
@@ -647,13 +648,13 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 			ginkgo.It("Should ungate pods when admitted and finalize Pods when succeeded", func() {
 				ginkgo.By("Creating pods with queue name")
 				pod1 := testingpod.MakePod("test-pod1", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					Queue("test-queue").
 					Label("dontCopyKey", "dontCopyValue").
 					Obj()
 				pod2 := testingpod.MakePod("test-pod2", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					Request(corev1.ResourceCPU, "1").
 					Queue("test-queue").
@@ -733,7 +734,7 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 			ginkgo.It("Should ungate pods when admitted with fast admission", func() {
 				ginkgo.By("Creating pod1 and delaying creation of pod2")
 				pod1 := testingpod.MakePod("test-pod1", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					Annotation(podconstants.GroupFastAdmissionAnnotationKey, podconstants.GroupFastAdmissionAnnotationValue).
 					Queue("test-queue").
@@ -775,7 +776,7 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 				})
 
 				pod2 := testingpod.MakePod("test-pod2", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					Annotation(podconstants.GroupFastAdmissionAnnotationKey, podconstants.GroupFastAdmissionAnnotationValue).
 					Queue("test-queue").
@@ -803,12 +804,12 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 			ginkgo.It("Should keep the running pod group with the queue name if workload is evicted", framework.SlowSpec, func() {
 				ginkgo.By("Creating pods with queue name")
 				pod1 := testingpod.MakePod("test-pod1", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					Queue("test-queue").
 					Obj()
 				pod2 := testingpod.MakePod("test-pod2", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					Queue("test-queue").
 					Obj()
@@ -906,7 +907,7 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 				})
 
 				replacementPod := testingpod.MakePod("test-pod2-replace", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					Queue("test-queue").
 					Obj()
@@ -966,7 +967,7 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 				ginkgo.By("Creating a single pod with queue and group names")
 
 				pod := testingpod.MakePod("test-pod", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("1").
 					Queue("test-queue").
 					Obj()
@@ -1029,7 +1030,7 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 
 				ginkgo.By("Creating a replacement pod in the group")
 				replacementPod := testingpod.MakePod("replacement-test-pod", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("1").
 					Queue("test-queue").
 					Obj()
@@ -1072,7 +1073,7 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 
 				ginkgo.By("Creating a second replacement pod in the group")
 				replacementPod2 := testingpod.MakePod("replacement-test-pod2", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("1").
 					Queue("test-queue").
 					Obj()
@@ -1107,12 +1108,12 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 			ginkgo.It("Should finish the group if one Pod has the `retriable-in-group: false` annotation", framework.SlowSpec, func() {
 				ginkgo.By("Creating pods with queue name")
 				pod1 := testingpod.MakePod("test-pod1", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					Queue("test-queue").
 					Obj()
 				pod2 := testingpod.MakePod("test-pod2", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					Request(corev1.ResourceCPU, "1").
 					Queue("test-queue").
@@ -1188,7 +1189,7 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 
 				// Create replacement pod with 'retriable-in-group' = false annotation
 				replacementPod2 := testingpod.MakePod("replacement-test-pod2", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					Image("test-image", nil).
 					Annotation(podconstants.RetriableInGroupAnnotationKey, podconstants.RetriableInGroupAnnotationValue).
@@ -1220,18 +1221,18 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 			ginkgo.It("Should finalize and delete excess pods", framework.SlowSpec, func() {
 				ginkgo.By("Creating pods with queue name")
 				pod1 := testingpod.MakePod("test-pod1", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					Queue("test-queue").
 					Obj()
 				pod2 := testingpod.MakePod("test-pod2", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					Request(corev1.ResourceCPU, "1").
 					Queue("test-queue").
 					Obj()
 				excessBasePod := testingpod.MakePod("excess-pod", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					Request(corev1.ResourceCPU, "1").
 					Queue("test-queue")
@@ -1313,7 +1314,7 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 				pods := make([]*corev1.Pod, podCount)
 				for i := range pods {
 					pods[i] = testingpod.MakePod(fmt.Sprintf("test-pod-%d", i), ns.Name).
-						Group("test-group").
+						GroupNameLabel("test-group").
 						GroupTotalCount(strconv.Itoa(podCount)).
 						Request(corev1.ResourceCPU, "1").
 						Queue("test-queue").
@@ -1367,13 +1368,13 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 			ginkgo.It("Should finalize workload if pods are absent", func() {
 				ginkgo.By("Creating pods with queue name")
 				pod1 := testingpod.MakePod("test-pod1", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					Request(corev1.ResourceCPU, "1").
 					Queue("test-queue").
 					Obj()
 				pod2 := testingpod.MakePod("test-pod2", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					Request(corev1.ResourceCPU, "2").
 					Queue("test-queue").
@@ -1423,7 +1424,7 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 				podGroupName := "pod-group"
 
 				pod := testingpod.MakePod("pod", ns.Name).
-					Group(podGroupName).
+					GroupNameLabel(podGroupName).
 					GroupTotalCount("1").
 					Queue(lq.Name).
 					Request(corev1.ResourceCPU, "1").
@@ -1513,7 +1514,7 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 				})
 
 				replacementPod := testingpod.MakePod("replacement-pod", ns.Name).
-					Group(podGroupName).
+					GroupNameLabel(podGroupName).
 					GroupTotalCount("1").
 					Queue(lq.Name).
 					Request(corev1.ResourceCPU, "1").
@@ -1541,14 +1542,14 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 			ginkgo.It("Should ungate pod after Succeeded phase when serving workload is enabled", framework.SlowSpec, func() {
 				ginkgo.By("Creating pods with queue name")
 				pod1 := testingpod.MakePod("test-pod1", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					PodGroupServingAnnotation().
 					Request(corev1.ResourceCPU, "1").
 					Queue("test-queue").
 					Obj()
 				pod2 := testingpod.MakePod("test-pod2", ns.Name).
-					Group("test-group").
+					GroupNameLabel("test-group").
 					GroupTotalCount("2").
 					PodGroupServingAnnotation().
 					Request(corev1.ResourceCPU, "1").
@@ -1624,7 +1625,7 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 
 				ginkgo.By("recreate pod2", func() {
 					pod2 = testingpod.MakePod("test-pod2", ns.Name).
-						Group("test-group").
+						GroupNameLabel("test-group").
 						GroupTotalCount("2").
 						Request(corev1.ResourceCPU, "1").
 						Queue("test-queue").
@@ -1646,19 +1647,19 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 				)
 
 				pod1 := testingpod.MakePod("test-pod-1", ns.Name).
-					Group(workloadName).
+					GroupNameLabel(workloadName).
 					GroupTotalCount("2").
 					Request(corev1.ResourceCPU, "1").
 					Queue(lq.Name).
-					PrebuiltWorkload(workloadName).
+					PrebuiltWorkloadLabel(workloadName).
 					RoleHash("leader").
 					Obj()
 				pod2 := testingpod.MakePod("test-pod-2", ns.Name).
-					Group(workloadName).
+					GroupNameLabel(workloadName).
 					GroupTotalCount("2").
 					Request(corev1.ResourceCPU, "2").
 					Queue(lq.Name).
-					PrebuiltWorkload(workloadName).
+					PrebuiltWorkloadLabel(workloadName).
 					RoleHash("worker").
 					Obj()
 
@@ -1751,6 +1752,272 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 				})
 			})
 		})
+
+		ginkgo.When("WorkloadIdentifierAnnotations feature gate is enabled", func() {
+			ginkgo.BeforeEach(func() {
+				features.SetFeatureGateDuringTest(ginkgo.GinkgoTB(), features.WorkloadIdentifierAnnotations, true)
+			})
+
+			ginkgo.It("should create workload and ungate pod group using GroupNameAnnotation", framework.SlowSpec, func() {
+				pod1 := testingpod.MakePod("test-pod-annotation-1", ns.Name).
+					GroupNameAnnotation("test-group-annotation").
+					GroupTotalCount("2").
+					Queue(lq.Name).
+					Obj()
+				pod2 := testingpod.MakePod("test-pod-annotation-2", ns.Name).
+					GroupNameAnnotation("test-group-annotation").
+					GroupTotalCount("2").
+					Request(corev1.ResourceCPU, "1").
+					Queue(lq.Name).
+					Obj()
+
+				util.MustCreate(ctx, k8sClient, pod1)
+				util.MustCreate(ctx, k8sClient, pod2)
+
+				wlLookupKey := types.NamespacedName{Name: "test-group-annotation", Namespace: ns.Name}
+				createdWorkload := &kueue.Workload{}
+
+				ginkgo.By("checking workload is created for the pod group from annotation", func() {
+					gomega.Eventually(func(g gomega.Gomega) {
+						g.Expect(k8sClient.Get(ctx, wlLookupKey, createdWorkload)).Should(gomega.Succeed())
+					}, util.Timeout, util.Interval).Should(gomega.Succeed())
+					gomega.Expect(createdWorkload.Spec.PodSets).To(gomega.HaveLen(2))
+					gomega.Expect(createdWorkload.Spec.QueueName).To(gomega.Equal(kueue.LocalQueueName(lq.Name)))
+				})
+
+				ginkgo.By("admitting the workload", func() {
+					admission := utiltestingapi.MakeAdmission(clusterQueue.Name).PodSets(
+						kueue.PodSetAssignment{
+							Name: createdWorkload.Spec.PodSets[0].Name,
+							Flavors: map[corev1.ResourceName]kueue.ResourceFlavorReference{
+								corev1.ResourceCPU: kueue.ResourceFlavorReference(defaultFlavor.Name),
+							},
+							Count: ptr.To(createdWorkload.Spec.PodSets[0].Count),
+						},
+						kueue.PodSetAssignment{
+							Name: createdWorkload.Spec.PodSets[1].Name,
+							Flavors: map[corev1.ResourceName]kueue.ResourceFlavorReference{
+								corev1.ResourceCPU: kueue.ResourceFlavorReference(defaultFlavor.Name),
+							},
+							Count: ptr.To(createdWorkload.Spec.PodSets[1].Count),
+						},
+					).Obj()
+					util.SetQuotaReservation(ctx, k8sClient, wlLookupKey, admission)
+					util.SyncAdmittedConditionForWorkloads(ctx, k8sClient, createdWorkload)
+				})
+
+				ginkgo.By("checking pods are ungated after admission", func() {
+					gomega.Eventually(func(g gomega.Gomega) {
+						createdPod1 := &corev1.Pod{}
+						g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(pod1), createdPod1)).To(gomega.Succeed())
+						g.Expect(createdPod1.Spec.SchedulingGates).Should(gomega.BeEmpty())
+					}, util.Timeout, util.Interval).Should(gomega.Succeed())
+					gomega.Eventually(func(g gomega.Gomega) {
+						createdPod2 := &corev1.Pod{}
+						g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(pod2), createdPod2)).To(gomega.Succeed())
+						g.Expect(createdPod2.Spec.SchedulingGates).Should(gomega.BeEmpty())
+					}, util.Timeout, util.Interval).Should(gomega.Succeed())
+				})
+			})
+
+			ginkgo.It("should fall back to GroupNameLabel when GroupNameAnnotation is absent", framework.SlowSpec, func() {
+				pod1 := testingpod.MakePod("test-pod-label-1", ns.Name).
+					GroupNameLabel("test-group-label").
+					GroupTotalCount("2").
+					Queue(lq.Name).
+					Obj()
+				pod2 := testingpod.MakePod("test-pod-label-2", ns.Name).
+					GroupNameLabel("test-group-label").
+					GroupTotalCount("2").
+					Request(corev1.ResourceCPU, "1").
+					Queue(lq.Name).
+					Obj()
+
+				util.MustCreate(ctx, k8sClient, pod1)
+				util.MustCreate(ctx, k8sClient, pod2)
+
+				wlLookupKey := types.NamespacedName{Name: "test-group-label", Namespace: ns.Name}
+				createdWorkload := &kueue.Workload{}
+
+				ginkgo.By("checking workload is created from label fallback", func() {
+					gomega.Eventually(func(g gomega.Gomega) {
+						g.Expect(k8sClient.Get(ctx, wlLookupKey, createdWorkload)).Should(gomega.Succeed())
+					}, util.Timeout, util.Interval).Should(gomega.Succeed())
+					gomega.Expect(createdWorkload.Spec.PodSets).To(gomega.HaveLen(2))
+					gomega.Expect(createdWorkload.Spec.QueueName).To(gomega.Equal(kueue.LocalQueueName(lq.Name)))
+				})
+
+				ginkgo.By("admitting the workload", func() {
+					admission := utiltestingapi.MakeAdmission(clusterQueue.Name).PodSets(
+						kueue.PodSetAssignment{
+							Name: createdWorkload.Spec.PodSets[0].Name,
+							Flavors: map[corev1.ResourceName]kueue.ResourceFlavorReference{
+								corev1.ResourceCPU: kueue.ResourceFlavorReference(defaultFlavor.Name),
+							},
+							Count: ptr.To(createdWorkload.Spec.PodSets[0].Count),
+						},
+						kueue.PodSetAssignment{
+							Name: createdWorkload.Spec.PodSets[1].Name,
+							Flavors: map[corev1.ResourceName]kueue.ResourceFlavorReference{
+								corev1.ResourceCPU: kueue.ResourceFlavorReference(defaultFlavor.Name),
+							},
+							Count: ptr.To(createdWorkload.Spec.PodSets[1].Count),
+						},
+					).Obj()
+					util.SetQuotaReservation(ctx, k8sClient, wlLookupKey, admission)
+					util.SyncAdmittedConditionForWorkloads(ctx, k8sClient, createdWorkload)
+				})
+
+				ginkgo.By("checking pods are ungated after admission", func() {
+					gomega.Eventually(func(g gomega.Gomega) {
+						createdPod1 := &corev1.Pod{}
+						g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(pod1), createdPod1)).To(gomega.Succeed())
+						g.Expect(createdPod1.Spec.SchedulingGates).Should(gomega.BeEmpty())
+					}, util.Timeout, util.Interval).Should(gomega.Succeed())
+					gomega.Eventually(func(g gomega.Gomega) {
+						createdPod2 := &corev1.Pod{}
+						g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(pod2), createdPod2)).To(gomega.Succeed())
+						g.Expect(createdPod2.Spec.SchedulingGates).Should(gomega.BeEmpty())
+					}, util.Timeout, util.Interval).Should(gomega.Succeed())
+				})
+			})
+
+			ginkgo.It("should adopt prebuilt workload via PrebuiltWorkloadAnnotation", framework.SlowSpec, func() {
+				const workloadName = "test-prebuilt-ann"
+
+				pod1 := testingpod.MakePod("test-pod-pb-ann-1", ns.Name).
+					GroupNameAnnotation(workloadName).
+					GroupTotalCount("2").
+					Request(corev1.ResourceCPU, "1").
+					Queue(lq.Name).
+					PrebuiltWorkloadAnnotation(workloadName).
+					RoleHash("leader").
+					Obj()
+				pod2 := testingpod.MakePod("test-pod-pb-ann-2", ns.Name).
+					GroupNameAnnotation(workloadName).
+					GroupTotalCount("2").
+					Request(corev1.ResourceCPU, "2").
+					Queue(lq.Name).
+					PrebuiltWorkloadAnnotation(workloadName).
+					RoleHash("worker").
+					Obj()
+
+				pod1LookupKey := client.ObjectKeyFromObject(pod1)
+				pod2LookupKey := client.ObjectKeyFromObject(pod2)
+
+				wl := utiltestingapi.MakeWorkload(workloadName, ns.Name).
+					Queue(kueue.LocalQueueName(lq.Name)).
+					Annotation(podconstants.IsGroupWorkloadAnnotationKey, podconstants.IsGroupWorkloadAnnotationValue).
+					PodSets(
+						*utiltestingapi.MakePodSet("leader", 1).PodSpec(pod1.Spec).Obj(),
+						*utiltestingapi.MakePodSet("worker", 1).PodSpec(pod2.Spec).Obj(),
+					).
+					Obj()
+				wlLookupKey := types.NamespacedName{Name: workloadName, Namespace: ns.Name}
+
+				ginkgo.By("creating prebuilt workload", func() {
+					util.MustCreate(ctx, k8sClient, wl)
+				})
+
+				ginkgo.By("creating first pod", func() {
+					util.MustCreate(ctx, k8sClient, pod1)
+				})
+
+				ginkgo.By("admitting the workload", func() {
+					admission := utiltestingapi.MakeAdmission(clusterQueue.Name).PodSets(
+						kueue.PodSetAssignment{
+							Name: "leader",
+							Flavors: map[corev1.ResourceName]kueue.ResourceFlavorReference{
+								corev1.ResourceCPU: kueue.ResourceFlavorReference(defaultFlavor.Name),
+							},
+							Count: ptr.To(wl.Spec.PodSets[0].Count),
+						},
+						kueue.PodSetAssignment{
+							Name: "worker",
+							Flavors: map[corev1.ResourceName]kueue.ResourceFlavorReference{
+								corev1.ResourceCPU: kueue.ResourceFlavorReference(defaultFlavor.Name),
+							},
+							Count: ptr.To(wl.Spec.PodSets[1].Count),
+						},
+					).Obj()
+					util.SetQuotaReservation(ctx, k8sClient, wlLookupKey, admission)
+					util.SyncAdmittedConditionForWorkloads(ctx, k8sClient, wl)
+				})
+
+				ginkgo.By("checking no second workload was created", func() {
+					gomega.Consistently(func(g gomega.Gomega) {
+						wlList := &kueue.WorkloadList{}
+						g.Expect(k8sClient.List(ctx, wlList, client.InNamespace(ns.Name))).To(gomega.Succeed())
+						g.Expect(wlList.Items).To(gomega.HaveLen(1))
+					}, util.ConsistentDuration, util.ShortInterval).Should(gomega.Succeed())
+				})
+
+				ginkgo.By("checking first pod is ungated", func() {
+					util.ExpectPodUnsuspendedWithNodeSelectors(ctx, k8sClient, pod1LookupKey, map[string]string{corev1.LabelArchStable: "arm64"})
+				})
+
+				ginkgo.By("creating second pod", func() {
+					util.MustCreate(ctx, k8sClient, pod2)
+				})
+
+				ginkgo.By("checking workload is owned by both pods", func() {
+					gomega.Eventually(func(g gomega.Gomega) {
+						g.Expect(k8sClient.Get(ctx, wlLookupKey, wl)).Should(gomega.Succeed())
+						g.Expect(wl.OwnerReferences).Should(gomega.HaveLen(2))
+					}, util.Timeout, util.Interval).Should(gomega.Succeed())
+				})
+
+				ginkgo.By("checking second pod is ungated", func() {
+					util.ExpectPodUnsuspendedWithNodeSelectors(ctx, k8sClient, pod2LookupKey, map[string]string{corev1.LabelArchStable: "arm64"})
+				})
+
+				ginkgo.By("finishing pods", func() {
+					util.SetPodsPhase(ctx, k8sClient, corev1.PodSucceeded, pod1)
+					util.SetPodsPhase(ctx, k8sClient, corev1.PodSucceeded, pod2)
+				})
+
+				ginkgo.By("checking the workload is finished", func() {
+					gomega.Eventually(func(g gomega.Gomega) {
+						g.Expect(k8sClient.Get(ctx, wlLookupKey, wl)).Should(gomega.Succeed())
+						g.Expect(wl.Status.Conditions).To(utiltesting.HaveConditionStatusTrue(kueue.WorkloadFinished))
+					}, util.Timeout, util.Interval).Should(gomega.Succeed())
+				})
+
+				ginkgo.By("checking pod and workload finalizers are removed", func() {
+					util.ExpectPodsFinalizedOrGone(ctx, k8sClient, pod1LookupKey, pod2LookupKey)
+					util.ExpectWorkloadsFinalizedOrGone(ctx, k8sClient, wlLookupKey)
+				})
+			})
+
+			ginkgo.It("should reject pod whose GroupNameAnnotation and PrebuiltWorkloadAnnotation differ", func() {
+				pod := testingpod.MakePod("test-pod-mismatch", ns.Name).
+					GroupNameAnnotation("group-a").
+					GroupTotalCount("1").
+					Queue(lq.Name).
+					PrebuiltWorkloadAnnotation("group-b").
+					Obj()
+
+				err := k8sClient.Create(ctx, pod)
+				gomega.Expect(err).Should(gomega.And(
+					utiltesting.BeForbiddenError(),
+					gomega.MatchError(gomega.ContainSubstring("metadata.annotations")),
+				))
+			})
+
+			ginkgo.It("should reject pod with GroupNameAnnotation but missing GroupTotalCountAnnotation", func() {
+				pod := testingpod.MakePod("test-pod-no-gtc", ns.Name).
+					GroupNameAnnotation("some-group").
+					Queue(lq.Name).
+					Obj()
+
+				err := k8sClient.Create(ctx, pod)
+				gomega.Expect(err).Should(gomega.And(
+					utiltesting.BeForbiddenError(),
+					gomega.MatchError(gomega.ContainSubstring(podconstants.GroupTotalCountAnnotation)),
+					gomega.MatchError(gomega.ContainSubstring(podconstants.GroupNameAnnotation)),
+				))
+			})
+		})
 	})
 })
 
@@ -1841,7 +2108,7 @@ var _ = ginkgo.Describe("Pod controller interacting with scheduler", ginkgo.Labe
 		util.MustCreate(ctx, k8sClient, localQueue)
 
 		basePod := testingpod.MakePod("pod", ns.Name).
-			Group("dev-pods").
+			GroupNameLabel("dev-pods").
 			GroupTotalCount("4").
 			Queue(localQueue.Name).
 			// requesting a resource that is not covered by cluster queue,
@@ -2066,7 +2333,7 @@ var _ = ginkgo.Describe("Pod controller interacting with Workload controller whe
 		ginkgo.It("should deactivate and evict workload due exceeding backoffLimitCount", framework.SlowSpec, func() {
 			podGroupName := "pod-group"
 			pod := testingpod.MakePod("pod", ns.Name).
-				Group(podGroupName).
+				GroupNameLabel(podGroupName).
 				GroupTotalCount("1").
 				Queue(lq.Name).
 				Request(corev1.ResourceCPU, "1").

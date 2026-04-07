@@ -27,13 +27,14 @@ import (
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
+	"k8s.io/component-base/featuregate"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/client/interceptor"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
-	"sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
 	"sigs.k8s.io/kueue/pkg/controller/jobs/ray"
+	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/util/slices"
 	utiltesting "sigs.k8s.io/kueue/pkg/util/testing"
 	utiltestingraycluster "sigs.k8s.io/kueue/pkg/util/testingjobs/raycluster"
@@ -60,6 +61,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 		wantError               error
 		wantManagersRayClusters []rayv1.RayCluster
 		wantWorkerRayClusters   []rayv1.RayCluster
+		featureGates            map[featuregate.Feature]bool
 	}{
 		"sync creates missing remote raycluster": {
 			managersRayClusters: []rayv1.RayCluster{
@@ -74,7 +76,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			wantWorkerRayClusters: []rayv1.RayCluster{
 				*rayClusterBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					Obj(),
 			},
@@ -85,7 +87,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			workerRayClusters: []rayv1.RayCluster{
 				*rayClusterBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					StatusConditions(metav1.Condition{Type: string(rayv1.HeadPodReady), Status: metav1.ConditionStatus(corev1.ConditionTrue)}).
 					Obj(),
@@ -101,7 +103,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			wantWorkerRayClusters: []rayv1.RayCluster{
 				*rayClusterBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					StatusConditions(metav1.Condition{Type: string(rayv1.HeadPodReady), Status: metav1.ConditionStatus(corev1.ConditionTrue)}).
 					Obj(),
@@ -115,7 +117,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			workerRayClusters: []rayv1.RayCluster{
 				*rayClusterBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					Suspend(true).
 					StatusConditions(metav1.Condition{Type: string(rayv1.HeadPodReady), Status: metav1.ConditionStatus(corev1.ConditionTrue)}).
@@ -132,7 +134,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 			},
 			wantWorkerRayClusters: []rayv1.RayCluster{
 				*rayClusterBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					Suspend(true).
 					StatusConditions(metav1.Condition{Type: string(rayv1.HeadPodReady), Status: metav1.ConditionStatus(corev1.ConditionTrue)}).
@@ -142,7 +144,7 @@ func TestMultiKueueAdapter(t *testing.T) {
 		"remote raycluster is deleted": {
 			workerRayClusters: []rayv1.RayCluster{
 				*rayClusterBuilder.Clone().
-					Label(constants.PrebuiltWorkloadLabel, "wl1").
+					PrebuiltWorkloadLabel("wl1").
 					Label(kueue.MultiKueueOriginLabel, "origin1").
 					Obj(),
 			},
@@ -195,9 +197,28 @@ func TestMultiKueueAdapter(t *testing.T) {
 				return nil
 			},
 		},
+		"sync creates missing remote raycluster, WorkloadIdentifierAnnotations enabled": {
+			featureGates: map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: true},
+			managersRayClusters: []rayv1.RayCluster{
+				*rayClusterBuilder.DeepCopy(),
+			},
+			operation: func(ctx context.Context, adapter jobframework.MultiKueueAdapter, managerClient, workerClient client.Client) error {
+				return adapter.SyncJob(ctx, managerClient, workerClient, types.NamespacedName{Name: "raycluster1", Namespace: TestNamespace}, "wl1", "origin1")
+			},
+			wantManagersRayClusters: []rayv1.RayCluster{
+				*rayClusterBuilder.DeepCopy(),
+			},
+			wantWorkerRayClusters: []rayv1.RayCluster{
+				*rayClusterBuilder.Clone().
+					PrebuiltWorkloadAnnotation("wl1").
+					Label(kueue.MultiKueueOriginLabel, "origin1").
+					Obj(),
+			},
+		},
 	}
 	for name, tc := range cases {
 		t.Run(name, func(t *testing.T) {
+			features.SetFeatureGatesDuringTest(t, tc.featureGates)
 			managerBuilder := utiltesting.NewClientBuilder(rayv1.AddToScheme).WithInterceptorFuncs(interceptor.Funcs{SubResourcePatch: utiltesting.TreatSSAAsStrategicMerge})
 			managerBuilder = managerBuilder.WithLists(&rayv1.RayClusterList{Items: tc.managersRayClusters})
 			managerBuilder = managerBuilder.WithStatusSubresource(slices.Map(tc.managersRayClusters, func(w *rayv1.RayCluster) client.Object { return w })...)

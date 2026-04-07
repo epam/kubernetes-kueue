@@ -166,6 +166,15 @@ func (j *TFJobWrapper) Label(key, value string) *TFJobWrapper {
 	return j
 }
 
+// Annotation sets the annotation key and value
+func (j *TFJobWrapper) Annotation(k, v string) *TFJobWrapper {
+	if j.Annotations == nil {
+		j.Annotations = make(map[string]string)
+	}
+	j.Annotations[k] = v
+	return j
+}
+
 // Queue updates the queue name of the job.
 func (j *TFJobWrapper) Queue(queue string) *TFJobWrapper {
 	if j.Labels == nil {
@@ -173,6 +182,16 @@ func (j *TFJobWrapper) Queue(queue string) *TFJobWrapper {
 	}
 	j.Labels[constants.QueueLabel] = queue
 	return j
+}
+
+// PrebuiltWorkloadLabel updates PrebuiltWorkloadLabel of the job
+func (j *TFJobWrapper) PrebuiltWorkloadLabel(prebuiltWorkload string) *TFJobWrapper {
+	return j.Label(constants.PrebuiltWorkloadLabel, prebuiltWorkload)
+}
+
+// PrebuiltWorkloadAnnotation updates PrebuiltWorkloadAnnotation of the job
+func (j *TFJobWrapper) PrebuiltWorkloadAnnotation(prebuiltWorkload string) *TFJobWrapper {
+	return j.Annotation(constants.PrebuiltWorkloadAnnotation, prebuiltWorkload)
 }
 
 // Request adds a resource request to the default container.

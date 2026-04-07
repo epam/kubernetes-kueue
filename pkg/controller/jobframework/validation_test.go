@@ -317,6 +317,55 @@ func TestValidateJobOnUpdate(t *testing.T) {
 				field.Invalid(field.NewPath("metadata.labels["+workloadslicing.EnabledAnnotationKey+"]"), "false", "field is immutable"),
 			},
 		},
+		"prebuilt workload label valid on update": {
+			oldJob: utiltestingjob.MakeJob("test-job", "ns1").PrebuiltWorkloadLabel("workload-name").Suspend(true).Obj(),
+			newJob: utiltestingjob.MakeJob("test-job", "ns1").PrebuiltWorkloadLabel("workload-name").Suspend(true).Obj(),
+		},
+		"prebuilt workload annotation valid on update, WorkloadIdentifierAnnotations enabled": {
+			oldJob:       utiltestingjob.MakeJob("test-job", "ns1").PrebuiltWorkloadAnnotation("workload-name").Suspend(true).Obj(),
+			newJob:       utiltestingjob.MakeJob("test-job", "ns1").PrebuiltWorkloadAnnotation("workload-name").Suspend(true).Obj(),
+			featureGates: map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: true},
+		},
+		"prebuilt workload label fallback valid on update, WorkloadIdentifierAnnotations enabled": {
+			oldJob:       utiltestingjob.MakeJob("test-job", "ns1").PrebuiltWorkloadLabel("workload-name").Suspend(true).Obj(),
+			newJob:       utiltestingjob.MakeJob("test-job", "ns1").PrebuiltWorkloadLabel("workload-name").Suspend(true).Obj(),
+			featureGates: map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: true},
+		},
+		"prebuilt workload same label and annotation on update, WorkloadIdentifierAnnotations enabled": {
+			oldJob: utiltestingjob.MakeJob("test-job", "ns1").
+				PrebuiltWorkloadLabel("workload-name").
+				PrebuiltWorkloadAnnotation("workload-name").Suspend(true).Obj(),
+			newJob: utiltestingjob.MakeJob("test-job", "ns1").
+				PrebuiltWorkloadLabel("workload-name").
+				PrebuiltWorkloadAnnotation("workload-name").Suspend(true).Obj(),
+			featureGates: map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: true},
+		},
+		"prebuilt workload invalid label format with fallback on update, WorkloadIdentifierAnnotations enabled": {
+			oldJob:       utiltestingjob.MakeJob("test-job", "ns1").PrebuiltWorkloadLabel("workload name").Suspend(true).Obj(),
+			newJob:       utiltestingjob.MakeJob("test-job", "ns1").PrebuiltWorkloadLabel("workload name").Suspend(true).Obj(),
+			featureGates: map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: true},
+			wantErr: field.ErrorList{
+				&field.Error{
+					Type:  field.ErrorTypeInvalid,
+					Field: "metadata.labels[kueue.x-k8s.io/prebuilt-workload-name]",
+				},
+			},
+		},
+		"prebuilt workload annotation update, WorkloadIdentifierAnnotations enabled": {
+			oldJob:       utiltestingjob.MakeJob("test-job", "ns1").PrebuiltWorkloadAnnotation("workload-name").Suspend(true).Obj(),
+			newJob:       utiltestingjob.MakeJob("test-job", "ns1").PrebuiltWorkloadAnnotation("workload-name-new").Suspend(true).Obj(),
+			featureGates: map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: true},
+		},
+		"prebuilt workload label to annotation update, WorkloadIdentifierAnnotations enabled": {
+			oldJob:       utiltestingjob.MakeJob("test-job", "ns1").PrebuiltWorkloadLabel("workload-name").Suspend(true).Obj(),
+			newJob:       utiltestingjob.MakeJob("test-job", "ns1").PrebuiltWorkloadAnnotation("workload-name-new").Suspend(true).Obj(),
+			featureGates: map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: true},
+		},
+		"prebuilt workload annotation to label update, WorkloadIdentifierAnnotations enabled": {
+			oldJob:       utiltestingjob.MakeJob("test-job", "ns1").PrebuiltWorkloadAnnotation("workload-name").Suspend(true).Obj(),
+			newJob:       utiltestingjob.MakeJob("test-job", "ns1").PrebuiltWorkloadLabel("workload-name-new").Suspend(true).Obj(),
+			featureGates: map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: true},
+		},
 	}
 
 	for tcName, tc := range testCases {
@@ -329,6 +378,7 @@ func TestValidateJobOnUpdate(t *testing.T) {
 				mj := mocks.NewMockGenericJob(mockctrl)
 				mj.EXPECT().Object().Return(job).AnyTimes()
 				mj.EXPECT().IsSuspended().Return(ptr.Deref(job.Spec.Suspend, false)).AnyTimes()
+				mj.EXPECT().GVK().Return(batchv1.SchemeGroupVersion.WithKind("Job")).AnyTimes()
 				return mj
 			}
 

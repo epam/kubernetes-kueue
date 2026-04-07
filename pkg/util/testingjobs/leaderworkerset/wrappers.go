@@ -94,6 +94,16 @@ func (w *LeaderWorkerSetWrapper) Queue(q string) *LeaderWorkerSetWrapper {
 	return w.Label(constants.QueueLabel, q)
 }
 
+// PrebuiltWorkloadLabel updates PrebuiltWorkloadLabel of the LeaderWorkerSet.
+func (w *LeaderWorkerSetWrapper) PrebuiltWorkloadLabel(prebuiltWorkload string) *LeaderWorkerSetWrapper {
+	return w.Label(constants.PrebuiltWorkloadLabel, prebuiltWorkload)
+}
+
+// PrebuiltWorkloadAnnotation updates PrebuiltWorkloadAnnotation of the LeaderWorkerSet.
+func (w *LeaderWorkerSetWrapper) PrebuiltWorkloadAnnotation(prebuiltWorkload string) *LeaderWorkerSetWrapper {
+	return w.Annotation(constants.PrebuiltWorkloadAnnotation, prebuiltWorkload)
+}
+
 // Name updated the name of the LeaderWorkerSet
 func (w *LeaderWorkerSetWrapper) Name(n string) *LeaderWorkerSetWrapper {
 	w.ObjectMeta.Name = n

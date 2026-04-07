@@ -125,6 +125,15 @@ func (j *PaddleJobWrapper) Label(key, value string) *PaddleJobWrapper {
 	return j
 }
 
+// Annotation sets the annotation key and value
+func (j *PaddleJobWrapper) Annotation(k, v string) *PaddleJobWrapper {
+	if j.Annotations == nil {
+		j.Annotations = make(map[string]string)
+	}
+	j.Annotations[k] = v
+	return j
+}
+
 // PriorityClass updates job priorityclass.
 func (j *PaddleJobWrapper) PriorityClass(pc string) *PaddleJobWrapper {
 	if j.Spec.RunPolicy.SchedulingPolicy == nil {
@@ -146,6 +155,16 @@ func (j *PaddleJobWrapper) Queue(queue string) *PaddleJobWrapper {
 	}
 	j.Labels[constants.QueueLabel] = queue
 	return j
+}
+
+// PrebuiltWorkloadLabel updates PrebuiltWorkloadLabel of the job.
+func (j *PaddleJobWrapper) PrebuiltWorkloadLabel(prebuiltWorkload string) *PaddleJobWrapper {
+	return j.Label(constants.PrebuiltWorkloadLabel, prebuiltWorkload)
+}
+
+// PrebuiltWorkloadAnnotation updates PrebuiltWorkloadAnnotation of the job.
+func (j *PaddleJobWrapper) PrebuiltWorkloadAnnotation(prebuiltWorkload string) *PaddleJobWrapper {
+	return j.Annotation(constants.PrebuiltWorkloadAnnotation, prebuiltWorkload)
 }
 
 // Request adds a resource request to the default container.
