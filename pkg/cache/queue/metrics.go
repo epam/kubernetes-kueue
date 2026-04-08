@@ -17,10 +17,15 @@ limitations under the License.
 package queue
 
 import (
+	"time"
+
+	"k8s.io/utils/clock"
+
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
 	"sigs.k8s.io/kueue/pkg/metrics"
 	"sigs.k8s.io/kueue/pkg/util/queue"
 	"sigs.k8s.io/kueue/pkg/util/roletracker"
+	"sigs.k8s.io/kueue/pkg/workload"
 )
 
 // reportPendingWorkloads reports metrics for both ClusterQueue,
@@ -43,12 +48,36 @@ func reportPendingWorkloads(m *Manager, cqRef kueue.ClusterQueueReference) {
 }
 
 func reportCQPendingWorkloads(m *Manager, cq *ClusterQueue) {
-	active, inadmissible := cq.Pending()
+	activeInfos, inadmissibleInfos := cq.PendingWorkloadInfos()
+	active, inadmissible := len(activeInfos), len(inadmissibleInfos)
 	if m.statusChecker != nil && !m.statusChecker.ClusterQueueActive(cq.name) {
-		inadmissible += active
+		inadmissibleInfos = append(inadmissibleInfos, activeInfos...)
+		activeInfos = nil
+		inadmissible = len(inadmissibleInfos)
 		active = 0
 	}
-	metrics.ReportPendingWorkloads(cq.name, active, inadmissible, m.customLabels.CQGet(cq.name), m.roleTracker)
+	cl := m.clock
+	custom := m.customLabels.CQGet(cq.name)
+	metrics.ReportPendingWorkloads(cq.name, active, inadmissible, custom, m.roleTracker)
+	activeMax, activeMean := pendingWaitStats(activeInfos, cl)
+	inadmissibleMax, inadmissibleMean := pendingWaitStats(inadmissibleInfos, cl)
+	metrics.ReportPendingWorkloadWaitTimes(cq.name, activeMax, activeMean, inadmissibleMax, inadmissibleMean, custom, m.roleTracker)
+}
+
+func pendingWaitStats(infos []*workload.Info, cl clock.Clock) (maxSeconds, meanSeconds float64) {
+	if len(infos) == 0 {
+		return 0, 0
+	}
+	var maxD time.Duration
+	var sum time.Duration
+	for _, wi := range infos {
+		d := workload.QueuedWaitTime(wi.Obj, cl)
+		sum += d
+		if d > maxD {
+			maxD = d
+		}
+	}
+	return maxD.Seconds(), sum.Seconds() / float64(len(infos))
 }
 
 func reportLQPendingWorkloads(m *Manager, lq *LocalQueue) {
