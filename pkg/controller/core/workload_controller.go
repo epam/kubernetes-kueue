@@ -1093,6 +1093,28 @@ func (r *WorkloadReconciler) Delete(e event.TypedDeleteEvent[*kueue.Workload]) b
 	return true
 }
 
+// preemptionEvictionToPendingObserveInput determines whether to record preemption eviction→pending latency.
+// cluster_queue is taken from oldWl's admission; latency is now minus the WorkloadEvicted condition's
+// LastTransitionTime on newWl (preemption reason).
+func preemptionEvictionToPendingObserveInput(oldWl, newWl *kueue.Workload, prevStatus, newStatus string, now time.Time) (cq kueue.ClusterQueueReference, latency time.Duration, ok bool) {
+	if prevStatus != workload.StatusQuotaReserved && prevStatus != workload.StatusAdmitted {
+		return "", 0, false
+	}
+	if newStatus != workload.StatusPending {
+		return "", 0, false
+	}
+	c := apimeta.FindStatusCondition(newWl.Status.Conditions, kueue.WorkloadEvicted)
+	if c == nil || c.Status != metav1.ConditionTrue || c.Reason != kueue.WorkloadEvictedByPreemption {
+		return "", 0, false
+	}
+	if oldWl.Status.Admission != nil && oldWl.Status.Admission.ClusterQueue != "" {
+		cq = oldWl.Status.Admission.ClusterQueue
+	} else {
+		cq = "unknown"
+	}
+	return cq, now.Sub(c.LastTransitionTime.Time), true
+}
+
 func (r *WorkloadReconciler) Update(e event.TypedUpdateEvent[*kueue.Workload]) bool {
 	defer r.notifyWatchers(e.ObjectOld, e.ObjectNew)
 
@@ -1162,6 +1184,9 @@ func (r *WorkloadReconciler) Update(e event.TypedUpdateEvent[*kueue.Workload]) b
 			r.updateAfsConsumedUsage(log, wlCopy)
 		}
 	case (prevStatus == workload.StatusQuotaReserved || prevStatus == workload.StatusAdmitted) && status == workload.StatusPending:
+		if cq, latency, ok := preemptionEvictionToPendingObserveInput(e.ObjectOld, e.ObjectNew, prevStatus, status, r.clock.Now()); ok {
+			metrics.ReportPreemptionEvictionToPendingTime(cq, latency, r.customLabels.CQGet(cq), r.roleTracker)
+		}
 		var backoff time.Duration
 		if wlCopy.Status.RequeueState != nil && wlCopy.Status.RequeueState.RequeueAt != nil {
 			backoff = time.Until(e.ObjectNew.Status.RequeueState.RequeueAt.Time)

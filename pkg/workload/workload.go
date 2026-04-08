@@ -781,12 +781,19 @@ func SetRequeuedCondition(wl *kueue.Workload, reason, message string, status boo
 	return apimeta.SetStatusCondition(&wl.Status.Conditions, condition)
 }
 
-func QueuedWaitTime(wl *kueue.Workload, clock clock.Clock) time.Duration {
+// QueuedWaitStartTime returns the instant from which queued wait duration is measured:
+// workload creation time, or WorkloadRequeued condition LastTransitionTime when set.
+// This matches the basis used for kueue_admission_wait_time_seconds.
+func QueuedWaitStartTime(wl *kueue.Workload) time.Time {
 	queuedTime := wl.CreationTimestamp.Time
 	if c := apimeta.FindStatusCondition(wl.Status.Conditions, kueue.WorkloadRequeued); c != nil {
 		queuedTime = c.LastTransitionTime.Time
 	}
-	return clock.Since(queuedTime)
+	return queuedTime
+}
+
+func QueuedWaitTime(wl *kueue.Workload, clock clock.Clock) time.Duration {
+	return clock.Since(QueuedWaitStartTime(wl))
 }
 
 // workloadsWithPodsReadyToEvictedTime is the amount of time it takes a workload's pods running to getting evicted.

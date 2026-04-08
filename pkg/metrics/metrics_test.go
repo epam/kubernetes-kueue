@@ -18,9 +18,11 @@ package metrics
 
 import (
 	"testing"
+	"time"
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/testutil"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
 	"sigs.k8s.io/kueue/pkg/util/roletracker"
@@ -145,6 +147,31 @@ func TestReportAndCleanupClusterQueueUsage(t *testing.T) {
 
 	expectFilteredMetricsCount(t, ClusterQueueResourceUsage, 1, "cluster_queue", "queue")
 	expectFilteredMetricsCount(t, ClusterQueueResourceUsage, 0, "cluster_queue", "queue", "flavor", "flavor", "resource", "res2")
+}
+
+func TestReportAndCleanupPendingWorkloadWaitTimes(t *testing.T) {
+	ReportPendingWorkloadWaitTimes("cq-wait", 10, 5, 3, 1.5, nil, nil)
+	expectFilteredMetricsCount(t, PendingWorkloadMaxWaitTimeSeconds, 2, "cluster_queue", "cq-wait")
+	expectFilteredMetricsCount(t, PendingWorkloadMeanWaitTimeSeconds, 2, "cluster_queue", "cq-wait")
+	expectFilteredMetricsCount(t, PendingWorkloadMaxWaitTimeSeconds, 1, "cluster_queue", "cq-wait", "status", PendingStatusActive)
+	expectFilteredMetricsCount(t, PendingWorkloadMaxWaitTimeSeconds, 1, "cluster_queue", "cq-wait", "status", PendingStatusInadmissible)
+
+	ClearClusterQueueMetrics("cq-wait")
+	expectFilteredMetricsCount(t, PendingWorkloadMaxWaitTimeSeconds, 0, "cluster_queue", "cq-wait")
+	expectFilteredMetricsCount(t, PendingWorkloadMeanWaitTimeSeconds, 0, "cluster_queue", "cq-wait")
+}
+
+func TestReportAndCleanupPreemptionEvictionToPendingTime(t *testing.T) {
+	ReportPreemptionEvictionToPendingTime("cq-preempt-unique", time.Second, nil, nil)
+	n := testutil.CollectAndCount(PreemptionEvictionToPendingSeconds)
+	if n == 0 {
+		t.Fatal("expected preemption_eviction_to_pending_seconds histogram to emit metrics")
+	}
+	ClearClusterQueueMetrics("cq-preempt-unique")
+	nAfter := testutil.CollectAndCount(PreemptionEvictionToPendingSeconds)
+	if nAfter >= n {
+		t.Fatalf("expected fewer histogram metrics after clear, before=%d after=%d", n, nAfter)
+	}
 }
 
 func TestReportAndCleanupClusterQueueEvictedNumber(t *testing.T) {

@@ -482,6 +482,23 @@ func (c *ClusterQueue) Pending() (int, int) {
 	return c.pendingActive(), c.pendingInadmissible()
 }
 
+// PendingWorkloadInfos returns pending workload infos split into active (heap + inflight, no double-count)
+// and inadmissible, matching Pending() counts. Callers must not mutate returned *workload.Info or Obj.
+func (c *ClusterQueue) PendingWorkloadInfos() (active []*workload.Info, inadmissible []*workload.Info) {
+	c.rwm.RLock()
+	defer c.rwm.RUnlock()
+	active = make([]*workload.Info, 0, c.heap.Len()+1)
+	active = append(active, c.heap.List()...)
+	if c.inflight != nil {
+		active = append(active, c.inflight)
+	}
+	inadmissible = make([]*workload.Info, 0, c.inadmissibleWorkloads.len())
+	for _, wi := range c.inadmissibleWorkloads {
+		inadmissible = append(inadmissible, wi)
+	}
+	return active, inadmissible
+}
+
 // pendingActive returns the number of active pending workloads,
 // workloads that are in the admission queue.
 func (c *ClusterQueue) pendingActive() int {

@@ -88,6 +88,14 @@ var (
 	// +metricsdoc:labels=cluster_queue="the name of the ClusterQueue",status="status label (varies by metric)",replica_role="one of `leader`, `follower`, or `standalone`"
 	PendingWorkloads *prometheus.GaugeVec
 
+	// +metricsdoc:group=clusterqueue
+	// +metricsdoc:labels=cluster_queue="the name of the ClusterQueue",status="one of `active` or `inadmissible` (same as kueue_pending_workloads)",replica_role="one of `leader`, `follower`, or `standalone`"
+	PendingWorkloadMaxWaitTimeSeconds *prometheus.GaugeVec
+
+	// +metricsdoc:group=clusterqueue
+	// +metricsdoc:labels=cluster_queue="the name of the ClusterQueue",status="one of `active` or `inadmissible` (same as kueue_pending_workloads)",replica_role="one of `leader`, `follower`, or `standalone`"
+	PendingWorkloadMeanWaitTimeSeconds *prometheus.GaugeVec
+
 	// +metricsdoc:group=localqueue
 	// +metricsdoc:labels=name="the name of the LocalQueue",namespace="the namespace of the LocalQueue",status="status label (varies by metric)",replica_role="one of `leader`, `follower`, or `standalone`"
 	LocalQueuePendingWorkloads *prometheus.GaugeVec
@@ -187,6 +195,10 @@ var (
 	// +metricsdoc:group=clusterqueue
 	// +metricsdoc:labels=preempting_cluster_queue="the ClusterQueue executing preemption",reason="eviction or preemption reason",replica_role="one of `leader`, `follower`, or `standalone`"
 	PreemptedWorkloadsTotal *prometheus.CounterVec
+
+	// +metricsdoc:group=clusterqueue
+	// +metricsdoc:labels=cluster_queue="the preempted workload's ClusterQueue from status.admission before quota was released, or `unknown` if unset",replica_role="one of `leader`, `follower`, or `standalone`"
+	PreemptionEvictionToPendingSeconds *prometheus.HistogramVec
 
 	// Metrics tied to the cache.
 
@@ -351,6 +363,26 @@ The label 'result' can have the following values:
 		}, append([]string{"cluster_queue", "status", "replica_role"}, extraLabels...),
 	)
 	trackGaugeVec(PendingWorkloads, gaugeCleanupScopeClusterQueue)
+
+	PendingWorkloadMaxWaitTimeSeconds = trackGaugeVec(prometheus.NewGaugeVec(
+		prometheus.GaugeOpts{
+			Subsystem: constants.KueueName,
+			Name:      "pending_workload_max_wait_time_seconds",
+			Help: `The maximum time in seconds that any still-pending workload in the ClusterQueue has been waiting since creation or last requeue (same basis as kueue_admission_wait_time_seconds), per 'status'.
+'status' matches kueue_pending_workloads: "active" (heap + inflight) or "inadmissible".`,
+		}, append([]string{"cluster_queue", "status", "replica_role"}, extraLabels...),
+	))
+	trackGaugeVec(PendingWorkloadMaxWaitTimeSeconds, gaugeCleanupScopeClusterQueue)
+
+	PendingWorkloadMeanWaitTimeSeconds = prometheus.NewGaugeVec(
+		prometheus.GaugeOpts{
+			Subsystem: constants.KueueName,
+			Name:      "pending_workload_mean_wait_time_seconds",
+			Help: `The mean time in seconds that pending workloads in the ClusterQueue have been waiting since creation or last requeue (same basis as kueue_admission_wait_time_seconds), per 'status'.
+Zero when there are no workloads in that bucket. 'status' matches kueue_pending_workloads.`,
+		}, append([]string{"cluster_queue", "status", "replica_role"}, extraLabels...),
+	)
+	trackGaugeVec(PendingWorkloadMeanWaitTimeSeconds, gaugeCleanupScopeClusterQueue)
 
 	LocalQueuePendingWorkloads = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
@@ -626,6 +658,17 @@ The label 'reason' can have the following values:
 - "InCohortFairSharing" means that the workload was preempted by a workload in the same cohort Fair Sharing.
 - "InCohortReclaimWhileBorrowing" means that the workload was preempted by a workload in the same cohort due to reclamation of nominal quota while borrowing.`,
 		}, append([]string{"preempting_cluster_queue", "reason", "replica_role"}, extraLabels...),
+	)
+
+	PreemptionEvictionToPendingSeconds = prometheus.NewHistogramVec(
+		prometheus.HistogramOpts{
+			Subsystem: constants.KueueName,
+			Name:      "preemption_eviction_to_pending_seconds",
+			Help: `The time from preemption eviction (WorkloadEvicted with reason Preempted) until the preemptee workload returns to Pending (quota released).
+Observed on status transition from admitted or quota-reserved to pending while still evicted by preemption.
+Uses the eviction condition LastTransitionTime on the updated object as start; cluster_queue is taken from status.admission on the pre-update object when present, otherwise "unknown".`,
+			Buckets: generateExponentialBuckets(14),
+		}, append([]string{"cluster_queue", "replica_role"}, extraLabels...),
 	)
 
 	ReservingActiveWorkloads = prometheus.NewGaugeVec(
@@ -913,6 +956,33 @@ func ReportPendingWorkloads(cqName kueue.ClusterQueueReference, active, inadmiss
 	PendingWorkloads.WithLabelValues(inadmissibleLabels...).Set(float64(inadmissible))
 }
 
+// ReportPendingWorkloadWaitTimes sets max and mean queued-wait time (seconds) for pending workloads
+// per status bucket, matching kueue_pending_workloads partitioning.
+func ReportPendingWorkloadWaitTimes(
+	cqName kueue.ClusterQueueReference,
+	activeMaxWait, activeMeanWait, inadmissibleMaxWait, inadmissibleMeanWait float64,
+	customLabelValues []string,
+	tracker *roletracker.RoleTracker,
+) {
+	role := roletracker.GetRole(tracker)
+	activeLabels := append([]string{string(cqName), PendingStatusActive, role}, customLabelValues...)
+	inadmissibleLabels := append([]string{string(cqName), PendingStatusInadmissible, role}, customLabelValues...)
+	PendingWorkloadMaxWaitTimeSeconds.WithLabelValues(activeLabels...).Set(activeMaxWait)
+	PendingWorkloadMeanWaitTimeSeconds.WithLabelValues(activeLabels...).Set(activeMeanWait)
+	PendingWorkloadMaxWaitTimeSeconds.WithLabelValues(inadmissibleLabels...).Set(inadmissibleMaxWait)
+	PendingWorkloadMeanWaitTimeSeconds.WithLabelValues(inadmissibleLabels...).Set(inadmissibleMeanWait)
+}
+
+// ReportPreemptionEvictionToPendingTime records latency from preemption eviction until the preemptee workload returns to Pending (quota released).
+func ReportPreemptionEvictionToPendingTime(cqName kueue.ClusterQueueReference, latency time.Duration, customLabelValues []string, tracker *roletracker.RoleTracker) {
+	labels := append([]string{string(cqName), roletracker.GetRole(tracker)}, customLabelValues...)
+	seconds := latency.Seconds()
+	if seconds < 0 {
+		seconds = 0
+	}
+	PreemptionEvictionToPendingSeconds.WithLabelValues(labels...).Observe(seconds)
+}
+
 func ReportLocalQueuePendingWorkloads(lq LocalQueueReference, active, inadmissible int, customLabelValues []string, tracker *roletracker.RoleTracker) {
 	role := roletracker.GetRole(tracker)
 	activeLabels := append([]string{string(lq.Name), lq.Namespace, PendingStatusActive, role}, customLabelValues...)
@@ -968,6 +1038,7 @@ func ClearClusterQueueMetrics(cq kueue.ClusterQueueReference) {
 	EvictedWorkloadsTotal.DeletePartialMatch(prometheus.Labels{"cluster_queue": cqName})
 	EvictedWorkloadsOnceTotal.DeletePartialMatch(prometheus.Labels{"cluster_queue": cqName})
 	PreemptedWorkloadsTotal.DeletePartialMatch(prometheus.Labels{"preempting_cluster_queue": cqName})
+	PreemptionEvictionToPendingSeconds.DeletePartialMatch(prometheus.Labels{"cluster_queue": cqName})
 }
 
 func ClearClusterQueueMetricsOnLabelChange(cq kueue.ClusterQueueReference) {
@@ -1229,6 +1300,8 @@ func Register() {
 		admissionAttemptDuration,
 		AdmissionCyclePreemptionSkips,
 		PendingWorkloads,
+		PendingWorkloadMaxWaitTimeSeconds,
+		PendingWorkloadMeanWaitTimeSeconds,
 		FinishedWorkloads,
 		QuotaReservedWorkloadsTotal,
 		FinishedWorkloadsTotal,
@@ -1242,6 +1315,7 @@ func Register() {
 		EvictedWorkloadsTotal,
 		EvictedWorkloadsOnceTotal,
 		PreemptedWorkloadsTotal,
+		PreemptionEvictionToPendingSeconds,
 		ReservingActiveWorkloads,
 		AdmittedActiveWorkloads,
 		ClusterQueueByStatus,
