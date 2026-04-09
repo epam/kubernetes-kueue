@@ -485,7 +485,7 @@ func (c *Cache) UpdateClusterQueue(log logr.Logger, cq *kueue.ClusterQueue) erro
 		return err
 	}
 	if oldParent != nil && oldParent != cqImpl.Parent() {
-		c.clearMetricsForImplicitCohort(oldParent)
+		c.clearMetricsForImplicitCohort(oldParent.Name)
 	}
 	for _, qImpl := range cqImpl.localQueues {
 		if qImpl == nil {
@@ -522,7 +522,7 @@ func (c *Cache) DeleteClusterQueue(cq *kueue.ClusterQueue) {
 	if parent != nil {
 		// Update cohort resources after deletion
 		updateCohortTreeResourcesIfNoCycle(parent)
-		c.clearMetricsForImplicitCohort(parent)
+		c.clearMetricsForImplicitCohort(parent.Name)
 	}
 }
 
@@ -539,7 +539,7 @@ func (c *Cache) AddOrUpdateCohort(apiCohort *kueue.Cohort) error {
 		return err
 	}
 	if oldParent != nil && oldParent.Name != kueue.CohortReference(apiCohort.Name) {
-		c.clearMetricsForImplicitCohort(oldParent)
+		c.clearMetricsForImplicitCohort(oldParent.Name)
 	}
 	return nil
 }
@@ -556,7 +556,9 @@ func (c *Cache) DeleteCohort(cohortName kueue.CohortReference) {
 	}
 
 	c.hm.DeleteCohort(cohortName)
-	c.clearMetricsForImplicitCohort(parent)
+	if parent != nil {
+		c.clearMetricsForImplicitCohort(parent.Name)
+	}
 
 	// If the cohort still exists after deletion, it means
 	// that it has one or more children referencing it.
@@ -566,10 +568,13 @@ func (c *Cache) DeleteCohort(cohortName kueue.CohortReference) {
 	}
 }
 
-func (c *Cache) clearMetricsForImplicitCohort(parent *cohort) {
-	if parent != nil && !parent.HasParent() && !parent.IsExplicit() && !parent.hasCQInSubtree() {
-		metrics.ClearCohortAdmittedWorkloadsMetrics(parent.Name)
+func (c *Cache) clearMetricsForImplicitCohort(parentName kueue.CohortReference) {
+	parent := c.hm.Cohort(parentName)
+	if parent != nil && (parent.HasParent() || parent.IsExplicit() ||
+		len(parent.ChildCohorts()) > 0 || len(parent.ChildCQs()) > 0) {
+		return
 	}
+	metrics.ClearCohortAdmittedWorkloadsMetrics(parentName)
 }
 
 func (c *Cache) AddLocalQueue(q *kueue.LocalQueue) error {
