@@ -150,7 +150,13 @@ test-multikueue-e2e-parallel-builds:
 	$(MAKE) -j2 kind-ray-project-mini-image-build kind-secretreader-plugin-image-build
 
 .PHONY: test-multikueue-e2e
-test-multikueue-e2e: setup-e2e-env test-multikueue-e2e-parallel-builds run-test-multikueue-e2e-$(E2E_KIND_VERSION:kindest/node:v%=%)
+test-multikueue-e2e: test-multikueue-e2e-main test-multikueue-e2e-sequential
+
+.PHONY: test-multikueue-e2e-main
+test-multikueue-e2e-main: setup-e2e-env test-multikueue-e2e-parallel-builds run-test-multikueue-e2e-$(E2E_KIND_VERSION:kindest/node:v%=%)
+
+.PHONY: test-multikueue-e2e-sequential
+test-multikueue-e2e-sequential: setup-e2e-env run-test-e2e-multikueue-sequential-$(E2E_KIND_VERSION:kindest/node:v%=%)
 
 .PHONY: test-multikueue-e2e-helm
 test-multikueue-e2e-helm: E2E_USE_HELM=true
@@ -227,8 +233,6 @@ run-test-multikueue-e2e-%:
 		KUBERAY_VERSION=$(KUBERAY_VERSION) RAY_VERSION=$(RAY_VERSION) RAYMINI_VERSION=$(RAYMINI_VERSION) USE_RAY_FOR_TESTS=$(USE_RAY_FOR_TESTS) \
 		KUBEFLOW_TRAINER_VERSION=$(KUBEFLOW_TRAINER_VERSION) \
 		LEADERWORKERSET_VERSION=$(LEADERWORKERSET_VERSION) \
-		CLUSTERPROFILE_VERSION=$(CLUSTERPROFILE_VERSION) \
-		CLUSTERPROFILE_PLUGIN_IMAGE_VERSION=$(CLUSTERPROFILE_PLUGIN_IMAGE_VERSION) \
 		TEST_LOG_LEVEL=$(TEST_LOG_LEVEL) \
 		E2E_RUN_ONLY_ENV=$(E2E_RUN_ONLY_ENV) \
 		E2E_USE_HELM=$(E2E_USE_HELM) \
@@ -341,6 +345,22 @@ run-test-e2e-multikueue-dra-%:
 		E2E_TARGET_FOLDER="multikueue-dra" \
 		TEST_LOG_LEVEL=$(TEST_LOG_LEVEL) \
 		E2E_RUN_ONLY_ENV=$(E2E_RUN_ONLY_ENV) \
+		./hack/testing/e2e-multikueue-test.sh
+
+run-test-e2e-multikueue-sequential-%: K8S_VERSION = $(@:run-test-e2e-multikueue-sequential-%=%)
+run-test-e2e-multikueue-sequential-%:
+	@echo Running multikueue sequential suite of e2e tests for k8s ${K8S_VERSION}
+	E2E_KIND_VERSION="kindest/node:v$(K8S_VERSION)" KIND_CLUSTER_NAME=$(KIND_CLUSTER_NAME) \
+		ARTIFACTS="$(ARTIFACTS)/$@" IMAGE_TAG=$(IMAGE_TAG) GINKGO_ARGS="$(E2E_GINKGO_ARGS)" \
+		E2E_MODE=$(E2E_MODE) \
+		E2E_SKIP_REINSTALL=$(E2E_SKIP_REINSTALL) \
+		E2E_ENFORCE_OPERATOR_UPDATE=$(E2E_ENFORCE_OPERATOR_UPDATE) \
+		E2E_TARGET_FOLDER="multikueue-sequential" \
+		TEST_LOG_LEVEL=$(TEST_LOG_LEVEL) \
+		CLUSTERPROFILE_VERSION=$(CLUSTERPROFILE_VERSION) \
+		CLUSTERPROFILE_PLUGIN_IMAGE_VERSION=$(CLUSTERPROFILE_PLUGIN_IMAGE_VERSION) \
+		E2E_RUN_ONLY_ENV=$(E2E_RUN_ONLY_ENV) \
+		E2E_USE_HELM=$(E2E_USE_HELM) \
 		./hack/testing/e2e-multikueue-test.sh
 
 # Run e2e tests against k/k main (latest CI build) with WAS enabled
