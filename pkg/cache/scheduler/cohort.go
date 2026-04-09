@@ -18,9 +18,6 @@ package scheduler
 
 import (
 	"iter"
-	"sync/atomic"
-
-	"k8s.io/utils/ptr"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
 	"sigs.k8s.io/kueue/pkg/cache/hierarchy"
@@ -36,10 +33,6 @@ type cohort struct {
 	FairWeight float64
 
 	admittedWorkloadsCount int
-
-	// hasCQInSubtreeCache caches the result of hasCQInSubtree to avoid O(N) traversal.
-	// nil = not cached, true = has CQ in subtree, false = no CQ in subtree
-	hasCQInSubtreeCache atomic.Pointer[bool]
 }
 
 func newCohort(name kueue.CohortReference) *cohort {
@@ -116,16 +109,6 @@ func (c *cohort) updateAdmittedWorkloadsCount(delta int) {
 }
 
 func (c *cohort) hasCQInSubtree() bool {
-	if val := c.hasCQInSubtreeCache.Load(); val != nil {
-		return *val
-	}
-
-	result := c.computeHasCQInSubtree()
-	c.hasCQInSubtreeCache.Store(ptr.To(result))
-	return result
-}
-
-func (c *cohort) computeHasCQInSubtree() bool {
 	if len(c.ChildCQs()) > 0 {
 		return true
 	}
@@ -135,14 +118,4 @@ func (c *cohort) computeHasCQInSubtree() bool {
 		}
 	}
 	return false
-}
-
-// invalidateHasCQInSubtreeCache invalidates the cache for this cohort and all ancestors
-func (c *cohort) invalidateHasCQInSubtreeCache() {
-	if hierarchy.HasCycle(c) {
-		return
-	}
-	for ancestor := range c.PathSelfToRoot() {
-		ancestor.hasCQInSubtreeCache.Store(nil)
-	}
 }

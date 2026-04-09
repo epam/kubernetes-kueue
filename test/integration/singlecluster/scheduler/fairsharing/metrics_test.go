@@ -647,7 +647,7 @@ var _ = ginkgo.Describe("Cohorts", func() {
 			})
 		})
 
-		ginkgo.It("should clear metrics for implicit root Cohort after deletion child Cohort", func() {
+		ginkgo.It("should clear metrics for an implicit root Cohort after deleting a child Cohort", func() {
 			ginkgo.By("Creating Cohorts", func() {
 				createCohort(utiltestingapi.MakeCohort("ch1").
 					Parent("root").
@@ -731,7 +731,7 @@ var _ = ginkgo.Describe("Cohorts", func() {
 			})
 		})
 
-		ginkgo.It("should clear metrics for implicit root Cohort after deletion ClusterQueue", func() {
+		ginkgo.It("should clear metrics for an implicit root Cohort, and keep them for an explicit child Cohort after deleting the ClusterQueue", func() {
 			ginkgo.By("Creating Cohorts", func() {
 				createCohort(utiltestingapi.MakeCohort("ch1").
 					Parent("root").
@@ -803,7 +803,7 @@ var _ = ginkgo.Describe("Cohorts", func() {
 
 			util.ExpectAdmittedWorkloadsTotalMetric(cq1, "", 0)
 			util.ExpectAdmittedActiveWorkloadsGaugeMetric("cq1", 0)
-			util.ExpectCohortSubtreeAdmittedWorkloadsTotalMetric("ch1", "", 0)
+			util.ExpectCohortSubtreeAdmittedWorkloadsTotalMetric("ch1", "", 5)
 			util.ExpectCohortSubtreeAdmittedWorkloadsTotalMetric("root", "", 0)
 			util.ExpectCohortSubtreeAdmittedActiveWorkloadsGaugeMetric("root", 0)
 			util.ExpectCohortSubtreeAdmittedActiveWorkloadsGaugeMetric("ch1", 0)
