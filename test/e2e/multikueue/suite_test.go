@@ -248,9 +248,63 @@ func TestAPIs(t *testing.T) {
 	)
 }
 
-var _ = ginkgo.BeforeSuite(func() {
-	util.SetupLogger()
+var _ = ginkgo.SynchronizedBeforeSuite(
+	func() {
+		util.SetupLogger()
 
+		initClusterClients()
+		createSharedMultiKueueSecrets(context.Background())
+	},
+	func() {
+		util.SetupLogger()
+
+		initClusterClients()
+		ctx = ginkgo.GinkgoT().Context()
+
+		waitForAvailableStart := time.Now()
+		util.WaitForKueueAvailability(ctx, k8sManagerClient)
+		util.WaitForKueueAvailability(ctx, k8sWorker1Client)
+		util.WaitForKueueAvailability(ctx, k8sWorker2Client)
+
+		util.WaitForJobSetAvailability(ctx, k8sManagerClient)
+		util.WaitForJobSetAvailability(ctx, k8sWorker1Client)
+		util.WaitForJobSetAvailability(ctx, k8sWorker2Client)
+
+		util.WaitForKubeFlowTrainingOperatorAvailability(ctx, k8sManagerClient)
+		util.WaitForKubeFlowTrainingOperatorAvailability(ctx, k8sWorker1Client)
+		util.WaitForKubeFlowTrainingOperatorAvailability(ctx, k8sWorker2Client)
+
+		util.WaitForKubeFlowMPIOperatorAvailability(ctx, k8sWorker1Client)
+		util.WaitForKubeFlowMPIOperatorAvailability(ctx, k8sWorker2Client)
+
+		util.WaitForAppWrapperAvailability(ctx, k8sManagerClient)
+		util.WaitForAppWrapperAvailability(ctx, k8sWorker1Client)
+		util.WaitForAppWrapperAvailability(ctx, k8sWorker2Client)
+
+		util.WaitForKubeRayOperatorAvailability(ctx, k8sManagerClient)
+		util.WaitForKubeRayOperatorAvailability(ctx, k8sWorker1Client)
+		util.WaitForKubeRayOperatorAvailability(ctx, k8sWorker2Client)
+
+		ginkgo.GinkgoLogr.Info(
+			"Kueue and all required operators are available in all the clusters",
+			"waitingTime", time.Since(waitForAvailableStart),
+		)
+
+		discoveryClient, err := discovery.NewDiscoveryClientForConfig(managerCfg)
+		gomega.Expect(err).NotTo(gomega.HaveOccurred())
+		managerK8SVersion, err = kubeversion.FetchServerVersion(discoveryClient)
+		gomega.Expect(err).NotTo(gomega.HaveOccurred())
+	},
+)
+
+var _ = ginkgo.SynchronizedAfterSuite(
+	func() {},
+	func() {
+		cleanupSharedMultiKueueSecrets(context.Background())
+	},
+)
+
+func initClusterClients() {
 	managerClusterName = cmp.Or(os.Getenv("MANAGER_KIND_CLUSTER_NAME"), "kind-manager")
 	worker1ClusterName = cmp.Or(os.Getenv("WORKER1_KIND_CLUSTER_NAME"), "kind-worker1")
 	worker2ClusterName = cmp.Or(os.Getenv("WORKER2_KIND_CLUSTER_NAME"), "kind-worker2")
@@ -266,9 +320,10 @@ var _ = ginkgo.BeforeSuite(func() {
 	managerRestClient = util.CreateRestClient(managerCfg)
 	worker1RestClient = util.CreateRestClient(worker1Cfg)
 	worker2RestClient = util.CreateRestClient(worker2Cfg)
+}
 
-	ctx = ginkgo.GinkgoT().Context()
-
+func createSharedMultiKueueSecrets(ctx context.Context) {
+	var err error
 	worker1KConfig, err = kubeconfigForMultiKueueSA(ctx, k8sWorker1Client, worker1Cfg, kueueNS, "mksa", worker1ClusterName)
 	gomega.Expect(err).NotTo(gomega.HaveOccurred())
 	gomega.Expect(makeMultiKueueSecret(ctx, k8sManagerClient, kueueNS, "multikueue1", worker1KConfig)).To(gomega.Succeed())
@@ -276,48 +331,14 @@ var _ = ginkgo.BeforeSuite(func() {
 	worker2KConfig, err = kubeconfigForMultiKueueSA(ctx, k8sWorker2Client, worker2Cfg, kueueNS, "mksa", worker2ClusterName)
 	gomega.Expect(err).NotTo(gomega.HaveOccurred())
 	gomega.Expect(makeMultiKueueSecret(ctx, k8sManagerClient, kueueNS, "multikueue2", worker2KConfig)).To(gomega.Succeed())
+}
 
-	waitForAvailableStart := time.Now()
-	util.WaitForKueueAvailability(ctx, k8sManagerClient)
-	util.WaitForKueueAvailability(ctx, k8sWorker1Client)
-	util.WaitForKueueAvailability(ctx, k8sWorker2Client)
-
-	util.WaitForJobSetAvailability(ctx, k8sManagerClient)
-	util.WaitForJobSetAvailability(ctx, k8sWorker1Client)
-	util.WaitForJobSetAvailability(ctx, k8sWorker2Client)
-
-	util.WaitForKubeFlowTrainingOperatorAvailability(ctx, k8sManagerClient)
-	util.WaitForKubeFlowTrainingOperatorAvailability(ctx, k8sWorker1Client)
-	util.WaitForKubeFlowTrainingOperatorAvailability(ctx, k8sWorker2Client)
-
-	util.WaitForKubeFlowMPIOperatorAvailability(ctx, k8sWorker1Client)
-	util.WaitForKubeFlowMPIOperatorAvailability(ctx, k8sWorker2Client)
-
-	util.WaitForAppWrapperAvailability(ctx, k8sManagerClient)
-	util.WaitForAppWrapperAvailability(ctx, k8sWorker1Client)
-	util.WaitForAppWrapperAvailability(ctx, k8sWorker2Client)
-
-	util.WaitForKubeRayOperatorAvailability(ctx, k8sManagerClient)
-	util.WaitForKubeRayOperatorAvailability(ctx, k8sWorker1Client)
-	util.WaitForKubeRayOperatorAvailability(ctx, k8sWorker2Client)
-
-	ginkgo.GinkgoLogr.Info(
-		"Kueue and all required operators are available in all the clusters",
-		"waitingTime", time.Since(waitForAvailableStart),
-	)
-	discoveryClient, err := discovery.NewDiscoveryClientForConfig(managerCfg)
-	gomega.Expect(err).NotTo(gomega.HaveOccurred())
-	managerK8SVersion, err = kubeversion.FetchServerVersion(discoveryClient)
-	gomega.Expect(err).NotTo(gomega.HaveOccurred())
-})
-
-var _ = ginkgo.AfterSuite(func() {
-	gomega.Expect(cleanKubeconfigForMultiKueueSA(ctx, k8sWorker1Client, kueueNS, "mksa")).To(gomega.Succeed())
-	gomega.Expect(cleanKubeconfigForMultiKueueSA(ctx, k8sWorker2Client, kueueNS, "mksa")).To(gomega.Succeed())
-
-	gomega.Expect(cleanMultiKueueSecret(ctx, k8sManagerClient, kueueNS, "multikueue1")).To(gomega.Succeed())
-	gomega.Expect(cleanMultiKueueSecret(ctx, k8sManagerClient, kueueNS, "multikueue2")).To(gomega.Succeed())
-})
+func cleanupSharedMultiKueueSecrets(ctx context.Context) {
+	gomega.Expect(cleanMultiKueueSecret(ctx, k8sManagerClient, kueueNS, "multikueue1")).NotTo(gomega.HaveOccurred())
+	gomega.Expect(cleanMultiKueueSecret(ctx, k8sManagerClient, kueueNS, "multikueue2")).NotTo(gomega.HaveOccurred())
+	gomega.Expect(cleanKubeconfigForMultiKueueSA(ctx, k8sWorker1Client, kueueNS, "mksa")).NotTo(gomega.HaveOccurred())
+	gomega.Expect(cleanKubeconfigForMultiKueueSA(ctx, k8sWorker2Client, kueueNS, "mksa")).NotTo(gomega.HaveOccurred())
+}
 
 var _ = ginkgo.ReportAfterSuite("Generate JUnit Report", func(report ginkgo.Report) {
 	err := util.ConfigureSuiteReporting(report)

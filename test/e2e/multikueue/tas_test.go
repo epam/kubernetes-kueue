@@ -78,31 +78,34 @@ var _ = ginkgo.Describe("MultiKueue with TopologyAwareScheduling", func() {
 		worker1Ns = util.CreateNamespaceWithLog(ctx, k8sWorker1Client, managerNs.Name)
 		worker2Ns = util.CreateNamespaceWithLog(ctx, k8sWorker2Client, managerNs.Name)
 
-		workerCluster1 = utiltestingapi.MakeMultiKueueCluster("worker1").KubeConfig(kueue.SecretLocationType, "multikueue1").Obj()
+		workerCluster1 = utiltestingapi.MakeMultiKueueClusterWithGeneratedName("worker1-").KubeConfig(kueue.SecretLocationType, "multikueue1").Obj()
 		util.MustCreate(ctx, k8sManagerClient, workerCluster1)
 
-		workerCluster2 = utiltestingapi.MakeMultiKueueCluster("worker2").KubeConfig(kueue.SecretLocationType, "multikueue2").Obj()
+		workerCluster2 = utiltestingapi.MakeMultiKueueClusterWithGeneratedName("worker2-").KubeConfig(kueue.SecretLocationType, "multikueue2").Obj()
 		util.MustCreate(ctx, k8sManagerClient, workerCluster2)
 
-		multiKueueConfig = utiltestingapi.MakeMultiKueueConfig("multikueueconfig").Clusters("worker1", "worker2").Obj()
+		multiKueueConfig = utiltestingapi.MakeMultiKueueConfigWithGeneratedName("multikueueconfig-").Clusters(workerCluster1.Name, workerCluster2.Name).Obj()
 		util.MustCreate(ctx, k8sManagerClient, multiKueueConfig)
 
-		multiKueueAc = utiltestingapi.MakeAdmissionCheck("ac1").
+		multiKueueAc = utiltestingapi.MakeAdmissionCheck("").
+			GeneratedName("ac1-").
 			ControllerName(kueue.MultiKueueControllerName).
 			Parameters(kueue.GroupVersion.Group, "MultiKueueConfig", multiKueueConfig.Name).
 			Obj()
 		util.CreateAdmissionChecksAndWaitForActive(ctx, k8sManagerClient, multiKueueAc)
 
-		managerTopology = utiltestingapi.MakeTopology("default").Levels(corev1.LabelHostname).Obj()
+		managerTopology = utiltestingapi.MakeTopology("default-" + managerNs.Name).Levels(corev1.LabelHostname).Obj()
 		util.MustCreate(ctx, k8sManagerClient, managerTopology)
 
-		managerFlavor = utiltestingapi.MakeResourceFlavor("tas-flavor").
+		managerFlavor = utiltestingapi.MakeResourceFlavor("").
+			GeneratedName("tas-flavor-").
 			NodeLabel(tasNodeGroupLabel, instanceType).
 			TopologyName(managerTopology.Name).
 			Obj()
 		util.MustCreate(ctx, k8sManagerClient, managerFlavor)
 
-		managerCq = utiltestingapi.MakeClusterQueue("q1").
+		managerCq = utiltestingapi.MakeClusterQueue("").
+			GeneratedName("q1-").
 			ResourceGroup(
 				*utiltestingapi.MakeFlavorQuotas(managerFlavor.Name).
 					Resource(corev1.ResourceCPU, "8").
@@ -116,16 +119,16 @@ var _ = ginkgo.Describe("MultiKueue with TopologyAwareScheduling", func() {
 		managerLq = utiltestingapi.MakeLocalQueue(managerCq.Name, managerNs.Name).ClusterQueue(managerCq.Name).Obj()
 		util.CreateLocalQueuesAndWaitForActive(ctx, k8sManagerClient, managerLq)
 
-		worker1Topology = utiltestingapi.MakeTopology("default").Levels(corev1.LabelHostname).Obj()
+		worker1Topology = utiltestingapi.MakeTopology("default-" + worker1Ns.Name).Levels(corev1.LabelHostname).Obj()
 		util.MustCreate(ctx, k8sWorker1Client, worker1Topology)
 
-		worker1Flavor = utiltestingapi.MakeResourceFlavor("tas-flavor").
+		worker1Flavor = utiltestingapi.MakeResourceFlavor(managerFlavor.Name).
 			NodeLabel(tasNodeGroupLabel, instanceType).
 			TopologyName(worker1Topology.Name).
 			Obj()
 		util.MustCreate(ctx, k8sWorker1Client, worker1Flavor)
 
-		worker1Cq = utiltestingapi.MakeClusterQueue("q1").
+		worker1Cq = utiltestingapi.MakeClusterQueue(managerCq.Name).
 			ResourceGroup(
 				*utiltestingapi.MakeFlavorQuotas(worker1Flavor.Name).
 					Resource(corev1.ResourceCPU, "8").
@@ -138,16 +141,16 @@ var _ = ginkgo.Describe("MultiKueue with TopologyAwareScheduling", func() {
 		worker1Lq = utiltestingapi.MakeLocalQueue(worker1Cq.Name, worker1Ns.Name).ClusterQueue(worker1Cq.Name).Obj()
 		util.CreateLocalQueuesAndWaitForActive(ctx, k8sWorker1Client, worker1Lq)
 
-		worker2Topology = utiltestingapi.MakeTopology("default").Levels(corev1.LabelHostname).Obj()
+		worker2Topology = utiltestingapi.MakeTopology("default-" + worker2Ns.Name).Levels(corev1.LabelHostname).Obj()
 		util.MustCreate(ctx, k8sWorker2Client, worker2Topology)
 
-		worker2Flavor = utiltestingapi.MakeResourceFlavor("tas-flavor").
+		worker2Flavor = utiltestingapi.MakeResourceFlavor(managerFlavor.Name).
 			NodeLabel(tasNodeGroupLabel, instanceType).
 			TopologyName(worker2Topology.Name).
 			Obj()
 		util.MustCreate(ctx, k8sWorker2Client, worker2Flavor)
 
-		worker2Cq = utiltestingapi.MakeClusterQueue("q1").
+		worker2Cq = utiltestingapi.MakeClusterQueue(managerCq.Name).
 			ResourceGroup(
 				*utiltestingapi.MakeFlavorQuotas(worker2Flavor.Name).
 					Resource(corev1.ResourceCPU, "4").

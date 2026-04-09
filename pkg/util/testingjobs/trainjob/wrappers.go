@@ -150,6 +150,13 @@ func (t *TrainJobWrapper) JobsStatus(statuses ...kftrainerapi.JobStatus) *TrainJ
 	return t
 }
 
+// RequestAndLimit adds a resource request and limit to the Trainer node for the given resource name.
+func (t *TrainJobWrapper) RequestAndLimit(r corev1.ResourceName, request, limit string) *TrainJobWrapper {
+	t.Spec.Trainer.ResourcesPerNode.Requests[r] = resource.MustParse(request)
+	t.Spec.Trainer.ResourcesPerNode.Limits[r] = resource.MustParse(limit)
+	return t
+}
+
 // MakeClusterTrainingRuntime creates a ClusterTrainingRuntime with the jobsetSpec provided
 func MakeClusterTrainingRuntime(name string, jobsetSpec jobsetapi.JobSetSpec) *kftrainerapi.ClusterTrainingRuntime {
 	return &kftrainerapi.ClusterTrainingRuntime{
