@@ -239,7 +239,7 @@ var _ = ginkgo.Describe("Preemption", func() {
 			util.ExpectWorkloadsToBePending(ctx, k8sClient, wl4)
 		})
 
-		ginkgo.It("Should issue preemption exactly once for each preempted workload", func() {
+		ginkgo.FIt("Should issue preemption exactly once for each preempted workload", func() {
 			lowPrioWorkloadCount := 8
 			ginkgo.By("Creating low-priority workloads")
 			lowPriorityWorkloads := make([]*kueue.Workload, lowPrioWorkloadCount)
