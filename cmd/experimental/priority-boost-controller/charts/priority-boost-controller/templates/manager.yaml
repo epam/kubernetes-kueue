@@ -48,6 +48,13 @@ data:
   controller_manager_config.yaml: |
     minAdmitDuration: {{ .Values.priorityBoostController.config.minAdmitDuration | quote }}
     boostValue: {{ .Values.priorityBoostController.config.boostValue }}
+{{- if .Values.priorityBoostController.config.workloadSelector }}
+    workloadSelector:
+{{ toYaml .Values.priorityBoostController.config.workloadSelector | nindent 6 }}
+{{- end }}
+{{- if hasKey .Values.priorityBoostController.config "maxWorkloadPriority" }}
+    maxWorkloadPriority: {{ index .Values.priorityBoostController.config "maxWorkloadPriority" }}
+{{- end }}
 ---
 apiVersion: apps/v1
 kind: Deployment

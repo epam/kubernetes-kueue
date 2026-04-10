@@ -83,6 +83,8 @@ func start(configFile string) error {
 		mgr.GetEventRecorderFor("priority-boost-controller"),
 		controller.WithMinAdmitDuration(cfg.MinAdmitDuration),
 		controller.WithBoostValue(cfg.BoostValue),
+		controller.WithWorkloadSelector(cfg.WorkloadSelector),
+		controller.WithMaxWorkloadPriority(cfg.MaxWorkloadPriority),
 	)
 
 	if err = reconciler.SetupWithManager(mgr); err != nil {

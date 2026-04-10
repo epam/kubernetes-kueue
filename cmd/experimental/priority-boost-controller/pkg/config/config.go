@@ -21,20 +21,31 @@ import (
 	"os"
 	"time"
 
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/labels"
 	"sigs.k8s.io/yaml"
 )
 
 // Configuration defines the configuration for the priority-boost-controller.
 type Configuration struct {
 	// MinAdmitDuration is the minimum time a workload must be admitted before
-	// it can be preempted by same-priority workloads. Set to "0" to disable
-	// time-sharing protection. Examples: "30m", "1h".
+	// a post-window preemption signal applies. Set to "0" to disable.
+	// Examples: "30m", "1h".
 	MinAdmitDuration string `json:"minAdmitDuration,omitempty"`
 
-	// BoostValue is the priority boost applied to an admitted workload during
-	// the MinAdmitDuration protection window. Must be large enough that
-	// same-base-priority pending workloads cannot preempt the protected workload.
+	// BoostValue is the magnitude of the negative priority-boost applied after
+	// MinAdmitDuration while the workload remains admitted (see README).
 	BoostValue int32 `json:"boostValue,omitempty"`
+
+	// WorkloadSelector, if set, limits which workloads the controller manages.
+	// Workloads whose labels do not match are left with no annotation (any
+	// existing annotation is cleared).
+	WorkloadSelector *metav1.LabelSelector `json:"workloadSelector,omitempty"`
+
+	// MaxWorkloadPriority, if set, excludes workloads with Spec.Priority greater
+	// than this value (nil Spec.Priority is treated as 0). Excluded workloads
+	// have any priority-boost annotation cleared.
+	MaxWorkloadPriority *int32 `json:"maxWorkloadPriority,omitempty"`
 }
 
 // Default returns the default configuration.
@@ -47,8 +58,10 @@ func Default() Configuration {
 
 // ParsedConfiguration holds the parsed, ready-to-use form of Configuration.
 type ParsedConfiguration struct {
-	MinAdmitDuration time.Duration
-	BoostValue       int32
+	MinAdmitDuration    time.Duration
+	BoostValue          int32
+	WorkloadSelector    labels.Selector
+	MaxWorkloadPriority *int32
 }
 
 // Parse converts a Configuration into a ParsedConfiguration.
@@ -61,10 +74,22 @@ func Parse(cfg Configuration) (*ParsedConfiguration, error) {
 		}
 		minAdmitDuration = d
 	}
-	return &ParsedConfiguration{
-		MinAdmitDuration: minAdmitDuration,
-		BoostValue:       cfg.BoostValue,
-	}, nil
+
+	out := &ParsedConfiguration{
+		MinAdmitDuration:    minAdmitDuration,
+		BoostValue:          cfg.BoostValue,
+		MaxWorkloadPriority: cfg.MaxWorkloadPriority,
+	}
+
+	if cfg.WorkloadSelector != nil {
+		sel, err := metav1.LabelSelectorAsSelector(cfg.WorkloadSelector)
+		if err != nil {
+			return nil, fmt.Errorf("invalid workloadSelector: %w", err)
+		}
+		out.WorkloadSelector = sel
+	}
+
+	return out, nil
 }
 
 // Load reads the configuration from the given file path.

@@ -55,7 +55,6 @@ func admittedWorkload(admittedAt time.Time) *kueue.Workload {
 	}
 }
 
-// TestComputeBoost_NotAdmitted: workload has no Admitted condition — no boost.
 func TestComputeBoost_NotAdmitted(t *testing.T) {
 	r := &PriorityBoostReconciler{
 		minAdmitDuration: 30 * time.Minute,
@@ -71,7 +70,6 @@ func TestComputeBoost_NotAdmitted(t *testing.T) {
 	}
 }
 
-// TestComputeBoost_AdmittedFalse: workload Admitted=False — no boost.
 func TestComputeBoost_AdmittedFalse(t *testing.T) {
 	r := &PriorityBoostReconciler{
 		minAdmitDuration: 30 * time.Minute,
@@ -98,7 +96,6 @@ func TestComputeBoost_AdmittedFalse(t *testing.T) {
 	}
 }
 
-// TestComputeBoost_WithinWindow: admitted 5 min ago, window=30m → boost=boostValue, requeue ~25m.
 func TestComputeBoost_WithinWindow(t *testing.T) {
 	const boostValue = int32(100000)
 	const window = 30 * time.Minute
@@ -110,10 +107,9 @@ func TestComputeBoost_WithinWindow(t *testing.T) {
 	}
 	wl := admittedWorkload(admittedAt)
 	boost, requeueAfter := r.computeBoost(wl)
-	if boost != boostValue {
-		t.Errorf("expected boost=%d, got %d", boostValue, boost)
+	if boost != 0 {
+		t.Errorf("expected boost=0 during window, got %d", boost)
 	}
-	// requeueAfter should be approximately 25 minutes (within a small tolerance)
 	expectedRemaining := window - 5*time.Minute
 	tolerance := 2 * time.Second
 	if requeueAfter < expectedRemaining-tolerance || requeueAfter > expectedRemaining+tolerance {
@@ -121,23 +117,22 @@ func TestComputeBoost_WithinWindow(t *testing.T) {
 	}
 }
 
-// TestComputeBoost_WindowExpired: admitted 31 min ago, window=30m → no boost.
-func TestComputeBoost_WindowExpired(t *testing.T) {
+func TestComputeBoost_WindowExpired_NegativeBoost(t *testing.T) {
+	const boostValue = int32(100000)
 	r := &PriorityBoostReconciler{
 		minAdmitDuration: 30 * time.Minute,
-		boostValue:       100000,
+		boostValue:       boostValue,
 	}
 	wl := admittedWorkload(time.Now().Add(-31 * time.Minute))
 	boost, requeueAfter := r.computeBoost(wl)
-	if boost != 0 {
-		t.Errorf("expected boost=0, got %d", boost)
+	if want := -boostValue; boost != want {
+		t.Errorf("expected boost=%d, got %d", want, boost)
 	}
 	if requeueAfter != 0 {
 		t.Errorf("expected requeueAfter=0, got %v", requeueAfter)
 	}
 }
 
-// TestComputeBoost_Disabled: minAdmitDuration=0 (disabled) → no boost regardless of admit time.
 func TestComputeBoost_Disabled(t *testing.T) {
 	r := &PriorityBoostReconciler{
 		minAdmitDuration: 0,
@@ -153,9 +148,8 @@ func TestComputeBoost_Disabled(t *testing.T) {
 	}
 }
 
-// TestReconcile_SetsBoostAnnotation: reconcile on a fresh admitted workload sets the annotation.
-func TestReconcile_SetsBoostAnnotation(t *testing.T) {
-	ctx := context.Background()
+func TestReconcile_WithinWindow_NoAnnotation(t *testing.T) {
+	ctx := t.Context()
 	scheme := runtime.NewScheme()
 	if err := kueue.AddToScheme(scheme); err != nil {
 		t.Fatalf("Failed adding kueue to scheme: %v", err)
@@ -180,14 +174,14 @@ func TestReconcile_SetsBoostAnnotation(t *testing.T) {
 	if err := cl.Get(ctx, req, &updated); err != nil {
 		t.Fatalf("Get workload failed: %v", err)
 	}
-	if got := updated.Annotations[constants.PriorityBoostAnnotationKey]; got != "100000" {
-		t.Errorf("expected annotation=%q, got %q", "100000", got)
+	if _, ok := updated.Annotations[constants.PriorityBoostAnnotationKey]; ok {
+		t.Errorf("expected no annotation during window, got %q",
+			updated.Annotations[constants.PriorityBoostAnnotationKey])
 	}
 }
 
-// TestReconcile_ClearsBoostAnnotation: reconcile on an expired-window workload removes annotation.
-func TestReconcile_ClearsBoostAnnotation(t *testing.T) {
-	ctx := context.Background()
+func TestReconcile_AfterWindow_SetsNegativeBoost(t *testing.T) {
+	ctx := t.Context()
 	scheme := runtime.NewScheme()
 	if err := kueue.AddToScheme(scheme); err != nil {
 		t.Fatalf("Failed adding kueue to scheme: %v", err)
@@ -208,30 +202,162 @@ func TestReconcile_ClearsBoostAnnotation(t *testing.T) {
 		t.Fatalf("Reconcile failed: %v", err)
 	}
 	if result.RequeueAfter != 0 {
-		t.Errorf("expected no requeue, got RequeueAfter=%v", result.RequeueAfter)
+		t.Errorf("expected no requeue after window, got RequeueAfter=%v", result.RequeueAfter)
 	}
 
 	var updated kueue.Workload
 	if err := cl.Get(ctx, req, &updated); err != nil {
 		t.Fatalf("Get workload failed: %v", err)
 	}
-	if _, ok := updated.Annotations[constants.PriorityBoostAnnotationKey]; ok {
-		t.Errorf("expected annotation to be absent, but it is present: %q",
-			updated.Annotations[constants.PriorityBoostAnnotationKey])
+	if got, want := updated.Annotations[constants.PriorityBoostAnnotationKey], "-100000"; got != want {
+		t.Errorf("expected annotation=%q, got %q", want, got)
 	}
 }
 
-// TestReconcile_Idempotent: reconcile when annotation already has the correct value makes no patch.
-func TestReconcile_Idempotent(t *testing.T) {
-	ctx := context.Background()
+func TestReconcile_NotAdmitted_ClearsStaleAnnotation(t *testing.T) {
+	ctx := t.Context()
+	scheme := runtime.NewScheme()
+	if err := kueue.AddToScheme(scheme); err != nil {
+		t.Fatalf("Failed adding kueue to scheme: %v", err)
+	}
+
+	wl := &kueue.Workload{
+		ObjectMeta: metav1.ObjectMeta{
+			Name:      "wl-pending",
+			Namespace: "ns",
+			Annotations: map[string]string{
+				constants.PriorityBoostAnnotationKey: "-100000",
+			},
+		},
+	}
+	cl := fake.NewClientBuilder().WithScheme(scheme).WithStatusSubresource(wl).WithObjects(wl).Build()
+	r := NewPriorityBoostReconciler(cl, record.NewFakeRecorder(32),
+		WithMinAdmitDuration(30*time.Minute),
+		WithBoostValue(100000),
+	)
+	req := types.NamespacedName{Name: wl.Name, Namespace: wl.Namespace}
+	if _, err := r.Reconcile(ctx, ctrlRequest(req)); err != nil {
+		t.Fatalf("Reconcile failed: %v", err)
+	}
+	var updated kueue.Workload
+	if err := cl.Get(ctx, req, &updated); err != nil {
+		t.Fatalf("Get workload failed: %v", err)
+	}
+	if _, ok := updated.Annotations[constants.PriorityBoostAnnotationKey]; ok {
+		t.Errorf("expected annotation cleared for pending workload")
+	}
+}
+
+func TestReconcile_OutOfSelector_ClearsAnnotation(t *testing.T) {
+	ctx := t.Context()
+	scheme := runtime.NewScheme()
+	if err := kueue.AddToScheme(scheme); err != nil {
+		t.Fatalf("Failed adding kueue to scheme: %v", err)
+	}
+
+	sel, err := metav1.LabelSelectorAsSelector(&metav1.LabelSelector{
+		MatchLabels: map[string]string{"tier": "batch"},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	wl := admittedWorkload(time.Now().Add(-60 * time.Minute))
+	wl.Labels = map[string]string{"tier": "interactive"}
+	wl.Annotations = map[string]string{
+		constants.PriorityBoostAnnotationKey: "-100000",
+	}
+	cl := fake.NewClientBuilder().WithScheme(scheme).WithStatusSubresource(wl).WithObjects(wl).Build()
+	r := NewPriorityBoostReconciler(cl, record.NewFakeRecorder(32),
+		WithMinAdmitDuration(30*time.Minute),
+		WithBoostValue(100000),
+		WithWorkloadSelector(sel),
+	)
+	req := types.NamespacedName{Name: wl.Name, Namespace: wl.Namespace}
+	if _, err := r.Reconcile(ctx, ctrlRequest(req)); err != nil {
+		t.Fatalf("Reconcile failed: %v", err)
+	}
+	var updated kueue.Workload
+	if err := cl.Get(ctx, req, &updated); err != nil {
+		t.Fatalf("Get workload failed: %v", err)
+	}
+	if _, ok := updated.Annotations[constants.PriorityBoostAnnotationKey]; ok {
+		t.Errorf("expected annotation cleared when out of selector")
+	}
+}
+
+func TestReconcile_AboveMaxPriority_ClearsAnnotation(t *testing.T) {
+	ctx := t.Context()
+	scheme := runtime.NewScheme()
+	if err := kueue.AddToScheme(scheme); err != nil {
+		t.Fatalf("Failed adding kueue to scheme: %v", err)
+	}
+
+	wl := admittedWorkload(time.Now().Add(-60 * time.Minute))
+	prio := int32(500)
+	wl.Spec.Priority = &prio
+	wl.Annotations = map[string]string{
+		constants.PriorityBoostAnnotationKey: "-100000",
+	}
+	maxP := int32(100)
+	cl := fake.NewClientBuilder().WithScheme(scheme).WithStatusSubresource(wl).WithObjects(wl).Build()
+	r := NewPriorityBoostReconciler(cl, record.NewFakeRecorder(32),
+		WithMinAdmitDuration(30*time.Minute),
+		WithBoostValue(100000),
+		WithMaxWorkloadPriority(&maxP),
+	)
+	req := types.NamespacedName{Name: wl.Name, Namespace: wl.Namespace}
+	if _, err := r.Reconcile(ctx, ctrlRequest(req)); err != nil {
+		t.Fatalf("Reconcile failed: %v", err)
+	}
+	var updated kueue.Workload
+	if err := cl.Get(ctx, req, &updated); err != nil {
+		t.Fatalf("Get workload failed: %v", err)
+	}
+	if _, ok := updated.Annotations[constants.PriorityBoostAnnotationKey]; ok {
+		t.Errorf("expected annotation cleared when above maxWorkloadPriority")
+	}
+}
+
+func TestReconcile_IdempotentWithinWindow(t *testing.T) {
+	ctx := t.Context()
 	scheme := runtime.NewScheme()
 	if err := kueue.AddToScheme(scheme); err != nil {
 		t.Fatalf("Failed adding kueue to scheme: %v", err)
 	}
 
 	wl := admittedWorkload(time.Now().Add(-2 * time.Minute))
+	patchCalled := false
+	baseClient := fake.NewClientBuilder().WithScheme(scheme).WithStatusSubresource(wl).WithObjects(wl).Build()
+	cl := interceptor.NewClient(baseClient, interceptor.Funcs{
+		Patch: func(ctx context.Context, c client.WithWatch, obj client.Object, patch client.Patch, opts ...client.PatchOption) error {
+			patchCalled = true
+			return c.Patch(ctx, obj, patch, opts...)
+		},
+	})
+	r := NewPriorityBoostReconciler(cl, record.NewFakeRecorder(32),
+		WithMinAdmitDuration(30*time.Minute),
+		WithBoostValue(100000),
+	)
+	req := types.NamespacedName{Name: wl.Name, Namespace: wl.Namespace}
+	if _, err := r.Reconcile(ctx, ctrlRequest(req)); err != nil {
+		t.Fatalf("Reconcile failed: %v", err)
+	}
+	if patchCalled {
+		t.Error("expected no patch when annotation already absent during window")
+	}
+}
+
+func TestReconcile_IdempotentNegativeBoost(t *testing.T) {
+	ctx := t.Context()
+	scheme := runtime.NewScheme()
+	if err := kueue.AddToScheme(scheme); err != nil {
+		t.Fatalf("Failed adding kueue to scheme: %v", err)
+	}
+
+	wl := admittedWorkload(time.Now().Add(-60 * time.Minute))
 	wl.Annotations = map[string]string{
-		constants.PriorityBoostAnnotationKey: "100000",
+		constants.PriorityBoostAnnotationKey: "-100000",
 	}
 	patchCalled := false
 	baseClient := fake.NewClientBuilder().WithScheme(scheme).WithStatusSubresource(wl).WithObjects(wl).Build()
@@ -250,17 +376,17 @@ func TestReconcile_Idempotent(t *testing.T) {
 		t.Fatalf("Reconcile failed: %v", err)
 	}
 	if patchCalled {
-		t.Error("expected no patch when annotation is already correct")
+		t.Error("expected no patch when annotation already correct")
 	}
 }
 
-// TestReconcile_ConflictThenSuccess: first patch returns conflict, second succeeds.
 func TestReconcile_ConflictThenSuccess(t *testing.T) {
-	ctx := context.Background()
+	ctx := t.Context()
 	scheme := runtime.NewScheme()
 	_ = kueue.AddToScheme(scheme)
 
-	wl := admittedWorkload(time.Now().Add(-2 * time.Minute))
+	// Post-window: controller must patch to set negative boost; first patch conflicts.
+	wl := admittedWorkload(time.Now().Add(-60 * time.Minute))
 	baseClient := fake.NewClientBuilder().WithScheme(scheme).WithStatusSubresource(wl).WithObjects(wl).Build()
 	conflictInjected := false
 	cl := interceptor.NewClient(baseClient, interceptor.Funcs{
@@ -291,8 +417,8 @@ func TestReconcile_ConflictThenSuccess(t *testing.T) {
 	if err := baseClient.Get(ctx, req, &updated); err != nil {
 		t.Fatalf("Get workload failed: %v", err)
 	}
-	if got := updated.Annotations[constants.PriorityBoostAnnotationKey]; got != "100000" {
-		t.Errorf("expected annotation=%q, got %q", "100000", got)
+	if got, want := updated.Annotations[constants.PriorityBoostAnnotationKey], "-100000"; got != want {
+		t.Errorf("expected annotation=%q, got %q", want, got)
 	}
 }
 
