@@ -5,9 +5,10 @@ metadata:
   namespace: kueue-system
 data:
   controller_manager_config.yaml: |
-    # minAdmitDuration is the minimum time a workload must remain admitted before
-    # it can be preempted by same-priority workloads. Set to "0" to disable.
-    # Examples: "30m", "1h".
+    # minAdmitDuration: no annotation while admitted for this duration; after that,
+    # a negative priority-boost is set while still admitted (LowerPriority preemption).
+    # Set to "0" to disable. Examples: "30m", "1h".
     minAdmitDuration: "30m"
-    # boostValue is the priority boost applied during the minAdmitDuration window.
+    # boostValue: magnitude of the negative boost after the window (string value is -boostValue).
     boostValue: 100000
+    # Optional workloadSelector (metav1.LabelSelector) and maxWorkloadPriority — see README.
