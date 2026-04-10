@@ -33,10 +33,9 @@ import (
 	controllerpkg "sigs.k8s.io/kueue/cmd/experimental/priority-boost-controller/pkg/controller"
 )
 
-// TestReconcile_BoostSetWithinWindow verifies that when a workload has been admitted
-// for less than minAdmitDuration, the priority-boost annotation is set to boostValue
-// and the result requests a requeue after the remaining window duration.
-func TestReconcile_BoostSetWithinWindow(t *testing.T) {
+// TestReconcile_NoAnnotationWithinWindow verifies that when a workload has been admitted
+// for less than minAdmitDuration, no priority-boost annotation is set and RequeueAfter is positive.
+func TestReconcile_NoAnnotationWithinWindow(t *testing.T) {
 	ctx := context.Background()
 	scheme := runtime.NewScheme()
 	if err := kueue.AddToScheme(scheme); err != nil {
@@ -84,15 +83,14 @@ func TestReconcile_BoostSetWithinWindow(t *testing.T) {
 	if err := cl.Get(ctx, types.NamespacedName{Name: wl.Name, Namespace: wl.Namespace}, &updated); err != nil {
 		t.Fatalf("Get workload failed: %v", err)
 	}
-	if got, want := updated.Annotations[constants.PriorityBoostAnnotationKey], "100000"; got != want {
-		t.Errorf("expected annotation=%q, got %q", want, got)
+	if _, ok := updated.Annotations[constants.PriorityBoostAnnotationKey]; ok {
+		t.Errorf("expected no annotation during window, got %q",
+			updated.Annotations[constants.PriorityBoostAnnotationKey])
 	}
 }
 
-// TestReconcile_BoostClearedAfterWindow verifies that when a workload has been admitted
-// for longer than minAdmitDuration, the priority-boost annotation is removed and no
-// requeue is requested.
-func TestReconcile_BoostClearedAfterWindow(t *testing.T) {
+// TestReconcile_NegativeBoostAfterWindow verifies that after minAdmitDuration the annotation is -boostValue.
+func TestReconcile_NegativeBoostAfterWindow(t *testing.T) {
 	ctx := context.Background()
 	scheme := runtime.NewScheme()
 	if err := kueue.AddToScheme(scheme); err != nil {
@@ -136,21 +134,19 @@ func TestReconcile_BoostClearedAfterWindow(t *testing.T) {
 		t.Fatalf("Reconcile failed: %v", err)
 	}
 	if result.RequeueAfter != 0 {
-		t.Errorf("expected no requeue after window expires, got RequeueAfter=%v", result.RequeueAfter)
+		t.Errorf("expected no requeue after window, got RequeueAfter=%v", result.RequeueAfter)
 	}
 
 	var updated kueue.Workload
 	if err := cl.Get(ctx, types.NamespacedName{Name: wl.Name, Namespace: wl.Namespace}, &updated); err != nil {
 		t.Fatalf("Get workload failed: %v", err)
 	}
-	if _, ok := updated.Annotations[constants.PriorityBoostAnnotationKey]; ok {
-		t.Errorf("expected annotation to be absent, but it is present: %q",
-			updated.Annotations[constants.PriorityBoostAnnotationKey])
+	if got, want := updated.Annotations[constants.PriorityBoostAnnotationKey], "-100000"; got != want {
+		t.Errorf("expected annotation=%q, got %q", want, got)
 	}
 }
 
-// TestReconcile_NoBoostWhenNotAdmitted verifies that a pending (non-admitted) workload
-// does not receive a priority-boost annotation.
+// TestReconcile_NoBoostWhenNotAdmitted verifies that a pending workload does not receive a priority-boost annotation.
 func TestReconcile_NoBoostWhenNotAdmitted(t *testing.T) {
 	ctx := context.Background()
 	scheme := runtime.NewScheme()
@@ -163,7 +159,6 @@ func TestReconcile_NoBoostWhenNotAdmitted(t *testing.T) {
 			Name:      "wl-pending",
 			Namespace: "ns",
 		},
-		// No Admitted condition — workload is still pending.
 	}
 
 	cl := fake.NewClientBuilder().WithScheme(scheme).WithStatusSubresource(wl).WithObjects(wl).Build()

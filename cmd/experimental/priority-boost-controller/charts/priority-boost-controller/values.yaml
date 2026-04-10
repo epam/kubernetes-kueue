@@ -5,10 +5,17 @@ priorityBoostController:
     pullPolicy: Always
   imagePullSecrets: []
   config:
-    # minAdmitDuration is the minimum time a workload must remain admitted before
-    # it can be preempted by same-priority workloads. Set to "0" to disable.
+    # minAdmitDuration is how long a workload stays admitted with no annotation;
+    # after this, a negative kueue.x-k8s.io/priority-boost is applied while still admitted.
+    # Requires ClusterQueue withinClusterQueue: LowerPriority. Set to "0" to disable.
     minAdmitDuration: "30m"
-    # boostValue is the priority boost applied during the minAdmitDuration window.
+    # boostValue is the magnitude of the negative boost after minAdmitDuration (see README).
     boostValue: 100000
+    # Optional: limit to workloads matching this label selector (omit = all workloads).
+    # workloadSelector:
+    #   matchLabels:
+    #     tier: batch
+    # Optional: exclude workloads with Spec.Priority greater than this (nil priority = 0).
+    # maxWorkloadPriority: 1000
 kueue:
   enabled: false

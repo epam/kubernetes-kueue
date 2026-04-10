@@ -25,6 +25,7 @@ import (
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/meta"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/tools/record"
 	"k8s.io/klog/v2"
 	ctrl "sigs.k8s.io/controller-runtime"
@@ -37,21 +38,26 @@ import (
 )
 
 // PriorityBoostReconciler watches Workload objects and sets the
-// kueue.x-k8s.io/priority-boost annotation to protect admitted workloads
-// from same-priority preemption for at least minAdmitDuration after admission.
+// kueue.x-k8s.io/priority-boost annotation after minAdmitDuration as a
+// post-window preemption signal (negative boost) when withinClusterQueue
+// preemption is LowerPriority. No annotation is set during the window.
 type PriorityBoostReconciler struct {
-	client           client.Client
-	log              logr.Logger
-	recorder         record.EventRecorder
-	minAdmitDuration time.Duration
-	boostValue       int32
+	client              client.Client
+	log                 logr.Logger
+	recorder            record.EventRecorder
+	minAdmitDuration    time.Duration
+	boostValue          int32
+	workloadSelector    labels.Selector
+	maxWorkloadPriority *int32
 }
 
 var _ reconcile.Reconciler = (*PriorityBoostReconciler)(nil)
 
 type PriorityBoostReconcilerOptions struct {
-	MinAdmitDuration time.Duration
-	BoostValue       int32
+	MinAdmitDuration    time.Duration
+	BoostValue          int32
+	WorkloadSelector    labels.Selector
+	MaxWorkloadPriority *int32
 }
 
 type PriorityBoostReconcilerOption func(*PriorityBoostReconcilerOptions)
@@ -68,6 +74,18 @@ func WithBoostValue(v int32) PriorityBoostReconcilerOption {
 	}
 }
 
+func WithWorkloadSelector(s labels.Selector) PriorityBoostReconcilerOption {
+	return func(o *PriorityBoostReconcilerOptions) {
+		o.WorkloadSelector = s
+	}
+}
+
+func WithMaxWorkloadPriority(p *int32) PriorityBoostReconcilerOption {
+	return func(o *PriorityBoostReconcilerOptions) {
+		o.MaxWorkloadPriority = p
+	}
+}
+
 var defaultOptions = PriorityBoostReconcilerOptions{
 	MinAdmitDuration: 0,
 	BoostValue:       100000,
@@ -79,11 +97,13 @@ func NewPriorityBoostReconciler(c client.Client, recorder record.EventRecorder, 
 		opt(&options)
 	}
 	return &PriorityBoostReconciler{
-		client:           c,
-		log:              ctrl.Log.WithName(constants.ControllerName),
-		recorder:         recorder,
-		minAdmitDuration: options.MinAdmitDuration,
-		boostValue:       options.BoostValue,
+		client:              c,
+		log:                 ctrl.Log.WithName(constants.ControllerName),
+		recorder:            recorder,
+		minAdmitDuration:    options.MinAdmitDuration,
+		boostValue:          options.BoostValue,
+		workloadSelector:    options.WorkloadSelector,
+		maxWorkloadPriority: options.MaxWorkloadPriority,
 	}
 }
 
@@ -100,40 +120,46 @@ func (r *PriorityBoostReconciler) Reconcile(ctx context.Context, req ctrl.Reques
 		return ctrl.Result{}, nil
 	}
 
-	newBoost, requeueAfter := r.computeBoost(&wl)
+	var newBoost int32
+	var requeueAfter time.Duration
+	if !r.workloadInScope(&wl) {
+		newBoost, requeueAfter = 0, 0
+	} else {
+		newBoost, requeueAfter = r.computeBoost(&wl)
+	}
+
 	currentBoostValue := wl.Annotations[constants.PriorityBoostAnnotationKey]
 
-	var newBoostValue string
-	if newBoost > 0 {
-		newBoostValue = strconv.FormatInt(int64(newBoost), 10)
+	var desiredBoostStr string
+	if newBoost != 0 {
+		desiredBoostStr = strconv.FormatInt(int64(newBoost), 10)
 	}
-	// newBoostValue == "" means the annotation should be absent.
 
-	if currentBoostValue == newBoostValue {
+	if currentBoostValue == desiredBoostStr {
 		return ctrl.Result{RequeueAfter: requeueAfter}, nil
 	}
 
 	patch := client.MergeFrom(wl.DeepCopy())
-	if newBoost > 0 {
+	if newBoost != 0 {
 		if wl.Annotations == nil {
 			wl.Annotations = make(map[string]string)
 		}
-		wl.Annotations[constants.PriorityBoostAnnotationKey] = newBoostValue
-		log.Info("Setting priority-boost annotation (workload within minAdmitDuration window)",
+		wl.Annotations[constants.PriorityBoostAnnotationKey] = desiredBoostStr
+		log.Info("Setting priority-boost annotation (post-window preemption signal)",
 			"workload", klog.KObj(&wl),
 			"annotationKey", constants.PriorityBoostAnnotationKey,
-			"annotationValue", newBoostValue,
+			"annotationValue", desiredBoostStr,
 			"requeueAfter", requeueAfter)
 		r.recorder.Eventf(&wl, corev1.EventTypeNormal, "PriorityBoostSet",
-			"Set %s=%s (minAdmitDuration protection window active)",
-			constants.PriorityBoostAnnotationKey, newBoostValue)
+			"Set %s=%s (post-window preemption signal)",
+			constants.PriorityBoostAnnotationKey, desiredBoostStr)
 	} else {
 		delete(wl.Annotations, constants.PriorityBoostAnnotationKey)
-		log.Info("Removing priority-boost annotation (minAdmitDuration window expired or workload not admitted)",
+		log.Info("Removing priority-boost annotation",
 			"workload", klog.KObj(&wl),
 			"annotationKey", constants.PriorityBoostAnnotationKey)
 		r.recorder.Eventf(&wl, corev1.EventTypeNormal, "PriorityBoostCleared",
-			"Cleared %s (minAdmitDuration protection window expired)",
+			"Cleared %s (workload not in scope, not admitted, or feature disabled)",
 			constants.PriorityBoostAnnotationKey)
 	}
 
@@ -150,13 +176,28 @@ func (r *PriorityBoostReconciler) SetupWithManager(mgr ctrl.Manager) error {
 		Complete(r)
 }
 
-// computeBoost returns the boost value to apply to the workload and how long
-// until the controller should re-evaluate.
+func (r *PriorityBoostReconciler) workloadInScope(wl *kueue.Workload) bool {
+	if r.workloadSelector != nil && !r.workloadSelector.Matches(labels.Set(wl.Labels)) {
+		return false
+	}
+	if r.maxWorkloadPriority != nil {
+		var p int32
+		if wl.Spec.Priority != nil {
+			p = *wl.Spec.Priority
+		}
+		if p > *r.maxWorkloadPriority {
+			return false
+		}
+	}
+	return true
+}
+
+// computeBoost returns the signed boost to apply and how long until the
+// controller should re-evaluate.
 //
-// When minAdmitDuration is configured and the workload has been admitted for
-// less than that duration, the boost is set to boostValue so that same-priority
-// pending workloads cannot preempt this workload. Once the window expires, the
-// boost is removed (0) and requeueAfter is 0.
+// With minAdmitDuration > 0: while admitted and elapsed < minAdmitDuration,
+// returns (0, remaining). While admitted after the window, returns
+// (-boostValue, 0). Otherwise returns (0, 0).
 func (r *PriorityBoostReconciler) computeBoost(wl *kueue.Workload) (boost int32, requeueAfter time.Duration) {
 	if r.minAdmitDuration <= 0 {
 		return 0, 0
@@ -164,16 +205,14 @@ func (r *PriorityBoostReconciler) computeBoost(wl *kueue.Workload) (boost int32,
 
 	admittedCond := meta.FindStatusCondition(wl.Status.Conditions, string(kueue.WorkloadAdmitted))
 	if admittedCond == nil || admittedCond.Status != metav1.ConditionTrue {
-		// Workload is not currently admitted — no protection needed.
 		return 0, 0
 	}
 
 	elapsed := time.Since(admittedCond.LastTransitionTime.Time)
 	if elapsed < r.minAdmitDuration {
 		remaining := r.minAdmitDuration - elapsed
-		return r.boostValue, remaining
+		return 0, remaining
 	}
 
-	// Protection window has expired.
-	return 0, 0
+	return -r.boostValue, 0
 }
