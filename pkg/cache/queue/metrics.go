@@ -49,22 +49,18 @@ func reportPendingWorkloads(m *Manager, cqRef kueue.ClusterQueueReference) {
 
 func reportCQPendingWorkloads(m *Manager, cq *ClusterQueue) {
 	activeInfos, inadmissibleInfos := cq.PendingWorkloadInfos()
-	active, inadmissible := len(activeInfos), len(inadmissibleInfos)
 	if m.statusChecker != nil && !m.statusChecker.ClusterQueueActive(cq.name) {
 		inadmissibleInfos = append(inadmissibleInfos, activeInfos...)
 		activeInfos = nil
-		inadmissible = len(inadmissibleInfos)
-		active = 0
 	}
-	cl := m.clock
 	custom := m.customLabels.CQGet(cq.name)
-	metrics.ReportPendingWorkloads(cq.name, active, inadmissible, custom, m.roleTracker)
-	activeMax, activeMean := pendingWaitStats(activeInfos, cl)
-	inadmissibleMax, inadmissibleMean := pendingWaitStats(inadmissibleInfos, cl)
+	metrics.ReportPendingWorkloads(cq.name, len(activeInfos), len(inadmissibleInfos), custom, m.roleTracker)
+	activeMax, activeMean := pendingWaitStats(activeInfos, m.clock)
+	inadmissibleMax, inadmissibleMean := pendingWaitStats(inadmissibleInfos, m.clock)
 	metrics.ReportPendingWorkloadWaitTimes(cq.name, activeMax, activeMean, inadmissibleMax, inadmissibleMean, custom, m.roleTracker)
 }
 
-func pendingWaitStats(infos []*workload.Info, cl clock.Clock) (maxSeconds, meanSeconds float64) {
+func pendingWaitStats(infos []*workload.Info, cl clock.Clock) (float64, float64) {
 	if len(infos) == 0 {
 		return 0, 0
 	}

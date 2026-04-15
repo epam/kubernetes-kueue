@@ -977,6 +977,8 @@ func ReportPendingWorkloadWaitTimes(
 func ReportPreemptionEvictionToPendingTime(cqName kueue.ClusterQueueReference, latency time.Duration, customLabelValues []string, tracker *roletracker.RoleTracker) {
 	labels := append([]string{string(cqName), roletracker.GetRole(tracker)}, customLabelValues...)
 	seconds := latency.Seconds()
+	// Negative duration is possible if the condition's LastTransitionTime is after the
+	// controller clock (clock skew, delayed watches). Clamp to zero for the histogram.
 	if seconds < 0 {
 		seconds = 0
 	}

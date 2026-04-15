@@ -19,6 +19,7 @@ package queue
 import (
 	"cmp"
 	"context"
+	"maps"
 	"slices"
 	"sync"
 
@@ -484,19 +485,14 @@ func (c *ClusterQueue) Pending() (int, int) {
 
 // PendingWorkloadInfos returns pending workload infos split into active (heap + inflight, no double-count)
 // and inadmissible, matching Pending() counts. Callers must not mutate returned *workload.Info or Obj.
-func (c *ClusterQueue) PendingWorkloadInfos() (active []*workload.Info, inadmissible []*workload.Info) {
+func (c *ClusterQueue) PendingWorkloadInfos() ([]*workload.Info, []*workload.Info) {
 	c.rwm.RLock()
 	defer c.rwm.RUnlock()
-	active = make([]*workload.Info, 0, c.heap.Len()+1)
-	active = append(active, c.heap.List()...)
+	active := c.heap.List()
 	if c.inflight != nil {
 		active = append(active, c.inflight)
 	}
-	inadmissible = make([]*workload.Info, 0, c.inadmissibleWorkloads.len())
-	for _, wi := range c.inadmissibleWorkloads {
-		inadmissible = append(inadmissible, wi)
-	}
-	return active, inadmissible
+	return active, slices.Collect(maps.Values(c.inadmissibleWorkloads))
 }
 
 // pendingActive returns the number of active pending workloads,
