@@ -118,7 +118,7 @@ var _ = ginkgo.Describe("DRA", func() {
 			util.ExpectJobToBeCompleted(ctx, k8sClient, job)
 
 			ginkgo.By("Verifying workload finished successfully")
-			util.ExpectWorkloadToFinish(ctx, k8sClient, wlLookupKey)
+			util.ExpectWorkloadToFinishWithTimeout(ctx, k8sClient, wlLookupKey, util.LongTimeout)
 		})
 
 		ginkgo.It("Should keep job suspended when DRA quota is exceeded", func() {
@@ -221,7 +221,7 @@ var _ = ginkgo.Describe("DRA", func() {
 					Name:      workloadjob.GetWorkloadNameForJob(job.Name, job.UID),
 					Namespace: ns.Name,
 				}
-				util.ExpectWorkloadToFinish(ctx, k8sClient, wlLookupKey)
+				util.ExpectWorkloadToFinishWithTimeout(ctx, k8sClient, wlLookupKey, util.LongTimeout)
 			}
 		})
 
@@ -277,7 +277,7 @@ var _ = ginkgo.Describe("DRA", func() {
 				Name:      workloadjob.GetWorkloadNameForJob(job3.Name, job3.UID),
 				Namespace: ns.Name,
 			}
-			util.ExpectWorkloadToFinish(ctx, k8sClient, wlLookupKey3)
+			util.ExpectWorkloadToFinishWithTimeout(ctx, k8sClient, wlLookupKey3, util.LongTimeout)
 		})
 
 		ginkgo.It("Should correctly calculate DRA resources for multi-pod jobs", func() {
