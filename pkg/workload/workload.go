@@ -1287,6 +1287,18 @@ func HasQuotaReservation(w *kueue.Workload) bool {
 	return apimeta.IsStatusConditionTrue(w.Status.Conditions, kueue.WorkloadQuotaReserved)
 }
 
+// WorkloadClusterQueue returns the ClusterQueue from status.admission when it is set and non-empty.
+func WorkloadClusterQueue(wl *kueue.Workload) (kueue.ClusterQueueReference, bool) {
+	if wl == nil || wl.Status.Admission == nil {
+		return "", false
+	}
+	cq := wl.Status.Admission.ClusterQueue
+	if cq == "" {
+		return "", false
+	}
+	return cq, true
+}
+
 // UpdateReclaimablePods updates the ReclaimablePods list for the workload with SSA.
 func UpdateReclaimablePods(ctx context.Context, c client.Client, wl *kueue.Workload, reclaimablePods []kueue.ReclaimablePod) error {
 	return PatchStatus(ctx, c, wl, constants.ReclaimablePodsMgr, func(wl *kueue.Workload) (bool, error) {

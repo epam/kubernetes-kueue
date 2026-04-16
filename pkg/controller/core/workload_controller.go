@@ -1094,9 +1094,11 @@ func (r *WorkloadReconciler) Delete(e event.TypedDeleteEvent[*kueue.Workload]) b
 }
 
 // preemptionEvictionToPendingObserveInput determines whether to record preemption eviction→pending latency.
-// cluster_queue is taken from oldWl's admission; latency is now minus the WorkloadEvicted condition's
-// LastTransitionTime on newWl (preemption reason).
-func preemptionEvictionToPendingObserveInput(oldWl, newWl *kueue.Workload, prevStatus, newStatus string, now time.Time) (cq kueue.ClusterQueueReference, latency time.Duration, ok bool) {
+// Latency is now minus the WorkloadEvicted condition's LastTransitionTime on newWl (preemption reason).
+// Returns ok when status.admission.cluster_queue on oldWl is set and non-empty (see workload.WorkloadClusterQueue).
+func preemptionEvictionToPendingObserveInput(oldWl, newWl *kueue.Workload, now time.Time) (kueue.ClusterQueueReference, time.Duration, bool) {
+	prevStatus := workload.Status(oldWl)
+	newStatus := workload.Status(newWl)
 	if prevStatus != workload.StatusQuotaReserved && prevStatus != workload.StatusAdmitted {
 		return "", 0, false
 	}
@@ -1107,10 +1109,9 @@ func preemptionEvictionToPendingObserveInput(oldWl, newWl *kueue.Workload, prevS
 	if c == nil || c.Status != metav1.ConditionTrue || c.Reason != kueue.WorkloadEvictedByPreemption {
 		return "", 0, false
 	}
-	if oldWl.Status.Admission != nil && oldWl.Status.Admission.ClusterQueue != "" {
-		cq = oldWl.Status.Admission.ClusterQueue
-	} else {
-		cq = "unknown"
+	cq, found := workload.WorkloadClusterQueue(oldWl)
+	if !found {
+		return "", 0, false
 	}
 	return cq, now.Sub(c.LastTransitionTime.Time), true
 }
@@ -1184,7 +1185,7 @@ func (r *WorkloadReconciler) Update(e event.TypedUpdateEvent[*kueue.Workload]) b
 			r.updateAfsConsumedUsage(log, wlCopy)
 		}
 	case (prevStatus == workload.StatusQuotaReserved || prevStatus == workload.StatusAdmitted) && status == workload.StatusPending:
-		if cq, latency, ok := preemptionEvictionToPendingObserveInput(e.ObjectOld, e.ObjectNew, prevStatus, status, r.clock.Now()); ok {
+		if cq, latency, ok := preemptionEvictionToPendingObserveInput(e.ObjectOld, e.ObjectNew, r.clock.Now()); ok {
 			metrics.ReportPreemptionEvictionToPendingTime(cq, latency, r.customLabels.CQGet(cq), r.roleTracker)
 		}
 		var backoff time.Duration

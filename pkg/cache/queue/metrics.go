@@ -48,7 +48,7 @@ func reportPendingWorkloads(m *Manager, cqRef kueue.ClusterQueueReference) {
 }
 
 func reportCQPendingWorkloads(m *Manager, cq *ClusterQueue) {
-	activeInfos, inadmissibleInfos := cq.PendingWorkloadInfos()
+	activeInfos, inadmissibleInfos := cq.pendingWorkloadInfos()
 	if m.statusChecker != nil && !m.statusChecker.ClusterQueueActive(cq.name) {
 		inadmissibleInfos = append(inadmissibleInfos, activeInfos...)
 		activeInfos = nil
@@ -69,9 +69,7 @@ func pendingWaitStats(infos []*workload.Info, cl clock.Clock) (float64, float64)
 	for _, wi := range infos {
 		d := workload.QueuedWaitTime(wi.Obj, cl)
 		sum += d
-		if d > maxD {
-			maxD = d
-		}
+		maxD = max(d, maxD)
 	}
 	return maxD.Seconds(), sum.Seconds() / float64(len(infos))
 }

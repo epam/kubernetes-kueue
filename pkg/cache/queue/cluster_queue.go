@@ -480,12 +480,14 @@ func (c *ClusterQueue) PendingTotal() int {
 func (c *ClusterQueue) Pending() (int, int) {
 	c.rwm.RLock()
 	defer c.rwm.RUnlock()
-	return c.pendingActive(), c.pendingInadmissible()
+	active, inadmissible := c.pendingWorkloadInfos()
+	return len(active), len(inadmissible)
 }
 
-// PendingWorkloadInfos returns pending workload infos split into active (heap + inflight, no double-count)
-// and inadmissible, matching Pending() counts. Callers must not mutate returned *workload.Info or Obj.
-func (c *ClusterQueue) PendingWorkloadInfos() ([]*workload.Info, []*workload.Info) {
+// pendingWorkloadInfos returns pending workload infos split into active (heap + inflight, no double-count)
+// and inadmissible.
+// Callers must not mutate returned *workload.Info or Obj.
+func (c *ClusterQueue) pendingWorkloadInfos() ([]*workload.Info, []*workload.Info) {
 	c.rwm.RLock()
 	defer c.rwm.RUnlock()
 	active := c.heap.List()
@@ -493,23 +495,6 @@ func (c *ClusterQueue) PendingWorkloadInfos() ([]*workload.Info, []*workload.Inf
 		active = append(active, c.inflight)
 	}
 	return active, slices.Collect(maps.Values(c.inadmissibleWorkloads))
-}
-
-// pendingActive returns the number of active pending workloads,
-// workloads that are in the admission queue.
-func (c *ClusterQueue) pendingActive() int {
-	result := c.heap.Len()
-	if c.inflight != nil {
-		result++
-	}
-	return result
-}
-
-// pendingInadmissible returns the number of inadmissible pending workloads,
-// workloads that were already tried and are waiting for cluster conditions
-// to change to potentially become admissible.
-func (c *ClusterQueue) pendingInadmissible() int {
-	return c.inadmissibleWorkloads.len()
 }
 
 // PendingInLocalQueue returns the number of active and inadmissible pending workloads in LocalQueue.
@@ -713,16 +698,11 @@ func (c *ClusterQueue) Info(key workload.Reference) *workload.Info {
 func (c *ClusterQueue) totalElements() []*workload.Info {
 	c.rwm.RLock()
 	defer c.rwm.RUnlock()
-	totalLen := c.heap.Len() + c.inadmissibleWorkloads.len()
-	elements := make([]*workload.Info, 0, totalLen)
-	elements = append(elements, c.heap.List()...)
-	for _, e := range c.inadmissibleWorkloads {
-		elements = append(elements, e)
-	}
-	if c.inflight != nil {
-		elements = append(elements, c.inflight)
-	}
-	return elements
+	active, inadmissible := c.pendingWorkloadInfos()
+	out := make([]*workload.Info, 0, len(active)+len(inadmissible))
+	out = append(out, active...)
+	out = append(out, inadmissible...)
+	return out
 }
 
 // Active returns true if the queue is active

@@ -666,7 +666,7 @@ The label 'reason' can have the following values:
 			Name:      "preemption_eviction_to_pending_seconds",
 			Help: `The time from preemption eviction (WorkloadEvicted with reason Preempted) until the preemptee workload returns to Pending (quota released).
 Observed on status transition from admitted or quota-reserved to pending while still evicted by preemption.
-Uses the eviction condition LastTransitionTime on the updated object as start; cluster_queue is taken from status.admission on the pre-update object when present, otherwise "unknown".`,
+Uses the eviction condition LastTransitionTime on the updated object as start; cluster_queue is taken from status.admission.cluster_queue on the pre-update object when set and non-empty (otherwise the histogram is not recorded).`,
 			Buckets: generateExponentialBuckets(14),
 		}, append([]string{"cluster_queue", "replica_role"}, extraLabels...),
 	)
@@ -977,8 +977,9 @@ func ReportPendingWorkloadWaitTimes(
 func ReportPreemptionEvictionToPendingTime(cqName kueue.ClusterQueueReference, latency time.Duration, customLabelValues []string, tracker *roletracker.RoleTracker) {
 	labels := append([]string{string(cqName), roletracker.GetRole(tracker)}, customLabelValues...)
 	seconds := latency.Seconds()
-	// Negative duration is possible if the condition's LastTransitionTime is after the
-	// controller clock (clock skew, delayed watches). Clamp to zero for the histogram.
+	// LastTransitionTime comes from the API object (apiserver clock). This path compares it to the
+	// controller's clock.Now(), so skew between apiserver and controller (or delayed watch delivery)
+	// can make the transition time appear after "now" and yield a negative duration. Clamp to zero.
 	if seconds < 0 {
 		seconds = 0
 	}

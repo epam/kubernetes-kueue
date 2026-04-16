@@ -2697,6 +2697,55 @@ func TestFinish(t *testing.T) {
 		})
 	}
 }
+
+func TestWorkloadClusterQueue(t *testing.T) {
+	cases := map[string]struct {
+		wl     *kueue.Workload
+		wantCQ kueue.ClusterQueueReference
+		wantOK bool
+	}{
+		"nil workload": {
+			wl:     nil,
+			wantOK: false,
+		},
+		"no admission": {
+			wl:     &kueue.Workload{},
+			wantOK: false,
+		},
+		"empty cluster queue": {
+			wl: &kueue.Workload{
+				Status: kueue.WorkloadStatus{
+					Admission: &kueue.Admission{ClusterQueue: ""},
+				},
+			},
+			wantOK: false,
+		},
+		"valid cluster queue": {
+			wl: &kueue.Workload{
+				Status: kueue.WorkloadStatus{
+					Admission: &kueue.Admission{ClusterQueue: "cq-1"},
+				},
+			},
+			wantCQ: "cq-1",
+			wantOK: true,
+		},
+	}
+	for name, tc := range cases {
+		t.Run(name, func(t *testing.T) {
+			cq, ok := WorkloadClusterQueue(tc.wl)
+			if ok != tc.wantOK {
+				t.Fatalf("ok: got %v want %v", ok, tc.wantOK)
+			}
+			if !tc.wantOK {
+				return
+			}
+			if cq != tc.wantCQ {
+				t.Errorf("cluster queue: got %q want %q", cq, tc.wantCQ)
+			}
+		})
+	}
+}
+
 func TestSchedulingHash(t *testing.T) {
 	cases := map[string]struct {
 		wl1          *kueue.Workload

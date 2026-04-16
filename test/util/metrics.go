@@ -182,6 +182,12 @@ func ExpectPreemptedWorkloadsTotalMetric(preemptorCqName, reason string, v int) 
 		preemptorCqName, reason, roletracker.RoleStandalone)
 }
 
+// ExpectPreemptionEvictionToPendingHistogramMetricAtLeast asserts bucket sample count for preemption_eviction_to_pending_seconds.
+func ExpectPreemptionEvictionToPendingHistogramMetricAtLeast(cqName kueue.ClusterQueueReference, minCount int) {
+	ginkgo.GinkgoHelper()
+	expectHistogramMetric(metrics.PreemptionEvictionToPendingSeconds, gomega.BeNumerically(">=", minCount), string(cqName), roletracker.RoleStandalone)
+}
+
 func ExpectQuotaReservedWorkloadsTotalMetric(cq *kueue.ClusterQueue, priorityClass string, v int) {
 	ginkgo.GinkgoHelper()
 	expectCounterMetric(metrics.QuotaReservedWorkloadsTotal, v,
