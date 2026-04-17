@@ -1099,10 +1099,7 @@ func (r *WorkloadReconciler) Delete(e event.TypedDeleteEvent[*kueue.Workload]) b
 func preemptionEvictionToPendingObserveInput(oldWl, newWl *kueue.Workload, now time.Time) (kueue.ClusterQueueReference, time.Duration, bool) {
 	prevStatus := workload.Status(oldWl)
 	newStatus := workload.Status(newWl)
-	if prevStatus != workload.StatusQuotaReserved && prevStatus != workload.StatusAdmitted {
-		return "", 0, false
-	}
-	if newStatus != workload.StatusPending {
+	if !workload.FromQuotaReservedOrAdmittedToPending(prevStatus, newStatus) {
 		return "", 0, false
 	}
 	c := apimeta.FindStatusCondition(newWl.Status.Conditions, kueue.WorkloadEvicted)
@@ -1176,7 +1173,7 @@ func (r *WorkloadReconciler) Update(e event.TypedUpdateEvent[*kueue.Workload]) b
 				log.V(2).Info("ignored an error for now", "error", err)
 			}
 		}
-	case prevStatus == workload.StatusPending && (status == workload.StatusQuotaReserved || status == workload.StatusAdmitted):
+	case workload.FromPendingToQuotaReservedOrAdmitted(prevStatus, status):
 		r.queues.DeleteWorkload(log, wlKey)
 		if !r.cache.AddOrUpdateWorkload(log, wlCopy) {
 			log.V(2).Info("ClusterQueue for workload didn't exist; ignored for now")
@@ -1184,7 +1181,7 @@ func (r *WorkloadReconciler) Update(e event.TypedUpdateEvent[*kueue.Workload]) b
 		if afs.Enabled(r.admissionFSConfig) && status == workload.StatusAdmitted && r.cache.ClusterQueueUsesAdmissionFairSharing(wlCopy.Status.Admission.ClusterQueue) {
 			r.updateAfsConsumedUsage(log, wlCopy)
 		}
-	case (prevStatus == workload.StatusQuotaReserved || prevStatus == workload.StatusAdmitted) && status == workload.StatusPending:
+	case workload.FromQuotaReservedOrAdmittedToPending(prevStatus, status):
 		if cq, latency, ok := preemptionEvictionToPendingObserveInput(e.ObjectOld, e.ObjectNew, r.clock.Now()); ok {
 			metrics.ReportPreemptionEvictionToPendingTime(cq, latency, r.customLabels.CQGet(cq), r.roleTracker)
 		}

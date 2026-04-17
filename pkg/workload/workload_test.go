@@ -62,6 +62,61 @@ var (
 	)
 )
 
+func TestFromQuotaReservedOrAdmittedToPending(t *testing.T) {
+	cases := map[string]struct {
+		prev, new string
+		want      bool
+	}{
+		"quotaReserved to pending":  {StatusQuotaReserved, StatusPending, true},
+		"admitted to pending":       {StatusAdmitted, StatusPending, true},
+		"pending to pending":        {StatusPending, StatusPending, false},
+		"pending to quotaReserved":  {StatusPending, StatusQuotaReserved, false},
+		"pending to admitted":       {StatusPending, StatusAdmitted, false},
+		"quotaReserved to admitted": {StatusQuotaReserved, StatusAdmitted, false},
+		"admitted to quotaReserved": {StatusAdmitted, StatusQuotaReserved, false},
+		"finished to pending":       {StatusFinished, StatusPending, false},
+		"quotaReserved to finished": {StatusQuotaReserved, StatusFinished, false},
+		"admitted to finished":      {StatusAdmitted, StatusFinished, false},
+		"same quotaReserved":        {StatusQuotaReserved, StatusQuotaReserved, false},
+		"same admitted":             {StatusAdmitted, StatusAdmitted, false},
+		"pending to finished":       {StatusPending, StatusFinished, false},
+		"finished to quotaReserved": {StatusFinished, StatusQuotaReserved, false},
+	}
+	for name, tc := range cases {
+		t.Run(name, func(t *testing.T) {
+			if got := FromQuotaReservedOrAdmittedToPending(tc.prev, tc.new); got != tc.want {
+				t.Errorf("FromQuotaReservedOrAdmittedToPending(%q, %q) = %v, want %v", tc.prev, tc.new, got, tc.want)
+			}
+		})
+	}
+}
+
+func TestFromPendingToQuotaReservedOrAdmitted(t *testing.T) {
+	cases := map[string]struct {
+		prev, new string
+		want      bool
+	}{
+		"pending to quotaReserved":  {StatusPending, StatusQuotaReserved, true},
+		"pending to admitted":       {StatusPending, StatusAdmitted, true},
+		"pending to pending":        {StatusPending, StatusPending, false},
+		"quotaReserved to pending":  {StatusQuotaReserved, StatusPending, false},
+		"admitted to pending":       {StatusAdmitted, StatusPending, false},
+		"quotaReserved to admitted": {StatusQuotaReserved, StatusAdmitted, false},
+		"admitted to quotaReserved": {StatusAdmitted, StatusQuotaReserved, false},
+		"pending to finished":       {StatusPending, StatusFinished, false},
+		"finished to admitted":      {StatusFinished, StatusAdmitted, false},
+		"same quotaReserved":        {StatusQuotaReserved, StatusQuotaReserved, false},
+		"same admitted":             {StatusAdmitted, StatusAdmitted, false},
+	}
+	for name, tc := range cases {
+		t.Run(name, func(t *testing.T) {
+			if got := FromPendingToQuotaReservedOrAdmitted(tc.prev, tc.new); got != tc.want {
+				t.Errorf("FromPendingToQuotaReservedOrAdmitted(%q, %q) = %v, want %v", tc.prev, tc.new, got, tc.want)
+			}
+		})
+	}
+}
+
 func TestNewInfo(t *testing.T) {
 	now := time.Now().Truncate(time.Second)
 	cases := map[string]struct {
