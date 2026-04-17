@@ -33,7 +33,7 @@ import (
 	"sigs.k8s.io/kueue/test/util"
 )
 
-var _ = ginkgo.Describe("Cohorts", func() {
+var _ = ginkgo.FDescribe("Cohorts", func() {
 	var (
 		admissionChecks map[string]*kueue.AdmissionCheck
 
@@ -84,7 +84,7 @@ var _ = ginkgo.Describe("Cohorts", func() {
 		return fq
 	}
 
-	ginkgo.When("creating, modifying and removing", func() {
+	ginkgo.FWhen("creating, modifying and removing", ginkgo.MustPassRepeatedly(200), func() {
 		ginkgo.BeforeEach(func() {
 			admissionChecks = make(map[string]*kueue.AdmissionCheck)
 			cohorts = make(map[string]*kueue.Cohort)
