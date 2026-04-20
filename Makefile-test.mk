@@ -176,6 +176,7 @@ test-tas-e2e-helm: test-tas-e2e
 ##   Run only Certs tests: GINKGO_ARGS="--label-filter=feature:certs" make test-e2e-customconfigs
 ##   Run only Failure Recovery Policy tests: GINKGO_ARGS="--label-filter=feature:failurerecoverypolicy" make test-e2e-customconfigs
 .PHONY: test-e2e-customconfigs
+test-e2e-customconfigs: GINKGO_ARGS=--repeat=200
 test-e2e-customconfigs: setup-e2e-env run-test-e2e-customconfigs-$(E2E_KIND_VERSION:kindest/node:v%=%)
 
 .PHONY: test-e2e-customconfigs-helm

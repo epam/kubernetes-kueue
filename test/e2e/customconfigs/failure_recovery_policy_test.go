@@ -102,7 +102,7 @@ var _ = ginkgo.Describe("Failure Recovery Policy", ginkgo.Label("feature:failure
 		util.ExpectObjectToBeDeleted(ctx, k8sClient, rf, true)
 	})
 
-	ginkgo.When("the kubelet on a node goes down", func() {
+	ginkgo.FWhen("the kubelet on a node goes down", func() {
 		var (
 			cq       *kueue.ClusterQueue
 			lq       *kueue.LocalQueue
