@@ -331,6 +331,13 @@ func main() {
 	queueOptions = append(queueOptions, qcache.WithPreemptionExpectations(preemptionExpectations))
 	queues := qcache.NewManager(mgr.GetClient(), cCache, requeuer, queueOptions...)
 
+	if pcm := qcache.NewPendingMetricsController(queues); pcm != nil {
+		if err := mgr.Add(pcm); err != nil {
+			setupLog.Error(err, "Unable to add pending wait metrics worker")
+			os.Exit(1)
+		}
+	}
+
 	if err := setupIndexes(ctx, mgr, &cfg); err != nil {
 		setupLog.Error(err, "Unable to setup indexes")
 		os.Exit(1)

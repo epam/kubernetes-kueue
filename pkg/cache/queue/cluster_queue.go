@@ -480,7 +480,7 @@ func (c *ClusterQueue) PendingTotal() int {
 func (c *ClusterQueue) Pending() (int, int) {
 	c.rwm.RLock()
 	defer c.rwm.RUnlock()
-	active, inadmissible := c.pendingWorkloadInfos()
+	active, inadmissible := c.pendingWorkloadInfosLocked()
 	return len(active), len(inadmissible)
 }
 
@@ -490,6 +490,11 @@ func (c *ClusterQueue) Pending() (int, int) {
 func (c *ClusterQueue) pendingWorkloadInfos() ([]*workload.Info, []*workload.Info) {
 	c.rwm.RLock()
 	defer c.rwm.RUnlock()
+	return c.pendingWorkloadInfosLocked()
+}
+
+// pendingWorkloadInfosLocked is pendingWorkloadInfos with c.rwm already held for reading.
+func (c *ClusterQueue) pendingWorkloadInfosLocked() ([]*workload.Info, []*workload.Info) {
 	active := c.heap.List()
 	if c.inflight != nil {
 		active = append(active, c.inflight)
@@ -698,7 +703,7 @@ func (c *ClusterQueue) Info(key workload.Reference) *workload.Info {
 func (c *ClusterQueue) totalElements() []*workload.Info {
 	c.rwm.RLock()
 	defer c.rwm.RUnlock()
-	active, inadmissible := c.pendingWorkloadInfos()
+	active, inadmissible := c.pendingWorkloadInfosLocked()
 	out := make([]*workload.Info, 0, len(active)+len(inadmissible))
 	out = append(out, active...)
 	out = append(out, inadmissible...)

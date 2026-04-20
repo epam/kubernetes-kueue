@@ -35,7 +35,8 @@ func reportPendingWorkloads(m *Manager, cqRef kueue.ClusterQueueReference) {
 	if cq == nil {
 		return
 	}
-	reportCQPendingWorkloads(m, cq)
+	reportCQPendingCounts(m, cq)
+	m.notifyPendingWaitMetricsRefresh(cqRef)
 
 	if !m.lqMetrics.IsEnabled() {
 		return
@@ -47,17 +48,28 @@ func reportPendingWorkloads(m *Manager, cqRef kueue.ClusterQueueReference) {
 	}
 }
 
-func reportCQPendingWorkloads(m *Manager, cq *ClusterQueue) {
+// reportCQPendingCounts updates pending workload count gauges (O(1)); safe on scheduling hot paths.
+func reportCQPendingCounts(m *Manager, cq *ClusterQueue) {
+	active, inadmissible := cq.Pending()
+	if m.statusChecker != nil && !m.statusChecker.ClusterQueueActive(cq.name) {
+		inadmissible += active
+		active = 0
+	}
+	custom := m.customLabels.CQGet(cq.name)
+	metrics.ReportPendingWorkloads(cq.name, active, inadmissible, custom, m.roleTracker)
+}
+
+// reportCQPendingWaitGaugeMetrics updates max/mean queued-wait gauges and must not run on the per-Pop scheduling hot path.
+func reportCQPendingWaitGaugeMetrics(m *Manager, cq *ClusterQueue) {
 	activeInfos, inadmissibleInfos := cq.pendingWorkloadInfos()
 	if m.statusChecker != nil && !m.statusChecker.ClusterQueueActive(cq.name) {
 		inadmissibleInfos = append(inadmissibleInfos, activeInfos...)
 		activeInfos = nil
 	}
 	custom := m.customLabels.CQGet(cq.name)
-	metrics.ReportPendingWorkloads(cq.name, len(activeInfos), len(inadmissibleInfos), custom, m.roleTracker)
 	activeMax, activeMean := pendingWaitStats(activeInfos, m.clock)
 	inadmissibleMax, inadmissibleMean := pendingWaitStats(inadmissibleInfos, m.clock)
-	metrics.ReportPendingWorkloadWaitTimes(cq.name, activeMax, activeMean, inadmissibleMax, inadmissibleMean, custom, m.roleTracker)
+	metrics.ReportPendingWorkloadWaitTimes(cq.name, len(activeInfos), len(inadmissibleInfos), activeMax, activeMean, inadmissibleMax, inadmissibleMean, custom, m.roleTracker)
 }
 
 func pendingWaitStats(infos []*workload.Info, cl clock.Clock) (float64, float64) {

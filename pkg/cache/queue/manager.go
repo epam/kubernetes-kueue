@@ -117,6 +117,13 @@ func WithLocalQueueMetrics(value *metrics.LocalQueueMetricsConfig) Option {
 	}
 }
 
+// WithNoopPendingWaitMetricsAsync disables the asynchronous pending-wait gauge worker (unit tests only).
+func WithNoopPendingWaitMetricsAsync() Option {
+	return func(m *Manager) {
+		m.pendingWaitMetricsNotifier = NoopPendingWaitMetricsNotifier{}
+	}
+}
+
 // SetDRAReconcileChannel sets the DRA reconcile channel after manager creation.
 func (m *Manager) SetDRAReconcileChannel(ch chan<- event.TypedGenericEvent[*kueue.Workload]) {
 	m.draReconcileChannel = ch
@@ -169,6 +176,9 @@ type Manager struct {
 	// Once the Evicted condition is observed by scheduler the expectation
 	// can be removed - the expectation is satisfied.
 	preemptionExpectations *expectations.Store
+
+	pendingMetricsController   *PendingMetricsController
+	pendingWaitMetricsNotifier PendingWaitMetricsNotifier
 }
 
 // NewManager is a factory for cache.queue.Manager. For tests,
@@ -196,6 +206,10 @@ func NewManager(client client.Client, checker StatusChecker, requeuer inadmissib
 	}
 	for _, option := range options {
 		option(m)
+	}
+	if m.pendingWaitMetricsNotifier == nil {
+		m.pendingMetricsController = newPendingMetricsController(m)
+		m.pendingWaitMetricsNotifier = m.pendingMetricsController
 	}
 	m.requeuer.setManager(m)
 	m.cond.L = &m.RWMutex
@@ -578,7 +592,8 @@ func (m *Manager) AddOrUpdateWorkloadWithoutLock(log logr.Logger, w *kueue.Workl
 	cq.PushOrUpdate(wInfo)
 	m.preemptionExpectations.ObservedUID(log, client.ObjectKeyFromObject(w), w.UID)
 	reportLQPendingWorkloads(m, q)
-	reportCQPendingWorkloads(m, cq)
+	reportCQPendingCounts(m, cq)
+	m.notifyPendingWaitMetricsRefresh(q.ClusterQueue)
 	m.Broadcast()
 	log.V(5).Info("Added/updated workload in queues; Broadcast successful.")
 	return nil
@@ -616,7 +631,8 @@ func (m *Manager) RequeueWorkload(ctx context.Context, info *workload.Info, reas
 	}
 
 	added := cq.RequeueIfNotPresent(ctx, info, reason)
-	reportCQPendingWorkloads(m, cq)
+	reportCQPendingCounts(m, cq)
+	m.notifyPendingWaitMetricsRefresh(q.ClusterQueue)
 	reportLQPendingWorkloads(m, q)
 	if added {
 		m.Broadcast()
@@ -667,7 +683,8 @@ func (m *Manager) deleteWorkloadWithoutLock(log logr.Logger, wlKey workload.Refe
 	cq := m.hm.ClusterQueue(q.ClusterQueue)
 	if cq != nil {
 		cq.Delete(log, wlKey)
-		reportCQPendingWorkloads(m, cq)
+		reportCQPendingCounts(m, cq)
+		m.notifyPendingWaitMetricsRefresh(q.ClusterQueue)
 	}
 	reportLQPendingWorkloads(m, q)
 
@@ -752,7 +769,8 @@ func (m *Manager) heads() []workload.Info {
 			continue
 		}
 		wl := cq.Pop()
-		reportCQPendingWorkloads(m, cq)
+		reportCQPendingCounts(m, cq)
+		m.notifyPendingWaitMetricsRefresh(cqName)
 		if wl == nil {
 			continue
 		}
@@ -852,12 +870,19 @@ func (m *Manager) queueSecondPass(ctx context.Context, w *kueue.Workload, iterat
 	}
 }
 
+func (m *Manager) notifyPendingWaitMetricsRefresh(cqName kueue.ClusterQueueReference) {
+	if m.pendingWaitMetricsNotifier != nil {
+		m.pendingWaitMetricsNotifier.NotifyClusterQueue(cqName)
+	}
+}
+
 // ResyncGaugeMetrics re-reports pending and finished workload gauge metrics.
 func (m *Manager) ResyncGaugeMetrics() {
 	m.RLock()
 	defer m.RUnlock()
 	for _, cq := range m.hm.ClusterQueues() {
-		reportCQPendingWorkloads(m, cq)
+		reportCQPendingCounts(m, cq)
+		reportCQPendingWaitGaugeMetrics(m, cq)
 		reportCQFinishedWorkloads(cq, m.roleTracker, m.customLabels)
 	}
 	if m.lqMetrics.IsEnabled() {

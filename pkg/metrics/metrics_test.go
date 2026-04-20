@@ -150,11 +150,15 @@ func TestReportAndCleanupClusterQueueUsage(t *testing.T) {
 }
 
 func TestReportAndCleanupPendingWorkloadWaitTimes(t *testing.T) {
-	ReportPendingWorkloadWaitTimes("cq-wait", 10, 5, 3, 1.5, nil, nil)
+	ReportPendingWorkloadWaitTimes("cq-wait", 1, 1, 10, 5, 3, 1.5, nil, nil)
 	expectFilteredMetricsCount(t, PendingWorkloadMaxWaitTimeSeconds, 2, "cluster_queue", "cq-wait")
 	expectFilteredMetricsCount(t, PendingWorkloadMeanWaitTimeSeconds, 2, "cluster_queue", "cq-wait")
 	expectFilteredMetricsCount(t, PendingWorkloadMaxWaitTimeSeconds, 1, "cluster_queue", "cq-wait", "status", PendingStatusActive)
 	expectFilteredMetricsCount(t, PendingWorkloadMaxWaitTimeSeconds, 1, "cluster_queue", "cq-wait", "status", PendingStatusInadmissible)
+
+	ReportPendingWorkloadWaitTimes("cq-wait", 0, 1, 0, 0, 3, 1.5, nil, nil)
+	expectFilteredMetricsCount(t, PendingWorkloadMaxWaitTimeSeconds, 1, "cluster_queue", "cq-wait", "status", PendingStatusInadmissible)
+	expectFilteredMetricsCount(t, PendingWorkloadMaxWaitTimeSeconds, 0, "cluster_queue", "cq-wait", "status", PendingStatusActive)
 
 	ClearClusterQueueMetrics("cq-wait")
 	expectFilteredMetricsCount(t, PendingWorkloadMaxWaitTimeSeconds, 0, "cluster_queue", "cq-wait")

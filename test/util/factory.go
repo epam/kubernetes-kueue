@@ -35,5 +35,11 @@ func NewManagerForIntegrationTestsWithBatchPeriod(ctx context.Context, client cl
 		// ignore error to make linter happy.
 		_ = requeuer.Start(ctx)
 	}()
-	return qcache.NewManager(client, checker, requeuer, options...)
+	manager := qcache.NewManager(client, checker, requeuer, options...)
+	if pcm := qcache.NewPendingMetricsController(manager); pcm != nil {
+		go func() {
+			_ = pcm.Start(ctx)
+		}()
+	}
+	return manager
 }

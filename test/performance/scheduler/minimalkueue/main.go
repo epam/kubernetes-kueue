@@ -215,6 +215,13 @@ func run() int {
 	queueOptions := qcache.WithPreemptionExpectations(preemptionExpectations)
 	queues := qcache.NewManager(mgr.GetClient(), cCache, requeuer, queueOptions)
 
+	if pcm := qcache.NewPendingMetricsController(queues); pcm != nil {
+		if err := mgr.Add(pcm); err != nil {
+			log.Error(err, "Unable to add pending wait metrics worker")
+			return 1
+		}
+	}
+
 	go queues.CleanUpOnContext(ctx)
 	go cCache.CleanUpOnContext(ctx)
 

@@ -1093,24 +1093,16 @@ func (r *WorkloadReconciler) Delete(e event.TypedDeleteEvent[*kueue.Workload]) b
 	return true
 }
 
-// preemptionEvictionToPendingObserveInput determines whether to record preemption eviction→pending latency.
-// Latency is now minus the WorkloadEvicted condition's LastTransitionTime on newWl (preemption reason).
-// Returns ok when status.admission.cluster_queue on oldWl is set and non-empty (see workload.WorkloadClusterQueue).
-func preemptionEvictionToPendingObserveInput(oldWl, newWl *kueue.Workload, now time.Time) (kueue.ClusterQueueReference, time.Duration, bool) {
+// isPreemptionEvictionToPending reports whether newWl transitioned from quota-reserved or admitted to pending
+// due to preemption eviction (WorkloadEvicted with reason Preempted).
+func isPreemptionEvictionToPending(oldWl, newWl *kueue.Workload) bool {
 	prevStatus := workload.Status(oldWl)
 	newStatus := workload.Status(newWl)
 	if !workload.FromQuotaReservedOrAdmittedToPending(prevStatus, newStatus) {
-		return "", 0, false
+		return false
 	}
 	c := apimeta.FindStatusCondition(newWl.Status.Conditions, kueue.WorkloadEvicted)
-	if c == nil || c.Status != metav1.ConditionTrue || c.Reason != kueue.WorkloadEvictedByPreemption {
-		return "", 0, false
-	}
-	cq, found := workload.WorkloadClusterQueue(oldWl)
-	if !found {
-		return "", 0, false
-	}
-	return cq, now.Sub(c.LastTransitionTime.Time), true
+	return c != nil && c.Status == metav1.ConditionTrue && c.Reason == kueue.WorkloadEvictedByPreemption
 }
 
 func (r *WorkloadReconciler) Update(e event.TypedUpdateEvent[*kueue.Workload]) bool {
@@ -1182,8 +1174,14 @@ func (r *WorkloadReconciler) Update(e event.TypedUpdateEvent[*kueue.Workload]) b
 			r.updateAfsConsumedUsage(log, wlCopy)
 		}
 	case workload.FromQuotaReservedOrAdmittedToPending(prevStatus, status):
-		if cq, latency, ok := preemptionEvictionToPendingObserveInput(e.ObjectOld, e.ObjectNew, r.clock.Now()); ok {
-			metrics.ReportPreemptionEvictionToPendingTime(cq, latency, r.customLabels.CQGet(cq), r.roleTracker)
+		if isPreemptionEvictionToPending(e.ObjectOld, e.ObjectNew) {
+			cq, cqOK := workload.WorkloadClusterQueue(e.ObjectOld)
+			if cqOK {
+				if c := apimeta.FindStatusCondition(e.ObjectNew.Status.Conditions, kueue.WorkloadEvicted); c != nil {
+					latency := r.clock.Now().Sub(c.LastTransitionTime.Time)
+					metrics.ReportPreemptionEvictionToPendingTime(cq, latency, r.customLabels.CQGet(cq), r.roleTracker)
+				}
+			}
 		}
 		var backoff time.Duration
 		if wlCopy.Status.RequeueState != nil && wlCopy.Status.RequeueState.RequeueAt != nil {

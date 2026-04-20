@@ -77,6 +77,6 @@ func NewManagerForUnitTestsWithRequeuer(client client.Client, checker StatusChec
 		cohorts: sets.New[kueue.CohortReference](),
 	}
 
-	manager := NewManager(client, checker, requeuer, options...)
+	manager := NewManager(client, checker, requeuer, append(options, WithNoopPendingWaitMetricsAsync())...)
 	return manager, requeuer
 }

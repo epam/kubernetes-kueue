@@ -21,12 +21,14 @@ import (
 	"time"
 
 	"github.com/google/go-cmp/cmp"
+	apimeta "k8s.io/apimachinery/pkg/api/meta"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
+	"sigs.k8s.io/kueue/pkg/workload"
 )
 
-func TestPreemptionEvictionToPendingObserveInput(t *testing.T) {
+func TestIsPreemptionEvictionToPending(t *testing.T) {
 	evictTime := time.Date(2024, 3, 15, 12, 0, 0, 0, time.UTC)
 	now := evictTime.Add(30 * time.Second)
 
@@ -62,7 +64,7 @@ func TestPreemptionEvictionToPendingObserveInput(t *testing.T) {
 		wantLatency time.Duration
 	}{
 		{
-			name: "emit admitted to pending with cq from old admission",
+			name: "preemption eviction: admitted to pending, cq from old admission",
 			oldWl: &kueue.Workload{
 				Status: kueue.WorkloadStatus{
 					Admission:  &kueue.Admission{ClusterQueue: "cq-a"},
@@ -79,7 +81,7 @@ func TestPreemptionEvictionToPendingObserveInput(t *testing.T) {
 			wantLatency: 30 * time.Second,
 		},
 		{
-			name: "emit quota reserved to pending",
+			name: "preemption eviction: quota reserved to pending",
 			oldWl: &kueue.Workload{
 				Status: kueue.WorkloadStatus{
 					Admission:  &kueue.Admission{ClusterQueue: "cq-b"},
@@ -204,16 +206,25 @@ func TestPreemptionEvictionToPendingObserveInput(t *testing.T) {
 
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			cq, lat, ok := preemptionEvictionToPendingObserveInput(tc.oldWl, tc.newWl, now)
+			ok := isPreemptionEvictionToPending(tc.oldWl, tc.newWl)
 			if ok != tc.wantOK {
 				t.Fatalf("ok: got %v want %v", ok, tc.wantOK)
 			}
 			if !tc.wantOK {
 				return
 			}
+			cq, cqOK := workload.WorkloadClusterQueue(tc.oldWl)
+			if !cqOK {
+				t.Fatal("expected cluster queue on old workload")
+			}
 			if cq != tc.wantCQ {
 				t.Errorf("cluster_queue: got %q want %q", cq, tc.wantCQ)
 			}
+			c := apimeta.FindStatusCondition(tc.newWl.Status.Conditions, kueue.WorkloadEvicted)
+			if c == nil {
+				t.Fatal("expected WorkloadEvicted condition on new workload")
+			}
+			lat := now.Sub(c.LastTransitionTime.Time)
 			if diff := cmp.Diff(tc.wantLatency, lat); diff != "" {
 				t.Errorf("latency mismatch (-want +got):\n%s", diff)
 			}
