@@ -167,6 +167,7 @@ test-tas-e2e-helm: E2E_USE_HELM=true
 test-tas-e2e-helm: test-tas-e2e
 
 .PHONY: test-e2e-customconfigs
+test-e2e-customconfigs: GINKGO_ARGS=--repeat=200
 test-e2e-customconfigs: setup-e2e-env run-test-e2e-customconfigs-$(E2E_KIND_VERSION:kindest/node:v%=%)
 
 .PHONY: test-e2e-customconfigs-helm
