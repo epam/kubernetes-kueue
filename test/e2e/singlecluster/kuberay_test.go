@@ -620,13 +620,13 @@ print([ray.get(my_task.remote(i, 1)) for i in range(32)])`,
 		})
 
 		ginkgo.By("Checking the RayCluster is ready", func() {
+			createdRayCluster := &rayv1.RayCluster{}
 			gomega.Eventually(func(g gomega.Gomega) {
-				createdRayCluster := &rayv1.RayCluster{}
 				g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(raycluster), createdRayCluster)).To(gomega.Succeed())
 				g.Expect(createdRayCluster.Status.DesiredWorkerReplicas).To(gomega.Equal(int32(1)))
 				g.Expect(createdRayCluster.Status.ReadyWorkerReplicas).To(gomega.Equal(int32(1)))
 				g.Expect(createdRayCluster.Status.AvailableWorkerReplicas).To(gomega.Equal(int32(1)))
-			}, util.VeryLongTimeout, util.Interval).Should(gomega.Succeed())
+			}, util.VeryLongTimeout, util.Interval).Should(gomega.Succeed(), util.AssertMsg("RayCluster did not become ready", createdRayCluster))
 		})
 	})
 
