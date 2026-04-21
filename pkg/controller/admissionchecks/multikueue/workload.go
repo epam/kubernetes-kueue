@@ -456,9 +456,6 @@ func (w *wlReconciler) reconcileGroup(ctx context.Context, group *wlGroup) (reco
 
 	// 6. Get the first reserving/admitted workload.
 	conditionToCheck := kueue.WorkloadAdmitted
-	if !features.Enabled(features.MultiKueueWaitForWorkloadAdmitted) {
-		conditionToCheck = kueue.WorkloadQuotaReserved
-	}
 	if remoteCond, reservingRemote := group.bestMatchByCondition(conditionToCheck); remoteCond != nil {
 		// remove the non-selected worker workloads
 		for rem, remWl := range group.remotes {
