@@ -38,7 +38,6 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
 
 	configapi "sigs.k8s.io/kueue/apis/config/v1beta2"
-	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/util/tlsconfig"
 )
 
@@ -179,15 +178,14 @@ func AddWebhookSettingsTo(o *ctrl.Options, cfg *configapi.Configuration) {
 		}
 
 		// Apply TLS configuration if provided
-		if features.Enabled(features.TLSOptions) {
-			if cfg.TLS != nil {
-				tlsOpts, err := tlsconfig.ParseTLSOptions(cfg.TLS)
-				if err == nil {
-					tlsOpts := tlsconfig.BuildTLSOptions(tlsOpts)
-					wo.TLSOpts = append(wo.TLSOpts, tlsOpts...)
-				}
+		if cfg.TLS != nil {
+			tlsOpts, err := tlsconfig.ParseTLSOptions(cfg.TLS)
+			if err == nil {
+				tlsOpts := tlsconfig.BuildTLSOptions(tlsOpts)
+				wo.TLSOpts = append(wo.TLSOpts, tlsOpts...)
 			}
 		}
+
 		o.WebhookServer = webhook.NewServer(wo)
 	}
 }

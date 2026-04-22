@@ -184,14 +184,10 @@ func main() {
 		FilterProvider: filters.WithAuthenticationAndAuthorization,
 	}
 
-	parsedTLSConfig := &tlsconfig.TLS{}
-	if features.Enabled(features.TLSOptions) {
-		var err error
-		parsedTLSConfig, err = tlsconfig.ParseTLSOptions(cfg.TLS)
-		if err != nil {
-			setupLog.Error(err, "Unable to parse TLS options from configuration")
-			os.Exit(1)
-		}
+	parsedTLSConfig, err := tlsconfig.ParseTLSOptions(cfg.TLS)
+	if err != nil {
+		setupLog.Error(err, "Unable to parse TLS options from configuration")
+		os.Exit(1)
 	}
 
 	// Apply TLS configuration from config
