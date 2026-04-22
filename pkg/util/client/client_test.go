@@ -27,10 +27,12 @@ import (
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
+	corev1ac "k8s.io/client-go/applyconfigurations/core/v1"
 	"k8s.io/utils/ptr"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/client/interceptor"
 
+	"sigs.k8s.io/kueue/pkg/constants"
 	utiltesting "sigs.k8s.io/kueue/pkg/util/testing"
 )
 
@@ -464,5 +466,16 @@ func TestPatchStatus(t *testing.T) {
 				t.Errorf("Patch() object (-want +got):\n%s", diff)
 			}
 		})
+	}
+}
+
+func TestApply(t *testing.T) {
+	ctx, _ := utiltesting.ContextWithLog(t)
+	clnt := utiltesting.NewClientBuilder().Build()
+
+	podApply := corev1ac.Pod("pod", metav1.NamespaceDefault)
+	err := clnt.Status().Apply(ctx, podApply, client.FieldOwner(constants.KueueName), client.ForceOwnership)
+	if !apierrors.IsNotFound(err) {
+		t.Fail()
 	}
 }
