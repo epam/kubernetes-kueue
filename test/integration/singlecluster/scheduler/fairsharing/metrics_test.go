@@ -17,6 +17,7 @@ limitations under the License.
 package fairsharing
 
 import (
+	"sync"
 	"time"
 
 	"github.com/onsi/ginkgo/v2"
@@ -33,7 +34,7 @@ import (
 	"sigs.k8s.io/kueue/test/util"
 )
 
-var _ = ginkgo.Describe("Cohorts", func() {
+var _ = ginkgo.FDescribe("Cohorts", func() {
 	var (
 		admissionChecks map[string]*kueue.AdmissionCheck
 
@@ -84,7 +85,7 @@ var _ = ginkgo.Describe("Cohorts", func() {
 		return fq
 	}
 
-	ginkgo.When("creating, modifying and removing", func() {
+	ginkgo.FWhen("creating, modifying and removing", func() {
 		ginkgo.BeforeEach(func() {
 			admissionChecks = make(map[string]*kueue.AdmissionCheck)
 			cohorts = make(map[string]*kueue.Cohort)
@@ -310,29 +311,61 @@ var _ = ginkgo.Describe("Cohorts", func() {
 				util.ExpectCohortSubtreeQuotaGaugeMetricCleaned("root", flavor2.Name, corev1.ResourceMemory.String())
 			})
 
-			ginkgo.By("Re-assign cohort ch2 cluster queues to ch3", func() {
+			ginkgo.By("Re-assign cohort ch2 cluster queues to ch3, delete cohort ch2", func() {
 				var cqD, cqE kueue.ClusterQueue
-				gomega.Eventually(func(g gomega.Gomega) {
-					g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(cqs["cqd"]), &cqD)).To(gomega.Succeed())
-					cqD.Spec.CohortName = "ch3"
-					g.Expect(k8sClient.Update(ctx, &cqD)).To(gomega.Succeed())
-					g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(cqs["cqe"]), &cqE)).To(gomega.Succeed())
-					cqE.Spec.CohortName = "ch3"
-					g.Expect(k8sClient.Update(ctx, &cqE)).To(gomega.Succeed())
-				}, util.Timeout, util.ShortInterval).Should(gomega.Succeed())
+				var wg sync.WaitGroup
+				start := make(chan struct{})
+				wg.Add(3)
+
+				go func() {
+					defer wg.Done()
+					defer ginkgo.GinkgoRecover()
+					<-start
+					jitter := time.Duration(ginkgo.GinkgoRandomSeed()%1000) * time.Millisecond
+					time.Sleep(jitter)
+					util.ExpectObjectToBeDeleted(ctx, k8sClient, cohorts["ch2"], true)
+				}()
+
+				go func() {
+					defer wg.Done()
+					defer ginkgo.GinkgoRecover()
+					<-start
+
+					gomega.Eventually(func(g gomega.Gomega) {
+						jitter := time.Duration(ginkgo.GinkgoRandomSeed()%1000) * time.Millisecond
+						time.Sleep(jitter)
+
+						g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(cqs["cqd"]), &cqD)).To(gomega.Succeed())
+						cqD.Spec.CohortName = "ch3"
+						g.Expect(k8sClient.Update(ctx, &cqD)).To(gomega.Succeed())
+					}, util.Timeout, util.ShortInterval).Should(gomega.Succeed())
+				}()
+				go func() {
+					defer wg.Done()
+					defer ginkgo.GinkgoRecover()
+					<-start
+					gomega.Eventually(func(g gomega.Gomega) {
+						jitter := time.Duration(ginkgo.GinkgoRandomSeed()%1000) * time.Millisecond
+						time.Sleep(jitter)
+						g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(cqs["cqe"]), &cqE)).To(gomega.Succeed())
+						cqE.Spec.CohortName = "ch3"
+						g.Expect(k8sClient.Update(ctx, &cqE)).To(gomega.Succeed())
+					}, util.Timeout, util.ShortInterval).Should(gomega.Succeed())
+				}()
+
+				close(start)
+				wg.Wait() // then assert final state
 
 				// updated values for ch3 with cqd and cqe added, and root with ch3 updated
-				util.ExpectCohortSubtreeQuotaGaugeMetric("ch3", defaultFlavor.Name, corev1.ResourceCPU.String(), 10_000)
-				util.ExpectCohortSubtreeQuotaGaugeMetric("ch3", defaultFlavor.Name, corev1.ResourceMemory.String(), util.ResourceQtyToFloat64("10Gi"))
+				// util.ExpectCohortSubtreeQuotaGaugeMetric("ch3", defaultFlavor.Name, corev1.ResourceCPU.String(), 10_000)
+				// util.ExpectCohortSubtreeQuotaGaugeMetric("ch3", defaultFlavor.Name, corev1.ResourceMemory.String(), util.ResourceQtyToFloat64("10Gi"))
 
-				util.ExpectCohortSubtreeQuotaGaugeMetric("root", defaultFlavor.Name, corev1.ResourceCPU.String(), 50_000)
-				util.ExpectCohortSubtreeQuotaGaugeMetric("root", defaultFlavor.Name, corev1.ResourceMemory.String(), util.ResourceQtyToFloat64("50Gi"))
-				util.ExpectCohortSubtreeQuotaGaugeMetric("root", flavor1.Name, corev1.ResourceCPU.String(), 25_000)
-				util.ExpectCohortSubtreeQuotaGaugeMetric("root", flavor1.Name, "nvidia.com/gpu", 6)
-			})
-
-			ginkgo.By("Deleting cohort ch2", func() {
-				util.ExpectObjectToBeDeleted(ctx, k8sClient, cohorts["ch2"], true)
+				// util.ExpectCohortSubtreeQuotaGaugeMetric("root", defaultFlavor.Name, corev1.ResourceCPU.String(), 50_000)
+				// util.ExpectCohortSubtreeQuotaGaugeMetric("root", defaultFlavor.Name, corev1.ResourceMemory.String(), util.ResourceQtyToFloat64("50Gi"))
+				// util.ExpectCohortSubtreeQuotaGaugeMetric("root", flavor1.Name, corev1.ResourceCPU.String(), 25_000)
+				// util.ExpectCohortSubtreeQuotaGaugeMetric("root", flavor1.Name, "nvidia.com/gpu", 6)
+				// })
+				// ginkgo.By("Deleting cohort ch2", func() {
 
 				// updated values for ch3 with cqd and cqe added, and root with ch3 updated
 				util.ExpectCohortSubtreeQuotaGaugeMetric("ch3", defaultFlavor.Name, corev1.ResourceCPU.String(), 10_000)

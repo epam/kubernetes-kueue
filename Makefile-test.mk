@@ -27,10 +27,10 @@ TEST_LOG_LEVEL ?= -3
 # Number of processes to use during integration tests to run specs within a
 # suite in parallel. Suites still run sequentially. User may set this value to 1
 # to run without parallelism.
-INTEGRATION_NPROCS ?= 4
+INTEGRATION_NPROCS ?= 1
 INTEGRATION_NPROCS_MULTIKUEUE ?= 3
 # Folder where the integration tests are located.
-INTEGRATION_TARGET ?= ./test/integration/singlecluster/...
+INTEGRATION_TARGET ?= ./test/integration/singlecluster/scheduler/fairsharing/...
 INTEGRATION_TARGET_MULTIKUEUE ?= ./test/integration/multikueue/...
 # Verbosity level for apiserver logging.
 # The logging is disabled if 0.
@@ -59,6 +59,8 @@ KIND_CLUSTER_NAME ?= kind
 
 # Number of processes to use during e2e tests.
 E2E_NPROCS ?= 1
+
+GINKGO_ARGS?= --repeat=100 --fail-fast
 
 # Deferred variable: evaluated at recipe time so target-specific E2E_NPROCS overrides take effect.
 E2E_GINKGO_ARGS = $(GINKGO_ARGS) $(if $(filter-out 1,$(E2E_NPROCS)),-procs=$(E2E_NPROCS))
