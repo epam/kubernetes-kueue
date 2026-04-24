@@ -248,6 +248,79 @@ func TestReconcile_NotAdmitted_ClearsStaleAnnotation(t *testing.T) {
 	}
 }
 
+func TestShouldEnqueueWorkload(t *testing.T) {
+	sel, err := metav1.LabelSelectorAsSelector(&metav1.LabelSelector{
+		MatchLabels: map[string]string{"tier": "batch"},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	r := &PriorityBoostReconciler{workloadSelector: sel}
+
+	outNoAnn := &kueue.Workload{
+		ObjectMeta: metav1.ObjectMeta{Name: "b", Namespace: "ns", Labels: map[string]string{"tier": "interactive"}},
+	}
+	if r.shouldEnqueueWorkload(outNoAnn) {
+		t.Error("out of selector and no annotation should not enqueue")
+	}
+	outAnn := outNoAnn.DeepCopy()
+	outAnn.Annotations = map[string]string{constants.PriorityBoostAnnotationKey: "-100000"}
+	if !r.shouldEnqueueWorkload(outAnn) {
+		t.Error("out of selector but annotation present should enqueue")
+	}
+	in := &kueue.Workload{
+		ObjectMeta: metav1.ObjectMeta{Name: "c", Namespace: "ns", Labels: map[string]string{"tier": "batch"}},
+	}
+	if !r.shouldEnqueueWorkload(in) {
+		t.Error("in selector should enqueue")
+	}
+	ts := metav1.NewTime(time.Now())
+	deleting := in.DeepCopy()
+	deleting.DeletionTimestamp = &ts
+	if r.shouldEnqueueWorkload(deleting) {
+		t.Error("deleting workload should not enqueue")
+	}
+}
+
+func TestReconcile_OutOfSelector_NoAnnotation_NoPatch(t *testing.T) {
+	ctx := t.Context()
+	scheme := runtime.NewScheme()
+	if err := kueue.AddToScheme(scheme); err != nil {
+		t.Fatalf("Failed adding kueue to scheme: %v", err)
+	}
+
+	sel, err := metav1.LabelSelectorAsSelector(&metav1.LabelSelector{
+		MatchLabels: map[string]string{"tier": "batch"},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	wl := admittedWorkload(time.Now().Add(-60 * time.Minute))
+	wl.Labels = map[string]string{"tier": "interactive"}
+
+	cl := fake.NewClientBuilder().WithScheme(scheme).WithStatusSubresource(wl).WithObjects(wl).Build()
+	patchCalled := false
+	icl := interceptor.NewClient(cl, interceptor.Funcs{
+		Patch: func(ctx context.Context, c client.WithWatch, obj client.Object, patch client.Patch, opts ...client.PatchOption) error {
+			patchCalled = true
+			return c.Patch(ctx, obj, patch, opts...)
+		},
+	})
+	r := NewPriorityBoostReconciler(icl, record.NewFakeRecorder(32),
+		WithMinAdmitDuration(30*time.Minute),
+		WithBoostValue(100000),
+		WithWorkloadSelector(sel),
+	)
+	req := types.NamespacedName{Name: wl.Name, Namespace: wl.Namespace}
+	if _, err := r.Reconcile(ctx, ctrlRequest(req)); err != nil {
+		t.Fatalf("Reconcile failed: %v", err)
+	}
+	if patchCalled {
+		t.Error("expected no patch when out of selector and no annotation")
+	}
+}
+
 func TestReconcile_OutOfSelector_ClearsAnnotation(t *testing.T) {
 	ctx := t.Context()
 	scheme := runtime.NewScheme()

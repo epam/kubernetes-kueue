@@ -31,6 +31,8 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/builder"
 	"sigs.k8s.io/controller-runtime/pkg/client"
+	"sigs.k8s.io/controller-runtime/pkg/event"
+	"sigs.k8s.io/controller-runtime/pkg/predicate"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
@@ -123,6 +125,10 @@ func (r *PriorityBoostReconciler) Reconcile(ctx context.Context, req ctrl.Reques
 	var newBoost int32
 	var requeueAfter time.Duration
 	if !r.workloadInScope(&wl) {
+		// Out of scope: only patch when a stale annotation must be removed.
+		if wl.Annotations[constants.PriorityBoostAnnotationKey] == "" {
+			return ctrl.Result{}, nil
+		}
 		newBoost, requeueAfter = 0, 0
 	} else {
 		newBoost, requeueAfter = r.computeBoost(&wl)
@@ -173,7 +179,38 @@ func (r *PriorityBoostReconciler) Reconcile(ctx context.Context, req ctrl.Reques
 func (r *PriorityBoostReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return builder.TypedControllerManagedBy[reconcile.Request](mgr).
 		For(&kueue.Workload{}).
+		WithEventFilter(predicate.Funcs{
+			CreateFunc: func(e event.CreateEvent) bool {
+				return r.shouldEnqueueWorkload(e.Object)
+			},
+			UpdateFunc: func(e event.UpdateEvent) bool {
+				return r.shouldEnqueueWorkload(e.ObjectOld) || r.shouldEnqueueWorkload(e.ObjectNew)
+			},
+			DeleteFunc: func(e event.DeleteEvent) bool {
+				return false
+			},
+			GenericFunc: func(e event.GenericEvent) bool {
+				return r.shouldEnqueueWorkload(e.Object)
+			},
+		}).
 		Complete(r)
+}
+
+// shouldEnqueueWorkload limits the Workload informer to objects this controller
+// may change: in-scope workloads, or out-of-scope workloads that still carry
+// our annotation (so it can be cleared).
+func (r *PriorityBoostReconciler) shouldEnqueueWorkload(o client.Object) bool {
+	wl, ok := o.(*kueue.Workload)
+	if !ok || wl == nil {
+		return false
+	}
+	if !wl.DeletionTimestamp.IsZero() {
+		return false
+	}
+	if r.workloadInScope(wl) {
+		return true
+	}
+	return wl.Annotations[constants.PriorityBoostAnnotationKey] != ""
 }
 
 func (r *PriorityBoostReconciler) workloadInScope(wl *kueue.Workload) bool {
