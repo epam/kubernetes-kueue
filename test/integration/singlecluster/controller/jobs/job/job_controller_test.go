@@ -701,8 +701,8 @@ var _ = ginkgo.Describe("Job controller", ginkgo.Label("job:batch", "area:jobs")
 					g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(job), &createdJob)).To(gomega.Succeed())
 					now := metav1.Now()
 					createdJob.Status.Succeeded = 1
-					createdJob.Status.StartTime = ptr.To(now)
-					createdJob.Status.CompletionTime = ptr.To(now)
+					createdJob.Status.StartTime = new(now)
+					createdJob.Status.CompletionTime = new(now)
 					createdJob.Status.Conditions = []batchv1.JobCondition{
 						{
 							Type:               batchv1.JobComplete,

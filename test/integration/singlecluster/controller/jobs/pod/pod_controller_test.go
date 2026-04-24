@@ -1792,14 +1792,14 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 							Flavors: map[corev1.ResourceName]kueue.ResourceFlavorReference{
 								corev1.ResourceCPU: kueue.ResourceFlavorReference(defaultFlavor.Name),
 							},
-							Count: ptr.To(createdWorkload.Spec.PodSets[0].Count),
+							Count: new(createdWorkload.Spec.PodSets[0].Count),
 						},
 						kueue.PodSetAssignment{
 							Name: createdWorkload.Spec.PodSets[1].Name,
 							Flavors: map[corev1.ResourceName]kueue.ResourceFlavorReference{
 								corev1.ResourceCPU: kueue.ResourceFlavorReference(defaultFlavor.Name),
 							},
-							Count: ptr.To(createdWorkload.Spec.PodSets[1].Count),
+							Count: new(createdWorkload.Spec.PodSets[1].Count),
 						},
 					).Obj()
 					util.SetQuotaReservation(ctx, k8sClient, wlLookupKey, admission)
@@ -1854,14 +1854,14 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 							Flavors: map[corev1.ResourceName]kueue.ResourceFlavorReference{
 								corev1.ResourceCPU: kueue.ResourceFlavorReference(defaultFlavor.Name),
 							},
-							Count: ptr.To(createdWorkload.Spec.PodSets[0].Count),
+							Count: new(createdWorkload.Spec.PodSets[0].Count),
 						},
 						kueue.PodSetAssignment{
 							Name: createdWorkload.Spec.PodSets[1].Name,
 							Flavors: map[corev1.ResourceName]kueue.ResourceFlavorReference{
 								corev1.ResourceCPU: kueue.ResourceFlavorReference(defaultFlavor.Name),
 							},
-							Count: ptr.To(createdWorkload.Spec.PodSets[1].Count),
+							Count: new(createdWorkload.Spec.PodSets[1].Count),
 						},
 					).Obj()
 					util.SetQuotaReservation(ctx, k8sClient, wlLookupKey, admission)
@@ -1930,14 +1930,14 @@ var _ = ginkgo.Describe("Pod controller", ginkgo.Label("job:pod", "area:jobs"), 
 							Flavors: map[corev1.ResourceName]kueue.ResourceFlavorReference{
 								corev1.ResourceCPU: kueue.ResourceFlavorReference(defaultFlavor.Name),
 							},
-							Count: ptr.To(wl.Spec.PodSets[0].Count),
+							Count: new(wl.Spec.PodSets[0].Count),
 						},
 						kueue.PodSetAssignment{
 							Name: "worker",
 							Flavors: map[corev1.ResourceName]kueue.ResourceFlavorReference{
 								corev1.ResourceCPU: kueue.ResourceFlavorReference(defaultFlavor.Name),
 							},
-							Count: ptr.To(wl.Spec.PodSets[1].Count),
+							Count: new(wl.Spec.PodSets[1].Count),
 						},
 					).Obj()
 					util.SetQuotaReservation(ctx, k8sClient, wlLookupKey, admission)
