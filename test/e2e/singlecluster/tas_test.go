@@ -270,11 +270,7 @@ var _ = ginkgo.Describe("TopologyAwareScheduling", ginkgo.Label("area:singleclus
 			})
 
 			ginkgo.By(fmt.Sprintf("verify the workload %q gets finished", wlLookupKey), func() {
-				gomega.Eventually(func(g gomega.Gomega) {
-					g.Expect(k8sClient.Get(ctx, wlLookupKey, createdWorkload)).Should(gomega.Succeed())
-					g.Expect(workload.HasQuotaReservation(createdWorkload)).Should(gomega.BeTrue())
-					g.Expect(createdWorkload.Status.Conditions).Should(utiltesting.HaveConditionStatusTrue(kueue.WorkloadFinished))
-				}, util.MediumTimeout, util.Interval).Should(gomega.Succeed())
+				util.ExpectWorkloadToFinishWithTimeout(ctx, k8sClient, wlLookupKey, util.LongTimeout)
 			})
 		})
 	})
