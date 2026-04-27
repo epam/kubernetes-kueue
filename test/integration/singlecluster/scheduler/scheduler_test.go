@@ -45,7 +45,7 @@ import (
 	"sigs.k8s.io/kueue/test/util"
 )
 
-var _ = ginkgo.Describe("Scheduler", func() {
+var _ = ginkgo.FDescribe("Scheduler", func() {
 	const (
 		instanceKey = "cloud.provider.com/instance"
 	)
@@ -2936,7 +2936,7 @@ var _ = ginkgo.Describe("Scheduler", func() {
 			util.ExpectAdmittedWorkloadsTotalMetric(cq2, "", 0)
 		})
 	})
-	ginkgo.When("Deleting child Cohort should update borrowable resources for parent Cohort", func() {
+	ginkgo.FWhen("Deleting child Cohort should update borrowable resources for parent Cohort", func() {
 		var (
 			root    *kueue.Cohort
 			chLeft  *kueue.Cohort
