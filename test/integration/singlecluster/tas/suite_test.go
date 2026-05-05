@@ -74,7 +74,7 @@ var _ = ginkgo.AfterSuite(func() {
 	fwk.Teardown()
 })
 
-func managerSetup(resourceTransformations ...config.ResourceTransformation) func(ctx context.Context, mgr manager.Manager) {
+func managerSetup(transformations ...config.ResourceTransformation) func(ctx context.Context, mgr manager.Manager) {
 	return func(ctx context.Context, mgr manager.Manager) {
 		err := indexer.Setup(ctx, mgr.GetFieldIndexer())
 		gomega.Expect(err).NotTo(gomega.HaveOccurred())
@@ -89,7 +89,7 @@ func managerSetup(resourceTransformations ...config.ResourceTransformation) func
 		mgr.GetScheme().Default(controllersCfg)
 
 		cacheOptions := []schdcache.Option{
-			schdcache.WithResourceTransformations(resourceTransformations),
+			schdcache.WithResourceTransformations(transformations),
 		}
 		cCache := schdcache.New(mgr.GetClient(), cacheOptions...)
 		preemptionExpectations := preemptexpectations.New()
@@ -116,13 +116,13 @@ func managerSetup(resourceTransformations ...config.ResourceTransformation) func
 
 		reconciler, err := provisioning.NewController(
 			mgr.GetClient(),
-			mgr.GetEventRecorderFor("kueue-provisioning-request-controller"), nil)
+			mgr.GetEventRecorder("kueue-provisioning-request-controller"), nil)
 		gomega.Expect(err).NotTo(gomega.HaveOccurred())
 
 		err = reconciler.SetupWithManager(mgr)
 		gomega.Expect(err).NotTo(gomega.HaveOccurred())
 
-		sched := scheduler.New(queues, cCache, mgr.GetClient(), mgr.GetEventRecorderFor(constants.AdmissionName), scheduler.WithPreemptionExpectations(preemptionExpectations))
+		sched := scheduler.New(queues, cCache, mgr.GetClient(), mgr.GetEventRecorder(constants.AdmissionName), scheduler.WithPreemptionExpectations(preemptionExpectations))
 		err = sched.Start(ctx)
 		gomega.Expect(err).NotTo(gomega.HaveOccurred())
 	}

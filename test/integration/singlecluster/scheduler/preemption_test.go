@@ -24,6 +24,7 @@ import (
 	"github.com/onsi/ginkgo/v2"
 	"github.com/onsi/gomega"
 	corev1 "k8s.io/api/core/v1"
+	eventsv1 "k8s.io/api/events/v1"
 	apimeta "k8s.io/apimachinery/pkg/api/meta"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -289,11 +290,11 @@ var _ = ginkgo.Describe("Preemption", func() {
 
 			ginkgo.By("verify only one preemption event was emitted for each workload", func() {
 				gomega.Eventually(func(g gomega.Gomega) {
-					events, err := utiltesting.HasMatchingEvents(ctx, k8sClient, func(e *corev1.Event) bool {
+					events, err := utiltesting.HasMatchingEvents(ctx, k8sClient, func(e *eventsv1.Event) bool {
 						return e.Reason == "PreemptedWorkload" &&
 							e.Type == corev1.EventTypeNormal &&
-							e.InvolvedObject.Kind == "Workload" &&
-							e.InvolvedObject.Namespace == ns.Name
+							e.Regarding.Kind == "Workload" &&
+							e.Regarding.Namespace == ns.Name
 					})
 					g.Expect(err).NotTo(gomega.HaveOccurred())
 					g.Expect(events).To(gomega.HaveLen(len(lowPriorityWorkloads)))
