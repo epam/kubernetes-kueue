@@ -1040,6 +1040,10 @@ const (
 	// manager cluster.
 	WorkloadEvictedOnManagerCluster = "EvictedOnManagerCluster"
 
+	// WorkloadEvictedDueToPodSetsChanged indicates the workload was evicted
+	// due to podSets changed.
+	WorkloadEvictedDueToPodSetsChanged = "PodSetsChanged"
+
 	// WorkloadSliceReplaced indicates that the workload instance was
 	// replaced with a new workload slice.
 	WorkloadSliceReplaced = "WorkloadSliceReplaced"

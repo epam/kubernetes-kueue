@@ -29,12 +29,15 @@ import (
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/apimachinery/pkg/util/intstr"
 	"k8s.io/component-base/featuregate"
+	testingclock "k8s.io/utils/clock/testing"
 	"k8s.io/utils/ptr"
 	"sigs.k8s.io/controller-runtime/pkg/client"
+	"sigs.k8s.io/controller-runtime/pkg/client/interceptor"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 	leaderworkersetv1 "sigs.k8s.io/lws/api/leaderworkerset/v1"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
+	schdcache "sigs.k8s.io/kueue/pkg/cache/scheduler"
 	kueueconstants "sigs.k8s.io/kueue/pkg/constants"
 	"sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
@@ -644,6 +647,96 @@ func TestReconciler(t *testing.T) {
 						"Created Workload: %s/%s",
 						testNS,
 						GetWorkloadName(testLWS, testLWS, "0"),
+					),
+				},
+			},
+		},
+		"should evict prebuilt workload if nodeSelector changed": {
+			leaderWorkerSet: leaderworkerset.MakeLeaderWorkerSet(testLWS, testNS).
+				UID(testLWS).
+				Queue("queue").
+				WorkerTemplateSpecNodeSelector(map[string]string{"key": "value"}).
+				Obj(),
+			wantLeaderWorkerSets: []leaderworkersetv1.LeaderWorkerSet{
+				*leaderworkerset.MakeLeaderWorkerSet(testLWS, testNS).
+					UID(testLWS).
+					Queue("queue").
+					WorkerTemplateSpecNodeSelector(map[string]string{"key": "value"}).
+					Obj(),
+			},
+			workloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload(GetWorkloadName(testLWS, testLWS, "0"), testNS).
+					JobUID(testLWS).
+					OwnerReference(gvk, testLWS, testLWS).
+					Annotation(podconstants.IsGroupWorkloadAnnotationKey, podconstants.IsGroupWorkloadAnnotationValue).
+					Annotation(constants.JobOwnerGVKAnnotation, gvk.String()).
+					Annotation(constants.JobOwnerNameAnnotation, testLWS).
+					Annotation(constants.ComponentWorkloadIndexAnnotation, "0").
+					Queue("queue").
+					Finalizers(kueue.ResourceInUseFinalizerName).
+					PodSets(
+						*utiltestingapi.MakePodSet(kueue.DefaultPodSetName, 1).
+							RestartPolicy("").
+							Image(utiltestingjobs.TestDefaultContainerImage).
+							Obj()).
+					Priority(0).
+					ReserveQuotaAt(
+						utiltestingapi.MakeAdmission("cq").
+							PodSets(utiltestingapi.MakePodSetAssignment(kueue.DefaultPodSetName).Obj()).
+							Obj(),
+						now,
+					).
+					Obj(),
+			},
+			wantWorkloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload(GetWorkloadName(testLWS, testLWS, "0"), testNS).
+					JobUID(testLWS).
+					OwnerReference(gvk, testLWS, testLWS).
+					Queue("queue").
+					Annotation(podconstants.IsGroupWorkloadAnnotationKey, podconstants.IsGroupWorkloadAnnotationValue).
+					Annotation(constants.JobOwnerGVKAnnotation, gvk.String()).
+					Annotation(constants.JobOwnerNameAnnotation, testLWS).
+					Annotation(constants.ComponentWorkloadIndexAnnotation, "0").
+					Finalizers(kueue.ResourceInUseFinalizerName).
+					PodSets(
+						*utiltestingapi.MakePodSet(kueue.DefaultPodSetName, 1).
+							RestartPolicy("").
+							Image(utiltestingjobs.TestDefaultContainerImage).
+							Obj()).
+					Priority(0).
+					ReserveQuotaAt(
+						utiltestingapi.MakeAdmission("cq").
+							PodSets(utiltestingapi.MakePodSetAssignment(kueue.DefaultPodSetName).Obj()).
+							Obj(),
+						now,
+					).
+					Condition(metav1.Condition{
+						Type:               kueue.WorkloadEvicted,
+						Status:             metav1.ConditionTrue,
+						ObservedGeneration: 0,
+						LastTransitionTime: metav1.NewTime(now),
+						Reason:             kueue.WorkloadEvictedDueToPodSetsChanged,
+						Message: fmt.Sprintf(
+							"Workload %q evicted due to podSets change",
+							fmt.Sprintf("%s/%s", testNS, GetWorkloadName(testLWS, testLWS, "0")),
+						),
+					}).
+					SchedulingStatsEviction(
+						kueue.WorkloadSchedulingStatsEviction{
+							Reason: kueue.WorkloadEvictedDueToPodSetsChanged,
+							Count:  1,
+						},
+					).
+					Obj(),
+			},
+			wantEvents: []utiltesting.EventRecord{
+				{
+					Key:       types.NamespacedName{Name: GetWorkloadName(testLWS, testLWS, "0"), Namespace: testNS},
+					EventType: corev1.EventTypeNormal,
+					Reason:    fmt.Sprintf("%sDueTo%s", kueue.WorkloadEvicted, kueue.WorkloadEvictedDueToPodSetsChanged),
+					Message: fmt.Sprintf(
+						"Workload %q evicted due to podSets change",
+						fmt.Sprintf("%s/%s", testNS, GetWorkloadName(testLWS, testLWS, "0")),
 					),
 				},
 			},
@@ -2067,10 +2160,20 @@ func TestReconciler(t *testing.T) {
 				objs = append(objs, &wpc)
 			}
 
-			kClient := clientBuilder.WithObjects(objs...).Build()
+			kClient := clientBuilder.
+				WithObjects(objs...).
+				WithStatusSubresource(&kueue.Workload{}).
+				WithInterceptorFuncs(interceptor.Funcs{SubResourcePatch: utiltesting.TreatSSAAsStrategicMerge}).
+				Build()
 			recorder := &utiltesting.EventRecorder{}
 
-			reconciler, err := NewReconciler(ctx, kClient, indexer, recorder, jobframework.WithLabelKeysToCopy(tc.labelKeysToCopy))
+			cache := schdcache.New(kClient)
+
+			reconciler, err := NewReconciler(ctx, kClient, indexer, recorder,
+				jobframework.WithLabelKeysToCopy(tc.labelKeysToCopy),
+				jobframework.WithCache(cache),
+				jobframework.WithClock(testingclock.NewFakeClock(now)),
+			)
 			if err != nil {
 				t.Errorf("Error creating the reconciler: %v", err)
 			}

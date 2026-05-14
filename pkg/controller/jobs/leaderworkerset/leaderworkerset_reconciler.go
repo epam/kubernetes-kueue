@@ -35,6 +35,7 @@ import (
 	"k8s.io/client-go/tools/events"
 	"k8s.io/client-go/util/workqueue"
 	"k8s.io/klog/v2"
+	"k8s.io/utils/clock"
 	"k8s.io/utils/ptr"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/builder"
@@ -48,6 +49,7 @@ import (
 	leaderworkersetv1 "sigs.k8s.io/lws/api/leaderworkerset/v1"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
+	schdcache "sigs.k8s.io/kueue/pkg/cache/scheduler"
 	"sigs.k8s.io/kueue/pkg/constants"
 	controllerconstants "sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/controller/core/indexer"
@@ -81,6 +83,8 @@ type Reconciler struct {
 	client                       client.Client
 	logName                      string
 	record                       events.EventRecorder
+	clock                        clock.Clock
+	cache                        *schdcache.Cache
 	labelKeysToCopy              []string
 	manageJobsWithoutQueueName   bool
 	managedJobsNamespaceSelector labels.Selector
@@ -97,6 +101,8 @@ func NewReconciler(_ context.Context, client client.Client, _ client.FieldIndexe
 		client:                       client,
 		logName:                      "leaderworkerset-reconciler",
 		record:                       eventRecorder,
+		clock:                        options.Clock,
+		cache:                        options.Cache,
 		labelKeysToCopy:              options.LabelKeysToCopy,
 		manageJobsWithoutQueueName:   options.ManageJobsWithoutQueueName,
 		managedJobsNamespaceSelector: options.ManagedJobsNamespaceSelector,
@@ -432,9 +438,32 @@ func (r *Reconciler) updateWorkload(ctx context.Context, lws *leaderworkersetv1.
 		log.Error(err, "Failed to get pod sets")
 		return err
 	}
+
 	if !equality.ComparePodSetSlices(podSets, wl.Spec.PodSets) {
-		return r.deleteWorkload(ctx, wl)
+		err = workload.Evict(
+			ctx,
+			r.client,
+			r.record,
+			wl,
+			kueue.WorkloadEvictedDueToPodSetsChanged,
+			fmt.Sprintf("Workload %q evicted due to podSets change", workload.Key(wl)),
+			"",
+			r.clock,
+			r.cache.ShouldExposeLocalQueueMetricsForWorkload(log, wl),
+			r.roleTracker,
+			r.customLabels,
+		)
+		if err != nil {
+			log.Error(err, "Failed to evict workload")
+			return err
+		}
+
+		wl.Spec.PodSets = podSets
+		if err := r.client.Update(ctx, wl); err != nil {
+			log.Error(err, "Failed to update workload podSets")
+		}
 	}
+
 	if queueName := jobframework.QueueNameForObject(lws); wl.Spec.QueueName != queueName {
 		log.V(2).Info("LeaderWorkerSet changed queue, updating workload")
 		wl.Spec.QueueName = queueName
@@ -443,6 +472,7 @@ func (r *Reconciler) updateWorkload(ctx context.Context, lws *leaderworkersetv1.
 			return err
 		}
 	}
+
 	if features.Enabled(features.AdmissionGatedBy) {
 		if err := jobframework.UpdateAdmissionGatedBy(ctx, r.client, r.record, lws, wl); err != nil {
 			log.Error(err, "Failed to update AdmissionGatedBy")
