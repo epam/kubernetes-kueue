@@ -18,14 +18,19 @@ package jobframework
 
 import (
 	"context"
+	"strconv"
 
 	corev1 "k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
+	"sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/metrics"
+	"sigs.k8s.io/kueue/pkg/util/admissioncheck"
+	"sigs.k8s.io/kueue/pkg/util/maps"
 	"sigs.k8s.io/kueue/pkg/util/orderedgroups"
 	utilqueue "sigs.k8s.io/kueue/pkg/util/queue"
 	"sigs.k8s.io/kueue/pkg/util/roletracker"
@@ -95,4 +100,59 @@ func RecordWorkloadCreationLatency(ctx context.Context, job client.Object, jobKi
 	latency := wlCreationTime.Sub(jobCreationTime)
 	customLabelValues := customLabels.LQGet(utilqueue.KeyFromWorkload(wl))
 	metrics.RecordWorkloadCreationLatency(jobKind, latency, customLabelValues, tracker)
+}
+
+func QueueName(job GenericJob) kueue.LocalQueueName {
+	return QueueNameForObject(job.Object())
+}
+
+func QueueNameForObject(object client.Object) kueue.LocalQueueName {
+	return kueue.LocalQueueName(object.GetLabels()[constants.QueueLabel])
+}
+
+func MaximumExecutionTimeSeconds(job GenericJob) *int32 {
+	return MaximumExecutionTimeSecondsForObject(job.Object())
+}
+
+func MaximumExecutionTimeSecondsForObject(object client.Object) *int32 {
+	strVal, found := object.GetLabels()[constants.MaxExecTimeSecondsLabel]
+	if !found {
+		return nil
+	}
+
+	v, err := strconv.ParseInt(strVal, 10, 32)
+	if err != nil || v <= 0 {
+		return nil
+	}
+
+	return new(int32(v))
+}
+
+func WorkloadPriorityClassName(object client.Object) string {
+	if workloadPriorityClassLabel := object.GetLabels()[constants.WorkloadPriorityClassLabel]; workloadPriorityClassLabel != "" {
+		return workloadPriorityClassLabel
+	}
+	return ""
+}
+
+func PrebuiltWorkloadFor(job GenericJob) (string, bool) {
+	name, found := job.Object().GetLabels()[constants.PrebuiltWorkloadLabel]
+	return name, found
+}
+
+func NewWorkload(name string, obj client.Object, podSets []kueue.PodSet, labelKeysToCopy []string) *kueue.Workload {
+	return &kueue.Workload{
+		ObjectMeta: metav1.ObjectMeta{
+			Name:        name,
+			Namespace:   obj.GetNamespace(),
+			Labels:      maps.FilterKeys(obj.GetLabels(), labelKeysToCopy),
+			Finalizers:  []string{kueue.ResourceInUseFinalizerName},
+			Annotations: admissioncheck.FilterProvReqAnnotations(obj.GetAnnotations()),
+		},
+		Spec: kueue.WorkloadSpec{
+			QueueName:                   QueueNameForObject(obj),
+			PodSets:                     podSets,
+			MaximumExecutionTimeSeconds: MaximumExecutionTimeSecondsForObject(obj),
+		},
+	}
 }
