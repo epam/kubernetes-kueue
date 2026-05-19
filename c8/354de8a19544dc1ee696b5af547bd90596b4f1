@@ -1,0 +1,19 @@
+hack/releasing/wait_for_images.sh
+  s_e6f7f1c2801646::t_779f94d720a6ea 102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "c8354de8a19544dc1ee696b5af547bd90596b4f1",
+  "prompts": {},
+  "sessions": {
+    "s_e6f7f1c2801646": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2ca256f6-1b2a-4144-839f-3147ef1770fa",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
