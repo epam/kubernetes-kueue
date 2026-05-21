@@ -5998,102 +5998,102 @@ func TestReconciler(t *testing.T) {
 	}
 
 	for name, tc := range testCases {
-		//for _, enabled := range []bool{false, true} {
-		t.Run(name, func(t *testing.T) {
-			features.SetFeatureGateDuringTest(t, features.WorkloadRequestUseMergePatch, false)
-			features.SetFeatureGatesDuringTest(t, tc.featureGates)
+		for _, enabled := range []bool{false, true} {
+			t.Run(fmt.Sprintf("%s WorkloadRequestUseMergePatch enabled: %t", name, enabled), func(t *testing.T) {
+				features.SetFeatureGateDuringTest(t, features.WorkloadRequestUseMergePatch, enabled)
+				features.SetFeatureGatesDuringTest(t, tc.featureGates)
 
-			ctx, log := utiltesting.ContextWithLog(t)
-			clientBuilder := utiltesting.NewClientBuilder().WithInterceptorFuncs(interceptor.Funcs{SubResourcePatch: utiltesting.TreatSSAAsStrategicMerge})
-			indexer := utiltesting.AsIndexer(clientBuilder)
-			if err := SetupIndexes(ctx, indexer); err != nil {
-				t.Fatalf("Could not setup indexes: %v", err)
-			}
-
-			// Add namespace to prevent early return when ManagedJobsNamespaceSelectorAlwaysRespected is enabled
-			namespace := utiltesting.MakeNamespace("ns")
-			kcBuilder := clientBuilder.WithObjects(namespace).WithObjects(tc.initObjects...)
-			for i := range tc.pods {
-				kcBuilder = kcBuilder.WithObjects(&tc.pods[i])
-			}
-
-			for i := range tc.workloads {
-				kcBuilder = kcBuilder.WithStatusSubresource(&tc.workloads[i])
-			}
-
-			kClient := kcBuilder.Build()
-			for _, testWl := range tc.workloads {
-				if err := kClient.Create(ctx, &testWl); err != nil {
-					t.Fatalf("Could not create workload: %v", err)
+				ctx, log := utiltesting.ContextWithLog(t)
+				clientBuilder := utiltesting.NewClientBuilder().WithInterceptorFuncs(interceptor.Funcs{SubResourcePatch: utiltesting.TreatSSAAsStrategicMerge})
+				indexer := utiltesting.AsIndexer(clientBuilder)
+				if err := SetupIndexes(ctx, indexer); err != nil {
+					t.Fatalf("Could not setup indexes: %v", err)
 				}
 
-				if tc.deleteWorkloads {
-					if err := kClient.Delete(ctx, &testWl); err != nil {
-						t.Fatalf("Could not delete workload: %v", err)
+				// Add namespace to prevent early return when ManagedJobsNamespaceSelectorAlwaysRespected is enabled
+				namespace := utiltesting.MakeNamespace("ns")
+				kcBuilder := clientBuilder.WithObjects(namespace).WithObjects(tc.initObjects...)
+				for i := range tc.pods {
+					kcBuilder = kcBuilder.WithObjects(&tc.pods[i])
+				}
+
+				for i := range tc.workloads {
+					kcBuilder = kcBuilder.WithStatusSubresource(&tc.workloads[i])
+				}
+
+				kClient := kcBuilder.Build()
+				for _, testWl := range tc.workloads {
+					if err := kClient.Create(ctx, &testWl); err != nil {
+						t.Fatalf("Could not create workload: %v", err)
+					}
+
+					if tc.deleteWorkloads {
+						if err := kClient.Delete(ctx, &testWl); err != nil {
+							t.Fatalf("Could not delete workload: %v", err)
+						}
 					}
 				}
-			}
-			recorder := &utiltesting.EventRecorder{}
-			reconciler, err := NewReconciler(ctx, kClient, indexer, recorder,
-				append(tc.reconcilerOptions, jobframework.WithClock(testingclock.NewFakeClock(now)))...)
-			if err != nil {
-				t.Errorf("Error creating the reconciler: %v", err)
-			}
-			pReconciler := reconciler.(*Reconciler)
-			for _, e := range tc.excessPodsExpectations {
-				pReconciler.expectationsStore.ExpectUIDs(log, e.key, e.uids)
-			}
-
-			var reconcileRequest reconcile.Request
-			if tc.reconcileKey != nil {
-				reconcileRequest.NamespacedName = *tc.reconcileKey
-			} else {
-				reconcileRequest = reconcileRequestForPod(&tc.pods[0])
-			}
-			_, err = reconciler.Reconcile(ctx, reconcileRequest)
-
-			if diff := cmp.Diff(tc.wantErr, err, cmpopts.EquateErrors()); diff != "" {
-				t.Errorf("Reconcile returned error (-want,+got):\n%s", diff)
-			}
-
-			var gotPods corev1.PodList
-			if err := kClient.List(ctx, &gotPods); err != nil {
-				if tc.wantPods != nil || !apierrors.IsNotFound(err) {
-					t.Fatalf("Could not get Pod after reconcile: %v", err)
+				recorder := &utiltesting.EventRecorder{}
+				reconciler, err := NewReconciler(ctx, kClient, indexer, recorder,
+					append(tc.reconcilerOptions, jobframework.WithClock(testingclock.NewFakeClock(now)))...)
+				if err != nil {
+					t.Errorf("Error creating the reconciler: %v", err)
 				}
-			}
-			if tc.wantPods != nil {
-				if diff := cmp.Diff(tc.wantPods, gotPods.Items, podCmpOpts...); diff != "" {
-					t.Errorf("Pods after reconcile (-want,+got):\n%s", diff)
+				pReconciler := reconciler.(*Reconciler)
+				for _, e := range tc.excessPodsExpectations {
+					pReconciler.expectationsStore.ExpectUIDs(log, e.key, e.uids)
 				}
-			}
 
-			var gotWorkloads kueue.WorkloadList
-			if err := kClient.List(ctx, &gotWorkloads); err != nil {
-				t.Fatalf("Could not get Workloads after reconcile: %v", err)
-			}
-
-			// The fake client with patch.Apply cannot reset the Admission field (patch.Merge can).
-			// However, other important Status fields (e.g. Conditions) still reflect the change,
-			// so we deliberately ignore the Admission field here.
-			if features.Enabled(features.WorkloadRequestUseMergePatch) {
-				tc.workloadCmpOpts = append(tc.workloadCmpOpts, cmpopts.IgnoreFields(kueue.WorkloadStatus{}, "Admission"))
-			}
-
-			if diff := cmp.Diff(tc.wantWorkloads, gotWorkloads.Items, tc.workloadCmpOpts...); diff != "" {
-				for i, p := range tc.pods {
-					// Make life easier when changing the hashing function.
-					hash, _ := getRoleHash(p)
-					t.Logf("note, the hash for pod[%v] = %s", i, hash)
+				var reconcileRequest reconcile.Request
+				if tc.reconcileKey != nil {
+					reconcileRequest.NamespacedName = *tc.reconcileKey
+				} else {
+					reconcileRequest = reconcileRequestForPod(&tc.pods[0])
 				}
-				t.Errorf("Workloads after reconcile (-want,+got):\n%s", diff)
-			}
+				_, err = reconciler.Reconcile(ctx, reconcileRequest)
 
-			if diff := cmp.Diff(tc.wantEvents, recorder.RecordedEvents, cmpopts.SortSlices(utiltesting.SortEvents)); diff != "" {
-				t.Errorf("unexpected events (-want/+got):\n%s", diff)
-			}
-		})
-		//}
+				if diff := cmp.Diff(tc.wantErr, err, cmpopts.EquateErrors()); diff != "" {
+					t.Errorf("Reconcile returned error (-want,+got):\n%s", diff)
+				}
+
+				var gotPods corev1.PodList
+				if err := kClient.List(ctx, &gotPods); err != nil {
+					if tc.wantPods != nil || !apierrors.IsNotFound(err) {
+						t.Fatalf("Could not get Pod after reconcile: %v", err)
+					}
+				}
+				if tc.wantPods != nil {
+					if diff := cmp.Diff(tc.wantPods, gotPods.Items, podCmpOpts...); diff != "" {
+						t.Errorf("Pods after reconcile (-want,+got):\n%s", diff)
+					}
+				}
+
+				var gotWorkloads kueue.WorkloadList
+				if err := kClient.List(ctx, &gotWorkloads); err != nil {
+					t.Fatalf("Could not get Workloads after reconcile: %v", err)
+				}
+
+				// The fake client with patch.Apply cannot reset the Admission field (patch.Merge can).
+				// However, other important Status fields (e.g. Conditions) still reflect the change,
+				// so we deliberately ignore the Admission field here.
+				if features.Enabled(features.WorkloadRequestUseMergePatch) {
+					tc.workloadCmpOpts = append(tc.workloadCmpOpts, cmpopts.IgnoreFields(kueue.WorkloadStatus{}, "Admission"))
+				}
+
+				if diff := cmp.Diff(tc.wantWorkloads, gotWorkloads.Items, tc.workloadCmpOpts...); diff != "" {
+					for i, p := range tc.pods {
+						// Make life easier when changing the hashing function.
+						hash, _ := getRoleHash(p)
+						t.Logf("note, the hash for pod[%v] = %s", i, hash)
+					}
+					t.Errorf("Workloads after reconcile (-want,+got):\n%s", diff)
+				}
+
+				if diff := cmp.Diff(tc.wantEvents, recorder.RecordedEvents, cmpopts.SortSlices(utiltesting.SortEvents)); diff != "" {
+					t.Errorf("unexpected events (-want/+got):\n%s", diff)
+				}
+			})
+		}
 	}
 }
 

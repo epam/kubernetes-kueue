@@ -351,7 +351,7 @@ func (r *Reconciler) constructWorkload(lws *leaderworkersetv1.LeaderWorkerSet, w
 		jobframework.PropagateAdmissionGatedByAnnotation(lws, createdWorkload)
 	}
 
-	if err := controllerutil.SetOwnerReference(lws, createdWorkload, r.client.Scheme()); err != nil {
+	if err := controllerutil.SetControllerReference(lws, createdWorkload, r.client.Scheme()); err != nil {
 		return nil, err
 	}
 	return createdWorkload, nil

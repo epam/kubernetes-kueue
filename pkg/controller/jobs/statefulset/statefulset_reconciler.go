@@ -221,7 +221,7 @@ func (r *Reconciler) reconcileWorkload(ctx context.Context, sts *appsv1.Stateful
 		err = controllerutil.RemoveOwnerReference(sts, wl, r.client.Scheme())
 	case !hasOwnerReference && replicas > 0:
 		shouldUpdate = true
-		err = controllerutil.SetOwnerReference(sts, wl, r.client.Scheme())
+		err = controllerutil.SetControllerReference(sts, wl, r.client.Scheme())
 		if wl.Annotations == nil {
 			wl.Annotations = make(map[string]string, 2)
 		}

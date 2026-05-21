@@ -745,12 +745,9 @@ func TestReconcile(t *testing.T) {
 				}).
 				Obj(),
 		},
-		"remove finalizer for finished workload": {
-			workload: utiltestingapi.MakeWorkload("unit-test", "ns").Finalizers(kueue.ResourceInUseFinalizerName).
-				Condition(metav1.Condition{
-					Type:   "Finished",
-					Status: "True",
-				}).
+		"remove finalizer for deleted workload": {
+			workload: utiltestingapi.MakeWorkload("unit-test", "ns").
+				Finalizers(kueue.ResourceInUseFinalizerName).
 				DeletionTimestamp(now).
 				Obj(),
 			wantWorkload: nil,
@@ -771,6 +768,22 @@ func TestReconcile(t *testing.T) {
 				}).
 				ControllerReference(batchv1.SchemeGroupVersion.WithKind("Job"), "job", "test-uid").
 				DeletionTimestamp(now).
+				Obj(),
+		},
+		"finalize orphaned workload": {
+			workload: utiltestingapi.MakeWorkload("unit-test", "ns").
+				Finalizers(kueue.ResourceInUseFinalizerName).
+				JobUID("deleted_job").
+				Obj(),
+			wantWorkload: utiltestingapi.MakeWorkload("unit-test", "ns").
+				JobUID("deleted_job").
+				Condition(metav1.Condition{
+					Type:               kueue.WorkloadFinished,
+					Status:             metav1.ConditionTrue,
+					LastTransitionTime: metav1.NewTime(now),
+					Reason:             kueue.WorkloadFinishedReasonOwnerNotFound,
+					Message:            "The workload's owner no longer exists",
+				}).
 				Obj(),
 		},
 		"unadmitted workload with rejected checks gets deactivated": {

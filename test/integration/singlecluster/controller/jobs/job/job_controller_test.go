@@ -2313,6 +2313,56 @@ var _ = ginkgo.Describe("Interacting with scheduler", ginkgo.Ordered, ginkgo.Con
 		})
 	})
 
+	ginkgo.It("Finalize workload corresponding to Jobs deleted with --cascede=orphan", framework.SlowSpec, func() {
+		job := testingjob.MakeJob(jobName, ns.Name).
+			Queue(kueue.LocalQueueName(prodLocalQ.Name)).
+			Request(corev1.ResourceCPU, "2").
+			Suspend(false).
+			Obj()
+
+		lookupKey := types.NamespacedName{Name: job.Name, Namespace: job.Namespace}
+		createdJob := &batchv1.Job{}
+
+		ginkgo.By("Create a job", func() {
+			util.MustCreate(ctx, k8sClient, job)
+		})
+
+		ginkgo.By("Job should be unsuspended", func() {
+			gomega.Eventually(func(g gomega.Gomega) {
+				g.Expect(k8sClient.Get(ctx, lookupKey, createdJob)).Should(gomega.Succeed())
+				g.Expect(createdJob.Spec.Suspend).Should(gomega.Equal(new(false)))
+			}, util.Timeout, util.Interval).Should(gomega.Succeed())
+		})
+
+		wlKey := types.NamespacedName{
+			Name:      workloadjob.GetWorkloadNameForJob(job.Name, job.UID),
+			Namespace: job.Namespace,
+		}
+
+		ginkgo.By("Checking the finalizer is set", func() {
+			gomega.Eventually(func(g gomega.Gomega) {
+				wl := &kueue.Workload{}
+				g.Expect(k8sClient.Get(ctx, wlKey, wl)).Should(gomega.Succeed())
+				g.Expect(wl.Finalizers).Should(gomega.ContainElement(kueue.ResourceInUseFinalizerName))
+			}, util.Timeout, util.Interval).Should(gomega.Succeed())
+		})
+
+		ginkgo.By("Deleting the job", func() {
+			gomega.Expect(k8sClient.Delete(ctx, job,
+				&client.DeleteOptions{PropagationPolicy: new(metav1.DeletePropagationOrphan)},
+			)).Should(gomega.Succeed())
+		})
+
+		ginkgo.By("Checking that its workload is finished and finalizer is removed", func() {
+			gomega.Eventually(func(g gomega.Gomega) {
+				wl := &kueue.Workload{}
+				g.Expect(k8sClient.Get(ctx, wlKey, wl)).Should(gomega.Succeed())
+				g.Expect(wl.Finalizers).ShouldNot(gomega.ContainElement(kueue.ResourceInUseFinalizerName))
+				g.Expect(workload.IsFinished(wl)).Should(gomega.BeTrue())
+			}, util.Timeout, util.Interval).Should(gomega.Succeed())
+		})
+	})
+
 	ginkgo.It("Should allow reclaim of resources that are no longer needed", framework.SlowSpec, func() {
 		job1 := testingjob.MakeJob("job1", ns.Name).Queue(kueue.LocalQueueName(prodLocalQ.Name)).
 			Request(corev1.ResourceCPU, "2").
