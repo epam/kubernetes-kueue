@@ -18,6 +18,7 @@ package e2e
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/onsi/ginkgo/v2"
 	"github.com/onsi/gomega"
@@ -78,6 +79,44 @@ var _ = ginkgo.Describe("Pod groups", func() {
 			gomega.Expect(util.DeleteAllPodsInNamespace(ctx, k8sClient, ns)).To(gomega.Succeed())
 			util.ExpectObjectToBeDeleted(ctx, k8sClient, cq, true)
 			util.ExpectAllPodsInNamespaceDeleted(ctx, k8sClient, ns)
+		})
+
+		ginkgo.FIt("should admit pod", func() {
+			p := podtesting.MakePod("pod", ns.Name).
+				Queue(lq.Name).
+				Image(util.GetAgnHostImage(), util.BehaviorWaitForDeletion).
+				RequestAndLimit(corev1.ResourceCPU, "1").
+				Obj()
+			util.MustCreate(ctx, k8sClient, p)
+
+			createdPod := &corev1.Pod{}
+			gomega.Eventually(func(g gomega.Gomega) {
+				g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(p), createdPod)).Should(gomega.Succeed())
+			}, util.Timeout, util.Interval).Should(gomega.Succeed())
+
+			gomega.Expect(createdPod.Spec.SchedulingGates).To(
+				gomega.ContainElement(corev1.PodSchedulingGate{Name: podconstants.SchedulingGateName}),
+				"Pod should have scheduling gate",
+			)
+
+			gomega.Expect(createdPod.Labels).To(
+				gomega.HaveKeyWithValue(constants.ManagedByKueueLabelKey, constants.ManagedByKueueLabelValue),
+				"Pod should have the label",
+			)
+
+			gomega.Expect(createdPod.Finalizers).To(gomega.ContainElement(constants.ManagedByKueueLabelKey),
+				"Pod should have finalizer")
+
+			time.Sleep(10 * time.Second)
+
+			wlLookupKey := types.NamespacedName{Name: pod.GetWorkloadNameForPod(p.Name, p.UID), Namespace: ns.Name}
+			createdWorkload := &kueue.Workload{}
+			gomega.Eventually(func(g gomega.Gomega) {
+				g.Expect(k8sClient.Get(ctx, wlLookupKey, createdWorkload)).Should(gomega.Succeed())
+			}, util.Timeout, util.Interval).Should(gomega.Succeed())
+
+			util.ExpectObjectToBeDeleted(ctx, k8sClient, p, true)
+			util.ExpectObjectToBeDeleted(ctx, k8sClient, createdWorkload, true)
 		})
 
 		ginkgo.It("should admit group that fits", func() {

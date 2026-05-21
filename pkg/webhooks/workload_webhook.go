@@ -21,6 +21,8 @@ import (
 	"fmt"
 	"slices"
 	"strconv"
+	"sync"
+	"time"
 
 	corev1 "k8s.io/api/core/v1"
 	apivalidation "k8s.io/apimachinery/pkg/api/validation"
@@ -28,6 +30,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/util/sets"
 	"k8s.io/apimachinery/pkg/util/validation/field"
+	"k8s.io/klog/v2"
 	"k8s.io/utils/ptr"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
@@ -76,9 +79,21 @@ func (w *WorkloadWebhook) Default(ctx context.Context, obj runtime.Object) error
 
 var _ webhook.CustomValidator = &WorkloadWebhook{}
 
+var testMap = map[string]int{}
+var testMapLock sync.Mutex
+
 // ValidateCreate implements webhook.CustomValidator so a webhook will be registered for the type
 func (w *WorkloadWebhook) ValidateCreate(ctx context.Context, obj runtime.Object) (admission.Warnings, error) {
 	wl := obj.(*kueue.Workload)
+
+	testMapLock.Lock()
+	key := klog.KObj(wl).String()
+	if testMap[key] == 0 {
+		testMap[key]++
+		time.Sleep(10 * time.Second)
+	}
+	testMapLock.Unlock()
+
 	log := ctrl.LoggerFrom(ctx).WithName("workload-webhook")
 	log.V(5).Info("Validating create")
 	return nil, ValidateWorkload(wl).ToAggregate()
