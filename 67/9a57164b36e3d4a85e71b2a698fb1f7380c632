@@ -1,0 +1,30 @@
+Makefile-test.mk
+  s_f925a8c3520bc5::t_5248025f1cd137 178
+  s_f925a8c3520bc5::t_5f79360481a994 225
+test/e2e/singlecluster/extended/kuberay_test.go
+  s_284b4509f819e8::t_54e3e6295ca18c 526-529,533,537,541-542
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "679a57164b36e3d4a85e71b2a698fb1f7380c632",
+  "prompts": {},
+  "sessions": {
+    "s_284b4509f819e8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9fdc996f-c7ac-425b-84e2-9370a2489790",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_f925a8c3520bc5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4c66a332-ca47-4447-a5ae-eb1d61c65aee",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": null
+    }
+  }
+}
