@@ -1,0 +1,106 @@
+cmd/experimental/kueue-priority-booster/main.go
+  s_1c91313631c32d::t_e8e51972fa7465 83
+  s_4216a508714c50::t_1518dc8b909f10 84
+cmd/experimental/kueue-priority-booster/pkg/config/config.go
+  s_c87e2fd393f298::t_906d0c949bb6c1 29,31-33,35-36,38-39,42-50,54-57,60-66,68-74,76-87,90
+  s_4216a508714c50::t_c81c5764440c2c 30,34,37,40-41
+  s_4216a508714c50::t_eed179a7046984 51-53,58-59
+  s_4216a508714c50::t_2143ffb49dd677 67
+  s_4216a508714c50::t_3410684bcd1bb4 75
+  s_4216a508714c50::t_3a96ac30cc3df3 88-89,91-93
+Makefile-kueue-priority-booster.mk
+  s_a5115b6ad3d1ef::t_bf9d65b33145f3 20-23
+cmd/experimental/kueue-priority-booster/pkg/controller/controller_test.go
+  s_1c91313631c32d::t_e12177e3e57052 29
+  s_4216a508714c50::t_7383b1f3c1838b 78-145
+  s_4216a508714c50::t_1b60fa4ae61838 218-302
+  s_1c91313631c32d::t_bef1512405e040 314-405
+  s_4216a508714c50::t_f567bf7d1647a7 69
+cmd/experimental/kueue-priority-booster/Makefile
+  s_a5115b6ad3d1ef::t_953e9b77c70bff 9-10,24-38,53-54,56-61,63-111
+  s_a5115b6ad3d1ef::t_59b9e7dd93cf84 17-23
+  s_a5115b6ad3d1ef::t_233972c255b6d3 47-52,55,62
+cmd/experimental/kueue-priority-booster/charts/kueue-priority-booster/values.yaml
+  s_c87e2fd393f298::t_fba5d6c4258ed1 8,10-11,13,15
+  s_4216a508714c50::t_80aa993cd4cd70 9,12,14
+cmd/experimental/kueue-priority-booster/charts/kueue-priority-booster/templates/manager.yaml
+  s_4216a508714c50::t_652fca8ef3ad81 50
+  s_c87e2fd393f298::t_678cec8558763c 49,51
+cmd/experimental/kueue-priority-booster/README.md
+  s_a5115b6ad3d1ef::t_194f09c4da9f5b 76-83
+  s_c87e2fd393f298::t_48210d4b56752d 100-101
+  s_c87e2fd393f298::t_a674add84dee62 110-112
+cmd/experimental/kueue-priority-booster/config/manager/controller_config_map.yaml
+  s_c87e2fd393f298::t_31235dba7ade0b 8,10-12,14-15,17
+  s_4216a508714c50::t_307ccbd609b9de 9,13,16
+cmd/experimental/kueue-priority-booster/pkg/controller/controller.go
+  s_4216a508714c50::t_cce3a51a7efa36 61-71
+  s_1c91313631c32d::t_300b2609b2fc9f 98
+  s_1c91313631c32d::t_9003e2a9d520cb 173
+  s_4216a508714c50::t_8913f2abedf8d8 43-47
+  s_4216a508714c50::t_f3fed3fa56a3ba 94-95
+  s_1c91313631c32d::t_b493fc77a9f47a 183
+  s_1c91313631c32d::t_ac2877e04d58e0 29
+  s_4216a508714c50::t_4cd31138d70e97 196-198
+  s_4216a508714c50::t_ad850b583b5719 262-277
+  s_4216a508714c50::t_b2196896d64253 107
+  s_4216a508714c50::t_d4198d52550827 130
+  s_4216a508714c50::t_2818609c86e386 189-195
+cmd/experimental/kueue-priority-booster/test/integration/priority_boost_envtest_test.go
+  s_c87e2fd393f298::t_c84c62e387ca2d 94
+  s_4216a508714c50::t_700f492d7f7567 103-107
+  s_a5115b6ad3d1ef::t_39cf482bb80f15 114-115
+  s_a5115b6ad3d1ef::t_76999401751630 1-19,21-38,40,48-82,88-93,95-102,108-113,116-118
+  s_a5115b6ad3d1ef::t_1f2185804bda4d 20
+  s_4216a508714c50::t_74a4e743111819 83-87
+  s_4216a508714c50::t_674f179a92cc4b 39,41-47
+cmd/experimental/kueue-priority-booster/charts/kueue-priority-booster/README.md
+  s_c87e2fd393f298::t_a3f54162b7774b 18-26
+cmd/experimental/kueue-priority-booster/test/integration/suite_test.go
+  s_1c91313631c32d::t_818243300e70ed 70
+  s_a5115b6ad3d1ef::t_9f5b4e5439eb1b 48
+  s_a5115b6ad3d1ef::t_61d9332be67b60 47
+  s_1c91313631c32d::t_2b4557a3021283 57
+  s_4216a508714c50::t_b57f9db3ab1a7d 71
+  s_a5115b6ad3d1ef::t_2eeac42694cf13 20-45,49-56,58-69,72-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "01d3e8366948cce976c34bd9033fa42ba9380ab6",
+  "prompts": {},
+  "sessions": {
+    "s_1c91313631c32d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0ed085af-de83-4685-b496-b54f55801dd3",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": null
+    },
+    "s_4216a508714c50": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "955425b2-1463-4e97-bbf5-6af744535384",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": null
+    },
+    "s_a5115b6ad3d1ef": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b3944572-dead-48dc-9d6b-0758b0c5a6d4",
+        "model": "composer-2"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_c87e2fd393f298": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6d3806c1-65f2-44b2-b91c-862c7aab4217",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": null
+    }
+  }
+}
