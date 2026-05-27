@@ -18,6 +18,7 @@ package concurrentadmission
 
 import (
 	"testing"
+	"time"
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
@@ -50,6 +51,7 @@ var (
 			kueue.Workload{}, "TypeMeta", "ObjectMeta.ResourceVersion", "ObjectMeta.UID", "Status.AccumulatedPastExecutionTimeSeconds", "Status.SchedulingStats",
 		),
 		cmpopts.IgnoreFields(metav1.Condition{}, "LastTransitionTime"),
+		cmpopts.IgnoreFields(kueue.PreemptionGateState{}, "LastTransitionTime"),
 		cmpopts.SortSlices(func(a, b kueue.Workload) bool { return a.Name < b.Name }),
 		cmpopts.SortSlices(func(a, b metav1.Condition) bool { return a.Type < b.Type }),
 	}
@@ -95,13 +97,17 @@ func TestReconcile(t *testing.T) {
 		Obj()
 	retainFirstAdmissionLQ := utiltestingapi.MakeLocalQueue("lq-hold", "default").ClusterQueue("cq-hold").Obj()
 
+	baseTime := time.Date(2024, 1, 1, 12, 0, 0, 0, time.UTC)
+
 	testCases := map[string]struct {
 		parentWorkload       *kueue.Workload
 		variantWorkloads     []kueue.Workload
 		wantParentWorkload   *kueue.Workload
 		wantVariantWorkloads []kueue.Workload
 		wantEvents           []utiltesting.EventRecord
+		wantResult           reconcile.Result
 		req                  reconcile.Request
+		clockTime *time.Time
 	}{
 		"workload not found": {
 			req: reconcile.Request{
@@ -129,11 +135,13 @@ func TestReconcile(t *testing.T) {
 					Queue("lq").
 					AllowedFlavors("spot").
 					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", ""). // UID is ignored in cmp
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
 					Obj(),
 				*utiltestingapi.MakeWorkload("wl-variant-on-demand-480a3", "default").
 					Queue("lq").
 					AllowedFlavors("on-demand").
 					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
 					Obj(),
 			},
 			wantEvents: []utiltesting.EventRecord{
@@ -177,6 +185,7 @@ func TestReconcile(t *testing.T) {
 					Queue("lq").
 					AllowedFlavors("on-demand").
 					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
 					Obj(),
 			},
 			wantEvents: []utiltesting.EventRecord{
@@ -1335,6 +1344,483 @@ func TestReconcile(t *testing.T) {
 					Obj(),
 			},
 		},
+		"preemption gate: no variant requires preemption; gates remain closed": {
+			parentWorkload: utiltestingapi.MakeWorkload("wl-12345", "default").
+				Queue("lq").
+				Label(constants.ConcurrentAdmissionParentLabelKey, "true").
+				Obj(),
+			variantWorkloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("wl-variant-on-demand", "default").
+					Queue("lq").
+					AllowedFlavors("on-demand").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionClosed,
+					}).
+					Obj(),
+				*utiltestingapi.MakeWorkload("wl-variant-spot", "default").
+					Queue("lq").
+					AllowedFlavors("spot").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionClosed,
+					}).
+					Obj(),
+			},
+			wantParentWorkload: utiltestingapi.MakeWorkload("wl-12345", "default").
+				Queue("lq").
+				Label(constants.ConcurrentAdmissionParentLabelKey, "true").
+				Obj(),
+			wantVariantWorkloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("wl-variant-on-demand", "default").
+					Queue("lq").
+					AllowedFlavors("on-demand").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionClosed,
+					}).
+					Obj(),
+				*utiltestingapi.MakeWorkload("wl-variant-spot", "default").
+					Queue("lq").
+					AllowedFlavors("spot").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionClosed,
+					}).
+					Obj(),
+			},
+		},
+		"preemption gate: opens gate for most preferred variant requiring preemption": {
+			parentWorkload: utiltestingapi.MakeWorkload("wl-12345", "default").
+				Queue("lq").
+				Label(constants.ConcurrentAdmissionParentLabelKey, "true").
+				Obj(),
+			variantWorkloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("wl-variant-on-demand", "default").
+					Queue("lq").
+					AllowedFlavors("on-demand").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionClosed,
+					}).
+					Condition(metav1.Condition{
+						Type:    kueue.WorkloadBlockedOnPreemptionGates,
+						Status:  metav1.ConditionTrue,
+						Reason:  kueue.PreemptionGated,
+						Message: "Workload requires preemption, but it's gated",
+					}).
+					Obj(),
+				*utiltestingapi.MakeWorkload("wl-variant-spot", "default").
+					Queue("lq").
+					AllowedFlavors("spot").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionClosed,
+					}).
+					Condition(metav1.Condition{
+						Type:    kueue.WorkloadBlockedOnPreemptionGates,
+						Status:  metav1.ConditionTrue,
+						Reason:  kueue.PreemptionGated,
+						Message: "Workload requires preemption, but it's gated",
+					}).
+					Obj(),
+			},
+			wantParentWorkload: utiltestingapi.MakeWorkload("wl-12345", "default").
+				Queue("lq").
+				Label(constants.ConcurrentAdmissionParentLabelKey, "true").
+				Obj(),
+			wantVariantWorkloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("wl-variant-on-demand", "default").
+					Queue("lq").
+					AllowedFlavors("on-demand").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionOpen,
+					}).
+					Condition(metav1.Condition{
+						Type:    kueue.WorkloadBlockedOnPreemptionGates,
+						Status:  metav1.ConditionTrue,
+						Reason:  kueue.PreemptionGated,
+						Message: "Workload requires preemption, but it's gated",
+					}).
+					Obj(),
+				*utiltestingapi.MakeWorkload("wl-variant-spot", "default").
+					Queue("lq").
+					AllowedFlavors("spot").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionClosed,
+					}).
+					Condition(metav1.Condition{
+						Type:    kueue.WorkloadBlockedOnPreemptionGates,
+						Status:  metav1.ConditionTrue,
+						Reason:  kueue.PreemptionGated,
+						Message: "Workload requires preemption, but it's gated",
+					}).
+					Obj(),
+			},
+			wantResult: reconcile.Result{RequeueAfter: singleVariantPreemptionTimeout},
+			wantEvents: []utiltesting.EventRecord{
+				{
+					Key:       types.NamespacedName{Namespace: "default", Name: "wl-variant-on-demand"},
+					EventType: corev1.EventTypeNormal,
+					Reason:    ReasonPreemptionGateOpened,
+					Message:   `Opened preemption gate "kueue.x-k8s.io/concurrent-admission"`,
+				},
+			},
+		},
+
+		"preemption gate: opens gate for second variant after timeout elapsed": {
+			parentWorkload: utiltestingapi.MakeWorkload("wl-12345", "default").
+				Queue("lq").
+				Label(constants.ConcurrentAdmissionParentLabelKey, "true").
+				Obj(),
+			clockTime: &baseTime,
+			variantWorkloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("wl-variant-on-demand", "default").
+					Queue("lq").
+					AllowedFlavors("on-demand").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:               constants.ConcurrentAdmissionPreemptionGate,
+						Position:           kueue.PreemptionGatePositionOpen,
+						LastTransitionTime: metav1.NewTime(baseTime.Add(-6 * time.Minute)),
+					}).
+					Obj(),
+				*utiltestingapi.MakeWorkload("wl-variant-spot", "default").
+					Queue("lq").
+					AllowedFlavors("spot").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionClosed,
+					}).
+					Condition(metav1.Condition{
+						Type:    kueue.WorkloadBlockedOnPreemptionGates,
+						Status:  metav1.ConditionTrue,
+						Reason:  kueue.PreemptionGated,
+						Message: "Workload requires preemption, but it's gated",
+					}).
+					Obj(),
+			},
+			wantParentWorkload: utiltestingapi.MakeWorkload("wl-12345", "default").
+				Queue("lq").
+				Label(constants.ConcurrentAdmissionParentLabelKey, "true").
+				Obj(),
+			wantVariantWorkloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("wl-variant-on-demand", "default").
+					Queue("lq").
+					AllowedFlavors("on-demand").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionOpen,
+					}).
+					Obj(),
+				*utiltestingapi.MakeWorkload("wl-variant-spot", "default").
+					Queue("lq").
+					AllowedFlavors("spot").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionOpen,
+					}).
+					Condition(metav1.Condition{
+						Type:    kueue.WorkloadBlockedOnPreemptionGates,
+						Status:  metav1.ConditionTrue,
+						Reason:  kueue.PreemptionGated,
+						Message: "Workload requires preemption, but it's gated",
+					}).
+					Obj(),
+			},
+			wantResult: reconcile.Result{RequeueAfter: singleVariantPreemptionTimeout},
+			wantEvents: []utiltesting.EventRecord{
+				{
+					Key:       types.NamespacedName{Namespace: "default", Name: "wl-variant-spot"},
+					EventType: corev1.EventTypeNormal,
+					Reason:    ReasonPreemptionGateOpened,
+					Message:   `Opened preemption gate "kueue.x-k8s.io/concurrent-admission"`,
+				},
+			},
+		},
+
+		"preemption gate: does not open gate for second variant within timeout": {
+			parentWorkload: utiltestingapi.MakeWorkload("wl-12345", "default").
+				Queue("lq").
+				Label(constants.ConcurrentAdmissionParentLabelKey, "true").
+				Obj(),
+			clockTime: &baseTime,
+			variantWorkloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("wl-variant-on-demand", "default").
+					Queue("lq").
+					AllowedFlavors("on-demand").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:               constants.ConcurrentAdmissionPreemptionGate,
+						Position:           kueue.PreemptionGatePositionOpen,
+						LastTransitionTime: metav1.NewTime(baseTime.Add(-3 * time.Minute)),
+					}).
+					Obj(),
+				*utiltestingapi.MakeWorkload("wl-variant-spot", "default").
+					Queue("lq").
+					AllowedFlavors("spot").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionClosed,
+					}).
+					Condition(metav1.Condition{
+						Type:    kueue.WorkloadBlockedOnPreemptionGates,
+						Status:  metav1.ConditionTrue,
+						Reason:  kueue.PreemptionGated,
+						Message: "Workload requires preemption, but it's gated",
+					}).
+					Obj(),
+			},
+			wantParentWorkload: utiltestingapi.MakeWorkload("wl-12345", "default").
+				Queue("lq").
+				Label(constants.ConcurrentAdmissionParentLabelKey, "true").
+				Obj(),
+			wantVariantWorkloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("wl-variant-on-demand", "default").
+					Queue("lq").
+					AllowedFlavors("on-demand").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionOpen,
+					}).
+					Obj(),
+				*utiltestingapi.MakeWorkload("wl-variant-spot", "default").
+					Queue("lq").
+					AllowedFlavors("spot").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionClosed,
+					}).
+					Condition(metav1.Condition{
+						Type:    kueue.WorkloadBlockedOnPreemptionGates,
+						Status:  metav1.ConditionTrue,
+						Reason:  kueue.PreemptionGated,
+						Message: "Workload requires preemption, but it's gated",
+					}).
+					Obj(),
+			},
+			wantResult: reconcile.Result{RequeueAfter: 2 * time.Minute},
+		},
+
+		"preemption gate: admitted variant skipped; more-preferred sibling gets gate without timeout wait": {
+			parentWorkload: utiltestingapi.MakeWorkload("wl-12345", "default").
+				Queue("lq").
+				Label(constants.ConcurrentAdmissionParentLabelKey, "true").
+				Obj(),
+			variantWorkloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("wl-variant-on-demand", "default").
+					Queue("lq").
+					AllowedFlavors("on-demand").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionClosed,
+					}).
+					Condition(metav1.Condition{
+						Type:    kueue.WorkloadBlockedOnPreemptionGates,
+						Status:  metav1.ConditionTrue,
+						Reason:  kueue.PreemptionGated,
+						Message: "Workload requires preemption, but it's gated",
+					}).
+					Obj(),
+				*utiltestingapi.MakeWorkload("wl-variant-spot", "default").
+					Queue("lq").
+					AllowedFlavors("spot").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					Request(corev1.ResourceCPU, "1").
+					SimpleReserveQuota("cq", "spot", metav1.Now().Time).
+					AdmittedAt(true, metav1.Now().Time).
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionOpen,
+					}).
+					Obj(),
+			},
+			wantParentWorkload: utiltestingapi.MakeWorkload("wl-12345", "default").
+				Queue("lq").
+				Label(constants.ConcurrentAdmissionParentLabelKey, "true").
+				Admission(utiltestingapi.MakeAdmission("cq", "main").
+					PodSets(kueue.PodSetAssignment{
+						Name: "main",
+						Flavors: map[corev1.ResourceName]kueue.ResourceFlavorReference{
+							corev1.ResourceCPU: "spot",
+						},
+						Count:         ptr.To[int32](1),
+						ResourceUsage: corev1.ResourceList{corev1.ResourceCPU: resource.MustParse("1")},
+					}).Obj()).
+				Condition(metav1.Condition{
+					Type:    kueue.WorkloadAdmitted,
+					Status:  metav1.ConditionTrue,
+					Reason:  "Admitted",
+					Message: "The variant wl-variant-spot is admitted",
+				}).
+				Condition(metav1.Condition{
+					Type:    kueue.WorkloadQuotaReserved,
+					Status:  metav1.ConditionTrue,
+					Reason:  "QuotaReserved",
+					Message: "Quota reserved in ClusterQueue cq",
+				}).
+				Obj(),
+			wantVariantWorkloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("wl-variant-on-demand", "default").
+					Queue("lq").
+					AllowedFlavors("on-demand").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionOpen,
+					}).
+					Condition(metav1.Condition{
+						Type:    kueue.WorkloadBlockedOnPreemptionGates,
+						Status:  metav1.ConditionTrue,
+						Reason:  kueue.PreemptionGated,
+						Message: "Workload requires preemption, but it's gated",
+					}).
+					Obj(),
+				*utiltestingapi.MakeWorkload("wl-variant-spot", "default").
+					Queue("lq").
+					AllowedFlavors("spot").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					Request(corev1.ResourceCPU, "1").
+					SimpleReserveQuota("cq", "spot", metav1.Now().Time).
+					AdmittedAt(true, metav1.Now().Time).
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionOpen,
+					}).
+					Obj(),
+			},
+			wantResult: reconcile.Result{RequeueAfter: singleVariantPreemptionTimeout},
+			wantEvents: []utiltesting.EventRecord{
+				{
+					Key:       types.NamespacedName{Namespace: "default", Name: "wl-variant-on-demand"},
+					EventType: corev1.EventTypeNormal,
+					Reason:    ReasonPreemptionGateOpened,
+					Message:   `Opened preemption gate "kueue.x-k8s.io/concurrent-admission"`,
+				},
+			},
+		},
+
+		"preemption gate: inactive variant reactivated; only blocked sibling gets gate": {
+			parentWorkload: utiltestingapi.MakeWorkload("wl-12345", "default").
+				Queue("lq").
+				Label(constants.ConcurrentAdmissionParentLabelKey, "true").
+				Obj(),
+			variantWorkloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("wl-variant-on-demand", "default").
+					Queue("lq").
+					AllowedFlavors("on-demand").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionClosed,
+					}).
+					Active(false).
+					Obj(),
+				*utiltestingapi.MakeWorkload("wl-variant-spot", "default").
+					Queue("lq").
+					AllowedFlavors("spot").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionClosed,
+					}).
+					Condition(metav1.Condition{
+						Type:    kueue.WorkloadBlockedOnPreemptionGates,
+						Status:  metav1.ConditionTrue,
+						Reason:  kueue.PreemptionGated,
+						Message: "Workload requires preemption, but it's gated",
+					}).
+					Obj(),
+			},
+			wantParentWorkload: utiltestingapi.MakeWorkload("wl-12345", "default").
+				Queue("lq").
+				Label(constants.ConcurrentAdmissionParentLabelKey, "true").
+				Obj(),
+			wantVariantWorkloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("wl-variant-on-demand", "default").
+					Queue("lq").
+					AllowedFlavors("on-demand").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionClosed,
+					}).
+					Active(true).
+					Obj(),
+				*utiltestingapi.MakeWorkload("wl-variant-spot", "default").
+					Queue("lq").
+					AllowedFlavors("spot").
+					ControllerReference(kueue.GroupVersion.WithKind("Workload"), "wl-12345", "").
+					PreemptionGates(kueue.PreemptionGate{Name: constants.ConcurrentAdmissionPreemptionGate}).
+					PreemptionGateStates(kueue.PreemptionGateState{
+						Name:     constants.ConcurrentAdmissionPreemptionGate,
+						Position: kueue.PreemptionGatePositionOpen,
+					}).
+					Condition(metav1.Condition{
+						Type:    kueue.WorkloadBlockedOnPreemptionGates,
+						Status:  metav1.ConditionTrue,
+						Reason:  kueue.PreemptionGated,
+						Message: "Workload requires preemption, but it's gated",
+					}).
+					Obj(),
+			},
+			wantResult: reconcile.Result{RequeueAfter: singleVariantPreemptionTimeout},
+			wantEvents: []utiltesting.EventRecord{
+				{
+					Key:       types.NamespacedName{Namespace: "default", Name: "wl-variant-on-demand"},
+					EventType: corev1.EventTypeNormal,
+					Reason:    ReasonActivatedVariant,
+					Message:   "Variant Workload activated due to no other Variant being admitted",
+				},
+				{
+					Key:       types.NamespacedName{Namespace: "default", Name: "wl-variant-spot"},
+					EventType: corev1.EventTypeNormal,
+					Reason:    ReasonPreemptionGateOpened,
+					Message:   `Opened preemption gate "kueue.x-k8s.io/concurrent-admission"`,
+				},
+			},
+		},
+
 		"parent not admitted, variant admitted, parent changes WaitForPodsReady from True to False, syncs to variant and admits parent": {
 			parentWorkload: utiltestingapi.MakeWorkload("wl-12345", "default").
 				Queue("lq").
@@ -1473,12 +1959,16 @@ func TestReconcile(t *testing.T) {
 				}
 			}
 
+			clockTime := metav1.Now().Time
+			if tc.clockTime != nil {
+				clockTime = *tc.clockTime
+			}
 			r := &variantReconciler{
 				logName:     ConcurrentAdmissionController,
 				client:      cl,
 				queues:      qManager,
 				roleTracker: roleTracker,
-				clock:       testingclock.NewFakeClock(metav1.Now().Time),
+				clock:       testingclock.NewFakeClock(clockTime),
 				recorder:    &utiltesting.EventRecorder{},
 			}
 
@@ -1496,8 +1986,8 @@ func TestReconcile(t *testing.T) {
 			if err != nil {
 				t.Fatalf("Reconcile() unexpected error: %v", err)
 			}
-			if !cmp.Equal(got, reconcile.Result{}) {
-				t.Errorf("Reconcile() got = %v, want empty result", got)
+			if diff := cmp.Diff(tc.wantResult, got); diff != "" {
+				t.Errorf("Reconcile() result mismatch (-want +got):\n%s", diff)
 			}
 
 			if tc.wantParentWorkload != nil {

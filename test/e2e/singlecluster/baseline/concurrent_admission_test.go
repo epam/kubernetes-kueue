@@ -228,6 +228,124 @@ var _ = ginkgo.Describe("ConcurrentAdmission", ginkgo.Label("area:singlecluster"
 			})
 		})
 	})
+
+	ginkgo.When("Job is submitted to a CQ with preemption enabled", func() {
+		var (
+			onDemandRF *kueue.ResourceFlavor
+			spotRF     *kueue.ResourceFlavor
+			cq         *kueue.ClusterQueue
+			lq         *kueue.LocalQueue
+			onDemand   string
+			spot       string
+		)
+
+		ginkgo.BeforeEach(func() {
+			onDemand = "on-demand-" + ns.Name
+			spot = "spot-" + ns.Name
+
+			onDemandRF = utiltestingapi.MakeResourceFlavor(onDemand).Obj()
+			util.MustCreate(ctx, k8sClient, onDemandRF)
+
+			spotRF = utiltestingapi.MakeResourceFlavor(spot).Obj()
+			util.MustCreate(ctx, k8sClient, spotRF)
+
+			cq = utiltestingapi.MakeClusterQueue("cq-preemption-"+ns.Name).
+				ConcurrentAdmissionPolicy(kueue.ConcurrentAdmissionTryPreferredFlavors).
+				Preemption(kueue.ClusterQueuePreemption{
+					WithinClusterQueue: kueue.PreemptionPolicyLowerPriority,
+				}).
+				ResourceGroup(
+					*utiltestingapi.MakeFlavorQuotas(onDemand).
+						Resource(corev1.ResourceCPU, "5").
+						Resource(corev1.ResourceMemory, "1Gi").Obj(),
+					*utiltestingapi.MakeFlavorQuotas(spot).
+						Resource(corev1.ResourceCPU, "5").
+						Resource(corev1.ResourceMemory, "1Gi").Obj(),
+				).Obj()
+			util.CreateClusterQueuesAndWaitForActive(ctx, k8sClient, cq)
+
+			lq = utiltestingapi.MakeLocalQueue("main-preemption", ns.Name).ClusterQueue(cq.Name).Obj()
+			util.CreateLocalQueuesAndWaitForActive(ctx, k8sClient, lq)
+		})
+
+		ginkgo.AfterEach(func() {
+			gomega.Expect(util.DeleteAllJobsInNamespace(ctx, k8sClient, ns)).Should(gomega.Succeed())
+			gomega.Expect(util.DeleteWorkloadsInNamespace(ctx, k8sClient, ns)).Should(gomega.Succeed())
+			util.ExpectObjectToBeDeleted(ctx, k8sClient, lq, true)
+			util.ExpectObjectToBeDeleted(ctx, k8sClient, cq, true)
+			util.ExpectObjectToBeDeleted(ctx, k8sClient, onDemandRF, true)
+			util.ExpectObjectToBeDeleted(ctx, k8sClient, spotRF, true)
+		})
+
+		ginkgo.It("Should add preemption gates to Variant Workloads at creation", func() {
+			job := testingjob.MakeJob("job-gate", ns.Name).
+				Queue(kueue.LocalQueueName(lq.Name)).
+				Image(util.GetAgnHostImage(), util.BehaviorWaitForDeletion).
+				RequestAndLimit(corev1.ResourceCPU, "200m").
+				RequestAndLimit(corev1.ResourceMemory, "20Mi").
+				TerminationGracePeriod(1).
+				Obj()
+			util.MustCreate(ctx, k8sClient, job)
+
+			parentWlKey := types.NamespacedName{
+				Name:      workloadjob.GetWorkloadNameForJob(job.Name, job.UID),
+				Namespace: ns.Name,
+			}
+
+			ginkgo.By("waiting for Variant Workloads to be created with preemption gates in spec", func() {
+				gomega.Eventually(func(g gomega.Gomega) {
+					var wlList kueue.WorkloadList
+					g.Expect(k8sClient.List(ctx, &wlList, client.InNamespace(ns.Name))).To(gomega.Succeed())
+
+					onDemandVariant := getVariantByFlavor(wlList.Items, parentWlKey.Name, onDemand)
+					spotVariant := getVariantByFlavor(wlList.Items, parentWlKey.Name, spot)
+
+					g.Expect(onDemandVariant).NotTo(gomega.BeNil(), "on-demand variant not found")
+					g.Expect(spotVariant).NotTo(gomega.BeNil(), "spot variant not found")
+
+					hasGate := func(wl *kueue.Workload) bool {
+						for _, g := range wl.Spec.PreemptionGates {
+							if g.Name == controllerconstants.ConcurrentAdmissionPreemptionGate {
+								return true
+							}
+						}
+						return false
+					}
+					g.Expect(hasGate(onDemandVariant)).To(gomega.BeTrue(),
+						"on-demand variant should have preemption gate in spec")
+					g.Expect(hasGate(spotVariant)).To(gomega.BeTrue(),
+						"spot variant should have preemption gate in spec")
+				}, util.MediumTimeout, util.Interval).Should(gomega.Succeed())
+			})
+
+			ginkgo.By("waiting for gate status to be initialized as Closed by WorkloadReconciler", func() {
+				gomega.Eventually(func(g gomega.Gomega) {
+					var wlList kueue.WorkloadList
+					g.Expect(k8sClient.List(ctx, &wlList, client.InNamespace(ns.Name))).To(gomega.Succeed())
+
+					onDemandVariant := getVariantByFlavor(wlList.Items, parentWlKey.Name, onDemand)
+					spotVariant := getVariantByFlavor(wlList.Items, parentWlKey.Name, spot)
+
+					g.Expect(onDemandVariant).NotTo(gomega.BeNil())
+					g.Expect(spotVariant).NotTo(gomega.BeNil())
+
+					hasClosedGate := func(wl *kueue.Workload) bool {
+						for _, gs := range wl.Status.PreemptionGates {
+							if gs.Name == controllerconstants.ConcurrentAdmissionPreemptionGate &&
+								gs.Position == kueue.PreemptionGatePositionClosed {
+								return true
+							}
+						}
+						return false
+					}
+					g.Expect(hasClosedGate(onDemandVariant)).To(gomega.BeTrue(),
+						"on-demand variant gate should be Closed in status")
+					g.Expect(hasClosedGate(spotVariant)).To(gomega.BeTrue(),
+						"spot variant gate should be Closed in status")
+				}, util.MediumTimeout, util.Interval).Should(gomega.Succeed())
+			})
+		})
+	})
 })
 
 func findVariantsForParent(workloads []kueue.Workload, parent *kueue.Workload) []kueue.Workload {

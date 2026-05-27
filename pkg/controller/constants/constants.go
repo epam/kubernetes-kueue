@@ -77,6 +77,11 @@ const (
 	// This gate is automatically applied to remote Workloads to eliminate parallel preemptions.
 	MultiKueuePreemptionGate = "kueue.x-k8s.io/multikueue"
 
+	// ConcurrentAdmissionPreemptionGate is the name of the preemption gate managed by
+	// the ConcurrentAdmission controller. It is applied to Variant Workloads so that at
+	// most one Variant per Parent issues preemptions at a time.
+	ConcurrentAdmissionPreemptionGate = "kueue.x-k8s.io/concurrent-admission"
+
 	// PriorityBoostAnnotationKey is the annotation key on a Workload that allows
 	// external controllers to adjust a workload's effective priority.
 	// Positive values increase priority; negative values decrease it.
