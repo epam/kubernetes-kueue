@@ -1,0 +1,19 @@
+pkg/workload/workload.go
+  s_5638b8246df4b5::t_b5e65484d8d847 1633-1641
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "c8a1c5077a8094b94ad24d58a2913ee2bac91fe9",
+  "prompts": {},
+  "sessions": {
+    "s_5638b8246df4b5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3f79b669-c996-4aa2-8456-8807e871280c",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

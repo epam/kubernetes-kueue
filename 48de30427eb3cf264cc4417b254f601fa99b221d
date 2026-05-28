@@ -1,0 +1,20 @@
+hack/testing/e2e-common.sh
+  s_fe2bd74f81b236::t_00d78a3b57a8ef 372
+  s_fe2bd74f81b236::t_671e23841e3ac6 391
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "48de30427eb3cf264cc4417b254f601fa99b221d",
+  "prompts": {},
+  "sessions": {
+    "s_fe2bd74f81b236": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ecb846ec-0444-4789-a76b-fe3f4a9ffdf2",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
