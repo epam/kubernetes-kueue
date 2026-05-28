@@ -1,0 +1,19 @@
+Makefile-test.mk
+  s_f925a8c3520bc5::t_037cbd8fcd2d05 215
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "231014d377acf69e65918005fa939f445b139726",
+  "prompts": {},
+  "sessions": {
+    "s_f925a8c3520bc5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4c66a332-ca47-4447-a5ae-eb1d61c65aee",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
