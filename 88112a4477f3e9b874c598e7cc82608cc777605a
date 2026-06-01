@@ -1,0 +1,14 @@
+test/e2e/tas/baseline/hotswap_test.go
+  h_47cee5fa694435 120-209,211-247
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "88112a4477f3e9b874c598e7cc82608cc777605a",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
