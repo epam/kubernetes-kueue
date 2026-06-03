@@ -1,0 +1,19 @@
+hack/retry.sh
+  s_3ea9466495fea5::t_99ee9e3430f4b8 21,26,28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "4d75ee4e6b21b62986bd2af10706874a46b19317",
+  "prompts": {},
+  "sessions": {
+    "s_3ea9466495fea5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d4ff90b2-2cf6-456d-90f5-6c14936a6bcc",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
