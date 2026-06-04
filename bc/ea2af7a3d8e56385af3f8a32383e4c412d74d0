@@ -1,0 +1,14 @@
+Makefile-test.mk
+  h_47cee5fa694435 202
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "bcea2af7a3d8e56385af3f8a32383e4c412d74d0",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
