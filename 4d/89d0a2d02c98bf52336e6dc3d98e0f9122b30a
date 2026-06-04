@@ -1,0 +1,14 @@
+test/e2e/tas/extended/suite_test.go
+  h_47cee5fa694435 58-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "4d89d0a2d02c98bf52336e6dc3d98e0f9122b30a",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
