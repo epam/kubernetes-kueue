@@ -1,0 +1,28 @@
+test/e2e/tas/extended/appwrapper_test.go
+  h_47cee5fa694435 36
+test/e2e/tas/extended/rayjob_test.go
+  h_47cee5fa694435 38
+test/e2e/tas/extended/jobset_test.go
+  h_47cee5fa694435 40
+test/e2e/tas/extended/pytorch_test.go
+  h_47cee5fa694435 36
+test/e2e/tas/extended/mpijob_test.go
+  h_47cee5fa694435 41
+test/e2e/tas/extended/trainjob_test.go
+  h_47cee5fa694435 40
+Makefile-test.mk
+  h_47cee5fa694435 229-245
+test/e2e/tas/extended/leaderworkerset_test.go
+  h_47cee5fa694435 40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "ab03662732f07de86846adc0422107a6fbd76fbe",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
