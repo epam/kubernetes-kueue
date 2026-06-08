@@ -1,0 +1,14 @@
+site/content/zh-CN/docs/contribution_guidelines/testing.md
+  h_47cee5fa694435 39,108,115-116,136,143,178,193,247,253
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "500eff5db93b45a526e14528169bbe75ee8e0f69",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+test/e2e/sequential/extended/sparkapplication_test.go
+  h_f3e429a3560394 140,142-143
+  s_c2ecd492a511b9::t_30001d87be1589 240,242-243
+pkg/util/testingjobs/sparkapplication/wrappers_sparkapplication.go
+  s_c2ecd492a511b9::t_88a6efed96c31a 70,77-79
+  h_f3e429a3560394 76
+  s_c2ecd492a511b9::t_a634e829036942 74-75
+  s_4f4071fc2a5bac::t_329c045fcb5caf 71-73,80-81
+hack/testing/e2e-common.sh
+  s_4f4071fc2a5bac::t_cf52dd55dc25ed 259
+  h_f3e429a3560394 260-262,534,1087
+.github/dependabot.yml
+  h_f3e429a3560394 53,58
+test/util/e2e.go
+  s_c2ecd492a511b9::t_848d224f8c27bc 132-146
+  h_f3e429a3560394 114-131
+test/util/constants.go
+  h_f3e429a3560394 21,99-103
+hack/testing/spark/Dockerfile
+  h_f3e429a3560394 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "1b904e2ef834577a9881b3b698452e9b8293c33a",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_4f4071fc2a5bac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "90d3daaa-8b53-46f9-af3a-60bc099b51db",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    },
+    "s_c2ecd492a511b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7e2d3123-96d2-4a19-aa3e-6e866efeaa70",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

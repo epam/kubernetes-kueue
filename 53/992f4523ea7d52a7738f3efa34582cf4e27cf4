@@ -1,0 +1,22 @@
+hack/testing/kind-cluster.yaml
+  h_47cee5fa694435 25,28-29,40,43-44
+hack/testing/multikueue/manager-cluster.kind.yaml
+  h_47cee5fa694435 25,28-29,38,41-42
+hack/testing/kind-cluster-tas.yaml
+  h_47cee5fa694435 26,28-30,75,78-79
+hack/testing/multikueue/worker-cluster.kind.yaml
+  h_47cee5fa694435 27,30-31,40,43-44
+hack/testing/e2e-common.sh
+  h_47cee5fa694435 385,390,400,402-403,431
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "53992f4523ea7d52a7738f3efa34582cf4e27cf4",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
