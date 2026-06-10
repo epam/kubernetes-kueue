@@ -1,0 +1,24 @@
+hack/testing/e2e-common.sh
+  s_673c3139b498cc::t_ff3342d9a95ed7 82
+hack/testing/retry.sh
+  s_673c3139b498cc::t_981df72b84d39b 33
+  s_673c3139b498cc::t_3cb4851fe0601b 83-91
+  s_673c3139b498cc::t_73a02267c6e4c0 103
+  s_673c3139b498cc::t_923e3f3dade423 104-106
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "678a322e45e2f6683be9e5f3d726391f63b73906",
+  "prompts": {},
+  "sessions": {
+    "s_673c3139b498cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9e1de373-487e-4c62-922a-8c7095e7372f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
