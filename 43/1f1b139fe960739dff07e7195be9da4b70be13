@@ -1,0 +1,23 @@
+test/util/constants.go
+  s_68add8c8c37206::t_f73b830f9ae9d5 108-110
+test/util/e2e.go
+  s_68add8c8c37206::t_9326c67ac8a7a5 102,106,109-115,119,122,125,127
+  s_68add8c8c37206::t_277105230b0719 30
+  s_68add8c8c37206::t_8ba69268eb18b6 107,120
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "431f1b139fe960739dff07e7195be9da4b70be13",
+  "prompts": {},
+  "sessions": {
+    "s_68add8c8c37206": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "46a3ec81-c29f-4ed6-9a92-740b4f987bf6",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
