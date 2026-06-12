@@ -1,0 +1,22 @@
+pkg/controller/jobs/pod/pod_controller.go
+  h_47cee5fa694435 52,264,267-268,288-290,293-294,297-302,307-319,322-323,326,330-331,333,335-348
+pkg/controller/jobframework/reconciler.go
+  h_47cee5fa694435 1326
+pkg/metrics/metrics.go
+  h_47cee5fa694435 20,202-205,581-588,920-923,1405
+pkg/controller/jobs/pod/pod_controller_test.go
+  h_47cee5fa694435 136,142-143,161
+pkg/controller/jobframework/interface.go
+  h_47cee5fa694435 133
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "c2e1a2ebd3dd3f5c7761136691420e63e78495c7",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
