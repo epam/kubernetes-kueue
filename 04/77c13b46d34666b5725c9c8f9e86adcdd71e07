@@ -1,0 +1,25 @@
+test/e2e/multikueue/sequential/e2e_test.go
+  s_af75a988655445::t_5adc3a765538cd 473-478,492-498,530,549
+test/util/e2e.go
+  s_af75a988655445::t_5adc3a765538cd 649
+hack/testing/secretreader/Dockerfile
+  s_af75a988655445::t_5adc3a765538cd 8-10
+hack/testing/e2e-common.sh
+  s_af75a988655445::t_5adc3a765538cd 71-76,219-227,534-535
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "0477c13b46d34666b5725c9c8f9e86adcdd71e07",
+  "prompts": {},
+  "sessions": {
+    "s_af75a988655445": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b1e39e05-c067-4bed-909f-770e9e0f7b87",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
