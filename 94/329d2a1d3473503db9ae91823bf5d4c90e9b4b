@@ -1,0 +1,14 @@
+site/content/en/docs/reference/metrics.md
+  h_99f506dc258b88 105
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "94329d2a1d3473503db9ae91823bf5d4c90e9b4b",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
