@@ -1,0 +1,30 @@
+Makefile
+  s_acc14ad854a1ba::t_6cc4fc82135cbe 187
+  s_acc14ad854a1ba::t_09be751278d033 192
+cmd/experimental/kueue-populator/Dockerfile
+  s_acc14ad854a1ba::t_f3db9983a409f3 19-20
+Makefile-test.mk
+  s_acc14ad854a1ba::t_09feee8f880c64 731
+cmd/experimental/kueue-priority-booster/Dockerfile
+  s_acc14ad854a1ba::t_ead2d48c38918a 16-17
+cmd/kueueviz/backend/Dockerfile
+  s_acc14ad854a1ba::t_6894296d50536d 7-8
+Dockerfile
+  s_acc14ad854a1ba::t_a4cc032dff64d3 9-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "204bcb810a6fee6823e58321db6ad253bdfb189e",
+  "prompts": {},
+  "sessions": {
+    "s_acc14ad854a1ba": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "efce703a-2650-42d8-b198-0ffc8124cf3c",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
