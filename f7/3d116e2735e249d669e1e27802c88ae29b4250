@@ -1,0 +1,26 @@
+hack/testing/linkchecker/verify.sh
+  s_ac9f31b1142629::t_f00fe19b044487 22-23,26
+  h_f3e429a3560394 29
+  s_ac9f31b1142629::t_020ea65df6f597 30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "f73d116e2735e249d669e1e27802c88ae29b4250",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_ac9f31b1142629": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6bb9db09-25c0-4fb8-8049-e6f1e077175c",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

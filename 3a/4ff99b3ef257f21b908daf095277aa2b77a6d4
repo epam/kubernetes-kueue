@@ -1,0 +1,20 @@
+test/util/metrics.go
+  h_47cee5fa694435 383,386
+pkg/controller/jobs/pod/pod_controller.go
+  h_47cee5fa694435 342
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  h_47cee5fa694435 174,216
+pkg/metrics/metrics.go
+  h_47cee5fa694435 586,920-921
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "3a4ff99b3ef257f21b908daf095277aa2b77a6d4",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
