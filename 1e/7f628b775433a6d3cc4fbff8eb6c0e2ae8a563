@@ -1,0 +1,38 @@
+test/e2e/multikueue/sequential/e2e_test.go
+  s_4a10f8891a0ff0::t_ed89356533ba6a 496-508
+  s_4a10f8891a0ff0::t_b49bdc0da9c312 540,547
+  s_4a10f8891a0ff0::t_4e2d8d98b7f3d0 474-479,482-484
+pkg/controller/admissionchecks/multikueue/controllers.go
+  s_4a10f8891a0ff0::t_884eb8789d6196 138,140,145
+  s_4a10f8891a0ff0::t_1a2447b3734f4d 22
+pkg/controller/admissionchecks/multikueue/multikueuecluster.go
+  s_4a10f8891a0ff0::t_68869fa2ae2199 53
+  s_4a10f8891a0ff0::t_265699ef478a57 625
+hack/tools/go.mod
+  s_4a10f8891a0ff0::t_cda369ac59a603 40
+hack/testing/e2e-common.sh
+  s_4a10f8891a0ff0::t_38918127216fb8 234
+  s_4a10f8891a0ff0::t_70e71691e7ecef 541-543
+  s_4a10f8891a0ff0::t_b932712d418941 564
+test/util/e2e.go
+  s_4a10f8891a0ff0::t_ecda91b556ad57 653-658
+go.mod
+  s_4a10f8891a0ff0::t_98ace234e89f1c 39,43,78-91,152
+  s_4a10f8891a0ff0::t_0c06a2d976287b 162
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "1e7f628b775433a6d3cc4fbff8eb6c0e2ae8a563",
+  "prompts": {},
+  "sessions": {
+    "s_4a10f8891a0ff0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "131eab45-45f1-400d-bcf0-07e7a563ce3f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

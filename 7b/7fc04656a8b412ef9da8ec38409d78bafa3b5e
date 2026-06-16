@@ -1,0 +1,14 @@
+hack/testing/e2e-test.sh
+  h_47cee5fa694435 78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "7b7fc04656a8b412ef9da8ec38409d78bafa3b5e",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

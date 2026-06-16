@@ -1,0 +1,19 @@
+hack/testing/e2e-common.sh
+  s_a6af8d1457f061::t_f63d3f30ee2082 86-92
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "a60765a03c9786d54746ad6f8bbd478308291605",
+  "prompts": {},
+  "sessions": {
+    "s_a6af8d1457f061": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "05eb62f8-d032-4005-a617-e6a647fd5b04",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

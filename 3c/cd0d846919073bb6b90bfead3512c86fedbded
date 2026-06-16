@@ -1,0 +1,28 @@
+site/content/en/docs/reference/metrics.md
+  s_6aeeda3131e573::t_14115b68fbe37d 105
+pkg/metrics/metrics.go
+  s_6aeeda3131e573::t_009b7372e79181 805
+pkg/cache/scheduler/clusterqueue.go
+  s_6aeeda3131e573::t_ff7f962c9d0389 548-551
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "3ccd0d846919073bb6b90bfead3512c86fedbded",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_6aeeda3131e573": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "fe596c74-bf76-4a1b-b8e7-a9d4e11cd023",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

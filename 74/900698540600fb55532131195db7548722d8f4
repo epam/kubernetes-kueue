@@ -1,0 +1,20 @@
+README.md
+  s_0870d203c1ecf1::t_27c4c1c3a5e659 12-13,21,26-27,60-61,111,113-117,119-121,129,141
+  s_0870d203c1ecf1::t_e65a7bd6fa71cd 52,55,126
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "74900698540600fb55532131195db7548722d8f4",
+  "prompts": {},
+  "sessions": {
+    "s_0870d203c1ecf1": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "36cb49e4-c33e-4f30-a88e-568aa616c6a3",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

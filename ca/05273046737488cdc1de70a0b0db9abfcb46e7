@@ -1,0 +1,14 @@
+pkg/cache/scheduler/clusterqueue.go
+  h_99f506dc258b88 545
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "ca05273046737488cdc1de70a0b0db9abfcb46e7",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
