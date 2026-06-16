@@ -1,0 +1,43 @@
+pkg/metrics/metrics.go
+  h_99f506dc258b88 805
+site/content/en/docs/reference/metrics.md
+  h_99f506dc258b88 105
+pkg/cache/scheduler/clusterqueue.go
+  h_99f506dc258b88 551
+pkg/cache/scheduler/cache_resync_metrics_test.go
+  s_6aeeda3131e573::t_dc88edd5f36d49 91-92,94-96,98-99,101-102
+  s_6aeeda3131e573::t_73c4dca6e6f110 93
+  s_6aeeda3131e573::t_8d9a2c47567c29 90,97,100
+  s_6aeeda3131e573::t_dd5f51a635f770 51-57,60,64-66,68
+  s_6aeeda3131e573::t_124352d3df645f 107,124,128
+  s_d31fae393f1799::t_3989789ee76073 20,106,127
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "3f46b7f85e907ec9107018526d6721188116cf14",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_6aeeda3131e573": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "fe596c74-bf76-4a1b-b8e7-a9d4e11cd023",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    },
+    "s_d31fae393f1799": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "fb27c241-8c3e-4bd0-a390-181c65234378",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    }
+  }
+}
