@@ -1,0 +1,14 @@
+cloudbuild-periodic.yaml
+  h_47cee5fa694435 1-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "cbaa58a480ce7195961dd9ee76d7fcad279ad113",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
