@@ -1,0 +1,56 @@
+pkg/controller/jobs/trainjob/trainjob_multikueue_adapter.go
+  s_66f19917081bc7::t_d48df4548638c4 51,57
+  s_66f19917081bc7::t_d082d6b20b97de 52
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter.go
+  s_66f19917081bc7::t_d48df4548638c4 53,61
+  s_66f19917081bc7::t_d082d6b20b97de 54
+pkg/controller/jobs/jobset/jobset_multikueue_adapter.go
+  s_66f19917081bc7::t_d48df4548638c4 50,56
+  s_66f19917081bc7::t_d082d6b20b97de 51
+pkg/controller/jobs/kubeflow/kubeflowjob/kubeflowjob_multikueue_adapter.go
+  s_66f19917081bc7::t_d48df4548638c4 104,108
+  s_66f19917081bc7::t_d082d6b20b97de 105
+pkg/controller/jobs/mpijob/mpijob_multikueue_adapter.go
+  s_66f19917081bc7::t_d48df4548638c4 50,56
+  s_66f19917081bc7::t_d082d6b20b97de 51
+pkg/controller/jobs/appwrapper/appwrapper_multikueue_adapter.go
+  s_66f19917081bc7::t_d48df4548638c4 50,56
+  s_66f19917081bc7::t_d082d6b20b97de 51
+pkg/controller/jobs/job/job_multikueue_adapter.go
+  s_66f19917081bc7::t_d48df4548638c4 60,66
+  s_66f19917081bc7::t_d082d6b20b97de 61
+pkg/controller/jobs/ray/ray_multikueue_adapter.go
+  s_66f19917081bc7::t_d48df4548638c4 110,116
+  s_66f19917081bc7::t_d082d6b20b97de 111
+pkg/controller/jobs/statefulset/statefulset_multikueue_adapter.go
+  s_66f19917081bc7::t_d082d6b20b97de 49
+  s_66f19917081bc7::t_d48df4548638c4 48,56
+pkg/controller/admissionchecks/multikueue/externalframeworks/adapter.go
+  s_66f19917081bc7::t_0e6b1c924259af 71-72,76
+pkg/controller/jobs/pod/pod_multikueue_adapter.go
+  s_66f19917081bc7::t_d48df4548638c4 150,156
+  s_66f19917081bc7::t_0bf512461b7e2f 151
+pkg/controller/jobframework/multikueue.go
+  s_66f19917081bc7::t_f96203069e8d72 54-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "88f2fdc36588ac398593cc61cfaa75bc3269dc48",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_66f19917081bc7": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "d3425c43-6559-46bc-9fea-26b65cf13e89",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
