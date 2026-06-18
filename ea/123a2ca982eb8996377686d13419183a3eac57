@@ -1,0 +1,19 @@
+Makefile-deps.mk
+  s_7a2cd77f76c2b9::t_b6c131df28905a 84
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "ea123a2ca982eb8996377686d13419183a3eac57",
+  "prompts": {},
+  "sessions": {
+    "s_7a2cd77f76c2b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f2977dde-a536-4665-bef0-942269e62055",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

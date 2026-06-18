@@ -1,0 +1,14 @@
+pkg/controller/jobs/pod/pod_controller_test.go
+  h_47cee5fa694435 6164,6176
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "f3fe9b85fe8d2fecba0c0a07a77dac827f97fd13",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
