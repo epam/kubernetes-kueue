@@ -1,0 +1,19 @@
+pkg/controller/jobframework/utils.go
+  s_49be4c602cf3ca::t_7c4d3bb2a2eec7 247-278
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "683e917646f58d15cfea89cde1071f5f7e83e270",
+  "prompts": {},
+  "sessions": {
+    "s_49be4c602cf3ca": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "1e1ae685-6c43-4fff-8b79-892f10738da7",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
