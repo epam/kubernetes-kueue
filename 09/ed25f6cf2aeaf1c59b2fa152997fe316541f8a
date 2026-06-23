@@ -1,7 +1,19 @@
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_60ff1771ed4908::t_fb32689ab5b31e 417
 ---
 {
   "schema_version": "authorship/3.0.0",
   "git_ai_version": "1.5.8",
   "base_commit_sha": "09ed25f6cf2aeaf1c59b2fa152997fe316541f8a",
-  "prompts": {}
+  "prompts": {},
+  "sessions": {
+    "s_60ff1771ed4908": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "53b9c678-2ee6-4b81-a49d-f65e5995271d",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
 }
