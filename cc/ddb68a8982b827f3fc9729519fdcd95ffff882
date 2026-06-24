@@ -1,0 +1,19 @@
+Testfile.llm
+  s_dc01f416bcce24::t_3a0a42cf51b7e7 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "ccddb68a8982b827f3fc9729519fdcd95ffff882",
+  "prompts": {},
+  "sessions": {
+    "s_dc01f416bcce24": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "95e27830-1d2f-4d85-a362-2969ee60d98a",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Kan <u5040@proton.me>"
+    }
+  }
+}
