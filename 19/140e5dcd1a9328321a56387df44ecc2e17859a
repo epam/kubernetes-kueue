@@ -1,0 +1,42 @@
+pkg/controller/jobs/pod/pod_multikueue_adapter.go
+  h_47cee5fa694435 52,67
+pkg/util/pod/pod.go
+  h_47cee5fa694435 26,29-30,32,34-37,177-182,183,184-198,199
+pkg/controller/tas/topology_ungater.go
+  h_47cee5fa694435 31,64-79,82,104-108,111,306,307
+pkg/controller/jobs/pod/indexer.go
+  h_47cee5fa694435 23,36
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler.go
+  h_47cee5fa694435 60,483
+pkg/controller/jobs/pod/pod_controller.go
+  h_47cee5fa694435 279,288,327,578,632,682,833,1164,1200,1478,1483
+pkg/controller/jobs/statefulset/statefulset_reconciler.go
+  h_47cee5fa694435 53,132
+pkg/controller/jobs/statefulset/statefulset_pod_reconciler.go
+  h_47cee5fa694435 93,104,141
+pkg/controller/jobs/pod/event_handlers.go
+  h_47cee5fa694435 47,87,109
+pkg/controller/jobs/pod/pod_webhook.go
+  h_47cee5fa694435 230-231,288,312,324
+pkg/controller/jobs/pod/pod_controller_test.go
+  h_47cee5fa694435 6132
+pkg/controller/tas/topology_ungater_test.go
+  h_47cee5fa694435 22,34,35,46,48,2686-2743,2744-2745,2746-2763,2764,2765-2808
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  h_47cee5fa694435 216
+test/integration/singlecluster/tas/tas_test.go
+  h_47cee5fa694435 47,97,1169-1170,2149-2150
+test/util/metrics.go
+  h_47cee5fa694435 383,385
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.10",
+  "base_commit_sha": "19140e5dcd1a9328321a56387df44ecc2e17859a",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
