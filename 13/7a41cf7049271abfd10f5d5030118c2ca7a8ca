@@ -1,0 +1,27 @@
+test/e2e/singlecluster/extended/kuberay_test.go
+  h_e4bdc46d73e6f7 224
+  s_01baa3234b7b01::t_186af5baf4c0b3 801
+Makefile-test.mk
+  s_01baa3234b7b01::t_c876121069226a 245
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "137a41cf7049271abfd10f5d5030118c2ca7a8ca",
+  "prompts": {},
+  "humans": {
+    "h_e4bdc46d73e6f7": {
+      "author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_01baa3234b7b01": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "830fdd2c-d39d-41e9-953d-fae5d1713558",
+        "model": "composer-2.5"
+      },
+      "human_author": null
+    }
+  }
+}
