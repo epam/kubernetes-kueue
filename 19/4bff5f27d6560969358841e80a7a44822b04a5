@@ -1,0 +1,18 @@
+pkg/visibility/server.go
+  h_47cee5fa694435 186,188-190
+apis/visibility/v1beta2/groupversion_info.go
+  h_47cee5fa694435 26-27,31,34-35,38,42-45,48-52,56
+apis/visibility/v1beta1/groupversion_info.go
+  h_47cee5fa694435 26-27,31,34-35,38,42,48-52,56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "194bff5f27d6560969358841e80a7a44822b04a5",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
