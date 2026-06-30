@@ -1,0 +1,81 @@
+test/e2e/singlecluster/baseline/job_test.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 43,633
+pkg/controller/core/workload_controller.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 74,562,587,599,881,903,969,975,1011,1018,1135,1158,1170
+pkg/scheduler/preemption/classical/candidate_generator.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 32,68
+pkg/workload/workload.go
+  s_457c2e4abf7f6a::t_0ccf8ff8492626 867
+  s_457c2e4abf7f6a::t_7bcb56b7cde22f 1082
+  s_457c2e4abf7f6a::t_7bfc8c4f6d7065 62
+  s_457c2e4abf7f6a::t_56517545567e0e 1086
+pkg/controller/tas/node_controller.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 62,338,489,536
+  s_7159064437ceb3::t_c65bafeb7722cd 496-500
+pkg/scheduler/preemption/preemption_test.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 51,4486
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 58,417
+test/e2e/multikueue/sequential/e2e_test.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 49,901,905
+test/integration/singlecluster/controller/admissionchecks/provisioning/provisioning_test.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 45,381,442,490,537,866,900,1014,1123,1153,1326,1385
+test/integration/singlecluster/controller/core/workload_controller_test.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 41,407,500,615
+test/performance/scheduler/runner/controller/controller.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 41,121
+test/performance/scheduler/runner/recorder/recorder.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 34,462
+test/util/util.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 86,459,845
+test/util/util_scheduling.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 30,57
+pkg/controller/admissionchecks/provisioning/controller.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 57,134
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 51,879,1472
+test/integration/multikueue/scheduler/scheduler_test.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 43,348,481,658,662
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 55,2802,2815
+test/e2e/multikueue/baseline/e2e_test.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 52,697,867,1088
+pkg/scheduler/preemption/common/ordering.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 32,46-47
+pkg/controller/tas/indexer/indexer.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 30,93
+pkg/controller/jobframework/reconciler.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 71,736,746
+pkg/scheduler/preemption/preemption.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 55,210,232,234,237,259
+pkg/scheduler/scheduler.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 63,514,516,811,813
+pkg/workloadslicing/workloadslicing.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 41,262,279
+pkg/controller/concurrentadmission/controller.go
+  s_457c2e4abf7f6a::t_6842eab58d3dcf 52,319,322,573
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "bc92a4dc4c60cc008013375b87b0ba331aea1570",
+  "prompts": {},
+  "sessions": {
+    "s_457c2e4abf7f6a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f48a9897-d980-4c1b-9fdf-368cfa1b6ffa",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    },
+    "s_7159064437ceb3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6ac4aeb9-aca2-482d-960b-37bd8c2fca50",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}
