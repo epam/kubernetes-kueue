@@ -1,0 +1,22 @@
+pkg/controller/tas/topology_ungater_test.go
+  h_47cee5fa694435 2744-2745
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  h_47cee5fa694435 216
+pkg/util/pod/pod.go
+  h_47cee5fa694435 26,183
+test/integration/singlecluster/tas/tas_test.go
+  h_47cee5fa694435 47,97,1169-1170,2149-2150
+test/util/metrics.go
+  h_47cee5fa694435 383,385
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.10",
+  "base_commit_sha": "d34e1c428ad8cb658dfd4259f0792a38d1c57592",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

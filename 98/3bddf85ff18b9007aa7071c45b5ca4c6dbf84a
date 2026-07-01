@@ -1,0 +1,20 @@
+pkg/controller/concurrentadmission/controller.go
+  s_03c3823608cd5e::t_b7eeed7a45a9af 312-315
+  s_03c3823608cd5e::t_92c74e430c4fd7 57,114-119,128-171,174-175,200-202,204-207,325-344
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "983bddf85ff18b9007aa7071c45b5ca4c6dbf84a",
+  "prompts": {},
+  "sessions": {
+    "s_03c3823608cd5e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93d1df4e-6209-49b9-aea2-e87a41d36c1f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}

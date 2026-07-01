@@ -1,0 +1,39 @@
+Makefile-test.mk
+  s_acc14ad854a1ba::t_c48ac77128fb48 730
+Makefile
+  s_acc14ad854a1ba::t_deb9a01d63bf57 443
+  s_acc14ad854a1ba::t_f80e5a5e2a2554 192
+  s_acc14ad854a1ba::t_7289693901807e 187
+cmd/experimental/kueue-populator/Dockerfile
+  s_acc14ad854a1ba::t_207cdcccc598ed 19-20
+Dockerfile
+  s_acc14ad854a1ba::t_e0a1415c97bdfa 9
+  h_f3e429a3560394 10
+cmd/kueueviz/backend/Dockerfile
+  s_acc14ad854a1ba::t_8d7fc530885917 6
+  s_acc14ad854a1ba::t_d7d0797ab04d44 8
+  s_acc14ad854a1ba::t_cb1084f4c37807 7,11
+cmd/experimental/kueue-priority-booster/Dockerfile
+  s_acc14ad854a1ba::t_16145ab396d1cf 16-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "9866c8701db8ea5ee269cda31f6189763e53c976",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_acc14ad854a1ba": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "efce703a-2650-42d8-b198-0ffc8124cf3c",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

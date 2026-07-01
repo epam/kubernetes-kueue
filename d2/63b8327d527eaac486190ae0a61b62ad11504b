@@ -1,0 +1,54 @@
+pkg/controller/concurrentadmission/controller.go
+  s_03c3823608cd5e::t_4b433103645cbe 171,174-175
+  s_03c3823608cd5e::t_64bbadafe74e6d 332
+  s_03c3823608cd5e::t_c0c68175142f81 57
+  s_03c3823608cd5e::t_436949d5f67e77 128,142
+  s_03c3823608cd5e::t_920ec8f26b460a 200-202,204-207
+  s_03c3823608cd5e::t_4afac6bbb9bec6 321-331,333-340
+  s_03c3823608cd5e::t_d617d0422d5bbb 134,136,140
+  h_f3e429a3560394 135
+  s_03c3823608cd5e::t_f580f5023f4ce7 114-117,119
+  s_03c3823608cd5e::t_846dd4bb298258 137-138
+  s_03c3823608cd5e::t_322974006dec0e 118
+  s_03c3823608cd5e::t_7e2a563fd664ac 129-133,141,143-170
+pkg/controller/concurrentadmission/controller_test.go
+  s_03c3823608cd5e::t_ca28bddc780ac3 2148,2150-2151,2154-2162,2170-2172,2174-2179,2186-2194,2196-2205
+  s_03c3823608cd5e::t_c2d36679a0e628 138,144,300,303,307,309,314,318,326,329,340,2058-2059
+  h_f3e429a3560394 2195
+  s_03c3823608cd5e::t_da7c3f7aeb6e74 139-143,145
+  s_03c3823608cd5e::t_291f0c437b813b 245
+  s_03c3823608cd5e::t_f8c42389da5c15 263-264,266,294
+  s_03c3823608cd5e::t_a83ef2600c319a 298-299,301-302,304-306,308,310-313,315-317,319-325,327-328,330-339,341-355
+  s_03c3823608cd5e::t_f8598eebf750f9 2149,2152-2153,2163-2169,2173
+  s_03c3823608cd5e::t_92ea10f619b7b9 33
+  s_03c3823608cd5e::t_95fbf71f6917f3 246-262,265,267-293,295-297
+  s_03c3823608cd5e::t_81a642e81bb24c 2180-2185
+test/integration/singlecluster/controller/concurrentadmission/concurrent_admission_test.go
+  s_03c3823608cd5e::t_c89d6d3cee1a28 599,601-616,620-678
+  s_03c3823608cd5e::t_33cd3ba915ec45 617-618
+  s_03c3823608cd5e::t_94554e649934b7 679-714,716-772
+  s_03c3823608cd5e::t_e6cbb3df51542a 715
+  s_03c3823608cd5e::t_3fd8bb633ab372 600
+  h_f3e429a3560394 619
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "d263b8327d527eaac486190ae0a61b62ad11504b",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_03c3823608cd5e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93d1df4e-6209-49b9-aea2-e87a41d36c1f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
