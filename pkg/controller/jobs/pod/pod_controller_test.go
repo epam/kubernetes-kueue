@@ -50,6 +50,7 @@ import (
 	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/metrics"
 	"sigs.k8s.io/kueue/pkg/podset"
+	"sigs.k8s.io/kueue/pkg/resources"
 	utilpod "sigs.k8s.io/kueue/pkg/util/pod"
 	utiltesting "sigs.k8s.io/kueue/pkg/util/testing"
 	utiltestingapi "sigs.k8s.io/kueue/pkg/util/testing/v1beta2"
@@ -376,6 +377,11 @@ func TestReconciler(t *testing.T) {
 		excessPodsExpectations []keyUIDs
 		// If true, the test will delete workloads before running reconcile
 		deleteWorkloads bool
+		// By default the harness stamps the is-group-workload annotation on every
+		// Workload that backs a pod group (mirroring NewGroupWorkload in production).
+		// Set this to keep fixtures untouched, e.g. to simulate a foreign Workload that
+		// a pod group must not adopt.
+		keepWorkloadsUnmarked bool
 
 		wantEvents        []utiltesting.EventRecord
 		reconcilerOptions []jobframework.Option
@@ -1434,6 +1440,121 @@ func TestReconciler(t *testing.T) {
 					Obj(),
 			},
 			workloadCmpOpts: defaultWorkloadCmpOpts,
+		},
+		"pod group does not adopt a workload that is not a pod group workload": {
+			featureGates:          map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: false},
+			keepWorkloadsUnmarked: true,
+			pods: []corev1.Pod{
+				*basePodWrapper.
+					Clone().
+					ManagedByKueueLabel().
+					KueueFinalizer().
+					KueueSchedulingGate().
+					GroupNameLabel("test-group").
+					GroupTotalCount("1").
+					Obj(),
+			},
+			wantPods: []corev1.Pod{
+				*basePodWrapper.
+					Clone().
+					ManagedByKueueLabel().
+					KueueFinalizer().
+					KueueSchedulingGate().
+					GroupNameLabel("test-group").
+					GroupTotalCount("1").
+					Obj(),
+			},
+			workloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("test-group", "ns").Finalizers(kueue.ResourceInUseFinalizerName).
+					PodSets(
+						*utiltestingapi.MakePodSet(kueue.DefaultPodSetName, 1).
+							Request(corev1.ResourceCPU, "1").
+							Obj(),
+					).
+					Queue(localUserQueueName).
+					Priority(0).
+					Obj(),
+			},
+			wantWorkloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("test-group", "ns").Finalizers(kueue.ResourceInUseFinalizerName).
+					PodSets(
+						*utiltestingapi.MakePodSet(kueue.DefaultPodSetName, 1).
+							Request(corev1.ResourceCPU, "1").
+							Obj(),
+					).
+					Queue(localUserQueueName).
+					Priority(0).
+					Obj(),
+			},
+			workloadCmpOpts: defaultWorkloadCmpOpts,
+			wantEvents: []utiltesting.EventRecord{
+				{
+					Key:       types.NamespacedName{Name: "pod", Namespace: "ns"},
+					EventType: "Warning",
+					Reason:    ReasonWorkloadNameConflict,
+					Message:   `A Workload named "test-group" already exists but is not a pod group workload; this pod group cannot be admitted`,
+				},
+			},
+		},
+		"pod group does not adopt a workload when a pod requests more than its role reserved": {
+			featureGates: map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: false},
+			pods: []corev1.Pod{
+				*basePodWrapper.
+					Clone().
+					ManagedByKueueLabel().
+					KueueFinalizer().
+					KueueSchedulingGate().
+					GroupNameLabel("test-group").
+					GroupTotalCount("1").
+					// Forge the role hash to match the reserved role while requesting far
+					// more than that role reserved (1 CPU).
+					RoleHash(podUID).
+					Request(corev1.ResourceCPU, "100").
+					Obj(),
+			},
+			wantPods: []corev1.Pod{
+				*basePodWrapper.
+					Clone().
+					ManagedByKueueLabel().
+					KueueFinalizer().
+					KueueSchedulingGate().
+					GroupNameLabel("test-group").
+					GroupTotalCount("1").
+					RoleHash(podUID).
+					Request(corev1.ResourceCPU, "100").
+					Obj(),
+			},
+			workloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("test-group", "ns").Finalizers(kueue.ResourceInUseFinalizerName).
+					PodSets(
+						*utiltestingapi.MakePodSet(kueue.NewPodSetReference(podUID), 1).
+							Request(corev1.ResourceCPU, "1").
+							Obj(),
+					).
+					Queue(localUserQueueName).
+					Priority(0).
+					Obj(),
+			},
+			wantWorkloads: []kueue.Workload{
+				*utiltestingapi.MakeWorkload("test-group", "ns").Finalizers(kueue.ResourceInUseFinalizerName).
+					PodSets(
+						*utiltestingapi.MakePodSet(kueue.NewPodSetReference(podUID), 1).
+							Request(corev1.ResourceCPU, "1").
+							Obj(),
+					).
+					Queue(localUserQueueName).
+					Priority(0).
+					Obj(),
+			},
+			workloadCmpOpts: defaultWorkloadCmpOpts,
+			wantEvents: []utiltesting.EventRecord{
+				{
+					Key:       types.NamespacedName{Name: "pod", Namespace: "ns"},
+					EventType: "Warning",
+					Reason:    ReasonPodResourceConflict,
+					Message:   `Pod requests exceed the resources reserved for role "dc85db45" in workload "test-group"; this pod group cannot be admitted`,
+				},
+			},
 		},
 		"scheduling gate is removed for all pods in the group if workload is admitted": {
 			featureGates: map[featuregate.Feature]bool{features.WorkloadIdentifierAnnotations: false},
@@ -6100,6 +6221,35 @@ func TestReconciler(t *testing.T) {
 				features.SetFeatureGatesDuringTest(t, tc.featureGates)
 
 				ctx, log := utiltesting.ContextWithLog(t)
+
+				// Pod group Workloads are stamped with the is-group-workload annotation by
+				// NewGroupWorkload in production; the fixtures build Workloads via the test
+				// wrapper, which does not add it. Stamp it here for every Workload backing a
+				// pod group referenced by the test pods so FindMatchingWorkloads' group-
+				// ownership check is satisfied without editing every fixture.
+				if !tc.keepWorkloadsUnmarked {
+					groupNames := map[string]bool{}
+					for i := range tc.pods {
+						if gn := utilpod.GetPodGroupName(&tc.pods[i]); gn != "" {
+							groupNames[gn] = true
+						}
+					}
+					markGroupWorkload := func(wl *kueue.Workload) {
+						if groupNames[wl.Name] {
+							if wl.Annotations == nil {
+								wl.Annotations = map[string]string{}
+							}
+							wl.Annotations[podconstants.IsGroupWorkloadAnnotationKey] = podconstants.IsGroupWorkloadAnnotationValue
+						}
+					}
+					for i := range tc.workloads {
+						markGroupWorkload(&tc.workloads[i])
+					}
+					for i := range tc.wantWorkloads {
+						markGroupWorkload(&tc.wantWorkloads[i])
+					}
+				}
+
 				clientBuilder := utiltesting.NewClientBuilder().WithInterceptorFuncs(interceptor.Funcs{SubResourcePatch: utiltesting.TreatSSAAsStrategicMerge})
 				indexer := utiltesting.AsIndexer(clientBuilder)
 				if err := SetupIndexes(ctx, indexer); err != nil {
@@ -6437,6 +6587,17 @@ func TestRecordPodSchedulingGateRemovalSeconds(t *testing.T) {
 
 			ctx, _ := utiltesting.ContextWithLog(t)
 
+			// Pod group Workloads carry the is-group-workload annotation in production
+			// (set by NewGroupWorkload); stamp it so FindMatchingWorkloads adopts them.
+			if tc.isGroup {
+				for i := range tc.workloads {
+					if tc.workloads[i].Annotations == nil {
+						tc.workloads[i].Annotations = map[string]string{}
+					}
+					tc.workloads[i].Annotations[podconstants.IsGroupWorkloadAnnotationKey] = podconstants.IsGroupWorkloadAnnotationValue
+				}
+			}
+
 			clientBuilder := utiltesting.NewClientBuilder().
 				WithObjects(utiltesting.MakeNamespace(metav1.NamespaceDefault)).
 				WithObjects(utiltestingapi.MakeResourceFlavor(rfName).NodeLabel(corev1.LabelArchStable, "arm64").Obj()).
@@ -6704,6 +6865,43 @@ func TestGetWorkloadNameForPod(t *testing.T) {
 	}
 }
 
+func TestPodExceedsRequests(t *testing.T) {
+	testCases := map[string]struct {
+		pod      *corev1.Pod
+		reserved *corev1.Pod
+		want     bool
+	}{
+		"equal requests do not exceed": {
+			pod:      testingpod.MakePod("p", "ns").Request(corev1.ResourceCPU, "1").Obj(),
+			reserved: testingpod.MakePod("r", "ns").Request(corev1.ResourceCPU, "1").Obj(),
+			want:     false,
+		},
+		"fewer requests do not exceed": {
+			pod:      testingpod.MakePod("p", "ns").Request(corev1.ResourceCPU, "500m").Obj(),
+			reserved: testingpod.MakePod("r", "ns").Request(corev1.ResourceCPU, "1").Obj(),
+			want:     false,
+		},
+		"more of a reserved resource exceeds": {
+			pod:      testingpod.MakePod("p", "ns").Request(corev1.ResourceCPU, "100").Obj(),
+			reserved: testingpod.MakePod("r", "ns").Request(corev1.ResourceCPU, "1").Obj(),
+			want:     true,
+		},
+		"requesting an unreserved resource exceeds": {
+			pod:      testingpod.MakePod("p", "ns").Request(corev1.ResourceCPU, "1").Request(corev1.ResourceMemory, "1Gi").Obj(),
+			reserved: testingpod.MakePod("r", "ns").Request(corev1.ResourceCPU, "1").Obj(),
+			want:     true,
+		},
+	}
+	for name, tc := range testCases {
+		t.Run(name, func(t *testing.T) {
+			reserved := resources.NewRequestsFromPodSpec(&tc.reserved.Spec)
+			if got := podExceedsRequests(tc.pod, reserved); got != tc.want {
+				t.Errorf("podExceedsRequests() = %v, want %v", got, tc.want)
+			}
+		})
+	}
+}
+
 func TestReconciler_DeletePodAfterTransientErrorsOnUpdateOrDeleteOps(t *testing.T) {
 	now := time.Now().Truncate(time.Second)
 	connRefusedErrMock := fmt.Errorf("connection refused: %w", syscall.ECONNREFUSED)
@@ -6748,6 +6946,7 @@ func TestReconciler_DeletePodAfterTransientErrorsOnUpdateOrDeleteOps(t *testing.
 	}
 
 	wl := *utiltestingapi.MakeWorkload("test-group", "ns").
+		Annotations(map[string]string{podconstants.IsGroupWorkloadAnnotationKey: podconstants.IsGroupWorkloadAnnotationValue}).
 		PodSets(
 			*utiltestingapi.MakePodSet(kueue.NewPodSetReference(podUID), 2).
 				Request(corev1.ResourceCPU, "1").

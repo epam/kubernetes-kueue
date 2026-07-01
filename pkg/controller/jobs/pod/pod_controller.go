@@ -50,6 +50,7 @@ import (
 	podconstants "sigs.k8s.io/kueue/pkg/controller/jobs/pod/constants"
 	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/podset"
+	"sigs.k8s.io/kueue/pkg/resources"
 	"sigs.k8s.io/kueue/pkg/util/api"
 	clientutil "sigs.k8s.io/kueue/pkg/util/client"
 	cmputil "sigs.k8s.io/kueue/pkg/util/cmp"
@@ -75,6 +76,8 @@ var errMsgIncorrectGroupRoleCount = fmt.Sprintf("pod group can't include more th
 const (
 	ReasonExcessPodDeleted     = "ExcessPodDeleted"
 	ReasonOwnerReferencesAdded = "OwnerReferencesAdded"
+	ReasonWorkloadNameConflict = "WorkloadNameConflict"
+	ReasonPodResourceConflict  = "PodResourceConflict"
 )
 
 const (
@@ -86,6 +89,8 @@ var (
 	gvk                          = corev1.SchemeGroupVersion.WithKind("Pod")
 	errIncorrectReconcileRequest = errors.New("event handler error: got a single pod reconcile request for a pod group")
 	errPendingOps                = jobframework.UnretryableError("waiting to observe previous operations on pods")
+	errNotPodGroupWorkload       = jobframework.UnretryableError("a workload with the pod group name already exists but was not created by the pod group framework")
+	errPodExceedsRoleRequests    = jobframework.UnretryableError("a pod requests more resources than reserved for its role in the workload")
 	errPodGroupLabelsMismatch    = errors.New("constructing workload: pods have different label values")
 	realClock                    = clock.RealClock{}
 )
@@ -663,6 +668,20 @@ func getRoleHash(p corev1.Pod) (string, error) {
 	return utilpod.GenerateRoleHash(&p.Spec)
 }
 
+// podExceedsRequests reports whether the pod requests more of any resource than the
+// reserved per-pod requests of the role it claims. Both sides are computed with the same
+// helper (NewRequestsFromPodSpec) so the comparison is apples-to-apples; a resource that is
+// not reserved at all counts as a reservation of zero.
+func podExceedsRequests(pod *corev1.Pod, reserved resources.Requests) bool {
+	actual := resources.NewRequestsFromPodSpec(&pod.Spec)
+	for name, value := range actual {
+		if value > reserved[name] {
+			return true
+		}
+	}
+	return false
+}
+
 // Load loads all pods in the group
 func (p *Pod) Load(ctx context.Context, c client.Client, key *types.NamespacedName) (removeFinalizers bool, err error) {
 	nsKey := strings.Split(key.Namespace, "/")
@@ -1215,6 +1234,20 @@ func (p *Pod) FindMatchingWorkloads(ctx context.Context, c client.Client, r even
 		return nil, nil, err
 	}
 
+	// The Workload found by the group name must have been created by the pod group
+	// framework. Otherwise a tenant could set the pod-group-name to the name of a
+	// Workload owned by another framework (e.g. a batch Job) and hijack its already
+	// admitted quota reservation. Refuse adoption by returning no match and nothing to
+	// delete: the foreign Workload must never end up in the toDelete slice, or the
+	// reconciler would delete the victim's Workload.
+	if workload.Annotations[podconstants.IsGroupWorkloadAnnotationKey] != podconstants.IsGroupWorkloadAnnotationValue {
+		log.V(2).Info("Existing workload with the pod group name was not created by the pod group framework; refusing adoption",
+			"workload", klog.KObj(workload))
+		r.Eventf(&p.pod, nil, corev1.EventTypeWarning, ReasonWorkloadNameConflict, "Admission",
+			"A Workload named %q already exists but is not a pod group workload; this pod group cannot be admitted", groupName)
+		return nil, nil, errNotPodGroupWorkload
+	}
+
 	defaultDuration := int32(-1)
 	if ptr.Deref(workload.Spec.MaximumExecutionTimeSeconds, defaultDuration) != ptr.Deref(jobframework.MaximumExecutionTimeSeconds(p), defaultDuration) {
 		return nil, []*kueue.Workload{workload}, nil
@@ -1243,6 +1276,22 @@ func (p *Pod) FindMatchingWorkloads(ctx context.Context, c client.Client, r even
 		roleInactivePods := utilslices.Pick(inactivePods, hasRoleFunc)
 		if len(roleHashErrors) > 0 {
 			return nil, nil, fmt.Errorf("failed to calculate pod role hash: %w", errors.Join(roleHashErrors...))
+		}
+
+		// Defense in depth: a Pod claiming a given role must not request more resources
+		// than that role reserved in the Workload. This prevents a Pod from masquerading
+		// as a cheaper role (e.g. by forging the role-hash annotation) and running on an
+		// undersized reservation. Refuse adoption rather than deleting the Workload.
+		reserved := resources.NewRequestsFromPodSpec(&ps.Template.Spec)
+		for i := range roleActivePods {
+			pod := &roleActivePods[i]
+			if podExceedsRequests(pod, reserved) {
+				log.V(2).Info("Pod requests exceed the reserved requests of its role in the workload; refusing adoption",
+					"workload", klog.KObj(workload), "pod", klog.KObj(pod), "role", ps.Name)
+				r.Eventf(pod, nil, corev1.EventTypeWarning, ReasonPodResourceConflict, "Admission",
+					"Pod requests exceed the resources reserved for role %q in workload %q; this pod group cannot be admitted", ps.Name, groupName)
+				return nil, nil, errPodExceedsRoleRequests
+			}
 		}
 
 		absentPods += p.countAbsentPods(ps, len(roleActivePods))

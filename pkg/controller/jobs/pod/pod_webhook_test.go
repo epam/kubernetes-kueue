@@ -126,6 +126,36 @@ func TestDefault(t *testing.T) {
 				KueueFinalizer().
 				Obj(),
 		},
+		"tenant-supplied role-hash is ignored and recomputed from the spec": {
+			featureGates: map[featuregate.Feature]bool{features.TopologyAwareScheduling: false},
+			initObjects:  []client.Object{defaultNamespace},
+			pod: testingpod.MakePod("test-pod", defaultNamespace.Name).
+				Queue("test-queue").
+				RoleHash("forged").
+				Obj(),
+			want: testingpod.MakePod("test-pod", defaultNamespace.Name).
+				Queue("test-queue").
+				ManagedByKueueLabel().
+				KueueSchedulingGate().
+				RoleHash("a9f06f3a").
+				KueueFinalizer().
+				Obj(),
+		},
+		"parent-managed pod preserves its role-hash": {
+			featureGates: map[featuregate.Feature]bool{features.TopologyAwareScheduling: false},
+			initObjects:  []client.Object{defaultNamespace},
+			pod: testingpod.MakePod("test-pod", defaultNamespace.Name).
+				SuspendedByParent("test").
+				Queue("test-queue").
+				RoleHash("leader").
+				Obj(),
+			want: testingpod.MakePod("test-pod", defaultNamespace.Name).
+				SuspendedByParent("test").
+				Queue("test-queue").
+				KueueSchedulingGate().
+				RoleHash("leader").
+				Obj(),
+		},
 		"pod with queue matching ns selector": {
 			featureGates: map[featuregate.Feature]bool{features.TopologyAwareScheduling: false},
 			initObjects:  []client.Object{defaultNamespace},

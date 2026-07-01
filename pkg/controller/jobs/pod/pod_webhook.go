@@ -92,7 +92,19 @@ func (p *Pod) addRoleHash() error {
 		p.pod.Annotations = make(map[string]string)
 	}
 
-	hash, err := getRoleHash(p.pod)
+	var hash string
+	var err error
+	if _, suspendByParent := p.pod.Annotations[podconstants.SuspendedByParentAnnotation]; suspendByParent {
+		// Pods managed by a parent integration (e.g. StatefulSet, LeaderWorkerSet) are
+		// assigned a fixed role hash by that integration; preserve it.
+		hash, err = getRoleHash(p.pod)
+	} else {
+		// Do not trust a tenant-supplied role-hash annotation: always compute it from the
+		// actual pod spec so a Pod cannot masquerade as a different (cheaper) role and run
+		// on another role's quota reservation. This webhook is create-only and runs before
+		// Kueue mutates the spec, so the computed hash is authoritative and stable.
+		hash, err = utilpod.GenerateRoleHash(&p.pod.Spec)
+	}
 	if err != nil {
 		return err
 	}
