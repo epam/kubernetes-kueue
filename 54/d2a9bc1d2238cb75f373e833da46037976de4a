@@ -1,0 +1,14 @@
+Makefile
+  h_47cee5fa694435 76-77,231,237,259,408,433,466,490,514,566
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "54d2a9bc1d2238cb75f373e833da46037976de4a",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
