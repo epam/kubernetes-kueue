@@ -1,0 +1,19 @@
+pkg/controller/concurrentadmission/controller.go
+  s_03c3823608cd5e::t_1a3d00fdd41af9 323-338
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "1ab82b981fbadde11f8295ac8275d3d3f9764a6d",
+  "prompts": {},
+  "sessions": {
+    "s_03c3823608cd5e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93d1df4e-6209-49b9-aea2-e87a41d36c1f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

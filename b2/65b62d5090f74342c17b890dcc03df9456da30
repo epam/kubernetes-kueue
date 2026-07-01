@@ -1,0 +1,124 @@
+cmd/importer/pod/import.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 213
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 42
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 267,271,439,443,524,807,839,1053,1065
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 58
+test/util/util_scheduling.go
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 30
+  s_423fc41a6a84bb::t_d06b707ed3a726 57
+test/integration/multikueue/dispatcher_test.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 203,209,359,389,433,439,633
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 39
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 51
+  s_423fc41a6a84bb::t_d06b707ed3a726 535,877,1470
+test/performance/scheduler/runner/controller/controller.go
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 41
+  s_423fc41a6a84bb::t_d06b707ed3a726 121
+pkg/workload/patching/patching_test.go
+  s_423fc41a6a84bb::t_e26394fae12940 306-517
+  s_423fc41a6a84bb::t_384549ba108b24 1-305,518-632
+pkg/controller/jobframework/reconciler.go
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 71
+  s_423fc41a6a84bb::t_d06b707ed3a726 407,529,557,1123
+test/integration/singlecluster/controller/jobs/pytorchjob/pytorchjob_controller_test.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 208
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 43
+test/integration/singlecluster/controller/jobs/mpijob/mpijob_controller_test.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 343
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 46
+pkg/workload/workload_test.go
+  s_423fc41a6a84bb::t_7ade9dabd21a24 51
+test/integration/singlecluster/webhook/core/workload_test.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 357,467,1186,1199
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 39
+test/integration/singlecluster/scheduler/delayedadmission/delayed_admission_test.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 103,142
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 31
+test/integration/singlecluster/controller/jobs/jaxjob/jaxjob_controller_test.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 204
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 43
+test/integration/singlecluster/tas/tas_test.go
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 54
+  s_423fc41a6a84bb::t_d06b707ed3a726 4969,5003
+test/integration/singlecluster/scheduler/workload_controller_test.go
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 38
+  s_423fc41a6a84bb::t_d06b707ed3a726 170,175
+pkg/workload/workload.go
+  s_423fc41a6a84bb::t_99e986a60a3446 65
+  s_423fc41a6a84bb::t_7a631e2fa4a394 706,1161,1257,1539,1542,1546,1549,1556,1574,1583,1654,1671,1673,1763-1764
+pkg/cache/scheduler/cohort_metrics.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 193
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 32
+test/integration/singlecluster/scheduler/podsready/scheduler_test.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 332
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 36
+pkg/controller/core/workload_controller.go
+  s_423fc41a6a84bb::t_99e986a60a3446 74
+  s_423fc41a6a84bb::t_d06b707ed3a726 255,307,322,341,361,386,424,503,525,627,647,660,680,741,748,755,762,828,888,980,987,1023,1030,1053,1065,1101,1184,1421
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 55
+  s_423fc41a6a84bb::t_d06b707ed3a726 860,998,2905,2949
+test/integration/multikueue/no_gc_test.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 234
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 36
+test/integration/singlecluster/controller/core/workload_controller_test.go
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 41
+  s_423fc41a6a84bb::t_d06b707ed3a726 305,310,383,446,451,475,613
+pkg/controller/admissionchecks/provisioning/controller_test.go
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 47
+  s_423fc41a6a84bb::t_d06b707ed3a726 148
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 6032,6059,6065
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 57
+test/util/util.go
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 86
+  s_423fc41a6a84bb::t_d06b707ed3a726 654,808,828,864,896
+pkg/controller/concurrentadmission/controller.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 320,343,571,580,585,596,717,720
+  s_423fc41a6a84bb::t_99e986a60a3446 52
+pkg/scheduler/scheduler.go
+  s_423fc41a6a84bb::t_99e986a60a3446 63
+  s_423fc41a6a84bb::t_d06b707ed3a726 537,540,823,830,988,997,1025,1041
+pkg/controller/workloaddispatcher/incrementaldispatcher.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 155
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 43
+test/integration/singlecluster/controller/concurrentadmission/concurrent_admission_test.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 479
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 36
+test/integration/singlecluster/scheduler/fairsharing/metrics_test.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 665
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 32
+pkg/controller/tas/node_controller.go
+  s_423fc41a6a84bb::t_d06b707ed3a726 669,681
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 62
+pkg/controller/admissionchecks/provisioning/controller.go
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 56
+  s_423fc41a6a84bb::t_d06b707ed3a726 336,339,489,504,614
+pkg/controller/jobs/job/job_controller_test.go
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 51
+  s_423fc41a6a84bb::t_d06b707ed3a726 1427,1464,1470,1614,1651,1657,1715,1752,1758,1807,1844,1850
+test/integration/singlecluster/controller/jobs/appwrapper/appwrapper_controller_test.go
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 51
+  s_423fc41a6a84bb::t_d06b707ed3a726 403
+test/integration/singlecluster/controller/jobs/jobset/jobset_controller_test.go
+  s_423fc41a6a84bb::t_4dfcf6c75dd3a7 48
+  s_423fc41a6a84bb::t_d06b707ed3a726 559
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "b265b62d5090f74342c17b890dcc03df9456da30",
+  "prompts": {},
+  "sessions": {
+    "s_423fc41a6a84bb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fa790189-99c3-4b0d-b4d4-dd5f1f72b306",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}
