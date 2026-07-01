@@ -1,0 +1,31 @@
+cmd/experimental/skills/reviewer/README.md
+  s_f390d0457d0c4d::t_29db1a2e4a1a8d 38
+  s_f390d0457d0c4d::t_a67f912fb3d938 95
+  s_f390d0457d0c4d::t_3bee00db727848 29
+cmd/experimental/skills/reviewer/code-style/structured-errors/SKILL.md
+  s_f390d0457d0c4d::t_f723cc6f8d83dc 1-37
+cmd/experimental/skills/reviewer/code-style/SKILL.md
+  s_f390d0457d0c4d::t_cf63afdf401706 3
+  s_f390d0457d0c4d::t_bf66c26b8c1c82 28,36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "cea547d9bc057e5694b80febc9d7e39370d98ba5",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_f390d0457d0c4d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b9a08f84-b1c3-4b8e-b165-7cdda661f2f3",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

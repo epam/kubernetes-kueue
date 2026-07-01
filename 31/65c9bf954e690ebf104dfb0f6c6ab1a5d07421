@@ -1,0 +1,57 @@
+pkg/controller/concurrentadmission/controller_test.go
+  s_03c3823608cd5e::t_6dff384c533006 277
+  s_03c3823608cd5e::t_3b570484be425e 302-304
+  s_03c3823608cd5e::t_f737600f712b86 263-266
+  s_03c3823608cd5e::t_8eb5c56912f220 245
+  s_03c3823608cd5e::t_c852de712f1d08 307
+  s_03c3823608cd5e::t_0e53df24ee994c 414
+  s_03c3823608cd5e::t_0651039dc01256 247
+  s_03c3823608cd5e::t_cef3fb9953f83a 2370
+  s_03c3823608cd5e::t_2353ab9d170bd0 272
+  s_03c3823608cd5e::t_b579716721755b 246,248-251,253-257,259-262,267-271,273-276,278-282,284-293,295-297,299-301,305-306,308-313,316-327,337-413,415
+  s_03c3823608cd5e::t_97aabfb6da4eb5 294
+  s_03c3823608cd5e::t_de0967408fb623 2385-2386
+  s_03c3823608cd5e::t_569570c2d59845 2269-2365
+  s_03c3823608cd5e::t_228b9628de10bf 33,138-145,331-333,2118-2119,2208-2268
+  s_03c3823608cd5e::t_8ae3ccfc8d8b0a 283
+  s_03c3823608cd5e::t_fb84b6de8ea377 258
+  s_03c3823608cd5e::t_d090256bdc08ba 328-330,334-336
+  s_03c3823608cd5e::t_bebcc94d825371 2366,2369,2371-2378,2380-2384,2387-2388
+  s_03c3823608cd5e::t_4ee767cb78f725 252
+  s_d2e4a6c227f71d::t_556e9fa8383ab7 2367-2368,2379
+  s_03c3823608cd5e::t_f230ce66980cd3 298
+  s_03c3823608cd5e::t_f01c4aca51585c 314-315
+pkg/controller/concurrentadmission/controller.go
+  s_03c3823608cd5e::t_b4bb2c4abe1cfb 47-48
+  s_03c3823608cd5e::t_c8a3cd6db699e4 121-127
+  s_03c3823608cd5e::t_f6ce02aac5dd12 169,368-370,764,781,808
+  s_03c3823608cd5e::t_b7eeed7a45a9af 322-325
+  s_03c3823608cd5e::t_8aa67f65d9c528 31
+  s_03c3823608cd5e::t_92c74e430c4fd7 61,118-120,128-129,138-168,170-181,184-185,210-212,214-217,335-354
+test/integration/singlecluster/controller/concurrentadmission/concurrent_admission_test.go
+  s_03c3823608cd5e::t_f51f583db519ad 600-773
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "3165c9bf954e690ebf104dfb0f6c6ab1a5d07421",
+  "prompts": {},
+  "sessions": {
+    "s_03c3823608cd5e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93d1df4e-6209-49b9-aea2-e87a41d36c1f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    },
+    "s_d2e4a6c227f71d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7c124e5a-5bcc-4b3c-9c42-367c71eb8e77",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}
