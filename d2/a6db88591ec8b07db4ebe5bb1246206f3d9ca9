@@ -1,9 +1,9 @@
 apis/config/v1beta1/groupversion_info.go
-  h_47cee5fa694435 23-24,33,35-36,37-40,43,46
+  h_47cee5fa694435 23-24,33,35-40,43-46
 apis/kueue/v1beta1/groupversion_info.go
-  h_47cee5fa694435 23-24,35,40-42,45-60,67
+  h_47cee5fa694435 23-24,35,40-42,45-61,67
 apis/config/v1beta2/groupversion_info.go
-  h_47cee5fa694435 23-24,33,34,39,42
+  h_47cee5fa694435 23-24,33-34,39-42
 apis/kueue/v1alpha1/groupversion_info.go
   h_47cee5fa694435 23-24,33,39-43
 apis/kueue/v1beta2/groupversion_info.go
