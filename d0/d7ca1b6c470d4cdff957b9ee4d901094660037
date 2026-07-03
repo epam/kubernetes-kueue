@@ -1,0 +1,20 @@
+apis/visibility/v1beta1/groupversion_info.go
+  h_47cee5fa694435 40
+apis/config/v1beta1/groupversion_info.go
+  h_47cee5fa694435 33
+apis/visibility/v1beta2/groupversion_info.go
+  h_47cee5fa694435 40
+apis/config/v1beta2/groupversion_info.go
+  h_47cee5fa694435 33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "d0d7ca1b6c470d4cdff957b9ee4d901094660037",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
