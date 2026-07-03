@@ -1,0 +1,37 @@
+apis/kueue/v1beta1/workload_types.go
+  s_c18006e4007929::t_2640b22859b0bd 151
+config/components/crd/bases/kueue.x-k8s.io_workloads.yaml
+  s_c18006e4007929::t_e574c3b1f82479 8761,18202
+apis/kueue/v1beta2/workload_types.go
+  s_c18006e4007929::t_c831598d6e2f47 234
+pkg/cache/scheduler/tas_flavor_snapshot_test.go
+  s_c18006e4007929::t_29af67c9bd72b9 20
+  h_99f506dc258b88 27,947,951,953,956,958,961,963,973,975,987,993,995,1003,1011,1021
+  s_c18006e4007929::t_528667a98b2e49 945-946,948-950,952,954-955,957,959-960,962,964-972,974,976-984,986,988-992,994,996-1000,1002,1004-1008,1010,1012-1016,1018-1020,1022-1026,1029-1032
+  s_c18006e4007929::t_df0700553df757 985,1001,1009,1017,1027-1028
+pkg/cache/scheduler/tas_flavor_snapshot.go
+  s_c18006e4007929::t_4885ea6924aaa6 47-48,1220,1222,1228,1230,1234,1238,1243,1245
+  s_c18006e4007929::t_8cbc57870f5b99 1226-1227,1229,1241-1242,1244
+  s_c18006e4007929::t_b5256fbe75446f 887-889
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "60428e2029a64e03358561f4c2908934ad37584c",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_c18006e4007929": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "5bec1ff4-ff24-49a2-b7c1-025511c7ea59",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
