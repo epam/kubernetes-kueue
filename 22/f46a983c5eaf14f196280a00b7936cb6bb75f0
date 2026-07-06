@@ -1,0 +1,19 @@
+cmd/kueueviz/frontend/Dockerfile
+  s_18cd158c8a8c03::t_118d3fb5a3b392 21-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "22f46a983c5eaf14f196280a00b7936cb6bb75f0",
+  "prompts": {},
+  "sessions": {
+    "s_18cd158c8a8c03": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8fd68227-3d1a-4b40-a6b9-e5fe9aa71f81",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
