@@ -1,0 +1,19 @@
+testfile.llm2
+  s_4a794a60053672::t_27130d957ec41f 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "45d7d7d16a16e25f254b7fb8f8b09110592de527",
+  "prompts": {},
+  "sessions": {
+    "s_4a794a60053672": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0ed1928e-a9dc-41c0-906b-01ff8c12944d",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Kan <u5040@proton.me>"
+    }
+  }
+}

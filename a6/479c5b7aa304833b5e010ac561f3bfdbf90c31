@@ -1,0 +1,14 @@
+cloudbuild.yaml
+  h_47cee5fa694435 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "a6479c5b7aa304833b5e010ac561f3bfdbf90c31",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

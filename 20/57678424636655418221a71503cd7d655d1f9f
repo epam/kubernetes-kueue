@@ -1,0 +1,39 @@
+pkg/controller/admissionchecks/multikueue/controllers.go
+  s_4a10f8891a0ff0::t_1a2447b3734f4d 22
+  s_4a10f8891a0ff0::t_884eb8789d6196 138,140,145
+hack/tools/go.mod
+  s_4a10f8891a0ff0::t_cda369ac59a603 40
+hack/tools/go.sum
+  s_af75a988655445::t_b32f72e19991b8 1751-1752
+go.mod
+  s_4a10f8891a0ff0::t_98ace234e89f1c 39,78-91,152
+  s_af75a988655445::t_6f6852b5442bd0 43
+  s_4a10f8891a0ff0::t_0c06a2d976287b 162
+pkg/controller/admissionchecks/multikueue/multikueuecluster.go
+  s_4a10f8891a0ff0::t_68869fa2ae2199 53
+  s_4a10f8891a0ff0::t_265699ef478a57 625
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "2057678424636655418221a71503cd7d655d1f9f",
+  "prompts": {},
+  "sessions": {
+    "s_4a10f8891a0ff0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "131eab45-45f1-400d-bcf0-07e7a563ce3f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_af75a988655445": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b1e39e05-c067-4bed-909f-770e9e0f7b87",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}
