@@ -1,0 +1,76 @@
+apis/visibility/v1beta2/types.go
+  h_47cee5fa694435 109-115
+apis/kueue/v1beta2/workloadpriorityclass_types.go
+  h_47cee5fa694435 59-62
+apis/kueue/v1beta1/admissioncheck_types.go
+  h_47cee5fa694435 131-134
+apis/kueue/v1beta1/groupversion_info.go
+  h_47cee5fa694435 23,25,35,40-41,49
+apis/kueue/v1alpha1/groupversion_info.go
+  h_47cee5fa694435 24,32
+apis/kueue/v1beta1/topology_types.go
+  h_47cee5fa694435 148-151
+apis/config/v1beta2/zz_generated.deepcopy.go
+  h_47cee5fa694435 26
+apis/kueue/v1beta1/resourceflavor_types.go
+  h_47cee5fa694435 120-123
+apis/kueue/v1beta2/zz_generated.deepcopy.go
+  h_47cee5fa694435 26
+apis/config/v1beta1/groupversion_info.go
+  h_47cee5fa694435 24,32,36,43
+apis/visibility/v1beta2/groupversion_info.go
+  h_47cee5fa694435 27,35,39
+apis/kueue/v1beta2/groupversion_info.go
+  h_47cee5fa694435 24,32
+apis/kueue/v1beta2/localqueue_types.go
+  h_47cee5fa694435 215-218
+apis/kueue/v1beta1/cohort_types.go
+  h_47cee5fa694435 108-111
+apis/kueue/v1beta2/cohort_types.go
+  h_47cee5fa694435 114-117
+apis/kueue/v1beta2/admissioncheck_types.go
+  h_47cee5fa694435 135-138
+apis/kueue/v1beta1/localqueue_types.go
+  h_47cee5fa694435 221-224
+apis/kueue/v1beta1/workloadpriorityclass_types.go
+  h_47cee5fa694435 55-58
+apis/kueue/v1beta1/multikueue_types.go
+  h_47cee5fa694435 156-159
+apis/kueue/v1beta2/provisioningrequestconfig_types.go
+  h_47cee5fa694435 190-193
+apis/kueue/v1beta2/multikueue_types.go
+  h_47cee5fa694435 208-211
+apis/visibility/v1beta1/groupversion_info.go
+  h_47cee5fa694435 27,35,39
+apis/visibility/v1beta1/types.go
+  h_47cee5fa694435 109-115
+apis/kueue/v1beta1/workload_types.go
+  h_47cee5fa694435 813-816
+apis/kueue/v1beta2/clusterqueue_types.go
+  h_47cee5fa694435 631-634
+apis/kueue/v1beta2/workload_types.go
+  h_47cee5fa694435 1215-1218
+apis/config/v1beta2/groupversion_info.go
+  h_47cee5fa694435 24,32,36,43
+apis/kueue/v1beta1/provisioningrequestconfig_types.go
+  h_47cee5fa694435 185-188
+apis/kueue/v1beta2/resourceflavor_types.go
+  h_47cee5fa694435 122-125
+apis/kueue/v1beta2/topology_types.go
+  h_47cee5fa694435 163-166
+apis/kueue/v1beta1/clusterqueue_types.go
+  h_47cee5fa694435 571-574
+pkg/controller/concurrentadmission/controller_test.go
+  h_47cee5fa694435 255,261,268,280,286,313,322,344,372,380,397,2281
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "bce3bcd900afab8c518adc9400627f244dd1b7fc",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

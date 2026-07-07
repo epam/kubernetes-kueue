@@ -1,0 +1,26 @@
+apis/kueue/v1beta2/groupversion_info.go
+  h_47cee5fa694435 29-30,32-34,62
+apis/kueue/v1beta1/groupversion_info.go
+  h_47cee5fa694435 31-32,34-36,68
+apis/visibility/v1beta2/groupversion_info.go
+  h_47cee5fa694435 32-33,35-37,58
+apis/config/v1beta1/groupversion_info.go
+  h_47cee5fa694435 29-30,44-45
+apis/config/v1beta2/groupversion_info.go
+  h_47cee5fa694435 29-30,44-45
+apis/visibility/v1beta1/groupversion_info.go
+  h_47cee5fa694435 32-33,35-37,58
+apis/kueue/v1alpha1/groupversion_info.go
+  h_47cee5fa694435 29-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "a0bacfc598c4912a4ac9bbba4ba5b7bdde768357",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

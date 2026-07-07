@@ -1,0 +1,14 @@
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  h_47cee5fa694435 2559,2566-2580
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "fec0468467ce5d80bf15535dcafb5df99d5c0b8e",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

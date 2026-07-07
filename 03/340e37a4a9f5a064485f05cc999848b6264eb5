@@ -1,0 +1,14 @@
+site/data/featuregates/removed_feature_list.yaml
+  h_47cee5fa694435 121-125
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.10",
+  "base_commit_sha": "03340e37a4a9f5a064485f05cc999848b6264eb5",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

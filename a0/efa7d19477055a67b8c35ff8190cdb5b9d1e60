@@ -1,0 +1,24 @@
+Makefile
+  s_278670282c603b::t_0354bfbbd7eb7f 243
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "a0efa7d19477055a67b8c35ff8190cdb5b9d1e60",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_278670282c603b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f0174207-ffc6-4ad1-88f5-32a97b78786a",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

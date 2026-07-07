@@ -1,0 +1,21 @@
+pkg/controller/jobs/job/job_controller_test.go
+  s_2c297b430f2bec::t_a5d99934311977 667-668,671,692-693,696
+pkg/controller/jobframework/reconciler.go
+  s_2c297b430f2bec::t_ad1632e064d37e 698-703
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "97104ec7c116b577828b0a5dbc2bcd356763b65e",
+  "prompts": {},
+  "sessions": {
+    "s_2c297b430f2bec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a1851937-72e6-4b93-b7bb-cc93df7f432b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+pkg/controller/jobs/pod/pod_webhook.go
+  s_7256d051a7be1c::t_5c74dc87a63b31 95-107
+pkg/controller/jobs/pod/pod_webhook_test.go
+  s_7256d051a7be1c::t_189abc0385b104 128-157
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_7256d051a7be1c::t_3745f515804f27 53
+  s_7256d051a7be1c::t_d1fd473df69772 6951
+  s_7256d051a7be1c::t_34eae113b25b6a 1444-1498
+  s_7256d051a7be1c::t_586b4bd536c947 6222-6250
+  s_7256d051a7be1c::t_0969ec9a63c553 380-384
+  s_7256d051a7be1c::t_7d1f507f597017 1554
+  s_7256d051a7be1c::t_2c06735746ab32 6592-6602
+  s_7256d051a7be1c::t_57710ce45fb450 1499-1553,1555-1558
+  s_7256d051a7be1c::t_f1672639bedc58 6870-6906
+pkg/controller/jobs/pod/pod_controller.go
+  s_7256d051a7be1c::t_84dd2111a7f784 672-685
+  s_7256d051a7be1c::t_11ac827eff3463 1288
+  s_7256d051a7be1c::t_4495e919f799ea 53
+  s_7256d051a7be1c::t_38c662fd9af84e 1245
+  s_7256d051a7be1c::t_ad48c3f36fac05 1290
+  s_7256d051a7be1c::t_466531e32ef2f1 1234-1244,1246-1247
+  s_7256d051a7be1c::t_552facd51f07aa 76
+  s_7256d051a7be1c::t_042ebd41ece2fb 77
+  s_7256d051a7be1c::t_5a39f4c72d5236 94
+  s_7256d051a7be1c::t_b39bbadc037850 93
+  s_7256d051a7be1c::t_29244cbfe925c2 1278-1283,1286,1289,1291-1293
+  s_7256d051a7be1c::t_c2421f4fc24ca3 1284-1285,1287
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "be32a0374dee7374ec0fbb9e6c459e11caaa8aa9",
+  "prompts": {},
+  "sessions": {
+    "s_7256d051a7be1c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7e5dd68f-6a1c-49b6-9457-d41ea871a3ce",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
