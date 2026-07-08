@@ -1,11 +1,17 @@
 pkg/scheduler/flavorassigner/tas_flavorassigner.go
   s_5005a0d21bc4a9::t_7fcf233ba49c5e 37-43,139,144-151,173-186
+  h_99f506dc258b88 172
 ---
 {
   "schema_version": "authorship/3.0.0",
   "git_ai_version": "1.6.10",
   "base_commit_sha": "b73a4bef2419d3331a5807725bff56066c97604e",
   "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
   "sessions": {
     "s_5005a0d21bc4a9": {
       "agent_id": {
