@@ -1,0 +1,19 @@
+pkg/util/tas/tas.go
+  s_f6dd5bf1546206::t_a178b8fa6084da 128-129
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.11",
+  "base_commit_sha": "b4a82715ea1949102a0048312f48990699516c45",
+  "prompts": {},
+  "sessions": {
+    "s_f6dd5bf1546206": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "4ffdde46-00b3-41e3-a421-7f090ab65f69",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
