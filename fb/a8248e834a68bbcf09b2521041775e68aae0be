@@ -1,0 +1,19 @@
+pkg/scheduler/flavorassigner/tas_flavorassigner.go
+  s_5005a0d21bc4a9::t_7fcf233ba49c5e 39-45,73,77,141,146-153,167,179-193
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "fba8248e834a68bbcf09b2521041775e68aae0be",
+  "prompts": {},
+  "sessions": {
+    "s_5005a0d21bc4a9": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "9a37fdb4-6ea0-40d1-a42e-a0ad8e1679df",
+        "model": "unknown"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
