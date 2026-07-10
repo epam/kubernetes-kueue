@@ -1,0 +1,14 @@
+OWNERS_ALIASES
+  h_47cee5fa694435 37-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "940872509d6a8cf235904bc18f43079881d71adf",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
