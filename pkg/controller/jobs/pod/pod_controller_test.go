@@ -323,6 +323,105 @@ func TestPodSets(t *testing.T) {
 	}
 }
 
+func TestConstructGroupPodSets(t *testing.T) {
+	features.SetFeatureGatesDuringTest(t, map[featuregate.Feature]bool{features.TopologyAwareScheduling: false})
+
+	podSetRole := kueue.NewPodSetReference("role-a")
+	basePod := testingpod.MakePod("pod", "ns").
+		Image("", nil).
+		Request(corev1.ResourceCPU, "1").
+		RoleHash(string(podSetRole)).
+		Obj()
+
+	testCases := map[string]struct {
+		pods        []corev1.Pod
+		wantPodSets []kueue.PodSet
+		wantErr     string
+	}{
+		"folds pods with matching role hash": {
+			pods: []corev1.Pod{
+				*basePod.DeepCopy(),
+				*testingpod.MakePod("pod-2", "ns").
+					Image("", nil).
+					Request(corev1.ResourceCPU, "500m").
+					RoleHash(string(podSetRole)).
+					Obj(),
+			},
+			wantPodSets: []kueue.PodSet{
+				*utiltestingapi.MakePodSet(podSetRole, 2).
+					PodSpec(*basePod.Spec.DeepCopy()).
+					Obj(),
+			},
+		},
+		"rejects pod exceeding matching role requests": {
+			pods: []corev1.Pod{
+				*basePod.DeepCopy(),
+				*testingpod.MakePod("pod-2", "ns").
+					Image("", nil).
+					Request(corev1.ResourceCPU, "2").
+					RoleHash(string(podSetRole)).
+					Obj(),
+			},
+			wantErr: `pod "pod-2" requests more resources than reserved for role "role-a": a pod requests more resources than reserved for its role in the pod group`,
+		},
+	}
+
+	for name, tc := range testCases {
+		t.Run(name, func(t *testing.T) {
+			gotPodSets, gotErr := constructGroupPodSets(tc.pods)
+			if tc.wantErr != "" {
+				if gotErr == nil {
+					t.Fatalf("got nil error, want %q", tc.wantErr)
+				}
+				if gotErr.Error() != tc.wantErr {
+					t.Fatalf("error = %q, want %q", gotErr.Error(), tc.wantErr)
+				}
+				if !jobframework.IsUnretryableError(gotErr) {
+					t.Fatalf("error = %q, want unretryable error", gotErr)
+				}
+				return
+			}
+			if gotErr != nil {
+				t.Fatalf("unexpected error: %v", gotErr)
+			}
+			if diff := cmp.Diff(tc.wantPodSets, gotPodSets, cmpopts.EquateEmpty()); diff != "" {
+				t.Errorf("pod sets mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
+func TestConstructGroupPodSetsFastRejectsPodExceedingTemplateRequests(t *testing.T) {
+	features.SetFeatureGatesDuringTest(t, map[featuregate.Feature]bool{features.TopologyAwareScheduling: false})
+
+	gotPodSets, gotErr := constructGroupPodSetsFast([]corev1.Pod{
+		*testingpod.MakePod("pod", "ns").
+			Image("", nil).
+			Request(corev1.ResourceCPU, "1").
+			RoleHash("role-a").
+			Obj(),
+		*testingpod.MakePod("pod-2", "ns").
+			Image("", nil).
+			Request(corev1.ResourceCPU, "2").
+			RoleHash("role-a").
+			Obj(),
+	}, 2)
+
+	wantErr := `pod "pod-2" requests more resources than reserved for role "role-a": a pod requests more resources than reserved for its role in the pod group`
+	if gotErr == nil {
+		t.Fatalf("got nil error, want %q", wantErr)
+	}
+	if gotErr.Error() != wantErr {
+		t.Fatalf("error = %q, want %q", gotErr.Error(), wantErr)
+	}
+	if !jobframework.IsUnretryableError(gotErr) {
+		t.Fatalf("error = %q, want unretryable error", gotErr)
+	}
+	if gotPodSets != nil {
+		t.Fatalf("podSets = %v, want nil", gotPodSets)
+	}
+}
+
 var (
 	podCmpOpts = cmp.Options{
 		cmpopts.EquateEmpty(),

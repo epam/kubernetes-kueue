@@ -91,6 +91,7 @@ var (
 	errPendingOps                = jobframework.UnretryableError("waiting to observe previous operations on pods")
 	errNotPodGroupWorkload       = jobframework.UnretryableError("a workload with the pod group name already exists but was not created by the pod group framework")
 	errPodExceedsRoleRequests    = jobframework.UnretryableError("a pod requests more resources than reserved for its role in the workload")
+	errPodExceedsGroupRequests   = jobframework.UnretryableError("a pod requests more resources than reserved for its role in the pod group")
 	errPodGroupLabelsMismatch    = errors.New("constructing workload: pods have different label values")
 	realClock                    = clock.RealClock{}
 )
@@ -777,7 +778,7 @@ func constructPodSet(p *corev1.Pod) (kueue.PodSet, error) {
 }
 
 func constructGroupPodSetsFast(pods []corev1.Pod, groupTotalCount int) ([]kueue.PodSet, error) {
-	for _, podInGroup := range pods {
+	for i, podInGroup := range pods {
 		if !isPodRunnableOrSucceeded(&podInGroup) {
 			continue
 		}
@@ -791,6 +792,16 @@ func constructGroupPodSetsFast(pods []corev1.Pod, groupTotalCount int) ([]kueue.
 		}
 		podSets[0].Name = kueue.NewPodSetReference(roleHash)
 		podSets[0].Count = int32(groupTotalCount)
+		reserved := resources.NewRequestsFromPodSpec(&podSets[0].Template.Spec)
+		for j := i + 1; j < len(pods); j++ {
+			if !isPodRunnableOrSucceeded(&pods[j]) {
+				continue
+			}
+			if podExceedsRequests(&pods[j], reserved) {
+				return nil, fmt.Errorf("pod %q requests more resources than reserved for role %q: %w",
+					pods[j].Name, roleHash, errPodExceedsGroupRequests)
+			}
+		}
 		return podSets, nil
 	}
 
@@ -814,6 +825,11 @@ func constructGroupPodSets(pods []corev1.Pod) ([]kueue.PodSet, error) {
 		for psi := range resultPodSets {
 			if string(resultPodSets[psi].Name) == roleHash {
 				podRoleFound = true
+				reserved := resources.NewRequestsFromPodSpec(&resultPodSets[psi].Template.Spec)
+				if podExceedsRequests(&podInGroup, reserved) {
+					return nil, fmt.Errorf("pod %q requests more resources than reserved for role %q: %w",
+						podInGroup.Name, roleHash, errPodExceedsGroupRequests)
+				}
 				resultPodSets[psi].Count++
 				break
 			}
@@ -1241,7 +1257,7 @@ func (p *Pod) FindMatchingWorkloads(ctx context.Context, c client.Client, r even
 	// delete: the foreign Workload must never end up in the toDelete slice, or the
 	// reconciler would delete the victim's Workload.
 	if workload.Annotations[podconstants.IsGroupWorkloadAnnotationKey] != podconstants.IsGroupWorkloadAnnotationValue {
-		log.V(2).Info("Existing workload with the pod group name was not created by the pod group framework; refusing adoption",
+		log.V(4).Info("Existing workload with the pod group name was not created by the pod group framework; refusing adoption",
 			"workload", klog.KObj(workload))
 		r.Eventf(&p.pod, nil, corev1.EventTypeWarning, ReasonWorkloadNameConflict, "Admission",
 			"A Workload named %q already exists but is not a pod group workload; this pod group cannot be admitted", groupName)
@@ -1286,7 +1302,7 @@ func (p *Pod) FindMatchingWorkloads(ctx context.Context, c client.Client, r even
 		for i := range roleActivePods {
 			pod := &roleActivePods[i]
 			if podExceedsRequests(pod, reserved) {
-				log.V(2).Info("Pod requests exceed the reserved requests of its role in the workload; refusing adoption",
+				log.V(4).Info("Pod requests exceed the reserved requests of its role in the workload; refusing adoption",
 					"workload", klog.KObj(workload), "pod", klog.KObj(pod), "role", ps.Name)
 				r.Eventf(pod, nil, corev1.EventTypeWarning, ReasonPodResourceConflict, "Admission",
 					"Pod requests exceed the resources reserved for role %q in workload %q; this pod group cannot be admitted", ps.Name, groupName)

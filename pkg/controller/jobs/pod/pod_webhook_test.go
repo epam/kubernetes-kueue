@@ -33,6 +33,7 @@ import (
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/apimachinery/pkg/util/validation/field"
 	"k8s.io/component-base/featuregate"
+	"k8s.io/utils/ptr"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/webhook/admission"
 
@@ -41,10 +42,12 @@ import (
 	schdcache "sigs.k8s.io/kueue/pkg/cache/scheduler"
 	"sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/controller/jobframework"
+	kueuedeployment "sigs.k8s.io/kueue/pkg/controller/jobs/deployment"
 	podconstants "sigs.k8s.io/kueue/pkg/controller/jobs/pod/constants"
 	"sigs.k8s.io/kueue/pkg/features"
 	utiltesting "sigs.k8s.io/kueue/pkg/util/testing"
 	utiltestingapi "sigs.k8s.io/kueue/pkg/util/testing/v1beta2"
+	testingdeployment "sigs.k8s.io/kueue/pkg/util/testingjobs/deployment"
 	testingjob "sigs.k8s.io/kueue/pkg/util/testingjobs/job"
 	testingmpijob "sigs.k8s.io/kueue/pkg/util/testingjobs/mpijob"
 	"sigs.k8s.io/kueue/pkg/util/testingjobs/paddlejob"
@@ -96,7 +99,7 @@ func TestDefault(t *testing.T) {
 		want                         *corev1.Pod
 		wantErr                      error
 	}{
-		"pod with suspend by parent annotation should skip finalizer": {
+		"pod with forged suspend by parent annotation recomputes role-hash and skips finalizer": {
 			featureGates: map[featuregate.Feature]bool{
 				features.TopologyAwareScheduling: false,
 			},
@@ -104,6 +107,7 @@ func TestDefault(t *testing.T) {
 			pod: testingpod.MakePod("test-pod", defaultNamespace.Name).
 				SuspendedByParent("test").
 				Queue("test-queue").
+				RoleHash("forged").
 				Obj(),
 			want: testingpod.MakePod("test-pod", defaultNamespace.Name).
 				SuspendedByParent("test").
@@ -143,17 +147,40 @@ func TestDefault(t *testing.T) {
 		},
 		"parent-managed pod preserves its role-hash": {
 			featureGates: map[featuregate.Feature]bool{features.TopologyAwareScheduling: false},
-			initObjects:  []client.Object{defaultNamespace},
+			initObjects: []client.Object{
+				defaultNamespace,
+				testingdeployment.MakeDeployment("parent-deployment", defaultNamespace.Name).
+					UID("parent-deployment").
+					Queue("test-queue").
+					Obj(),
+				&appsv1.ReplicaSet{
+					ObjectMeta: metav1.ObjectMeta{
+						Name:      "parent-replicaset",
+						Namespace: defaultNamespace.Name,
+						UID:       "parent-replicaset",
+						OwnerReferences: []metav1.OwnerReference{{
+							Name:       "parent-deployment",
+							APIVersion: appsv1.SchemeGroupVersion.String(),
+							Kind:       "Deployment",
+							UID:        "parent-deployment",
+							Controller: ptr.To(true),
+						}},
+					},
+				},
+			},
 			pod: testingpod.MakePod("test-pod", defaultNamespace.Name).
-				SuspendedByParent("test").
+				SuspendedByParent(kueuedeployment.FrameworkName).
 				Queue("test-queue").
 				RoleHash("leader").
+				OwnerReference("parent-replicaset", appsv1.SchemeGroupVersion.WithKind("ReplicaSet")).
 				Obj(),
+			enableIntegrations: []string{kueuedeployment.FrameworkName},
 			want: testingpod.MakePod("test-pod", defaultNamespace.Name).
-				SuspendedByParent("test").
+				SuspendedByParent(kueuedeployment.FrameworkName).
 				Queue("test-queue").
 				KueueSchedulingGate().
 				RoleHash("leader").
+				OwnerReference("parent-replicaset", appsv1.SchemeGroupVersion.WithKind("ReplicaSet")).
 				Obj(),
 		},
 		"pod with queue matching ns selector": {
