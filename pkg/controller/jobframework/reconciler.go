@@ -1216,6 +1216,13 @@ func (r *JobReconciler) ensurePrebuiltWorkloadInSync(ctx context.Context, wl *ku
 
 	if !equivalent || err != nil {
 		if err != nil {
+			// Surface unretryable errors (e.g. a pod requesting more than its role
+			// reserved) as a Warning event so the rejection is visible to the user and
+			// not only logged in the controller manager. This mirrors the emission done
+			// on the creation path in ConstructComposableWorkload.
+			if IsUnretryableError(err) {
+				r.record.Eventf(job.Object(), nil, corev1.EventTypeWarning, ReasonErrWorkloadCompose, "ErrWorkloadCompose", api.TruncateEventMessage(err.Error()))
+			}
 			return false, err
 		}
 		// mark the workload as finished

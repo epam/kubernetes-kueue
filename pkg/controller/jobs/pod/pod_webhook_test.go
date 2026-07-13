@@ -33,7 +33,6 @@ import (
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/apimachinery/pkg/util/validation/field"
 	"k8s.io/component-base/featuregate"
-	"k8s.io/utils/ptr"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/webhook/admission"
 
@@ -163,7 +162,7 @@ func TestDefault(t *testing.T) {
 							APIVersion: appsv1.SchemeGroupVersion.String(),
 							Kind:       "Deployment",
 							UID:        "parent-deployment",
-							Controller: ptr.To(true),
+							Controller: new(true),
 						}},
 					},
 				},

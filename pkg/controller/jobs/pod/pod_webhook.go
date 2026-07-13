@@ -156,6 +156,15 @@ func (w *PodWebhook) Default(ctx context.Context, obj *corev1.Pod) error {
 			return err
 		}
 	}
+	// A Pod that references a prebuilt Workload must keep its user-assigned role hash so
+	// that it keeps matching the PodSet names of that Workload. The prebuilt Workload is
+	// authored and owned by the same tenant (ownership is verified separately) and the
+	// per-role resource limits are still enforced when the group is constructed, so
+	// preserving the tenant-supplied hash here does not enable the quota hijacking that
+	// recomputation guards against.
+	if !preserveRoleHash && jobframework.PrebuiltWorkloadNameFor(pod.Object()) != "" {
+		preserveRoleHash = true
+	}
 
 	suspend := suspendByParent
 	if !suspend {
