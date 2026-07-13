@@ -1,0 +1,14 @@
+CHANGELOG/OWNERS
+  h_47cee5fa694435 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "032d1aeb1dbdd08f2943d1927fc0f5865f1deaf9",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

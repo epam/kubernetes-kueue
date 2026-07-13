@@ -1,0 +1,38 @@
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  h_47cee5fa694435 902,957,1028,1053,1073,1096,1515,1540,2403,2448,2458-2556,2557-2558,2559,2560-2564,2565,2566-2576,2583-2635,2636-2639,2640-2644
+pkg/workload/workload.go
+  h_47cee5fa694435 1153-1154
+test/util/util.go
+  h_47cee5fa694435 936,938,941,948-950,1523-1528
+apis/kueue/v1beta2/workload_types.go
+  h_47cee5fa694435 1019-1022
+pkg/controller/jobs/pod/pod_controller.go
+  h_47cee5fa694435 711-715,717,832,1245,1294-1297,1299,1301-1302,1304-1306,1398,1410
+pkg/controller/jobs/pod/pod_controller_test.go
+  h_47cee5fa694435 1725,1744,1869,1894,2074,2094,2392,2419,2472,2520,2673,2693,2739,2761,3007,3032,3133,3159,3252,3277,3491,3513,3939,3960,4064,4091,4160,4184,4345,4369,4581,4602,5224,5308,5405,5459,5507,5560,5610,5657,5699,6260
+test/e2e/singlecluster/baseline/pod_test.go
+  h_47cee5fa694435 231,275
+pkg/controller/core/workload_controller.go
+  s_eef31c9429bac2::t_fa93e89867afdd 542-546
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b626267db488e3562a6ff54e4fbdeea4dcdea54b",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_eef31c9429bac2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "33551c6e-7f99-4fc6-8a4d-8fda66fdfd61",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
