@@ -1,0 +1,25 @@
+test/integration/multikueue/jobs_test.go
+  s_912fc857aaeeda::t_ec5c1506a916e0 2238
+  s_912fc857aaeeda::t_bb40ef707b12bb 21,36,1536,2244-2261
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "265b82610cadf8262eba350cb989023d21953dc8",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_912fc857aaeeda": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "8c6f0640-586a-4044-af63-97368acd2901",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+Makefile-test.mk
+  s_f925a8c3520bc5::t_a8ef0dc0a38238 169
+  s_f925a8c3520bc5::t_9923dfc870454e 216
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "3742b3bed2502be7b90d16bab8e0176c12f61ea4",
+  "prompts": {},
+  "sessions": {
+    "s_f925a8c3520bc5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4c66a332-ca47-4447-a5ae-eb1d61c65aee",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": null
+    }
+  }
+}

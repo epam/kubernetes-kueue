@@ -1,0 +1,16 @@
+hack/testing/ray/Dockerfile
+  h_e4bdc46d73e6f7 1
+hack/testing/ray-mini/Dockerfile
+  h_e4bdc46d73e6f7 1,6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "4339b921ec86119f7154c0c5caca4107ba2f716d",
+  "prompts": {},
+  "humans": {
+    "h_e4bdc46d73e6f7": {
+      "author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

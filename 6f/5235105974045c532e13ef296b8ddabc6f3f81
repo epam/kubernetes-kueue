@@ -1,0 +1,14 @@
+test/integration/multikueue/jobs_test.go
+  h_99f506dc258b88 1536,2238
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "6f5235105974045c532e13ef296b8ddabc6f3f81",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+pkg/scheduler/flavorassigner/tas_flavorassigner.go
+  h_99f506dc258b88 111-112
+  s_a834a8417f5bb4::t_311e9422353e29 140,143,146,149
+  s_823d8695a60c76::t_7bb64df7b6ad23 92-96,98,100-103,105-106,110,114-117,119-120,122-123,125-127,130,132-139,141-142,144-145,147-148,150-163
+  s_823d8695a60c76::t_2f9101999166a8 291,293-298,300-303
+  s_a834a8417f5bb4::t_36dd5ec8ccfdf1 45-48,97,99,104,107-109,113,118,121,124,128-129,131,292,299
+pkg/scheduler/flavorassigner/flavorassigner_test.go
+  s_823d8695a60c76::t_b066d5509d8349 5750,5753
+  s_823d8695a60c76::t_6d1ea40764c3bd 5656-5722,5724-5730,5751-5752,5754-5823
+  s_823d8695a60c76::t_f18c9af61b5504 5723
+  s_a834a8417f5bb4::t_0114e161e4fa6e 5731-5749
+  s_823d8695a60c76::t_00cef1a55b199f 32
+  s_a834a8417f5bb4::t_1f79caebfb3e70 5824-5875
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.1",
+  "base_commit_sha": "21e525b08b8462a20e8bead8e7077fc1f59e9b3d",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_823d8695a60c76": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "b8a5a524-f97d-4358-b582-35ef0ed834d7",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    },
+    "s_a834a8417f5bb4": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "788a3bae-f995-4a8f-8abf-6808b0013779",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

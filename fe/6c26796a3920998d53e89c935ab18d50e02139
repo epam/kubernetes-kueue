@@ -1,0 +1,16 @@
+hack/testing/e2e-common.sh
+  h_47cee5fa694435 727
+Makefile-test.mk
+  h_47cee5fa694435 458
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "fe6c26796a3920998d53e89c935ab18d50e02139",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

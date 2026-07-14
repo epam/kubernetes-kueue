@@ -1,0 +1,14 @@
+pkg/controller/core/workload_controller_test.go
+  h_47cee5fa694435 401,2845,2850
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "72e67a0bff88b643ae6b10131baf3e02c4113977",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

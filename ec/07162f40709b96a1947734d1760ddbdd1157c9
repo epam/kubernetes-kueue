@@ -1,0 +1,19 @@
+README.md
+  s_1223b73312acfb::t_9a6bb3b50d48d3 3-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "ec07162f40709b96a1947734d1760ddbdd1157c9",
+  "prompts": {},
+  "sessions": {
+    "s_1223b73312acfb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c2031f3e-482f-446c-a4d5-e104677c6468",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

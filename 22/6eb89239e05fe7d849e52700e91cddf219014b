@@ -1,0 +1,22 @@
+pkg/controller/jobs/ray/ray_multikueue_adapter.go
+  h_99f506dc258b88 139-142
+pkg/controller/jobs/trainjob/trainjob_multikueue_adapter.go
+  h_99f506dc258b88 87-90
+pkg/controller/jobs/mpijob/mpijob_multikueue_adapter.go
+  h_99f506dc258b88 81-84
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter.go
+  h_99f506dc258b88 88-91
+pkg/controller/jobs/statefulset/statefulset_multikueue_adapter.go
+  h_99f506dc258b88 80-83
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "226eb89239e05fe7d849e52700e91cddf219014b",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

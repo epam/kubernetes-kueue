@@ -1,0 +1,36 @@
+hack/testing/e2e-common.sh
+  h_47cee5fa694435 17-19,178,183,189,202,216,221,502,505,508,511,518,525,569,572,575,589,592
+Makefile-test.mk
+  h_47cee5fa694435 178-180,182,185-186,188-197,285-286,302-312
+test/e2e/singlecluster/extended/pytorchjob_test.go
+  h_47cee5fa694435 35
+site/content/en/docs/contribution_guidelines/testing.md
+  h_47cee5fa694435 41,110-111,248,254
+test/e2e/singlecluster/extended/jobset_test.go
+  h_47cee5fa694435 34
+site/content/zh-CN/docs/contribution_guidelines/testing.md
+  h_47cee5fa694435 39,108-109,247,253
+test/e2e/singlecluster/extended/suite_test.go
+  h_47cee5fa694435 57,60,63,66,69,72
+test/e2e/singlecluster/extended/kuberay_test.go
+  h_47cee5fa694435 75
+test/e2e/singlecluster/extended/trainjob_test.go
+  h_47cee5fa694435 36
+test/e2e/singlecluster/extended/appwrapper_test.go
+  h_47cee5fa694435 38
+test/e2e/singlecluster/extended/leaderworkerset_test.go
+  h_47cee5fa694435 45
+test/e2e/singlecluster/extended/jaxjob_test.go
+  h_47cee5fa694435 35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "75098af23dca56cc74247c967302189eda0142f6",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

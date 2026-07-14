@@ -1,0 +1,9 @@
+hack/testing/ray-mini/Dockerfile
+  h_e4bdc46d73e6f7 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "80d6f9716b057f62353bf8864f3ee8c610a94605",
+  "prompts": {}
+}

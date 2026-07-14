@@ -1,0 +1,22 @@
+hack/testing/e2e-common.sh
+  h_47cee5fa694435 183,221,496,516,563,580
+Makefile-test.mk
+  h_47cee5fa694435 209-210
+test/e2e/singlecluster/extended/suite_test.go
+  h_47cee5fa694435 57,60
+test/e2e/singlecluster/extended/jobset_test.go
+  h_47cee5fa694435 34
+test/e2e/singlecluster/extended/leaderworkerset_test.go
+  h_47cee5fa694435 45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "e42a71fd5b0f93dbd9de0b51a9dec26aa59784d2",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

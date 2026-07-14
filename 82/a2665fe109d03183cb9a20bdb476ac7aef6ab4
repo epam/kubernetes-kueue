@@ -1,0 +1,14 @@
+hack/testing/e2e-common.sh
+  h_f3e429a3560394 106-114,849,1065,1145,1183
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "82a2665fe109d03183cb9a20bdb476ac7aef6ab4",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

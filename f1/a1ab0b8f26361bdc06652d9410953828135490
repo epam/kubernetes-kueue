@@ -1,0 +1,14 @@
+README.md
+  h_47cee5fa694435 41-43,52-57,62-63,66-67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "f1a1ab0b8f26361bdc06652d9410953828135490",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

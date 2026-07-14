@@ -1,0 +1,19 @@
+test/e2e/config/default/controller_manager_config.yaml
+  s_ea48c7cc98539c::t_97315ef1067a05 27-28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "5d0bd81ab6ae94ce0711fa6ac5403aafaad36c6e",
+  "prompts": {},
+  "sessions": {
+    "s_ea48c7cc98539c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a44c46f2-c4a5-46f0-a06b-de79e2b12165",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

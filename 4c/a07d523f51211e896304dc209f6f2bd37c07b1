@@ -1,0 +1,45 @@
+pkg/scheduler/flavorassigner/tas_flavorassigner.go
+  s_a834a8417f5bb4::t_11d1affbbdc70e 92-94,97-101
+  s_a834a8417f5bb4::t_258660990cb41c 154
+  s_823d8695a60c76::t_7bb64df7b6ad23 102-106,108,110-113,115-116,120,124-127,129-130,132-133,135-137,140,142-143,155-160,162-163,165-166,168-169,171-184
+  s_a834a8417f5bb4::t_311e9422353e29 161,164,167,170
+  s_a834a8417f5bb4::t_8a40d2a2c81b4c 95-96,151-153
+  h_99f506dc258b88 121-122,144-150
+  s_a834a8417f5bb4::t_36dd5ec8ccfdf1 45-48,107,109,114,117-119,123,128,131,134,138-139,141
+pkg/scheduler/flavorassigner/flavorassigner_test.go
+  s_823d8695a60c76::t_b066d5509d8349 5750,5753
+  s_823d8695a60c76::t_f18c9af61b5504 5723
+  s_a834a8417f5bb4::t_0114e161e4fa6e 5731-5749
+  s_a834a8417f5bb4::t_1f79caebfb3e70 5824-5875
+  s_823d8695a60c76::t_00cef1a55b199f 32
+  s_823d8695a60c76::t_6d1ea40764c3bd 5656-5722,5724-5730,5751-5752,5754-5823
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.1",
+  "base_commit_sha": "4ca07d523f51211e896304dc209f6f2bd37c07b1",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_823d8695a60c76": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "b8a5a524-f97d-4358-b582-35ef0ed834d7",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    },
+    "s_a834a8417f5bb4": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "788a3bae-f995-4a8f-8abf-6808b0013779",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
