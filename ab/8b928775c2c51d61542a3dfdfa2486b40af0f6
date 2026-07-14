@@ -1,0 +1,26 @@
+test/e2e/singlecluster/baseline/visibility_test.go
+  s_85ad8f56453934::t_857ec6abeadaf4 769-775
+  s_85ad8f56453934::t_2788c9bccc7c6e 604,607,613,635-643,646-647,677,682-683
+  s_85ad8f56453934::t_aa31b01edae661 605
+  s_85ad8f56453934::t_effcc6a5920e79 606,608-612,614-627,629-633,644-645,648-655,659-660,666-668,670-676,678-681
+  s_85ad8f56453934::t_30321a1058d973 628
+  s_85ad8f56453934::t_6b6be9df300b6c 634
+  s_85ad8f56453934::t_a9f80721cb88a6 656-658,661-665,669
+  s_85ad8f56453934::t_3ed2cc022ac046 726
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.13",
+  "base_commit_sha": "ab8b928775c2c51d61542a3dfdfa2486b40af0f6",
+  "prompts": {},
+  "sessions": {
+    "s_85ad8f56453934": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "40467806-3b05-4055-96ef-92806d8866ab",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}

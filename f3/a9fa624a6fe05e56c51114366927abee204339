@@ -1,0 +1,29 @@
+pkg/controller/jobframework/reconciler.go
+  s_7256d051a7be1c::t_322242e6dbb24b 1208-1214
+pkg/controller/jobs/pod/pod_webhook_test.go
+  s_fed9a44cdca194::t_49081e2909d1a2 166
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.13",
+  "base_commit_sha": "f3a9fa624a6fe05e56c51114366927abee204339",
+  "prompts": {},
+  "sessions": {
+    "s_7256d051a7be1c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7e5dd68f-6a1c-49b6-9457-d41ea871a3ce",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_fed9a44cdca194": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "687fba51-ca83-495c-97a9-ce6640ac82df",
+        "model": "gpt-5.5-medium"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
