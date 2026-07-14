@@ -1,0 +1,20 @@
+pkg/dra/claims_test.go
+  s_284ebc7ff0f588::t_5ac74c4f592619 529-553
+  s_284ebc7ff0f588::t_83ab980081c69f 528
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "6ef10dd5c8ffd5ac2f5c6fccac26f34e25981fd5",
+  "prompts": {},
+  "sessions": {
+    "s_284ebc7ff0f588": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "848b602d-e2b5-4317-9138-a8dfd27c7f6f",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+pkg/controller/jobs/mpijob/mpijob_controller_test.go
+  s_9db04d3d78d9c1::t_de96609e5cc91c 358-386
+  s_9db04d3d78d9c1::t_75e978ff5ff15c 36
+pkg/controller/jobs/kubeflow/kubeflowjob/kubeflowjob_controller.go
+  s_9db04d3d78d9c1::t_5e29908121ec34 79-81
+pkg/controller/jobs/jobset/jobset_controller.go
+  s_9db04d3d78d9c1::t_e1b0a853742041 156
+pkg/controller/jobs/raycluster/common_test.go
+  s_9db04d3d78d9c1::t_0ec2c9f8b8c1d4 935-994
+pkg/controller/jobs/raycluster/common.go
+  s_9db04d3d78d9c1::t_3979d8e286baee 271-273
+  s_9db04d3d78d9c1::t_0487a573b41a5e 270
+pkg/controller/jobs/kubeflow/jobs/pytorchjob/pytorchjob_controller_test.go
+  s_9db04d3d78d9c1::t_e9729c5fe75244 229-267
+  s_9db04d3d78d9c1::t_04ef29e781e44c 31
+pkg/controller/jobs/mpijob/mpijob_controller.go
+  s_9db04d3d78d9c1::t_084d490ca1c06c 157-159
+pkg/controller/jobs/jobset/jobset_controller_test.go
+  s_9db04d3d78d9c1::t_d681b3d722ace1 375-406
+  s_9db04d3d78d9c1::t_476e0ff9878df3 38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "fcda42d9fc229904c48946a8d74c59ce65b245ef",
+  "prompts": {},
+  "sessions": {
+    "s_9db04d3d78d9c1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ed4609c5-c10d-40c3-8546-4ba5af8277e3",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}

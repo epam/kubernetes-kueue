@@ -1,0 +1,65 @@
+pkg/controller/jobs/jobset/jobset_webhook_test.go
+  s_5eb0191301b539::t_c5cd878b942ad0 119-124,128-131
+  s_5eb0191301b539::t_0a6ec50794085f 118,125-127
+  s_5eb0191301b539::t_3e84d420cc9f1b 117
+pkg/cache/scheduler/tas_flavor_snapshot_test.go
+  s_c18006e4007929::t_29af67c9bd72b9 20
+  s_c18006e4007929::t_528667a98b2e49 944-945,947-949,951,953-954,956,958-959,961,963-971,973,975-983,985,987,990-991,993,995,998-999,1001,1003,1006-1007,1009,1011,1013-1014,1017-1019,1021-1025,1028-1031
+  s_c18006e4007929::t_df0700553df757 984,1000,1008,1026-1027
+  s_c18006e4007929::t_4f97cac24f63b9 1012
+  s_c18006e4007929::t_ea3b761702ab7e 1015-1016
+  h_99f506dc258b88 946,950,952,955,957,960,962,972,974,986,988-989,992,994,996-997,1002,1004-1005,1010,1020
+pkg/webhooks/workload_webhook.go
+  s_5eb0191301b539::t_64330e2e8d6e9a 154,170-191
+  s_5eb0191301b539::t_923219f40838cd 192-195
+test/integration/singlecluster/webhook/core/workload_test.go
+  s_5eb0191301b539::t_c5cd878b942ad0 163-184
+  s_5eb0191301b539::t_b15f6b3d75b480 152-162
+pkg/webhooks/workload_webhook_test.go
+  s_5eb0191301b539::t_2be96313dbadaf 66-105
+pkg/controller/jobframework/utils.go
+  s_5eb0191301b539::t_0a6ec50794085f 80-98
+pkg/cache/scheduler/tas_cache_test.go
+  s_c18006e4007929::t_33d40f9ad8774c 4346
+  s_5eb0191301b539::t_c5cd878b942ad0 4347-4364
+  s_5eb0191301b539::t_87e2580635b42d 4365-4377
+pkg/cache/scheduler/tas_flavor_snapshot.go
+  s_5eb0191301b539::t_0a6ec50794085f 579-583
+  s_c18006e4007929::t_8cbc57870f5b99 1231-1232,1234,1246-1247,1249
+  s_c18006e4007929::t_b5256fbe75446f 892-893
+  s_c18006e4007929::t_2833ce937ce551 1243
+  s_c18006e4007929::t_4885ea6924aaa6 47-48,1225,1227,1233,1235,1239,1248,1250
+  h_99f506dc258b88 894
+pkg/controller/jobframework/utils_test.go
+  s_5eb0191301b539::t_780b28c8721c6b 24,127
+  s_5eb0191301b539::t_87e2580635b42d 93-116
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "5b38b33c52f55cca939f887c3c8290fb496b0f7a",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_5eb0191301b539": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "c3e74a87-f68f-4a46-96b2-921d23745378",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    },
+    "s_c18006e4007929": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "5bec1ff4-ff24-49a2-b7c1-025511c7ea59",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
