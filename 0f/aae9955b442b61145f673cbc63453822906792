@@ -1,0 +1,21 @@
+pkg/webhooks/workload_webhook_test.go
+  s_c55a51275eb543::t_f00175b510cf08 109-134
+pkg/webhooks/workload_webhook.go
+  s_c55a51275eb543::t_cfc0c1723be35a 173-181,183,185,187
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "0faae9955b442b61145f673cbc63453822906792",
+  "prompts": {},
+  "sessions": {
+    "s_c55a51275eb543": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "50ec0e7e-e1b1-4604-919a-4004bab20e08",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
