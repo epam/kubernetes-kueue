@@ -1,0 +1,36 @@
+pkg/controller/jobs/pod/pod_controller.go
+  s_d50d04bd5e5aa6::t_90c2a88d51b8e5 94,781,795-804,828-832,1260,1305
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_d50d04bd5e5aa6::t_4cd6651b59a1a6 326-424
+pkg/controller/jobs/pod/pod_webhook.go
+  s_fed9a44cdca194::t_d0cc4278bd1cf8 30,91,98,117-144,151-158,236
+pkg/controller/jobs/pod/pod_webhook_test.go
+  s_fed9a44cdca194::t_321876d1af0997 160
+  s_fed9a44cdca194::t_c8daeec5c6832f 45,50,152-153,156-159,161-165,167-169,172,175,177,179,183
+  s_fed9a44cdca194::t_047acea66f6e40 102,110,150-151,154-155,170
+  s_fed9a44cdca194::t_49081e2909d1a2 36,166
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.11",
+  "base_commit_sha": "dc0294ba2adece440d7a8b00dd6df93f7a6e2d85",
+  "prompts": {},
+  "sessions": {
+    "s_d50d04bd5e5aa6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "cbcd06d8-c981-462e-adc2-e9658bac6bef",
+        "model": "gpt-5.5-medium"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_fed9a44cdca194": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "687fba51-ca83-495c-97a9-ce6640ac82df",
+        "model": "gpt-5.5-medium"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
