@@ -8,6 +8,8 @@ pkg/controller/admissionchecks/provisioning/controller_test.go
 pkg/features/kube_features.go
   s_e2dfbdf90dcd49::t_df928915cd121d 486,494-501
   s_e2dfbdf90dcd49::t_d124e347004800 762,767-769
+  s_c573a57891c963::t_c07c27183d2e72 766
+  s_c573a57891c963::t_26c2833775eab1 493
 test/compatibility_lifecycle/reference/versioned_feature_list.yaml
   s_e2dfbdf90dcd49::t_77fe543be224c7 344-349
 site/data/featuregates/versioned_feature_list.yaml
@@ -19,6 +21,14 @@ site/data/featuregates/versioned_feature_list.yaml
   "base_commit_sha": "9840589357d1ad2c42c8576f8f6d917ba21e24e8",
   "prompts": {},
   "sessions": {
+    "s_c573a57891c963": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b52c5d4d-b7f3-40e9-97c3-6d6ae100c182",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
     "s_e2dfbdf90dcd49": {
       "agent_id": {
         "tool": "cursor",
