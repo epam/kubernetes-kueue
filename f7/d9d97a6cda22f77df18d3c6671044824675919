@@ -1,0 +1,42 @@
+pkg/controller/tas/topology_ungater.go
+  s_ba5a60d81e0213::t_8556abf89793b6 476-477
+  s_ba5a60d81e0213::t_c1f94c4ff09fb0 470-475,479-480
+  s_ba5a60d81e0213::t_a323148df9bd3b 478
+pkg/controller/tas/topology_ungater_test.go
+  s_ba5a60d81e0213::t_9d7fc7760822c1 2211,2222
+  s_ba5a60d81e0213::t_a5e68fa1ea29d3 2159-2163
+  s_ba5a60d81e0213::t_147e24f28b077b 2263-2268
+  s_ba5a60d81e0213::t_28c3a42870d170 2164-2209,2212-2221,2223-2262
+  s_ba5a60d81e0213::t_7622a8f489407d 2210
+  s_ba5a60d81e0213::t_cbabf64b97f453 2269-2322
+test/integration/singlecluster/tas/tas_test.go
+  s_ba5a60d81e0213::t_63a66148562de4 3592
+  s_ba5a60d81e0213::t_84106dff359c48 3579
+  s_ba5a60d81e0213::t_c7367b649c76b9 3453-3519,3521-3539,3543,3546-3551,3553-3554,3608
+  s_ba5a60d81e0213::t_2286a809104e02 3555,3562-3578,3580-3591,3593-3603,3605-3607
+  s_ba5a60d81e0213::t_3ee34f3420a639 3540-3542,3544-3545
+  s_ba5a60d81e0213::t_f5633f58f76286 3447
+  s_ba5a60d81e0213::t_00db4d5d7c232d 3452
+  s_ba5a60d81e0213::t_852c61dfc16298 3520
+  s_ba5a60d81e0213::t_ca736b4ec40454 3448
+  s_ba5a60d81e0213::t_b7ef725bf69f80 3449-3451
+  s_ba5a60d81e0213::t_336a33de544cbc 3552
+  s_ba5a60d81e0213::t_222033f3905eaa 3556-3561
+  s_ba5a60d81e0213::t_6da7a0772cd326 3604
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "f7d9d97a6cda22f77df18d3c6671044824675919",
+  "prompts": {},
+  "sessions": {
+    "s_ba5a60d81e0213": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "570dd35b-4bd2-48c2-9cd0-6fa94d03c2b8",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}
