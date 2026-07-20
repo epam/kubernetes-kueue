@@ -1,0 +1,23 @@
+pkg/webhooks/workload_webhook.go
+  s_bbd44f7b59cc51::t_ce769b2ca7c3a0 182,198
+pkg/features/kube_features.go
+  s_bbd44f7b59cc51::t_22ce2322880ac2 515
+pkg/resources/requests.go
+  s_bbd44f7b59cc51::t_181b5184b8c503 99-102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "6b4523e679b1097a6d887dd74e3a8d524383fcf9",
+  "prompts": {},
+  "sessions": {
+    "s_bbd44f7b59cc51": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "9d12ade8-babd-432a-b7ca-21fbb1b1ba1a",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
