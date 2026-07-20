@@ -1,0 +1,55 @@
+pkg/controller/jobs/kubeflow/kubeflowjob/kubeflowjob_controller.go
+  s_9db04d3d78d9c1::t_5e29908121ec34 79-81
+pkg/controller/jobs/raycluster/common_test.go
+  s_9db04d3d78d9c1::t_0ec2c9f8b8c1d4 935-994
+pkg/controller/jobs/kubeflow/jobs/pytorchjob/pytorchjob_controller_test.go
+  s_9db04d3d78d9c1::t_e9729c5fe75244 229-256,265-275
+  s_9db04d3d78d9c1::t_04ef29e781e44c 31
+  s_a3c5f7edc49a12::t_503a57ffc58a8c 257-264
+pkg/controller/jobs/rayjob/rayjob_controller_test.go
+  s_a3c5f7edc49a12::t_49f3a242c1fa77 917-919
+  s_a3c5f7edc49a12::t_961cb6c7652605 940-948
+  s_a3c5f7edc49a12::t_ed58f119812f05 953-963
+  s_9db04d3d78d9c1::t_149ca31787ebfa 913-916,920-939,949-952,964-975
+pkg/controller/jobs/mpijob/mpijob_controller.go
+  s_9db04d3d78d9c1::t_084d490ca1c06c 157-159
+pkg/controller/jobs/mpijob/mpijob_controller_test.go
+  s_9db04d3d78d9c1::t_de96609e5cc91c 358-375,384-394
+  s_a3c5f7edc49a12::t_e7728a8201e880 376-383
+  s_9db04d3d78d9c1::t_75e978ff5ff15c 36
+pkg/controller/jobs/jobset/jobset_controller_test.go
+  s_9db04d3d78d9c1::t_476e0ff9878df3 38
+  s_9db04d3d78d9c1::t_d681b3d722ace1 375-395,404-414
+  s_a3c5f7edc49a12::t_8d1a621e9a7bdd 396-403
+pkg/controller/jobs/raycluster/common.go
+  s_9db04d3d78d9c1::t_3979d8e286baee 271-273
+  s_a3c5f7edc49a12::t_faaf65fcf14092 270
+pkg/controller/jobs/jobset/jobset_controller.go
+  s_9db04d3d78d9c1::t_e1b0a853742041 156
+pkg/controller/jobs/rayjob/rayjob_controller.go
+  s_a3c5f7edc49a12::t_68d2c5ed325d08 188-189,198-199
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.13",
+  "base_commit_sha": "7e03c3b3cd3be3270f02f5e46f0c698b55799e29",
+  "prompts": {},
+  "sessions": {
+    "s_9db04d3d78d9c1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ed4609c5-c10d-40c3-8546-4ba5af8277e3",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    },
+    "s_a3c5f7edc49a12": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "972c0d57-04e0-403c-94d4-7bffe37181d2",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}
