@@ -1,0 +1,32 @@
+pkg/webhooks/workload_webhook_test.go
+  s_336c520b22e15c::t_c1538ecb6718ab 207-245
+pkg/features/kube_features.go
+  s_336c520b22e15c::t_4c25c75a2a3a5f 794-797
+  s_336c520b22e15c::t_c242189aaf812a 512-519
+test/integration/singlecluster/webhook/core/workload_test.go
+  s_336c520b22e15c::t_5a88a4bc9bdd64 288-298
+site/data/featuregates/versioned_feature_list.yaml
+  s_336c520b22e15c::t_f4aac355ec109a 564-569
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_336c520b22e15c::t_f4aac355ec109a 564-569
+pkg/resources/requests.go
+  s_336c520b22e15c::t_4d5c4c5a5aa3db 101-103
+pkg/webhooks/workload_webhook.go
+  s_336c520b22e15c::t_2e44ad2b63a1c6 182-187,200-201,208-210
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "97927a0a69a67b7baeb93ec61352d62a47c9bef1",
+  "prompts": {},
+  "sessions": {
+    "s_336c520b22e15c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "a3cceb7a-d846-499b-915d-57c02d4a34ce",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
