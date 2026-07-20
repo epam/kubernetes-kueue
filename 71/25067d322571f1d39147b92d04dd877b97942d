@@ -1,0 +1,33 @@
+pkg/controller/admissionchecks/provisioning/controller.go
+  s_c573a57891c963::t_9a5f0d633dc108 345-350,354-359
+pkg/features/kube_features.go
+  s_c573a57891c963::t_267e1d9e1d14a2 498-500
+pkg/controller/admissionchecks/provisioning/controller_test.go
+  s_c573a57891c963::t_c01fcfe1eb9e7c 350-353
+  s_c573a57891c963::t_3745b9fb3ad5d3 769-770
+  s_c573a57891c963::t_894b637629b8d9 533,548,554
+  s_c573a57891c963::t_170403f1c44696 591-595,608-622,624,627-628,631,636-637
+  s_c573a57891c963::t_6b1afefaaadcaf 665-667
+  s_c573a57891c963::t_7e528e08eef557 2174-2180
+  s_c573a57891c963::t_3e9317301bcd6e 700,720,726
+  s_c573a57891c963::t_36e95c5b8153c4 264-265
+test/integration/singlecluster/controller/admissionchecks/provisioning/provisioning_test.go
+  s_c573a57891c963::t_559a7c276073c3 34
+  s_c573a57891c963::t_602a73e5bf068d 252-260,302-358
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "7125067d322571f1d39147b92d04dd877b97942d",
+  "prompts": {},
+  "sessions": {
+    "s_c573a57891c963": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b52c5d4d-b7f3-40e9-97c3-6d6ae100c182",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
