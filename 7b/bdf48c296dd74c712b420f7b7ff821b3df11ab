@@ -10,6 +10,8 @@ pkg/features/kube_features.go
   s_e2dfbdf90dcd49::t_d124e347004800 787,796-798
   s_c573a57891c963::t_c07c27183d2e72 791
   s_c573a57891c963::t_26c2833775eab1 507
+  s_de9a80b7a1062d::t_52a43bf794ada0 512
+  s_de9a80b7a1062d::t_f1031a7f4f4ffb 795
 test/compatibility_lifecycle/reference/versioned_feature_list.yaml
   s_e2dfbdf90dcd49::t_77fe543be224c7 350-355
 site/data/featuregates/versioned_feature_list.yaml
@@ -25,6 +27,14 @@ site/data/featuregates/versioned_feature_list.yaml
       "agent_id": {
         "tool": "cursor",
         "id": "b52c5d4d-b7f3-40e9-97c3-6d6ae100c182",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_de9a80b7a1062d": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47989d66-9ae3-4afc-87f1-0386221449be",
         "model": "grok-4.5"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
