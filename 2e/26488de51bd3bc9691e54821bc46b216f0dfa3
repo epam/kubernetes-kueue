@@ -8,6 +8,7 @@ pkg/workload/workload.go
   s_04f1afe093206f::t_c1d7ab40f27085 644
 pkg/resources/requests_test.go
   s_04f1afe093206f::t_a19ae90b2b8ebb 416,537-575
+  s_336c520b22e15c::t_d46865c4c1107d 536
 pkg/workload/workload_test.go
   s_04f1afe093206f::t_a750df5d0576f1 160-181
 pkg/webhooks/workload_webhook_test.go
@@ -25,6 +26,14 @@ pkg/webhooks/workload_webhook_test.go
         "tool": "claude",
         "id": "5f42d237-e9b9-4ad2-920f-9bf47d7832a0",
         "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_336c520b22e15c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "a3cceb7a-d846-499b-915d-57c02d4a34ce",
+        "model": "grok-4.5"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
     }
