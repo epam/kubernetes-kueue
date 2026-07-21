@@ -1,0 +1,52 @@
+pkg/cache/scheduler/tas_flavor_snapshot_test.go
+  s_6ebe5b9ace332d::t_9827cc042928c1 944-950,952-991,993-997,999,1002-1003,1008,1010,1012,1015,1017,1024,1027,1053-1054,1056-1057,1059,1061-1062,1064-1065,1067,1069-1075,1077-1078,1080,1083-1084,1086-1087,1091,1095-1098
+  s_6ebe5b9ace332d::t_46f701b06596e9 992
+  h_99f506dc258b88 1004,1009,1028,1040,1052,1060,1068
+  s_6ebe5b9ace332d::t_a3281ca8d815f9 951,1007,1014,1026,1038,1058,1066,1082
+  s_6ebe5b9ace332d::t_c57ea023d2489c 1018-1020,1022-1023,1029-1037,1039,1041-1051
+  s_6ebe5b9ace332d::t_ee6e5c66285dee 943
+  s_6ebe5b9ace332d::t_eb41e421658b6e 998
+  s_6ebe5b9ace332d::t_01b8ccbafdc482 1000-1001
+  s_6ebe5b9ace332d::t_bd0041ad172c9f 1011
+  s_6ebe5b9ace332d::t_a72625003ec498 1013
+  s_6ebe5b9ace332d::t_c62fcdef39a54c 1016
+  s_6ebe5b9ace332d::t_6484dd0a9a72ca 1021
+  s_6ebe5b9ace332d::t_bf82e400c917a2 1025
+  s_6ebe5b9ace332d::t_2b9863eadcd646 1055
+  s_6ebe5b9ace332d::t_c7edc76a8b6753 1063
+  s_6ebe5b9ace332d::t_506cb18f5d2ac8 1076
+  s_6ebe5b9ace332d::t_ffc8b7718b088f 1079
+  s_6ebe5b9ace332d::t_11f0959a2a701b 1081
+  s_6ebe5b9ace332d::t_bf3445b731e66d 1085
+  s_6ebe5b9ace332d::t_f1310f28e8605b 1088-1090
+  s_6ebe5b9ace332d::t_bd08e6c3fcc842 1092-1094
+pkg/cache/scheduler/tas_flavor_snapshot.go
+  s_6ebe5b9ace332d::t_67449f8c9feffa 1111,1489-1492,1762-1768,1820-1822,1826,1856-1858
+  h_99f506dc258b88 889,920,1823-1825
+  s_6ebe5b9ace332d::t_be49568730b6b6 671,676,890,1223-1224
+  s_6ebe5b9ace332d::t_1c490ed9cd812c 674-675,732
+  s_6ebe5b9ace332d::t_a78bd534b43d12 755
+  s_6ebe5b9ace332d::t_49191cb9b0d9e5 1296-1299,1893
+  s_6ebe5b9ace332d::t_14c16f98f9f830 684,748,835,1109-1110
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "d06846136611ef7a5864f9a148198162818eee8e",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_6ebe5b9ace332d": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "cf326058-4893-4fdc-ace4-f8ca31d79d2c",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    }
+  }
+}
