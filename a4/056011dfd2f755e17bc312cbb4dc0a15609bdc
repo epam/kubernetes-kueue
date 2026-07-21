@@ -1,0 +1,35 @@
+test/e2e/singlecluster/baseline/visibility_test.go
+  s_c6e8cf5cde8c82::t_07d804ae3a6224 656-659,665
+  s_c6e8cf5cde8c82::t_58b28029f105e6 635
+  s_85ad8f56453934::t_857ec6abeadaf4 764,767-769,772
+  s_85ad8f56453934::t_aa31b01edae661 605
+  s_c6e8cf5cde8c82::t_1cd664dba507b8 765-766,770-771
+  s_85ad8f56453934::t_2788c9bccc7c6e 604,607,613,636-643,646-647,673,678-679
+  s_c6e8cf5cde8c82::t_d7d65584bb2e00 616-619,621-622,629
+  s_c6e8cf5cde8c82::t_c50e9be49bfa46 722
+  s_85ad8f56453934::t_effcc6a5920e79 606,608-612,614-615,620,623-628,630-634,644-645,648-655,660-664,666-672,674-677
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "a4056011dfd2f755e17bc312cbb4dc0a15609bdc",
+  "prompts": {},
+  "sessions": {
+    "s_85ad8f56453934": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "40467806-3b05-4055-96ef-92806d8866ab",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    },
+    "s_c6e8cf5cde8c82": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3f4f7d35-b344-4015-bd9a-36c9ed28ee0a",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}
