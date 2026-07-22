@@ -4,6 +4,7 @@ pkg/features/kube_features.go
   s_336c520b22e15c::t_4c25c75a2a3a5f 781,783
   s_336c520b22e15c::t_c242189aaf812a 496,503-504,506
   s_6ca7c1fcda43a6::t_81ed8efd2a21c1 780
+  s_ea19e708e4b699::t_12994da5355342 502
 pkg/webhooks/workload_webhook_test.go
   s_f1594a1cf8d39c::t_765592998ddec1 109
   s_c55a51275eb543::t_f00175b510cf08 110-132,134
@@ -93,6 +94,14 @@ test/compatibility_lifecycle/reference/versioned_feature_list.yaml
         "tool": "claude",
         "id": "50ec0e7e-e1b1-4604-919a-4004bab20e08",
         "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_ea19e708e4b699": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "7c43aa2e-19a0-4f82-832a-2ee1ed1bff40",
+        "model": "cursor-grok-4.5-high"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
     },
