@@ -10,6 +10,7 @@ pkg/features/kube_features.go
   s_bbd44f7b59cc51::t_22ce2322880ac2 445
   s_6ca7c1fcda43a6::t_81ed8efd2a21c1 677
   s_6ca7c1fcda43a6::t_277d3a26de2a26 679
+  s_2df1da99dc9360::t_b959564de2edfb 442
 test/compatibility_lifecycle/reference/versioned_feature_list.yaml
   s_336c520b22e15c::t_f4aac355ec109a 478-482
   s_6ca7c1fcda43a6::t_277d3a26de2a26 483
@@ -54,6 +55,14 @@ pkg/workload/workload.go
         "tool": "claude",
         "id": "5f42d237-e9b9-4ad2-920f-9bf47d7832a0",
         "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_2df1da99dc9360": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "ddb0e0f5-d007-4051-85f2-043b73465d64",
+        "model": "cursor-grok-4.5-high"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
     },
