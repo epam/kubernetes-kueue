@@ -8,6 +8,7 @@ pkg/features/kube_features.go
   s_bbd44f7b59cc51::t_22ce2322880ac2 535
   s_6ca7c1fcda43a6::t_81ed8efd2a21c1 820
   s_6ca7c1fcda43a6::t_27ebb582b779b0 526
+  s_8f109011e8c27b::t_e5dba30de23ac9 532
 test/compatibility_lifecycle/reference/versioned_feature_list.yaml
   s_336c520b22e15c::t_f4aac355ec109a 586-591
 pkg/webhooks/workload_webhook_test.go
@@ -74,6 +75,14 @@ pkg/workload/workload.go
         "tool": "claude",
         "id": "feec6abe-7048-497f-b1c1-c88b1aae199f",
         "model": "claude-sonnet-5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_8f109011e8c27b": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6f79fa2d-3875-4b18-861e-10f4af9b956b",
+        "model": "grok-4.5"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
     },
