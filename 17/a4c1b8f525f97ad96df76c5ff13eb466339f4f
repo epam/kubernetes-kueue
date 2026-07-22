@@ -6,6 +6,8 @@ pkg/features/kube_features.go
   s_336c520b22e15c::t_4c25c75a2a3a5f 810,815-817
   s_336c520b22e15c::t_c242189aaf812a 520,527-528,530
   s_bbd44f7b59cc51::t_22ce2322880ac2 529
+  s_6ca7c1fcda43a6::t_81ed8efd2a21c1 814
+  s_6ca7c1fcda43a6::t_27ebb582b779b0 526
 test/compatibility_lifecycle/reference/versioned_feature_list.yaml
   s_336c520b22e15c::t_f4aac355ec109a 580-585
 pkg/webhooks/workload_webhook_test.go
@@ -20,6 +22,7 @@ pkg/resources/requests.go
   s_7c8864a8dec34b::t_ca558554d5bdc8 109
   s_04f1afe093206f::t_505834f57a5acb 108,110-112
   s_bbd44f7b59cc51::t_181b5184b8c503 103-106
+  s_6ca7c1fcda43a6::t_f44ad426503e72 107
 pkg/webhooks/workload_webhook.go
   s_336c520b22e15c::t_2e44ad2b63a1c6 183-187,205-206
   s_bbd44f7b59cc51::t_ce769b2ca7c3a0 182,198
@@ -32,6 +35,7 @@ test/integration/singlecluster/webhook/core/workload_test.go
 pkg/resources/requests_test.go
   s_04f1afe093206f::t_a19ae90b2b8ebb 532-533,536-537,540-541,543-545,547-551,553-555,557-570
   s_336c520b22e15c::t_d46865c4c1107d 531
+  s_6ca7c1fcda43a6::t_87be8cd85f5fc9 534-535,538-539,542,546,552,556,571
 pkg/workload/workload.go
   s_04f1afe093206f::t_c1d7ab40f27085 649
 ---
@@ -53,6 +57,14 @@ pkg/workload/workload.go
       "agent_id": {
         "tool": "cursor",
         "id": "a3cceb7a-d846-499b-915d-57c02d4a34ce",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_6ca7c1fcda43a6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "837068d8-de2f-485a-81fb-dc6699be0686",
         "model": "grok-4.5"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
