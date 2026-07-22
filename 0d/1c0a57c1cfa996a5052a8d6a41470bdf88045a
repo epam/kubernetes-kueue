@@ -79,6 +79,8 @@ pkg/features/kube_features.go
   s_de9a80b7a1062d::t_52a43bf794ada0 520
   s_e2dfbdf90dcd49::t_df928915cd121d 527-528,531
   s_e2dfbdf90dcd49::t_d124e347004800 816-818
+  s_48ff28ce48ced5::t_2cae7fad30128a 815
+  s_48ff28ce48ced5::t_550b2a3bba866d 526
 ---
 {
   "schema_version": "authorship/3.0.0",
@@ -106,6 +108,14 @@ pkg/features/kube_features.go
       "agent_id": {
         "tool": "cursor",
         "id": "e3aacb0b-bebc-4f3a-9db2-123b017e74b7",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_48ff28ce48ced5": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "f77addd5-ecce-4c00-989d-834602c2ec15",
         "model": "grok-4.5"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
