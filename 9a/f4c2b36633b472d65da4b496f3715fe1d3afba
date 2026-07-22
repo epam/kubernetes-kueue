@@ -40,6 +40,8 @@ pkg/controller/jobs/pod/pod_controller.go
   s_85ac95c2e0708a::t_b7387f476e2cb1 1283-1284
   s_85ac95c2e0708a::t_529f193bc4e630 1301-1302
   s_85ac95c2e0708a::t_530a030d74f50a 55,81-82,677-678,686-687,783,797-800,809-811,837-841,1285-1290,1292,1342-1350,1353
+  s_2f230803c64340::t_357e73ed027ed2 94-96
+  s_2f230803c64340::t_41e155275deba3 679-682,684-685
 pkg/controller/jobs/pod/pod_webhook_test.go
   s_85ac95c2e0708a::t_5cc9c565378497 239
   s_137158967f31f4::t_51ecd5a6f39e9c 133,135-136,138-140,142-143,145,148-163,165-183,256-272,274-293
@@ -58,6 +60,14 @@ pkg/controller/jobs/pod/pod_webhook_test.go
         "tool": "claude",
         "id": "dd21691e-a6f8-4c14-a762-cb7eebe6fad4",
         "model": "claude-sonnet-5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_2f230803c64340": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "3b761137-c0b8-4be0-8de7-8b55615d6def",
+        "model": "grok-4.5"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
     },
