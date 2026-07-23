@@ -1,0 +1,54 @@
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_0be16ce63eebf8::t_c82e1ae4e70e2a 55,328-340,342-366,368-373,377-378,380-408,411-412,414-435,437,439,442-443,445-450,1564-1622,6560,7165-7200
+  s_0be16ce63eebf8::t_af9db9e60ce9e3 409-410,413,436,438,440-441,444
+  s_0be16ce63eebf8::t_14b49d3aefcbbc 367,374-376,379
+  s_0be16ce63eebf8::t_13859b590a64d3 341
+  s_0be16ce63eebf8::t_93dd813cef869d 21
+  s_dfde0de06070d6::t_2872aff9f4ac9d 7201
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_0be16ce63eebf8::t_c82e1ae4e70e2a 23,32,942-995
+  s_0be16ce63eebf8::t_340fcae9e800fb 996-997
+pkg/controller/jobs/job/job_controller_test.go
+  s_0be16ce63eebf8::t_b2113783de2210 3255-3272,3306-3322,3358-3377
+pkg/controller/jobs/pod/pod_controller.go
+  s_0be16ce63eebf8::t_387444a7fb1c54 866
+  s_0be16ce63eebf8::t_c82e1ae4e70e2a 55,81,93-94,785,787,864-865,867,1317-1319,1321,1325,1327-1329,1352-1363
+  s_0be16ce63eebf8::t_47efb34805b1b7 768-776,779,783-784,786,788-796,798-803,805-825,827-844
+  s_0be16ce63eebf8::t_882e7b64f91114 1320,1322-1324,1326
+  s_0be16ce63eebf8::t_61bff32c19edd2 1364
+pkg/controller/jobframework/reconciler_test.go
+  s_0be16ce63eebf8::t_f1cbbc1dc0a939 920
+  s_0be16ce63eebf8::t_c82e1ae4e70e2a 681,888,904-919,921,930
+pkg/controller/jobframework/reconciler.go
+  s_0be16ce63eebf8::t_c82e1ae4e70e2a 905-914,1235-1239
+pkg/controller/jobs/pod/pod_webhook.go
+  s_0be16ce63eebf8::t_19112d0d99c8a8 90-91,97-110,112,131,154
+  s_0be16ce63eebf8::t_446f6fa952b24b 246-250
+  s_0be16ce63eebf8::t_c82e1ae4e70e2a 30,111,122-130,132-153,155-157,165-170
+pkg/controller/jobs/pod/pod_webhook_test.go
+  s_0be16ce63eebf8::t_c82e1ae4e70e2a 44,49,101,109,131-293
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "8921c4cbc3af806091857dc93a1e6698832f9f60",
+  "prompts": {},
+  "sessions": {
+    "s_0be16ce63eebf8": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "aa6880f9-a678-45dc-8329-62e17f8cba70",
+        "model": "cursor-grok-4.5-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_dfde0de06070d6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "7c50a2a6-bf90-486a-b5a3-5c6e4d23e138",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
