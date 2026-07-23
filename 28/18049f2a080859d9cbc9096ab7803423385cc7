@@ -81,6 +81,7 @@ pkg/features/kube_features.go
   s_e2dfbdf90dcd49::t_d124e347004800 826-828
   s_48ff28ce48ced5::t_2cae7fad30128a 821
   s_48ff28ce48ced5::t_550b2a3bba866d 526
+  s_af9568e4dc9e86::t_f4093206d3782a 532
 ---
 {
   "schema_version": "authorship/3.0.0",
@@ -149,6 +150,14 @@ pkg/features/kube_features.go
         "tool": "claude",
         "id": "bcee8377-ad7c-484e-9b55-7983802f3201",
         "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_af9568e4dc9e86": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "aef65060-a2a8-4c0a-9d3e-f8dc81508b84",
+        "model": "grok-4.5"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
     },
