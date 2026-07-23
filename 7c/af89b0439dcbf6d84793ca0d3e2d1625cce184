@@ -1,0 +1,52 @@
+pkg/controller/jobs/sparkapplication/sparkapplication_webhook.go
+  s_69d481b6c44b86::t_55ad42f9ac21ed 172-176,178-179
+pkg/controller/jobs/rayjob/rayjob_webhook.go
+  s_69d481b6c44b86::t_c443e949c24f81 168-172,174-175
+pkg/controller/jobs/rayjob/rayjob_webhook_test.go
+  s_69d481b6c44b86::t_cbb4bee59a56d9 701-714
+  s_69d481b6c44b86::t_16adfa205ec2b6 729-732,735-736
+pkg/controller/jobs/rayservice/rayservice_webhook_test.go
+  s_69d481b6c44b86::t_3b2fffdd89fe9c 149-156,159-168,173-181
+  s_69d481b6c44b86::t_c940b725814bd3 26-27,30,32
+pkg/controller/jobs/raycluster/raycluster_webhook_test.go
+  s_69d481b6c44b86::t_f75fa032220669 618-629
+  s_69d481b6c44b86::t_67e97c06c1592c 644-647,650-651
+pkg/controller/jobs/sparkapplication/sparkapplication_webhook_test.go
+  s_69d481b6c44b86::t_ffdf7efe0223ee 119-139,141-169
+  s_69d481b6c44b86::t_837c7a549a991e 140
+  s_69d481b6c44b86::t_ba2f15140bb3b0 25
+test/integration/singlecluster/webhook/jobs/raycluster_webhook_test.go
+  s_69d481b6c44b86::t_88486090c42db4 30
+  s_69d481b6c44b86::t_6c8c6d6f2998bf 64-79
+test/integration/singlecluster/webhook/jobs/rayjob_webhook_test.go
+  s_69d481b6c44b86::t_3624ac223bf978 22,24,26
+  s_69d481b6c44b86::t_0fdd6ffd396100 112-127
+pkg/controller/jobs/rayservice/rayservice_webhook.go
+  s_69d481b6c44b86::t_9ff75913d158a4 169-173,175-176
+test/integration/singlecluster/webhook/jobs/rayservice_webhook_test.go
+  s_69d481b6c44b86::t_d08aa568786c3b 1-63
+test/integration/singlecluster/webhook/jobs/sparkapplication_webhook_test.go
+  s_69d481b6c44b86::t_cba771f90362de 62
+  s_69d481b6c44b86::t_3359e266a0649d 1-61
+  s_69d481b6c44b86::t_aa4f951661df12 63
+test/integration/singlecluster/webhook/jobs/suite_test.go
+  s_69d481b6c44b86::t_077b6112ba3cc7 61
+pkg/controller/jobs/raycluster/raycluster_webhook.go
+  s_69d481b6c44b86::t_6c6efbc44a91cc 248-252,254-255
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "7caf89b0439dcbf6d84793ca0d3e2d1625cce184",
+  "prompts": {},
+  "sessions": {
+    "s_69d481b6c44b86": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a1e0e8f-0d87-4d98-bbe2-e56ee137cd1f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

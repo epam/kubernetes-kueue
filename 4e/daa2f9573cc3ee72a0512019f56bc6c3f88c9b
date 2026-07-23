@@ -1,0 +1,25 @@
+pkg/resources/requests_test.go
+  s_8777ae2ec1aaa5::t_f9454748c51095 21
+  s_8777ae2ec1aaa5::t_a10620fc7ca9e4 571-575,579-605
+  s_8777ae2ec1aaa5::t_2f3fa1c3397210 606
+pkg/resources/interface.go
+  s_8777ae2ec1aaa5::t_faa86606d7315f 35-36
+pkg/resources/slice_requests.go
+  s_8777ae2ec1aaa5::t_2f038cbb1d2b4e 322-330
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "4edaa2f9573cc3ee72a0512019f56bc6c3f88c9b",
+  "prompts": {},
+  "sessions": {
+    "s_8777ae2ec1aaa5": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "5e398c86-ad47-4a3d-a15a-3a6d5efb8dbc",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

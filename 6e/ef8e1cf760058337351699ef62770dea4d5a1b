@@ -1,0 +1,20 @@
+pkg/controller/admissionchecks/provisioning/controller_test.go
+  s_00e9142014bbe7::t_c9760c027c216d 625-633
+  s_00e9142014bbe7::t_fca03a262c6ef8 2087-2088
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "6eef8e1cf760058337351699ef62770dea4d5a1b",
+  "prompts": {},
+  "sessions": {
+    "s_00e9142014bbe7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2ae013e3-d23a-429a-a47d-68b54985216a",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
