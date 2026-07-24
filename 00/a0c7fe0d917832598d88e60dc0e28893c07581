@@ -1,0 +1,33 @@
+.golangci.yaml
+  s_94c9ac801d0acd::t_894074c8835bfa 80-82,120-122
+Makefile-verify.mk
+  s_0d9956607b0414::t_b56206c9608cea 125,127-132,134-136
+  s_0d9956607b0414::t_497b1726e5ebb4 133
+  s_0d9956607b0414::t_a9015fef9ca141 121-123
+  s_0d9956607b0414::t_539ca165c6ecba 22-23
+  s_0d9956607b0414::t_fcb839d2c1e26d 126
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "00a0c7fe0d917832598d88e60dc0e28893c07581",
+  "prompts": {},
+  "sessions": {
+    "s_0d9956607b0414": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "49d5332f-ad9f-4b63-a4de-e8e412928c91",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    },
+    "s_94c9ac801d0acd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "93d2b80d-2b99-4d41-a68a-cefe898b735a",
+        "model": "composer-2.5"
+      },
+      "human_author": null
+    }
+  }
+}
