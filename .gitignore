@@ -15,6 +15,10 @@ go.work*
 # Test binary, build with `go test -c`
 *.test
 
+# Python bytecode
+__pycache__/
+*.py[cod]
+
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 

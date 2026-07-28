@@ -60,6 +60,8 @@ Everything lands under the work directory:
     ├── dist_mean.png
     ├── dist_peak.png
     ├── dist_crest.png
+    ├── dist_job_packing.png
+    ├── dist_node_free_resource.png
     ├── dist_throttle.png
     ├── timeline_throttle.png
     └── timeline_network.png
@@ -88,6 +90,9 @@ excluded.
 | `container_pressure_cpu_stalled_seconds_total` | seconds **all** threads waited for CPU (PSI "full"); stalled ≤ waiting |
 | `container_network_receive_bytes_total` | cumulative bytes received (network **in**); pod-scoped, `eth0` only, attributed per build via the job's prow:job pods |
 | `container_network_transmit_bytes_total` | cumulative bytes transmitted (network **out**); pod-scoped, `eth0` only, attributed per build via the job's prow:job pods |
+| `prow:job` node occupancy | distinct running prow build pods on the target build's node, including the target; fleet-wide across all orgs/repos |
+| node scheduler-free CPU | node allocatable CPU minus effective CPU requests of all active scheduled pods on the build's node |
+| node scheduler-free memory | node allocatable memory minus effective memory requests of all active scheduled pods on the build's node |
 
 The two network metrics are fetched alongside cpu/mem — there is no flag to disable them. Unlike the
 other metrics (pre-aggregated `prow:job:*` recording rules), network comes from raw cAdvisor counters
@@ -96,6 +101,12 @@ shared prow proxy and can make wide `--job-regex` batch pulls unstable (403/502/
 therefore **best-effort**: it retries harder per request (8 vs 5 elsewhere), and if the queries still
 fail the job simply writes its cpu/mem data with no `net_*` series (and `plot.py` skips the
 `timeline_network.png` plot for that job).
+
+Node occupancy is also best-effort. It uses the target build's `node` label from `prow:job`,
+counts distinct `(node, namespace, pod)` prow builds in the `Running` phase on that node, and
+attaches the count to the target build ID. It deliberately includes jobs from every repository,
+because the Kubernetes scheduler is repository-agnostic, but excludes daemon pods and other
+non-prow workloads. Duplicate `prow:job` series for the same physical pod are deduplicated.
 
 CPU "cores" = CPU-seconds of work per wall-second (a rate). Build nodes have ~7 usable
 cores, so a 7-core request packs one build per node; cutting it toward 3–4 lets two share
@@ -155,6 +166,42 @@ The median across builds decides the label (`stable` / `burst`), written to
 `recommendation.json` under `burstiness` alongside the p10–p90 spread (how much the builds
 agree) and two companion scores: **idle fraction** (share of samples below 30% of the
 build's `p95` — time spent in the valleys) and **CV** (`std/mean` — overall swinginess).
+
+### `dist_job_packing.png` — how many prow jobs share the build node?
+For each build, inspect every sample while it is running and count the distinct running prow
+build pods on the same node. The image has two panels: the upper panel reduces each build's
+time series to its **maximum observed count**, while the lower panel histograms **every sampled
+count** to show the time-weighted concurrent occupancy directly. The count includes the target
+build itself:
+
+- **1** ⇒ the build had no co-located prow job.
+- **2** ⇒ one other prow job ran on the node at the same time.
+- **3** ⇒ two other prow jobs ran on the node at the same time, and so on.
+
+The maximum shows demonstrated packability even if another build overlapped for only part of the
+run; the sample distribution shows how often that packing occurred. This is a build-pod packing
+signal, not total node pod density: Kubernetes daemon pods and other non-prow workloads are
+excluded. Sampling accuracy is bounded by `--step`, so an overlap shorter than one sampling
+interval may not be observed. The title reports both the requested query window and the span from
+the first to last target sample; a shorter sample span means the monitoring backend did not expose
+target builds throughout the entire requested window.
+
+### `dist_node_free_resource.png` — how much CPU and memory could the scheduler still allocate?
+At every sample while a build runs, calculate the request-based free capacity separately for CPU
+and memory:
+
+$$\text{free resource} = \max(\text{node allocatable resource} - \sum\text{effective pod requests}, 0)$$
+
+Total schedulable capacity comes from `kube_node_status_allocatable`; that metric alone is not free
+capacity. For each non-terminal scheduled pod, effective request is
+`max(sum(regular containers), max(init containers))`; these values are then summed across the
+node. This includes the target build, co-located jobs, sidecars, and daemon pods. Prow build pods
+use **request = limit**, so their reservation is also their resource ceiling.
+
+For each build, the CPU and memory series are each reduced to their **minimum** observed free value,
+the tightest point while the build was running. The image distributes those per-build minima in two
+panels: CPU cores and memory GiB. These are scheduler bin-packing resources based on requests, not
+actual idle CPU or unused physical memory at runtime.
 
 ### `dist_throttle.png` — is the job CPU-starved?
 Uses `container_pressure_cpu_waiting_seconds_total`. With 30s samples, take the delta from

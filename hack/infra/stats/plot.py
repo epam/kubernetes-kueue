@@ -27,6 +27,8 @@ It reads the job folder's raw_series.json and writes, into that same folder:
   dist_peak_duration.png per-build peak above the cutoff: % of duration, minutes, avg CPU
   dist_work.png        per-build CPU work histogram (avg CPU × duration, core-minutes)
   dist_crest.png       per-build crest factor (p95/p50) histogram -> stable vs burst job
+    dist_job_packing.png per-build maximum running prow pods on the build's node
+    dist_node_free_resource.png per-build minimum scheduler-free CPU and memory on the node
   dist_throttle.png    across-build histogram of "% of build time without CPU pressure"
   timeline_throttle.png  CPU cores + CPU-waiting % vs time-into-build (PSI "some")
   (timeline_stall.png — PSI "full" — is disabled; see plot_throttle_timeline)
@@ -47,6 +49,8 @@ raise) when a job has too little data, so a job still gets whatever images it ca
   plot_duration_distribution()  -> dist_duration.png (per-build duration histogram)
   plot_work_distribution()      -> dist_work.png (per-build CPU work histogram)
   plot_crest_distribution()     -> dist_crest.png (per-build crest factor; stable vs burst)
+    plot_job_packing_distribution() -> dist_job_packing.png (co-located prow build pods)
+    plot_node_free_resource_distribution() -> dist_node_free_resource.png (scheduler headroom)
   plot_throttle_distribution()  -> dist_throttle.png
   plot_throttle_timeline()      -> timeline_throttle.png (timeline_stall.png disabled)
   plot_network_timeline()       -> timeline_network.png (network in/out over time-into-build)
@@ -144,7 +148,9 @@ def const(data, key, gib=False):
 
 
 def reduce_build(vals, stat):
-    """Collapse one build's samples to a single number: mean | median | peak | pNN."""
+    """Collapse one build's samples to one number: min | mean | median | peak | pNN."""
+    if stat == "min":
+        return float(np.min(vals))
     if stat == "mean":
         return float(np.mean(vals))
     if stat == "median":
@@ -236,18 +242,13 @@ def per_build_cpu_samples_dur(series, min_dur_min=0.0, exclude=None):
 
 
 def per_build_cpu_samples_dur_overhead(data, min_dur_min=0.0, exclude=None):
-    """Like per_build_cpu_samples_dur, but also returns each build's init overhead in minutes.
-    A build's cpu_request_cores series comes from the pod spec, so it appears when the pod object
-    is created; cpu_used_cores comes from cAdvisor, so it appears only once the test container is
-    actually burning CPU. The gap between them is wall-clock the build spent scheduling, pulling
-    images, and cloning before any compute — time no amount of CPU can shorten. Overhead is that
-    front gap (used_start - request_start) plus any tail gap (request_end - used_end), clamped at
-    >= 0. It undercounts the full wall overhead: pre-pod queue time and post-run artifact upload
-    are invisible once the pod's metrics stop (top them up via cfg.fixed_overhead_min). Builds
-    with no request series contribute 0 overhead. Returns (samples, dur, overhead_min) triples."""
+    """Like per_build_cpu_samples_dur, but also returns each build's total wall overhead in minutes.
+    If wall_durations exists in data (from prow:job phase transitions), overhead is exact wall duration
+    minus test container compute duration. Otherwise falls back to comparing used_cores vs request_cores."""
     exclude = exclude or set()
     used = data["series"].get("cpu_used_cores", {})
     req = data["series"].get("cpu_request_cores", {})
+    wall_durations = data.get("wall_durations", {})
     out = []
     for bid, pts in used.items():
         if bid in exclude or len(pts) < 2:
@@ -256,11 +257,14 @@ def per_build_cpu_samples_dur_overhead(data, min_dur_min=0.0, exclude=None):
         dur = (max(ts) - min(ts)) / 60.0
         if dur < min_dur_min:
             continue
-        overhead = 0.0
-        rpts = req.get(bid)
-        if rpts:
+        if bid in wall_durations:
+            overhead = max(0.0, wall_durations[bid] - dur)
+        elif req.get(bid):
+            rpts = req[bid]
             rts = [t for t, _ in rpts]
             overhead = max(0.0, (min(ts) - min(rts)) + (max(rts) - max(ts))) / 60.0
+        else:
+            overhead = 0.0
         out.append((np.array([v for _, v in pts]), dur, overhead))
     return out
 
@@ -596,7 +600,7 @@ def per_build_peak_duration(data, min_dur, cfg):
     return np.array(pct), np.array(mins), np.array(avg_peak), cutoff
 
 
-def recursive_target_cpu(samples, dur, cfg, overhead_min=0.0):
+def recursive_target_cpu(samples, dur, cfg, overhead_min=0.0, fixed_overhead_min=None):
     """One build's self-consistent target CPU. cpu_reco_target_duration_improved splits a build
     into valley (<= cutoff) and peak (> cutoff) once, at the plain target-duration value, and
     fits the peak work into the leftover target budget; but that cutoff is the CPU it is trying
@@ -624,7 +628,9 @@ def recursive_target_cpu(samples, dur, cfg, overhead_min=0.0):
     the parts the metrics cannot see (pre-pod queue time, post-run artifact upload). If the
     overhead alone blows the target (budget below min_time_remain_min), the build cannot hit the
     target at any CPU, so we return the ceiling to signal that."""
-    budget = cfg.target_min - overhead_min - cfg.fixed_overhead_min
+    if fixed_overhead_min is None:
+        fixed_overhead_min = cfg.fixed_overhead_min
+    budget = cfg.target_min - overhead_min - fixed_overhead_min
     if budget < cfg.min_time_remain_min:
         return cfg.max_cores  # fixed overhead alone exceeds the target; no CPU can hit it
     cpu = float(np.mean(samples)) * dur / budget  # pass 1: below_min = 0
@@ -657,7 +663,9 @@ def cpu_reco_target_duration_improved_recursive(data, min_dur, cfg):
     builds = per_build_cpu_samples_dur_overhead(data, min_dur, exclude=oom)
     if len(builds) < 2:
         return None, None
-    per = np.array([recursive_target_cpu(s, d, cfg, overhead_min=oh) for s, d, oh in builds])
+    has_wall = "wall_durations" in data and bool(data["wall_durations"])
+    fixed_oh = 0.0 if has_wall else cfg.fixed_overhead_min
+    per = np.array([recursive_target_cpu(s, d, cfg, overhead_min=oh, fixed_overhead_min=fixed_oh) for s, d, oh in builds])
     overheads = np.array([oh for _, _, oh in builds])
     p95 = float(np.percentile(per, 95))
     val = min(round_up_to(p95 * (1 + cfg.legroom_frac), cfg.resolution), cfg.max_cores)
@@ -668,7 +676,7 @@ def cpu_reco_target_duration_improved_recursive(data, min_dur, cfg):
         "resolution": cfg.resolution,
         "passes": cfg.recursive_passes,
         "max_cores": cfg.max_cores,
-        "fixed_overhead_min": cfg.fixed_overhead_min,
+        "fixed_overhead_min": fixed_oh,
         "saturated": val >= cfg.max_cores,
         "reco_p50": round(float(np.percentile(per, 50)), 3),
         "reco_p95": round(p95, 3),
@@ -1106,6 +1114,143 @@ def plot_crest_distribution(data, base_dir, bins=30, min_dur=0.0):
     print(f"  dist_crest -> {out}  ({label}, median crest {p50:.2f})")
 
 
+def per_build_job_packing(data, min_dur=0.0):
+    """Maximum observed running prow build-pod count for each qualifying target build."""
+    return per_build(data["series"].get("job_packing_pods", {}), "peak", min_dur)
+
+
+def job_packing_samples(data, min_dur=0.0):
+    """All occupancy samples from qualifying target builds for a time-weighted view."""
+    out = []
+    for pts in data["series"].get("job_packing_pods", {}).values():
+        if len(pts) < 2:
+            continue
+        ts = [t for t, _ in pts]
+        if (max(ts) - min(ts)) / 60 < min_dur:
+            continue
+        out.extend(v for _, v in pts)
+    return np.array(out)
+
+
+def plot_job_packing_distribution(data, base_dir, min_dur=0.0):
+    """Render dist_job_packing.png with per-build and time-weighted packing views.
+
+    The upper panel takes each target build's maximum number of distinct running prow build
+    pods on its node, including the target. The lower panel histograms every sampled count,
+    directly showing how often each concurrent occupancy occurred. A value of 1 means no
+    other prow build shared the node; N means N-1 other prow builds were running there.
+
+    This measures prow build-pod packing, not every Kubernetes pod: node daemons and other
+    non-prow workloads are intentionally excluded. It skips data fetched before
+    job_packing_pods was added, or populations with fewer than two qualifying builds.
+    """
+    peaks = per_build_job_packing(data, min_dur)
+    samples = job_packing_samples(data, min_dur)
+    if len(peaks) < 2 or len(samples) < 2:
+        print("  dist_job_packing: skipped (not enough job_packing_pods data)")
+        return
+
+    max_pods = max(1, int(math.ceil(float(max(np.max(peaks), np.max(samples))))))
+    shared_builds = int(np.sum(peaks > 1))
+    shared_samples = int(np.sum(samples > 1))
+    shared_pct = 100.0 * shared_samples / len(samples)
+    series = data["series"].get("job_packing_pods", {})
+    timestamps = [t for pts in series.values() for t, _ in pts]
+    observed_span_h = (max(timestamps) - min(timestamps)) / 3600 if timestamps else 0
+    fig, axes = plt.subplots(2, 1, figsize=(12, 10))
+    panels = (
+        (axes[0], peaks, "builds",
+         "maximum concurrent running prow build pods on node (including this build)",
+         f"per-build maximum — {shared_builds}/{len(peaks)} builds shared a node at least once"),
+        (axes[1], samples, "samples",
+         f"concurrent running prow build pods per {data.get('step')}s sample "
+         "(including this build)",
+         f"time-weighted occupancy — {shared_samples}/{len(samples)} samples "
+         f"({shared_pct:.1f}%) included another prow build"),
+    )
+    for ax, vals, population, xlabel, title in panels:
+        levels = np.arange(1, max_pods + 1)
+        counts = np.array([np.sum(vals == level) for level in levels])
+        bars = ax.bar(levels, counts, width=0.8, color="#4C78A8", alpha=0.75,
+                      edgecolor="white", label=f"{population} (n={len(vals)})")
+        ax.bar_label(bars, padding=3)
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(f"number of {population}")
+        ax.set_title(title)
+        ax.legend(fontsize=8, framealpha=0.9)
+        ax.grid(axis="y", alpha=0.3)
+        ax.xaxis.set_major_locator(MultipleLocator(1))
+        ax.set_xlim(0.5, max_pods + 0.5)
+    fig.suptitle(f"{data.get('job')}  —  prow job packing  —  {data.get('step')}s step, "
+                 f"requested {days_of(data)}d, target samples span {observed_span_h:.1f}h",
+                 fontsize=13)
+    fig.tight_layout()
+    out = os.path.join(base_dir, "dist_job_packing.png")
+    fig.savefig(out, dpi=130)
+    plt.close(fig)
+    print(f"  dist_job_packing -> {out}  "
+          f"({shared_builds}/{len(peaks)} builds; {shared_samples}/{len(samples)} samples shared)")
+
+
+def per_build_node_free_resources(data, min_dur=0.0):
+    """Per-build minimum scheduler-free CPU cores and memory GiB on the build's node."""
+    cpu_series = data["series"].get("node_free_cpu_cores", {})
+    memory_series = data["series"].get("node_free_memory_bytes", {})
+    cpu, memory = [], []
+    for bid in sorted(set(cpu_series) & set(memory_series)):
+        cpu_pts, memory_pts = cpu_series[bid], memory_series[bid]
+        if len(cpu_pts) < 2 or len(memory_pts) < 2:
+            continue
+        cpu_ts = [t for t, _ in cpu_pts]
+        memory_ts = [t for t, _ in memory_pts]
+        if ((max(cpu_ts) - min(cpu_ts)) / 60 < min_dur or
+                (max(memory_ts) - min(memory_ts)) / 60 < min_dur):
+            continue
+        cpu.append(min(v for _, v in cpu_pts))
+        memory.append(min(v for _, v in memory_pts) / GIB)
+    return np.array(cpu), np.array(memory)
+
+
+def plot_node_free_resource_distribution(data, base_dir, bins=30, min_dur=0.0):
+    """Render dist_node_free_resource.png with CPU and memory distributions.
+
+    Each panel contains one value per build: the minimum scheduler-free resource observed
+    while that build was running. Free means node allocatable capacity minus effective requests
+    of all active pods assigned to the node; it does not mean actual runtime-idle resources.
+    """
+    legacy = os.path.join(base_dir, "dist_node_leftover_cpu.png")
+    if os.path.exists(legacy):
+        os.remove(legacy)
+    cpu, memory = per_build_node_free_resources(data, min_dur)
+    if len(cpu) < 2 or len(memory) < 2:
+        print("  dist_node_free_resource: skipped (not enough node free-resource data)")
+        return
+
+    fig, axes = plt.subplots(2, 1, figsize=(12, 10))
+    _hist_on_ax(
+        axes[0], cpu,
+        "minimum scheduler-free CPU on node during each build (cores)",
+        f"tightest CPU capacity available to the scheduler across {len(cpu)} builds",
+        bins=bins,
+    )
+    _hist_on_ax(
+        axes[1], memory,
+        "minimum scheduler-free memory on node during each build (GiB)",
+        f"tightest memory capacity available to the scheduler across {len(memory)} builds",
+        bins=bins,
+    )
+    fig.suptitle(f"{data.get('job')}  —  minimum scheduler-free node resources  —  "
+                 f"{data.get('step')}s step, "
+                 f"{days_of(data)}d", fontsize=13)
+    fig.tight_layout()
+    out = os.path.join(base_dir, "dist_node_free_resource.png")
+    fig.savefig(out, dpi=130)
+    plt.close(fig)
+    print(f"  dist_node_free_resource -> {out}  "
+          f"(minimum CPU p50 {np.percentile(cpu, 50):.2f} cores, "
+          f"minimum memory p50 {np.percentile(memory, 50):.2f} GiB)")
+
+
 # --------------------------------------------------------------------------- #
 # Renderer 2: "without CPU pressure" distribution (dist_throttle.png)
 # --------------------------------------------------------------------------- #
@@ -1409,6 +1554,8 @@ def main():
         plot_peak_duration_distribution(data, base, args.bins, args.min_duration, cfg)
         plot_work_distribution(data, base, args.bins, args.min_duration)
         plot_crest_distribution(data, base, args.bins, args.min_duration)
+        plot_job_packing_distribution(data, base, args.min_duration)
+        plot_node_free_resource_distribution(data, base, args.bins, args.min_duration)
     if "throttle" in which:
         plot_throttle_distribution(data, base, args.threshold, args.bins)
     if "timeline" in which:

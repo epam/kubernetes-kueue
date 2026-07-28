@@ -33,7 +33,8 @@ No third-party deps (stdlib urllib only). Anonymous read access — no token nee
 All output goes under a work directory (--out-dir, default the current dir). Each job
 gets its own folder inside it, always named <job>_<range>_<step>[_<suffix>] (only the
 optional --suffix is user-controllable) containing:
-  raw_series.json        merged per-build time series for all metrics
+    raw_series.json        merged per-build time series for all metrics, including the
+                                                 number of running prow pods and scheduler-free CPU/memory on each node
   per_build_summary.csv  one row per build (peak/mean cpu & mem, duration, req/limit)
   aggregate_stats.json   distribution of per-build peaks across builds
 The work directory also holds fetch.log (append-only run log) and, when a batch has
@@ -184,6 +185,11 @@ NET_METRICS = {
     "net_rx_bytes": "container_network_receive_bytes_total",
     "net_tx_bytes": "container_network_transmit_bytes_total",
 }
+JOB_PACKING_METRIC = "job_packing_pods"
+NODE_FREE_RESOURCES = {
+    "node_free_cpu_cores": ("cpu", "core"),
+    "node_free_memory_bytes": ("memory", "byte"),
+}
 GIB = 1024 ** 3
 
 
@@ -211,6 +217,17 @@ def parse_time(s, now):
         except ValueError:
             pass
     raise ValueError(f"cannot parse time: {s!r}")
+
+
+def percentile(values, pct):
+    """Linearly interpolated percentile, bounded by the observed minimum and maximum."""
+    vals = sorted(values)
+    if not vals:
+        raise ValueError("percentile requires at least one value")
+    pos = (len(vals) - 1) * pct / 100
+    lo = int(pos)
+    hi = min(lo + 1, len(vals) - 1)
+    return vals[lo] + (vals[hi] - vals[lo]) * (pos - lo)
 
 
 RETRYABLE_HTTP = frozenset({403, 429, 500, 502, 503})
@@ -350,6 +367,60 @@ def job_pod_index(org, repo, job, phase, start, end):
     return index
 
 
+def job_packing_expr(org, repo, job):
+    """PromQL for the number of distinct running prow build pods on each target build's node.
+
+    The fleet side is intentionally not scoped to org/repo: the scheduler can co-locate this
+    build with prow jobs from any repository. `prow:job` can expose duplicate label sets for a
+    pod (for example, one with node/pod_ip and one without), so max by (node,namespace,pod)
+    deduplicates physical build pods before count by (node). The target side is reduced to one
+    series per (node,id), then the node join copies its build id onto the occupancy count. The
+    count includes the target pod itself: 1 means no other prow build shared its node, while 3
+    means it ran alongside two other prow builds.
+    """
+    running = 'prow:job{phase="Running",node!=""} == 1'
+    target = (f'prow:job{{org="{org}",repo="{repo}",name="{job}",'
+              f'phase="Running",node!=""}} == 1')
+    return (f'count by (node)(max by (node,namespace,pod)({running})) '
+            f'* on(node) group_right max by (node,id)({target})')
+
+
+def node_free_resource_expr(org, repo, job, resource, unit):
+    """PromQL for scheduler-free CPU or memory on each target build's node.
+
+    kube_node_status_allocatable supplies the node's schedulable resource budget. For each
+    non-terminal pod assigned to the node, its effective request is max(sum(regular containers),
+    max(init containers)), following the scheduler's core regular/init-container accounting.
+    kube-state-metrics can expose duplicate series that differ only by scrape labels, so
+    max by (...,container) deduplicates first.
+    Subtract the sum of effective pod requests from allocatable capacity and clamp transient
+    inconsistencies at zero. The final node join attaches the target build id to each sample.
+
+    This is request-based capacity available to the scheduler, not actual idle CPU or unused
+    physical memory. Prow build pods configure request == limit, but all pods are counted by
+    request because requests determine scheduler placement.
+    """
+    target = (f'prow:job{{org="{org}",repo="{repo}",name="{job}",'
+              f'phase="Running",node!=""}} == 1')
+    allocatable = ('max by (node)(kube_node_status_allocatable'
+                   f'{{resource="{resource}",unit="{unit}"}})')
+    regular = ('sum by (node,namespace,pod,uid)('
+                'max by (node,namespace,pod,uid,container)('
+                f'kube_pod_container_resource_requests{{resource="{resource}",unit="{unit}"}}))')
+    init = ('max by (node,namespace,pod,uid)('
+            'max by (node,namespace,pod,uid,container)('
+            f'kube_pod_init_container_resource_requests{{resource="{resource}",unit="{unit}"}}))')
+    effective = (f'max without (request_kind)('
+                  f'label_replace({regular}, "request_kind", "regular", "", ".*") or '
+                  f'label_replace({init}, "request_kind", "init", "", ".*"))')
+    active = ('max by (namespace,pod,uid)('
+                'kube_pod_status_phase{phase=~"Pending|Running|Unknown"} == 1)')
+    requested = (f'sum by (node)({effective} '
+                  f'* on(namespace,pod,uid) group_left {active})')
+    return (f'clamp_min({allocatable} - {requested}, 0) '
+            f'* on(node) group_right max by (node,id)({target})')
+
+
 _RE2_META = re.compile(r'([.+*?()|\[\]{}^$\\])')
 
 
@@ -484,6 +555,32 @@ def out_dir_for(job, step, args):
 def is_complete(job, step, args):
     """A job is complete when its last-written file (aggregate_stats.json) exists."""
     return os.path.exists(os.path.join(out_dir_for(job, step, args), "aggregate_stats.json"))
+
+
+def fetch_prow_wall_durations(org, repo, job, start, end, step):
+    """Query prow:job across all phases to compute exact build wall-clock duration:
+    wall_time = first(Succeeded|Failed timestamp) - first(Pending|Running timestamp)
+    """
+    sel = f'{{org="{org}",repo="{repo}",name="{job}"}}'
+    merged = query_range_chunked(f'prow:job{sel}', start, end, step,
+                                 key=lambda m: (m.get("id"), m.get("phase")))
+    wall_times = {}
+    for (bid, phase), pts in merged.items():
+        if not pts or not bid or bid == "?":
+            continue
+        ts_sorted = sorted(pts.keys())
+        first_t = ts_sorted[0]
+        if bid not in wall_times:
+            wall_times[bid] = {}
+        wall_times[bid][phase] = first_t
+
+    res = {}
+    for bid, phases in wall_times.items():
+        start_t = phases.get("Pending") or phases.get("Running")
+        end_t = phases.get("Succeeded") or phases.get("Failed")
+        if start_t and end_t and end_t > start_t:
+            res[bid] = round((end_t - start_t) / 60.0, 3)
+    return res
 
 
 def run_pass(jobs, start, end, step, args, verbose, logb):
@@ -623,6 +720,29 @@ def fetch_one(job, start, end, step, args, verbose=True):
     for key, rule in METRICS.items():
         data[key] = query_range_chunked(f"sum by (id)({rule}{sel})", start, end, step)
         log(f"  {key:20} {len(data[key])} builds")
+    # Node packing: count all distinct running prow build pods on the node occupied by each
+    # target build. This is fleet-wide (not org/repo scoped) because Kubernetes scheduling is
+    # repository-agnostic. Keep it best-effort so a proxy failure in this cross-fleet diagnostic
+    # does not discard the job's core CPU/memory data.
+    try:
+        data[JOB_PACKING_METRIC] = query_range_chunked(
+            job_packing_expr(args.org, args.repo, job), start, end, step)
+        log(f"  {JOB_PACKING_METRIC:20} {len(data[JOB_PACKING_METRIC])} builds")
+    except Exception as err:
+        data.pop(JOB_PACKING_METRIC, None)
+        log(f"  {JOB_PACKING_METRIC}: skipped after error ({err}); keeping cpu/mem metrics")
+    # Scheduler-free resources: allocatable CPU/memory minus effective requests of all
+    # non-terminal pods assigned to the node. Each resource is best-effort so a failure in this
+    # cross-node diagnostic does not discard core per-job metrics or the other resource.
+    for key, (resource, unit) in NODE_FREE_RESOURCES.items():
+        try:
+            data[key] = query_range_chunked(
+                node_free_resource_expr(args.org, args.repo, job, resource, unit),
+                start, end, step)
+            log(f"  {key:20} {len(data[key])} builds")
+        except Exception as err:
+            data.pop(key, None)
+            log(f"  {key}: skipped after error ({err}); keeping other metrics")
     # cAdvisor counters: join to prow:job on (namespace,pod) to attach the id label.
     # prow:job sometimes has two series for the same (namespace,pod) — one plain and one
     # carrying extra node/pod_ip labels — which makes group_left a many-to-many match and
@@ -648,6 +768,14 @@ def fetch_one(job, start, end, step, args, verbose=True):
             data.pop(key, None)
         log(f"  network: skipped after error ({err}); keeping cpu/mem metrics")
 
+    # Exact wall-clock duration from prow:job phase transitions
+    try:
+        wall_durations = fetch_prow_wall_durations(args.org, args.repo, job, start, end, step)
+        log(f"  wall_durations       {len(wall_durations)} builds")
+    except Exception as err:
+        wall_durations = {}
+        log(f"  wall_durations: skipped after error ({err})")
+
     # --- clean: drop cancelled/superseded builds (never reached a terminal phase) ---
     all_ids = set().union(*(set(v) for v in data.values())) if data else set()
     if not args.include_cancelled:
@@ -655,6 +783,7 @@ def fetch_one(job, start, end, step, args, verbose=True):
         dropped = sorted(all_ids - keep)
         for key in data:
             data[key] = {b: v for b, v in data[key].items() if b in keep}
+        wall_durations = {b: v for b, v in wall_durations.items() if b in keep}
         log(f"\n  cleaned: dropped {len(dropped)} cancelled/incomplete builds "
             f"(no {args.terminal_phases} phase); kept {len(data['mem_used_bytes'])}")
 
@@ -671,19 +800,21 @@ def fetch_one(job, start, end, step, args, verbose=True):
                 short.add(b)
         for key in data:
             data[key] = {b: v for b, v in data[key].items() if b not in short}
+        wall_durations = {b: v for b, v in wall_durations.items() if b not in short}
         log(f"  cleaned: dropped {len(short)} builds shorter than {min_dur_s}s; "
             f"kept {len(data['mem_used_bytes'])}")
 
     # --- raw dump ---
     raw = {"job": job, "org": args.org, "repo": args.repo, "phase": args.phase,
            "start": start, "end": end, "step": step,
+           "wall_durations": wall_durations,
            "series": {k: {b: sorted(d.items()) for b, d in v.items()} for k, v in data.items()}}
     with open(os.path.join(out_dir, "raw_series.json"), "w") as f:
         json.dump(raw, f)
 
     # --- per-build summary ---
     def peak(metric, bid):
-        v = list(data[metric].get(bid, {}).values())
+        v = list(data.get(metric, {}).get(bid, {}).values())
         return max(v) if v else float("nan")
 
     rows = []
@@ -692,12 +823,23 @@ def fetch_one(job, start, end, step, args, verbose=True):
         mv = [data["mem_used_bytes"][bid][t] for t in mt]
         cv = list(data["cpu_used_cores"].get(bid, {}).values())
         dur = (mt[-1] - mt[0]) / 60 if len(mt) > 1 else 0
+        wall_dur = wall_durations.get(bid, dur)
         rows.append({
-            "build_id": bid, "samples": len(mv), "duration_min": round(dur, 1),
+            "build_id": bid, "samples": len(mv),
+            "test_duration_min": round(dur, 1),
+            "wall_duration_min": round(wall_dur, 1),
+            "duration_min": round(wall_dur, 1),
             "mem_peak_gib": round(max(mv) / GIB, 3) if mv else 0,
             "mem_mean_gib": round(statistics.mean(mv) / GIB, 3) if mv else 0,
             "cpu_peak_cores": round(max(cv), 3) if cv else 0,
             "cpu_mean_cores": round(statistics.mean(cv), 3) if cv else 0,
+            "job_packing_peak_pods": round(peak(JOB_PACKING_METRIC, bid), 3),
+            "node_free_cpu_min_cores": round(
+                min(data.get("node_free_cpu_cores", {}).get(bid, {}).values()), 3)
+                if data.get("node_free_cpu_cores", {}).get(bid) else float("nan"),
+            "node_free_memory_min_gib": round(
+                min(data.get("node_free_memory_bytes", {}).get(bid, {}).values()) / GIB, 3)
+                if data.get("node_free_memory_bytes", {}).get(bid) else float("nan"),
             "req_mem_gib": round(peak("mem_request_bytes", bid) / GIB, 3),
             "lim_mem_gib": round(peak("mem_limit_bytes", bid) / GIB, 3),
             "req_cpu_cores": round(peak("cpu_request_cores", bid), 3),
@@ -718,15 +860,17 @@ def fetch_one(job, start, end, step, args, verbose=True):
         v = sorted(r[col] for r in rows if r[col] == r[col])
         if not v:
             return {}
-        Q = statistics.quantiles(v, n=20) if len(v) >= 2 else [v[0]] * 19
         return {"n": len(v), "min": round(min(v), 3), "p50": round(statistics.median(v), 3),
-                "p90": round(Q[17], 3), "p95": round(Q[18], 3),
+                "p90": round(percentile(v, 90), 3), "p95": round(percentile(v, 95), 3),
                 "max": round(max(v), 3), "mean": round(statistics.mean(v), 3)}
 
     summary = {"job": job, "range_days": round((end - start) / 86400, 2),
                "step_s": step, "builds": len(rows),
                "mem_peak_gib": agg("mem_peak_gib"), "mem_mean_gib": agg("mem_mean_gib"),
                "cpu_peak_cores": agg("cpu_peak_cores"), "cpu_mean_cores": agg("cpu_mean_cores"),
+               "job_packing_peak_pods": agg("job_packing_peak_pods"),
+               "node_free_cpu_min_cores": agg("node_free_cpu_min_cores"),
+               "node_free_memory_min_gib": agg("node_free_memory_min_gib"),
                "duration_min": agg("duration_min"),
                "configured": {k: rows[0][k] for k in ("req_mem_gib", "lim_mem_gib", "req_cpu_cores", "lim_cpu_cores")}}
     with open(os.path.join(out_dir, "aggregate_stats.json"), "w") as f:
