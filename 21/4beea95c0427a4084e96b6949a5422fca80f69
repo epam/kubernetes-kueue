@@ -1,0 +1,19 @@
+pkg/workload/workload_test.go
+  s_6ca7c1fcda43a6::t_3e3db4919cd4da 177
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "214beea95c0427a4084e96b6949a5422fca80f69",
+  "prompts": {},
+  "sessions": {
+    "s_6ca7c1fcda43a6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "837068d8-de2f-485a-81fb-dc6699be0686",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

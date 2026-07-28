@@ -1,0 +1,31 @@
+test/integration/singlecluster/tas/tas_test.go
+  s_ba5a60d81e0213::t_3ee34f3420a639 3545-3547,3549-3550
+  s_ba5a60d81e0213::t_4c77b7c0481d7f 3565-3574
+  s_ba5a60d81e0213::t_ca736b4ec40454 3448-3457
+  s_ba5a60d81e0213::t_f5633f58f76286 3447
+  s_ba5a60d81e0213::t_2286a809104e02 3563-3564,3575-3620
+  s_ba5a60d81e0213::t_c7367b649c76b9 3458-3544,3548,3551-3562,3621
+pkg/controller/tas/topology_ungater_test.go
+  s_ba5a60d81e0213::t_cbabf64b97f453 2276,2283-2336
+  s_ba5a60d81e0213::t_5c44129135ab32 2268-2275,2277-2282
+  s_ba5a60d81e0213::t_28c3a42870d170 2159-2267
+pkg/controller/tas/topology_ungater.go
+  s_ba5a60d81e0213::t_a323148df9bd3b 478
+  s_ba5a60d81e0213::t_c1f94c4ff09fb0 470-477,479-480
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "418562546b5438893b22e1f8dd8f20140c9a77d2",
+  "prompts": {},
+  "sessions": {
+    "s_ba5a60d81e0213": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "570dd35b-4bd2-48c2-9cd0-6fa94d03c2b8",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

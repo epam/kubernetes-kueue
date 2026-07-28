@@ -1,0 +1,37 @@
+pkg/controller/admissionchecks/provisioning/controller_test.go
+  s_456d961591cd9d::t_de2eb8cd9bb442 343
+  s_456d961591cd9d::t_79b9e87d89329e 532
+  s_456d961591cd9d::t_d1b49782b1b2c9 2188
+  s_456d961591cd9d::t_1bc89d7f5c4a6a 722
+  s_456d961591cd9d::t_482cbbb9bc9e6e 745
+  s_456d961591cd9d::t_2013ee1539d54c 229
+  s_456d961591cd9d::t_66aaefa853b3c3 547
+  s_456d961591cd9d::t_507d8154e089f1 585
+  s_456d961591cd9d::t_ee2ba48e644554 2217
+  s_456d961591cd9d::t_d4053a165a373e 241
+pkg/controller/admissionchecks/provisioning/controller.go
+  s_456d961591cd9d::t_845cab53e5e5d7 266
+  s_456d961591cd9d::t_d3047a2c276797 341-343
+  s_456d961591cd9d::t_e24930e1da8553 399,409
+  s_456d961591cd9d::t_50be98fce48979 437
+  s_456d961591cd9d::t_2e688fae2111cc 465-466
+  s_456d961591cd9d::t_c4c32f274f7114 338
+pkg/features/kube_features.go
+  s_456d961591cd9d::t_cdeb8b149605d8 515-516
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "fee3a723edeb4beecf363e9de3c57e252538bd24",
+  "prompts": {},
+  "sessions": {
+    "s_456d961591cd9d": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "e3aacb0b-bebc-4f3a-9db2-123b017e74b7",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

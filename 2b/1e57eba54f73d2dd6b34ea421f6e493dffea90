@@ -1,0 +1,41 @@
+pkg/controller/jobs/job/job_controller_test.go
+  s_63be3277b7022f::t_c4da94bee0955a 354
+pkg/controller/jobframework/reconciler.go
+  s_63be3277b7022f::t_c4da94bee0955a 900-904
+pkg/controller/jobs/pod/pod_controller.go
+  s_63be3277b7022f::t_87612df1572e12 1283-1301
+  s_63be3277b7022f::t_c4da94bee0955a 801-807
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_63be3277b7022f::t_c4da94bee0955a 425-455
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_3c7eeada3f1286::t_504b43a556858c 23,31-32
+  s_3c7eeada3f1286::t_c346285432d56c 942-947,959-961,966-976,979,984-986,988-990,996-999
+  s_3c7eeada3f1286::t_de1c0d211e032e 940-941,948-958,962-965,977-978,980-983,987,991-995
+pkg/controller/jobs/pod/pod_webhook.go
+  s_63be3277b7022f::t_9bfffd39474585 161
+  s_63be3277b7022f::t_c4da94bee0955a 118-127,162-165
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "2b1e57eba54f73d2dd6b34ea421f6e493dffea90",
+  "prompts": {},
+  "sessions": {
+    "s_3c7eeada3f1286": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d065722-8eed-4bf7-a03e-37a65273006b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_63be3277b7022f": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6211217e-e78a-42d1-a79b-138a725a7233",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
