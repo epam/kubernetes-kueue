@@ -1559,6 +1559,10 @@ func (r *JobReconciler) prepareWorkload(ctx context.Context, job GenericJob, wl 
 		PropagateAdmissionGatedByAnnotation(job.Object(), wl)
 	}
 
+	if features.Enabled(features.TopologySpreading) {
+		PropagateTopologySpreadingAnnotation(job.Object(), wl)
+	}
+
 	if err := PrepareWorkloadPriority(ctx, r.client, job.Object(), wl, getCustomPriorityClassFuncFromJob(job)); err != nil {
 		return err
 	}

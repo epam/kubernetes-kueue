@@ -603,6 +603,11 @@ type FlavorAssigner struct {
 	replaceWorkloadSlice *workload.Info
 	quotaCheckStrategy   configapi.QuotaCheckStrategy
 	resourceFormatter    *resources.ResourceFormatter
+
+	// spreadingBannedDomains maps topology label key → set of banned domain values.
+	// When set, banned domains are excluded during TAS placement.
+	// Populated by WithSpreadingBannedDomains from KEP-13746 (Topology Spreading).
+	spreadingBannedDomains map[string]sets.Set[string]
 }
 
 func New(
@@ -625,6 +630,14 @@ func New(
 		quotaCheckStrategy:   quotaCheckStrategy,
 		resourceFormatter:    resourceFormatter,
 	}
+}
+
+// WithSpreadingBannedDomains sets the topology spreading banned domain values
+// for KEP-13746 Required rules. When non-nil, these domains are excluded from
+// TAS placement during flavor assignment.
+func (a *FlavorAssigner) WithSpreadingBannedDomains(banned map[string]sets.Set[string]) *FlavorAssigner {
+	a.spreadingBannedDomains = banned
+	return a
 }
 
 func lastAssignmentOutdated(wl *workload.Info, cq *schdcache.ClusterQueueSnapshot) bool {
@@ -821,8 +834,12 @@ func (a *FlavorAssigner) assignFlavors(ctx context.Context, log logr.Logger, cou
 
 	if features.Enabled(features.TopologyAwareScheduling) {
 		tasRequests := assignment.WorkloadsTopologyRequests(log, a.wl, a.cq)
+		tasOpts := []schdcache.FindTopologyAssignmentsOption{schdcache.WithWorkload(a.wl.Obj)}
+		if len(a.spreadingBannedDomains) > 0 {
+			tasOpts = append(tasOpts, schdcache.WithBannedTopologyDomainValues(a.spreadingBannedDomains))
+		}
 		if assignment.RepresentativeMode() == Fit {
-			result := a.cq.FindTopologyAssignmentsForWorkload(ctx, tasRequests, schdcache.WithWorkload(a.wl.Obj))
+			result := a.cq.FindTopologyAssignmentsForWorkload(ctx, tasRequests, tasOpts...)
 			if failure := result.Failure(); failure != nil {
 				// There is at least one PodSet which does not fit
 				psAssignment := assignment.podSetAssignmentByName(failure.PodSetName)
@@ -836,11 +853,11 @@ func (a *FlavorAssigner) assignFlavors(ctx context.Context, log logr.Logger, cou
 		}
 		if assignment.RepresentativeMode() == Preempt && !workload.HasUnhealthyNodes(a.wl.Obj) {
 			// Don't preempt other workloads if looking for a failed node replacement
+			simulateEmptyOpts := append(slices.Clone(tasOpts), schdcache.WithSimulateEmpty(true))
 			result := a.cq.FindTopologyAssignmentsForWorkload(
 				ctx,
 				tasRequests,
-				schdcache.WithSimulateEmpty(true),
-				schdcache.WithWorkload(a.wl.Obj),
+				simulateEmptyOpts...,
 			)
 			if failure := result.Failure(); failure != nil {
 				// There is at least one PodSet which does not fit even if

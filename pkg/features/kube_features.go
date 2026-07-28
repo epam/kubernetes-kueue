@@ -522,6 +522,14 @@ const (
 	// pods per group without accounting for quota. Recreate the LeaderWorkerSet to change
 	// the size, or disable this gate to accept the previous behavior.
 	LWSImmutableGroupSize featuregate.Feature = "LWSImmutableGroupSize"
+
+	// owner: @mbobrovskyi
+	// kep: https://github.com/kubernetes-sigs/kueue/tree/main/keps/13746-topology-spreading
+	//
+	// Enables topology spreading — distributing admitted workloads across topology
+	// domains (e.g. zones, racks) to improve service availability.
+	// Controlled via the alpha.kueue.x-k8s.io/topology-spreading annotation.
+	TopologySpreading featuregate.Feature = "TopologySpreading"
 )
 
 func init() {
@@ -821,6 +829,10 @@ var defaultVersionedFeatureGates = map[featuregate.Feature]featuregate.Versioned
 
 	LWSImmutableGroupSize: {
 		{Version: version.MustParse("0.20"), Default: true, PreRelease: featuregate.Beta},
+	},
+
+	TopologySpreading: {
+		{Version: version.MustParse("0.20"), Default: false, PreRelease: featuregate.Alpha},
 	},
 }
 

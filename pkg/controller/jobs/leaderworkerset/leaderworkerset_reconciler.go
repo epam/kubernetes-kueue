@@ -357,6 +357,10 @@ func (r *Reconciler) constructWorkload(lws *leaderworkersetv1.LeaderWorkerSet, w
 		jobframework.PropagateAdmissionGatedByAnnotation(lws, createdWorkload)
 	}
 
+	if features.Enabled(features.TopologySpreading) {
+		jobframework.PropagateTopologySpreadingAnnotation(lws, createdWorkload)
+	}
+
 	if err := controllerutil.SetOwnerReference(lws, createdWorkload, r.client.Scheme()); err != nil {
 		return nil, err
 	}

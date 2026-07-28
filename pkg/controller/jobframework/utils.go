@@ -31,6 +31,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/validation"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
+	"sigs.k8s.io/kueue/pkg/constants"
 
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
 	controllerconstants "sigs.k8s.io/kueue/pkg/controller/constants"
@@ -313,4 +314,26 @@ func DeleteRemoteObjectIfOwned(ctx context.Context, localClient client.Client, r
 	}
 
 	return adapter.DeleteRemoteObject(ctx, localClient, remoteClient, key)
+}
+
+// PropagateTopologySpreadingAnnotation copies the TopologySpreading annotation from the
+// given object to the workload object but only in memory. It does not persist the
+// changes to the API server.
+func PropagateTopologySpreadingAnnotation(obj client.Object, wl *kueue.Workload) {
+	jobVal := obj.GetAnnotations()[constants.TopologySpreadingAnnotation]
+	wlVal := wl.Annotations[constants.TopologySpreadingAnnotation]
+
+	if jobVal == wlVal {
+		return
+	}
+
+	if wl.Annotations == nil {
+		wl.Annotations = make(map[string]string, 1)
+	}
+
+	if jobVal == "" {
+		delete(wl.Annotations, constants.TopologySpreadingAnnotation)
+	} else {
+		wl.Annotations[constants.TopologySpreadingAnnotation] = jobVal
+	}
 }

@@ -86,4 +86,11 @@ const (
 
 	// ElasticJobAnnotation is an annotation set on the Job to indicate that it is an elastic job.
 	ElasticJobAnnotation = "kueue.x-k8s.io/elastic-job"
+
+	// TopologySpreadingAnnotation is the annotation key for topology spreading configuration.
+	// When present on a Workload (or its parent Job), Kueue enforces cross-workload
+	// distribution across topology domains (e.g. availability zones).
+	// The value is a JSON object; see KEP-13746 for the schema.
+	// This annotation is alpha-level and requires the TopologySpreading feature gate.
+	TopologySpreadingAnnotation = "alpha.kueue.x-k8s.io/topology-spreading"
 )

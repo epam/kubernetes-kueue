@@ -959,6 +959,10 @@ const (
 	// requirements that cannot be satisfied with the current cluster topology usage.
 	WorkloadQuotaReservedReasonTopologyPlacementFailed = "TopologyPlacementFailed"
 
+	// WorkloadQuotaReservedReasonTopologySpreadConstraintNotMet indicates that all
+	// eligible topology domains are banned by a Required topology spreading rule.
+	WorkloadQuotaReservedReasonTopologySpreadConstraintNotMet = "TopologySpreadConstraintNotMet"
+
 	// WorkloadQuotaReservedReasonWaitingForPreemptedWorkloads indicates that the workload is waiting
 	// for preempted workloads to release their quota or topology resources (in case of topology-driven preemptions).
 	WorkloadQuotaReservedReasonWaitingForPreemptedWorkloads = "WaitingForPreemptedWorkloads"
@@ -1023,6 +1027,12 @@ const (
 	// WorkloadWaitingForReplacementPods means that Kueue doesn't observe all
 	// the Pods declared for the group.
 	WorkloadWaitingForReplacementPods = "WaitingForReplacementPods"
+
+	// WorkloadTopologySpreadInvalid indicates that the workload has an invalid
+	// topology spreading annotation ([alpha].kueue.x-k8s.io/topology-spreading).
+	// Workloads with this condition set to True are excluded from scheduling
+	// until the annotation is corrected and the workload is updated.
+	WorkloadTopologySpreadInvalid = "TopologySpreadInvalid"
 )
 
 // Reasons for the WorkloadPreemptionBlocked condition.

@@ -321,6 +321,10 @@ func (r *Reconciler) createPrebuiltWorkload(ctx context.Context, sts *appsv1.Sta
 		return err
 	}
 
+	if features.Enabled(features.TopologySpreading) {
+		jobframework.PropagateTopologySpreadingAnnotation(sts, createdWorkload)
+	}
+
 	if err := r.client.Create(ctx, createdWorkload); err != nil {
 		return client.IgnoreAlreadyExists(err)
 	}

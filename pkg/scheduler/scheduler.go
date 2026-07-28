@@ -43,6 +43,7 @@ import (
 	kueue "sigs.k8s.io/kueue/apis/kueue/v1beta2"
 	qcache "sigs.k8s.io/kueue/pkg/cache/queue"
 	schdcache "sigs.k8s.io/kueue/pkg/cache/scheduler"
+	"sigs.k8s.io/kueue/pkg/constants"
 	controllerconstants "sigs.k8s.io/kueue/pkg/controller/constants"
 	"sigs.k8s.io/kueue/pkg/features"
 	"sigs.k8s.io/kueue/pkg/metrics"
@@ -50,6 +51,7 @@ import (
 	"sigs.k8s.io/kueue/pkg/scheduler/flavorassigner"
 	"sigs.k8s.io/kueue/pkg/scheduler/preemption"
 	"sigs.k8s.io/kueue/pkg/scheduler/preemption/fairsharing"
+	"sigs.k8s.io/kueue/pkg/spreading"
 	afs "sigs.k8s.io/kueue/pkg/util/admissionfairsharing"
 	"sigs.k8s.io/kueue/pkg/util/api"
 	"sigs.k8s.io/kueue/pkg/util/expectations"
@@ -797,6 +799,32 @@ func (s *Scheduler) getInitialAssignments(ctx context.Context, wl *workload.Info
 		preemption.NewOracle(s.preemptor, snap), replaceableWorkloadSlice,
 		s.quotaCheckStrategy, s.resourceFormatter,
 	)
+
+	if features.Enabled(features.TopologySpreading) {
+		if annValue, hasAnnotation := wl.Obj.Annotations[constants.TopologySpreadingAnnotation]; hasAnnotation {
+			log := log.FromContext(ctx)
+			cfg, err := spreading.ParseAndValidate(annValue)
+			if err != nil {
+				log.V(2).Info("TopologySpreading annotation is invalid; skipping spreading enforcement",
+					"workload", klog.KObj(wl.Obj), "error", err)
+			} else {
+				var wls []*workload.Info
+				for _, admCQ := range snap.ClusterQueues() {
+					for _, wlInfo := range admCQ.Workloads {
+						wls = append(wls, wlInfo)
+					}
+				}
+				bannedDomains, err := spreading.BannedDomains(cfg, wls, wl.Obj.Namespace)
+				if err != nil {
+					log.V(2).Info("Failed to compute topology spreading banned domains; skipping",
+						"workload", klog.KObj(wl.Obj), "error", err)
+				} else if len(bannedDomains) > 0 {
+					flvAssigner.WithSpreadingBannedDomains(bannedDomains)
+				}
+			}
+		}
+	}
+
 	fullAssignment := flvAssigner.Assign(ctx, nil)
 
 	arm := fullAssignment.RepresentativeMode()

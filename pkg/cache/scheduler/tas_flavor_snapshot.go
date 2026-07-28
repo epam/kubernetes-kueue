@@ -32,6 +32,7 @@ import (
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/apimachinery/pkg/types"
+	"k8s.io/apimachinery/pkg/util/sets"
 	"k8s.io/component-helpers/scheduling/corev1/nodeaffinity"
 	"k8s.io/utils/ptr"
 	"sigs.k8s.io/controller-runtime/pkg/log"
@@ -484,6 +485,7 @@ type findTopologyAssignmentsOption struct {
 	simulateEmpty          bool
 	workload               *kueue.Workload
 	aggregatedDomainUsages map[utiltas.TopologyDomainID]resources.Requests
+	bannedDomainValues     map[string]sets.Set[string]
 }
 
 type tasExclusionStats struct {
@@ -514,6 +516,10 @@ type topologyAssignmentParameters struct {
 	required              bool
 	unconstrained         bool
 	multiLayerConstraints []kueue.PodsetSliceRequiredTopologyConstraint
+	// bannedDomainValues maps topology label key → set of banned label values.
+	// Domains whose level value matches any entry are excluded from assignment.
+	// Set from WithBannedTopologyDomainValues (KEP-13746 Topology Spreading).
+	bannedDomainValues map[string]sets.Set[string]
 }
 
 // findTopologyAssignmentState stores the derived state for a single run of the
@@ -607,6 +613,18 @@ func WithAggregatedDomainUsages(m map[utiltas.TopologyDomainID]resources.Request
 	}
 }
 
+// WithBannedTopologyDomainValues excludes topology domains from consideration
+// during assignment. The map key is a topology label key (e.g.
+// "topology.kubernetes.io/zone") and the value is the set of banned label
+// values at that level. Domains that match any banned key/value pair are
+// filtered out before the assignment algorithm runs.
+// Used by KEP-13746 (Topology Spreading) for Required spreading rules.
+func WithBannedTopologyDomainValues(banned map[string]sets.Set[string]) FindTopologyAssignmentsOption {
+	return func(o *findTopologyAssignmentsOption) {
+		o.bannedDomainValues = banned
+	}
+}
+
 // FindTopologyAssignmentsForFlavor returns TAS assignment, if possible, for all
 // the TAS requests in the flavor handled by the snapshot.
 func (s *TASFlavorSnapshot) FindTopologyAssignmentsForFlavor(ctx context.Context, flavorTASRequests FlavorTASRequests, options ...FindTopologyAssignmentsOption) TASAssignmentsResult {
@@ -681,7 +699,7 @@ func (s *TASFlavorSnapshot) FindTopologyAssignmentsForFlavor(ctx context.Context
 			}
 
 			// Normal path: no previous assignment or stale assignment
-			assignments, reason := s.findTopologyAssignment(ctx, workers, leader, assumedUsage, opts.simulateEmpty, "", opts.workload)
+			assignments, reason := s.findTopologyAssignment(ctx, workers, leader, assumedUsage, opts.simulateEmpty, "", opts.workload, opts.bannedDomainValues)
 			for _, tr := range trs {
 				podSetName := tr.PodSet.Name
 				result[podSetName] = tasPodSetAssignmentResult{TopologyAssignment: assignments[podSetName], FailureReason: reason}
@@ -754,7 +772,7 @@ func (s *TASFlavorSnapshot) findReplacementAssignment(
 		trCopy.PodSet.TopologyRequest.PodSetSliceRequiredTopology = effectiveSliceTopology
 		trCopy.PodSet.TopologyRequest.PodSetSliceSize = new(effectiveSliceSize)
 	}
-	replacementAssignment, reason := s.findTopologyAssignment(ctx, trCopy, nil, assumedUsage, false, requiredReplacementDomain, wl)
+	replacementAssignment, reason := s.findTopologyAssignment(ctx, trCopy, nil, assumedUsage, false, requiredReplacementDomain, wl, nil)
 	if reason != "" {
 		return nil, nil, reason
 	}
@@ -904,6 +922,23 @@ func (s *TASFlavorSnapshot) findIncompleteSliceDomain(tr *TASPodSetRequests, ta 
 	return ""
 }
 
+// isDomainBanned reports whether domain d should be excluded because one of its
+// level values appears in bannedDomainValues.  For each topology key that has
+// banned values, the corresponding level index is looked up in s.levelKeys, and
+// d.levelValues[levelIdx] is checked against the banned set.
+func (s *TASFlavorSnapshot) isDomainBanned(d *domain, bannedDomainValues map[string]sets.Set[string]) bool {
+	for levelIdx, key := range s.levelKeys {
+		banned, ok := bannedDomainValues[key]
+		if !ok {
+			continue
+		}
+		if levelIdx < len(d.levelValues) && banned.Has(d.levelValues[levelIdx]) {
+			return true
+		}
+	}
+	return false
+}
+
 // Algorithm overview:
 // Phase 1:
 //
@@ -922,7 +957,9 @@ func (s *TASFlavorSnapshot) findTopologyAssignment(
 	workersTasPodSetRequests TASPodSetRequests,
 	leaderTasPodSetRequests *TASPodSetRequests,
 	assumedUsage map[utiltas.TopologyDomainID]resources.Requests,
-	simulateEmpty bool, requiredReplacementDomain utiltas.TopologyDomainID, wl *kueue.Workload) (map[kueue.PodSetReference]*utiltas.TopologyAssignment, string) {
+	simulateEmpty bool, requiredReplacementDomain utiltas.TopologyDomainID, wl *kueue.Workload,
+	bannedDomainValues map[string]sets.Set[string],
+) (map[kueue.PodSetReference]*utiltas.TopologyAssignment, string) {
 	requirements := &topologyAssignmentPodRequirements{
 		assumedUsage:              assumedUsage,
 		requiredReplacementDomain: requiredReplacementDomain,
@@ -930,7 +967,8 @@ func (s *TASFlavorSnapshot) findTopologyAssignment(
 	}
 	state := &findTopologyAssignmentState{
 		topologyAssignmentParameters: topologyAssignmentParameters{
-			count: workersTasPodSetRequests.Count,
+			count:              workersTasPodSetRequests.Count,
+			bannedDomainValues: bannedDomainValues,
 		},
 		stats: &tasExclusionStats{},
 	}
@@ -1374,6 +1412,14 @@ func (s *TASFlavorSnapshot) findLevelWithFitDomains(
 		return 0, nil, fmt.Sprintf("no topology domains at level: %s", s.levelKeys[searchLevelIdx])
 	}
 	levelDomains := slices.Collect(maps.Values(domains))
+	if len(state.bannedDomainValues) > 0 {
+		levelDomains = slices.DeleteFunc(levelDomains, func(d *domain) bool {
+			return s.isDomainBanned(d, state.bannedDomainValues)
+		})
+		if len(levelDomains) == 0 {
+			return 0, nil, fmt.Sprintf("topology %q has no eligible domains after applying topology spreading constraints", s.topologyName)
+		}
+	}
 	sortedDomain := s.sortedDomainsWithLeader(levelDomains, state.unconstrained)
 	topDomain := sortedDomain[0]
 
