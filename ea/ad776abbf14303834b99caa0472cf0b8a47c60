@@ -1,0 +1,24 @@
+pkg/controller/admissionchecks/provisioning/controller_test.go
+  s_53d3c4cdf9cb55::t_73195507a7cf7a 54
+  s_53d3c4cdf9cb55::t_a7c8d77b0668aa 1542-1585
+  s_53d3c4cdf9cb55::t_aa4c1de071ff97 645,659-660,662-663,665-674,676-677,679-686
+  s_53d3c4cdf9cb55::t_90e80f39dd777f 2042-2044
+  s_53d3c4cdf9cb55::t_192b84d911a861 334
+  s_53d3c4cdf9cb55::t_475ad27dd08863 646-658,661,664,675,678
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "eaad776abbf14303834b99caa0472cf0b8a47c60",
+  "prompts": {},
+  "sessions": {
+    "s_53d3c4cdf9cb55": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d48d620f-d578-41cd-8950-e8a27e49427f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+pkg/cache/scheduler/tas_flavor_snapshot_test.go
+  s_6ebe5b9ace332d::t_bda4fd86555a34 1108
+  s_6ebe5b9ace332d::t_4d4be2d71ae58d 999-1107,1109-1234,1236,1238-1239,1241-1244
+  s_6ebe5b9ace332d::t_ad438c35b44b32 1235,1237,1240
+pkg/cache/scheduler/tas_flavor_snapshot.go
+  s_6ebe5b9ace332d::t_ad438c35b44b32 754,974,1309
+  s_6ebe5b9ace332d::t_31d968bca1cc40 756,759-760,817,975-976,1319
+  s_6ebe5b9ace332d::t_cbf4aeecfc24dd 1314-1317
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "6098c4471827b6ef308695a06d831d7de9fa6218",
+  "prompts": {},
+  "sessions": {
+    "s_6ebe5b9ace332d": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "cf326058-4893-4fdc-ace4-f8ca31d79d2c",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    }
+  }
+}

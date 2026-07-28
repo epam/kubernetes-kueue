@@ -1,0 +1,35 @@
+test/integration/singlecluster/webhook/jobs/suite_test.go
+  s_417df97fe24dc3::t_f706c9b3987775 57
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  s_417df97fe24dc3::t_34a336357026bd 211-212
+  s_417df97fe24dc3::t_51ad3b697f956a 209-210
+  s_417df97fe24dc3::t_79f94d9befbb70 213-217
+  s_417df97fe24dc3::t_2c83e2bf5d3379 134
+test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
+  s_417df97fe24dc3::t_ceb938b4e09dc6 63
+  s_417df97fe24dc3::t_909a908daba2c1 29
+  s_417df97fe24dc3::t_d47c734bf4ceaa 54,73,92
+  s_417df97fe24dc3::t_1e3eed1fb67936 1-28,30-53,55-62,64-72,74-91,93-106
+pkg/controller/jobs/leaderworkerset/leaderworkerset_controller.go
+  s_417df97fe24dc3::t_1ef426138d5d06 44-47
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  s_417df97fe24dc3::t_59905d3d3f916f 963-1002
+test/util/constants.go
+  s_417df97fe24dc3::t_5490c8f0874e77 67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "8f89ee855811fcf3a78028a57fc6d8da1ad02fcf",
+  "prompts": {},
+  "sessions": {
+    "s_417df97fe24dc3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a261e909-8656-4fbd-9046-6fdddc6f62d7",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}

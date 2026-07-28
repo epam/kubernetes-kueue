@@ -1,0 +1,26 @@
+pkg/controller/jobs/rayjob/rayjob_controller.go
+  s_dea16ad24a2d39::t_d090a00f790c47 157-158,160,162-163,165-166
+  s_dea16ad24a2d39::t_2dfd57ba92edb0 194,198-200,205
+  h_36a44f345b4e56 155-156
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "26fc2e8cc50a48b683d8bf1e324c3a2db1fae97d",
+  "prompts": {},
+  "humans": {
+    "h_36a44f345b4e56": {
+      "author": "Ivan Novakov"
+    }
+  },
+  "sessions": {
+    "s_dea16ad24a2d39": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e1d90b71-e1ee-447b-bbf4-e7d4777f8ef2",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
