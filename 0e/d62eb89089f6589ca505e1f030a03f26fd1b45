@@ -1,0 +1,19 @@
+pkg/features/kube_features.go
+  s_54df8d6ec41c5c::t_488226ebdfb1cf 538
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "0ed62eb89089f6589ca505e1f030a03f26fd1b45",
+  "prompts": {},
+  "sessions": {
+    "s_54df8d6ec41c5c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6abeaf20-668b-40a4-8c5c-e380dda575c5",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
