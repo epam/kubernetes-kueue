@@ -13,10 +13,12 @@ pkg/features/kube_features.go
   s_54df8d6ec41c5c::t_e45642842ca72b 488
   s_54df8d6ec41c5c::t_488226ebdfb1cf 518
   s_fb1e03723a91b8::t_c275af1f394fba 519-523,781,802-804
+  s_ddef2d1ba06af9::t_382800d6a7eac4 517
 pkg/controller/jobs/pod/pod_controller.go
   s_fb1e03723a91b8::t_976227f5ab2922 1246-1247
   s_0bfb110ed8c400::t_183cf099996248 1244-1245,1248-1254
   s_0bfb110ed8c400::t_9bc1ee06f17ad3 80
+  s_ddef2d1ba06af9::t_994fc122e06fa0 92
 site/data/featuregates/versioned_feature_list.yaml
   s_54df8d6ec41c5c::t_99f68f15ebe6b2 310-315
 ---
@@ -54,6 +56,14 @@ site/data/featuregates/versioned_feature_list.yaml
       "agent_id": {
         "tool": "cursor",
         "id": "c589e725-672f-4f7e-8918-7343f0a2c08b",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_ddef2d1ba06af9": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "33ee6ca4-f44f-420d-85cc-a442f7b897f1",
         "model": "composer-2.5"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
