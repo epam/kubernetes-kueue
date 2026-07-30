@@ -1,0 +1,26 @@
+test/integration/singlecluster/tas/tas_test.go
+  s_b788ba3617c140::t_fa4edecd03a256 3507
+pkg/features/kube_features.go
+  h_99f506dc258b88 518-519,801
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "8c1a98aa0b82483b523f9472f1a952d1c2788d3e",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_b788ba3617c140": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "3c99ab28-9b75-4978-85bf-b7e061d7b5a9",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
