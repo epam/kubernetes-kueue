@@ -1,0 +1,66 @@
+pkg/controller/jobs/pod/pod_webhook_test.go
+  s_ca7da4a3a42016::t_06cd14e9bc92b1 219-222
+  s_ca7da4a3a42016::t_dcfa3af6c28f07 247-250
+  s_abc2a78b2d339d::t_98dde91d7eda3a 58
+  s_ca7da4a3a42016::t_1f6c62a77e58f1 74-76
+  s_ca7da4a3a42016::t_040e9fa091f96b 167-170,175,183
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_ca7da4a3a42016::t_c99bffb09b7a72 659-664
+  s_ca7da4a3a42016::t_7961b260c0e3d0 1788-1793
+  s_abc2a78b2d339d::t_79a08aefe874ca 33
+  s_ca7da4a3a42016::t_572179e67b8742 666-668
+  s_ca7da4a3a42016::t_9e3e95600f5e0e 393,395,398,401,404-406,409-417,494,496,499,502,505-508,511-519,532-585
+  s_ca7da4a3a42016::t_7c6e3dbe7c9c23 390-392
+  s_ca7da4a3a42016::t_665ca93945ff83 394
+  s_ca7da4a3a42016::t_10bc516f8f0ed3 396-397
+  s_ca7da4a3a42016::t_a36ba2318e661c 399-400
+  s_ca7da4a3a42016::t_7adad986b29096 402-403
+  s_ca7da4a3a42016::t_36f1e7e4b2e886 407-408
+  s_ca7da4a3a42016::t_0d30f912c97245 491-493
+  s_ca7da4a3a42016::t_a258201ba38941 495
+  s_ca7da4a3a42016::t_487c2908f33599 497-498
+  s_ca7da4a3a42016::t_81be366c470424 500-501
+  s_ca7da4a3a42016::t_68a4a58fa74544 503-504
+  s_ca7da4a3a42016::t_b89b3635adf5d5 509-510
+pkg/controller/jobs/pod/pod_controller.go
+  s_ca7da4a3a42016::t_3a4badad6a6cb2 888-891
+  s_ca7da4a3a42016::t_c681fea29a1be1 1386
+  s_ca7da4a3a42016::t_c75e14f5318b6b 814-831
+  s_ca7da4a3a42016::t_905f923d07729b 1387-1388
+  s_ca7da4a3a42016::t_1fef05670073cf 1618
+  s_ca7da4a3a42016::t_d13b3a8a6e7757 89-90,93
+  s_ca7da4a3a42016::t_20edbc91672f78 67
+  s_ca7da4a3a42016::t_e4687f415b8bfc 806
+  s_ca7da4a3a42016::t_c2798b6e387b9f 1413
+  s_ca7da4a3a42016::t_f265b53eaf480b 1424
+  s_ca7da4a3a42016::t_cfa47a7579bd85 1421,1425-1426
+  s_ca7da4a3a42016::t_c3e2bb92bb4c2e 836,839,845,847,1573-1578,1582-1617,1619-1629
+  s_ca7da4a3a42016::t_af956e26d1384f 850-857
+  s_ca7da4a3a42016::t_38318866e9ab2f 94,832-835,837-838,840-843,846,848-849,859,936,1630
+pkg/util/testingjobs/replicaset/wrappers.go
+  s_ca7da4a3a42016::t_b2f1fd552b1a4f 1-62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "c1186fc1c9b0fd57eb7fe5b47db8b3bf5569463d",
+  "prompts": {},
+  "sessions": {
+    "s_abc2a78b2d339d": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b95a8165-253c-4803-a20e-77f061bd6dee",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_ca7da4a3a42016": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "34c447f8-1fc8-4c9a-85f0-ff179359a8e6",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
