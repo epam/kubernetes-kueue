@@ -1,0 +1,14 @@
+pkg/controller/jobframework/validation_test.go
+  h_f3e429a3560394 282
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "407b94fec81946f101c40657de80de5f17e4aac2",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
