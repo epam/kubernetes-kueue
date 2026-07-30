@@ -1,0 +1,47 @@
+cmd/importer/pod/check_test.go
+  s_f6ff9041d6433a::t_62459d719c0c75 120,122,130
+  s_f6ff9041d6433a::t_9cdeebde010924 104
+  s_f6ff9041d6433a::t_6f676b619b5548 106,117
+cmd/importer/pod/check.go
+  s_f6ff9041d6433a::t_c62ad79c791e97 55-56,93,95-96
+  s_f6ff9041d6433a::t_440350f1edfba1 71
+  s_f6ff9041d6433a::t_9f4246c07f3168 94,97-105
+cmd/importer/pod/import.go
+  s_f6ff9041d6433a::t_32465e9b402d17 98
+  s_f6ff9041d6433a::t_2ffaa610d618e1 97
+  s_f6ff9041d6433a::t_fc8fbef827102a 88
+  s_f6ff9041d6433a::t_23ea9ac0b5c65f 83-85,107
+  s_f6ff9041d6433a::t_749570e64256af 99-106,108-115
+  s_f6ff9041d6433a::t_c98e4ea2ddbd17 86-87
+cmd/importer/pod/import_test.go
+  s_f6ff9041d6433a::t_ed214b667886a1 139,157-159
+  s_f6ff9041d6433a::t_e0554af7c724af 223
+  h_99f506dc258b88 241,251
+  s_f6ff9041d6433a::t_467f43352bb583 264
+  s_f6ff9041d6433a::t_08e52fa740dc9f 138,140,193-196,220-222,227-239
+  s_f6ff9041d6433a::t_8fe9b6f0b620b8 126,268
+  s_f6ff9041d6433a::t_bcc6c9d3feb775 183
+  s_f6ff9041d6433a::t_5a4c14873ab97f 214,225,240
+  s_f6ff9041d6433a::t_f9cea19783c0d7 242-250,252-255
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "9dad975d146de9818a7fdf11f2640a0576ffca0b",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_f6ff9041d6433a": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "c4a8d6dc-3127-4938-abf8-643e407293f6",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    }
+  }
+}

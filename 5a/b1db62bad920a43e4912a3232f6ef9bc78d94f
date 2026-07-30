@@ -1,0 +1,23 @@
+apis/kueue/v1beta2/workload_types.go
+  s_b788ba3617c140::t_7353abb96c12a2 235
+apis/kueue/v1beta1/workload_types.go
+  s_b788ba3617c140::t_7353abb96c12a2 151
+config/components/crd/bases/kueue.x-k8s.io_workloads.yaml
+  s_b788ba3617c140::t_acf38c586bb72d 8761,18202
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "5ab1db62bad920a43e4912a3232f6ef9bc78d94f",
+  "prompts": {},
+  "sessions": {
+    "s_b788ba3617c140": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "3c99ab28-9b75-4978-85bf-b7e061d7b5a9",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
