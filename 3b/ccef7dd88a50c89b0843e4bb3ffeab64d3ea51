@@ -1,0 +1,35 @@
+pkg/controller/jobframework/reconciler_test.go
+  s_069bbc017b0249::t_b978c0be64030b 917
+pkg/controller/jobs/pod/pod_controller.go
+  s_069bbc017b0249::t_7451df09aac66a 67,88-89,92-93,805,813-842,844-856,858,887-890,935,1385-1387,1412,1420,1423-1425,1572-1577,1581-1629
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_9c18b85f67cd6b::t_4d7b97e25fc0d0 33,390-417,491-519,532-585,659-664,666-668,1788-1793
+pkg/controller/jobs/pod/pod_webhook_test.go
+  s_9c18b85f67cd6b::t_9f883ccbe1d2f8 58,74-76,167-170,175,183,219-222,247-250
+pkg/util/testingjobs/replicaset/wrappers.go
+  s_9c18b85f67cd6b::t_96961755c6725f 1-62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "3bccef7dd88a50c89b0843e4bb3ffeab64d3ea51",
+  "prompts": {},
+  "sessions": {
+    "s_069bbc017b0249": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1c473df2-51f0-4eb3-a935-4020cbb38a7d",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_9c18b85f67cd6b": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "53911625-0778-4dca-a23f-c45362c07603",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
