@@ -1,0 +1,19 @@
+test/integration/singlecluster/tas/tas_test.go
+  s_b788ba3617c140::t_fa4edecd03a256 3507
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "5b1d284bdd32769d94650682eca66a31f8bf5a99",
+  "prompts": {},
+  "sessions": {
+    "s_b788ba3617c140": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "3c99ab28-9b75-4978-85bf-b7e061d7b5a9",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
