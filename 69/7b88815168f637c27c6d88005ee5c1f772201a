@@ -1,0 +1,66 @@
+test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
+  s_4fb0a54e4e15bf::t_1a402b1b77d696 52-57,59,61-62,64-91,94-95,97-100,102,104-105,108-110,115,133-134,139-143,145,147-148,151-153
+  s_3f5891a0d898a6::t_28c3da722edf44 1-48,119-129
+  s_4fb0a54e4e15bf::t_e20de1957d28e4 154-155
+  s_4fb0a54e4e15bf::t_49b555530597aa 58
+  s_4fb0a54e4e15bf::t_79ebb1b4446e02 92-93
+  s_4fb0a54e4e15bf::t_4aedc1ad636c35 63
+  s_4fb0a54e4e15bf::t_cf341cd0257238 116-118,130-132
+  s_4fb0a54e4e15bf::t_41b914b706d6a4 144
+  s_4fb0a54e4e15bf::t_1bca71fdeee7e1 101
+  s_4fb0a54e4e15bf::t_e505ae0a910c67 135-138
+  s_4fb0a54e4e15bf::t_1b7e58151f4760 96
+  s_4fb0a54e4e15bf::t_14051b76bc1fa9 49-51
+  s_4fb0a54e4e15bf::t_58124ebd131814 103
+  s_4fb0a54e4e15bf::t_2122ad2a75b60a 111-114
+  s_4fb0a54e4e15bf::t_04e518ca9cc6af 146
+  s_4fb0a54e4e15bf::t_456576d99916f0 149-150
+  s_4fb0a54e4e15bf::t_e5f34c073a4d3c 60
+  s_4fb0a54e4e15bf::t_75f72c8f0b87c7 106-107
+pkg/features/kube_features.go
+  h_f3e429a3560394 529-537,822-823
+  h_f3e429a3560394 824-825
+pkg/controller/jobs/leaderworkerset/leaderworkerset_controller.go
+  h_f3e429a3560394 44-47
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  h_f3e429a3560394 136,211-219
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  h_f3e429a3560394 963-1017
+site/data/featuregates/versioned_feature_list.yaml
+  h_f3e429a3560394 160-165
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  h_f3e429a3560394 160-165
+test/integration/singlecluster/webhook/jobs/suite_test.go
+  h_f3e429a3560394 57
+test/util/constants.go
+  h_f3e429a3560394 67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "697b88815168f637c27c6d88005ee5c1f772201a",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_3f5891a0d898a6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-a878dd03a4ba195f9",
+        "model": "unknown"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    },
+    "s_4fb0a54e4e15bf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3a8d0ec2-7d92-44fa-8d87-a8e7edc4ce51",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
