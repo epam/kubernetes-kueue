@@ -8,7 +8,7 @@ pkg/scheduler/flavorassigner/tas_flavorassigner.go
 pkg/scheduler/flavorassigner/flavorassigner.go
   s_eeafbd885bc5aa::t_ebb20d545a34c5 875-876,878
   s_eeafbd885bc5aa::t_4ceb704466e956 879-881
-  h_99f506dc258b88 791,860-874,877,882-886,888-924
+  h_99f506dc258b88 791,860-874,877,882-924
 ---
 {
   "schema_version": "authorship/3.0.0",
