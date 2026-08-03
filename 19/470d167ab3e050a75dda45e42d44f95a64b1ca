@@ -17,12 +17,19 @@ test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
   s_4fb0a54e4e15bf::t_456576d99916f0 149-150
   s_4fb0a54e4e15bf::t_e20de1957d28e4 154-155
   s_3f5891a0d898a6::t_28c3da722edf44 1-48,119-129
+pkg/features/kube_features.go
+  h_f3e429a3560394 529-537,822-823
 ---
 {
   "schema_version": "authorship/3.0.0",
   "git_ai_version": "1.6.20",
   "base_commit_sha": "19470d167ab3e050a75dda45e42d44f95a64b1ca",
   "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
   "sessions": {
     "s_3f5891a0d898a6": {
       "agent_id": {
