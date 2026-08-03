@@ -1,7 +1,14 @@
+pkg/controller/admissionchecks/multikueue/externalframeworks/adapter.go
+  h_99f506dc258b88 151
 ---
 {
   "schema_version": "authorship/3.0.0",
   "git_ai_version": "1.5.2",
   "base_commit_sha": "fd8cda0c9b55b3ccc42d5977534b863dc7fbde6a",
-  "prompts": {}
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
 }
