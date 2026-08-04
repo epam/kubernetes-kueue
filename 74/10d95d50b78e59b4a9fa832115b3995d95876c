@@ -1,0 +1,18 @@
+pkg/controller/jobs/statefulset/statefulset_reconciler.go
+  h_47cee5fa694435 323-326
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler.go
+  h_47cee5fa694435 358-361
+pkg/controller/jobframework/reconciler.go
+  h_47cee5fa694435 1548
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "7410d95d50b78e59b4a9fa832115b3995d95876c",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
