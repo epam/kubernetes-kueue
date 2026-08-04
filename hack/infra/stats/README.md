@@ -126,8 +126,11 @@ name and supporting percentiles are written under `cpu.algorithm` and `cpu.stats
 |---|---|
 | `target-duration` (default) | Work-conserving: assumes CPU work (avg × duration) is invariant to the request, so it sizes to the value that would stretch each build to about `--cpu-target-min` minutes — p95 of the per-build target mean CPU (see `dist_mean_new_cpu.png`), plus optional `--cpu-legroom-frac`, rounded up to `--cpu-resolution`. |
 | `p95-mean` | Conservative (the original approach): p95 of the per-build mean CPU × 1.15, rounded up to whole cores. Ignores build duration, so it never trades runtime for cores. |
+| `peak-p95` | Duration-neutral: p95 of the per-build **peak** CPU, rounded up to `--cpu-resolution` and bounded by `--cpu-max-cores`. No duration target, so it never trades runtime for cores; sizing off the peak rather than the mean means a build that fits under the value is not throttled harder than it is today. Because `cpu_used_cores` is CFS-clamped at the current limit, the peaks of an already-throttled job are censored and the value is a **lower bound** on demand — `cpu.stats.builds_over_limit_frac` reports how much of the distribution sits at the ceiling. |
 
-Both cap the recommendation at the current limit (test-infra forces `request == limit`) and
+`target-duration` and `p95-mean` cap the recommendation at the current limit (test-infra
+forces `request == limit`); `peak-p95` and the recursive recommender are bounded by
+`--cpu-max-cores` instead, so they can ask for more than the job is allowed today. All
 exclude OOM-killed builds. The recommended CPU limit is set equal to the recommended CPU
 request (`request == limit`, Guaranteed QoS).
 

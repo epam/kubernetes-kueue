@@ -90,13 +90,17 @@ MIN_SAMPLE_POINTS = 8       # timelines: only highlight sample builds with >= th
 
 # CPU right-sizing (issue #12750). The sizing policy is pluggable: the CPU request is
 # produced by one of the named recommenders in CPU_RECOMMENDERS, selected via
-# --cpu-algorithm. The recommenders are work-conserving: they assume each build's CPU work
+# --cpu-algorithm. Most of them are work-conserving: they assume each build's CPU work
 # (avg cores x duration) is roughly invariant to the request (CPU is compressible, so fewer
 # cores just stretch the build), so a build given `work / target` cores would finish in
 # about `target` minutes. The default, "target-duration-improved", refines this by fitting
 # only the compressible peak work into the target budget (see the recommender's docstring),
 # which keeps burst jobs from being under-provisioned. The knobs below are the defaults,
 # each overridable via CLI.
+#
+# "peak-p95" is the exception: it has no duration target and does not trade runtime for
+# cores. It sizes off p95 of the per-build PEAK, so a build is never squeezed below what it
+# already draws. Use it when the constraint is "save cores only where it costs no duration".
 CPU_TARGET_MIN = 10.0  # target build duration in minutes to size the request against
 CPU_LEGROOM_FRAC = 0.0  # fractional headroom on top of the p95 target (0 = none; 0.15 = +15%)
 CPU_RESOLUTION = 0.1   # round the recommendation up to this core granularity (100m)
@@ -104,6 +108,8 @@ CPU_RECURSIVE_PASSES = 5  # target-duration-improved-recursive: per-build refine
 CPU_MAX_CORES = 7.0    # hard ceiling for the recursive reco: a build node has ~7 usable cores
 CPU_MIN_TIME_REMAIN_MIN = 1.0  # recursive: stop refining a build once its leftover target
                                # budget drops below this (minutes), to guard the peak blow-up
+CPU_MIN_BUILDS = 40    # peak-p95: below this many scored builds the p95 is too noisy to act
+                       # on, so the recommendation holds the job's current request instead
 CPU_TAIL_OVERHEAD_MIN = 0.5    # flat estimate of the wall-clock TAIL the test-scoped metrics
                                # cannot see: artifact upload + pod teardown, which run in the
                                # `sidecar` container after the `test` container (and its CPU
@@ -405,6 +411,7 @@ class CPURecoConfig:
     recursive_passes: int = CPU_RECURSIVE_PASSES  # only "target-duration-improved-recursive"
     max_cores: float = CPU_MAX_CORES              # only "target-duration-improved-recursive"
     min_time_remain_min: float = CPU_MIN_TIME_REMAIN_MIN  # only the recursive recommenders
+    min_builds: int = CPU_MIN_BUILDS              # only "peak-p95"
     fixed_overhead_min: float = CPU_TAIL_OVERHEAD_MIN  # flat wall-clock TAIL the test-scoped
                                      # metrics cannot see (artifact upload + pod teardown in the
                                      # sidecar container, after the test CPU series ends). Added
@@ -480,6 +487,67 @@ def cpu_reco_p95_mean(data, min_dur, cfg):
         "headroom_frac": 0.15,
         "saturated": saturated,
         "mean_p95": round(p95, 3),
+    }
+    return val, stats
+
+
+def cpu_reco_peak_p95(data, min_dur, cfg):
+    """Duration-neutral recommender: p95 across builds of each build's PEAK CPU, rounded up
+    to cfg.resolution and bounded by cfg.max_cores.
+
+    Unlike the target-duration family, this one is not work-conserving and carries no
+    duration target: it never trades runtime for cores. Sizing off the peak rather than the
+    mean means the request covers the busiest sample of all but the top 5% of builds, so a
+    build that fits under the recommendation is never throttled harder than it is today.
+    That is the whole point — it is the sizing to reach for when the constraint is "do not
+    prolong any job".
+
+    The value is bounded by cfg.max_cores (one build node) but deliberately NOT capped at
+    the job's current limit, matching cpu_reco_target_duration_improved_recursive: a job
+    whose peaks sit at its ceiling should be allowed to ask for more, up to the node.
+
+    Caveat worth knowing before trusting the output: cpu_used_cores is CFS-clamped at the
+    current limit, so for a job that is already throttled the peak distribution is censored
+    and this p95 is a LOWER bound on demand. `builds_over_limit_frac` reports how much of
+    the distribution sits at or above the current limit; when it is large, read the
+    recommendation as "at least this much", not "exactly this much".
+
+    A job with fewer than cfg.min_builds scored builds does not get a recommendation at all:
+    its p95 is too noisy to act on, so the current request is returned unchanged and
+    `held_low_sample` is set. Sizing off a handful of builds is how a job ends up starved by
+    a window that happened to miss its expensive path.
+
+    Returns (value, stats) or (None, None) when there are fewer than two usable builds."""
+    oom = oom_build_ids(data)
+    vals = per_build(data["series"].get("cpu_used_cores", {}), "peak", min_dur, exclude=oom)
+    if len(vals) < 2:
+        return None, None
+    p95 = float(np.percentile(vals, 95))
+    val = min(round_up_to(p95 * (1 + cfg.legroom_frac), cfg.resolution), cfg.max_cores)
+    cpu_req_cur = const(data, "cpu_request_cores")
+    held = len(vals) < cfg.min_builds and cpu_req_cur is not None
+    if held:
+        val = cpu_req_cur
+    cpu_lim_cur = const(data, "cpu_limit_cores")
+    stats = {
+        "algorithm": "peak-p95",
+        "legroom_frac": cfg.legroom_frac,
+        "resolution": cfg.resolution,
+        "max_cores": cfg.max_cores,
+        "min_builds": cfg.min_builds,
+        # True when the build count was below min_builds, so the current request was held
+        # and the p95 below is reported for information only.
+        "held_low_sample": held,
+        "saturated": val >= cfg.max_cores,
+        "builds_scored": int(len(vals)),
+        "peak_p50": round(float(np.percentile(vals, 50)), 3),
+        "peak_p95": round(p95, 3),
+        "peak_p99": round(float(np.percentile(vals, 99)), 3),
+        "peak_max": round(float(np.max(vals)), 3),
+        # Censoring indicator: fraction of builds whose peak reached the current limit. A
+        # high value means the peaks were clipped by CFS and p95 understates real demand.
+        "builds_over_limit_frac": (round(float(np.mean(vals >= cpu_lim_cur)), 3)
+                                   if cpu_lim_cur else None),
     }
     return val, stats
 
@@ -695,6 +763,7 @@ CPU_RECOMMENDERS = {
     "target-duration-improved-recursive": cpu_reco_target_duration_improved_recursive,
     "target-duration": cpu_reco_target_duration,
     "p95-mean": cpu_reco_p95_mean,
+    "peak-p95": cpu_reco_peak_p95,
 }
 DEFAULT_CPU_ALGORITHM = "target-duration-improved-recursive"
 
@@ -1517,6 +1586,9 @@ def main():
     ap.add_argument("--cpu-max-cores", type=float, default=CPU_MAX_CORES,
                     help="target-duration-improved-recursive CPU reco: hard ceiling in cores "
                          "(default %(default)s = one build node)")
+    ap.add_argument("--cpu-min-builds", type=int, default=CPU_MIN_BUILDS,
+                    help="peak-p95 CPU reco: hold the current request for jobs with fewer "
+                         "than this many scored builds (default %(default)s)")
     ap.add_argument("--cpu-min-time-remain-min", type=float, default=CPU_MIN_TIME_REMAIN_MIN,
                     help="target-duration-improved-recursive CPU reco: stop refining a build "
                          "once its leftover target budget drops below this many minutes "
@@ -1543,6 +1615,7 @@ def main():
                             resolution=args.cpu_resolution,
                             recursive_passes=args.cpu_recursive_passes,
                             max_cores=args.cpu_max_cores,
+                            min_builds=args.cpu_min_builds,
                             min_time_remain_min=args.cpu_min_time_remain_min)
         reco = generate_recommendation(data, base, args.min_duration, cfg, args.cpu_algorithm)
         stats = [s.strip() for s in args.stats.split(",") if s.strip()]
