@@ -1,0 +1,42 @@
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  s_4fb0a54e4e15bf::t_521f6f0c73fa2f 211-219
+pkg/features/kube_features.go
+  s_4fb0a54e4e15bf::t_e585017a21ef73 521-524
+  s_f50ed7b75670f6::t_e8039cfa0ba38b 520
+  s_f50ed7b75670f6::t_ad61f5de3d835c 517-519
+  s_4fb0a54e4e15bf::t_2f0b30e8314c0d 525
+  s_4fb0a54e4e15bf::t_6a8469580a92ba 803-806
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_f50ed7b75670f6::t_17a344cfa183b3 160-165
+test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
+  s_4fb0a54e4e15bf::t_4a436bfba2dc09 87-110
+  s_4fb0a54e4e15bf::t_dc15d60b43f089 29
+site/data/featuregates/versioned_feature_list.yaml
+  s_f50ed7b75670f6::t_17a344cfa183b3 160-165
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  s_4fb0a54e4e15bf::t_777899b1a8c65b 964,982-994,996
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "48a0a5fb9565ed353a6e2eb55e9f887fb313f7f5",
+  "prompts": {},
+  "sessions": {
+    "s_4fb0a54e4e15bf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3a8d0ec2-7d92-44fa-8d87-a8e7edc4ce51",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    },
+    "s_f50ed7b75670f6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6d485952-5255-4db1-b321-9fee70b94835",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
