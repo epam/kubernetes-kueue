@@ -1,0 +1,21 @@
+pkg/features/kube_features.go
+  s_15c4badc5a7202::t_6e83237a3826ad 522-529
+  s_15c4badc5a7202::t_b622477f0405c6 810-812
+  s_15c4badc5a7202::t_ebae08f3112856 813
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "baaa3b47fbe5351c5a88af2e4972cb96cb26e9a9",
+  "prompts": {},
+  "sessions": {
+    "s_15c4badc5a7202": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "38383f30-303e-4cc1-92d7-15b86ce09584",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
