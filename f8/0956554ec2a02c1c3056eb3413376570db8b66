@@ -1,0 +1,90 @@
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_54df8d6ec41c5c::t_6888795d155857 1424,1427,1434,1444,1476-1481,1483-1505,1507-1516,1518-1535
+  s_986a6381eb2c23::t_3cb987b627703c 1449,1460,1506,1517
+  s_0bfb110ed8c400::t_b0928f9b0facce 6470
+  s_54df8d6ec41c5c::t_a128b175fef648 1425-1426,1482
+  s_986a6381eb2c23::t_0c5abd91d8136b 629,645,711,727,1054,1120,1174,1243,1292,1328,1394,1408,1591,1609,1686,1700,1755,1769,1815,1834,1899,1914,1953,1978,2085,2163,2183,2255,2313,2405,2420,2475,2502,2555,2583,2682,2698,2763,2783,2827,2849,2956,3091,3116,3217,3242,3336,3361,3423,3507,3520,3577,3599,3699,3711,3781,3796,3870,3934,3940,3950,3956,4026,4046,4145,4172,4243,4267,4430,4452,4554,4568,4668,4688,4794,5260,5287,5370,5413,5469,5505,5545,5581,5628,5665,5712,5755,5810,5858,5910,5960,6014,6056,6387,6408,6615,6700,7119
+  s_0bfb110ed8c400::t_13079879b5b1da 1423,1428-1433,1435-1443,1445-1448,1450-1459,1461-1475,1536-1538
+  s_6f736837660c53::t_e51791fbd5b071 384,641,657,723,739,1066,1185
+  s_986a6381eb2c23::t_111e18394ccf21 347-353
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_54df8d6ec41c5c::t_4bca3762ae2931 304-309
+pkg/features/kube_features.go
+  s_54df8d6ec41c5c::t_e45642842ca72b 482
+  s_54df8d6ec41c5c::t_488226ebdfb1cf 524
+  s_fb1e03723a91b8::t_c275af1f394fba 525-529,783,812-814
+  s_ddef2d1ba06af9::t_382800d6a7eac4 511
+  s_e7e3f941256da1::t_cfc8d30c001c52 516
+  s_e7e3f941256da1::t_7a9c914f4b1eba 807
+pkg/controller/jobs/pod/pod_controller.go
+  s_fb1e03723a91b8::t_976227f5ab2922 1254-1255
+  s_0bfb110ed8c400::t_183cf099996248 1252-1253,1256-1262
+  s_0bfb110ed8c400::t_9bc1ee06f17ad3 79
+  s_ddef2d1ba06af9::t_994fc122e06fa0 91
+site/data/featuregates/versioned_feature_list.yaml
+  s_54df8d6ec41c5c::t_99f68f15ebe6b2 304-309
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "f80956554ec2a02c1c3056eb3413376570db8b66",
+  "prompts": {},
+  "sessions": {
+    "s_0bfb110ed8c400": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "bc6a317a-8f52-4040-b689-f4e9dad55fc6",
+        "model": "cursor-grok-4.5-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_54df8d6ec41c5c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6abeaf20-668b-40a4-8c5c-e380dda575c5",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_6f736837660c53": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "074b4118-1e62-4509-a2f0-a9cfe5b75014",
+        "model": "cursor-grok-4.5-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_986a6381eb2c23": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "c589e725-672f-4f7e-8918-7343f0a2c08b",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_ddef2d1ba06af9": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "33ee6ca4-f44f-420d-85cc-a442f7b897f1",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_e7e3f941256da1": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "909db74e-e9a6-4640-b463-bf8286b60c42",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_fb1e03723a91b8": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d3f59da4-d877-44f1-bfb7-22a55bf95f54",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
