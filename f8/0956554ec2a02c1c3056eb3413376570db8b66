@@ -16,6 +16,7 @@ pkg/features/kube_features.go
   s_ddef2d1ba06af9::t_382800d6a7eac4 511
   s_e7e3f941256da1::t_cfc8d30c001c52 516
   s_e7e3f941256da1::t_7a9c914f4b1eba 807
+  s_c06cc6081d5a95::t_5dda0b4207d0e1 523
 pkg/controller/jobs/pod/pod_controller.go
   s_fb1e03723a91b8::t_976227f5ab2922 1254-1255
   s_0bfb110ed8c400::t_183cf099996248 1252-1253,1256-1262
@@ -59,6 +60,14 @@ site/data/featuregates/versioned_feature_list.yaml
         "tool": "cursor",
         "id": "c589e725-672f-4f7e-8918-7343f0a2c08b",
         "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_c06cc6081d5a95": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "a2b8a17f-ac83-486c-baef-bbd56693518e",
+        "model": "cursor-grok-4.5-high"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
     },
