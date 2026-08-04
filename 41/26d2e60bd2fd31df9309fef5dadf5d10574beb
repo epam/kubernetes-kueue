@@ -1,0 +1,16 @@
+keps/13746-topology-spreading/README.md
+  h_47cee5fa694435 1,6-7,9-22,24-46,50-52,104-105,109,203-219,369-382,392,454,458-461,463-466,537-540,563
+keps/13746-topology-spreading/kep.yaml
+  h_47cee5fa694435 2,5,9-10,12-13,29-30,40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "4126d2e60bd2fd31df9309fef5dadf5d10574beb",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
