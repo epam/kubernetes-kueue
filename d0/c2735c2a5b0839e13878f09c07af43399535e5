@@ -1,0 +1,56 @@
+pkg/scheduler/flavorassigner/tas_flavorassigner.go
+  s_5005a0d21bc4a9::t_7fcf233ba49c5e 132,137-144
+pkg/scheduler/flavorassigner/flavorassigner.go
+  h_99f506dc258b88 791,860-868,870-874,880,882-896
+  s_c4a6eebdb03422::t_220de0d857825f 948-956
+  s_c4a6eebdb03422::t_3b021ffc6b7fbe 946
+  s_c4a6eebdb03422::t_0f174b37abb514 947
+  s_c4a6eebdb03422::t_b3960d3408d337 869,875-879
+  s_eeafbd885bc5aa::t_4ceb704466e956 881
+pkg/scheduler/flavorassigner/flavorassigner_test.go
+  s_eeafbd885bc5aa::t_debe0c780859a8 33,47,5655-5663,5667-5679,5693,5696,5698-5699,5702,5704-5705,5723,5735,5741,5746-5747,5754,5757,5759-5760,5767-5769,5772,5774,5778,5783,5785,5787-5788,5790,5795,5798,5800-5801,5804,5806-5810,5843-5869,5871-5878,5880-5896,5899-5925,5927-5931,5934-5935,5941,5947-5950,5953-5955,5958-5961,5964-5965
+  s_c4a6eebdb03422::t_b5774d7e479575 43,5952
+  s_c4a6eebdb03422::t_a9f032e016e43c 5731
+  s_eeafbd885bc5aa::t_4912699a13fbe7 5664-5666,5680-5692,5694-5695,5697,5700-5701,5703,5706-5707,5712-5722,5724-5727,5729-5730,5733-5734,5736-5740,5742-5745,5748-5753,5755-5756,5758,5761-5763,5765-5766,5770-5771,5773,5775-5777,5779-5782,5784,5786,5789,5791-5794,5796-5797,5799,5802-5803,5805,5811-5816,5819-5835,5837-5842,5870,5879,5926,5932-5933,5936-5940,5942-5946,5951,5956-5957
+  h_99f506dc258b88 5728,5764,5897-5898,5962-5963,5966-5980
+  s_eeafbd885bc5aa::t_b49ff8f1259d10 5817-5818,5836
+  s_c4a6eebdb03422::t_6561e790b24ef8 5732
+  s_c4a6eebdb03422::t_afd8d75efa04bc 5708-5711
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "d0c2735c2a5b0839e13878f09c07af43399535e5",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_5005a0d21bc4a9": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "9a37fdb4-6ea0-40d1-a42e-a0ad8e1679df",
+        "model": "unknown"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    },
+    "s_c4a6eebdb03422": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "e92782fb-5b44-4853-9b2d-b016a584a64e",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    },
+    "s_eeafbd885bc5aa": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "951fcdb3-52fe-418b-88aa-043c95f0c0d9",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    }
+  }
+}

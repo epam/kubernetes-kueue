@@ -1,0 +1,70 @@
+cmd/kueueviz/backend/handlers/workloads_dashboard.go
+  s_29f51fb26ddb98::t_ad5fd7448bdb88 45-46
+cmd/kueueviz/backend/handlers/workloads.go
+  s_29f51fb26ddb98::t_7c87c177758029 45-52,61-64,127-130
+cmd/kueueviz/backend/handlers/cluster_queues.go
+  s_29f51fb26ddb98::t_b3c3223b03ddc2 31-34,42-45
+cmd/kueueviz/backend/handlers/local_queue_workloads.go
+  s_29f51fb26ddb98::t_083aff5d49e579 34-37
+cmd/kueueviz/backend/middleware/auth_test.go
+  s_930df8340c88c3::t_bb811f9c0d4371 21,25,32,190-222,343-403
+cmd/kueueviz/backend/handlers/handlers.go
+  s_29f51fb26ddb98::t_b2f95e7946adb8 62-64
+  s_29f51fb26ddb98::t_04d13345f4d161 65,67-94,97-102,105-142,145-168,171-185,188-203,206-221,225-237
+  s_29f51fb26ddb98::t_c39e33b659a664 66
+  s_29f51fb26ddb98::t_259a165ea63e2a 25-26,28,38-40,46,50,55-61
+hack/testing/e2e-kueueviz-rbac-bypass.sh
+  s_930df8340c88c3::t_3192a6a52c9f50 1-22,56-58,67-151
+  s_930df8340c88c3::t_7ac3078f5048ef 53-55,59-61
+  s_930df8340c88c3::t_8d7be666b62da2 64-66
+  s_930df8340c88c3::t_0ce742efbc31e0 52
+  s_29f51fb26ddb98::t_047164f52815b5 62-63
+  s_930df8340c88c3::t_522c5f7faa32f3 23-25
+  s_930df8340c88c3::t_e9d536ba36c645 26-51
+cmd/kueueviz/backend/handlers/resource_flavors.go
+  s_29f51fb26ddb98::t_6e91409278b1d0 32-35,44-47
+cmd/kueueviz/backend/handlers/websocket_handler.go
+  s_29f51fb26ddb98::t_39523f863e189d 66
+cmd/kueueviz/backend/handlers/api_handlers.go
+  s_29f51fb26ddb98::t_86661c26491722 49
+cmd/kueueviz/backend/handlers/namespaces.go
+  s_29f51fb26ddb98::t_8ac63f6db6b687 31-34
+cmd/kueueviz/backend/handlers/cohorts.go
+  s_29f51fb26ddb98::t_c361d038b344e0 32-35,43-46
+cmd/kueueviz/backend/handlers/api_handlers_test.go
+  s_29f51fb26ddb98::t_47b17a3b5e5528 57-59
+  s_29f51fb26ddb98::t_fcf58f6aad8197 1-56,64-191
+  s_29f51fb26ddb98::t_a122ea37aabb49 60
+  s_29f51fb26ddb98::t_eeab2fe3e5a66c 61-63
+cmd/kueueviz/backend/handlers/local_queues.go
+  s_29f51fb26ddb98::t_1747fea901ceda 31-34,43-46
+cmd/kueueviz/backend/handlers/websocket_handler_test.go
+  s_29f51fb26ddb98::t_a6cd91580ab8f8 495-497
+  s_29f51fb26ddb98::t_8c2b0c587b00a9 488-490
+  s_29f51fb26ddb98::t_fa1961e2246ed6 23,468-487,498-505
+  s_29f51fb26ddb98::t_0087829bedacea 491-494
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "22227f7b5d3b83cd41bcc349c15c73afae845172",
+  "prompts": {},
+  "sessions": {
+    "s_29f51fb26ddb98": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "31b18af4-aa45-4f3b-a86c-0040d37ec113",
+        "model": "unknown"
+      },
+      "human_author": null
+    },
+    "s_930df8340c88c3": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "b5c1997f-43e1-47ca-9742-469c4f8b82d0",
+        "model": "unknown"
+      },
+      "human_author": null
+    }
+  }
+}
