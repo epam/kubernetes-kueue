@@ -552,6 +552,78 @@ def cpu_reco_peak_p95(data, min_dur, cfg):
     return val, stats
 
 
+def _cpu_reco_pooled(data, min_dur, cfg, percentile):
+    """Shared core for the pooled-pXX family: percentile `percentile` taken directly over
+    every raw 30s CPU sample from every build, pooled into one flat array — NOT per-build
+    percentile (see cpu_reco_peak_p95), which first reduces each build to a single number
+    (its peak) and only then takes a percentile across builds. Pooling means a single
+    long/busy build contributes many more samples than a short one, so the result is
+    weighted by wall-clock time spent at each usage level across the whole fetched window,
+    rather than treating every build as one equally weighted observation. Going to p99
+    instead of p95 covers a rarer, taller slice of that pooled distribution — fewer 30s
+    windows are allowed to exceed the recommended value, at the cost of a higher (or
+    ceiling-saturated) request.
+
+    Same rounding/bounding/gating as peak-p95: legroom, round up to cfg.resolution, bound by
+    cfg.max_cores (not capped at the current limit — a job whose usage sits at its ceiling
+    should be allowed to ask for more, up to the node), and held at the current request when
+    fewer than cfg.min_builds contribute samples.
+
+    Same CFS-clamping caveat as peak-p95: cpu_used_cores is clamped at the current limit, so
+    for an already-throttled job this percentile is a LOWER bound on demand;
+    builds_over_limit_frac reports how much of the pooled distribution sits at or above the
+    current limit.
+
+    Returns (value, stats) or (None, None) when there are fewer than two usable builds."""
+    oom = oom_build_ids(data)
+    per_build_samples = per_build_cpu_samples(data["series"].get("cpu_used_cores", {}), min_dur, exclude=oom)
+    if len(per_build_samples) < 2:
+        return None, None
+    pooled = np.concatenate(per_build_samples)
+    target = float(np.percentile(pooled, percentile))
+    val = min(round_up_to(target * (1 + cfg.legroom_frac), cfg.resolution), cfg.max_cores)
+    cpu_req_cur = const(data, "cpu_request_cores")
+    held = len(per_build_samples) < cfg.min_builds and cpu_req_cur is not None
+    if held:
+        val = cpu_req_cur
+    cpu_lim_cur = const(data, "cpu_limit_cores")
+    stats = {
+        "algorithm": f"pooled-p{percentile:g}",
+        "target_percentile": percentile,
+        "legroom_frac": cfg.legroom_frac,
+        "resolution": cfg.resolution,
+        "max_cores": cfg.max_cores,
+        "min_builds": cfg.min_builds,
+        # True when the build count was below min_builds, so the current request was held
+        # and the percentile below is reported for information only.
+        "held_low_sample": held,
+        "saturated": val >= cfg.max_cores,
+        "builds_scored": int(len(per_build_samples)),
+        "samples_scored": int(len(pooled)),
+        "pooled_p50": round(float(np.percentile(pooled, 50)), 3),
+        "pooled_p95": round(float(np.percentile(pooled, 95)), 3),
+        "pooled_p99": round(float(np.percentile(pooled, 99)), 3),
+        "pooled_max": round(float(np.max(pooled)), 3),
+        # Censoring indicator: fraction of pooled samples at/above the current limit. A high
+        # value means usage was clipped by CFS and the percentile understates real demand.
+        "builds_over_limit_frac": (round(float(np.mean(pooled >= cpu_lim_cur)), 3)
+                                   if cpu_lim_cur else None),
+    }
+    return val, stats
+
+
+def cpu_reco_pooled_p95(data, min_dur, cfg):
+    """Pooled-samples recommender at the 95th percentile. See _cpu_reco_pooled."""
+    return _cpu_reco_pooled(data, min_dur, cfg, 95)
+
+
+def cpu_reco_pooled_p99(data, min_dur, cfg):
+    """Pooled-samples recommender at the 99th percentile — a rarer, taller slice of the
+    pooled distribution than pooled-p95, trading a higher (or ceiling-saturated) request for
+    fewer 30s windows exceeding it. See _cpu_reco_pooled."""
+    return _cpu_reco_pooled(data, min_dur, cfg, 99)
+
+
 def per_build_target_peak_cpu(data, min_dur, cfg):
     """Per-build peak-adjusted target CPU — the distribution the improved recommender
     (cpu_reco_target_duration_improved) takes the p95 of. For each build, the compressible
@@ -764,6 +836,8 @@ CPU_RECOMMENDERS = {
     "target-duration": cpu_reco_target_duration,
     "p95-mean": cpu_reco_p95_mean,
     "peak-p95": cpu_reco_peak_p95,
+    "pooled-p95": cpu_reco_pooled_p95,
+    "pooled-p99": cpu_reco_pooled_p99,
 }
 DEFAULT_CPU_ALGORITHM = "target-duration-improved-recursive"
 
