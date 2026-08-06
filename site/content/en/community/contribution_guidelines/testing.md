@@ -210,7 +210,6 @@ Other variables of note when scripting a direct invocation:
 |----------|---------|
 | `E2E_KIND_VERSION` | Kind node image to use, e.g. `kindest/node:v1.35.0` or a locally built image name |
 | `E2E_MODE` | Set to `dev` to reuse an existing cluster on re-runs and keep the cluster on exit |
-| `E2E_RUN_ONLY_ENV` | Set to `true` to stand up the cluster and deploy Kueue, then exit before running tests |
 | `KIND_CLUSTER_NAME` | Name of the kind cluster to create/reuse |
 | `KIND_CLUSTER_FILE` | Base kind config file to use, relative to `hack/testing/` |
 | `E2E_TARGET_FOLDER` | Go test package under `test/e2e/` to target |

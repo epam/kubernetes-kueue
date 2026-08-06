@@ -56,8 +56,6 @@ If the user only wants the environment ready without running tests, stay on `E2E
 E2E_MODE=dev GINKGO_ARGS="--label-filter=env-only-no-match" make kind-image-build test-multikueue-e2e-baseline
 ```
 
-Since `E2E_MODE=dev` keeps clusters alive regardless of whether any specs ran, this avoids the interactive `E2E_RUN_ONLY_ENV=true` prompt entirely (that flag is considered legacy/likely to be removed — prefer this pattern). Tests can then be run manually, e.g.:
-
 ```sh
 # With default KIND_CLUSTER_NAME=kind (clusters: kind-manager, kind-worker1, kind-worker2):
 ./bin/ginkgo --json-report ./ginkgo.report -focus "MultiKueue when Creating a multikueue admission check Should run a jobSet on worker if admitted" -r

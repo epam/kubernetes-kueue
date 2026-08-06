@@ -61,8 +61,6 @@ If the user only wants the environment ready (no test run), stay on `E2E_MODE=de
 E2E_MODE=dev GINKGO_ARGS="--label-filter=env-only-no-match" make kind-image-build test-e2e-baseline
 ```
 
-Since `E2E_MODE=dev` keeps the cluster alive regardless of whether any specs ran, this avoids the legacy interactive `E2E_RUN_ONLY_ENV=true` mode (prompts `Do you want to cleanup? [Y/n]`) entirely — that flag is considered legacy/likely to be removed, so prefer this pattern.
-
 Useful modifiers (combine with `E2E_MODE=dev`):
 
 - `GINKGO_ARGS="--label-filter=feature:jobset"` — filter which specs run.

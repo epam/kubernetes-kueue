@@ -33,7 +33,6 @@ See [Invoking `e2e-test.sh` directly (without `make`)](https://kueue.sigs.k8s.io
 ```bash
 E2E_KIND_VERSION=kindest/node:was-main \
 E2E_MODE=dev \
-E2E_RUN_ONLY_ENV=true \
 WAS_ENABLED=1 \
 KIND_CLUSTER_NAME=was-test \
 KIND_CLUSTER_FILE=kind-cluster.yaml \
