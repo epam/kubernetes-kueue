@@ -1,0 +1,68 @@
+cmd/kueueviz/backend/handlers/handlers.go
+  s_c78398a587563e::t_643e58a9ce8389 81-83
+  s_c78398a587563e::t_b2bc22e272bb92 177
+  s_c78398a587563e::t_e8b5262b1ffc77 201-203
+  s_c78398a587563e::t_ff1079ddd49652 73-75,77-79
+  s_c78398a587563e::t_068f88aa9f51f3 25-26,28,38-40,46,50,55-60,76,160-165,168-172,180,195-200
+  s_c78398a587563e::t_fd1f12fcfe8c02 64-65,72,80,84-85,87-88,90-117,123-156,176,184,191,204,212,215-216
+  s_c78398a587563e::t_4895564f53d91d 89
+  s_c78398a587563e::t_473331719b9660 173-175
+  s_c78398a587563e::t_541a3600e01b4c 217-218
+  s_c78398a587563e::t_ad54634776bf7c 157-159
+  s_c78398a587563e::t_f584671efc2963 213-214
+  s_c78398a587563e::t_f06ea4d28b4afe 209-211
+  s_c78398a587563e::t_82d44d88bd7f42 192
+  s_c78398a587563e::t_fe6345c3ef6397 61-63
+  s_c78398a587563e::t_033dbe256cf601 181-183
+  s_c78398a587563e::t_3fa40d69340d0d 66-71
+  s_c78398a587563e::t_47bf8a61b8004c 86
+  s_c78398a587563e::t_4d3f592b52f73c 185-190
+  s_c78398a587563e::t_bd525cdf070875 205
+cmd/kueueviz/backend/middleware/auth_test.go
+  s_930df8340c88c3::t_bb811f9c0d4371 21,25,32,190-222,343-403
+cmd/kueueviz/backend/handlers/workloads.go
+  s_c78398a587563e::t_c8c61bf5f10061 45,48,68,76-79
+  s_c78398a587563e::t_881e1f1062d0cb 80-81
+hack/testing/e2e-kueueviz-rbac-bypass.sh
+  s_930df8340c88c3::t_8d7be666b62da2 64-66
+  s_930df8340c88c3::t_e9d536ba36c645 26-51
+  s_930df8340c88c3::t_522c5f7faa32f3 23-25
+  s_930df8340c88c3::t_78735533334afe 62
+  s_930df8340c88c3::t_7ac3078f5048ef 53-55,59-61
+  s_930df8340c88c3::t_0ce742efbc31e0 52
+  s_930df8340c88c3::t_3192a6a52c9f50 1-22,56-58,67-151
+  s_930df8340c88c3::t_1ab9b9da0a2b05 63
+cmd/kueueviz/backend/handlers/workloads_dashboard_test.go
+  s_c78398a587563e::t_d86d193459b580 92,120
+cmd/kueueviz/backend/handlers/local_queues.go
+  s_c78398a587563e::t_bd324e29cd0ba1 32-33
+  s_c78398a587563e::t_eb75482a7bcf3e 34-38,54,56-61,66-72,74
+cmd/kueueviz/backend/handlers/workloads_dashboard.go
+  s_c78398a587563e::t_3adf914270f6be 81
+  s_c78398a587563e::t_0dd2a69b6c0f03 82,86,99,107-115,117,122
+  s_c78398a587563e::t_71d77d781e41a2 41-43,45,58-67,69-79
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "d2a3800cc59db6ab148aa6c2ef4d2e01ddd3bf8e",
+  "prompts": {},
+  "sessions": {
+    "s_930df8340c88c3": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "b5c1997f-43e1-47ca-9742-469c4f8b82d0",
+        "model": "unknown"
+      },
+      "human_author": null
+    },
+    "s_c78398a587563e": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "125a9339-129c-4ea0-b422-fad73913cb7a",
+        "model": "unknown"
+      },
+      "human_author": null
+    }
+  }
+}
