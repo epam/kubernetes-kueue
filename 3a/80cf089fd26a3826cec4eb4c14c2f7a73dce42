@@ -1,0 +1,44 @@
+pkg/controller/jobs/raycluster/raycluster_webhook.go
+  h_f3e429a3560394 259-268,273-275,277-281,283-284
+pkg/controller/jobs/raycluster/raycluster_webhook_test.go
+  h_f3e429a3560394 608-612,621-632,657-679,694-698,701-702
+pkg/controller/jobs/rayjob/rayjob_webhook.go
+  h_f3e429a3560394 167-176,181-183,185-189,191-192
+pkg/controller/jobs/rayjob/rayjob_webhook_test.go
+  h_f3e429a3560394 635-639,675-688,717-743,758-762,765-766
+pkg/controller/jobs/rayservice/rayservice_webhook.go
+  h_f3e429a3560394 168-177,182-184,186-190,192-193
+pkg/controller/jobs/rayservice/rayservice_webhook_test.go
+  h_f3e429a3560394 22,25,27-28,30-32,35-36,38,150-153,155-163,165-232,238-249
+pkg/controller/jobs/sparkapplication/sparkapplication_webhook.go
+  h_f3e429a3560394 173-182,185-187,189-193,195-196
+pkg/controller/jobs/sparkapplication/sparkapplication_webhook_test.go
+  h_f3e429a3560394 25,119-186
+pkg/features/kube_features.go
+  h_f3e429a3560394 537-545,847-850
+site/data/featuregates/versioned_feature_list.yaml
+  h_f3e429a3560394 510-515
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  h_f3e429a3560394 510-515
+test/integration/singlecluster/webhook/jobs/raycluster_webhook_test.go
+  h_f3e429a3560394 30,64-83
+test/integration/singlecluster/webhook/jobs/rayjob_webhook_test.go
+  h_f3e429a3560394 22,24,26,112-131
+test/integration/singlecluster/webhook/jobs/rayservice_webhook_test.go
+  h_f3e429a3560394 1-67
+test/integration/singlecluster/webhook/jobs/sparkapplication_webhook_test.go
+  h_f3e429a3560394 1-67
+test/integration/singlecluster/webhook/jobs/suite_test.go
+  h_f3e429a3560394 63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "3a80cf089fd26a3826cec4eb4c14c2f7a73dce42",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
