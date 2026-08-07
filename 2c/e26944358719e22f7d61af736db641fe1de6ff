@@ -2,9 +2,9 @@ cmd/importer/pod/import.go
   s_b1b85ee75b9f2e::t_fb0d5c571f71be 24,50-53,55-57,60-65,217,221,223-229,231,273,277-288
   s_b1b85ee75b9f2e::t_5fa8bf7fdda514 274-276
   s_b23e3c7fcfd872::t_fef1deac2584f8 218-220
-  h_99f506dc258b88 49,54,58-59,230
+  h_99f506dc258b88 49,54,58-59,222,230,232
 cmd/importer/pod/import_test.go
-  h_99f506dc258b88 226
+  h_99f506dc258b88 80-104,116-120,123-124,129,135-136,151-152,197-232,238-239,248,268-281,287-340
 ---
 {
   "schema_version": "authorship/3.0.0",
