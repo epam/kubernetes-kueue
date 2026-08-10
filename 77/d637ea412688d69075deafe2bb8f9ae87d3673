@@ -1,0 +1,25 @@
+pkg/controller/jobs/pod/pod_controller.go
+  s_6822977172cc64::t_9afffd224b6b14 930
+  s_6822977172cc64::t_40fca36c863628 803-804,812-823,825-844,846-857
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_6822977172cc64::t_c530b4c5ccac99 505-517
+  s_6822977172cc64::t_cfca99448e57bb 490-504,518
+  s_6822977172cc64::t_e5745aa0246443 389-402,416
+  s_6822977172cc64::t_bf0352f8283c6d 403-415
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "77d637ea412688d69075deafe2bb8f9ae87d3673",
+  "prompts": {},
+  "sessions": {
+    "s_6822977172cc64": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "2a3ca7cd-5d60-43be-b925-3c989a0ae45c",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

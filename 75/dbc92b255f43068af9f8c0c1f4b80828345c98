@@ -1,0 +1,48 @@
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_74c99070fe5e1e::t_3d85cc7a5812d7 31
+  s_74c99070fe5e1e::t_e4ac7b783eb297 1891-1968
+pkg/controller/jobs/pod/pod_controller.go
+  s_a9f3ffaa33cf27::t_5f4cc65f75a10e 79,91,1252-1262
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_a9f3ffaa33cf27::t_24dbac5efce61e 377,622,634,638,650,704,716,720,732,1047,1059,1113,1167,1178,1236,1285,1321,1387,1401,1416-1531,1584,1602,1679,1693,1748,1762,1808,1827,1892,1907,1946,1971,2078,2156,2176,2248,2306,2398,2413,2468,2495,2548,2576,2675,2691,2756,2776,2820,2842,2949,3084,3109,3210,3235,3329,3354,3416,3500,3513,3570,3592,3692,3704,3774,3789,3863,3927,3933,3943,3949,4019,4039,4138,4165,4236,4260,4423,4445,4547,4561,4661,4681,4787,5253,5280,5363,5406,5462,5498,5538,5574,5621,5658,5705,5748,5803,5851,5903,5953,6007,6049,6380,6401,6463,6608,6693,7112
+pkg/features/kube_features.go
+  s_a9f3ffaa33cf27::t_7da58152a07aa5 532-538,824-827
+pkg/util/testing/v1beta2/wrappers.go
+  s_a9f3ffaa33cf27::t_2b426e553b8c8b 36,322-326
+site/data/featuregates/versioned_feature_list.yaml
+  s_5ea3dc6bf19fe1::t_099e70316d2b46 282-287
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_5ea3dc6bf19fe1::t_a7c37071d64a4a 282-287
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "75dbc92b255f43068af9f8c0c1f4b80828345c98",
+  "prompts": {},
+  "sessions": {
+    "s_5ea3dc6bf19fe1": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "7ff9dd95-7774-4803-bc2d-91e9a0419281",
+        "model": "cursor-grok-4.5-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_74c99070fe5e1e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6e254faa-a896-4981-bcf1-cbe3d88d5bf2",
+        "model": "cursor-grok-4.5-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_a9f3ffaa33cf27": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "08ac8a08-b25a-4286-b2b5-5ede5d83f821",
+        "model": "cursor-grok-4.5-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

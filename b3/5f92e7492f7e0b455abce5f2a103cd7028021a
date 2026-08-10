@@ -1,0 +1,20 @@
+test/e2e/singlecluster/baseline/provisioning_test.go
+  s_c43cec44b6a08b::t_5ac3b196dd35e2 38,116
+  s_c43cec44b6a08b::t_88e94f6cd2670b 20,110-111
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "b35f92e7492f7e0b455abce5f2a103cd7028021a",
+  "prompts": {},
+  "sessions": {
+    "s_c43cec44b6a08b": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "be1c1893-04bc-4b4e-88a9-503ff43748ba",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

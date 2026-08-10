@@ -1,0 +1,28 @@
+hack/testing/e2e-kueueviz-rbac-bypass.sh
+  s_930df8340c88c3::t_7ac3078f5048ef 53-55,59-61
+  s_930df8340c88c3::t_8d7be666b62da2 64-66
+  s_930df8340c88c3::t_e9d536ba36c645 26-51
+  s_930df8340c88c3::t_0ce742efbc31e0 52
+  s_930df8340c88c3::t_78735533334afe 62
+  s_930df8340c88c3::t_522c5f7faa32f3 23-25
+  s_930df8340c88c3::t_3192a6a52c9f50 1-22,56-58,67-151
+  s_930df8340c88c3::t_1ab9b9da0a2b05 63
+cmd/kueueviz/backend/middleware/auth_test.go
+  s_930df8340c88c3::t_bb811f9c0d4371 21,25,32,190-222,343-403
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "03d3f12f1090358ff9dc01324a3739314fb4048a",
+  "prompts": {},
+  "sessions": {
+    "s_930df8340c88c3": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "b5c1997f-43e1-47ca-9742-469c4f8b82d0",
+        "model": "unknown"
+      },
+      "human_author": null
+    }
+  }
+}
