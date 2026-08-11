@@ -1,0 +1,14 @@
+test/integration/singlecluster/controller/jobs/rayjob/rayjob_controller_test.go
+  h_99f506dc258b88 848,852
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "95cb02133c919e2823e6e2955a0535a20634b9e8",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
