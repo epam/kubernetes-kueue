@@ -505,6 +505,13 @@ def main():
     ap.add_argument("--force", action="store_true",
                     help="re-fetch even jobs whose output folder is already complete; "
                          "by default completed jobs are skipped, so re-running only fills gaps.")
+    ap.add_argument("--minimal", action="store_true",
+                    help="skip the heavy diagnostic-only queries (job packing, node-free "
+                         "CPU/memory, network in/out, CFS/PSI throttle, OOM detection) and fetch "
+                         "only METRICS (cpu/mem usage + requests/limits) and wall_durations — "
+                         "enough to size CPU by usage, wall time, and per-build duration. Use "
+                         "when the anonymous prow proxy is 502/504-ing under the fleet-wide "
+                         "node-scoped joins.")
     args = ap.parse_args()
     if args.concurrency < 1:
         ap.error("--concurrency must be >= 1")
@@ -720,53 +727,57 @@ def fetch_one(job, start, end, step, args, verbose=True):
     for key, rule in METRICS.items():
         data[key] = query_range_chunked(f"sum by (id)({rule}{sel})", start, end, step)
         log(f"  {key:20} {len(data[key])} builds")
-    # Node packing: count all distinct running prow build pods on the node occupied by each
-    # target build. This is fleet-wide (not org/repo scoped) because Kubernetes scheduling is
-    # repository-agnostic. Keep it best-effort so a proxy failure in this cross-fleet diagnostic
-    # does not discard the job's core CPU/memory data.
-    try:
-        data[JOB_PACKING_METRIC] = query_range_chunked(
-            job_packing_expr(args.org, args.repo, job), start, end, step)
-        log(f"  {JOB_PACKING_METRIC:20} {len(data[JOB_PACKING_METRIC])} builds")
-    except Exception as err:
-        data.pop(JOB_PACKING_METRIC, None)
-        log(f"  {JOB_PACKING_METRIC}: skipped after error ({err}); keeping cpu/mem metrics")
-    # Scheduler-free resources: allocatable CPU/memory minus effective requests of all
-    # non-terminal pods assigned to the node. Each resource is best-effort so a failure in this
-    # cross-node diagnostic does not discard core per-job metrics or the other resource.
-    for key, (resource, unit) in NODE_FREE_RESOURCES.items():
+    if args.minimal:
+        log("  --minimal: skipping job packing, node-free resources, CFS/PSI throttle, "
+            "OOM detection, and network")
+    else:
+        # Node packing: count all distinct running prow build pods on the node occupied by each
+        # target build. This is fleet-wide (not org/repo scoped) because Kubernetes scheduling is
+        # repository-agnostic. Keep it best-effort so a proxy failure in this cross-fleet diagnostic
+        # does not discard the job's core CPU/memory data.
         try:
-            data[key] = query_range_chunked(
-                node_free_resource_expr(args.org, args.repo, job, resource, unit),
-                start, end, step)
-            log(f"  {key:20} {len(data[key])} builds")
+            data[JOB_PACKING_METRIC] = query_range_chunked(
+                job_packing_expr(args.org, args.repo, job), start, end, step)
+            log(f"  {JOB_PACKING_METRIC:20} {len(data[JOB_PACKING_METRIC])} builds")
         except Exception as err:
-            data.pop(key, None)
-            log(f"  {key}: skipped after error ({err}); keeping other metrics")
-    # cAdvisor counters: join to prow:job on (namespace,pod) to attach the id label.
-    # prow:job sometimes has two series for the same (namespace,pod) — one plain and one
-    # carrying extra node/pod_ip labels — which makes group_left a many-to-many match and
-    # returns 422. max by (namespace,pod,id) collapses them to one series per pod first.
-    for key, cadv in JOINED_METRICS.items():
-        expr = (f'sum by (id)({cadv}{{container="test"}} * on(namespace,pod) '
-                f'group_left(id) max by (namespace,pod,id)(prow:job{sel}))')
-        data[key] = query_range_chunked(expr, start, end, step)
-        log(f"  {key:20} {len(data[key])} builds")
-    # network counters (see NET_METRICS): resolved per build by pod pushdown, not a PromQL join:
-    # job_pod_index gives this job's pods (and their build ids) from prow:job, then
-    # fetch_network_by_pod selects the counter for exactly those pods and attaches the build id in
-    # Python — avoiding the fleet-wide scan + group_left join that returned 502/504 on wide windows.
-    # These raw-cAdvisor queries are the heaviest of the fetch, so they stay best-effort: on error we
-    # drop any partial network data and keep the cpu/mem results rather than failing the whole job.
-    try:
-        net_index = job_pod_index(args.org, args.repo, job, args.phase, start, end)
-        for key, cadv in NET_METRICS.items():
-            data[key] = fetch_network_by_pod(cadv, net_index, start, end, step)
+            data.pop(JOB_PACKING_METRIC, None)
+            log(f"  {JOB_PACKING_METRIC}: skipped after error ({err}); keeping cpu/mem metrics")
+        # Scheduler-free resources: allocatable CPU/memory minus effective requests of all
+        # non-terminal pods assigned to the node. Each resource is best-effort so a failure in this
+        # cross-node diagnostic does not discard core per-job metrics or the other resource.
+        for key, (resource, unit) in NODE_FREE_RESOURCES.items():
+            try:
+                data[key] = query_range_chunked(
+                    node_free_resource_expr(args.org, args.repo, job, resource, unit),
+                    start, end, step)
+                log(f"  {key:20} {len(data[key])} builds")
+            except Exception as err:
+                data.pop(key, None)
+                log(f"  {key}: skipped after error ({err}); keeping other metrics")
+        # cAdvisor counters: join to prow:job on (namespace,pod) to attach the id label.
+        # prow:job sometimes has two series for the same (namespace,pod) — one plain and one
+        # carrying extra node/pod_ip labels — which makes group_left a many-to-many match and
+        # returns 422. max by (namespace,pod,id) collapses them to one series per pod first.
+        for key, cadv in JOINED_METRICS.items():
+            expr = (f'sum by (id)({cadv}{{container="test"}} * on(namespace,pod) '
+                    f'group_left(id) max by (namespace,pod,id)(prow:job{sel}))')
+            data[key] = query_range_chunked(expr, start, end, step)
             log(f"  {key:20} {len(data[key])} builds")
-    except Exception as err:
-        for key in NET_METRICS:                     # all-or-nothing: don't leave one series behind
-            data.pop(key, None)
-        log(f"  network: skipped after error ({err}); keeping cpu/mem metrics")
+        # network counters (see NET_METRICS): resolved per build by pod pushdown, not a PromQL join:
+        # job_pod_index gives this job's pods (and their build ids) from prow:job, then
+        # fetch_network_by_pod selects the counter for exactly those pods and attaches the build id in
+        # Python — avoiding the fleet-wide scan + group_left join that returned 502/504 on wide windows.
+        # These raw-cAdvisor queries are the heaviest of the fetch, so they stay best-effort: on error we
+        # drop any partial network data and keep the cpu/mem results rather than failing the whole job.
+        try:
+            net_index = job_pod_index(args.org, args.repo, job, args.phase, start, end)
+            for key, cadv in NET_METRICS.items():
+                data[key] = fetch_network_by_pod(cadv, net_index, start, end, step)
+                log(f"  {key:20} {len(data[key])} builds")
+        except Exception as err:
+            for key in NET_METRICS:                     # all-or-nothing: don't leave one series behind
+                data.pop(key, None)
+            log(f"  network: skipped after error ({err}); keeping cpu/mem metrics")
 
     # Exact wall-clock duration from prow:job phase transitions
     try:

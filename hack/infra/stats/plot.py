@@ -68,7 +68,7 @@ Examples:
   ./plot.py ./<dir> --only distribution           # just dist_* + recommendation.json
   ./plot.py ./<dir> --only throttle,timeline --samples 3 --seed 7
 """
-import argparse, json, math, os, random
+import argparse, glob, json, math, os, random, statistics
 from dataclasses import dataclass
 import numpy as np
 import matplotlib
@@ -201,6 +201,28 @@ def per_build_cpu_work(series, min_dur_min=0.0, exclude=None):
             continue
         out.append((float(np.mean([v for _, v in pts])), dur))
     return out
+
+
+def per_build_wall_durations_matching(data, min_dur_min=0.0, exclude=None):
+    """Wall-clock duration (minutes) per build, restricted to the same build population
+    per_build_cpu_work would score (>=2 cpu_used_cores samples, active span >= min_dur_min,
+    not in `exclude`) and further limited to ids with a wall_durations entry. Lets the
+    wall-clock panel in dist_duration.png show exactly the same builds as the CPU-active
+    panel, so the two histograms are directly comparable rather than drawn from different
+    populations."""
+    exclude = exclude or set()
+    used = data["series"].get("cpu_used_cores", {})
+    wall_durations = data.get("wall_durations", {})
+    out = []
+    for bid, pts in used.items():
+        if bid in exclude or len(pts) < 2 or bid not in wall_durations:
+            continue
+        ts = [t for t, _ in pts]
+        dur = (max(ts) - min(ts)) / 60.0
+        if dur < min_dur_min:
+            continue
+        out.append(wall_durations[bid])
+    return np.array(out)
 
 
 def target_new_avg_cpus(pairs, target_min):
@@ -340,6 +362,16 @@ def round_up_to(x, res):
     """Round x UP to the nearest multiple of res, so any added legroom is never rounded
     away. res=0.1 gives 100m CPU granularity."""
     return round(math.ceil(x / res) * res, 3)
+
+
+def snap_to_node_packing(val, max_cores):
+    """Once a request already exceeds half a node (cfg.max_cores / 2, e.g. 3.5 of 7), 2-per-node
+    packing is lost either way -- the scheduler cannot fit two such pods on one build node -- so
+    round up to the FULL node instead of leaving a few oddly-shaped leftover cores that neither
+    this job nor any other build can use. The extra headroom is free: there is nothing else on
+    the node to pack into that gap. Below the halfway point, packing is preserved, so the value
+    passes through unchanged."""
+    return max_cores if val > max_cores / 2 else val
 
 
 def oom_build_ids(data):
@@ -830,9 +862,63 @@ def cpu_reco_target_duration_improved_recursive(data, min_dur, cfg):
 
 # Pluggable CPU sizing policies. Add an algorithm here and it becomes selectable via
 # --cpu-algorithm with no other wiring. Each maps (data, min_dur, cfg) -> (value, stats).
+def cpu_reco_target_duration_longest_job_recursive_cutoff(data, min_dur, cfg):
+    """Like cpu_reco_target_duration_improved_recursive, but meant to be run with cfg.target_min
+    set to a GLOBAL constant computed once across every job in the batch (see
+    compute_target_duration.py), not the usual fixed per-job default: the largest per-job median
+    (p50) wall-clock build duration among all fetched jobs -- i.e. every job is sized against the
+    typical runtime of whichever single job in the batch normally takes the longest, rather than
+    an arbitrary fixed number of minutes that may not fit any of them.
+
+    The per-build fixed-point CPU fit (recursive_target_cpu), p95-across-builds aggregation,
+    legroom, and rounding are identical to the base recursive recommender, and it stays UNCAPPED
+    against the current k8s limit for the same reason (a job whose builds genuinely need more to
+    hit the target should be allowed to ask for it, up to the node).
+
+    The one addition is the node-packing cutoff: a build node has cfg.max_cores (~7) usable
+    cores, so a request already above half a node (cfg.max_cores / 2, ~3.5) cannot share the node
+    2-per-node no matter how close to 3.5 it sits -- packing is lost either way -- so
+    snap_to_node_packing rounds it up to the FULL node instead of leaving a handful of leftover
+    cores unusable by any other build. Below the halfway point, packing is preserved and the
+    plain rounded value is kept.
+
+    Returns (value, stats) or (None, None) when there are fewer than two usable builds."""
+    oom = oom_build_ids(data)
+    builds = per_build_cpu_samples_dur_overhead(data, min_dur, exclude=oom)
+    if len(builds) < 2:
+        return None, None
+    has_wall = "wall_durations" in data and bool(data["wall_durations"])
+    fixed_oh = 0.0 if has_wall else cfg.fixed_overhead_min
+    per = np.array([recursive_target_cpu(s, d, cfg, overhead_min=oh, fixed_overhead_min=fixed_oh) for s, d, oh in builds])
+    overheads = np.array([oh for _, _, oh in builds])
+    p95 = float(np.percentile(per, 95))
+    capped = min(round_up_to(p95 * (1 + cfg.legroom_frac), cfg.resolution), cfg.max_cores)
+    val = snap_to_node_packing(capped, cfg.max_cores)
+    stats = {
+        "algorithm": "target-duration-longest-job-improved-recursive-with-cutoff",
+        "target_min": cfg.target_min,
+        "legroom_frac": cfg.legroom_frac,
+        "resolution": cfg.resolution,
+        "passes": cfg.recursive_passes,
+        "max_cores": cfg.max_cores,
+        "node_pack_threshold": round(cfg.max_cores / 2, 3),
+        "fixed_overhead_min": fixed_oh,
+        "saturated": val >= cfg.max_cores,
+        "node_packing_snapped": val > capped,
+        "reco_p50": round(float(np.percentile(per, 50)), 3),
+        "reco_p95": round(p95, 3),
+        "reco_p99": round(float(np.percentile(per, 99)), 3),
+        "overhead_min_p50": round(float(np.percentile(overheads, 50)), 3),
+        "overhead_min_p95": round(float(np.percentile(overheads, 95)), 3),
+        "builds_at_ceiling": int(np.sum(per >= cfg.max_cores)),
+    }
+    return val, stats
+
+
 CPU_RECOMMENDERS = {
     "target-duration-improved": cpu_reco_target_duration_improved,
     "target-duration-improved-recursive": cpu_reco_target_duration_improved_recursive,
+    "target-duration-longest-job-improved-recursive-with-cutoff": cpu_reco_target_duration_longest_job_recursive_cutoff,
     "target-duration": cpu_reco_target_duration,
     "p95-mean": cpu_reco_p95_mean,
     "peak-p95": cpu_reco_peak_p95,
@@ -895,14 +981,19 @@ def build_reco_json(data, reco, min_dur):
 
     n = len(per_build(data["series"].get("mem_used_bytes", {}), "mean", min_dur, exclude=oom))
     cpu_req_cur, mem_req_cur = const(data, "cpu_request_cores"), const(data, "mem_request_bytes", True)
-    durs = [d for _, d in per_build_cpu_work(data["series"].get("cpu_used_cores", {}), min_dur, exclude=oom)]
+    wall_durs = per_build_wall_durations_matching(data, min_dur, exclude=oom)
     return {
         "job": data.get("job"),
         "range_days": round((data["end"] - data["start"]) / 86400, 2),
         "step_s": data.get("step"),
         "builds": n,
         "builds_oom_excluded": len(oom),
-        "avg_duration_min": round(float(np.mean(durs)), 2) if durs else None,
+        # Wall-clock (prow:job phase transitions), not the CPU-active span: real end-to-end
+        # build time including queue, image pulls, and the post-test upload/teardown tail.
+        # See per_build_wall_durations_matching / dist_duration.png's bottom panel.
+        "avg_duration_min": round(float(np.mean(wall_durs)), 2) if len(wall_durs) else None,
+        "p50_duration_min": round(float(np.percentile(wall_durs, 50)), 2) if len(wall_durs) else None,
+        "p95_duration_min": round(float(np.percentile(wall_durs, 95)), 2) if len(wall_durs) else None,
         "burstiness": compute_burstiness(data, min_dur),
         "cpu": {
             "algorithm": reco["cpu_algorithm"],
@@ -1014,12 +1105,21 @@ def plot_distribution(data, base_dir, reco, bins=30, min_dur=0.0, stats=("mean",
         print(f"  dist_{stat} -> {out}")
 
 
-def _draw_duration_hist(ax, durs, target_min, bins=30):
-    """Per-build duration histogram (minutes) with p50/p95/p99, the mean, and the gold
-    target marker. Shared by dist_duration.png and the bottom panel of dist_mean_new_cpu.png
-    so the two stay identical."""
-    _hist_on_ax(ax, durs, "per-build duration (minutes)",
-                f"build durations across {len(durs)} builds "
+def _draw_duration_hist(ax, durs, target_min, bins=30, kind="per-build duration"):
+    """Duration histogram (minutes) with p50/p95/p99, the mean, and the gold target marker.
+    Shared by both panels of dist_duration.png and the bottom panel of dist_mean_new_cpu.png
+    so they stay identical. `kind` names which duration is being drawn: the default
+    "per-build duration" is the CPU-active span (cpu_used_cores sample span) that the plain
+    target-duration family and dist_mean_new_cpu.png size against; dist_duration.png's second
+    panel passes "wall-clock duration" for the real prow:job phase-transition time that
+    target-duration-longest-job-improved-recursive-with-cutoff actually targets (its recursive
+    fit subtracts each build's wall-minus-active overhead from cfg.target_min before fitting
+    CPU to the active span, so target_min there IS a wall-clock quantity). The two are
+    different numbers for the same builds — wall-clock includes queue time, image pulls, and
+    the post-test upload/teardown tail that the CPU-active span excludes — so a target line
+    only lines up with the panel of the same kind."""
+    _hist_on_ax(ax, durs, f"{kind} (minutes)",
+                f"{kind}s across {len(durs)} builds "
                 f"(builds ≥ {target_min:g} min keep their CPU unchanged)", bins=bins)
     if len(durs) >= 2:
         ax.axvline(float(np.mean(durs)), color="#1F77B4", ls="-.", lw=2,
@@ -1127,17 +1227,36 @@ def plot_new_cpu_distribution(data, base_dir, reco, bins=30, min_dur=0.0,
 
 def plot_duration_distribution(data, base_dir, bins=30, min_dur=0.0,
                                target_min=CPU_TARGET_MIN):
-    """Render dist_duration.png: the per-build duration histogram on its own image — the
-    same panel shown at the bottom of dist_mean_new_cpu.png, with mean/percentiles and the
-    target marker. OOM-killed builds are excluded, matching the recommendation."""
+    """Render dist_duration.png: two stacked duration histograms over the SAME build
+    population — top: the CPU-active span (cpu_used_cores sample span), matching what the
+    plain target-duration family and dist_mean_new_cpu.png size against; bottom: the real
+    wall-clock duration (prow:job phase transitions, see per_build_wall_durations_matching),
+    matching what target-duration-longest-job-improved-recursive-with-cutoff actually targets
+    (its recursive fit subtracts each build's wall-minus-active overhead from cfg.target_min
+    before fitting CPU to the active span, so its target_min IS a wall-clock quantity — see
+    _draw_duration_hist). The two numbers differ for the same builds (wall-clock includes
+    queue time, image pulls, and the post-test upload/teardown tail the active span excludes),
+    so whichever algorithm produced target_min, its gold line lands on the panel that actually
+    measures it. The wall-clock panel is skipped when wall_durations was not fetched (older
+    data, or a proxy failure — see fetch_prow_wall_durations). OOM-killed builds are excluded
+    from both, matching the recommendation."""
     oom = oom_build_ids(data)
     pairs = per_build_cpu_work(data["series"].get("cpu_used_cores", {}), min_dur, exclude=oom)
     if len(pairs) < 2:
         print("  dist_duration: skipped (not enough CPU data)")
         return
     durs = np.array([d for _, d in pairs])
-    fig, ax = plt.subplots(figsize=(12, 6.5))
-    _draw_duration_hist(ax, durs, target_min, bins)
+    wall_durs = per_build_wall_durations_matching(data, min_dur, exclude=oom)
+
+    has_wall = len(wall_durs) >= 2
+    rows = 2 if has_wall else 1
+    fig, axes = plt.subplots(rows, 1, figsize=(12, 6.5 * rows))
+    axes = np.atleast_1d(axes)
+    _draw_duration_hist(axes[0], durs, target_min, bins, kind="CPU-active duration")
+    if has_wall:
+        _draw_duration_hist(axes[1], wall_durs, target_min, bins, kind="wall-clock duration")
+    else:
+        print("  dist_duration: wall-clock panel skipped (no wall_durations)")
     fig.suptitle(f"{data.get('job')}  —  per-build duration  —  {data.get('step')}s step, "
                  f"{days_of(data)}d", fontsize=13)
     fig.tight_layout()
@@ -1627,6 +1746,36 @@ def plot_network_timeline(data, base_dir, picks):
     print(f"  timeline_network -> {out}  ({n} builds, {len(picks)} samples)")
 
 
+def discover_longest_job_target_min(job_base_dir):
+    """Auto-compute the target duration for
+    target-duration-longest-job-improved-recursive-with-cutoff: the largest per-job median
+    (p50) wall-clock build duration among every job folder alongside `job_base_dir` -- i.e.
+    every job's raw_series.json under the same work directory (fetch_prow_metrics.py's
+    --out-dir), the way they were fetched together as one batch.
+
+    This mirrors compute_target_duration.py's per_job_median_wall_minutes exactly (median of
+    wall_durations restricted to ids also present in cpu_used_cores), inlined here so the
+    algorithm computes its own target correctly by construction, rather than depending on the
+    caller remembering to run that script first and pass its printed value via
+    --cpu-target-min. compute_target_duration.py remains useful on its own as an inspectable
+    batch report (a table across every job, not just the max).
+
+    Returns None if no sibling folder (including this one) has >=2 usable builds."""
+    workdir = os.path.dirname(os.path.normpath(job_base_dir))
+    best = None
+    for raw_path in sorted(glob.glob(os.path.join(workdir, "*", "raw_series.json"))):
+        with open(raw_path) as f:
+            raw = json.load(f)
+        cpu_ids = set(raw["series"].get("cpu_used_cores", {}))
+        vals = [v for bid, v in raw.get("wall_durations", {}).items() if bid in cpu_ids]
+        if len(vals) < 2:
+            continue
+        median_min = statistics.median(vals)
+        if best is None or median_min > best:
+            best = median_min
+    return best
+
+
 # --------------------------------------------------------------------------- #
 # Entry point
 # --------------------------------------------------------------------------- #
@@ -1645,9 +1794,13 @@ def main():
     ap.add_argument("--cpu-algorithm", default=DEFAULT_CPU_ALGORITHM,
                     choices=sorted(CPU_RECOMMENDERS),
                     help="CPU sizing policy for the recommendation (default %(default)s)")
-    ap.add_argument("--cpu-target-min", type=float, default=CPU_TARGET_MIN,
+    ap.add_argument("--cpu-target-min", type=float, default=None,
                     help="target-duration CPU reco: target build duration in minutes "
-                         "(default %(default)s)")
+                         f"(default {CPU_TARGET_MIN:g}, except for "
+                         "target-duration-longest-job-improved-recursive-with-cutoff, which "
+                         "auto-discovers it from sibling job folders when omitted -- see "
+                         "discover_longest_job_target_min). Pass explicitly to override "
+                         "either default.")
     ap.add_argument("--cpu-legroom-frac", type=float, default=CPU_LEGROOM_FRAC,
                     help="target-duration CPU reco: fractional headroom on top of the p95 "
                          "target (default %(default)s = none; e.g. 0.15 = +15%%)")
@@ -1683,8 +1836,22 @@ def main():
     data, base = load(args.path)
     print(f"{data.get('job')}  ({base})")
 
+    target_min = args.cpu_target_min
+    if target_min is None:
+        if args.cpu_algorithm == "target-duration-longest-job-improved-recursive-with-cutoff":
+            target_min = discover_longest_job_target_min(base)
+            if target_min is None:
+                ap.error("target-duration-longest-job-improved-recursive-with-cutoff: could not "
+                         "auto-discover a target duration from sibling job folders under "
+                         f"{os.path.dirname(os.path.normpath(base))} (no folder had >=2 usable "
+                         "builds with wall_durations); pass --cpu-target-min explicitly.")
+            print(f"  auto target duration (longest-job p50 wall-clock across the batch): "
+                  f"{target_min:.2f} min")
+        else:
+            target_min = CPU_TARGET_MIN
+
     if "distribution" in which:
-        cfg = CPURecoConfig(target_min=args.cpu_target_min,
+        cfg = CPURecoConfig(target_min=target_min,
                             legroom_frac=args.cpu_legroom_frac,
                             resolution=args.cpu_resolution,
                             recursive_passes=args.cpu_recursive_passes,
@@ -1695,9 +1862,9 @@ def main():
         stats = [s.strip() for s in args.stats.split(",") if s.strip()]
         plot_distribution(data, base, reco, args.bins, args.min_duration, stats)
         plot_new_cpu_distribution(data, base, reco, args.bins, args.min_duration,
-                                  args.cpu_target_min, cfg)
+                                  target_min, cfg)
         plot_duration_distribution(data, base, args.bins, args.min_duration,
-                                   args.cpu_target_min)
+                                   target_min)
         plot_peak_duration_distribution(data, base, args.bins, args.min_duration, cfg)
         plot_work_distribution(data, base, args.bins, args.min_duration)
         plot_crest_distribution(data, base, args.bins, args.min_duration)
