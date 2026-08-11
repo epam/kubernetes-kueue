@@ -1,0 +1,21 @@
+pkg/cache/scheduler/cohort_metrics.go
+  s_30b8c12d86e412::t_363ff9150ce874 65
+  s_30b8c12d86e412::t_47229eada52f15 217
+  s_30b8c12d86e412::t_8c0ca2d9de47d7 43,45-52,56-64,66,68,74-91,155-195
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "a493272f1ca868b1aff55f7f69f6626a9f7ac3e4",
+  "prompts": {},
+  "sessions": {
+    "s_30b8c12d86e412": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "a38959fd-c2f2-4952-8cfd-2f2a7b6f24fd",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
