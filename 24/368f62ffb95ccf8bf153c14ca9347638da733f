@@ -1,0 +1,43 @@
+pkg/controller/core/clusterqueue_controller_test.go
+  h_99f506dc258b88 703-800
+pkg/metrics/metrics.go
+  h_99f506dc258b88 299-302,315-318,943-951,987-995,1337-1341,1359-1363,1380-1384,1540,1602,1608
+test/integration/singlecluster/controller/core/clusterqueue_controller_test.go
+  h_99f506dc258b88 1346-1471
+site/content/en/docs/reference/metrics.md
+  h_99f506dc258b88 107,123
+pkg/cache/scheduler/cohort_metrics.go
+  s_30b8c12d86e412::t_1d8e4b712fdcca 101
+  h_99f506dc258b88 40,43,45-52,56-66,68,74-91,111-113,115,117,123,128,131,137,148,152,156-196,216-219,252-299
+pkg/metrics/metrics_test.go
+  h_99f506dc258b88 28-29,259-282
+pkg/cache/scheduler/cohort_metrics_test.go
+  h_99f506dc258b88 29,867-917
+pkg/cache/scheduler/cache.go
+  h_99f506dc258b88 836,844-859,878
+pkg/cache/scheduler/clusterqueue.go
+  h_99f506dc258b88 590-598
+test/util/metrics.go
+  h_99f506dc258b88 349-360
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "24368f62ffb95ccf8bf153c14ca9347638da733f",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_30b8c12d86e412": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "a38959fd-c2f2-4952-8cfd-2f2a7b6f24fd",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    }
+  }
+}
