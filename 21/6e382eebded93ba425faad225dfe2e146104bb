@@ -1,0 +1,38 @@
+pkg/features/kube_features.go
+  s_27a26ccd87df5c::t_2e903736916386 859
+  s_27a26ccd87df5c::t_e913e4e3299b60 857-858
+  s_27a26ccd87df5c::t_ccacbab62cd900 860
+  s_27a26ccd87df5c::t_8586655c275377 549-557
+pkg/controller/jobs/leaderworkerset/leaderworkerset_controller.go
+  s_27a26ccd87df5c::t_1e0bb26a21d863 44-47
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  s_27a26ccd87df5c::t_8dac8217b2ff8f 136,211-219
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  s_27a26ccd87df5c::t_2947eeefb979f1 963-1017
+site/data/featuregates/versioned_feature_list.yaml
+  s_27a26ccd87df5c::t_2637dcd112561e 170-175
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_27a26ccd87df5c::t_4d7613dc21de02 170-175
+test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
+  s_27a26ccd87df5c::t_9b97ba47cf5dcf 1-155
+test/integration/singlecluster/webhook/jobs/suite_test.go
+  s_27a26ccd87df5c::t_81d50ecf5eea10 57
+test/util/constants.go
+  s_27a26ccd87df5c::t_02d4ec8f4d0034 67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "216e382eebded93ba425faad225dfe2e146104bb",
+  "prompts": {},
+  "sessions": {
+    "s_27a26ccd87df5c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "51bab270-2d33-44d1-819c-09624c2e52c1",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

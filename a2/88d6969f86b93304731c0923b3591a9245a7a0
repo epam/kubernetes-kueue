@@ -1,0 +1,81 @@
+cmd/importer/pod/check_test.go
+  s_b23e3c7fcfd872::t_9e984facf18c85 25,62-67,190-223,232,235
+  s_b23e3c7fcfd872::t_858cbb216460e4 31,108-121
+  s_b23e3c7fcfd872::t_ab591daebfef7d 26
+  s_b23e3c7fcfd872::t_e7e7ac6c52a7de 122
+cmd/importer/pod/check.go
+  s_b23e3c7fcfd872::t_89789d7f8ffd92 34,105,107
+  h_99f506dc258b88 24,37,88,134-136,158-162,168,170,172,176-177,179,183-185,187-193,195-197
+  s_b23e3c7fcfd872::t_f0cd9d78f47528 143
+  s_b23e3c7fcfd872::t_d8f3a3cb40b6e5 73
+  s_b23e3c7fcfd872::t_cf12f431db9992 23,35,41-49,62,67,85-87,89-104,108-110,112-133,137-142,144-157,186
+  s_06eff7e3c8c407::t_60adeb2c72fa51 25,163-167,169,171,173-175,178,180,182
+  s_b23e3c7fcfd872::t_c8d219fdfcb08e 72
+  s_b23e3c7fcfd872::t_5c0e5ea0a2e2ec 106
+  s_b23e3c7fcfd872::t_af0850ce20f6a4 111
+cmd/importer/README.md
+  s_b23e3c7fcfd872::t_921cb535d72dda 33-35
+cmd/importer/pod/import.go
+  s_b23e3c7fcfd872::t_8492b72e742d42 131-138,141
+  s_b23e3c7fcfd872::t_5b4f5bb95cd5df 76
+  s_06eff7e3c8c407::t_8910676d0b0819 119-120,124
+  s_b23e3c7fcfd872::t_266ce9120c45f7 129-130,139
+  s_06eff7e3c8c407::t_d8449f269921e4 199-201,213,215,219-221,225-226
+  s_b23e3c7fcfd872::t_9ea06c54eba7c4 113-118,121-123,125-128,150-154,157,162-163,171,186-187,234,236-237
+  s_b23e3c7fcfd872::t_53d5f56133e63a 59,64-66,70,86
+  s_b23e3c7fcfd872::t_0698728c2f7349 72-75
+  s_b23e3c7fcfd872::t_dabde5b05fa3a2 140,142-148
+cmd/importer/pod/errors.go
+  s_06eff7e3c8c407::t_e43b15a4566306 1-35,37-52,54-57
+  s_06eff7e3c8c407::t_3081ee04c3ed11 36,53
+cmd/importer/pod/import_test.go
+  s_b23e3c7fcfd872::t_90028a74141812 26
+  s_b23e3c7fcfd872::t_970ad718cea651 351
+  s_b23e3c7fcfd872::t_298c52420ab49b 210-236
+  s_b23e3c7fcfd872::t_5e0f03f0964b8a 451-454,495
+  s_b23e3c7fcfd872::t_c433f641cfac06 156-164,357-376,383-402,411,415
+  s_b23e3c7fcfd872::t_51f3b0110d35ae 377-382
+  s_b23e3c7fcfd872::t_fbc1461714a943 267-282,284-285
+  s_b23e3c7fcfd872::t_73cdb56963d9b4 283
+cmd/importer/cache/cache_test.go
+  s_b23e3c7fcfd872::t_28760a7254a171 1-99
+cmd/importer/cache/cache.go
+  s_b23e3c7fcfd872::t_21caf47101223b 28,33,54-55,57-58,108-115,117-123,125-131,139-146,148-150,153-159
+  s_b23e3c7fcfd872::t_d7c0d5ec02d70b 132,134-138,151-152,195-196
+  s_b23e3c7fcfd872::t_c97dd76f8ab15b 133
+  h_99f506dc258b88 160-179,183-194,197
+  s_b23e3c7fcfd872::t_1fced45e466870 59-61,116,147
+  s_06eff7e3c8c407::t_27ab7db2e35e60 180-182
+  s_b23e3c7fcfd872::t_9ce9aed8c0644c 56
+  s_b23e3c7fcfd872::t_bded5a2ff0dd3b 24,53
+  s_b23e3c7fcfd872::t_a7868cc61b0613 102-107,124
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "a288d6969f86b93304731c0923b3591a9245a7a0",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_06eff7e3c8c407": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "f52d0b82-e1f2-4c81-9631-63d000713095",
+        "model": "claude-sonnet-4.6"
+      },
+      "human_author": null
+    },
+    "s_b23e3c7fcfd872": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "e4a39f7a-e5ca-4e5d-9ae0-a34cbbe9ea21",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}

@@ -1,0 +1,51 @@
+cmd/importer/pod/check_test.go
+  s_b23e3c7fcfd872::t_858cbb216460e4 29,105-118
+  s_b23e3c7fcfd872::t_e7e7ac6c52a7de 119
+cmd/importer/pod/check.go
+  s_b23e3c7fcfd872::t_89789d7f8ffd92 32,119,121
+  s_b23e3c7fcfd872::t_d8f3a3cb40b6e5 70
+  s_b23e3c7fcfd872::t_5c0e5ea0a2e2ec 96-108,110-112,120
+  s_b23e3c7fcfd872::t_af0850ce20f6a4 125
+  s_b23e3c7fcfd872::t_cf12f431db9992 23,33,38-46,59,64,82-95,113-118,122-124,126-153,155-168
+  s_b23e3c7fcfd872::t_f0cd9d78f47528 154
+  s_b23e3c7fcfd872::t_c8d219fdfcb08e 69
+cmd/importer/cache/cache.go
+  s_b23e3c7fcfd872::t_3a081daa1c4153 54-56
+  s_b23e3c7fcfd872::t_a7868cc61b0613 97-127
+  s_b23e3c7fcfd872::t_d7c0d5ec02d70b 128,130-160
+  s_b23e3c7fcfd872::t_bded5a2ff0dd3b 24,51-53
+  s_b23e3c7fcfd872::t_c97dd76f8ab15b 129
+cmd/importer/cache/cache_test.go
+  s_b23e3c7fcfd872::t_28760a7254a171 1-99
+cmd/importer/pod/import.go
+  s_b23e3c7fcfd872::t_53d5f56133e63a 77,82-84,88,104
+  s_b23e3c7fcfd872::t_8492b72e742d42 133-140,143,155,177
+  s_b23e3c7fcfd872::t_dabde5b05fa3a2 142,144-150
+  s_b23e3c7fcfd872::t_5b4f5bb95cd5df 94
+  s_b23e3c7fcfd872::t_266ce9120c45f7 131-132,141
+  s_b23e3c7fcfd872::t_0698728c2f7349 90-93
+  s_b23e3c7fcfd872::t_6249101f1e16f3 261-262,269
+  s_b23e3c7fcfd872::t_4680356708ce0d 273-275,291-293
+cmd/importer/pod/import_test.go
+  s_b23e3c7fcfd872::t_298c52420ab49b 208-234
+  s_b23e3c7fcfd872::t_73cdb56963d9b4 281
+  s_b23e3c7fcfd872::t_970ad718cea651 349
+  s_b23e3c7fcfd872::t_5e0f03f0964b8a 402-405,446
+  s_b23e3c7fcfd872::t_fbc1461714a943 265-280,282-283
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "ff660141674de5c854d3ef0e7477a6b0b862ec9c",
+  "prompts": {},
+  "sessions": {
+    "s_b23e3c7fcfd872": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "e4a39f7a-e5ca-4e5d-9ae0-a34cbbe9ea21",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}
