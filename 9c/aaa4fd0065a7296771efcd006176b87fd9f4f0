@@ -1,0 +1,66 @@
+cmd/importer/cache/cache.go
+  s_b23e3c7fcfd872::t_9ce9aed8c0644c 56,62-63,94
+  s_b23e3c7fcfd872::t_c97dd76f8ab15b 168
+  s_b23e3c7fcfd872::t_bded5a2ff0dd3b 24,53
+  s_b23e3c7fcfd872::t_21caf47101223b 28,33,54-55,57-58,64-66,77-89,96,143-150,152-158,160-166,174-181,183-185,188-194
+  s_b23e3c7fcfd872::t_1fced45e466870 59-61,67-76,90-93,95,151,182
+  s_b23e3c7fcfd872::t_a7868cc61b0613 137-142,159
+  s_b23e3c7fcfd872::t_d7c0d5ec02d70b 167,169-173,186-187,195-196
+cmd/importer/pod/check.go
+  s_b23e3c7fcfd872::t_d8f3a3cb40b6e5 70
+  s_b23e3c7fcfd872::t_5c0e5ea0a2e2ec 96-108,110-112,120
+  s_b23e3c7fcfd872::t_af0850ce20f6a4 125
+  s_b23e3c7fcfd872::t_f0cd9d78f47528 154
+  s_b23e3c7fcfd872::t_cf12f431db9992 23,33,38-46,59,64,82-95,113-118,122-124,126-153,155-168
+  s_b23e3c7fcfd872::t_89789d7f8ffd92 32,119,121
+  s_b23e3c7fcfd872::t_c8d219fdfcb08e 69
+cmd/importer/cache/cache_test.go
+  s_b23e3c7fcfd872::t_28760a7254a171 1-99
+cmd/importer/README.md
+  s_b23e3c7fcfd872::t_921cb535d72dda 33-35
+cmd/importer/pod/import.go
+  s_b23e3c7fcfd872::t_4680356708ce0d 270-272,288-290
+  s_b23e3c7fcfd872::t_dabde5b05fa3a2 156,158-164
+  s_b23e3c7fcfd872::t_8492b72e742d42 147-154,157
+  s_b23e3c7fcfd872::t_53d5f56133e63a 77,82-84,88,104
+  s_b23e3c7fcfd872::t_0698728c2f7349 90-93
+  s_b23e3c7fcfd872::t_9ea06c54eba7c4 131-144,166-170,173,178-179,187,202-203,250,252-253
+  s_b23e3c7fcfd872::t_266ce9120c45f7 145-146,155
+  s_b23e3c7fcfd872::t_5b4f5bb95cd5df 94
+  s_b23e3c7fcfd872::t_6249101f1e16f3 258-259,266
+cmd/importer/pod/check_test.go
+  s_b23e3c7fcfd872::t_ab591daebfef7d 26
+  s_b23e3c7fcfd872::t_9e984facf18c85 25,62-67,190-223,232,235
+  s_b23e3c7fcfd872::t_858cbb216460e4 31,108-121
+  s_b23e3c7fcfd872::t_e7e7ac6c52a7de 122
+cmd/importer/pod/import_test.go
+  s_b23e3c7fcfd872::t_c433f641cfac06 156-164,357-376,383-402,411,415
+  s_b23e3c7fcfd872::t_298c52420ab49b 210-236
+  s_b23e3c7fcfd872::t_73cdb56963d9b4 283
+  s_b23e3c7fcfd872::t_970ad718cea651 351
+  s_b23e3c7fcfd872::t_fbc1461714a943 267-282,284-285
+  s_b23e3c7fcfd872::t_90028a74141812 26
+  s_b23e3c7fcfd872::t_51f3b0110d35ae 377-382
+  s_b23e3c7fcfd872::t_5e0f03f0964b8a 451-454,495
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "9caaa4fd0065a7296771efcd006176b87fd9f4f0",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_b23e3c7fcfd872": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "e4a39f7a-e5ca-4e5d-9ae0-a34cbbe9ea21",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}
