@@ -1,0 +1,21 @@
+pkg/controller/jobs/pod/pod_controller.go
+  s_deba5f12445417::t_c7e9cd0db44efa 810,813-818
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_deba5f12445417::t_6a0d419abe71f4 7191-7200
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "fdfb1441effd8541cda37cfad4013e576620208e",
+  "prompts": {},
+  "sessions": {
+    "s_deba5f12445417": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "0d0989e7-2af6-4904-b108-5fb74acd4271",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.golangci.yaml
+  s_b1210a9db60187::t_9d45b1cbfe7b61 5-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "142cf2f2d05b5870234dabcd3f8f4d1ecc395e91",
+  "prompts": {},
+  "sessions": {
+    "s_b1210a9db60187": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "0da3080f-422b-4dab-b818-963bebb28e2b",
+        "model": "cursor-grok-4.5-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

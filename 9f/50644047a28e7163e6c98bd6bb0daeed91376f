@@ -1,0 +1,21 @@
+.golangci.yaml
+  s_94c9ac801d0acd::t_894074c8835bfa 80-82,120-122
+Makefile-verify.mk
+  s_94c9ac801d0acd::t_bcb6c312c47a27 119,121
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "9f50644047a28e7163e6c98bd6bb0daeed91376f",
+  "prompts": {},
+  "sessions": {
+    "s_94c9ac801d0acd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "93d2b80d-2b99-4d41-a68a-cefe898b735a",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
