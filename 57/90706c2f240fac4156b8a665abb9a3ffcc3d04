@@ -1,0 +1,25 @@
+pkg/controller/jobs/pod/pod_controller.go
+  h_47cee5fa694435 556-561,904-910
+  s_347138584f3a09::t_6e11a23b1d024a 911-912
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "5790706c2f240fac4156b8a665abb9a3ffcc3d04",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_347138584f3a09": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "118d1e8d-540e-4ddf-adfc-2d2d7a78593c",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
