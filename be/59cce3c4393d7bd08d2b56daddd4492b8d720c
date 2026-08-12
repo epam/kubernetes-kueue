@@ -1,0 +1,14 @@
+keps/2349-multikueue-external-custom-job-support/README.md
+  h_47cee5fa694435 120
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "be59cce3c4393d7bd08d2b56daddd4492b8d720c",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
