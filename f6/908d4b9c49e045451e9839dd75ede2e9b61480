@@ -1,0 +1,19 @@
+keps/NNNN-topology-spreading/README.md
+  s_6d7cb4bda6cbef::t_3de8ef0781586d 364-370
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.19",
+  "base_commit_sha": "f6908d4b9c49e045451e9839dd75ede2e9b61480",
+  "prompts": {},
+  "sessions": {
+    "s_6d7cb4bda6cbef": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0f83d3a3-3171-4fbe-bab5-4ef90ca669f1",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

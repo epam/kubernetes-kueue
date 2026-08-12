@@ -1,0 +1,73 @@
+.github/workflows/release-utils.yml
+  s_721136ba2ad38c::t_7836b0a2351d32 391-394,395-396
+  s_721136ba2ad38c::t_2807f809f61990 528-529,531-532
+  s_721136ba2ad38c::t_4b0e1de1a7dea8 433-434,437-438
+  s_721136ba2ad38c::t_ce1837fdb79545 432-435,436-437
+  s_721136ba2ad38c::t_a61d6b773f089f 527-529,530-531
+  h_47cee5fa694435 16,64,80-81,153-157,158-160,161-170,171-174,176,179,180-182,183-187,188,189-191,189-193,194,201,203-208,209-216,217-218,219,220-224,225-227,228,231-232,233,235-236,405-407,445-447,539-541
+  s_721136ba2ad38c::t_1860345ab18782 390,398-404
+  s_721136ba2ad38c::t_5ee0364b381e8f 408
+  s_721136ba2ad38c::t_19db7021939624 431,439-444
+  s_721136ba2ad38c::t_cdb9cd16db5c00 532-538
+  s_721136ba2ad38c::t_b3a3adf6cdf058 448
+  s_721136ba2ad38c::t_8eecfbedb3c76d 192-193,195-200,202
+  s_721136ba2ad38c::t_6c338da4c0c82f 229-230,231,234
+  s_db4dc7c3e8f88d::t_819e373ab50e72 5-8
+.github/actions/create-release-tag/action.yml
+  s_721136ba2ad38c::t_7afacbac03abd8 1-10,11-13,18-21,27-30,32-35,36,38-39,50-99
+  h_47cee5fa694435 14-17,37,40-42,43,44,45-46,48-49
+  s_721136ba2ad38c::t_790878ab44f614 22-26
+  s_721136ba2ad38c::t_221ea1d8a1103c 31
+  s_721136ba2ad38c::t_aafdd8f1b838a0 47
+.github/actions/create-draft-release/action.yml
+  s_721136ba2ad38c::t_af9079133d0c87 1,3-10,11-17,22-25,31-34,36-40,41-42,44,48,50-51,53-56,59,62-65,72-77,79-94
+  s_721136ba2ad38c::t_f154bd01edd167 26-30,35
+  s_721136ba2ad38c::t_f06107691f1b9c 2
+  h_47cee5fa694435 45-47,49,53,57-58,60-61,66
+  s_721136ba2ad38c::t_74fb94eace5d0b 52
+  s_07baa94cde4414::t_f08cd385657fef 67-71,78
+  s_07baa94cde4414::t_5dd474bfd20448 43
+  s_07baa94cde4414::t_9b1f1066ae47ae 18-21
+.github/actions/publish-release/action.yml
+  s_721136ba2ad38c::t_4513df6ece8f05 1,3-7,8-26,27-29,33,35-36,38-63
+  s_721136ba2ad38c::t_9a75a90b1ee3a7 2
+  h_47cee5fa694435 30-32,34
+  s_721136ba2ad38c::t_3b4b9dbc6502ea 37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "9ced01f1c88b1cad8eb8ff1c356d6377b833a108",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_07baa94cde4414": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "126efb8d-ff3d-4ef8-8bfa-fd6210299107",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_721136ba2ad38c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ba16efb7-0e45-4e66-954e-2fe7fba44b68",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_db4dc7c3e8f88d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "235b84c9-1131-44a7-b439-9ff5bb30bd9c",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

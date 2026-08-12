@@ -1,0 +1,16 @@
+.github/actions/create-release-tag/action.yml
+  h_47cee5fa694435 40
+.github/actions/create-draft-release/action.yml
+  h_47cee5fa694435 49,53-54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "2a2d54d1f28663a6f5a23bf923afc8e0bd79b5e2",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
