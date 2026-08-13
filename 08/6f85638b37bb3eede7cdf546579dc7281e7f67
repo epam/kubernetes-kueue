@@ -1,0 +1,86 @@
+pkg/controller/jobs/rayjob/rayjob_webhook.go
+  s_302cc6e09c9733::t_6d14458162cab3 171
+  s_302cc6e09c9733::t_63e91eddace612 172-173
+  s_30503809163738::t_bdcb312abe5a41 175-179,181-182
+pkg/controller/jobframework/validation.go
+  s_302cc6e09c9733::t_0351f0d4896bae 99-105
+  s_e01b51687dc1be::t_7672ff466a177c 95-98
+pkg/features/kube_features.go
+  h_f3e429a3560394 550-557,863-865
+  h_f3e429a3560394 866
+pkg/controller/jobs/raycluster/raycluster_webhook.go
+  s_302cc6e09c9733::t_48d9b1f1052a51 265
+  s_302cc6e09c9733::t_7e8a89013fcc56 266-267
+  s_30503809163738::t_3481b2766a513a 269-273,275-276
+pkg/controller/jobs/sparkapplication/sparkapplication_webhook.go
+  s_302cc6e09c9733::t_aca373859174e3 175
+  s_302cc6e09c9733::t_84af592acc495f 176-177
+  s_30503809163738::t_f5774b4ed3041f 179-183,185-186
+test/integration/singlecluster/webhook/jobs/raycluster_webhook_test.go
+  s_302cc6e09c9733::t_61220350cad744 78-106
+  s_302cc6e09c9733::t_4c334ae8ef9d6b 20,31,35,65-77,107-111
+test/integration/singlecluster/webhook/jobs/rayjob_webhook_test.go
+  s_302cc6e09c9733::t_61220350cad744 128-156
+  s_302cc6e09c9733::t_31f5b50f58f03c 20,23,25,27,29,31,115-127,157-161
+test/integration/singlecluster/webhook/jobs/rayservice_webhook_test.go
+  s_302cc6e09c9733::t_61220350cad744 62-90
+  s_302cc6e09c9733::t_18441ef2db3a0c 1-61,91-97
+test/integration/singlecluster/webhook/jobs/sparkapplication_webhook_test.go
+  s_302cc6e09c9733::t_61220350cad744 62-90
+  s_302cc6e09c9733::t_bae0e00a7115f5 1-61,91-97
+pkg/controller/jobs/rayservice/rayservice_webhook.go
+  s_302cc6e09c9733::t_bab574ec08c0b7 172
+  s_302cc6e09c9733::t_b6cfe828c1886c 173-174
+  s_30503809163738::t_6c9a5017cbda0c 176-180,182-183
+pkg/controller/jobs/raycluster/raycluster_webhook_test.go
+  h_f3e429a3560394 610-615,624-635,660-709,724-734,737-738
+pkg/controller/jobs/rayjob/rayjob_webhook_test.go
+  h_f3e429a3560394 635-640,676-689,718-775,790-800,803-804
+pkg/controller/jobs/rayservice/rayservice_webhook_test.go
+  h_f3e429a3560394 22,25,27-28,30-32,35-37,39,151-155,157-165,167-261,267-284
+pkg/controller/jobs/sparkapplication/sparkapplication_webhook_test.go
+  h_f3e429a3560394 25,119-210
+site/data/featuregates/versioned_feature_list.yaml
+  h_f3e429a3560394 506-511
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  h_f3e429a3560394 506-511
+test/integration/singlecluster/webhook/jobs/suite_test.go
+  h_f3e429a3560394 32,48,65,79-81,86,89
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "086f85638b37bb3eede7cdf546579dc7281e7f67",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_302cc6e09c9733": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1d7b604c-5fbf-47bb-99a0-9d320d75db7d",
+        "model": "claude-opus-5"
+      },
+      "human_author": null
+    },
+    "s_30503809163738": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-a27da8a5b7846d6cc",
+        "model": "unknown"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    },
+    "s_e01b51687dc1be": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "09077e7f-f538-43c0-86dc-378609e57731",
+        "model": "claude-opus-5"
+      },
+      "human_author": null
+    }
+  }
+}
