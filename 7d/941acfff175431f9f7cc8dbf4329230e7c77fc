@@ -27,6 +27,7 @@ cmd/kueueviz/backend/handlers/websocket_handler_test.go
   s_c78398a587563e::t_49df4b5a86a0ad 23,554-566
   s_c78398a587563e::t_a41c08031b936b 551-553
   s_c78398a587563e::t_778b3fbd040420 33,530-550
+  s_0bf7b5de966479::t_4c7bad4d42a3a4 253,285,342,373,440,491
 cmd/kueueviz/backend/handlers/workloads_dashboard.go
   s_c78398a587563e::t_4782fe7b0492cf 64
   s_c78398a587563e::t_3adf914270f6be 81
@@ -66,6 +67,8 @@ hack/testing/e2e-kueueviz-rbac-bypass.sh
   s_930df8340c88c3::t_3192a6a52c9f50 1-22,58-134,139-140
   s_930df8340c88c3::t_e9d536ba36c645 26-28,44
   s_930df8340c88c3::t_522c5f7faa32f3 23-25
+cmd/kueueviz/backend/handlers/api_handlers_test.go
+  s_0bf7b5de966479::t_7dfd2f435c5d43 13,16,18-19,22
 ---
 {
   "schema_version": "authorship/3.0.0",
@@ -73,6 +76,14 @@ hack/testing/e2e-kueueviz-rbac-bypass.sh
   "base_commit_sha": "7d941acfff175431f9f7cc8dbf4329230e7c77fc",
   "prompts": {},
   "sessions": {
+    "s_0bf7b5de966479": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "ee49bdb8-6f30-48ea-9996-9fdf905957dc",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    },
     "s_4bb03d8b9b4d7e": {
       "agent_id": {
         "tool": "gemini",
