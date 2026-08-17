@@ -9,7 +9,7 @@ pkg/visibility/server.go
 test/e2e/config/certmanager/cainjection-templates/apiservice_cainjection_patch.yaml
   h_47cee5fa694435 7
 pkg/util/tas/tas_assignment.go
-  h_47cee5fa694435 27-28,30,266-282
+  h_47cee5fa694435 27-28,30,266-282,283-284
   h_47cee5fa694435 283-284
 internal/mocks/controller/core/resourceflavor_controller.go
   h_47cee5fa694435 1-68
