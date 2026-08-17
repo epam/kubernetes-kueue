@@ -116,7 +116,7 @@ site/content/zh-CN/v0.19/docs/reference/kueue-config.v1beta1.md
 site/content/zh-CN/v0.19/docs/reference/kueue.v1beta1.md
   h_47cee5fa694435 1-3167
 hack/make/test.mk
-  h_47cee5fa694435 396,399,403
+  h_47cee5fa694435 396,398,399,402,403
   h_47cee5fa694435 398,402
 ---
 {
