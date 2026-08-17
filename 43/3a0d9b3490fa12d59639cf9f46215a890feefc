@@ -1,0 +1,14 @@
+keps/NNNN-topology-spreading/kep.yaml
+  h_47cee5fa694435 4,5,9-10,12-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "433a0d9b3490fa12d59639cf9f46215a890feefc",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

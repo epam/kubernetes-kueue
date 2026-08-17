@@ -1,0 +1,61 @@
+.github/workflows/release-utils.yml
+  h_47cee5fa694435 12,17-18,22,74-75,86-87,93-95,96,98-105,107-112,290-292,300,302-309,315,320,326,332,341,343-344,350,353,361,376,377,378,383-390,399,409,411,417,420,426,429,434-435,441,443,445-446,449,451,452,460,469-473,476-484,485,486,487-488,490-498,499,500-503,505,542,544-545,547-548,549,550,551-555,556-562,563,564-566,567,568
+  s_8ceb63e5d78997::t_700abf381296f2 442,444
+  s_71ee1cfccc2c16::t_359a0a86778f2f 97
+  s_94db4c9f8125f3::t_611250ccabc2e6 489,504,506-541,543
+  s_2ce9429d76e716::t_9d1769925c7836 312-314
+  s_2ce9429d76e716::t_9046d8b876bf47 316-317
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "c1d0b233a71d13eaf6f5e8fb590c78d7f043cf79",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_2ce9429d76e716": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f2263380-4fe5-4aec-a00d-bc245f97b746",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_71ee1cfccc2c16": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "94e14c7d-a65e-4dd8-b1a4-3173efd7b492",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_8ceb63e5d78997": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5a8a8404-54bb-4c56-a08e-12456057ea8e",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_94db4c9f8125f3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4f8f98e7-b67e-457d-bac8-1d893e0c155f",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_b94fd2fb5b5d34": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec376c71-3290-47c0-924d-3ffc8b500a61",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

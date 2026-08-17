@@ -1,0 +1,138 @@
+pkg/controller/jobs/sparkapplication/sparkapplication_webhook.go
+  s_e01b51687dc1be::t_8f986cfefb066e 175
+  s_e01b51687dc1be::t_fb8e3cdae84be3 176-177
+  s_c948f6cf183164::t_59f4149aa7d476 179-183,185-186
+pkg/controller/jobs/raycluster/raycluster_webhook_test.go
+  s_e01b51687dc1be::t_88f2e78d78a682 625,627-629,631,633,635,661,663-668,672,674,676-680,682-683,685,688-689,691,697,699,702-703,705,709-721
+  s_e01b51687dc1be::t_2107e7ba97fb19 624
+  s_e01b51687dc1be::t_54085f96ea779b 626
+  s_e01b51687dc1be::t_a5932a26a9ba51 630
+  s_e01b51687dc1be::t_8159ba3f42b845 632
+  s_e01b51687dc1be::t_4b40442d504fa2 634
+  s_e01b51687dc1be::t_af049d8a9c9668 660
+  s_e01b51687dc1be::t_7c1d79814f0503 662
+  s_e01b51687dc1be::t_b241ecb92b3268 669-671
+  s_e01b51687dc1be::t_f0c2482df6a978 673
+  s_e01b51687dc1be::t_1ac305cfa25773 675
+  s_e01b51687dc1be::t_4f7a05ed13f41c 681
+  s_e01b51687dc1be::t_90ff2d795a478c 684
+  s_e01b51687dc1be::t_efb9a74f23b79f 686-687
+  s_e01b51687dc1be::t_7e96dfab8baf13 690
+  s_e01b51687dc1be::t_7fea70fc9d8837 692-696
+  s_e01b51687dc1be::t_43a28144705774 698
+  s_e01b51687dc1be::t_f0f5d0db53f569 700-701
+  s_e01b51687dc1be::t_02b0413d260319 704
+  s_e01b51687dc1be::t_6f1bbf569b17ae 706-708
+  s_c948f6cf183164::t_620bdf8eee7342 610-615,736-746,749-750
+pkg/controller/jobframework/validation.go
+  s_e01b51687dc1be::t_0c39bc12b4012e 96-103
+  s_e01b51687dc1be::t_42e7e67e9ddcd3 95
+  s_e01b51687dc1be::t_1d18192804585b 104-105
+pkg/controller/jobs/rayservice/rayservice_webhook_test.go
+  s_e01b51687dc1be::t_188d2048f16aca 158-163,167,170-171,173-174,178,180-182,184,186,190,192-194,196-197,203,206-207,210,214,216-221,227,229-233,235,238,241-242,244,252,255-256,258,263-273
+  s_e01b51687dc1be::t_717e31c6ea52ee 157
+  s_e01b51687dc1be::t_67c4dcfad3b4ed 164-165
+  s_e01b51687dc1be::t_e54774c5fca0ec 168-169
+  s_e01b51687dc1be::t_18b680c2388800 172
+  s_e01b51687dc1be::t_bcb908e6bc9abe 175-177
+  s_e01b51687dc1be::t_d227f22b9f4c32 179
+  s_e01b51687dc1be::t_1d5c7fa87bc561 183
+  s_e01b51687dc1be::t_3446f633460d1f 185
+  s_e01b51687dc1be::t_c34653ddd545b6 187-189
+  s_e01b51687dc1be::t_80c878028b6531 191
+  s_e01b51687dc1be::t_cf8d11fa56bce9 195
+  s_e01b51687dc1be::t_b897333666cec2 198-202
+  s_e01b51687dc1be::t_0482b23af50d30 204-205
+  s_e01b51687dc1be::t_affedc4cb77a17 208-209
+  s_e01b51687dc1be::t_9f696c52465733 211-213
+  s_e01b51687dc1be::t_0743c4b6449894 215
+  s_e01b51687dc1be::t_c49b8446cf194e 222-226
+  s_e01b51687dc1be::t_4662e8381849f3 228
+  s_e01b51687dc1be::t_a420385c5b276d 234
+  s_e01b51687dc1be::t_ffcf36f9726686 236-237
+  s_e01b51687dc1be::t_aaaa1665e43d4c 239-240
+  s_e01b51687dc1be::t_79c37f01edfbc4 243
+  s_e01b51687dc1be::t_b819fde319d6c3 245-247,249-251
+  s_e01b51687dc1be::t_6f13eee08ada84 253-254
+  s_e01b51687dc1be::t_55094c359e6097 257
+  s_e01b51687dc1be::t_01f56daf5bcdf9 259-262
+  s_c948f6cf183164::t_bf9708f2d3af7a 22,25,27-28,30-32,35-37,39,151-155,248,279-296
+pkg/controller/jobs/raycluster/raycluster_webhook.go
+  s_e01b51687dc1be::t_c4b61b01468964 265
+  s_e01b51687dc1be::t_7ae6ef9dd35cff 266-267
+  s_c948f6cf183164::t_c7198c6dfb346b 269-273,275-276
+pkg/controller/jobs/sparkapplication/sparkapplication_webhook_test.go
+  s_e01b51687dc1be::t_b760db069b6e04 131,134,136,141,148,153,157,161,166-167,176,183-193
+  s_e01b51687dc1be::t_41d5f99597139c 128-130
+  s_e01b51687dc1be::t_14f027636a12aa 132-133
+  s_e01b51687dc1be::t_03d754e3bcf20c 135
+  s_e01b51687dc1be::t_dad6f2b0ba78c2 137-140
+  s_e01b51687dc1be::t_bf72e86b97c5d5 142-147
+  s_e01b51687dc1be::t_f0bb864c52b569 149-152
+  s_e01b51687dc1be::t_9cc4568b42097b 154-156
+  s_e01b51687dc1be::t_cf1b902338874f 158-160
+  s_e01b51687dc1be::t_6f8ef7b6af6a36 162-165
+  s_e01b51687dc1be::t_58a1c600e9a420 168-170,173-175
+  s_e01b51687dc1be::t_aeb245057083c9 177-182
+  s_e01b51687dc1be::t_efacbea3ebd195 194-196
+  s_c948f6cf183164::t_2281714874c66d 25,119-127,171-172,197-220
+pkg/controller/jobs/rayservice/rayservice_webhook.go
+  s_e01b51687dc1be::t_19decd280df233 172
+  s_e01b51687dc1be::t_f9ddee438b2a86 173-174
+  s_c948f6cf183164::t_c7caaf78750852 176-180,182-183
+pkg/controller/jobs/rayjob/rayjob_webhook.go
+  s_e01b51687dc1be::t_d409d91155b1c4 171
+  s_e01b51687dc1be::t_b9b058f40228ab 172-173
+  s_c948f6cf183164::t_07913532d82397 175-179,181-182
+pkg/controller/jobs/rayjob/rayjob_webhook_test.go
+  s_e01b51687dc1be::t_fa1526f3bcc98b 677,679,681-682,684,687,689,719,721,723-725,727-728,732,734,736,738-740,742,744-745,747,751-752,755,761,763,767-768,771,775-787
+  s_e01b51687dc1be::t_cea46b99448570 676
+  s_e01b51687dc1be::t_b99173a2711bf3 678
+  s_e01b51687dc1be::t_3113729e6e6a30 680
+  s_e01b51687dc1be::t_bcf8a02bb305d8 683
+  s_e01b51687dc1be::t_8172e8e5010616 685-686
+  s_e01b51687dc1be::t_83f81b85d8cf50 688
+  s_e01b51687dc1be::t_468ab2391fc359 718
+  s_e01b51687dc1be::t_3955c04a367ff1 720
+  s_e01b51687dc1be::t_5c9eb4133bb8f3 722
+  s_e01b51687dc1be::t_08cc050aec04b9 726
+  s_e01b51687dc1be::t_c078e1018782c1 729-731
+  s_e01b51687dc1be::t_8b778d900c2850 733
+  s_e01b51687dc1be::t_81ffe2d7cdfa99 735
+  s_e01b51687dc1be::t_f4631a96cc4e6f 737
+  s_e01b51687dc1be::t_8ebeb1e332a65d 741
+  s_e01b51687dc1be::t_3fdaae3be1768a 743
+  s_e01b51687dc1be::t_c824aebec26be8 746
+  s_e01b51687dc1be::t_4dec03f781454f 748-750
+  s_e01b51687dc1be::t_5a9d8b8287eb34 753-754
+  s_e01b51687dc1be::t_b69f8d460c931a 756-760
+  s_e01b51687dc1be::t_9b1373ced09612 762
+  s_e01b51687dc1be::t_9e844eab4a40d4 764-766
+  s_e01b51687dc1be::t_57d7b7cd0e6281 769-770
+  s_e01b51687dc1be::t_565e21cc8163ea 772-774
+  s_c948f6cf183164::t_a2509149df4c2c 635-640,802-812,815-816
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "6c2a6cb0b951c08c0cbcebdf0bd29ce1a03f5939",
+  "prompts": {},
+  "sessions": {
+    "s_c948f6cf183164": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-a76fafdf732187e2a",
+        "model": "unknown"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    },
+    "s_e01b51687dc1be": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "09077e7f-f538-43c0-86dc-378609e57731",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

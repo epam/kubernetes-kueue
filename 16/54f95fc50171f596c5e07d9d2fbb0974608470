@@ -1,0 +1,31 @@
+.github/actions/create-draft-release/action.yml
+  h_47cee5fa694435 47
+  s_721136ba2ad38c::t_74fb94eace5d0b 50
+.github/actions/create-release-tag/action.yml
+  h_47cee5fa694435 40
+  s_721136ba2ad38c::t_aafdd8f1b838a0 43
+.github/actions/publish-release/action.yml
+  h_47cee5fa694435 35
+  s_721136ba2ad38c::t_3b4b9dbc6502ea 38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "1654f95fc50171f596c5e07d9d2fbb0974608470",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_721136ba2ad38c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ba16efb7-0e45-4e66-954e-2fe7fba44b68",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
