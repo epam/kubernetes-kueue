@@ -1,0 +1,24 @@
+cmd/importer/cache/cache.go
+  s_a9aea78e23eb6b::t_af6fa07304364c 115,118-121,123,131,133
+  s_a9aea78e23eb6b::t_ab3021fed0b1b8 33
+  s_a9aea78e23eb6b::t_2523b9f4c71f1e 102-103
+cmd/importer/cache/cache_test.go
+  s_a9aea78e23eb6b::t_e5ce97db04e90b 85
+  s_a9aea78e23eb6b::t_7c38dbc089618a 107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "daeec1e7240691cd96ffad0b89bd5e3f1b5d9aa2",
+  "prompts": {},
+  "sessions": {
+    "s_a9aea78e23eb6b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b6a92aed-7a29-479e-936e-9f005513a7e8",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
