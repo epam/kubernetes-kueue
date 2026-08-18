@@ -15,11 +15,27 @@ pkg/controller/admissionchecks/provisioning/controller.go
   "base_commit_sha": "c1dc5c669d3490f52980c172f0132fc32179244a",
   "prompts": {},
   "sessions": {
+    "s_3410220f4f93b6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "0448481a-639f-4934-8bf9-d8319842a6a5",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
     "s_937e755ca88346": {
       "agent_id": {
         "tool": "claude",
         "id": "bcee8377-ad7c-484e-9b55-7983802f3201",
         "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_e2dfbdf90dcd49": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "e4ba7ccf-a293-4cff-a2ca-ac75b372b4da",
+        "model": "grok-4.5"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
     }
