@@ -1,0 +1,37 @@
+site/data/featuregates/versioned_feature_list.yaml
+  s_9079e206ef72df::t_1987a31add3b7e 262-267
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_9079e206ef72df::t_1987a31add3b7e 31,1891-1967
+  s_9079e206ef72df::t_c23d6c9bce49b0 1968
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_9079e206ef72df::t_1987a31add3b7e 262-267
+pkg/controller/jobs/pod/pod_controller.go
+  s_9079e206ef72df::t_1987a31add3b7e 79,91,1252-1260
+  s_9079e206ef72df::t_3f554faff56ec1 1261-1262
+pkg/features/kube_features.go
+  s_9079e206ef72df::t_1987a31add3b7e 538-543,845
+  s_9079e206ef72df::t_6c5f1cef80d743 844
+  s_9079e206ef72df::t_7a249e1d0adffb 537
+  s_9079e206ef72df::t_7dbf6f2101c9d3 846-847
+pkg/util/testing/v1beta2/wrappers.go
+  s_9079e206ef72df::t_1987a31add3b7e 36,322-324
+  s_9079e206ef72df::t_6aa5f608a837c1 325-326
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_9079e206ef72df::t_1987a31add3b7e 377,622,634,638,650,704,716,720,732,1047,1059,1113,1167,1178,1236,1285,1321,1387,1401,1416-1531,1584,1602,1679,1693,1748,1762,1808,1827,1892,1907,1946,1971,2078,2156,2176,2248,2306,2398,2413,2468,2495,2548,2576,2675,2691,2756,2776,2820,2842,2949,3084,3109,3210,3235,3329,3354,3416,3500,3513,3570,3592,3692,3704,3774,3789,3863,3927,3933,3943,3949,4019,4039,4138,4165,4236,4260,4423,4445,4547,4561,4661,4681,4787,5253,5280,5363,5406,5462,5498,5538,5574,5621,5658,5705,5748,5803,5851,5903,5953,6007,6049,6380,6401,6463,6608,6693,7112
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "d229938b06288d15e62268043089724ae379b22a",
+  "prompts": {},
+  "sessions": {
+    "s_9079e206ef72df": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9690404f-9220-4f3e-9000-8d38544f94ed",
+        "model": "claude-opus-5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
