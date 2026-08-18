@@ -1,0 +1,21 @@
+test/integration/singlecluster/controller/admissionchecks/provisioning/provisioning_test.go
+  s_20c48d10f61d1e::t_4a0c760432be0a 365-367
+  s_20c48d10f61d1e::t_62a871b39889b7 262-263,281-282,304-305
+  s_20c48d10f61d1e::t_a5ab2e5892d2e5 368
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "3ffef1ecb3b47ff8e14bf75b9f2efb1390d39d28",
+  "prompts": {},
+  "sessions": {
+    "s_20c48d10f61d1e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "5f4ed3c0-2838-46f5-a08a-b787bbb34138",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

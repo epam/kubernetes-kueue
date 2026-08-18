@@ -1,0 +1,27 @@
+pkg/controller/jobs/pod/pod_controller.go
+  s_9079e206ef72df::t_5f7f26886366b2 1220-1232
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_9079e206ef72df::t_b0ce7f80a6b6d1 3963-4027
+  s_9079e206ef72df::t_1388cefcc611d2 4028-4046
+  s_9079e206ef72df::t_a3d6617a67f103 30
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_9079e206ef72df::t_2a300d43aa3347 46
+  s_9079e206ef72df::t_cb66bd37f3b4b9 30
+  s_9079e206ef72df::t_76a3fd1294dff0 1971-2038
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "af8951f393b1b2e4aaab8bebdcf08fc530dd976d",
+  "prompts": {},
+  "sessions": {
+    "s_9079e206ef72df": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9690404f-9220-4f3e-9000-8d38544f94ed",
+        "model": "claude-opus-5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

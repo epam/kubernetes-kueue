@@ -1,0 +1,43 @@
+pkg/cache/scheduler/clusterqueue.go
+  s_30b8c12d86e412::t_5470f9a3c5afab 580-582,584-588
+  h_99f506dc258b88 583
+pkg/cache/scheduler/cohort_metrics.go
+  s_30b8c12d86e412::t_49c4f66b1ea2e8 213
+  s_30b8c12d86e412::t_ed515595cf6abd 40,90-92,94,96,102,107,110,116,127,131,154-158,160-166,199-207,215-219,223,245
+  s_30b8c12d86e412::t_3bf1fa640c9a48 209-212,214,220-222,224-241
+  h_99f506dc258b88 159
+  s_30b8c12d86e412::t_411c8b6e26239b 208,242-244,246
+pkg/cache/scheduler/cohort_metrics_test.go
+  s_30b8c12d86e412::t_075c729cc407ea 29,867-916
+  s_30b8c12d86e412::t_82e58e72817aaf 917
+pkg/controller/core/clusterqueue_controller_test.go
+  s_30b8c12d86e412::t_7bdbaa352eefdc 703-800
+test/util/metrics.go
+  s_30b8c12d86e412::t_ae8855e4fee7dd 342-347
+test/integration/singlecluster/controller/core/clusterqueue_controller_test.go
+  s_30b8c12d86e412::t_9c9bde2fdc8c8f 1350-1351,1353
+  s_30b8c12d86e412::t_578fb7fea9d9ee 1347-1349,1352,1354-1356,1358-1410,1465
+  s_30b8c12d86e412::t_a43342d48a8c2c 1357
+  s_30b8c12d86e412::t_cd21f5ab8363a5 1411-1464
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "1d9a1fa363ba0fc8cbf1b3c59b67c5636a67acdc",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_30b8c12d86e412": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "a38959fd-c2f2-4952-8cfd-2f2a7b6f24fd",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

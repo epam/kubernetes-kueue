@@ -1,0 +1,38 @@
+OWNERS_ALIASES
+  h_47cee5fa694435 37-41
+.github/workflows/release-utils.yml
+  h_47cee5fa694435 24-25
+  s_4475ea3a569cfe::t_61863ee74909eb 28
+  s_98b3d0917463cb::t_7e937dedde7ac3 22
+  s_98b3d0917463cb::t_c208a22b0ca278 30
+  s_98b3d0917463cb::t_08adba301d7f63 29,31-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "61edb1dd1842b3b3fc73af8651e8507dafb9b06e",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_4475ea3a569cfe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f262dd71-6470-44c1-b123-baf4d7d6884c",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_98b3d0917463cb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3272f4ad-1da6-4a52-9c3b-a90f479051d6",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

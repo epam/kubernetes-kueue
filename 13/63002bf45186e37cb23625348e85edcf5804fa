@@ -1,0 +1,30 @@
+apis/kueue/v1beta2/topology_types.go
+  h_f3e429a3560394 115
+charts/kueue/templates/crd/kueue.x-k8s.io_topologies.yaml
+  h_f3e429a3560394 155-156
+config/components/crd/bases/kueue.x-k8s.io_topologies.yaml
+  h_f3e429a3560394 136-139
+pkg/cache/scheduler/tas_cache.go
+  h_f3e429a3560394 109-115,117-122
+pkg/cache/scheduler/tas_cache_update_test.go
+  h_f3e429a3560394 28,146-197
+pkg/cache/scheduler/tas_flavor.go
+  h_f3e429a3560394 128-133,147-150,152-153
+pkg/controller/tas/topology_controller.go
+  h_f3e429a3560394 23,150-168
+site/content/en/docs/concepts/topology.md
+  h_f3e429a3560394 58-60,65-82
+test/integration/singlecluster/tas/tas_test.go
+  h_f3e429a3560394 575-963,8738,8746,8751-8762
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "1363002bf45186e37cb23625348e85edcf5804fa",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
