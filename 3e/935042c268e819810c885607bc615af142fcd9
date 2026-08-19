@@ -1,0 +1,16 @@
+site/content/en/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 132
+site/content/en/docs/concepts/preemption.md
+  h_47cee5fa694435 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "3e935042c268e819810c885607bc615af142fcd9",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

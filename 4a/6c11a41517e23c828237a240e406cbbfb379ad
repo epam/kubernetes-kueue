@@ -1,0 +1,16 @@
+site/content/en/v0.19/docs/getting-started/installation.md
+  h_47cee5fa694435 315
+site/content/en/v0.19/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 27,29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "4a6c11a41517e23c828237a240e406cbbfb379ad",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

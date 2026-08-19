@@ -1,0 +1,14 @@
+site/content/en/docs/getting-started/installation.md
+  h_47cee5fa694435 148,314
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "431cbdc50b625147e3c8ff6498ed7fbf4f92d453",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

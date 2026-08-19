@@ -1,0 +1,32 @@
+site/content/en/v0.18/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 132
+site/content/en/v0.18/docs/concepts/cohort.md
+  h_47cee5fa694435 85
+site/content/en/v0.18/docs/concepts/preemption.md
+  h_47cee5fa694435 23
+site/content/en/v0.18/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 22,35
+site/content/en/v0.19/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 132
+site/content/en/v0.19/docs/concepts/cohort.md
+  h_47cee5fa694435 85
+site/content/en/v0.19/docs/concepts/preemption.md
+  h_47cee5fa694435 23
+site/content/en/v0.19/docs/getting-started/installation.md
+  h_47cee5fa694435 315
+site/content/en/v0.19/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 22,35
+site/content/en/v0.19/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 27,29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "78a8734ae2d36c3cc730116ef6885363bfddb455",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
