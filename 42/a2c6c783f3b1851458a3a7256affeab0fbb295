@@ -1,0 +1,26 @@
+site/content/zh-CN/v0.18/docs/concepts/cohort.md
+  h_47cee5fa694435 87
+site/content/zh-CN/v0.19/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 140
+site/content/zh-CN/v0.19/docs/concepts/admission_check.md
+  h_47cee5fa694435 128
+site/content/zh-CN/v0.18/docs/concepts/local_queue.md
+  h_47cee5fa694435 41
+site/content/zh-CN/v0.18/docs/concepts/admission_check.md
+  h_47cee5fa694435 128
+site/content/zh-CN/v0.18/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 140
+site/content/zh-CN/v0.18/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 24,40,44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "42a2c6c783f3b1851458a3a7256affeab0fbb295",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

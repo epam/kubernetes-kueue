@@ -1,0 +1,22 @@
+test/e2e/config/certmanager/values.yaml
+  h_47cee5fa694435 33
+test/e2e/config/certmanager/controller_manager_config.yaml
+  h_47cee5fa694435 1
+hack/testing/e2e-common.sh
+  h_47cee5fa694435 900
+pkg/visibility/server.go
+  h_47cee5fa694435 187
+test/e2e/config/certmanager/cainjection-templates/apiservice_cainjection_patch.yaml
+  h_47cee5fa694435 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "06e8262391f94d89d5d051db787ae37cfa3cc7e6",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

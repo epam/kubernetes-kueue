@@ -1,0 +1,19 @@
+pkg/util/tas/tas_assignment.go
+  h_47cee5fa694435 27-28,30,266-282
+  h_47cee5fa694435 283-284
+internal/mocks/controller/core/resourceflavor_controller.go
+  h_47cee5fa694435 1-68
+internal/mocks/controller/jobframework/interface.go
+  h_47cee5fa694435 1-482
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "fe233bbea1d8dd0a97682ac7e425337ef207d672",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

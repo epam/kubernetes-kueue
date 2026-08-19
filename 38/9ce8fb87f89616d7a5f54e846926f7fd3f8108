@@ -1,0 +1,19 @@
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_8e9eae9472a331::t_f48340943d17b8 2039
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "389ce8fb87f89616d7a5f54e846926f7fd3f8108",
+  "prompts": {},
+  "sessions": {
+    "s_8e9eae9472a331": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "55576c7b-a42b-4e0a-8151-4df9942cf890",
+        "model": "claude-opus-5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

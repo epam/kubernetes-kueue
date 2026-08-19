@@ -1,0 +1,14 @@
+site/content/en/docs/concepts/cohort.md
+  h_47cee5fa694435 85
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "a120320b1605cfbcad4414f44abe43741cd79cfa",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
