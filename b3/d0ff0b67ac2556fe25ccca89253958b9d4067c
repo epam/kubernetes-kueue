@@ -1,0 +1,34 @@
+pkg/controller/jobs/rayjob/rayjob_webhook_test.go
+  h_f3e429a3560394 30,836
+  s_5d435d37d3ceb5::t_a9573925e05435 832,834-835,837
+pkg/controller/jobs/raycluster/raycluster_webhook_test.go
+  s_5d435d37d3ceb5::t_070376df3a5de1 30
+  s_5d435d37d3ceb5::t_fdad25dcefd1b6 764,766-769
+pkg/controller/jobs/rayservice/rayservice_webhook_test.go
+  s_5d435d37d3ceb5::t_9753dd157f635d 297,299-302
+  s_5d435d37d3ceb5::t_a81e6d9b6418a5 29
+pkg/controller/jobs/sparkapplication/sparkapplication_webhook_test.go
+  s_5d435d37d3ceb5::t_51e1aed1b1c496 211,213-216
+  s_5d435d37d3ceb5::t_29b987f4927c3d 29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "b3d0ff0b67ac2556fe25ccca89253958b9d4067c",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_5d435d37d3ceb5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "222578f4-a01a-4629-ae93-3e6c44c5ccdb",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
