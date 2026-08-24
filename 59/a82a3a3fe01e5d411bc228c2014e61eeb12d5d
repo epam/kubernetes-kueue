@@ -1,0 +1,216 @@
+site/content/en/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 132
+site/content/en/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 534,561
+site/content/en/docs/concepts/cohort.md
+  h_47cee5fa694435 85
+site/content/en/docs/concepts/local_queue.md
+  h_47cee5fa694435 41
+site/content/en/docs/concepts/preemption.md
+  h_47cee5fa694435 23
+site/content/en/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 96
+site/content/en/docs/concepts/workload.md
+  h_47cee5fa694435 58,216
+site/content/en/docs/concepts/workload_priority_class.md
+  h_47cee5fa694435 136
+site/content/en/docs/getting-started/installation.md
+  h_47cee5fa694435 148,314
+site/content/en/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 22,35,37
+site/content/en/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 27,29
+site/content/zh-CN/docs/admission-check-controllers/provisioning.md
+  h_47cee5fa694435 140
+site/content/zh-CN/docs/concepts/admission_check.md
+  h_47cee5fa694435 128
+site/content/zh-CN/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 480,507
+site/content/zh-CN/docs/concepts/cohort.md
+  h_47cee5fa694435 87
+site/content/zh-CN/docs/concepts/concurrent_admission.md
+  h_47cee5fa694435 151
+site/content/zh-CN/docs/concepts/local_queue.md
+  h_47cee5fa694435 41
+site/content/zh-CN/docs/concepts/preemption.md
+  h_47cee5fa694435 21,118
+site/content/zh-CN/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 93
+site/content/zh-CN/docs/concepts/topology.md
+  h_47cee5fa694435 78
+site/content/zh-CN/docs/concepts/workload.md
+  h_47cee5fa694435 55,201
+site/content/zh-CN/docs/concepts/workload_priority_class.md
+  h_47cee5fa694435 112
+site/content/zh-CN/docs/installation/_index.md
+  h_47cee5fa694435 40,143,285
+site/content/zh-CN/docs/overview/_index.md
+  h_47cee5fa694435 41
+site/content/zh-CN/docs/reference/kueue-config.v1beta2.md
+  h_47cee5fa694435 1-1616
+site/content/zh-CN/docs/reference/kueue.v1beta2.md
+  h_47cee5fa694435 1-3882
+site/content/zh-CN/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 24,40,44
+site/content/zh-CN/docs/tasks/dev/setup_dev_monitoring.md
+  h_47cee5fa694435 159
+site/content/zh-CN/docs/tasks/manage/observability/common_grafana_queries.md
+  h_47cee5fa694435 156
+site/content/zh-CN/docs/tasks/manage/observability/configure_custom_metric_labels.md
+  h_47cee5fa694435 99
+site/content/zh-CN/docs/tasks/manage/observability/setup_prometheus.md
+  h_47cee5fa694435 105
+site/content/zh-CN/docs/tasks/manage/setup_concurrent_admission.md
+  h_47cee5fa694435 183
+site/content/zh-CN/docs/tasks/run/using_hami.md
+  h_47cee5fa694435 69
+site/content/zh-CN/docs/tasks/troubleshooting/troubleshooting_delete_clusterqueue.md
+  h_47cee5fa694435 40
+site/content/zh-CN/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 26,30
+site/content/zh-CN/v0.18/docs/concepts/admission_check.md
+  h_47cee5fa694435 128,129
+site/content/zh-CN/v0.18/docs/concepts/concurrent_admission.md
+  h_47cee5fa694435 151
+site/content/zh-CN/v0.18/docs/concepts/preemption.md
+  h_47cee5fa694435 21,118
+site/content/zh-CN/v0.18/docs/concepts/topology.md
+  h_47cee5fa694435 78
+site/content/zh-CN/v0.18/docs/installation/_index.md
+  h_47cee5fa694435 40,143,285
+site/content/zh-CN/v0.18/docs/overview/_index.md
+  h_47cee5fa694435 41
+site/content/zh-CN/v0.18/docs/reference/kueue-config.v1beta2.md
+  h_47cee5fa694435 1-1453
+site/content/zh-CN/v0.18/docs/reference/kueue.v1beta1.md
+  h_47cee5fa694435 2,23,47,53,80,86,99-101,116,122,149,155,182,188,215,242,269,296,302,370,394,401,408,460,462-463,470,525,635,644,680,783,790,814,821,887,950,973,1009,1023,1116-1123,1128-1131,1185,1202,1285-1287,1308,1338,1393,1446,1501,1510,1522-1523,1525,1566,1719,1738-1745,1758,1767,1774,1810,1834,1859,1963,1970,2162,2175,2183,2191,2199,2230,2237,2243,2249,2255,2304,2312,2434,2452,2461,2664,2677,2787,2969,3024,3036,3056,3094,3111-3125
+site/content/zh-CN/v0.18/docs/reference/kueue.v1beta2.md
+  h_47cee5fa694435 1-3880
+site/content/zh-CN/v0.18/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 24,26,40,44
+site/content/zh-CN/v0.18/docs/tasks/dev/setup_dev_monitoring.md
+  h_47cee5fa694435 159
+site/content/zh-CN/v0.18/docs/tasks/manage/observability/common_grafana_queries.md
+  h_47cee5fa694435 156
+site/content/zh-CN/v0.18/docs/tasks/manage/observability/configure_custom_metric_labels.md
+  h_47cee5fa694435 99
+site/content/zh-CN/v0.18/docs/tasks/manage/observability/setup_prometheus.md
+  h_47cee5fa694435 105
+site/content/zh-CN/v0.18/docs/tasks/manage/setup_concurrent_admission.md
+  h_47cee5fa694435 183
+site/content/zh-CN/v0.18/docs/tasks/troubleshooting/troubleshooting_delete_clusterqueue.md
+  h_47cee5fa694435 40
+site/content/zh-CN/v0.18/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 26,30
+site/content/zh-CN/v0.19/docs/concepts/admission_check.md
+  h_47cee5fa694435 128,129
+site/content/zh-CN/v0.19/docs/concepts/concurrent_admission.md
+  h_47cee5fa694435 151
+site/content/zh-CN/v0.19/docs/concepts/preemption.md
+  h_47cee5fa694435 21,118
+site/content/zh-CN/v0.19/docs/concepts/topology.md
+  h_47cee5fa694435 78
+site/content/zh-CN/v0.19/docs/installation/_index.md
+  h_47cee5fa694435 40,143,285
+site/content/zh-CN/v0.19/docs/overview/_index.md
+  h_47cee5fa694435 41
+site/content/zh-CN/v0.19/docs/reference/kueue-config.v1beta2.md
+  h_47cee5fa694435 1-1608
+site/content/zh-CN/v0.19/docs/reference/kueue.v1beta1.md
+  h_47cee5fa694435 2,23,47,53,80,86,99-101,116,122,149,155,182,188,215,242,269,296,302,370,394,401,408,460,462-463,470,525,635,644,680,783,790,814,821,887,950,973,1009,1023,1116-1123,1128-1131,1185,1202,1285-1287,1308,1338,1393,1446,1501,1510,1522-1523,1525,1566,1719,1738-1745,1758,1767,1774,1810,1834,1859,1963,1970,2162,2175,2183,2191,2199,2230,2237,2243,2249,2255,2304,2312,2434,2452,2461,2664,2677,2787,2969,3008,3024,3036,3056,3094,3111-3125
+site/content/zh-CN/v0.19/docs/reference/kueue.v1beta2.md
+  h_47cee5fa694435 1-3882
+site/content/zh-CN/v0.19/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 24,26,40,44
+site/content/zh-CN/v0.19/docs/tasks/dev/setup_dev_monitoring.md
+  h_47cee5fa694435 159
+site/content/zh-CN/v0.19/docs/tasks/manage/observability/common_grafana_queries.md
+  h_47cee5fa694435 156
+site/content/zh-CN/v0.19/docs/tasks/manage/observability/configure_custom_metric_labels.md
+  h_47cee5fa694435 99
+site/content/zh-CN/v0.19/docs/tasks/manage/observability/setup_prometheus.md
+  h_47cee5fa694435 105
+site/content/zh-CN/v0.19/docs/tasks/manage/setup_concurrent_admission.md
+  h_47cee5fa694435 183
+site/content/zh-CN/v0.19/docs/tasks/troubleshooting/troubleshooting_delete_clusterqueue.md
+  h_47cee5fa694435 40
+site/content/zh-CN/v0.19/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 26,30
+site/content/en/v0.18/docs/concepts/workload_priority_class.md
+  h_47cee5fa694435 128
+site/content/en/v0.18/docs/concepts/workload.md
+  h_47cee5fa694435 58,216
+site/content/en/v0.19/docs/concepts/cohort.md
+  h_47cee5fa694435 85
+site/content/en/v0.18/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 132
+site/content/zh-CN/v0.19/docs/concepts/cohort.md
+  h_47cee5fa694435 87
+site/content/en/v0.18/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 22,35,37
+site/content/en/v0.19/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 534,561
+site/content/en/v0.19/docs/concepts/workload.md
+  h_47cee5fa694435 58,216
+site/content/zh-CN/v0.19/docs/concepts/workload.md
+  h_47cee5fa694435 55,201
+site/content/zh-CN/v0.19/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 480,507
+site/content/en/v0.18/docs/concepts/local_queue.md
+  h_47cee5fa694435 41
+site/content/zh-CN/v0.19/docs/concepts/workload_priority_class.md
+  h_47cee5fa694435 112
+site/content/en/v0.19/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 96
+site/content/en/v0.19/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 132
+site/content/zh-CN/v0.18/docs/concepts/workload_priority_class.md
+  h_47cee5fa694435 112
+site/content/zh-CN/v0.19/docs/concepts/local_queue.md
+  h_47cee5fa694435 41
+site/content/en/v0.19/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 22,35,37
+site/content/zh-CN/v0.18/docs/concepts/workload.md
+  h_47cee5fa694435 55,201
+site/content/zh-CN/v0.19/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 93
+site/content/en/v0.18/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 96
+site/content/en/v0.18/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 534,561
+site/content/zh-CN/v0.18/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 480,507
+site/content/en/v0.19/docs/concepts/workload_priority_class.md
+  h_47cee5fa694435 128
+site/content/zh-CN/v0.18/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 93
+site/content/en/v0.18/docs/concepts/cohort.md
+  h_47cee5fa694435 85
+site/content/en/v0.19/docs/concepts/local_queue.md
+  h_47cee5fa694435 41
+site/content/zh-CN/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 140
+site/content/zh-CN/v0.18/docs/reference/kueue-config.v1beta1.md
+  h_47cee5fa694435 6,9,15,18,24,28-30,33,36-37,40,44-50,53,57-66,69,73,76,80-82,85,89-90,93,97-98,101,105-109,112,116,119,123,126,130,133,137,140,144-146,153,161,166,169,173-174,177,181-182,185,189-191,199,204,207,211-213,216,220,228,233,236,240-243,251,255-256,259,266-273,280-281,289,293,296,303-305,312,319,327,332,339,346-347,354,361,368-371,378-379,386-387,395,399,402,409-412,419,426-428,435,443,447-448,451,454,458-460,467-470,477-479,487,491,494,501-502,509-510,517-519,527,531-532,535,537-538,542-548,551,555-561,569,574,577,581-582,585,589-591,593-604,613,618,621,625-626,628-645,649,653-654,657,661-664,667,671,679,684,687,691-699,702,706-707,710,714-715,723,727-728,731,738,745,753,758,765-766,773-775,782-783,790,792-793,801,807,809,813,816,819,823-824,832,836,839,846-847,855,860,863,867,870,874,882,884,890,895,898,902,905,909-911,919,924,931,933-934,942-945,947-952,954,961-962,969-970,978,980,986,991,994,998,1001,1005-1006,1013-1016,1019,1023-1024,1032,1034,1041,1046,1049,1053,1056,1060-1061,1068-1069,1077,1081,1084,1091-1094,1101-1104,1112,1117-1118,1121,1124,1128-1129,1136-1139,1142,1146-1147,1154,1161-1165,1173,1177,1180,1187-1191,1198-1202
+site/content/zh-CN/v0.19/docs/reference/kueue-config.v1beta1.md
+  h_47cee5fa694435 6,9,15,18,24,28-30,33,36-37,40,44-50,53,57-66,69,73,76,80-82,85,89-90,93,97-98,101,105-109,112,116,119,123,126,130,133,137,140,144-146,153,161,166,169,173-174,177,181-182,185,189-191,199,204,207,211-213,216,220,228,233,236,240-243,251,255-256,259,266-273,280-281,289,293,296,303-305,312,319,327,332,339,346-347,354,361,368-371,378-379,386-387,395,399,402,409-412,419,426-428,435,443,447-448,451,454,458-460,467-470,477-479,487,491,494,501-502,509-510,517-519,527,531-532,535,537-538,542-548,551,555-561,569,574,577,581-582,585,589-591,593-604,613,618,621,625-626,628-645,649,653-654,657,661-664,667,671,679,684,687,691-699,702,706-707,710,714-715,723,727-728,731,738,745,753,758,765-766,773-775,782-783,790,792-793,801,807,809,813,816,819,823-824,832,836,839,846-847,855,860,863,867,870,874,882,884,890,895,898,902,905,909-911,919,924,931,933-934,942-945,947-952,954,961-962,969-970,978,980,986,991,994,998,1001,1005-1006,1013-1016,1019,1023-1024,1032,1034,1041,1046,1049,1053,1056,1060-1061,1068-1069,1077,1081,1084,1091-1094,1101-1104,1112,1117-1118,1121,1124,1128-1129,1136-1139,1142,1146-1147,1154,1161-1165,1173,1177,1180,1187-1191,1198-1202
+site/content/zh-CN/v0.18/docs/concepts/cohort.md
+  h_47cee5fa694435 87
+site/content/zh-CN/v0.19/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 140
+site/content/zh-CN/v0.18/docs/concepts/local_queue.md
+  h_47cee5fa694435 41
+site/content/zh-CN/v0.18/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 140
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "59a82a3a3fe01e5d411bc228c2014e61eeb12d5d",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

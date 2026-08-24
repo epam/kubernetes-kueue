@@ -1,0 +1,14 @@
+site/content/zh-CN/v0.18/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 507
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "0cbf099860e9f428a04f5f8142dcad675d412334",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
