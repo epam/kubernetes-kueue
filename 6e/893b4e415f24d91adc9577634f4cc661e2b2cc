@@ -1,0 +1,18 @@
+pkg/controller/jobs/pod/pod_controller_test.go
+  h_99f506dc258b88 7280-7363
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  h_99f506dc258b88 3647-3851
+pkg/controller/jobs/pod/pod_controller.go
+  h_99f506dc258b88 521-529,531,558-562,898-909,912-913,915-919
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "6e893b4e415f24d91adc9577634f4cc661e2b2cc",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
