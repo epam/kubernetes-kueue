@@ -1,0 +1,57 @@
+keps/13746-topology-spreading/README.md
+  s_2c3df59f2bba18::t_e4d58613085f20 27,30,67-68,70,76-80,103,130-132,145-163,166-169,179-182,187-188,191-201,233-236,283,326,328,332-346,349,354,356,362,366,375,378,386,436,438-444,446-451,454-465,470,478,510,512,514-516,523,579,592-594,611-614,632,664,675-677,682-683,688-689,696,716,726-727,753,758,761-763,765,768-771
+  s_2c3df59f2bba18::t_fe8c7cdbe50e50 678-681
+  s_2c3df59f2bba18::t_171305a1fb511a 644-647,649,659-663
+  s_2c3df59f2bba18::t_7ba267a04e52d4 639-643
+  s_2c3df59f2bba18::t_de05f1857fa335 469,471-477,479-484,486-487,489,491-496,498-500
+  s_2c3df59f2bba18::t_e387bc2cbd5584 296,298-303
+  s_2c3df59f2bba18::t_8b9c30f44a8658 329-330
+  s_2c3df59f2bba18::t_9622bdc08c8a68 757,759-760,764,766-767
+  s_2c3df59f2bba18::t_30026c0ca9c661 53
+  s_2c3df59f2bba18::t_5a6be986858657 403,406-409,413
+  s_2c3df59f2bba18::t_abfa16a761fa5e 588-590
+  s_2c3df59f2bba18::t_0b91c8e0aabfc2 445
+  s_2c3df59f2bba18::t_8fff67978b7464 728-729
+  s_2c3df59f2bba18::t_2b3ea886c03419 22
+  s_2c3df59f2bba18::t_eb504d37ddc4c5 390-394,397-398,400,416-417,421-422,425,427
+  s_2c3df59f2bba18::t_58f5a495713181 205-208
+  s_2c3df59f2bba18::t_d3b89feabbcca6 535,538-539,541-542,545
+  s_2c3df59f2bba18::t_0059f95880db4c 17-18
+  s_2c3df59f2bba18::t_99a42847b88c9a 371-373,377,379
+  s_2c3df59f2bba18::t_d4e8b81c9a6555 133-136
+  s_2c3df59f2bba18::t_90b6775938451e 353
+  s_2c3df59f2bba18::t_db19d0020ff472 222-226
+  s_2c3df59f2bba18::t_3364b419fc51dc 603-606
+  s_2c3df59f2bba18::t_5d1b2830ff1a67 508,513,517-522,524-527,529-531
+  s_2c3df59f2bba18::t_0d83343171fdde 33
+  s_2c3df59f2bba18::t_5abeb682b338d6 71-74
+  s_2c3df59f2bba18::t_23b9eefae09a9e 584-587
+  s_2c3df59f2bba18::t_9c21de5a5d2ea9 173
+  s_2c3df59f2bba18::t_bda5e035fd45e0 650,652-657
+  s_2c3df59f2bba18::t_c0f8155e750f42 574
+  s_2c3df59f2bba18::t_9029a85fce6fb0 102
+  s_2c3df59f2bba18::t_a6ad14de512fd4 249-273
+  s_2c3df59f2bba18::t_7d8b70eb8274ab 361
+  s_2c3df59f2bba18::t_4decc416430cb1 673-674
+  s_2c3df59f2bba18::t_2485180a6e5ca0 315-320
+  s_2c3df59f2bba18::t_3b599f2b05413d 452-453
+  s_2c3df59f2bba18::t_7c45ae67f0e482 286,289-292
+  s_2c3df59f2bba18::t_fd801d63fe7992 305,307-309
+  s_2c3df59f2bba18::t_51d0cc5fb524e5 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "911f5af6ee8f82048548dc2b99284fd7aa2e4adc",
+  "prompts": {},
+  "sessions": {
+    "s_2c3df59f2bba18": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a3a489db-afc8-4291-80e2-04bbcb5064a5",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
