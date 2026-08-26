@@ -1,0 +1,47 @@
+keps/13746-topology-spreading/README.md
+  s_2c3df59f2bba18::t_152749ac230404 445,447
+  s_2c3df59f2bba18::t_068ce9fe0aa54b 248
+  s_2c3df59f2bba18::t_8fce26e212f6ac 546
+  s_2c3df59f2bba18::t_a3e4f9580cbc9e 408,410
+  s_2c3df59f2bba18::t_9602339e647fa1 632-633,637-638
+  s_2c3df59f2bba18::t_0cbdcc3933a6a4 604,607
+  s_2c3df59f2bba18::t_d2fbc5febb7825 288,292,297
+  s_2c3df59f2bba18::t_19c8ba68f22d6b 471-472
+  s_2c3df59f2bba18::t_6125daf53643e4 215
+  s_2c3df59f2bba18::t_a02b59c3e395c7 77-78
+  s_2c3df59f2bba18::t_6d1fdd0b8bb758 454,457,460
+  s_2c3df59f2bba18::t_784e21f90f9e74 690
+  s_2c3df59f2bba18::t_41e34405a659bb 492
+  s_2c3df59f2bba18::t_94e0791b97c364 31
+  s_2c3df59f2bba18::t_67d608fa51affb 326-328
+  s_2c3df59f2bba18::t_681f74657cb32b 276,282-283
+  s_2c3df59f2bba18::t_f768358f739fed 221-222
+  s_2c3df59f2bba18::t_6955ee903737ca 538
+  s_2c3df59f2bba18::t_79cfc44b4a2446 19
+  s_2c3df59f2bba18::t_61e1ec766e9054 718
+  s_2c3df59f2bba18::t_4ce1d578e92d4e 708-709,712
+  s_2c3df59f2bba18::t_dfcab858a53d2e 132,134
+  s_2c3df59f2bba18::t_9848cd89892c0b 233-234
+  s_2c3df59f2bba18::t_ed77771e78ba60 531
+  s_2c3df59f2bba18::t_fed10d8a12c110 502,510-511
+  s_2c3df59f2bba18::t_82ca9afe3822b0 670-671
+  s_2c3df59f2bba18::t_9c7c6bf4b2e08d 163,168
+  s_2c3df59f2bba18::t_ce9fd2e3a8cd4c 180-181
+  s_2c3df59f2bba18::t_2c55fb644493c0 679,681
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "ee79731900aa129473027735618f44ae210da3bc",
+  "prompts": {},
+  "sessions": {
+    "s_2c3df59f2bba18": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a3a489db-afc8-4291-80e2-04bbcb5064a5",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
