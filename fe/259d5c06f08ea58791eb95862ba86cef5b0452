@@ -1,0 +1,100 @@
+keps/13746-topology-spreading/README.md
+  s_2c3df59f2bba18::t_e4d58613085f20 28,31,69,77-81,104,131-133,146-156,157-163,166-169,179-182,187-188,191-196,197-200,234-235,347,349,353-359,360-366,369,373,375,381,385,388,396,439,441-443,445-447,449-454,457-468,473,479,520,522,524-526,532,590,649,682,693-695,708-709,716,747-748,774,794,797-799,801,804-807
+  s_2c3df59f2bba18::t_fe8c7cdbe50e50 696-699
+  s_2c3df59f2bba18::t_7ba267a04e52d4 656-657,661
+  s_2c3df59f2bba18::t_de05f1857fa335 472,475,477,485-488,490-491,493,495-500,508-510
+  s_2c3df59f2bba18::t_e387bc2cbd5584 316,318,321-324
+  s_2c3df59f2bba18::t_8b9c30f44a8658 350-351
+  s_2c3df59f2bba18::t_9622bdc08c8a68 793,795-796,800,802-803
+  s_2c3df59f2bba18::t_30026c0ca9c661 55
+  s_2c3df59f2bba18::t_5a6be986858657 416
+  s_2c3df59f2bba18::t_0b91c8e0aabfc2 448
+  s_2c3df59f2bba18::t_8fff67978b7464 749-750
+  s_2c3df59f2bba18::t_2b3ea886c03419 23
+  s_2c3df59f2bba18::t_eb504d37ddc4c5 407,428,430
+  s_2c3df59f2bba18::t_58f5a495713181 204
+  s_2c3df59f2bba18::t_d3b89feabbcca6 545,556
+  s_2c3df59f2bba18::t_0059f95880db4c 19
+  s_2c3df59f2bba18::t_99a42847b88c9a 387,389
+  s_2c3df59f2bba18::t_db19d0020ff472 221-225
+  s_2c3df59f2bba18::t_3364b419fc51dc 613-616
+  s_2c3df59f2bba18::t_5d1b2830ff1a67 518,523,527-528,530,534,539-541
+  s_2c3df59f2bba18::t_0d83343171fdde 34
+  s_2c3df59f2bba18::t_5abeb682b338d6 74-75
+  s_2c3df59f2bba18::t_9c21de5a5d2ea9 173
+  s_2c3df59f2bba18::t_bda5e035fd45e0 670-675
+  s_2c3df59f2bba18::t_c0f8155e750f42 585
+  s_2c3df59f2bba18::t_a6ad14de512fd4 249,256,265,282-283,288,293
+  s_2c3df59f2bba18::t_7d8b70eb8274ab 380
+  s_2c3df59f2bba18::t_4decc416430cb1 691-692
+  s_2c3df59f2bba18::t_2485180a6e5ca0 336-341
+  s_2c3df59f2bba18::t_3b599f2b05413d 455-456
+  s_2c3df59f2bba18::t_fd801d63fe7992 326,328-330
+  s_2c3df59f2bba18::t_51d0cc5fb524e5 24
+  s_2c3df59f2bba18::t_ea7a4d592af9d5 70-73
+  s_2c3df59f2bba18::t_eb53737c7d69da 529,531,533
+  s_2c3df59f2bba18::t_f064f1cf46141a 103
+  s_2c3df59f2bba18::t_c1f581833cb0e7 205-206
+  s_2c3df59f2bba18::t_083ecc02331aa4 595-601,603-604
+  s_2c3df59f2bba18::t_8487a08d9576fe 778-792
+  s_2c3df59f2bba18::t_877b32bae278c2 410-411
+  s_2c3df59f2bba18::t_7aae6185a56162 667
+  s_2c3df59f2bba18::t_e9fba993d7768c 54
+  s_2c3df59f2bba18::t_e19f5f7a0014ba 232-233
+  s_2c3df59f2bba18::t_65848330239ffb 134-137
+  s_2c3df59f2bba18::t_5ff28aad26139b 476,478,480
+  s_2c3df59f2bba18::t_8824aa8bfc758f 114
+  s_2c3df59f2bba18::t_582991afabb370 663-664,666,668
+  s_2c3df59f2bba18::t_086d86185da3ec 677-681
+  s_2c3df59f2bba18::t_6c19ff41860802 331-332
+  s_2c3df59f2bba18::t_bb3896836d0461 319-320
+  s_2c3df59f2bba18::t_0be88f418f5928 266-267,278,281
+  s_2c3df59f2bba18::t_8a47b09b02f408 18
+  s_2c3df59f2bba18::t_98abc7230292b1 658-660,662
+  s_2c3df59f2bba18::t_e62d516ce47c65 700-703
+  s_2c3df59f2bba18::t_bf05bae018e822 413,419-421,423-425
+  s_2c3df59f2bba18::t_107cdceddf4532 219
+  s_2c3df59f2bba18::t_795e92bf263dc2 215-217
+  s_2c3df59f2bba18::t_ae28596236a112 15
+  s_2c3df59f2bba18::t_7619affd2fcb30 309-312
+  s_2c3df59f2bba18::t_eab5f7a782b847 621-631
+  s_2c3df59f2bba18::t_7737e606858a46 548-550,552-553
+  s_2c3df59f2bba18::t_a5c3119eaf9ff2 248,250-255,257-264,268-277,279-280,284-287,289-292
+  s_2c3df59f2bba18::t_d0a20e96d10541 17
+  s_2c3df59f2bba18::t_a14835897bdbc4 501-506
+  s_2c3df59f2bba18::t_82f3a11afc58e7 400-406
+  s_2c3df59f2bba18::t_f4f2d4e2487fe4 575-576
+  s_2c3df59f2bba18::t_022a15cb3ed209 474
+  s_2c3df59f2bba18::t_c62c8b3729a735 535-537
+  h_47cee5fa694435 303-304,306-308,727
+  s_2c3df59f2bba18::t_19265e45c406a7 737
+  s_2c3df59f2bba18::t_1a04726cb56298 444
+  s_2c3df59f2bba18::t_a8b76d981cee35 305
+  s_2c3df59f2bba18::t_e55a1eb6d03979 415
+  s_2c3df59f2bba18::t_23f442cb9800a0 589
+  s_2c3df59f2bba18::t_7b083612ada892 481-483
+  s_2c3df59f2bba18::t_309ab33aeb73ba 484
+keps/13746-topology-spreading/kep.yaml
+  s_2c3df59f2bba18::t_a16fc980b643ad 37-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "fe259d5c06f08ea58791eb95862ba86cef5b0452",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_2c3df59f2bba18": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a3a489db-afc8-4291-80e2-04bbcb5064a5",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
