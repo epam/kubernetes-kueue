@@ -1,0 +1,57 @@
+apis/kueue/v1beta1/workload_types.go
+  s_a6d8daeb9af386::t_fb3174005e2806 307
+  s_a6d8daeb9af386::t_208478fd6a9736 344
+apis/kueue/v1beta2/workload_types.go
+  s_a6d8daeb9af386::t_03f6d94bd15dc9 597
+  s_a6d8daeb9af386::t_968489c947e488 557
+test/integration/singlecluster/webhook/core/workload_test.go
+  s_4b5267cb449f5e::t_03465b17698090 369-386
+keps/420-partial-admission/README.md
+  s_ded4bbc51fb94f::t_0c78af6a8543b8 193
+  s_ded4bbc51fb94f::t_3826979b759b75 82
+  s_94b7341900b376::t_cff3d4dcc73621 115-117
+charts/kueue/templates/crd/kueue.x-k8s.io_workloads.yaml
+  s_94b7341900b376::t_9cba05429c701b 148,8347,9053,17285
+config/components/crd/bases/kueue.x-k8s.io_workloads.yaml
+  s_94b7341900b376::t_e45833a212dd5a 116,8798,9552,18279
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "8c260233e387db38e220a5543e43fab9d35ebc52",
+  "prompts": {},
+  "sessions": {
+    "s_4b5267cb449f5e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "bcc53a6b-9ce6-4c97-869a-551c8aacaf8c",
+        "model": "cursor-grok-4.6-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_94b7341900b376": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a192637-d9c7-41d6-8055-4eeafbc58a4c",
+        "model": "claude-opus-5"
+      },
+      "human_author": null
+    },
+    "s_a6d8daeb9af386": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "be79ac5e-379f-4190-9139-c2fa88488b48",
+        "model": "cursor-grok-4.6-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_ded4bbc51fb94f": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6ac319cf-8f49-47fd-841e-508ea9d66d1f",
+        "model": "cursor-grok-4.6-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
