@@ -1,0 +1,44 @@
+hack/testing/e2e-common.sh
+  s_58e448c67e9b77::t_32208cb643fef0 648-649
+  s_ce7d225c021ef7::t_d553098bb1ae0c 646-647,650
+  s_58e448c67e9b77::t_4576ed359d7503 652-653
+hack/testing/e2e-test.sh
+  s_ce7d225c021ef7::t_0d21794de40750 28-29,34,37-38
+  s_58e448c67e9b77::t_7aaa6caa594e97 66-67
+  s_ce7d225c021ef7::t_79010189f4185c 69
+  s_58e448c67e9b77::t_c07691af882d6a 30-33
+  s_ce7d225c021ef7::t_a4c35768b41cfb 35-36
+  s_ce7d225c021ef7::t_0f29e963f68bcf 64,68
+hack/testing/e2e-common_test.sh
+  s_58e448c67e9b77::t_7942569e88cc93 304
+  s_58e448c67e9b77::t_cc53016fbec422 333-334
+  s_58e448c67e9b77::t_c520a2116c39fe 327-331
+  s_ce7d225c021ef7::t_b4df16068c3b8b 130-159
+  s_58e448c67e9b77::t_2d5624b1759d3c 326,338
+  s_58e448c67e9b77::t_b6110074e496b4 312
+  s_ce7d225c021ef7::t_e35f33e12e31d0 277-303,305-311,313-325,332,335-337,339-341
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "46eca0b3762124824909a7bcb7371c53c0bd6f4f",
+  "prompts": {},
+  "sessions": {
+    "s_58e448c67e9b77": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1ae7b2ed-3b66-4757-a8ca-a434a48724bb",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    },
+    "s_ce7d225c021ef7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "adffc98a-4429-4416-8716-33b6ce4ce77c",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

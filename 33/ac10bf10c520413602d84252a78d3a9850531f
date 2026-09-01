@@ -1,0 +1,18 @@
+apis/kueue/v1beta1/multikueue_types.go
+  h_47cee5fa694435 137
+charts/kueue/templates/crd/kueue.x-k8s.io_multikueueconfigs.yaml
+  h_47cee5fa694435 78
+config/components/crd/bases/kueue.x-k8s.io_multikueueconfigs.yaml
+  h_47cee5fa694435 57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "33ac10bf10c520413602d84252a78d3a9850531f",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
