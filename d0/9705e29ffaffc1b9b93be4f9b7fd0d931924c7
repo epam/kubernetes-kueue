@@ -1,0 +1,37 @@
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  s_e48b8527e132a8::t_dddc6f05afa549 250
+  s_e48b8527e132a8::t_8050ad47f829b5 23
+  s_e48b8527e132a8::t_465f179ea4fb93 131
+  s_e48b8527e132a8::t_7e14f106d6d0c4 1-22,24-47,60-130,132-177,179-249,251-276
+  s_e48b8527e132a8::t_3759a12511ffe6 48-59
+  s_e48b8527e132a8::t_fc3019fef7abd8 178
+kep-12100-review-questions.md
+  s_e48b8527e132a8::t_11fe3fc72f65a6 80-96
+  h_99f506dc258b88 1-69,97,104-111,123-247,258-452,464,466,481-507
+  s_e48b8527e132a8::t_af5a4b93367494 70-79,98-103,112-122,248-257,453-463,465,467-480
+kep-12100-implementation-plan.md
+  s_e48b8527e132a8::t_9ae61a04879695 1-211
+kep-12100-test-scenario.md
+  s_e48b8527e132a8::t_fba962260ffd7b 1-72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "d09705e29ffaffc1b9b93be4f9b7fd0d931924c7",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_e48b8527e132a8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1a8d83cd-8a03-40be-b651-798ce352818c",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
