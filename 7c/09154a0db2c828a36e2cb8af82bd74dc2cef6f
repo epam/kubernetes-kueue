@@ -1,0 +1,45 @@
+hack/testing/e2e-common.sh
+  h_f3e429a3560394 56
+  s_dec70e9a8d710e::t_70a014fac90edc 55
+  s_ce5996fdbc8e90::t_9e6a903b49ba6d 652
+  s_ce5996fdbc8e90::t_0ba594dbd69e41 104-107,109-110,113-114
+  s_dec70e9a8d710e::t_03c4457b907d70 100
+  s_ce5996fdbc8e90::t_c93ebc642abaee 108
+  s_dec70e9a8d710e::t_42b42b75b72c01 111
+  s_ce5996fdbc8e90::t_80d90595637580 112
+  s_dec70e9a8d710e::t_39470cff19f68b 57
+  s_dec70e9a8d710e::t_c9de7c41a8611b 58
+  s_ce5996fdbc8e90::t_cad704f0e28dba 684
+hack/testing/e2e-common_test.sh
+  s_ce5996fdbc8e90::t_cddccc280777aa 153-163
+  s_ce5996fdbc8e90::t_077eac851b0077 353-393
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "7c09154a0db2c828a36e2cb8af82bd74dc2cef6f",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_ce5996fdbc8e90": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e4f6c3bd-66ed-4ae9-992c-d7e00869b845",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    },
+    "s_dec70e9a8d710e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2764a501-73a7-4d1d-bf1a-2a0b536c8021",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}

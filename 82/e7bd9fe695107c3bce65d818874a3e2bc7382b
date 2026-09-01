@@ -1,0 +1,35 @@
+keps/13746-topology-spreading/README.md
+  s_2c3df59f2bba18::t_eb504d37ddc4c5 364-368,371-372,374,390-391,395-396,399,401
+  s_2c3df59f2bba18::t_58f5a495713181 205-208
+  s_2c3df59f2bba18::t_d3b89feabbcca6 509,512-513,515-516,519
+  s_2c3df59f2bba18::t_0059f95880db4c 17-18
+  s_2c3df59f2bba18::t_99a42847b88c9a 345-347,351,353
+  s_2c3df59f2bba18::t_d4e8b81c9a6555 133-136
+  s_2c3df59f2bba18::t_90b6775938451e 327
+  s_2c3df59f2bba18::t_db19d0020ff472 222-226
+  s_2c3df59f2bba18::t_3364b419fc51dc 577-580
+  s_2c3df59f2bba18::t_5d1b2830ff1a67 482,487,491-496,498-501,503-505
+  s_2c3df59f2bba18::t_0d83343171fdde 33
+  s_2c3df59f2bba18::t_5abeb682b338d6 71-74
+  s_2c3df59f2bba18::t_23b9eefae09a9e 558-561
+  s_2c3df59f2bba18::t_9c21de5a5d2ea9 173
+  s_2c3df59f2bba18::t_bda5e035fd45e0 624,626-631
+  s_2c3df59f2bba18::t_c0f8155e750f42 548
+  s_2c3df59f2bba18::t_9029a85fce6fb0 102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "82e7bd9fe695107c3bce65d818874a3e2bc7382b",
+  "prompts": {},
+  "sessions": {
+    "s_2c3df59f2bba18": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a3a489db-afc8-4291-80e2-04bbcb5064a5",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+Makefile
+  s_e2c8194604ccbf::t_3ef7f3adadee1f 78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "3735888aed8b023db0d02754331b82a2de814c02",
+  "prompts": {},
+  "sessions": {
+    "s_e2c8194604ccbf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8aed5b03-5441-4279-822b-bf8775506013",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
