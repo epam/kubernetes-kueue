@@ -1,0 +1,84 @@
+CHANGELOG/CHANGELOG-0.18.md
+  h_47cee5fa694435 1-40
+Makefile
+  h_47cee5fa694435 116
+README.md
+  h_47cee5fa694435 100
+SECURITY-INSIGHTS.yaml
+  h_47cee5fa694435 4-6,8,31,76
+charts/kueue/Chart.yaml
+  h_47cee5fa694435 19,24
+charts/kueue/README.md
+  h_47cee5fa694435 3,31,53,61
+charts/kueue/README.md.gotmpl
+  h_47cee5fa694435 33,55,63
+cmd/experimental/kueue-populator/README.md
+  h_47cee5fa694435 44
+cmd/experimental/kueue-populator/charts/kueue-populator/Chart.yaml
+  h_47cee5fa694435 5-6,9
+cmd/experimental/kueue-populator/charts/kueue-populator/README.md
+  h_47cee5fa694435 37,115,128
+cmd/experimental/kueue-priority-booster/charts/kueue-priority-booster/Chart.yaml
+  h_47cee5fa694435 5-6,9
+cmd/kueueviz/INSTALL.md
+  h_47cee5fa694435 6,63,84
+cmd/kueueviz/frontend/package-lock.json
+  h_47cee5fa694435 3,9
+cmd/kueueviz/frontend/package.json
+  h_47cee5fa694435 3
+site/content/en/v0.18/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+site/content/en/v0.18/docs/concepts/admission_check/provisioning_request.md
+  h_47cee5fa694435 158
+site/content/en/v0.18/docs/concepts/multikueue.md
+  h_47cee5fa694435 119,122,124
+site/content/en/v0.18/docs/concepts/preemption.md
+  h_47cee5fa694435 23
+site/content/en/v0.18/docs/getting-started/installation.md
+  h_47cee5fa694435 148,265,314
+site/content/en/v0.18/docs/tasks/run/using_hami.md
+  h_47cee5fa694435 58
+site/content/en/v0.18/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 27,29
+site/content/zh-CN/v0.18/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+site/content/zh-CN/v0.18/docs/admission-check-controllers/provisioning.md
+  h_47cee5fa694435 140
+site/content/zh-CN/v0.18/docs/concepts/admission_check.md
+  h_47cee5fa694435 129
+site/content/zh-CN/v0.18/docs/concepts/cohort.md
+  h_47cee5fa694435 87
+site/content/zh-CN/v0.18/docs/concepts/local_queue.md
+  h_47cee5fa694435 41
+site/content/zh-CN/v0.18/docs/concepts/preemption.md
+  h_47cee5fa694435 21
+site/content/zh-CN/v0.18/docs/installation/_index.md
+  h_47cee5fa694435 143,285
+site/content/zh-CN/v0.18/docs/reference/kueue-config.v1beta2.md
+  h_47cee5fa694435 259-268,273-274,280,288,508-509,543-546,568-593,642-690,712-713,725-726,796-797,812,828-837,876-910,1137-1145,1419-1430,1467-1476,1543-1545
+site/content/zh-CN/v0.18/docs/reference/kueue.v1beta2.md
+  h_47cee5fa694435 2039-2041,3687
+site/content/zh-CN/v0.18/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 26,40,44
+site/content/zh-CN/v0.18/docs/tasks/run/using_hami.md
+  h_47cee5fa694435 69
+site/content/zh-CN/v0.18/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 26,30
+site/hugo.toml
+  h_47cee5fa694435 109,112
+test/e2e/kueueviz/package-lock.json
+  h_47cee5fa694435 3,9
+test/e2e/kueueviz/package.json
+  h_47cee5fa694435 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "f43c53cd064581180964bc3e21b1443493a10fb8",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

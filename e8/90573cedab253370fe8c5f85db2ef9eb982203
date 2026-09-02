@@ -1,0 +1,14 @@
+kep-12100-review-questions.md
+  h_99f506dc258b88 1-464
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "e890573cedab253370fe8c5f85db2ef9eb982203",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
