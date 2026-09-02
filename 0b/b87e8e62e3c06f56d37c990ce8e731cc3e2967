@@ -25,12 +25,16 @@ site/data/featuregates/versioned_feature_list.yaml
 pkg/features/kube_features.go
   s_fd8e574771ab93::t_93673b6a614252 954,975-977
   s_fd8e574771ab93::t_96418af17c9ed4 575,623-634
+  s_a1b985c66d5f79::t_98bd64dcfedc6f 622
+  s_a1b985c66d5f79::t_3d0844b897e2f1 974
 pkg/util/testingjobs/job/wrappers.go
   s_09632c23619853::t_2789c3532efe05 280-285
 pkg/controller/jobs/pod/pod_controller.go
   s_df1c5c71eeab80::t_7541c82267023e 54
   s_fd8e574771ab93::t_7622ea63552f16 1475-1486
   s_069bbc017b0249::t_7451df09aac66a 65,87-88,91-92,98,794-801,804,806,808-857,859,861-882,886,888-914,918-922,931,934-938,940-941,943-949,951-953,1437-1451,1471-1474,1487-1488,1633-1638,1642-1690
+  s_a1b985c66d5f79::t_880042ac298e65 883-885
+  s_a1b985c66d5f79::t_6866f4e60af944 858
 pkg/controller/jobs/pod/pod_controller_test.go
   s_fd8e574771ab93::t_6bb36749d2518a 2026-2027
   s_fd8e574771ab93::t_5f65928bb80143 2024-2025,2028-2053,2055-2064,2066-2070,2072-2076,2085
@@ -75,6 +79,14 @@ pkg/controller/jobframework/reconciler_test.go
         "tool": "cursor",
         "id": "53911625-0778-4dca-a23f-c45362c07603",
         "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_a1b985c66d5f79": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1495850b-9dfd-4326-9930-03fa99e00045",
+        "model": "cursor-grok-4.6-high-fast"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
     },
