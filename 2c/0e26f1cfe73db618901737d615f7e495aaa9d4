@@ -1,0 +1,17 @@
+keps/11143-kueueviz-authorization/kep.yaml
+  h_32169613a39d35 5,25,29
+keps/11143-kueueviz-authorization/README.md
+  h_32169613a39d35 37,100-101,180,183,193-194,217-222,225-227,312-314,335,397-400,506-507,570-578
+  h_32169613a39d35 498
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "2c0e26f1cfe73db618901737d615f7e495aaa9d4",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}
