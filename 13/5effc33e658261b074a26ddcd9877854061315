@@ -27,6 +27,8 @@ pkg/features/kube_features.go
   s_fd8e574771ab93::t_96418af17c9ed4 575,628-639
   s_a1b985c66d5f79::t_98bd64dcfedc6f 622
   s_a1b985c66d5f79::t_3d0844b897e2f1 979
+  s_927c67f0185fe0::t_11e192c18a39ba 627
+  s_927c67f0185fe0::t_a6d0b979e15cb6 983
 pkg/util/testingjobs/job/wrappers.go
   s_09632c23619853::t_2789c3532efe05 280-285
 pkg/controller/jobs/pod/pod_controller.go
@@ -71,6 +73,14 @@ pkg/controller/jobframework/reconciler_test.go
         "tool": "cursor",
         "id": "ab6db909-92d8-4836-93a0-27f3b37a5458",
         "model": "cursor-grok-4.5-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_927c67f0185fe0": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "52e8d2aa-4532-4875-8e6d-e4ce1350a3c6",
+        "model": "cursor-grok-4.6-high"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
     },
