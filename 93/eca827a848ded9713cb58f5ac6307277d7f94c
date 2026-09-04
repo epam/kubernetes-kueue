@@ -14,11 +14,27 @@ test/integration/singlecluster/controller/admissionchecks/provisioning/suite_tes
   "base_commit_sha": "93eca827a848ded9713cb58f5ac6307277d7f94c",
   "prompts": {},
   "sessions": {
+    "s_20c48d10f61d1e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "5f4ed3c0-2838-46f5-a08a-b787bbb34138",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
     "s_6d441cc3dffcc2": {
       "agent_id": {
         "tool": "cursor",
         "id": "e67518a6-6950-4228-a47a-d340a3d5dba3",
         "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_c43cec44b6a08b": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "be1c1893-04bc-4b4e-88a9-503ff43748ba",
+        "model": "composer-2.5"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
     }
