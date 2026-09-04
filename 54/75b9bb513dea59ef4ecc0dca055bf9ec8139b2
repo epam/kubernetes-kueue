@@ -1,3 +1,5 @@
+pkg/metrics/metrics_test.go
+  h_99f506dc258b88 28,280-301
 ---
 {
   "schema_version": "authorship/3.0.0",
