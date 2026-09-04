@@ -1,0 +1,34 @@
+keps/11143-kueueviz-authorization/README.md
+  s_ffed55585f274c::t_0480b47d945021 237
+  h_32169613a39d35 37,100-101,180,184,194-195,218-223,226-228,313-314,345,407,410-411,509,517,582-589
+  s_ffed55585f274c::t_2ca862044688a4 334-342
+  s_ffed55585f274c::t_8a801c7379092a 315
+  s_ffed55585f274c::t_35b076ab000582 518
+  s_ffed55585f274c::t_d425ca8de2d5fe 408-409
+  s_ffed55585f274c::t_8bcf6ccfb5a8c1 183
+  s_ffed55585f274c::t_d4f694042dce8f 519
+  h_32169613a39d35 590
+keps/11143-kueueviz-authorization/kep.yaml
+  h_32169613a39d35 5,25,29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "e5f9c424a09b283ea2f839d2332adcfe165e533a",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_ffed55585f274c": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "18f3d357-df82-4b57-a8f5-47dea19af296",
+        "model": "unknown"
+      },
+      "human_author": null
+    }
+  }
+}

@@ -17,6 +17,14 @@ pkg/controller/admissionchecks/provisioning/controller_test.go
   "base_commit_sha": "99454d2711c1e238f6ca9d5eb185bb7527ee5b92",
   "prompts": {},
   "sessions": {
+    "s_20c48d10f61d1e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "5f4ed3c0-2838-46f5-a08a-b787bbb34138",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
     "s_c677b2a6bfb5fc": {
       "agent_id": {
         "tool": "cursor",
