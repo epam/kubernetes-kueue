@@ -1,0 +1,19 @@
+keps/13746-tas-topology-spreading/README.md
+  s_21bd00d462e6d4::t_5df9e2e231a769 140,172,183,221,248,284,299,327,334,343,427,464,498,564,614,625,656,818,917,941,1002
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "8f2af39c66194a21e3618fc85bf15515a4213b81",
+  "prompts": {},
+  "sessions": {
+    "s_21bd00d462e6d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "64c2f9b4-81c7-44c0-845a-0323a33bd0f7",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
