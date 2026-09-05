@@ -1,0 +1,20 @@
+pkg/controller/jobframework/validation.go
+  s_e8c19944c85512::t_9713a57bd80c8c 60
+  s_e8c19944c85512::t_94c934381b6f2a 169-170
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "ef9a50e23f3a294bea44c191aa8bd05b4bd6c080",
+  "prompts": {},
+  "sessions": {
+    "s_e8c19944c85512": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "e5a87b87-d954-4a63-a925-32f2455f3193",
+        "model": "cursor-grok-4.6-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
