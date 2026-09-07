@@ -1,0 +1,46 @@
+pkg/controller/jobs/raycluster/raycluster_multikueue_adapter.go
+  s_a2f93a9440d444::t_0fde561268e86a 52
+pkg/controller/jobframework/reconciler.go
+  s_a2f93a9440d444::t_e7ec881158e642 1656
+pkg/controller/jobs/raycluster/common.go
+  s_a2f93a9440d444::t_4a60944038e033 432-437,443-444
+  s_a2f93a9440d444::t_07613fdcc4baff 445
+pkg/controller/jobs/rayservice/rayservice_controller.go
+  s_a2f93a9440d444::t_de5238251200ff 239-240
+pkg/controller/jobframework/reconciler_internal_test.go
+  s_a2f93a9440d444::t_09c294c363ef00 46
+  s_a2f93a9440d444::t_11cfd4415a3479 226
+  s_a2f93a9440d444::t_b5a7168feeb05b 25
+  s_a2f93a9440d444::t_4e2fe00025e9b6 82-83,89-93
+  s_a2f93a9440d444::t_414d0c255ded48 108-110
+  s_a2f93a9440d444::t_aed0d1be75aaa6 202-203,206
+  s_a2f93a9440d444::t_2fab427b658e69 205
+  s_a2f93a9440d444::t_068c6f57628f53 40,47,49-54
+  s_a2f93a9440d444::t_5678d2dd733188 223,227-229
+  s_a2f93a9440d444::t_b9d1765e0f1a80 29,44-45,48,55-56
+  s_a2f93a9440d444::t_200780db85172b 245
+  s_a2f93a9440d444::t_ea486cacfbac7d 107
+  s_a2f93a9440d444::t_df0b499e5e0bca 57
+pkg/controller/jobs/raycluster/raycluster_multikueue_adapter_test.go
+  s_a2f93a9440d444::t_ad0b271da75f89 65
+pkg/controller/jobs/rayjob/rayjob_controller.go
+  s_a2f93a9440d444::t_039d02c70e8e38 236-237
+pkg/controller/jobframework/interface.go
+  s_a2f93a9440d444::t_1caf2bbccbd149 220-226
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "63735e9991c6129b8c671a31e50a629dd7f6edf0",
+  "prompts": {},
+  "sessions": {
+    "s_a2f93a9440d444": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02b2ed69-fefd-485c-9dad-25d5f44f7c0f",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

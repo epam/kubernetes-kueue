@@ -1,0 +1,14 @@
+keps/13746-tas-topology-spreading/README.md
+  h_47cee5fa694435 938
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "f57ec6c630c7295d1a50133362fe1aacd01ccf98",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+pkg/controller/jobframework/reconciler_test.go
+  s_295e0ce55b4f3e::t_8fce989d1b472f 1581
+  s_295e0ce55b4f3e::t_54b49eba46af9d 1574-1580,1582-1688
+pkg/controller/jobframework/reconciler.go
+  s_295e0ce55b4f3e::t_0b7317ed204677 1823-1827,1829-1830
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_test.go
+  s_295e0ce55b4f3e::t_85902ce36a224d 873-911,913-915
+  s_295e0ce55b4f3e::t_843ce31723e49f 912
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "e18509515f9bace57b50733aa6ef2c6362dc0912",
+  "prompts": {},
+  "sessions": {
+    "s_295e0ce55b4f3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "78c07fbc-1921-4f41-9c04-442d8c1b70bf",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}

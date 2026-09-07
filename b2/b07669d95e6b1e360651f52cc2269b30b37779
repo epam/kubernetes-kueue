@@ -1,0 +1,21 @@
+site/data/featuregates/versioned_feature_list.yaml
+  s_1e23826f29c2d8::t_b20b9e4a6f7f3d 360-364
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_1e23826f29c2d8::t_d23082d40d4e8a 360-364
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "b2b07669d95e6b1e360651f52cc2269b30b37779",
+  "prompts": {},
+  "sessions": {
+    "s_1e23826f29c2d8": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "285e19d9-a1a4-4851-b0fb-a4e6d35554e6",
+        "model": "cursor-grok-4.6-high-fast"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

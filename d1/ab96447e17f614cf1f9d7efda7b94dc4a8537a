@@ -11,6 +11,7 @@ pkg/controller/admissionchecks/provisioning/controller_test.go
   s_c573a57891c963::t_7e528e08eef557 2174-2180
   s_c573a57891c963::t_3e9317301bcd6e 700,720,726
   s_c573a57891c963::t_36e95c5b8153c4 264-265
+  s_a87f212e363830::t_a694f37202e63d 591,608-622,624,627-628,631,637
 test/integration/singlecluster/controller/admissionchecks/provisioning/provisioning_test.go
   s_c573a57891c963::t_559a7c276073c3 34
   s_c573a57891c963::t_602a73e5bf068d 252-260,302-358
@@ -21,6 +22,14 @@ test/integration/singlecluster/controller/admissionchecks/provisioning/provision
   "base_commit_sha": "d1ab96447e17f614cf1f9d7efda7b94dc4a8537a",
   "prompts": {},
   "sessions": {
+    "s_a87f212e363830": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "2f2c82ac-83c8-4ef1-b257-d6f354b307c7",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
     "s_c573a57891c963": {
       "agent_id": {
         "tool": "cursor",
