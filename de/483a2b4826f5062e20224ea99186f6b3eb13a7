@@ -4,11 +4,47 @@ hack/testing/e2e-kueueviz-rbac-bypass.sh
   s_930df8340c88c3::t_0ce742efbc31e0 52
   s_930df8340c88c3::t_1ab9b9da0a2b05 63
   s_930df8340c88c3::t_78735533334afe 62
-  s_930df8340c88c3::t_e9d536ba36c645 26-51
+  s_930df8340c88c3::t_e9d536ba36c645 26-51,26-50
   s_930df8340c88c3::t_522c5f7faa32f3 23-25
   s_930df8340c88c3::t_7ac3078f5048ef 53-55,59-61
-  s_930df8340c88c3::t_8d7be666b62da2 64-66
-  s_930df8340c88c3::t_3192a6a52c9f50 1-22,56-58,67-151
+  s_930df8340c88c3::t_8d7be666b62da2 64-66,65-66
+  s_930df8340c88c3::t_3192a6a52c9f50 1-22,1-2,4-22,56-58,67-151
+  s_29f51fb26ddb98::t_bd1797a7d42f91 51
+  s_29f51fb26ddb98::t_dcf00431dee162 64
+cmd/kueueviz/backend/handlers/api_handlers_test.go
+  s_29f51fb26ddb98::t_fcf58f6aad8197 1-56,64-191
+  s_29f51fb26ddb98::t_47b17a3b5e5528 57-59
+  s_29f51fb26ddb98::t_eeab2fe3e5a66c 61-63
+cmd/kueueviz/backend/handlers/websocket_handler_test.go
+  s_29f51fb26ddb98::t_0087829bedacea 493
+  s_29f51fb26ddb98::t_8c2b0c587b00a9 488-489
+  s_29f51fb26ddb98::t_a6cd91580ab8f8 496-498
+  s_29f51fb26ddb98::t_fa1961e2246ed6 23,468-487,499-506
+cmd/kueueviz/backend/handlers/local_queues.go
+  s_29f51fb26ddb98::t_1747fea901ceda 31,33-35,44,46-48
+cmd/kueueviz/backend/handlers/websocket_handler.go
+  s_29f51fb26ddb98::t_39523f863e189d 66
+cmd/kueueviz/backend/handlers/api_handlers.go
+  s_29f51fb26ddb98::t_86661c26491722 49
+cmd/kueueviz/backend/handlers/cohorts.go
+  s_29f51fb26ddb98::t_c361d038b344e0 32,37-39,47,52-54
+cmd/kueueviz/backend/handlers/local_queue_workloads.go
+  s_29f51fb26ddb98::t_083aff5d49e579 34,36-38
+cmd/kueueviz/backend/handlers/workloads.go
+  s_29f51fb26ddb98::t_7c87c177758029 45,47-53,62,64-66,129,131-133
+cmd/kueueviz/backend/handlers/resource_flavors.go
+  s_29f51fb26ddb98::t_6e91409278b1d0 32,34-36,45,51-53
+cmd/kueueviz/backend/handlers/cluster_queues.go
+  s_29f51fb26ddb98::t_b3c3223b03ddc2 31,33-35,43,48-50
+cmd/kueueviz/backend/handlers/handlers.go
+  s_29f51fb26ddb98::t_b2f95e7946adb8 62-64
+  s_29f51fb26ddb98::t_04d13345f4d161 65,77,81,82,84-85
+  s_29f51fb26ddb98::t_259a165ea63e2a 25-26,28,38-40,46,50,55-61
+  s_29f51fb26ddb98::t_c39e33b659a664 66
+cmd/kueueviz/backend/handlers/workloads_dashboard.go
+  s_29f51fb26ddb98::t_ad5fd7448bdb88 45,53
+cmd/kueueviz/backend/handlers/namespaces.go
+  s_29f51fb26ddb98::t_8ac63f6db6b687 31,33-35
 ---
 {
   "schema_version": "authorship/3.0.0",
@@ -16,6 +52,14 @@ hack/testing/e2e-kueueviz-rbac-bypass.sh
   "base_commit_sha": "de483a2b4826f5062e20224ea99186f6b3eb13a7",
   "prompts": {},
   "sessions": {
+    "s_29f51fb26ddb98": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "31b18af4-aa45-4f3b-a86c-0040d37ec113",
+        "model": "unknown"
+      },
+      "human_author": null
+    },
     "s_930df8340c88c3": {
       "agent_id": {
         "tool": "gemini",
