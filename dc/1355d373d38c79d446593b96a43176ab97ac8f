@@ -1,0 +1,74 @@
+cmd/kueueviz/backend/handlers/gvr.go
+  s_a583dcd98e5547::t_51875f9fa4bf9e 102-110
+cmd/kueueviz/backend/handlers/resource_flavors.go
+  s_a583dcd98e5547::t_ec806bd90a0129 145,161-168,171-175
+  s_a583dcd98e5547::t_db5eb7b5a09573 142-144
+  s_a583dcd98e5547::t_7c849a06ae4969 146-148
+  s_a583dcd98e5547::t_ebb163af093ead 27,43,46,82,90-95,99-105,107-130,132,139-141,149-153
+cmd/kueueviz/backend/handlers/cluster_queues.go
+  s_a583dcd98e5547::t_6cff8fa3941ee8 140-142,165
+  s_a583dcd98e5547::t_6766c8929d9e70 137-139
+  s_a583dcd98e5547::t_20dd1babe9d28a 26,41,44,95,103-110,113-118,121-136
+cmd/kueueviz/backend/handlers/cohorts.go
+  s_a583dcd98e5547::t_deb4dfdb15c17a 62
+  s_a583dcd98e5547::t_15691ed7f6bdff 149-153,159
+  s_a583dcd98e5547::t_5d599389727e83 22
+  s_a583dcd98e5547::t_ff3be28f69d5ec 36,43,46-47
+cmd/kueueviz/backend/handlers/workloads_dashboard.go
+  s_a583dcd98e5547::t_bb3721bf102854 60,63-84,86-92,94-106,108-109,113-117,123,199
+  s_a583dcd98e5547::t_59f687819c5d3b 203
+  s_a583dcd98e5547::t_f971cb9ce47a11 218
+  s_a583dcd98e5547::t_8bfb21e14a3abb 182,191,193-196
+  s_a583dcd98e5547::t_d6464ab05c56c5 128,133,136-138,140,142,145,171
+  s_a583dcd98e5547::t_83f1d07814b14a 61
+  s_a583dcd98e5547::t_dbd27dce694158 57-59
+  s_a583dcd98e5547::t_271fd0f27a1245 62
+  s_a583dcd98e5547::t_f98ef8fd939f50 181
+  s_a583dcd98e5547::t_bb78da44f8a0d7 197-198
+  s_a583dcd98e5547::t_fcb8cfb84bf6b0 200
+  s_a583dcd98e5547::t_6870bfea974f26 202
+  s_a583dcd98e5547::t_da4de6e5634325 28,41-42,44
+cmd/kueueviz/backend/handlers/workloads_dashboard_test.go
+  s_a583dcd98e5547::t_114ce565dd4be7 122
+  s_a583dcd98e5547::t_870de9d85296c2 93
+  s_a583dcd98e5547::t_8fdca632b48faf 94
+  s_a583dcd98e5547::t_03d941b4d10ef0 28,127-128,130-131
+cmd/kueueviz/backend/handlers/handlers.go
+  s_a583dcd98e5547::t_62fa53938817f8 119
+  s_a583dcd98e5547::t_2e2703f34ef578 92
+  s_a583dcd98e5547::t_daacd3e9695959 69-70,74,81-82,86,93,101,108-109,113,120,127,135,172,184-192
+  s_a583dcd98e5547::t_2ae93f5917cf3a 141-143,146-158,161-171
+  s_a583dcd98e5547::t_7d12d65e9034d7 66-68
+  s_a583dcd98e5547::t_71e910ad413b68 71-73
+  s_a583dcd98e5547::t_dbb1b6f10c45a5 75-80
+  s_a583dcd98e5547::t_65d3643cbad9e8 83-85
+  s_a583dcd98e5547::t_a32d2482c0c8ef 87-91
+  s_a583dcd98e5547::t_9941ff0434041d 94-96,98-100
+  s_a583dcd98e5547::t_490a72571b1834 102-107
+  s_a583dcd98e5547::t_549bd7c2dc6d83 110-112
+  s_a583dcd98e5547::t_d9867e145e0b29 114-118
+  s_a583dcd98e5547::t_f273b4ae25a760 121-126
+  s_a583dcd98e5547::t_aa3ae5e2648a1f 128
+  s_a583dcd98e5547::t_64b4e8bb7065df 132-134
+  s_a583dcd98e5547::t_1b3001f489412d 136-140
+  s_a583dcd98e5547::t_1d05286bcb0357 173
+  s_a583dcd98e5547::t_acd4f73b059890 181-183
+  s_a583dcd98e5547::t_367c5d52593c47 193-194
+  s_a583dcd98e5547::t_6ee5e5b8fa495b 21,26,28,38-40,50,54,65,97,131,177-180
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "dc1355d373d38c79d446593b96a43176ab97ac8f",
+  "prompts": {},
+  "sessions": {
+    "s_a583dcd98e5547": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "50376572-e385-4404-a5da-e6ed10f9bd7c",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}
