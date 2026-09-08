@@ -1,0 +1,30 @@
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  s_73d8962fade7f4::t_5157ac9fe7f863 348
+  s_73d8962fade7f4::t_d046a15cfe57a1 138,146,148-154,157,161-167,170,172,175-179,183,190,196-200,203-209,213-305,387
+  s_73d8962fade7f4::t_a584d0439edcc1 366-368
+  s_73d8962fade7f4::t_9359ee989f1818 388
+  h_99f506dc258b88 133,313,324,346,351-353,355-357,362-365,372,377,382
+  s_73d8962fade7f4::t_3100f1f360645c 389-391
+  s_73d8962fade7f4::t_44818944336b61 134,307-312,314-323,325-345,347,349-350,354,358-361,369-371,373-376,378-381,383-386,392-394
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "1790bffa6d7a7aabccf8c0f2845cd71de47cd22a",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_73d8962fade7f4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0791df95-dea7-486f-a130-aec4a3f664f5",
+        "model": "claude-opus-5"
+      },
+      "human_author": null
+    }
+  }
+}
