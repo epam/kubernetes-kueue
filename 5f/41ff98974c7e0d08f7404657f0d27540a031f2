@@ -1,0 +1,14 @@
+.github/PULL_REQUEST_TEMPLATE.md
+  h_47cee5fa694435 47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "5f41ff98974c7e0d08f7404657f0d27540a031f2",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
