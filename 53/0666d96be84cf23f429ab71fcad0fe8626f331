@@ -5,6 +5,8 @@ cmd/importer/pod/import.go
   h_99f506dc258b88 48,53,57-58,220
 cmd/importer/pod/import_test.go
   h_99f506dc258b88 198
+pkg/webhooks/workload_webhook.go
+  h_99f506dc258b88 165
 ---
 {
   "schema_version": "authorship/3.0.0",
@@ -14,6 +16,9 @@ cmd/importer/pod/import_test.go
   "humans": {
     "h_99f506dc258b88": {
       "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    },
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
     }
   },
   "sessions": {
@@ -30,6 +35,14 @@ cmd/importer/pod/import_test.go
         "tool": "github-copilot",
         "id": "e4a39f7a-e5ca-4e5d-9ae0-a34cbbe9ea21",
         "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    },
+    "s_cc1abaa361def2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ee9f7d21-2c34-4e51-8b43-ca5dd10b8ac6",
+        "model": "claude-opus-4-8"
       },
       "human_author": null
     }
