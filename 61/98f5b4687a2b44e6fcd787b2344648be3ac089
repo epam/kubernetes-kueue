@@ -1,0 +1,34 @@
+pkg/controller/jobs/job/job_controller_test.go
+  s_2c297b430f2bec::t_a5d99934311977 700,723
+pkg/controller/jobs/pod/pod_controller.go
+  h_47cee5fa694435 693,699,701,708,711,726,737
+pkg/controller/jobframework/interface.go
+  h_47cee5fa694435 141-142,143
+pkg/controller/jobframework/reconciler.go
+  h_47cee5fa694435 320,332,708-709,710,717,719,721,726-729,732-733,767
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  h_47cee5fa694435 43,2541-2549,2550-2551,2552-2553,2554,2555-2565
+test/integration/multikueue/jobs_test.go
+  h_47cee5fa694435 35,453-458
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "6198f5b4687a2b44e6fcd787b2344648be3ac089",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_2c297b430f2bec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a1851937-72e6-4b93-b7bb-cc93df7f432b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
