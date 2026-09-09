@@ -1,0 +1,40 @@
+internal/mocks/controller/jobframework/interface.go
+  s_176f3118174ca2::t_a99b553fddd7d7 17,21,483-520
+pkg/controller/jobframework/reconciler.go
+  s_176f3118174ca2::t_b8827613b72173 1665,1667
+  s_176f3118174ca2::t_fb036d3d33108b 1658-1659
+  s_176f3118174ca2::t_671fd0bab2c22a 1655,1660-1664
+Makefile
+  s_176f3118174ca2::t_b0d487e86ff10f 193
+pkg/controller/jobframework/reconciler_test.go
+  h_99f506dc258b88 99-103,175-176,188-189,191,203,205,1603,1621
+  s_176f3118174ca2::t_52599c39861e82 117,690-698
+  s_176f3118174ca2::t_25319160ac3803 111
+  s_176f3118174ca2::t_631ea5595af5eb 170-174,177-181
+  s_176f3118174ca2::t_382b6c621ba044 182-187,190,192-202,204,206-210
+  s_176f3118174ca2::t_f5766399bbca63 708
+  s_176f3118174ca2::t_cf4b11f8f6baf9 122,719-727
+  s_176f3118174ca2::t_11815f118d5500 94,104-110
+  s_176f3118174ca2::t_2af02ab4d2df1d 1656
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "99f9bf4e07917135b7e758d7bc7495c7ef5e5d86",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_176f3118174ca2": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "8407701c-5a84-47a0-a962-f189be1a067e",
+        "model": "copilot/gpt-5.6-sol"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
