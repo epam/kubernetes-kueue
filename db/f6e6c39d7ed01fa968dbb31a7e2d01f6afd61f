@@ -1,0 +1,30 @@
+pkg/controller/jobframework/interface.go
+  h_47cee5fa694435 146-147,154
+  s_ce8a63f1427ecc::t_7f572eb02c8b0a 137-138,141,143
+pkg/controller/jobs/pod/pod_controller.go
+  h_47cee5fa694435 693,701,711,737
+pkg/controller/jobframework/reconciler.go
+  s_ce8a63f1427ecc::t_dce3a203471916 331-332
+  h_47cee5fa694435 710,719,721
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "dbf6e6c39d7ed01fa968dbb31a7e2d01f6afd61f",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_ce8a63f1427ecc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7af22bb7-9eae-427a-bf21-37975dfed7c2",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
