@@ -1,0 +1,53 @@
+pkg/scheduler/flavorassigner/podset_reducer_test.go
+  s_73d8962fade7f4::t_7fd3bf6417e59f 162-166,169-171,173-175
+  s_73d8962fade7f4::t_81a41876341f7e 161
+  s_73d8962fade7f4::t_3f0dbcd7122f1c 167-168
+  s_73d8962fade7f4::t_1346604c60d4f3 224-255
+  h_99f506dc258b88 172
+pkg/util/testingjobs/raycluster/wrappers.go
+  s_73d8962fade7f4::t_242fa5202f79c3 41-99
+test/integration/singlecluster/controller/jobs/rayservice/rayservice_controller_partial_scaleup_test.go
+  s_73d8962fade7f4::t_7efe17580eeacc 120-129
+  s_73d8962fade7f4::t_622bc105ce6ba8 42
+  s_73d8962fade7f4::t_dc8aa767a414bf 32
+  s_73d8962fade7f4::t_8606b4db515634 29-31
+  s_73d8962fade7f4::t_ac8c28ed9b0fa8 33-35,39-41
+  s_73d8962fade7f4::t_b08aa77bcbda09 43-45,117-119
+  s_73d8962fade7f4::t_d4c37629ab3afb 130-132
+  s_73d8962fade7f4::t_1ce244975e9ce9 1-28,36-38,46-116,133-162
+pkg/scheduler/flavorassigner/podset_reducer.go
+  s_73d8962fade7f4::t_44000d887f7bc5 42-43,46-47
+  s_73d8962fade7f4::t_b452795d0100ab 136-138
+  s_73d8962fade7f4::t_8b018568ffca0b 158-159
+  s_73d8962fade7f4::t_9b040f95222974 125,127-128
+  s_73d8962fade7f4::t_c3b51ab4175c72 71-75
+  h_99f506dc258b88 126
+  s_73d8962fade7f4::t_ab70f28d477d1e 91-93,102-103
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  s_73d8962fade7f4::t_9f742e77ad0e99 40-43,145,166,211,230,274,301
+test/integration/singlecluster/controller/jobs/rayjob/rayjob_controller_partial_scaleup_test.go
+  h_99f506dc258b88 42-45,119,131
+test/util/util.go
+  h_99f506dc258b88 445-463
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "0b5fda22a70eb6f2b4bbe914393869139540ebe9",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_73d8962fade7f4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0791df95-dea7-486f-a130-aec4a3f664f5",
+        "model": "claude-opus-5"
+      },
+      "human_author": null
+    }
+  }
+}
