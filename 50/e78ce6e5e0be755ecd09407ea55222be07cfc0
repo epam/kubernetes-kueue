@@ -4,12 +4,18 @@ hack/make/verify.mk
   s_3d2f32e424ccd5::t_69a456b21e8d3e 227-229
   s_3d2f32e424ccd5::t_306e503fa18305 226,230
   s_3d2f32e424ccd5::t_da291b0feb42e4 124-125,137-138
+  h_47cee5fa694435 102,126-136
 ---
 {
   "schema_version": "authorship/3.0.0",
   "git_ai_version": "1.7.4",
   "base_commit_sha": "50e78ce6e5e0be755ecd09407ea55222be07cfc0",
   "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
   "sessions": {
     "s_3d2f32e424ccd5": {
       "agent_id": {
