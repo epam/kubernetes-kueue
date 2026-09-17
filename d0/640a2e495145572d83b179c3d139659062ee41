@@ -3,7 +3,7 @@ hack/make/verify.mk
   s_3d2f32e424ccd5::t_40753e8c6df65d 101
   h_47cee5fa694435 194-196
 Makefile
-  h_47cee5fa694435 378,390-391,395
+  h_47cee5fa694435 378,379-389,390-391,395
   h_47cee5fa694435 379-389
 ---
 {
