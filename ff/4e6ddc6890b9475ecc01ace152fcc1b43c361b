@@ -1,17 +1,10 @@
-cmd/importer/pod/import.go
-  s_b1b85ee75b9f2e::t_fb0d5c571f71be 24,49-52,54-56,59-64,207,211,213-219,221,263,267-278
-  s_b1b85ee75b9f2e::t_5fa8bf7fdda514 264-266
-  s_b23e3c7fcfd872::t_fef1deac2584f8 208-210
-  h_99f506dc258b88 48,53,57-58,220
-cmd/importer/pod/import_test.go
-  h_99f506dc258b88 198
 pkg/webhooks/workload_webhook.go
-  h_99f506dc258b88 165
+  h_99f506dc258b88 184
 ---
 {
   "schema_version": "authorship/3.0.0",
   "git_ai_version": "1.6.14",
-  "base_commit_sha": "530666d96be84cf23f429ab71fcad0fe8626f331",
+  "base_commit_sha": "ff4e6ddc6890b9475ecc01ace152fcc1b43c361b",
   "prompts": {},
   "humans": {
     "h_99f506dc258b88": {

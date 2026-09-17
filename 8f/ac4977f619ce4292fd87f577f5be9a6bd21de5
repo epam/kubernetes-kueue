@@ -1,0 +1,14 @@
+pkg/webhooks/workload_webhook.go
+  h_99f506dc258b88 182
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "8fac4977f619ce4292fd87f577f5be9a6bd21de5",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

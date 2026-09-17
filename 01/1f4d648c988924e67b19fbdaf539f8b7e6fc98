@@ -1,0 +1,20 @@
+keps/12100-partial-scaleup-for-elasticjob/README.md
+  s_1b0c0ccb4d7e55::t_8e10eca0901802 110
+  s_1b0c0ccb4d7e55::t_e0c152fc11c895 114-118
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "011f4d648c988924e67b19fbdaf539f8b7e6fc98",
+  "prompts": {},
+  "sessions": {
+    "s_1b0c0ccb4d7e55": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6ad55f20-e57f-48c8-bd33-73852d20522b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
