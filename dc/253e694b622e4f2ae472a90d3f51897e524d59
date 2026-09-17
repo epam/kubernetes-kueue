@@ -1,0 +1,31 @@
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  s_236d0d73341ce7::t_ec05a02161be57 161-164
+  s_236d0d73341ce7::t_54b13bff48bbe5 245-287
+  s_236d0d73341ce7::t_e783c9f551c8f4 288-289
+test/integration/singlecluster/controller/jobs/rayclusterwebhook/elastic_partial_scaleup_test.go
+  s_236d0d73341ce7::t_85277b6cdd0b08 225-226
+  s_236d0d73341ce7::t_485807a2e291ba 218
+test/integration/singlecluster/controller/jobs/rayjob/rayjob_controller_partial_scaleup_test.go
+  s_236d0d73341ce7::t_e11a9a4d312f07 128-129
+test/integration/singlecluster/controller/jobs/rayservice/rayservice_controller_partial_scaleup_test.go
+  s_236d0d73341ce7::t_1a9c4ca1d038bb 164-245
+  s_236d0d73341ce7::t_1f48faf401f62b 141-142
+  s_236d0d73341ce7::t_e56ac6da5299cb 38-43
+  s_236d0d73341ce7::t_a23637bfcb1bf8 153-157
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "dc253e694b622e4f2ae472a90d3f51897e524d59",
+  "prompts": {},
+  "sessions": {
+    "s_236d0d73341ce7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "69b003ee-8b03-43ef-a53d-4cea8d426b6e",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
