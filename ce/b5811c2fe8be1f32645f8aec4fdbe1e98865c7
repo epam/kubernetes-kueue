@@ -1,0 +1,36 @@
+hack/testing/e2e-common.sh
+  s_99343ae0265a95::t_409388677cf7b9 336-337,711,1411,1415-1421
+.github/dependabot.yml
+  s_d5ee8206b30ef5::t_fe4fb7336c9e32 73
+hack/testing/prometheus/Dockerfile
+  s_d5ee8206b30ef5::t_c7d8114b30353d 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ceb5811c2fe8be1f32645f8aec4fdbe1e98865c7",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_99343ae0265a95": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b8a17d5e-13eb-408f-a0b5-259b6277fa96",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    },
+    "s_d5ee8206b30ef5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0c5987f-5697-413a-9c4d-ccb9c9f82253",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
