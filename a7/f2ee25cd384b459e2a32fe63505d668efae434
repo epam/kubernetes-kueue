@@ -3,12 +3,18 @@ hack/testing/prometheus-pin-check.sh
 hack/make/verify.mk
   s_70879a34b7374d::t_6a77f7102c942b 208-211,268-271,334-336
   s_70879a34b7374d::t_3eba6e64679ae1 337
+  h_f3e429a3560394 102
 ---
 {
   "schema_version": "authorship/3.0.0",
   "git_ai_version": "1.7.4",
   "base_commit_sha": "a7f2ee25cd384b459e2a32fe63505d668efae434",
   "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
   "sessions": {
     "s_70879a34b7374d": {
       "agent_id": {
