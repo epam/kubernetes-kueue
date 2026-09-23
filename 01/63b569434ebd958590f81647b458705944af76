@@ -1,0 +1,42 @@
+pkg/util/pod/pod_test.go
+  s_d10e2e5a58c1d2::t_542e64637cf977 271
+  s_d10e2e5a58c1d2::t_cea39b3d905b1f 175-216
+  s_d10e2e5a58c1d2::t_85263eecdc06f6 172-174
+keps/77-dynamically-sized-jobs/README.md
+  s_d10e2e5a58c1d2::t_6781bdba299bd2 590
+pkg/controller/tas/topology_ungater_test.go
+  s_d10e2e5a58c1d2::t_4b8d8b0ac40f99 2270,2272-2273
+  s_d10e2e5a58c1d2::t_e9b6472cbfcd19 2415,2421-2428,2432-2459,2461-2462,2464-2465,2467-2468,2470-2474,2476-2477,2480,2482-2483,2499-2503,2507-2535,2537-2538,2551-2553,2555-2559,2564-2568,2570-2574,2576-2581,2583-2606
+  s_d10e2e5a58c1d2::t_8958a9e3031e16 2429-2431
+  s_d10e2e5a58c1d2::t_783fea809a0dcd 2373,2376-2378
+  s_d10e2e5a58c1d2::t_cdca0e9409471c 2504-2506
+  s_d10e2e5a58c1d2::t_098c35987ce7ca 2536,2539-2550,2554,2560-2563,2569,2575,2582
+  s_d10e2e5a58c1d2::t_df31bbed511aa8 2460,2463,2466,2469,2475,2478-2479,2481,2484-2486
+test/integration/singlecluster/tas/tas_test.go
+  s_d10e2e5a58c1d2::t_426b76c21fbb29 5150,5153-5154
+  s_d10e2e5a58c1d2::t_06647a26cc402f 5185,5190-5196
+  s_d10e2e5a58c1d2::t_7d7c865244b76f 9145-9149,9154,9163,9166,9172-9173,9176-9192,9194-9196,9200-9201,9203-9206,9215-9216
+  s_d10e2e5a58c1d2::t_f634019be07828 9217
+  s_d10e2e5a58c1d2::t_ed9aa951c1b7af 9144,9150-9153,9155-9162,9164-9165,9167-9171,9174-9175,9193,9197-9199,9202,9207-9214,9218-9242
+pkg/controller/tas/topology_ungater.go
+  s_d10e2e5a58c1d2::t_8139887d390b85 265,396,398,469,484-488,490-491,511-513,518,530
+pkg/util/pod/pod.go
+  s_d10e2e5a58c1d2::t_7f26dd4142e7a3 115-116
+  s_d10e2e5a58c1d2::t_8139887d390b85 24,110-114
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0163b569434ebd958590f81647b458705944af76",
+  "prompts": {},
+  "sessions": {
+    "s_d10e2e5a58c1d2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "602e909e-0a39-4d2a-b663-bcf6fa77539b",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
