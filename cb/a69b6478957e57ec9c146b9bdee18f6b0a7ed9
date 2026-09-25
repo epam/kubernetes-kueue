@@ -1,5 +1,6 @@
 pkg/scheduler/scheduler.go
   s_31a4395a13c796::t_7a8ed68d58ab84 946
+  h_99f506dc258b88 1592,1595,1645-1666
 pkg/controller/jobs/raycluster/common.go
   s_31a4395a13c796::t_b683be69b01c3e 154
 pkg/controller/jobframework/reconciler_test.go
