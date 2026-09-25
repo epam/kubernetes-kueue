@@ -1,0 +1,39 @@
+pkg/scheduler/scheduler.go
+  s_31a4395a13c796::t_7a8ed68d58ab84 946
+pkg/controller/jobs/raycluster/common.go
+  s_31a4395a13c796::t_b683be69b01c3e 154
+pkg/controller/jobframework/reconciler_test.go
+  s_31a4395a13c796::t_4914447c76e7f6 2660-2661,2705,2719-2721,2723-2724
+pkg/controller/jobframework/reconciler.go
+  s_31a4395a13c796::t_20a2fb766098f0 1967-1968,1970-1976
+test/integration/singlecluster/controller/jobs/rayjob/rayjob_controller_partial_scaleup_test.go
+  s_31a4395a13c796::t_3aad9b12a0c4c1 128-129
+pkg/controller/jobs/raycluster/common_test.go
+  s_31a4395a13c796::t_ae849dfdf300e0 436
+  s_31a4395a13c796::t_93b6e166a75686 403,419-420
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  s_31a4395a13c796::t_80aed32df8e373 132,360,377,433,450,503,519,562-567,573,587,589,611-612
+  s_31a4395a13c796::t_b39a174781db8b 411,487,491-497,536,540
+  s_31a4395a13c796::t_594eebe5b8363b 548
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "cba69b6478957e57ec9c146b9bdee18f6b0a7ed9",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_31a4395a13c796": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a7a641e6-a1b2-4908-b69a-1d28c5c5d727",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}
