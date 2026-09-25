@@ -1,0 +1,20 @@
+pkg/controller/jobframework/reconciler.go
+  s_80d402340baf7e::t_5280a741e66636 758-763,770-772
+  s_80d402340baf7e::t_e1c3a141808537 732
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "df80563494ed982d721cb10cd40a94b8930521c7",
+  "prompts": {},
+  "sessions": {
+    "s_80d402340baf7e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4187d5af-39af-4bf4-9320-34b06feee58d",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

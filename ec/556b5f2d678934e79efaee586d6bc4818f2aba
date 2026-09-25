@@ -1,0 +1,50 @@
+keps/12100-partial-scaleup-for-elasticjob/README.md
+  s_1b0c0ccb4d7e55::t_5f876fc028b62a 216,229,240,241-244,250-252,254
+  s_1b0c0ccb4d7e55::t_27e34975bc9956 193-195,224
+  s_1b0c0ccb4d7e55::t_7be64ec7f4cfcf 91,93-94,96,98-99,104
+  s_1b0c0ccb4d7e55::t_af4d01864bf93c 85-86,88-90,92,95,97,100-103,105-109,111
+  s_1b0c0ccb4d7e55::t_f241a962ada8d9 192,196-197,200-201
+  s_1b0c0ccb4d7e55::t_9f397bdbfe94c7 211-212,215,227
+  s_1b0c0ccb4d7e55::t_694542c4dded44 223
+  s_1b0c0ccb4d7e55::t_07e96ef0d76255 112
+  s_1b0c0ccb4d7e55::t_e531fa9926c3dd 87
+  s_1b0c0ccb4d7e55::t_aa5d48c8a89d82 202
+  s_1b0c0ccb4d7e55::t_ac5ce2eb5a2251 225
+  s_1b0c0ccb4d7e55::t_1c1267bc772b18 239
+  s_1b0c0ccb4d7e55::t_a9a9e7e27e75a7 313
+  s_1b0c0ccb4d7e55::t_9eb73dabd40e69 342-345
+  s_1b0c0ccb4d7e55::t_6767c1448657fe 275-280
+  s_1b0c0ccb4d7e55::t_f816f1d14fff4d 261
+  s_1b0c0ccb4d7e55::t_b2f7fa7e6fc49e 253,255
+  s_1b0c0ccb4d7e55::t_207e61071a919c 390,396-403
+  s_1b0c0ccb4d7e55::t_4945476f8f801b 245-249
+  s_1b0c0ccb4d7e55::t_4452fb05453212 14,27-28
+  s_1b0c0ccb4d7e55::t_9ea8e6a503e4f9 387
+  h_99f506dc258b88 263,358
+  s_1b0c0ccb4d7e55::t_4252b82e5ee85c 385-386,388-389
+  s_1b0c0ccb4d7e55::t_cf0f2bee767d45 149
+  s_1b0c0ccb4d7e55::t_71d9726a45f7f1 262
+  s_1b0c0ccb4d7e55::t_8e10eca0901802 110
+  s_1b0c0ccb4d7e55::t_e0c152fc11c895 114-118
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ec556b5f2d678934e79efaee586d6bc4818f2aba",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_1b0c0ccb4d7e55": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6ad55f20-e57f-48c8-bd33-73852d20522b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

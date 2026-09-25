@@ -1,0 +1,14 @@
+test/integration/multikueue/jobs_test.go
+  h_47cee5fa694435 35,453-458
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "fc121adb9af8d0e77f9a4d0843f4c7d131aa0b39",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_8b083c9e61f643::t_f76974406a4a9f 1344,1422
+  s_8b083c9e61f643::t_dd1400af316124 1345,1423
+  s_8b083c9e61f643::t_2a6a5bc558bcf9 1439
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d75d6ac2dc9f5db3a414d73265c541c6209da8b3",
+  "prompts": {},
+  "sessions": {
+    "s_8b083c9e61f643": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "84df99d8-2326-4bc8-abf0-209f564d49b5",
+        "model": "cursor-grok-4.6-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

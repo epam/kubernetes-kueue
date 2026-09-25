@@ -1,0 +1,66 @@
+pkg/scheduler/flavorassigner/podset_reducer.go
+  s_73d8962fade7f4::t_44000d887f7bc5 42-43
+  s_73d8962fade7f4::t_c3b51ab4175c72 68-72
+  s_73d8962fade7f4::t_ab70f28d477d1e 95
+  s_73d8962fade7f4::t_9b040f95222974 124,126
+  h_99f506dc258b88 125
+  s_73d8962fade7f4::t_b452795d0100ab 138-140
+test/util/util.go
+  h_99f506dc258b88 446-464
+pkg/scheduler/flavorassigner/podset_reducer_test.go
+  s_73d8962fade7f4::t_3f0dbcd7122f1c 167-168
+  h_99f506dc258b88 172
+  s_73d8962fade7f4::t_7fd3bf6417e59f 162-166,169-171,173-175
+  s_73d8962fade7f4::t_81a41876341f7e 161
+test/integration/singlecluster/controller/jobs/rayjob/rayjob_controller_partial_scaleup_test.go
+  h_99f506dc258b88 42-45,119,132
+pkg/util/testingjobs/raycluster/wrappers.go
+  s_73d8962fade7f4::t_242fa5202f79c3 41-99
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  s_73d8962fade7f4::t_9f742e77ad0e99 43-46,148,170,215,234,322,349
+  s_73d8962fade7f4::t_0104605e10e2a4 356
+  s_73d8962fade7f4::t_0d128bce72b7a5 387-388,391,415,435-436,440,444-446
+  s_3130ac198eb516::t_e7555443eca3d8 353-354,357-366,407,409-414,426-434,437
+  s_3130ac198eb516::t_70934632f5b9bf 448,450-526
+  s_3130ac198eb516::t_1f991d3e806075 416-425
+  s_73d8962fade7f4::t_1a0c6c398a2439 355,367-386,389-390,392-406,408,438-439,441-443,447
+  h_99f506dc258b88 26,33,36,352,449
+test/integration/singlecluster/controller/jobs/rayservice/rayservice_controller_partial_scaleup_test.go
+  s_73d8962fade7f4::t_d4c37629ab3afb 132-134
+  s_73d8962fade7f4::t_622bc105ce6ba8 44
+  s_73d8962fade7f4::t_ac8c28ed9b0fa8 33-35
+  s_73d8962fade7f4::t_dc8aa767a414bf 32
+  s_73d8962fade7f4::t_1ce244975e9ce9 1-28,36-37,48-118,135-140,143-152,158-163,243
+  s_73d8962fade7f4::t_8606b4db515634 29-31
+  s_73d8962fade7f4::t_b08aa77bcbda09 45-47,119-121
+  s_73d8962fade7f4::t_7efe17580eeacc 122-131
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "eedf0a385bcaa40a775634bf43ea063b2658cf4c",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_3130ac198eb516": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ce409d67-3944-4dd7-8c21-1e967ebd8ee0",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    },
+    "s_73d8962fade7f4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0791df95-dea7-486f-a130-aec4a3f664f5",
+        "model": "claude-opus-5"
+      },
+      "human_author": null
+    }
+  }
+}

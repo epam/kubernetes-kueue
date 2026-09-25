@@ -1,0 +1,22 @@
+pkg/controller/jobframework/reconciler.go
+  h_47cee5fa694435 320,331-332,710,717,719,721,726-727,732,763,770
+pkg/controller/jobs/pod/pod_controller.go
+  h_47cee5fa694435 693,699,701,708,711,726,737
+pkg/controller/jobframework/interface.go
+  h_47cee5fa694435 137-168,173
+site/data/featuregates/versioned_feature_list.yaml
+  h_47cee5fa694435 54-57
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  h_47cee5fa694435 54-57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "571939e61d5ca61e700a00654e0e5d9d8c1e4092",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

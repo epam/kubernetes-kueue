@@ -1,0 +1,30 @@
+cmd/importer/pod/import.go
+  h_99f506dc258b88 237
+cmd/importer/pod/import_test.go
+  h_99f506dc258b88 155-158,160-166,168-173,198-199
+cmd/importer/cache/cache.go
+  h_99f506dc258b88 88
+cmd/importer/pod/check_test.go
+  h_99f506dc258b88 113,114-119,136,137-145,146
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "31321849b426bb912f13f47b95c47b27428475d2",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_06eff7e3c8c407": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "f52d0b82-e1f2-4c81-9631-63d000713095",
+        "model": "claude-sonnet-4.6"
+      },
+      "human_author": null
+    }
+  }
+}

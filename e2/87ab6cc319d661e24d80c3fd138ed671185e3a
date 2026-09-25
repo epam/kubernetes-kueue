@@ -1,0 +1,26 @@
+pkg/controller/jobframework/reconciler.go
+  s_3130ac198eb516::t_00f1856c5c57d4 1764,1768-1777
+pkg/workloadslicing/workloadslicing.go
+  s_3130ac198eb516::t_fe69b74be7f366 217-219,227-230,246
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "e287ab6cc319d661e24d80c3fd138ed671185e3a",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_3130ac198eb516": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ce409d67-3944-4dd7-8c21-1e967ebd8ee0",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

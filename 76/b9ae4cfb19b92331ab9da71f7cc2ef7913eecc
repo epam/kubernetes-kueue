@@ -1,0 +1,25 @@
+cmd/importer/pod/import_test.go
+  h_99f506dc258b88 27-28,35-36,83-137,149-153,156-157,159,168-171,187-190,208,212-215,217-219,225-234,237-240,242-246,249-307,314-316,320,325-328,330,354-467
+  h_99f506dc258b88 241,308,335,468-471
+cmd/importer/README.md
+  h_99f506dc258b88 32-35,178
+cmd/importer/cache/cache.go
+  h_99f506dc258b88 38
+cmd/importer/pod/check.go
+  h_99f506dc258b88 29,31-32,55-57,59-62,65-67,70-72,80,91-101
+cmd/importer/pod/check_test.go
+  h_99f506dc258b88 46-57,78,85,95,104-122,126-158,160,186-189,191
+cmd/importer/pod/import.go
+  h_99f506dc258b88 24,40,49-65,83-88,91-96,102-109,112-131,141,226,236,281-334
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "76b9ae4cfb19b92331ab9da71f7cc2ef7913eecc",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

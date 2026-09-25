@@ -1,0 +1,15 @@
+hack/make/verify.mk
+  h_47cee5fa694435 102,211-212
+  h_47cee5fa694435 213
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "71a886ffa7a3e7895ef1c833331c3fe381696c4c",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+hack/testing/e2e-common.sh
+  s_e655b3c8abdb02::t_e9cc2281488e12 133-144,148,150-158,737,1438
+  s_e655b3c8abdb02::t_72590337774bad 145-147,149,362,736,1437
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6a019f1f6cbe8d4bbc7140be2d54f3befb013cbd",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_e655b3c8abdb02": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "deaf526d-365b-4651-8a85-424cdf391101",
+        "model": "claude-opus-5"
+      },
+      "human_author": null
+    }
+  }
+}
