@@ -1,0 +1,21 @@
+test/e2e/singlecluster/tasapi/baseline/job_test.go
+  s_6fa2bca8aaec6d::t_efcffdc23043a4 32
+  s_6fa2bca8aaec6d::t_cf06747948dff3 419
+  s_6fa2bca8aaec6d::t_927a6741d7b163 418,420-544
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9d59cf86ceff6e6c63f396098e01a3f4ccd5da29",
+  "prompts": {},
+  "sessions": {
+    "s_6fa2bca8aaec6d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "70cd7a6b-5f53-4dc7-a343-6850e77bf5cb",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
