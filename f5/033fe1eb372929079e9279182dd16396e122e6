@@ -1,0 +1,19 @@
+pkg/features/kube_features.go
+  s_4eff52c9ae5254::t_3e8744604566f9 714
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f5033fe1eb372929079e9279182dd16396e122e6",
+  "prompts": {},
+  "sessions": {
+    "s_4eff52c9ae5254": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c4eb4ee7-7f97-4342-8020-b4bfa43959ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
