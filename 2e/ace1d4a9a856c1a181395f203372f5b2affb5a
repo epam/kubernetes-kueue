@@ -1,0 +1,25 @@
+hack/testing/e2e-common.sh
+  s_c1cdfed7dec47c::t_ca3a560cdd5731 56-57
+  s_c1cdfed7dec47c::t_0afc2b79a54bc2 59
+hack/testing/e2e-common_test.sh
+  s_c1cdfed7dec47c::t_ff429a2089db02 306-310,315-317,319-321,411-426
+  s_c1cdfed7dec47c::t_da6461a092643b 427-429
+  s_c1cdfed7dec47c::t_36ccf947651609 311,313-314
+  s_c1cdfed7dec47c::t_24777150f5fa8e 305,312,318
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2eace1d4a9a856c1a181395f203372f5b2affb5a",
+  "prompts": {},
+  "sessions": {
+    "s_c1cdfed7dec47c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "577bc10a-4bf5-499a-b6d3-922ebd8ab165",
+        "model": "claude-opus-5"
+      },
+      "human_author": null
+    }
+  }
+}

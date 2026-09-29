@@ -1,0 +1,26 @@
+pkg/controller/jobframework/reconciler.go
+  s_2267a58143f4fa::t_3b36060e83304f 1964-1965,1967-1968
+  s_2267a58143f4fa::t_333d6430385dfe 1969
+  h_99f506dc258b88 1966,1975
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8db469bffccb2397e33055c639f48cce48ea0996",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_2267a58143f4fa": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "e78cf47b-1846-4ee5-a374-c9f8a2429342",
+        "model": "copilot/claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

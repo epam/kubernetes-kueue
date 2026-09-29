@@ -1,0 +1,18 @@
+pkg/controller/jobframework/reconciler.go
+  h_99f506dc258b88 1975,1977-1978
+pkg/controller/jobframework/reconciler_test.go
+  h_99f506dc258b88 2819-2837
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  h_99f506dc258b88 291-339
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3499511851b375507e4339e9c3aa1c4373c320a5",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

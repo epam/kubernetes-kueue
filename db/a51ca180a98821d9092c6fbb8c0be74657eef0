@@ -1,0 +1,76 @@
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  s_31a4395a13c796::t_80aed32df8e373 132,407,424,480,497,550,566,608,609-614,615-619,620,621-633,634,635,636,637-657,658-659,660-671
+  s_31a4395a13c796::t_b39a174781db8b 458,534,538-544,583,587
+  s_31a4395a13c796::t_594eebe5b8363b 595
+pkg/controller/jobs/raycluster/common_test.go
+  s_31a4395a13c796::t_ae849dfdf300e0 436
+  s_31a4395a13c796::t_93b6e166a75686 403,419-420
+pkg/controller/jobframework/reconciler_test.go
+  s_31a4395a13c796::t_4914447c76e7f6 2661-2662,2709,2723-2725,2727-2728
+  s_31a4395a13c796::t_852065f390b3fe 2732-2734,2739-2740,2742-2746,2770-2771
+  s_ec639dc75146d7::t_57443096934955 2772,2774-2775,2777-2778,2780,2782,2784-2785,2787-2790,2887,2899-2902
+  s_ec639dc75146d7::t_75c9b92df8d150 2773
+  s_ec639dc75146d7::t_ea93a80d875283 2776
+  s_ec639dc75146d7::t_88fac9b339c75c 2779
+  s_ec639dc75146d7::t_a02253f63e98cf 2781
+  s_ec639dc75146d7::t_13e3ba136649de 2783
+  s_ec639dc75146d7::t_1939aa67881913 2786
+  s_ec639dc75146d7::t_b6f29d59505976 2888-2898
+  s_ec639dc75146d7::t_5060db0717c268 2791-2837
+  s_ec639dc75146d7::t_3243a08f427d06 24
+  s_ec639dc75146d7::t_69da88934d9373 2687-2689
+  s_ec639dc75146d7::t_72eb9920311b7c 2903
+pkg/controller/jobs/raycluster/common.go
+  s_31a4395a13c796::t_b683be69b01c3e 154
+pkg/scheduler/scheduler.go
+  h_99f506dc258b88 1590,1593,1644-1656,1657-1658,1659-1660,1661,1662-1663,1664,1667-1668,1669-1671
+  s_ec639dc75146d7::t_f6423331640f86 1665-1666
+test/integration/singlecluster/controller/jobs/rayjob/rayjob_controller_partial_scaleup_test.go
+  s_31a4395a13c796::t_3aad9b12a0c4c1 128-129
+pkg/controller/jobframework/reconciler.go
+  s_31a4395a13c796::t_20a2fb766098f0 1961-1962,1971-1974
+  s_2267a58143f4fa::t_3b36060e83304f 1964-1965,1968
+  h_99f506dc258b88 1966,1975-1976,1977,1978-1979
+  s_ec639dc75146d7::t_1c092e12e2c445 1967
+  s_2267a58143f4fa::t_333d6430385dfe 1969
+pkg/scheduler/scheduler_test.go
+  h_99f506dc258b88 40,11026,11029-11062,11063-11102
+  s_ec639dc75146d7::t_939789552f7874 11027-11028
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "dba51ca180a98821d9092c6fbb8c0be74657eef0",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_2267a58143f4fa": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "e78cf47b-1846-4ee5-a374-c9f8a2429342",
+        "model": "copilot/claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    },
+    "s_31a4395a13c796": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a7a641e6-a1b2-4908-b69a-1d28c5c5d727",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    },
+    "s_ec639dc75146d7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d83670c-d35c-4ab7-96b9-90c7d482374e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}
