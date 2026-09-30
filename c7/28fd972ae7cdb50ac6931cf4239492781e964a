@@ -9,6 +9,7 @@ site/data/featuregates/versioned_feature_list.yaml
 pkg/features/kube_features.go
   s_99301da8ee9b03::t_7f655fd2a9594f 757-766,1316-1317
   s_99301da8ee9b03::t_b63f14a90d488c 1311
+  s_8e8e31edf3cf5d::t_b078fbce2b0a5a 1315
 ---
 {
   "schema_version": "authorship/3.0.0",
@@ -16,6 +17,14 @@ pkg/features/kube_features.go
   "base_commit_sha": "c728fd972ae7cdb50ac6931cf4239492781e964a",
   "prompts": {},
   "sessions": {
+    "s_8e8e31edf3cf5d": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "ac398c2a-f917-4976-9d03-def2e4851fd1",
+        "model": "grok-4.7-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
     "s_99301da8ee9b03": {
       "agent_id": {
         "tool": "cursor",
