@@ -1,0 +1,37 @@
+pkg/scheduler/scheduler.go
+  h_99f506dc258b88 1662-1663
+  h_99f506dc258b88 1657-1658,1661,1665-1669
+pkg/controller/jobframework/reconciler_test.go
+  s_ec639dc75146d7::t_57443096934955 2768,2770-2773,2775-2776,2778,2780,2782-2783,2785-2788,2842-2935
+  s_ec639dc75146d7::t_75c9b92df8d150 2769
+  s_ec639dc75146d7::t_ea93a80d875283 2774
+  s_ec639dc75146d7::t_88fac9b339c75c 2777
+  s_ec639dc75146d7::t_a02253f63e98cf 2779
+  s_ec639dc75146d7::t_13e3ba136649de 2781
+  s_ec639dc75146d7::t_1939aa67881913 2784
+pkg/controller/jobframework/reconciler.go
+  h_99f506dc258b88 1977-1978,1980-1981
+pkg/scheduler/scheduler_test.go
+  h_99f506dc258b88 40,11026-11108
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8930fadbfc01e7f46010a5f491a6f12249e06f14",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_ec639dc75146d7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d83670c-d35c-4ab7-96b9-90c7d482374e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}
