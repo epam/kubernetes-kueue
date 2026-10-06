@@ -1,0 +1,93 @@
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_09632c23619853::t_2781df793fd5dc 21,1496,1527-1528,2371,2876,2898-2953,2985,2998,3007,3012,3026,3034,3101,3115,3124,3169,3183,3228,3247,3310,3325,3364,3389,3493,3562,3571,3578,3591,3598,3626,3662,3667,3672,3682,3711,3720,3725,3727,3735,3811,3826,3880,3907,3959,3987,4101,4446,4466,4512,4534,4636,4773,4798,4898,4923,5016,5041,5098,5181,5194,5253,5275,5371,5383,5452,5467,5540,5858,5878,5976,6003,6073,6097,6259,6281,6382,6396,6495,6515,6619,6788,6852,6948,7085,7112,7151,7184,7192,7205,7217,7227,7236,7282,7289,7318,7325,7357,7364,7572,7619,7667,9053,9059
+  s_9c18b85f67cd6b::t_4d7b97e25fc0d0 60,1135-1306,1308-1474,1476,1491,8973-8974,8983,8988,9018,9032,9038,9042,9051,9057,9060,9065,9113
+  s_4a644bb6c94ee2::t_77c312e7c7446f 1475,1477-1490,1492-1495,1497-1526,1529-1539,1620-1629,1954,1970,2035,2051,2436,2489,2706,2720,2896-2897,7393,7400,7439,7446,7476,7483,7522,7529,7565,7626,7674,7718,7725,7768,7775,7821,7828,7863,7870,8190,8211,8975-8982,8984-8987,8989-9017,9019-9031,9033-9037,9039-9041,9043-9050,9052,9054-9056,9058,9061-9064,9066,9073-9074
+  s_4eff52c9ae5254::t_f915e42f79a16d 1307
+  s_4eff52c9ae5254::t_55283460586e37 1630
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_09632c23619853::t_a1ab8640761082 25,956-1011
+pkg/controller/jobs/pod/pod_controller.go
+  s_069bbc017b0249::t_7451df09aac66a 945-952,955,957,959-992,994-1008,1012-1023,1025-1029,1031-1033,1042-1096,1105-1109,1118,1121-1125,1127-1128,1131-1136,1144-1145,1696-1701,1704,1706
+  s_a1b985c66d5f79::t_6866f4e60af944 1009
+  s_4d61c3c2aa0bd7::t_050355af47db76 1030
+  s_4d61c3c2aa0bd7::t_a0241aee8c160d 1036-1041
+  s_df1c5c71eeab80::t_7541c82267023e 58
+  s_a1b985c66d5f79::t_880042ac298e65 1034-1035
+  s_069bbc017b0249::t_7dbab194319c29 1011
+  s_069bbc017b0249::t_c94d8f56b96686 1702-1703
+  s_069bbc017b0249::t_894125a134606c 1705
+  s_4eff52c9ae5254::t_b1ce7b10f5e5dc 1130,1137,1139-1141,1143,1146-1149
+  s_4eff52c9ae5254::t_55283460586e37 993,1010,1024,1726
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "0c47e43bccef4a41ad67846583939e2ebc8f984a",
+  "prompts": {},
+  "sessions": {
+    "s_069bbc017b0249": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1c473df2-51f0-4eb3-a935-4020cbb38a7d",
+        "model": "composer-2.5"
+      },
+      "human_author": null
+    },
+    "s_09632c23619853": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "ab6db909-92d8-4836-93a0-27f3b37a5458",
+        "model": "cursor-grok-4.5-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_4a644bb6c94ee2": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "fd645e8e-0451-45a5-b070-5f3d08ca3688",
+        "model": "cursor-grok-4.6-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_4d61c3c2aa0bd7": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "f036973a-7c55-4c83-8477-46d12768f358",
+        "model": "cursor-grok-4.6-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_4eff52c9ae5254": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c4eb4ee7-7f97-4342-8020-b4bfa43959ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_9c18b85f67cd6b": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "53911625-0778-4dca-a23f-c45362c07603",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_a1b985c66d5f79": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1495850b-9dfd-4326-9930-03fa99e00045",
+        "model": "cursor-grok-4.6-high-fast"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_df1c5c71eeab80": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b0ed0e62-cfe5-4ee4-b71f-7f287d4e4197",
+        "model": "cursor-grok-4.5-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
