@@ -13,6 +13,7 @@ test/util/behavioral/e2e/kuberay.go
   s_bcfb6340b27157::t_a19d6502658b6b 172,207-210,212-236,238-245,247,249-250
   s_3e0b0cb064f125::t_968a2eebd06ce9 176,182,184-187,189-190,192-196
   s_3e0b0cb064f125::t_7209139c8f96a2 200-202
+  s_3e0b0cb064f125::t_575bcc5d761b88 204,211,237,248
 test/e2e/singlecluster/extended/kuberay_partial_scaleup_test.go
   s_ffd59962a60792::t_bafe4d0686962c 109-112
   s_3e0b0cb064f125::t_e44f07187f3bfb 65
@@ -59,8 +60,16 @@ test/e2e/singlecluster/extended/kuberay_partial_scaleup_test.go
   s_ffd59962a60792::t_9f4fcf5b10b431 578
   s_ffd59962a60792::t_4aee44fffa6923 585
   s_bcfb6340b27157::t_a80c432e6d8507 604
+  s_3e0b0cb064f125::t_9d68d7a019f472 25,35-36
+  s_3e0b0cb064f125::t_5f24b784feb375 177,186,191,207,210,213-217,226,229
+  s_3e0b0cb064f125::t_00c7e1a24dd6fc 451,522,526,530-531,545,588,593,595-601
+  s_3e0b0cb064f125::t_0f6f8215cf90d6 233,252,264,295-297,301-303,307-311,331,338-344
+  s_3e0b0cb064f125::t_191259cecb747d 62,72-74,88-90,98,100-101,120,125-126,131-133,135,137,139,155,158-160
+  s_3e0b0cb064f125::t_b973dd280cac3b 349,369,379-380,390,433,440-446
 test/e2e/config/extended/controller_manager_config.yaml
   s_ffd59962a60792::t_d19761228b951a 49
+test/util/behavioral/queues.go
+  s_3e0b0cb064f125::t_be903a902cacfc 27-30,33-38
 ---
 {
   "schema_version": "authorship/3.0.0",
