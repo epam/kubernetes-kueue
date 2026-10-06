@@ -1,0 +1,43 @@
+pkg/util/pod/pod_test.go
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 175-216,271
+  s_6fa2bca8aaec6d::t_7609be30184198 172-174
+test/e2e/singlecluster/tasapi/baseline/job_test.go
+  s_6fa2bca8aaec6d::t_927a6741d7b163 418,420-544
+  s_6fa2bca8aaec6d::t_efcffdc23043a4 32
+  s_6fa2bca8aaec6d::t_cf06747948dff3 419
+  s_6fa2bca8aaec6d::t_755ce7e80d099d 545
+pkg/util/pod/pod.go
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 24,110-114
+pkg/controller/tas/topology_ungater_test.go
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 2268,2270-2271,2371,2374-2377,2414,2420-2483,2496-2602
+keps/77-dynamically-sized-jobs/README.md
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 590
+pkg/controller/tas/topology_ungater.go
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 265,396,398,469,485-489,521,532
+  s_6fa2bca8aaec6d::t_158d1d7f8e200a 482,490,506-509
+  s_6fa2bca8aaec6d::t_e5795773ad6e59 515-516,523,528
+  s_6fa2bca8aaec6d::t_c9f05177699ad8 514
+test/integration/singlecluster/tas/tas_test.go
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 5077-5078,9347-9353,9357,9377-9386,9388-9403,9405-9422,9424-9426,9441-9444,9448-9449
+  s_6fa2bca8aaec6d::t_b32ae0918132fa 9450
+  s_6fa2bca8aaec6d::t_c6130f0e6041db 135-145,9387,9404,9423
+  s_6fa2bca8aaec6d::t_12c2f5cb32ebce 5181,5184-5185,5239
+  s_6fa2bca8aaec6d::t_e913a601f3a982 9354-9356,9358-9376,9427-9440,9445-9447
+  s_6fa2bca8aaec6d::t_f1370e5ad9f606 5186-5188,5190-5205,5222-5236,5241-5243
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2a5f213bd82985dd54d809b6ecd7d5066d5d4ba9",
+  "prompts": {},
+  "sessions": {
+    "s_6fa2bca8aaec6d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "70cd7a6b-5f53-4dc7-a343-6850e77bf5cb",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

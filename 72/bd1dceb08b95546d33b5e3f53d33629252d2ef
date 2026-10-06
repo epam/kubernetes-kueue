@@ -1,0 +1,21 @@
+hack/make/verify.mk
+  s_c06acf618991a6::t_dea7c7d5e8e800 102,226-235,310-313,392-395
+hack/testing/ray/Dockerfile
+  s_c06acf618991a6::t_3732390978db7e 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "72bd1dceb08b95546d33b5e3f53d33629252d2ef",
+  "prompts": {},
+  "sessions": {
+    "s_c06acf618991a6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c9c1f003-1e04-44fc-af09-4ed8f6cfe319",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+pkg/controller/jobframework/reconciler.go
+  h_99f506dc258b88 1964-1969,1975
+pkg/controller/jobframework/reconciler_test.go
+  s_ec639dc75146d7::t_5060db0717c268 2772-2793,2795-2816,2818
+  s_ec639dc75146d7::t_b00f1f89f483d0 2689
+  s_ec639dc75146d7::t_cb4a16bab20038 2868-2874
+  h_99f506dc258b88 2686-2688,2794,2817
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d4e3c182faea957ca4a2af4b7e26445c730533bb",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_ec639dc75146d7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d83670c-d35c-4ab7-96b9-90c7d482374e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

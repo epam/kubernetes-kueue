@@ -1,0 +1,31 @@
+hack/testing/e2e-common.sh
+  s_ea40241df0acf3::t_758290be71eccd 336-341,1419
+  s_fb40499713d200::t_0199c718e6dfb9 715
+test/e2e/config/prometheus/prometheus-setup.yaml
+  s_ea40241df0acf3::t_da4c1788aeb722 63-66
+  s_ea40241df0acf3::t_673268e485eb69 67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1a158eb304e0b70f97bcbdcb8f947ae38e4669f2",
+  "prompts": {},
+  "sessions": {
+    "s_ea40241df0acf3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fae47c8f-71c4-4f60-94c2-58cda418087b",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    },
+    "s_fb40499713d200": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8010acf5-fbc3-413e-a955-7803cb53fed4",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

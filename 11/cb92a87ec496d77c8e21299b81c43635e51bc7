@@ -1,0 +1,20 @@
+Makefile
+  s_454e12fa034bf9::t_5b14ffa10992ad 280
+  s_454e12fa034bf9::t_edf2dd95a0bb35 274-277
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "11cb92a87ec496d77c8e21299b81c43635e51bc7",
+  "prompts": {},
+  "sessions": {
+    "s_454e12fa034bf9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "04f00948-b4e3-41e0-a68e-174abf721b08",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+hack/testing/e2e-common.sh
+  s_d579d06bf99a9a::t_1b924df28e9442 140-141,143
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c9d591510c22059763260792dfe85415ab5b3d0e",
+  "prompts": {},
+  "sessions": {
+    "s_d579d06bf99a9a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cb392737-0f35-4b5e-8c22-e292dbac5eef",
+        "model": "unknown"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

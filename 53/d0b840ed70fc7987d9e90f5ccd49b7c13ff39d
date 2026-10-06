@@ -1,0 +1,24 @@
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  s_31a4395a13c796::t_80aed32df8e373 560-623
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "53d0b840ed70fc7987d9e90f5ccd49b7c13ff39d",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_31a4395a13c796": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a7a641e6-a1b2-4908-b69a-1d28c5c5d727",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

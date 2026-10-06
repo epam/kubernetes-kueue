@@ -1,0 +1,67 @@
+pkg/scheduler/scheduler.go
+  s_236d0d73341ce7::t_6370c83de8232d 959
+  s_236d0d73341ce7::t_46227f5b89f1d9 960
+  s_236d0d73341ce7::t_513bc4bb2b1d61 957-958
+pkg/scheduler/scheduler_test.go
+  s_236d0d73341ce7::t_518b786dfca634 6257-6452
+pkg/scheduler/flavorassigner/podset_reducer.go
+  s_236d0d73341ce7::t_7e29ba3b3f7269 127-128
+  s_236d0d73341ce7::t_853a1070833a49 139
+  s_236d0d73341ce7::t_18211fbcb1a7f7 48
+  s_236d0d73341ce7::t_b063b7c36a5e5e 35-36
+  s_236d0d73341ce7::t_cb85ea69467a85 136-137
+  s_236d0d73341ce7::t_ce9e5c7c9d1013 150,161,195
+  s_236d0d73341ce7::t_46227f5b89f1d9 95-98,129
+  s_236d0d73341ce7::t_5d2f937b1b77b1 125
+  s_236d0d73341ce7::t_663f7df576fdc1 94
+  s_236d0d73341ce7::t_56fdfd78a68854 126,130-131,138,140-143
+  s_236d0d73341ce7::t_85d5484449fbc7 123
+  s_236d0d73341ce7::t_98e509292f8850 144-145
+pkg/scheduler/flavorassigner/podset_reducer_test.go
+  s_236d0d73341ce7::t_568cab5bfc4088 228-301,304-313,317-327,329,331-335,338-340
+  s_236d0d73341ce7::t_1160a5a116257c 226
+  s_236d0d73341ce7::t_a4f6315f20dfb7 446
+  s_236d0d73341ce7::t_9163d25e88b316 224-225,227,315,330,337
+  s_236d0d73341ce7::t_abb9dd9a28b79c 211,302-303,328,336,363,397
+  s_236d0d73341ce7::t_46227f5b89f1d9 314,316
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  s_236d0d73341ce7::t_ec05a02161be57 161-164
+  s_236d0d73341ce7::t_54b13bff48bbe5 245-283,286
+  s_236d0d73341ce7::t_e783c9f551c8f4 287-288
+  s_236d0d73341ce7::t_c6e0e6c471c170 284-285
+test/integration/singlecluster/controller/jobs/rayclusterwebhook/elastic_partial_scaleup_test.go
+  s_236d0d73341ce7::t_85277b6cdd0b08 225-226
+  s_236d0d73341ce7::t_485807a2e291ba 218
+test/integration/singlecluster/controller/jobs/rayjob/rayjob_controller_partial_scaleup_test.go
+  s_236d0d73341ce7::t_e11a9a4d312f07 128-129
+test/integration/singlecluster/controller/jobs/rayservice/rayservice_controller_partial_scaleup_test.go
+  s_236d0d73341ce7::t_1a9c4ca1d038bb 164-200,201-242
+  s_236d0d73341ce7::t_1f48faf401f62b 142
+  s_236d0d73341ce7::t_e56ac6da5299cb 38-43
+  s_236d0d73341ce7::t_a23637bfcb1bf8 153-157
+  h_99f506dc258b88 141
+pkg/controller/jobframework/reconciler.go
+  s_236d0d73341ce7::t_88db3d7e5410d2 1776
+  h_99f506dc258b88 1775
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c11668d385a98c9d36d2c0de1c766e23c2ca93fe",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_236d0d73341ce7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "69b003ee-8b03-43ef-a53d-4cea8d426b6e",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+Makefile
+  s_a375025216bd10::t_677bfe67b0b20a 415-418
+  s_a375025216bd10::t_2e887626abba7d 282-288,291,366-369,372,378-385,388
+  s_a375025216bd10::t_f12f7a4f05bafc 390,421-424
+hack/make/verify.mk
+  s_a375025216bd10::t_f12f7a4f05bafc 215-218
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "70c5add0efd9b95d0c9654248acc96ca3200ff5f",
+  "prompts": {},
+  "sessions": {
+    "s_a375025216bd10": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5a970b40-660a-4507-b7d5-c5941173b74b",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

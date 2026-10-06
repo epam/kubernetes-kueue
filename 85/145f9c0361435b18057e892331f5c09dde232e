@@ -1,15 +1,15 @@
 pkg/webhooks/workload_webhook.go
   h_99f506dc258b88 189-192,489-521
 test/compatibility_lifecycle/reference/versioned_feature_list.yaml
-  h_99f506dc258b88 524-529
+  h_99f506dc258b88 524-529,524-528
 pkg/webhooks/workload_webhook_test.go
   h_99f506dc258b88 258-308
 site/data/featuregates/versioned_feature_list.yaml
-  h_99f506dc258b88 524-529
+  h_99f506dc258b88 524-529,524-528
 test/integration/singlecluster/tas/tas_test.go
   h_99f506dc258b88 3624-3625
 pkg/features/kube_features.go
-  h_99f506dc258b88 537-541,833-836
+  h_99f506dc258b88 537-541,833-836,833-834,835,836
 ---
 {
   "schema_version": "authorship/3.0.0",

@@ -1,0 +1,43 @@
+pkg/webhooks/workload_webhook.go
+  h_99f506dc258b88 184
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "ff4e6ddc6890b9475ecc01ace152fcc1b43c361b",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    },
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_b1b85ee75b9f2e": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "35ab957d-de95-408e-9f91-bcf7875b57b5",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    },
+    "s_b23e3c7fcfd872": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "e4a39f7a-e5ca-4e5d-9ae0-a34cbbe9ea21",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    },
+    "s_cc1abaa361def2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ee9f7d21-2c34-4e51-8b43-ca5dd10b8ac6",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}

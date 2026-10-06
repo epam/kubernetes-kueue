@@ -1,0 +1,30 @@
+test/util/e2e.go
+  s_3e0b0cb064f125::t_9c3b6a5a33fc0c 845,851
+test/util/kuberay.go
+  s_3e0b0cb064f125::t_968a2eebd06ce9 175,181,183-186,188-189,191-195
+  s_3e0b0cb064f125::t_7209139c8f96a2 199-201
+test/e2e/singlecluster/extended/kuberay_partial_scaleup_test.go
+  s_3e0b0cb064f125::t_30a716db02cbc8 293
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  s_3e0b0cb064f125::t_e43bda0e975935 137,175
+  s_3e0b0cb064f125::t_da79c43ba79f98 405,444
+  s_3e0b0cb064f125::t_3cf16fabd97bff 587
+  s_3e0b0cb064f125::t_db7c2460d67ee7 657
+  s_3e0b0cb064f125::t_0e82c3a8b26cfa 517
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "984bcab4b2c7f121615e422838c474f9bf05a33b",
+  "prompts": {},
+  "sessions": {
+    "s_3e0b0cb064f125": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "62ccb481-45e2-4f02-bb3e-16f19620ed21",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

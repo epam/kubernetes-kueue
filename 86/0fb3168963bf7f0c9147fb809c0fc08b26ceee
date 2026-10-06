@@ -1,0 +1,37 @@
+keps/12100-partial-scaleup-for-elasticjob/README.md
+  s_1b0c0ccb4d7e55::t_5f876fc028b62a 208,221,232
+  s_1b0c0ccb4d7e55::t_35ce588735d106 107
+  s_1b0c0ccb4d7e55::t_c13f3e78f22160 314-317
+  s_1b0c0ccb4d7e55::t_27e34975bc9956 185-187,216
+  s_1b0c0ccb4d7e55::t_7be64ec7f4cfcf 88,90-91,93,95-96,101
+  s_1b0c0ccb4d7e55::t_af4d01864bf93c 82-83,85-87,89,92,94,97-100,102-106,108
+  s_1b0c0ccb4d7e55::t_f241a962ada8d9 184,188-189,192-193
+  s_1b0c0ccb4d7e55::t_9f397bdbfe94c7 203-204,207,219
+  s_1b0c0ccb4d7e55::t_694542c4dded44 215
+  s_1b0c0ccb4d7e55::t_07e96ef0d76255 109
+  s_1b0c0ccb4d7e55::t_e531fa9926c3dd 84
+  s_1b0c0ccb4d7e55::t_aa5d48c8a89d82 194
+  s_1b0c0ccb4d7e55::t_ac5ce2eb5a2251 217
+  s_1b0c0ccb4d7e55::t_1c1267bc772b18 231
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "860fb3168963bf7f0c9147fb809c0fc08b26ceee",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_1b0c0ccb4d7e55": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6ad55f20-e57f-48c8-bd33-73852d20522b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

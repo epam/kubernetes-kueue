@@ -1,0 +1,24 @@
+Makefile
+  s_3d2f32e424ccd5::t_90f74df9311e39 381
+hack/make/verify.mk
+  s_3d2f32e424ccd5::t_69a456b21e8d3e 208-210
+  s_3d2f32e424ccd5::t_306e503fa18305 207,211
+  s_3d2f32e424ccd5::t_da291b0feb42e4 123-136
+  s_3d2f32e424ccd5::t_40753e8c6df65d 101
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ee1324b0babcfeaba9b36a522f7b347928edf235",
+  "prompts": {},
+  "sessions": {
+    "s_3d2f32e424ccd5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bbdc127d-ce87-469a-8278-a55df865064f",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

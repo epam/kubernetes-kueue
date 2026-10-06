@@ -1,0 +1,43 @@
+pkg/util/pod/pod_test.go
+  s_d10e2e5a58c1d2::t_542e64637cf977 259
+  s_d10e2e5a58c1d2::t_cea39b3d905b1f 163-204
+  s_d10e2e5a58c1d2::t_85263eecdc06f6 160-162
+keps/77-dynamically-sized-jobs/README.md
+  s_d10e2e5a58c1d2::t_6781bdba299bd2 590
+pkg/controller/tas/topology_ungater_test.go
+  s_d10e2e5a58c1d2::t_4b8d8b0ac40f99 2159,2161-2162
+  s_d10e2e5a58c1d2::t_e9b6472cbfcd19 2304,2310-2317,2321-2348,2350-2351,2353-2354,2356-2357,2359-2363,2365-2366,2369,2371-2372,2388-2392,2396-2424,2426-2427,2440-2442,2444-2448,2453-2457,2459-2463,2465-2470,2472-2495
+  s_d10e2e5a58c1d2::t_8958a9e3031e16 2318-2320
+  s_d10e2e5a58c1d2::t_783fea809a0dcd 2262,2265-2267
+  s_d10e2e5a58c1d2::t_cdca0e9409471c 2393-2395
+  s_d10e2e5a58c1d2::t_098c35987ce7ca 2425,2428-2439,2443,2449-2452,2458,2464,2471
+  s_d10e2e5a58c1d2::t_df31bbed511aa8 2349,2352,2355,2358,2364,2367-2368,2370,2373-2375
+test/integration/singlecluster/tas/tas_test.go
+  s_d10e2e5a58c1d2::t_426b76c21fbb29 4066,4069-4070
+  s_d10e2e5a58c1d2::t_06647a26cc402f 4101,4106-4112
+  s_d10e2e5a58c1d2::t_7d7c865244b76f 7517-7521,7526,7535,7538,7544-7545,7548-7564,7566-7568,7572-7573,7575-7578,7587-7588
+  s_d10e2e5a58c1d2::t_39d02ed61a667d 3967-3968
+  s_d10e2e5a58c1d2::t_f634019be07828 7589
+  s_d10e2e5a58c1d2::t_ed9aa951c1b7af 7516,7522-7525,7527-7534,7536-7537,7539-7543,7546-7547,7565,7569-7571,7574,7579-7586,7590-7614
+pkg/controller/tas/topology_ungater.go
+  s_d10e2e5a58c1d2::t_8139887d390b85 264,376,378,449,464-468,470-471,491-493,498,510
+pkg/util/pod/pod.go
+  s_d10e2e5a58c1d2::t_7f26dd4142e7a3 114-115
+  s_d10e2e5a58c1d2::t_8139887d390b85 24,109-113
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9f4135e3cbf7c578d4e7f1f5313ab93d72524229",
+  "prompts": {},
+  "sessions": {
+    "s_d10e2e5a58c1d2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "602e909e-0a39-4d2a-b663-bcf6fa77539b",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

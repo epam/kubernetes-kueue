@@ -1,0 +1,33 @@
+Makefile
+  s_a375025216bd10::t_f12f7a4f05bafc 386,417-418
+  s_a375025216bd10::t_2e887626abba7d 282-288,291,374-381,384
+  s_eb1fd9a835a310::t_c2e9ea488ba1b9 411-413
+  s_a375025216bd10::t_25fa8aab215444 416
+hack/make/verify.mk
+  s_a375025216bd10::t_25fa8aab215444 215
+  s_a375025216bd10::t_f12f7a4f05bafc 216-217
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7c9673e548bc2cefde0e1a9952f51914ddf0cb0e",
+  "prompts": {},
+  "sessions": {
+    "s_a375025216bd10": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5a970b40-660a-4507-b7d5-c5941173b74b",
+        "model": "claude-opus-5"
+      },
+      "human_author": null
+    },
+    "s_eb1fd9a835a310": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bbf8ec54-ea4d-4c0a-ae7d-b58f7bd62cf4",
+        "model": "claude-opus-5"
+      },
+      "human_author": null
+    }
+  }
+}
