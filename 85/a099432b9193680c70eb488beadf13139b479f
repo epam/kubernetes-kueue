@@ -55,6 +55,8 @@ test/e2e/singlecluster/extended/kuberay_partial_scaleup_test.go
   s_3e0b0cb064f125::t_0f6f8215cf90d6 233,252,264,295-297,301-303,307-311,331,338-344
 test/util/behavioral/queues.go
   s_3e0b0cb064f125::t_be903a902cacfc 35-38,41-46
+  s_3e0b0cb064f125::t_1aa98c4d8602e5 126-155
+  s_3e0b0cb064f125::t_4e86a2b8dde1a2 21
 test/e2e/singlecluster/extended/kuberay_test.go
   s_3e0b0cb064f125::t_8b4e5b20a7308b 440,442
 test/e2e/config/extended/controller_manager_config.yaml
@@ -65,6 +67,7 @@ test/util/behavioral/workload.go
   s_ffd59962a60792::t_5bfedf5e71581e 136-141,157
   s_bcfb6340b27157::t_d8edb067c66f63 47
   s_ffd59962a60792::t_9f4a40e6664347 135
+  s_3e0b0cb064f125::t_6aa42e5da77b62 872-879,889-928
 test/util/behavioral/e2e/kuberay.go
   s_3e0b0cb064f125::t_7209139c8f96a2 200-202
   s_3e0b0cb064f125::t_ff61c89bb23797 173-175,177-181,183,188,191,197-199,203,205-206
