@@ -35,6 +35,7 @@ pkg/features/kube_features.go
   s_4a644bb6c94ee2::t_1e059941ddc901 1367,1369
   s_7d3289b381d77b::t_f4b605cc70d334 771
   s_e591e5109492e4::t_527e289029fc91 772-774
+  s_187605664060ff::t_aca31eb8f19fcf 1366
 test/compatibility_lifecycle/reference/versioned_feature_list.yaml
   s_d2c0ed7aa0f4f0::t_20e49e68d59671 435
   s_4a644bb6c94ee2::t_7d6ecdeb8a24a2 430-431,433
@@ -96,6 +97,14 @@ test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
         "tool": "cursor",
         "id": "ba05dc7a-5694-4ae8-8047-2ecaefaaf42a",
         "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_187605664060ff": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3cdc8855-6342-4c6c-8c1b-ce1b8b64e1e2",
+        "model": "claude-sonnet-5-5"
       },
       "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
     },
