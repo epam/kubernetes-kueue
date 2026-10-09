@@ -1,0 +1,32 @@
+hack/coverage/coverage.go
+  s_bccb83cd265131::t_b2a1a42353f759 1-267
+site/content/en/community/contribution_guidelines/development.md
+  s_bccb83cd265131::t_ecb57987051ca2 124-134
+hack/coverage/cmd/main.go
+  s_bccb83cd265131::t_f8540d5d77d88b 1-34
+hack/coverage/coverage_test.go
+  s_bccb83cd265131::t_9f7c79aacf85bc 323
+  s_bccb83cd265131::t_ae31756b8bb920 337,341
+  s_bccb83cd265131::t_4e599d0e603588 367
+  s_bccb83cd265131::t_b50ef0371a6586 22
+  s_bccb83cd265131::t_fdbfb63bf6729a 356
+  s_bccb83cd265131::t_247ce48e16f912 1-21,23-322,324-336,338-340,342-355,357-366,368-372
+hack/make/test.mk
+  s_bccb83cd265131::t_96049d348f2653 114-120
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e82240be290a7912fbf30f7723d2ade01f15eba5",
+  "prompts": {},
+  "sessions": {
+    "s_bccb83cd265131": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "64a4dbf8-b713-48b0-884f-abc2440965d5",
+        "model": "grok-4.7-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
