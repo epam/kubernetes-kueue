@@ -1,0 +1,25 @@
+hack/coverage/coverage.go
+  s_8f0c4c80f1199b::t_a3d1d04a8cdd09 308
+  s_8f0c4c80f1199b::t_137731587b3c8b 284-285
+  s_8f0c4c80f1199b::t_282c24c5686661 176-227,229-231,233
+hack/coverage/coverage_test.go
+  s_8f0c4c80f1199b::t_a4d53b3bed183f 376-398
+  s_8f0c4c80f1199b::t_8eca64a08bbb6b 340-375
+  s_8f0c4c80f1199b::t_047d4dc88bce43 221-244
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7508d55c7abbb2e0ee1c9e5f574e7fb4c4b6f1af",
+  "prompts": {},
+  "sessions": {
+    "s_8f0c4c80f1199b": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "403114a0-0311-47bb-a5fa-e63868c75410",
+        "model": "grok-4.7-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
