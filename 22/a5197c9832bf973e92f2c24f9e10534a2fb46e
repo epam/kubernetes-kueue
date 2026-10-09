@@ -1,0 +1,29 @@
+pkg/controller/jobs/job/job_controller_test.go
+  s_6f4411ad070c43::t_a948edfc06c1b8 322-348
+pkg/controller/jobs/job/job_controller.go
+  s_6f4411ad070c43::t_0026e81096d227 361,472-476
+  s_6f4411ad070c43::t_5843080a74231e 385,401,477-478,480-482
+  s_6f4411ad070c43::t_b69af699b0ba05 479
+  s_6f4411ad070c43::t_7329b8e4e0dcaa 483
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "22a5197c9832bf973e92f2c24f9e10534a2fb46e",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_6f4411ad070c43": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "512999e9-e0b5-48ad-a735-7804c93506ae",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
