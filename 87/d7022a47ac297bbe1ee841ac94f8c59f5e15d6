@@ -1,0 +1,28 @@
+hack/coverprofile/filter.go
+  s_06b9650434e49a::t_a954d6a9023d5d 22
+  s_06b9650434e49a::t_45551018e4765d 69
+  s_06b9650434e49a::t_10849542fdcd2c 1-21,23-68,70
+hack/make/test.mk
+  s_06b9650434e49a::t_d47852152a017b 114-115
+hack/coverprofile/filter_test.go
+  s_06b9650434e49a::t_6c0add135eb0ce 1-80
+hack/coverprofile/cmd/main.go
+  s_06b9650434e49a::t_231b67b381275c 1-58,64,68-69,71-74
+  s_06b9650434e49a::t_099a4488f726a2 59-63,65-67,70
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "87d7022a47ac297bbe1ee841ac94f8c59f5e15d6",
+  "prompts": {},
+  "sessions": {
+    "s_06b9650434e49a": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "703c010c-3508-4b68-ac4f-97a86d23025a",
+        "model": "grok-4.7-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
