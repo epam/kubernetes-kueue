@@ -1,0 +1,59 @@
+test/e2e/config/default/values.yaml
+  s_dab90f72274641::t_25ccd6977d9456 41-42
+test/e2e/config/default/controller_manager_config.yaml
+  s_dab90f72274641::t_92f5e20c82cbcd 45
+test/integration/singlecluster/controller/admissionchecks/provisioning/provisioning_test.go
+  s_dab90f72274641::t_031013a00b85d0 285
+  s_dab90f72274641::t_a5f323aa630dc5 284
+  s_dab90f72274641::t_5b29bf4e2a44ab 286-288
+pkg/controller/admissionchecks/provisioning/controller_test.go
+  s_dab90f72274641::t_dcd826b91342ec 761-763
+  s_dab90f72274641::t_3429b19477aa7e 719-721
+  s_dab90f72274641::t_cda585f2f0c7df 892-894
+  s_dab90f72274641::t_8e9139b23add1b 803-805
+  s_dab90f72274641::t_5c4ad8e8896ea7 969-971
+  s_dab90f72274641::t_3dd08a1617053a 393,691,694,702,710,724,727,735,739,747,760,766,769,777,781,789,802,808,811,819,823,831,841,843,846,849,857,861,869,891,897,900,908,912,920,932,935,939,944,952,974,977,985,989,997,1007-1009,1027,1048,1057,1060,1063,1071
+  s_6874be087de136::t_c38b22e03cd5f7 81-88,384-392,394-417,502,515,518-519,604,683-690,692-693,695-701,703-709,711-718,722-723,725-726,728-734,736-738,740-746,748-759,764-765,767-768,770-776,778-780,782-788,790-801,806-807,809-810,812-818,820-822,824-830,832-840,842,844-845,847-848,850-856,858-860,862-868,870-873,881-890,895-896,898-899,901-907,909-911,913-919,921-931,933-934,936-938,940-943,945-951,953-961,972-973,975-976,978-984,986-988,990-996,998-1006,1024-1026,1037-1047,1049-1056,1058-1059,1061-1062,1064-1070,1072-1074,1290,1320,1366,1392,1593,1642,1774,1823,2101,2159,2211,2557-2566,2634-2638,2656-2665
+pkg/features/kube_features.go
+  s_dab90f72274641::t_b364fbff64c7dd 1008
+  s_dab90f72274641::t_36600363a28df5 1007
+  s_dab90f72274641::t_24b3cde649e0c3 1009-1010
+hack/make/test.mk
+  s_dab90f72274641::t_e192aeb3a01a3a 284
+pkg/controller/admissionchecks/provisioning/controller.go
+  s_dab90f72274641::t_ce71dc05d7aa0c 55,277-279,329-336,338-339,341-342,344,346-374,431-432,441-442,469-478,668,691,739
+pkg/util/equality/podset_test.go
+  s_dab90f72274641::t_dbabbeaad782db 24,38-108
+site/data/featuregates/versioned_feature_list.yaml
+  s_dab90f72274641::t_ebab351aea2c28 92-97
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_dab90f72274641::t_6c8979fdc44889 92-97
+test/e2e/singlecluster/baseline/provisioning_test.go
+  s_dab90f72274641::t_eb15e6aa19aed0 1-390
+test/util/e2e.go
+  s_dab90f72274641::t_54d581b304f1c2 53,215-217
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "69c70922a23836650923a29fcb053466f8ad6f51",
+  "prompts": {},
+  "sessions": {
+    "s_6874be087de136": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "10bb711e-d23d-4247-b6e2-13266d1286a6",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_dab90f72274641": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "62493f90-ea63-4a75-ae8f-1306b179d62c",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
