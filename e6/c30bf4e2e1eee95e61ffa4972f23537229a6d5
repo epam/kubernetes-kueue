@@ -4,6 +4,9 @@ test/integration/singlecluster/tas/tas_test.go
   s_2b3ba0ed07e2e9::t_283e5be56072f5 3899
   s_6fa2bca8aaec6d::t_b32ae0918132fa 10067
   s_2b3ba0ed07e2e9::t_42147af0b5371b 137-147,3906,3910,3918,3929,9969-9971,9973-9975,9984,9985,9999,10008,10012,10018-10019,10026,10029,10037,10041,10052,10057
+  s_dd9ef663244309::t_f1b2941ee000d9 4167-4188,4190-4199,4201-4208,4210-4212,4214-4218
+  h_f3e429a3560394 4189,4200,4209,4213,4219,9871,9878,9893,9910,9918,9926,9930,9942,9946,9956,9959-9960,9972
+  s_dd9ef663244309::t_72b77ad3f5bcf6 9852-9870,9872-9877,9879-9892,9894-9909,9911-9917,9919-9925,9927-9929,9931-9941,9943-9945,9947-9955,9957-9958,9961-9968,9976-9983,9986-9998,10000-10007,10009-10011,10013-10017
 keps/77-dynamically-sized-jobs/README.md
   s_6fa2bca8aaec6d::t_03aa556f732e0b 590
 pkg/util/pod/pod_test.go
@@ -29,6 +32,11 @@ pkg/controller/tas/topology_ungater_test.go
   "git_ai_version": "1.7.5",
   "base_commit_sha": "e6c30bf4e2e1eee95e61ffa4972f23537229a6d5",
   "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
   "sessions": {
     "s_2b3ba0ed07e2e9": {
       "agent_id": {
