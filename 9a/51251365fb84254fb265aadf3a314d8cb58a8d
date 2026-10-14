@@ -1,0 +1,31 @@
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_7d3289b381d77b::t_42ccbf78983f88 1411-1413
+  s_7d3289b381d77b::t_e20d7b2e823e51 1305,1366,1371,1377-1410
+  s_7d3289b381d77b::t_aefdd7ac8c66e5 1347-1352
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_7d3289b381d77b::t_0a31650717f1cf 331,336-345,347,392,405,418,1173-1174,1177-1178
+  s_7d3289b381d77b::t_b0152281e5519c 1179
+pkg/controller/jobs/pod/pod_controller.go
+  s_7d3289b381d77b::t_ba2e5743b17508 1008
+  s_7d3289b381d77b::t_a370fb29cf83ad 322,343-348,354,996-1000,1004,1006,1017,1021,1032,1034
+  s_7d3289b381d77b::t_5e34707a826588 1001-1003
+pkg/features/kube_features.go
+  s_7d3289b381d77b::t_f4b605cc70d334 712
+  s_7d3289b381d77b::t_c9fa9ea4795933 713-715
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9a51251365fb84254fb265aadf3a314d8cb58a8d",
+  "prompts": {},
+  "sessions": {
+    "s_7d3289b381d77b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "642b802f-7d8c-499b-980b-08e645a57858",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

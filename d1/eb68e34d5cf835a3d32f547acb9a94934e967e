@@ -1,0 +1,28 @@
+pkg/controller/jobs/pod/pod_controller.go
+  s_26b4516de8ce14::t_0b1e1a0fd1c381 1057-1065
+  s_26b4516de8ce14::t_a18b373f9ecc44 952-971,1005-1010,1024,1027-1028,1035,1040-1056,1066-1075,1093-1094
+  s_26b4516de8ce14::t_8d894f348eed99 1216,1219-1222
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_26b4516de8ce14::t_921f420698560e 1718-1720
+  s_26b4516de8ce14::t_e73d75af1606a8 1503-1506,1552-1584
+  s_26b4516de8ce14::t_afc9f7c186f66f 1585-1588,1750,1786-1832
+  s_26b4516de8ce14::t_96f87594113f05 2016
+  s_26b4516de8ce14::t_11e3d7eebdda15 3401,3410-3411,3415,3419,3423,3426,3434-3435,3437-3442,3444,3446,3449-3450,3454-3462
+  s_26b4516de8ce14::t_e2bdabb44255a1 1700
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d1eb68e34d5cf835a3d32f547acb9a94934e967e",
+  "prompts": {},
+  "sessions": {
+    "s_26b4516de8ce14": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "ecc5661c-f68b-4522-ac0a-e3acdf34b06a",
+        "model": "grok-4.7-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
