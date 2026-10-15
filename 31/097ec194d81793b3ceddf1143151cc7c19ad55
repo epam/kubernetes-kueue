@@ -1,0 +1,28 @@
+test/integration/singlecluster/tas/tas_test.go
+  s_9dbfb76a69c126::t_035cbba4bfd897 4212-4213,9911-9917,9919-9920,9936-9937,9981-9986,9989-9992,10003-10004
+  s_9dbfb76a69c126::t_19e79cdb7370b2 4191-4195,4198-4201
+pkg/controller/tas/topology_ungater_test.go
+  s_9dbfb76a69c126::t_1e0b1fc7e00272 129,134-180,2712,2714-2716,2720-2722,2730,2732-2735,2739-2742,2748,2750-2753,2757-2760,2766,2768-2771,2775-2778,2784,2786-2788,2792-2794,2800,2802-2804,2808-2810,2816,2818-2821,2825-2828,2834,2836-2839,2843-2846,2852,2854-2855,2859-2860,2866,2868,2872
+  s_9dbfb76a69c126::t_a1dd5795d68926 127-128
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "31097ec194d81793b3ceddf1143151cc7c19ad55",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_9dbfb76a69c126": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24cc11c2-dd51-4a94-9af3-9564edec50ee",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
