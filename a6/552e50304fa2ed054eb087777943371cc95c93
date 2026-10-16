@@ -1,0 +1,14 @@
+.coderabbit.yaml
+  h_32169613a39d35 58-213
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a6552e50304fa2ed054eb087777943371cc95c93",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}
