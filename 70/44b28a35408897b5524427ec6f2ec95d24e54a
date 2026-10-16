@@ -1,0 +1,52 @@
+test/integration/singlecluster/controller/core/clusterqueue_controller_test.go
+  h_99f506dc258b88 1445-1485,1487-1489,1491-1492,1494-1495,1497-1527,1529-1533,1535-1540,1542-1545,1547-1548,1550-1551,1553-1561,1563-1570
+  s_6a8e50d12fef3f::t_b37997bce2b607 1486,1490,1493,1496,1528,1534,1541,1546,1549,1552,1562
+pkg/controller/core/clusterqueue_controller_test.go
+  s_6a8e50d12fef3f::t_70ce77e7958109 1007,1019
+  h_99f506dc258b88 884,985-1006,1008-1018,1020-1083
+pkg/cache/scheduler/resource_node_test.go
+  s_6a8e50d12fef3f::t_b37997bce2b607 70-103
+site/content/en/docs/reference/metrics.md
+  h_99f506dc258b88 110,126
+pkg/cache/scheduler/cohort_metrics.go
+  h_99f506dc258b88 41,44,46-53,57-67,69,75-95,105,115-117,119,121,127,132,135,141,152,156,160-200,220-223,256-267,269-286,288-301
+  s_6a8e50d12fef3f::t_70ce77e7958109 268,287
+pkg/cache/scheduler/cohort_metrics_test.go
+  h_99f506dc258b88 1359-1409
+pkg/cache/scheduler/cache_test.go
+  h_99f506dc258b88 1457
+pkg/metrics/metrics.go
+  h_99f506dc258b88 332-335,348-351,1033-1041,1077-1085,1484-1495,1513-1524,1541-1545,1725,1792,1798
+pkg/cache/scheduler/clusterqueue.go
+  h_99f506dc258b88 609-611,613-614
+  s_6a8e50d12fef3f::t_70ce77e7958109 612
+pkg/cache/scheduler/cache.go
+  h_99f506dc258b88 526,531-533,855,887,894-910,912,923,928,943,949-964,983
+pkg/metrics/metrics_test.go
+  h_99f506dc258b88 28,333-356
+test/util/behavioral/metrics.go
+  h_99f506dc258b88 376-387
+pkg/cache/scheduler/resource_node.go
+  s_6a8e50d12fef3f::t_70ce77e7958109 87-95
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7044b28a35408897b5524427ec6f2ec95d24e54a",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_6a8e50d12fef3f": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "ec18eb4d-61ed-4b34-9750-26b1a4c1add2",
+        "model": "copilot/claude-sonnet-5.5"
+      },
+      "human_author": null
+    }
+  }
+}
