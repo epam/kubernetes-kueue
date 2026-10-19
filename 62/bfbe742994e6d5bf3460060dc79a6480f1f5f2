@@ -9,7 +9,7 @@ pkg/controller/elasticjobs/elastic_job_ungater.go
   s_41d89024468162::t_5574f51d04443c 333-337,341-342,344-350
 pkg/controller/tas/topology_ungater.go
   s_2c1e4e875a511d::t_633e5299cd3fa7 214
-  h_99f506dc258b88 576
+  h_99f506dc258b88 527,576
 pkg/util/tas/tas.go
   s_2c1e4e875a511d::t_959562b55f35fb 20,99-142
 ---
