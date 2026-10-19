@@ -1,0 +1,20 @@
+test/integration/singlecluster/controller/core/workload_controller_test.go
+  s_111852a9542d0f::t_998b15f7532530 1379,1381
+  s_111852a9542d0f::t_3e90fdcb927c11 1347-1364
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e055c5754ea4595b5ae3c78cdcd3ad057c98fef7",
+  "prompts": {},
+  "sessions": {
+    "s_111852a9542d0f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "91c007b6-64c5-4067-8159-7dd1e388e16c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
