@@ -1,0 +1,15 @@
+pkg/controller/jobs/job/job_controller.go
+  h_99f506dc258b88 385,401,472-473
+  h_99f506dc258b88 474-475
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "558e32bf71c19127f03755f8ef69151ebd6a8255",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
