@@ -1,0 +1,29 @@
+keps/77-dynamically-sized-jobs/README.md
+  s_25509777d66115::t_f3953ed6c0fdeb 265-267,270-271
+  s_25509777d66115::t_6e07805cb4eafb 25
+  s_25509777d66115::t_86c97332c7c82d 268-269
+keps/12100-partial-scaleup-for-elasticjob/README.md
+  h_99f506dc258b88 273,278
+  s_25509777d66115::t_1533b44a4eb790 47,58,67,97
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "70c28d7a28011b524c219bfdbf217a5bd5cc6dc8",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_25509777d66115": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f093a414-856a-4c64-b90b-0dac450c882c",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
