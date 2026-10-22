@@ -1,0 +1,32 @@
+cmd/experimental/skills/kueue-pr-issue-workflow/SKILL.md
+  s_1495969760cf8a::t_43395721e277d3 21-24,28-29
+  s_1495969760cf8a::t_9a1da91573f415 3,30-96,100-122
+  s_1495969760cf8a::t_646c182eb6738c 98-99
+  s_1495969760cf8a::t_7d6e22e4fc65bb 97
+cmd/experimental/skills/README.md
+  s_8f39dca074ffc4::t_bc85a1323295d0 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1c3364ef45fc6962599492bd8b8d39e1dd2d94c1",
+  "prompts": {},
+  "sessions": {
+    "s_1495969760cf8a": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "42dd224e-d5e1-4d9b-a29d-50e9112719f6",
+        "model": "grok-4.7-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_8f39dca074ffc4": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "ee015b98-ca3d-46d5-bd52-b70691b764aa",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

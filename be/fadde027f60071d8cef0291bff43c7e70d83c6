@@ -1,0 +1,27 @@
+pkg/controller/tas/topology_ungater.go
+  s_2c1e4e875a511d::t_633e5299cd3fa7 214
+  h_99f506dc258b88 457,500
+pkg/util/tas/tas.go
+  s_2c1e4e875a511d::t_959562b55f35fb 20,99-142
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "befadde027f60071d8cef0291bff43c7e70d83c6",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_2c1e4e875a511d": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "4ecbf835-4a3e-4a0e-bc4c-402de53d2286",
+        "model": "copilot/claude-sonnet-5.5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
