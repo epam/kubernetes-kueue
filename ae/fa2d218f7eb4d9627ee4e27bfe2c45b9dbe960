@@ -1,0 +1,33 @@
+pkg/controller/jobs/pod/pod_controller.go
+  s_ed996e73b2bf3d::t_c51275ed6b1593 1119,1123,1133
+  s_ed996e73b2bf3d::t_edf48cc4694a49 1092
+  s_ed996e73b2bf3d::t_411b49803f8c64 1161
+  s_ed996e73b2bf3d::t_91cf3d69367294 951-952,955,957,959-960,974,981-984
+  s_ed996e73b2bf3d::t_9cdaa6447dda41 1769
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_ed996e73b2bf3d::t_d426227e0008eb 618-621,630-631
+  s_ed996e73b2bf3d::t_3e5e754517934c 430-471,488,492-496,499-503,515,524-529,538-542,557-567,570-575,584-589,598-603,611,617,623,626-629,666-670,672-675,684
+  s_ed996e73b2bf3d::t_7ad7b9031ce731 504-507
+  s_ed996e73b2bf3d::t_a8cdadfe2c7150 510-514
+  s_ed996e73b2bf3d::t_927308073a88c8 1521,1537,1549,1577-1619,1632,1644,1656
+  s_ed996e73b2bf3d::t_4704a9334809a8 2032,2034,2039-2040
+  s_ed996e73b2bf3d::t_0d5b782d700bfa 543-545
+  s_ed996e73b2bf3d::t_920adadeaa7082 1720,1737,1766,1833-1876,1890,1903,1916
+  s_ed996e73b2bf3d::t_c29a9a2ebf84f8 678-683
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "aefa2d218f7eb4d9627ee4e27bfe2c45b9dbe960",
+  "prompts": {},
+  "sessions": {
+    "s_ed996e73b2bf3d": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1f1b92f9-fc17-47b2-b2bf-a0cbe7c22547",
+        "model": "grok-4.7-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

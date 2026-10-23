@@ -1,0 +1,28 @@
+pkg/controller/elasticjobs/elastic_job_ungater_test.go
+  s_68a64a612a9a39::t_2df193931d4e92 364,382-383,406
+pkg/controller/elasticjobs/elastic_job_ungater.go
+  h_99f506dc258b88 27,278,315,345-358,360
+  s_68a64a612a9a39::t_8b6505c70e5199 316
+  s_68a64a612a9a39::t_4e4e73ef7ae007 334-340,342
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a76e591c88b522991ad5060965ba735161126b22",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_68a64a612a9a39": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "ee3940ad-e84e-4d5e-a079-cd7cbd1329d7",
+        "model": "copilot/claude-sonnet-5.5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

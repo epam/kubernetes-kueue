@@ -1,0 +1,19 @@
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_ef009a01d1e00e::t_d412342a9b2456 3922,3994
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "46e158929646f4b1115e1fa64dd3dd6c9246f030",
+  "prompts": {},
+  "sessions": {
+    "s_ef009a01d1e00e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "64c4e3f8-6139-4722-b761-9167f2f84d14",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

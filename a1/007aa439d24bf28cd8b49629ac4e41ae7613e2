@@ -1,0 +1,61 @@
+pkg/util/pod/pod.go
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 24,110-114
+test/integration/singlecluster/tas/tas_test.go
+  s_6fa2bca8aaec6d::t_e913a601f3a982 9972
+  s_2b3ba0ed07e2e9::t_14245c4e7b5bdf 4200
+  s_2b3ba0ed07e2e9::t_283e5be56072f5 4159
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 10006-10007
+  s_6fa2bca8aaec6d::t_b32ae0918132fa 10008
+  s_2b3ba0ed07e2e9::t_42147af0b5371b 136-146,4160-4199,4201-4212,9841-9971,9973-10005
+keps/77-dynamically-sized-jobs/README.md
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 590
+pkg/util/pod/pod_test.go
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 175-216,271
+  s_6fa2bca8aaec6d::t_7609be30184198 172-174
+pkg/controller/tas/topology_ungater.go
+  s_2b3ba0ed07e2e9::t_e46662ff93aafb 243,266,398,400-403,429-446,448-456,461,464,466-476,535-536,554,556-557,559-560,562
+  s_2b3ba0ed07e2e9::t_c8001f5b404b02 447,457-460,462-463,465,478-479
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 540,590,602
+  s_6fa2bca8aaec6d::t_158d1d7f8e200a 555
+  s_2b3ba0ed07e2e9::t_38f9d3ff574124 422-428
+  s_dd9ef663244309::t_53686aa2515efc 477
+  s_2b3ba0ed07e2e9::t_9f27ad1f3d6bf9 526-529,583-585
+  s_2b3ba0ed07e2e9::t_f13b02cd8ba6b1 480-482
+pkg/controller/tas/topology_ungater_test.go
+  s_2b3ba0ed07e2e9::t_08383122d7fc8e 35,126,130-165,167,2474-2479,2481-2493,2495-2498,2502-2516,2518-2638,3194
+  s_2b3ba0ed07e2e9::t_a4a376f7e7cfbd 3206-3209
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 2480,2494,2499-2501,2517
+  s_2b3ba0ed07e2e9::t_458a4ad3f5a0eb 127-129
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a1007aa439d24bf28cd8b49629ac4e41ae7613e2",
+  "prompts": {},
+  "sessions": {
+    "s_2b3ba0ed07e2e9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9424a7b4-5e27-4406-a403-2d0f98816c78",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    },
+    "s_6fa2bca8aaec6d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "70cd7a6b-5f53-4dc7-a343-6850e77bf5cb",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    },
+    "s_dd9ef663244309": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65af457b-77c0-4782-8249-3523d3126242",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}

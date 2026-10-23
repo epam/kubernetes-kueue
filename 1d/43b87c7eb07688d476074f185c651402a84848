@@ -1,0 +1,27 @@
+keps/12100-partial-scaleup-for-elasticjob/README.md
+  s_623cd1afd19b40::t_6b14cd19ae8ef9 249
+  s_623cd1afd19b40::t_b42af26c454590 181,200,202,215,239
+  s_623cd1afd19b40::t_6cf3f5c68bfc12 93
+  s_623cd1afd19b40::t_b7fefd20165d95 261
+  s_623cd1afd19b40::t_62699fc7703edb 280
+  s_623cd1afd19b40::t_e295238cebf299 85
+  s_623cd1afd19b40::t_51a07a40fa96e3 96
+  s_623cd1afd19b40::t_c63da55fe1a8d3 390
+  s_623cd1afd19b40::t_5ee83c43a17d99 153,157
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1d43b87c7eb07688d476074f185c651402a84848",
+  "prompts": {},
+  "sessions": {
+    "s_623cd1afd19b40": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4f1e2e51-caf6-4f60-9875-1d44edf75180",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

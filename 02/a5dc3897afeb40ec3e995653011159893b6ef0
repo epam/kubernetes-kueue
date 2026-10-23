@@ -1,0 +1,31 @@
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  s_31a4395a13c796::t_7b00515b26f1f6 491-496
+  s_31a4395a13c796::t_594eebe5b8363b 535,538-542,544,552
+  s_31a4395a13c796::t_b242a7d7de27d2 566-572
+pkg/workloadslicing/workloadslicing.go
+  s_31a4395a13c796::t_f1b9139272d685 465-493
+  s_31a4395a13c796::t_54a82d2984e878 454-464
+  s_31a4395a13c796::t_c77d48bbc54f7c 399-404,411-413
+  s_31a4395a13c796::t_3e43a22a9acdd3 405-410,414-419
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "02a5dc3897afeb40ec3e995653011159893b6ef0",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_31a4395a13c796": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a7a641e6-a1b2-4908-b69a-1d28c5c5d727",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

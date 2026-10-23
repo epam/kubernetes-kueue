@@ -1,0 +1,27 @@
+pkg/controller/jobframework/reconciler.go
+  s_ec639dc75146d7::t_5433be5a4ce4fc 1977-1978,1980-1981
+pkg/scheduler/scheduler.go
+  s_ec639dc75146d7::t_a425f4b76c0186 1657-1658,1661-1662,1665-1669
+  s_ec639dc75146d7::t_51aff09fb3886e 1663
+pkg/scheduler/scheduler_test.go
+  s_ec639dc75146d7::t_3f9cc42f2b4d31 40
+  s_ec639dc75146d7::t_0fdab456aa9fc9 11026-11108
+pkg/controller/jobframework/reconciler_test.go
+  s_ec639dc75146d7::t_1cfe1e29ebec57 2768-2788
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "305b3c043165f6826d9b1ce5d2cf1796a4b1346e",
+  "prompts": {},
+  "sessions": {
+    "s_ec639dc75146d7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d83670c-d35c-4ab7-96b9-90c7d482374e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

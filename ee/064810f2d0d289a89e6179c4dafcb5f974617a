@@ -1,0 +1,19 @@
+pkg/controller/jobs/job/job_controller.go
+  s_d9bf326cec2bcc::t_02dc96854e42cc 363-365
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ee064810f2d0d289a89e6179c4dafcb5f974617a",
+  "prompts": {},
+  "sessions": {
+    "s_d9bf326cec2bcc": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "d015470f-d174-4c8b-9e87-8419f30a6f47",
+        "model": "copilot/claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}

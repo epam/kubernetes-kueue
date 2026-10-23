@@ -1,0 +1,22 @@
+cmd/kueueviz/frontend/Dockerfile
+  s_958e55ca021d2e::t_1d0d291042f979 15,24
+  s_958e55ca021d2e::t_461b94dcd45493 10-12
+Makefile
+  s_958e55ca021d2e::t_461b94dcd45493 519
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "53e5b92823d54d652d9b096cb29d0e340c700b1a",
+  "prompts": {},
+  "sessions": {
+    "s_958e55ca021d2e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f2c46a35-588b-4c6e-b667-9f4aa9a5aab4",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}

@@ -1,0 +1,20 @@
+test/integration/singlecluster/tas/tas_test.go
+  s_19aa284a8e7ee8::t_727987a584cc9c 9165,9180
+  s_19aa284a8e7ee8::t_0dfd12ff5d3c2d 9177,9184
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "13e0371061a0aba0107a88ff60f3fa1b36d23815",
+  "prompts": {},
+  "sessions": {
+    "s_19aa284a8e7ee8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "637f1e37-6712-47c7-b5e6-718561039b11",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

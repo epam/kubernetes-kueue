@@ -1,0 +1,22 @@
+hack/make/verify.mk
+  s_70879a34b7374d::t_6a77f7102c942b 102,208-211,259-262,325-327
+  s_70879a34b7374d::t_3eba6e64679ae1 328
+hack/testing/prometheus-pin-check.sh
+  s_70879a34b7374d::t_9df8d9f22c532e 1-77
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8e327c7aa339057166700060b455cf8d396dc0e6",
+  "prompts": {},
+  "sessions": {
+    "s_70879a34b7374d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fe8a55f1-3f13-4579-8c35-69177c34c0ba",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

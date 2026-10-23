@@ -1,0 +1,26 @@
+keps/12100-partial-scaleup-for-elasticjob/README.md
+  s_97498c31896c72::t_3a787b994b85e2 270
+  h_99f506dc258b88 271-272,274,276
+  s_97498c31896c72::t_19adef22ba2952 30,260,268
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "a8424cb3ef51f37df14d6e06846da8add07c47da",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_97498c31896c72": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "c959feb0-2b41-4c2e-a76f-af902c969d5e",
+        "model": "copilot/claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
