@@ -1,0 +1,45 @@
+keps/77-dynamically-sized-jobs/README.md
+  s_7b084ab8b1f2c5::t_feeb08a6035637 211-217
+  s_7b084ab8b1f2c5::t_78f1f6e6bc1b6b 394
+  s_7b084ab8b1f2c5::t_5e99887be49545 206-210
+  s_7b084ab8b1f2c5::t_ba6dad3b03df5d 21,393
+  s_7b084ab8b1f2c5::t_dfdfd31b57313a 218
+  s_7b084ab8b1f2c5::t_4db42ea6356eb3 395-399
+keps/12100-partial-scaleup-for-elasticjob/README.md
+  s_7b084ab8b1f2c5::t_3f0fcf6973764d 270-273
+  s_7b084ab8b1f2c5::t_3461d5d6a7de3b 30,58,67,97,260,408
+  s_97498c31896c72::t_c27fd847018517 274
+  s_7b084ab8b1f2c5::t_94c68311960411 416
+  s_7b084ab8b1f2c5::t_a1f0061873e289 417
+  s_97498c31896c72::t_a2110dd69a0963 268-269
+  s_7b084ab8b1f2c5::t_e695fb18ff75a0 47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "32879fada5daa60a3911ad14169857e99b620d34",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_7b084ab8b1f2c5": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "54b7c845-d4b3-407d-9900-3074b325a8cc",
+        "model": "unknown"
+      },
+      "human_author": null
+    },
+    "s_97498c31896c72": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "c959feb0-2b41-4c2e-a76f-af902c969d5e",
+        "model": "copilot/claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
