@@ -1,0 +1,21 @@
+.github/dependabot.yml
+  s_3ca4094a534c6c::t_ae5814c0050a40 4
+  s_3ca4094a534c6c::t_bbb1f9a75aa631 5,11,109
+  s_3ca4094a534c6c::t_d09d9ba920491c 28,88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6fad52f5232384aa6d9e9573c165837b9c2b18a9",
+  "prompts": {},
+  "sessions": {
+    "s_3ca4094a534c6c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "29f3144f-c566-4a92-92b3-405ae38d579c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
