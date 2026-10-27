@@ -1,0 +1,47 @@
+pkg/controller/jobs/pod/pod_controller.go
+  h_99f506dc258b88 534-538
+pkg/controller/jobframework/reconciler_test.go
+  h_99f506dc258b88 639-644,1768-1771,1774-1775,1904,1909-1910,1912-1914
+  h_99f506dc258b88 1905-1908,1911
+internal/mocks/controller/jobframework/interface.go
+  h_99f506dc258b88 153,155-159,165,167-168
+pkg/controller/jobframework/interface.go
+  h_99f506dc258b88 73,79-102
+pkg/controller/jobframework/reconciler.go
+  h_99f506dc258b88 2136
+pkg/controller/jobs/appwrapper/appwrapper_controller.go
+  h_99f506dc258b88 202
+pkg/controller/jobs/job/job_controller.go
+  h_99f506dc258b88 50,432,438-445
+pkg/controller/jobs/job/job_controller_test.go
+  h_99f506dc258b88 172-173,181-310
+pkg/controller/jobs/jobset/jobset_controller.go
+  h_99f506dc258b88 186
+pkg/controller/jobs/kubeflow/kubeflowjob/kubeflowjob_controller.go
+  h_99f506dc258b88 144
+pkg/controller/jobs/mpijob/mpijob_controller.go
+  h_99f506dc258b88 209
+pkg/controller/jobs/raycluster/raycluster_controller.go
+  h_99f506dc258b88 145
+pkg/controller/jobs/rayjob/rayjob_controller.go
+  h_99f506dc258b88 238
+pkg/controller/jobs/rayservice/rayservice_controller.go
+  h_99f506dc258b88 241
+pkg/controller/jobs/sparkapplication/sparkapplication_controller.go
+  h_99f506dc258b88 320
+pkg/controller/jobs/trainjob/trainjob_controller.go
+  h_99f506dc258b88 405
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  h_99f506dc258b88 3424,3432-3448,3450,3528-3612
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5b1863e5719a5eeac94a42f2e2b9408f1221630e",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
