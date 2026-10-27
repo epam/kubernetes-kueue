@@ -1,0 +1,23 @@
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  s_7b084ab8b1f2c5::t_432740ce78d4fa 3862-3863,3866-3870
+  s_7b084ab8b1f2c5::t_c8de7bc7bb5462 3916
+  s_7b084ab8b1f2c5::t_52cc605613143d 3841
+  s_7b084ab8b1f2c5::t_e4127c54d6dae6 3842-3857,3864-3865,3871-3915,3917-3922
+  s_7b084ab8b1f2c5::t_d167fb6076b5f7 3858-3861
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d20e97a67b42cffc03b77c200a915cc5a47dabf7",
+  "prompts": {},
+  "sessions": {
+    "s_7b084ab8b1f2c5": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "54b7c845-d4b3-407d-9900-3074b325a8cc",
+        "model": "unknown"
+      },
+      "human_author": null
+    }
+  }
+}

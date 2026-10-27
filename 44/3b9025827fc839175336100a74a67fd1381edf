@@ -1,0 +1,27 @@
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_9dceb3c19bd574::t_1a008bb582e09c 591
+pkg/features/kube_features.go
+  s_9dceb3c19bd574::t_1a008bb582e09c 918-921
+pkg/webhooks/workload_webhook.go
+  s_9dceb3c19bd574::t_1a008bb582e09c 405,502-504,509-511,518-519,525
+pkg/webhooks/workload_webhook_test.go
+  s_9dceb3c19bd574::t_3ab3ea941c6318 1434,1448,1465
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler.go
+  s_9dceb3c19bd574::t_1a008bb582e09c 509-511
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "443b9025827fc839175336100a74a67fd1381edf",
+  "prompts": {},
+  "sessions": {
+    "s_9dceb3c19bd574": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0bcf8565-e506-4642-8cf6-3d5a60a6c6be",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
