@@ -1,0 +1,22 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a0394b0b05708c76afae7e8d56f5c1583b23f58a",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_09f57b121fcd26": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "98b27831-ce13-4037-8239-4f5fc0b031ee",
+        "model": "copilot/claude-opus-5.5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
