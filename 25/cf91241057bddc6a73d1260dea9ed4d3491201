@@ -1,0 +1,20 @@
+.github/workflows/sync-dependabot.yaml
+  s_6bd5de7c2f049a::t_293503df9aecef 7-8,12-15,18-19
+  s_6bd5de7c2f049a::t_63519ede9e0420 20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "25cf91241057bddc6a73d1260dea9ed4d3491201",
+  "prompts": {},
+  "sessions": {
+    "s_6bd5de7c2f049a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c5a27643-2b4e-4103-9d2e-b7b39491e1ad",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

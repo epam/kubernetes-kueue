@@ -1,0 +1,45 @@
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  s_26f0242fe01ba2::t_6ba1e771e6ef09 350-356
+pkg/util/testingjobs/leaderworkerset/wrappers.go
+  s_26f0242fe01ba2::t_b084100e0678fe 173-178
+  s_26f0242fe01ba2::t_ef264571329509 144-149
+test/integration/singlecluster/controller/jobs/leaderworkerset/leaderworkerset_controller_test.go
+  s_26f0242fe01ba2::t_0cc2b1ebdeaeeb 291-296,300
+  s_26f0242fe01ba2::t_92d7d82e7b596a 288-290,297-299,301,303-326,328-330
+  s_26f0242fe01ba2::t_4497357d1be458 302
+  s_26f0242fe01ba2::t_f19883df21090b 327
+pkg/features/kube_features.go
+  s_26f0242fe01ba2::t_9973121143bd55 911-919,1416-1417
+  s_26f0242fe01ba2::t_09abe2e6436bf9 1418-1419
+site/data/featuregates/versioned_feature_list.yaml
+  s_26f0242fe01ba2::t_fa19dba45e7c79 294-299
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  s_26f0242fe01ba2::t_787b63ad54fa0c 1031-1085
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler_test.go
+  s_26f0242fe01ba2::t_a0b927dabfcac4 832-1002
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler.go
+  s_26f0242fe01ba2::t_35a33eb09933c4 506-536
+  s_26f0242fe01ba2::t_98f5df1db3a451 31
+  s_26f0242fe01ba2::t_cfd5950918cea8 463-467
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_26f0242fe01ba2::t_fa19dba45e7c79 294-299
+site/content/en/docs/tasks/run/leaderworkerset.md
+  s_26f0242fe01ba2::t_fdf50192084c57 87-96,98
+  s_26f0242fe01ba2::t_1473728440f046 97
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "95cbb958521e8d69cc63cd718cf30b386f68e497",
+  "prompts": {},
+  "sessions": {
+    "s_26f0242fe01ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5fcb8e8d-a1b4-40f8-9d8c-e39d36904adb",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

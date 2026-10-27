@@ -1,0 +1,35 @@
+pkg/controller/jobframework/reconciler_test.go
+  s_b1e7e9e867bc1e::t_345ff6d8d1f7e7 2811
+  s_b1e7e9e867bc1e::t_d0528f8395c545 2270,2277,2284,2295-2300,2774,2824,2827
+  s_b1e7e9e867bc1e::t_e6612339243b46 2289,2294,2819
+  s_b1e7e9e867bc1e::t_9ad8d01edc5bda 2221,2226-2228,2237-2239
+  s_b1e7e9e867bc1e::t_7fd433bf9703db 2261-2265,2290-2293,2815-2818
+  s_b1e7e9e867bc1e::t_e7c37a990efc85 2288
+  s_b1e7e9e867bc1e::t_26d6aec9c6f39b 2820
+pkg/controller/jobs/job/job_controller_test.go
+  h_99f506dc258b88 223,233,243,252,258,265,272,279,286,293,318-319
+  s_b1e7e9e867bc1e::t_d0528f8395c545 182,190-191,197-200,202,214,222,225,231-232,235,241-242,245-246,250-251,254-255,257,260-261,263-264,267-271,273-278,280-282,284-285,287-292,303
+pkg/controller/jobframework/reconciler.go
+  s_b1e7e9e867bc1e::t_407eb1fae2b519 630
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1cf973715d972e9ea103039c5f1e19e0ec6825a1",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_b1e7e9e867bc1e": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "ffba0041-d2a0-45f3-b2c2-a2bb73e15e15",
+        "model": "copilot/claude-sonnet-5.5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
