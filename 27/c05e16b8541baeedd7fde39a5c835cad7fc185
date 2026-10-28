@@ -1,0 +1,14 @@
+pkg/controller/admissionchecks/multikueue/workload.go
+  h_47cee5fa694435 563
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "27c05e16b8541baeedd7fde39a5c835cad7fc185",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
