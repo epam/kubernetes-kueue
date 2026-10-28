@@ -1,0 +1,52 @@
+pkg/util/tas/tas.go
+  h_99f506dc258b88 99-101,115
+  s_2c1e4e875a511d::t_959562b55f35fb 20,102-114,116-136
+pkg/controller/tas/topology_ungater.go
+  h_99f506dc258b88 214,530,579
+pkg/controller/elasticjobs/elastic_job_ungater.go
+  s_2c1e4e875a511d::t_45b61a27187757 23,318,344-355,357-361,373-375,377-378,382
+  s_68a64a612a9a39::t_4e4e73ef7ae007 333,337,356,376,380
+  h_99f506dc258b88 27,48,56-57,316,334-336,338-343,362,364-368,370,379
+  h_99f506dc258b88 363
+pkg/controller/elasticjobs/elastic_job_ungater_test.go
+  h_99f506dc258b88 393,405
+  s_68a64a612a9a39::t_2df193931d4e92 364,382-383,406
+  s_97498c31896c72::t_51f0de14a67f98 299
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c82b4a1bf8bd91b5d3e3c035b063032e9e2f4d0b",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_2c1e4e875a511d": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "4ecbf835-4a3e-4a0e-bc4c-402de53d2286",
+        "model": "copilot/claude-sonnet-5.5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    },
+    "s_68a64a612a9a39": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "ee3940ad-e84e-4d5e-a079-cd7cbd1329d7",
+        "model": "copilot/claude-sonnet-5.5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    },
+    "s_97498c31896c72": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "c959feb0-2b41-4c2e-a76f-af902c969d5e",
+        "model": "copilot/claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

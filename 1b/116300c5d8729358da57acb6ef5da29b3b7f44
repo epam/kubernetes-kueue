@@ -1,0 +1,65 @@
+pkg/controller/jobs/job/job_controller.go
+  h_99f506dc258b88 50,432,438-445
+internal/mocks/controller/jobframework/interface.go
+  h_99f506dc258b88 153,155-159,165,167-168
+pkg/controller/jobs/rayservice/rayservice_controller.go
+  h_99f506dc258b88 241
+pkg/controller/jobs/kubeflow/kubeflowjob/kubeflowjob_controller.go
+  h_99f506dc258b88 144
+pkg/controller/jobframework/reconciler.go
+  h_99f506dc258b88 2136
+pkg/controller/jobs/trainjob/trainjob_controller.go
+  h_99f506dc258b88 405
+pkg/controller/jobs/appwrapper/appwrapper_controller.go
+  h_99f506dc258b88 202
+pkg/controller/jobs/sparkapplication/sparkapplication_controller.go
+  h_99f506dc258b88 320
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  s_c28c851bb0edc9::t_286cd9e74de76c 3528
+  h_99f506dc258b88 3424,3432-3448,3450,3529-3611
+pkg/controller/jobframework/interface.go
+  h_99f506dc258b88 73,79-102
+pkg/controller/jobs/mpijob/mpijob_controller.go
+  h_99f506dc258b88 209
+pkg/controller/jobs/rayjob/rayjob_controller.go
+  h_99f506dc258b88 238
+pkg/controller/jobs/raycluster/raycluster_controller.go
+  h_99f506dc258b88 145
+pkg/controller/jobs/pod/pod_controller.go
+  h_99f506dc258b88 534-538
+pkg/controller/jobs/jobset/jobset_controller.go
+  h_99f506dc258b88 186
+pkg/controller/jobframework/reconciler_test.go
+  h_99f506dc258b88 639-644,1777,1781
+  s_c28c851bb0edc9::t_286cd9e74de76c 1775
+  s_c28c851bb0edc9::t_c7fcb98a1457c5 1768
+  s_c28c851bb0edc9::t_b066baeb7f9352 1912
+  s_c28c851bb0edc9::t_1d766977a8a7ff 1778,1782
+  s_c28c851bb0edc9::t_ba90c4df28a6c1 1776
+  s_c28c851bb0edc9::t_758c9b604398e4 1727-1732
+  s_c28c851bb0edc9::t_40f6f0d26dcd23 1871
+  s_c28c851bb0edc9::t_6e344cdbbf8af0 1767
+pkg/controller/jobs/job/job_controller_test.go
+  h_99f506dc258b88 172-173,181-293
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1b116300c5d8729358da57acb6ef5da29b3b7f44",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_c28c851bb0edc9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0b24d772-e149-4ff3-b367-e65e48ca71c1",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": null
+    }
+  }
+}
