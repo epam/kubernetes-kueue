@@ -1,0 +1,22 @@
+vendor/golang.org/x/net/internal/httpcommon/README.md
+  h_47cee5fa694435 1-7
+vendor/golang.org/x/sys/cpu/cpu_gc_riscv64.go
+  h_47cee5fa694435 1-11
+vendor/golang.org/x/sys/cpu/cpu_netbsd_amd64.go
+  h_47cee5fa694435 1-47
+vendor/golang.org/x/sys/cpu/cpu_riscv64.s
+  h_47cee5fa694435 1-17
+vendor/golang.org/x/sys/cpu/cpu_sparc64.go
+  h_47cee5fa694435 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d3128b74eb0e3696053fe15bb9893b9deb0ec980",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

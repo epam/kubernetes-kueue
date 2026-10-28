@@ -1,0 +1,20 @@
+Makefile
+  h_47cee5fa694435 160
+hack/tools/go.sum
+  h_47cee5fa694435 225
+site/content/en/docs/reference/kueue-config.v1beta1.md
+  h_47cee5fa694435 1-1411
+hack/migrate-to-v1beta2.sh
+  h_47cee5fa694435 1-273
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3081c5d9468fc0a32bf19e7eb42cac963663b366",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+hack/cherry_pick_pull.sh
+  s_501a11a1b521a1::t_0635bcee8ca7fd 270-296
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ee9a4c51d4f226a820f7bb7fa4cb260b9572b4b9",
+  "prompts": {},
+  "sessions": {
+    "s_501a11a1b521a1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2fa89ca4-b17e-4f6b-a653-afe797bf7f20",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

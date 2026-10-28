@@ -1,0 +1,19 @@
+.github/workflows/krew-release.yml
+  s_bdd226083ae4c2::t_af2f6050326287 9-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9731b2e230eb7a41047050af71f7ff3e1f72c217",
+  "prompts": {},
+  "sessions": {
+    "s_bdd226083ae4c2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "68155802-04d5-4145-bf39-7ae915a5f74b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

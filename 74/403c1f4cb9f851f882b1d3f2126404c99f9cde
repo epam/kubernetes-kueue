@@ -1,0 +1,24 @@
+test/util/behavioral/admissionchecks.go
+  s_39103e008f0dd7::t_15ff3d1389793a 45-76
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "74403c1f4cb9f851f882b1d3f2126404c99f9cde",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_39103e008f0dd7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4d449a16-0174-42c9-a44c-410ff9e2856d",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

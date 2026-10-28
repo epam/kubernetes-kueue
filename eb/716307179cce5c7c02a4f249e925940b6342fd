@@ -1,0 +1,14 @@
+.github/workflows/set-release-note.yml
+  h_47cee5fa694435 108
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "eb716307179cce5c7c02a4f249e925940b6342fd",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

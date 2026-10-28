@@ -1,0 +1,17 @@
+test/util/behavioral/integration/pods.go
+  h_47cee5fa694435 22,26,29-52
+  h_47cee5fa694435 53
+test/integration/singlecluster/scheduler/was/was_test.go
+  h_47cee5fa694435 296,354,419,461,498
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f5bf7e256c61b999b5e665a869207b56700d08bc",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

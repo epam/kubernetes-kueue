@@ -1,0 +1,16 @@
+hack/make/verify.mk
+  h_47cee5fa694435 102,176-179,246-249,316-318
+.github/ISSUE_TEMPLATE/NEW_RELEASE.md
+  h_47cee5fa694435 61-63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "75957bbd519520951c8e1d9b08f9f3b4419856b5",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

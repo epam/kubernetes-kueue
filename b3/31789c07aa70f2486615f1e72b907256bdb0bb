@@ -1,0 +1,18 @@
+pkg/controller/jobs/job/job_webhook_test.go
+  h_47cee5fa694435 50
+test/integration/singlecluster/controller/core/workload_hash_freshness_test.go
+  h_47cee5fa694435 25
+test/integration/singlecluster/scheduler/preemption_test.go
+  h_47cee5fa694435 34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b331789c07aa70f2486615f1e72b907256bdb0bb",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

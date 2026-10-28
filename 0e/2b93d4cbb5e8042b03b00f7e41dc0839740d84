@@ -1,0 +1,20 @@
+CHANGELOG/CHANGELOG-0.18.md
+  h_47cee5fa694435 1-42
+site/content/en/v0.18/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+site/content/en/v0.18/docs/tasks/manage/productization/prometheus.md
+  h_47cee5fa694435 55-56,58,68
+site/content/zh-CN/v0.18/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0e2b93d4cbb5e8042b03b00f7e41dc0839740d84",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

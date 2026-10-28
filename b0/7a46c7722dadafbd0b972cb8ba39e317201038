@@ -1,0 +1,20 @@
+hack/releasing/ci_pull.sh
+  h_47cee5fa694435 137,141,147
+hack/releasing/prepare_pull.sh
+  h_47cee5fa694435 151,155,161
+hack/releasing/promote_pull.sh
+  h_47cee5fa694435 141,145,151
+hack/releasing/sync-notes.sh
+  h_47cee5fa694435 251,256,262
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "b07a46c7722dadafbd0b972cb8ba39e317201038",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,338 @@
+site/content/zh-CN/v0.17/docs/tasks/run/rayjobs.md
+  h_47cee5fa694435 12-13,19,34
+site/content/zh-CN/v0.17/docs/tasks/run/kubeflow/mpijobs.md
+  h_47cee5fa694435 12-13,17,26,44,70
+site/content/zh-CN/v0.18/docs/tasks/run/kubeflow/tfjobs.md
+  h_47cee5fa694435 12-13,17,24,36
+site/content/zh-CN/v0.18/docs/tasks/manage/monitor_pending_workloads/pending_workloads_in_grafana.md
+  h_47cee5fa694435 11,19,22
+site/content/zh-CN/docs/tasks/troubleshooting/troubleshooting_jobs.md
+  h_47cee5fa694435 12,14,21,80,226-227,252-253,271,276
+site/content/zh-CN/v0.17/docs/tasks/run/multikueue/deployment.md
+  h_47cee5fa694435 11,13
+site/content/zh-CN/v0.17/docs/tasks/run/run_cronjobs.md
+  h_47cee5fa694435 11,19-20,39,67,83
+site/content/zh-CN/v0.18/docs/tasks/run/multikueue/jobsets.md
+  h_47cee5fa694435 11,17
+site/content/zh-CN/docs/tasks/manage/monitor_pending_workloads/pending_workloads_on_demand.md
+  h_47cee5fa694435 11,23,73
+site/content/zh-CN/v0.17/docs/tasks/run/multikueue/kuberay.md
+  h_47cee5fa694435 11,30
+site/content/zh-CN/docs/tasks/manage/observability/common_grafana_queries.md
+  h_47cee5fa694435 11,19,21,27,156,174
+site/content/zh-CN/v0.18/docs/tasks/dev/enabling_pprof_endpoints.md
+  h_47cee5fa694435 11
+site/content/zh-CN/docs/tasks/run/jobs.md
+  h_47cee5fa694435 12
+site/content/zh-CN/v0.18/docs/tasks/manage/enforce_job_management/manage_jobs_without_queue_name.md
+  h_47cee5fa694435 14
+site/content/zh-CN/v0.18/docs/tasks/run/appwrappers.md
+  h_47cee5fa694435 20,24,36
+site/content/zh-CN/v0.18/docs/tasks/run/rayjobs.md
+  h_47cee5fa694435 12-13,19,34
+site/content/zh-CN/v0.17/docs/tasks/manage/enable_kubeviz.md
+  h_47cee5fa694435 12,20,48,215-216
+site/content/zh-CN/docs/tasks/dev/enabling_pprof_endpoints.md
+  h_47cee5fa694435 19,26
+site/content/zh-CN/docs/tasks/troubleshooting/troubleshooting_delete_clusterqueue.md
+  h_47cee5fa694435 26,40
+site/content/zh-CN/v0.17/docs/concepts/fair_sharing.md
+  h_47cee5fa694435 9,14
+site/content/zh-CN/docs/overview/_index.md
+  h_47cee5fa694435 31-35,37-50,56-67,73,75
+site/content/zh-CN/v0.18/docs/concepts/fair_sharing.md
+  h_47cee5fa694435 9,14
+site/content/zh-CN/v0.18/docs/tasks/run/kubeflow/paddlejobs.md
+  h_47cee5fa694435 12-13,17,24,36
+site/content/zh-CN/docs/tasks/run/kubeflow/sparkapplications.md
+  h_47cee5fa694435 14-15,26,28,30,57
+site/content/zh-CN/docs/tasks/run/multikueue/leaderworkerset.md
+  h_47cee5fa694435 12
+site/content/zh-CN/docs/tasks/manage/productization/_index.md
+  h_47cee5fa694435 12
+site/content/zh-CN/v0.17/docs/tasks/manage/productization/prometheus.md
+  h_47cee5fa694435 11,50
+site/content/zh-CN/v0.17/docs/tasks/run/kubeflow/_index.md
+  h_47cee5fa694435 14,22-26
+site/content/zh-CN/docs/tasks/run/kubeflow/pytorchjobs.md
+  h_47cee5fa694435 18
+site/content/zh-CN/v0.18/docs/tasks/run/multikueue/job.md
+  h_47cee5fa694435 11
+site/content/zh-CN/v0.17/docs/tasks/manage/setup_multikueue.md
+  h_47cee5fa694435 9,11,68
+site/content/zh-CN/v0.17/docs/tasks/run/kubeflow/tfjobs.md
+  h_47cee5fa694435 12-13,17,24,36
+site/content/zh-CN/v0.17/docs/concepts/multikueue.md
+  h_47cee5fa694435 15,131,136-137
+site/content/zh-CN/docs/tasks/manage/observability/configure_custom_metric_labels.md
+  h_47cee5fa694435 13,21-22,27,99-100
+site/content/zh-CN/docs/concepts/topology.md
+  h_47cee5fa694435 11,13,77-78
+site/content/zh-CN/docs/tasks/run/deployment.md
+  h_47cee5fa694435 26,42
+site/content/zh-CN/v0.18/docs/tasks/run/external_workloads/tektoncd.md
+  h_47cee5fa694435 13-14,16,21,23,26,56
+site/content/zh-CN/v0.17/docs/tasks/run/leaderworkerset.md
+  h_47cee5fa694435 18-19,25,37,40,48
+site/content/zh-CN/docs/admission-check-controllers/_index.md
+  h_47cee5fa694435 8
+site/content/zh-CN/v0.17/docs/tasks/manage/enforce_job_management/manage_jobs_without_queue_name.md
+  h_47cee5fa694435 14
+site/content/zh-CN/v0.18/docs/tasks/run/multikueue/mpijob.md
+  h_47cee5fa694435 11,19,26
+site/content/zh-CN/v0.17/docs/tasks/run/kubeflow/xgboostjobs.md
+  h_47cee5fa694435 12-13,17,24,35
+site/content/zh-CN/v0.18/docs/tasks/run/multikueue/plain_pods.md
+  h_47cee5fa694435 12,14
+site/content/zh-CN/v0.18/docs/tasks/run/python_jobs.md
+  h_47cee5fa694435 8-9,13,278,381
+site/content/zh-CN/docs/concepts/_index.md
+  h_47cee5fa694435 14,18,22,26,30,34,40,44,46,54,60,62,71,75
+site/content/zh-CN/docs/concepts/elastic_workload.md
+  h_47cee5fa694435 57
+site/content/zh-CN/v0.18/docs/tasks/manage/setup_multikueue.md
+  h_47cee5fa694435 9,11,68
+site/content/zh-CN/v0.18/docs/tasks/manage/setup_object_retention_policy.md
+  h_47cee5fa694435 20,42,124
+site/content/zh-CN/v0.17/docs/tasks/run/multikueue/plain_pods.md
+  h_47cee5fa694435 12,14
+site/content/zh-CN/docs/tasks/_index.md
+  h_47cee5fa694435 33,51
+site/content/zh-CN/v0.17/docs/concepts/cohort.md
+  h_47cee5fa694435 36,87
+site/content/zh-CN/docs/concepts/admission_check.md
+  h_47cee5fa694435 37,128-129
+site/content/zh-CN/v0.18/docs/tasks/troubleshooting/troubleshooting_jobs.md
+  h_47cee5fa694435 75,304
+site/content/zh-CN/docs/concepts/admission_check/multikueue.md
+  h_47cee5fa694435 9
+site/content/zh-CN/docs/tasks/run/multikueue/statefulset.md
+  h_47cee5fa694435 12,19
+site/content/zh-CN/v0.17/docs/tasks/manage/monitor_pending_workloads/pending_workloads_in_grafana.md
+  h_47cee5fa694435 11,19,22
+site/content/zh-CN/v0.17/docs/tasks/run/jobs.md
+  h_47cee5fa694435 20-21,44,69
+site/content/zh-CN/v0.17/docs/tasks/run/appwrappers.md
+  h_47cee5fa694435 20,24,36
+site/content/zh-CN/v0.17/docs/tasks/manage/setup_object_retention_policy.md
+  h_47cee5fa694435 20,42,124
+site/content/zh-CN/v0.17/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 13,31,34,40,43-44,54,58
+site/content/zh-CN/v0.17/docs/tasks/run/deployment.md
+  h_47cee5fa694435 18-19,45,53,80
+site/content/zh-CN/v0.17/docs/tasks/manage/productization/cert_manager.md
+  h_47cee5fa694435 19
+site/content/zh-CN/v0.17/docs/concepts/local_queue.md
+  h_47cee5fa694435 11,40-41
+site/content/zh-CN/v0.17/docs/tasks/run/rayclusters.md
+  h_47cee5fa694435 11-12,18,34
+site/content/zh-CN/docs/tasks/run/external_workloads/argo_workflow.md
+  h_47cee5fa694435 13
+site/content/zh-CN/docs/admission-check-controllers/provisioning.md
+  h_47cee5fa694435 11,13,16,27,31,102
+site/content/zh-CN/docs/tasks/manage/observability/setup_prometheus.md
+  h_47cee5fa694435 11,13,21,105,109,111,113
+site/content/zh-CN/v0.17/docs/tasks/run/plain_pods.md
+  h_47cee5fa694435 14,21,68,77,85,151
+site/content/zh-CN/docs/tasks/dev/setup_dev_monitoring.md
+  h_47cee5fa694435 12,49,159,163-164
+site/content/zh-CN/v0.18/docs/tasks/run/kubeflow/jaxjobs.md
+  h_47cee5fa694435 12-13,17,24,36
+site/content/zh-CN/v0.17/docs/tasks/run/multikueue/jobsets.md
+  h_47cee5fa694435 11,17
+site/content/zh-CN/docs/tasks/run/kubeflow/xgboostjobs.md
+  h_47cee5fa694435 18
+site/content/zh-CN/docs/tasks/run/plain_pods.md
+  h_47cee5fa694435 115,150
+site/content/zh-CN/v0.18/docs/tasks/run/plain_pods.md
+  h_47cee5fa694435 14,21,68,77,85,156
+site/content/zh-CN/v0.18/docs/tasks/manage/productization/prometheus.md
+  h_47cee5fa694435 11,50
+site/content/zh-CN/v0.17/docs/tasks/manage/run_job_with_workload_priority.md
+  h_47cee5fa694435 11,22
+site/content/zh-CN/v0.18/docs/tasks/manage/enable_kubeviz.md
+  h_47cee5fa694435 12,20,48,215-216
+site/content/zh-CN/docs/tasks/run/rayjobs.md
+  h_47cee5fa694435 107
+site/content/zh-CN/docs/tasks/run/multikueue/trainjob.md
+  h_47cee5fa694435 12,24,30
+site/content/zh-CN/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 11,14,38,53,61,64,71,183,187,227,231,439,480,500,504-507
+site/content/zh-CN/docs/concepts/admission_fair_sharing.md
+  h_47cee5fa694435 15
+site/content/zh-CN/v0.17/docs/tasks/run/multikueue/kubeflow.md
+  h_47cee5fa694435 11,28
+site/content/zh-CN/docs/tasks/run/multikueue/external-frameworks.md
+  h_47cee5fa694435 14
+site/content/zh-CN/v0.18/docs/tasks/run/jobsets.md
+  h_47cee5fa694435 11,15,30,82
+site/content/zh-CN/v0.17/docs/tasks/run/statefulset.md
+  h_47cee5fa694435 14-15,22,32,35,43
+site/content/zh-CN/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 31,51,67,69,78,92-93
+site/content/zh-CN/v0.18/docs/concepts/multikueue.md
+  h_47cee5fa694435 15,131,136-137
+site/content/zh-CN/v0.18/docs/tasks/run/external_workloads/sandbox.md
+  h_47cee5fa694435 13-14,17,22,24,27,35
+site/content/zh-CN/v0.18/docs/tasks/run/multikueue/kuberay.md
+  h_47cee5fa694435 11,30
+site/content/zh-CN/v0.18/docs/tasks/run/leaderworkerset.md
+  h_47cee5fa694435 18-19,25,40,43,51,106,124
+site/content/zh-CN/v0.18/docs/tasks/run/kubeflow/mpijobs.md
+  h_47cee5fa694435 12-13,17,26,44,70
+site/content/zh-CN/v0.17/docs/tasks/run/external_workloads/argo_workflow.md
+  h_47cee5fa694435 14,17,21,23,32,39
+site/content/zh-CN/docs/reference/components-tools/feature-gate-removed.md
+  h_47cee5fa694435 12,14
+site/content/zh-CN/docs/tasks/run/kubeflow/_index.md
+  h_47cee5fa694435 21
+site/content/zh-CN/v0.18/docs/tasks/run/rayservices.md
+  h_47cee5fa694435 16-17,23,40
+site/content/zh-CN/v0.17/docs/tasks/run/multikueue/job.md
+  h_47cee5fa694435 11
+site/content/zh-CN/v0.18/docs/tasks/run/multikueue/appwrapper.md
+  h_47cee5fa694435 11,23
+site/content/zh-CN/docs/tasks/run/kubeflow/paddlejobs.md
+  h_47cee5fa694435 18
+site/content/zh-CN/v0.18/docs/tasks/run/run_cronjobs.md
+  h_47cee5fa694435 11,19-20,39,67,83
+site/content/zh-CN/v0.18/docs/tasks/run/multikueue/kubeflow.md
+  h_47cee5fa694435 11,28
+site/content/zh-CN/v0.18/docs/tasks/run/external_workloads/wrapped_custom_workload.md
+  h_47cee5fa694435 12,15-16,22
+site/content/zh-CN/v0.17/docs/tasks/run/python_jobs.md
+  h_47cee5fa694435 8-9,13,278,381
+site/content/zh-CN/docs/tasks/troubleshooting/troubleshooting_queues.md
+  h_47cee5fa694435 11,37,60,77
+site/content/zh-CN/docs/tasks/manage/setup_concurrent_admission.md
+  h_47cee5fa694435 12,20,26,182-183
+site/content/zh-CN/v0.17/docs/tasks/run/jobsets.md
+  h_47cee5fa694435 11,15,30,82
+site/content/zh-CN/v0.18/docs/tasks/manage/productization/cert_manager.md
+  h_47cee5fa694435 19
+site/content/zh-CN/v0.17/docs/tasks/manage/enforce_job_management/setup_job_admission_policy.md
+  h_47cee5fa694435 20
+site/content/zh-CN/v0.17/docs/tasks/run/multikueue/appwrapper.md
+  h_47cee5fa694435 11,23
+site/content/zh-CN/docs/concepts/workload_priority_class.md
+  h_47cee5fa694435 9,110-112
+site/content/zh-CN/v0.18/docs/tasks/manage/rbac.md
+  h_47cee5fa694435 24
+site/content/zh-CN/v0.17/docs/tasks/run/external_workloads/flux_miniclusters.md
+  h_47cee5fa694435 13-14,18,31,73
+site/content/zh-CN/v0.18/docs/tasks/run/multikueue/deployment.md
+  h_47cee5fa694435 11,13
+site/content/zh-CN/v0.17/docs/tasks/run/external_workloads/_index.md
+  h_47cee5fa694435 15,19-21
+site/content/zh-CN/v0.17/docs/tasks/run/multikueue/mpijob.md
+  h_47cee5fa694435 11,19,26
+site/content/zh-CN/v0.18/docs/tasks/manage/administer_cluster_quotas.md
+  h_47cee5fa694435 12,20,25,33,65,70,97,99,126,214,260,274,382,409
+site/content/zh-CN/v0.17/docs/tasks/run/kubeflow/jaxjobs.md
+  h_47cee5fa694435 12-13,17,24,36
+site/content/zh-CN/docs/tasks/dev/external_frameworks.md
+  h_47cee5fa694435 9
+site/content/zh-CN/docs/concepts/preemption.md
+  h_47cee5fa694435 17-19,21,98,118
+site/content/zh-CN/v0.18/docs/tasks/run/kubeflow/_index.md
+  h_47cee5fa694435 14,22-26
+site/content/zh-CN/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 24,26
+site/content/zh-CN/v0.18/docs/tasks/run/rayclusters.md
+  h_47cee5fa694435 11-12,18,34
+site/content/zh-CN/v0.18/docs/concepts/local_queue.md
+  h_47cee5fa694435 11,40-41
+site/content/zh-CN/v0.18/docs/tasks/manage/setup_wait_for_pods_ready.md
+  h_47cee5fa694435 21,29,33,99
+site/content/zh-CN/v0.18/docs/tasks/run/external_workloads/_index.md
+  h_47cee5fa694435 15,19-22
+site/content/zh-CN/docs/tasks/manage/productization/cert_manager.md
+  h_47cee5fa694435 11
+site/content/zh-CN/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 9,24,26,30,41,44,91,109
+site/content/zh-CN/v0.18/docs/tasks/run/statefulset.md
+  h_47cee5fa694435 14-15,22,32,35,43
+site/content/zh-CN/v0.17/docs/tasks/dev/enabling_pprof_endpoints.md
+  h_47cee5fa694435 11
+site/content/zh-CN/v0.18/docs/tasks/run/kubeflow/xgboostjobs.md
+  h_47cee5fa694435 12-13,17,24,35
+site/content/zh-CN/v0.18/docs/tasks/manage/run_job_with_workload_priority.md
+  h_47cee5fa694435 11,22
+site/content/zh-CN/v0.17/docs/tasks/run/kubeflow/paddlejobs.md
+  h_47cee5fa694435 12-13,17,24,36
+site/content/zh-CN/v0.17/docs/contribution_guidelines/testing.md
+  h_47cee5fa694435 157
+site/content/zh-CN/docs/concepts/concurrent_admission.md
+  h_47cee5fa694435 12,14,148-151
+site/content/zh-CN/docs/installation/_index.md
+  h_47cee5fa694435 40,45,103,143,179,285
+site/content/zh-CN/v0.18/docs/contribution_guidelines/testing.md
+  h_47cee5fa694435 188,394
+site/content/zh-CN/v0.18/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 49
+site/content/zh-CN/v0.17/docs/tasks/run/external_workloads/wrapped_custom_workload.md
+  h_47cee5fa694435 12,15-16,22
+site/content/zh-CN/docs/tasks/run/kubeflow/jaxjobs.md
+  h_47cee5fa694435 18
+site/content/zh-CN/v0.17/docs/tasks/run/rayservices.md
+  h_47cee5fa694435 16-17,23,40
+site/content/zh-CN/v0.18/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 13,31,34,40,43-44,54,58
+site/content/zh-CN/v0.17/docs/tasks/manage/administer_cluster_quotas.md
+  h_47cee5fa694435 12,20,25,33,65,70,97,99,126,214,260,274,382,409
+site/content/zh-CN/v0.18/docs/tasks/run/external_workloads/flux_miniclusters.md
+  h_47cee5fa694435 13-14,18,31,73
+site/content/zh-CN/docs/concepts/topology_aware_scheduling.md
+  h_47cee5fa694435 85,93,111,121
+site/content/zh-CN/v0.18/docs/tasks/run/external_workloads/argo_workflow.md
+  h_47cee5fa694435 14,17,21,23,32,39
+site/content/zh-CN/docs/tasks/troubleshooting/troubleshooting_provreq.md
+  h_47cee5fa694435 13-14,26,31,217,228
+site/content/zh-CN/v0.18/docs/concepts/cohort.md
+  h_47cee5fa694435 36,87
+site/content/zh-CN/v0.18/docs/tasks/manage/enforce_job_management/setup_job_admission_policy.md
+  h_47cee5fa694435 20
+site/content/zh-CN/v0.18/docs/tasks/run/deployment.md
+  h_47cee5fa694435 18-19,45,53,80
+site/content/zh-CN/docs/tasks/dev/integrate_a_custom_job.md
+  h_47cee5fa694435 15,19
+site/content/zh-CN/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 41,133,140-141
+site/content/zh-CN/docs/concepts/workload.md
+  h_47cee5fa694435 11,21,55,63,104,109,118,149,199-201
+site/content/zh-CN/docs/tasks/run/using_hami.md
+  h_47cee5fa694435 19,21-22,28,89
+site/content/zh-CN/v0.18/docs/tasks/run/jobs.md
+  h_47cee5fa694435 20-21,44,69
+site/content/zh-CN/docs/tasks/run/kubeflow/tfjobs.md
+  h_47cee5fa694435 18
+site/content/zh-CN/docs/tasks/manage/productization/prometheus.md
+  h_47cee5fa694435 19,50
+site/content/zh-CN/docs/reference/metrics.md
+  h_47cee5fa694435 10,14-15,60,95,109-110
+site/content/zh-CN/v0.18/docs/tasks/run/kubeflow/pytorchjobs.md
+  h_47cee5fa694435 12-13,17,24,36
+site/content/zh-CN/v0.17/docs/tasks/manage/setup_wait_for_pods_ready.md
+  h_47cee5fa694435 21,29,33,99
+site/content/zh-CN/v0.17/docs/tasks/manage/rbac.md
+  h_47cee5fa694435 24
+site/content/zh-CN/v0.17/docs/tasks/run/external_workloads/tektoncd.md
+  h_47cee5fa694435 13-14,16,21,23,26,56
+site/content/zh-CN/docs/tasks/manage/rbac.md
+  h_47cee5fa694435 12,16
+site/content/zh-CN/docs/tasks/manage/monitor_pending_workloads/pending_workloads_in_grafana.md
+  h_47cee5fa694435 12
+site/content/zh-CN/v0.17/docs/tasks/run/kubeflow/pytorchjobs.md
+  h_47cee5fa694435 12-13,17,24,36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "f675fecac1b341fd8c27630e937d45eae0294072",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
