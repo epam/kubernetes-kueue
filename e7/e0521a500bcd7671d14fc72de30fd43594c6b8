@@ -1,0 +1,22 @@
+keps/77-dynamically-sized-jobs/README.md
+  s_4501db8e1f44ea::t_76bb10e8618620 379-386,389,391
+keps/12100-partial-scaleup-for-elasticjob/README.md
+  s_4501db8e1f44ea::t_76bb10e8618620 47,63,97,434-436,447-448
+  s_4501db8e1f44ea::t_34c8ac93eeb6bb 449
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e7e0521a500bcd7671d14fc72de30fd43594c6b8",
+  "prompts": {},
+  "sessions": {
+    "s_4501db8e1f44ea": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "9e21fc72-6d80-4731-b4c1-8e18675af9c4",
+        "model": "copilot/claude-sonnet-5.5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
