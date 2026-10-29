@@ -1,0 +1,24 @@
+pkg/metrics/metrics_test.go
+  h_99f506dc258b88 31,334-355
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "1d523c94cf08719cd7ac15b7a7c7473f1c1f5113",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_e48b8527e132a8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1a8d83cd-8a03-40be-b651-798ce352818c",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
