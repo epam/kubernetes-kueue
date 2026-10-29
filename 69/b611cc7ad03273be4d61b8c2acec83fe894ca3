@@ -1,0 +1,14 @@
+test/integration/singlecluster/controller/core/workload_hash_freshness_test.go
+  h_47cee5fa694435 31,43,62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "69b611cc7ad03273be4d61b8c2acec83fe894ca3",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

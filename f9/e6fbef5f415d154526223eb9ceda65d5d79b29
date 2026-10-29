@@ -1,0 +1,14 @@
+pkg/features/kube_features.go
+  h_47cee5fa694435 1267
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f9e6fbef5f415d154526223eb9ceda65d5d79b29",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

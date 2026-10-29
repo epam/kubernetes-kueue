@@ -1,0 +1,19 @@
+config/kueueviz/frontend_configmap_patch.yaml
+  s_06bcb7dc5b5b3e::t_c79323a919588b 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6b20b9181eb13fa179bbfc954ea8a60ca3a83fe3",
+  "prompts": {},
+  "sessions": {
+    "s_06bcb7dc5b5b3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a02971fd-eb3a-4a61-871e-4e0416e53db9",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

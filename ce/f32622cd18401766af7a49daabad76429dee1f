@@ -1,0 +1,63 @@
+test/e2e/multikueue/extended/appwrapper_test.go
+  h_47cee5fa694435 86,97-98
+test/util/behavioral/e2e/nodes.go
+  h_47cee5fa694435 1-40
+test/e2e/multikueue/baseline/tas_test.go
+  h_47cee5fa694435 287,303-304,361,569,580-581,636,651-652
+test/e2e/singlecluster/tasapi/baseline/deployment_test.go
+  h_47cee5fa694435 140
+test/e2e/multikueue/sequential/e2e_test.go
+  h_47cee5fa694435 291,300,347,368,380-381
+test/e2e/multikueue/extended/jobset_test.go
+  h_47cee5fa694435 99,117-118
+test/e2e/sequential/extended/managejobswithoutqueuename_test.go
+  h_47cee5fa694435 459,517
+test/util/behavioral/e2e/workload.go
+  h_47cee5fa694435 1-19,20-26,27-28,29,30,31,32,33-34,35-42,43-69,70
+test/e2e/multikueue/baseline/e2e_test.go
+  h_47cee5fa694435 657,669-670,1288,1293,1298,1303-1304
+test/e2e/singlecluster/tasapi/extended/leaderworkerset_test.go
+  h_47cee5fa694435 767
+test/e2e/singlecluster/extended/leaderworkerset_test.go
+  h_47cee5fa694435 115,163,211,216,266,292,347,349,353,440,549,554,656,661,725,740,778,805,899,1119,1165,1217,1244,1327,1422,1520
+test/e2e/singlecluster/tasapi/baseline/pod_group_test.go
+  h_47cee5fa694435 243
+test/util/behavioral/e2e/objects.go
+  h_47cee5fa694435 1-19,20-21,22-25,26,27,28-37,38-45,46-47
+test/e2e/multikueue/dra/dra_test.go
+  h_47cee5fa694435 245,260-261,368,448
+test/util/behavioral/workload.go
+  h_47cee5fa694435 39
+test/e2e/multikueue/extended/pytorchjob_test.go
+  h_47cee5fa694435 99-100
+test/e2e/multikueue/extended/mpijob_test.go
+  h_47cee5fa694435 100-101
+test/util/behavioral/objects.go
+  h_47cee5fa694435 41,46,63,67,71
+test/e2e/dra/whole-device/dra_test.go
+  h_47cee5fa694435 120,218-219,276,325,390,434,523,621-622,664,696,783
+test/util/behavioral/e2e/job.go
+  h_47cee5fa694435 1-28,29,30-60
+  h_47cee5fa694435 29
+test/e2e/multikueue/extended/kuberay_test.go
+  h_47cee5fa694435 113-114
+test/e2e/dra/capacity/dra_test.go
+  h_47cee5fa694435 98,101,127,129,156,158,185,261
+test/e2e/singlecluster/baseline/pod_test.go
+  h_47cee5fa694435 262,475
+test/e2e/dra/counter/dra_test.go
+  h_47cee5fa694435 98,101,128,156,183,217,220,295
+test/util/behavioral/e2e/events.go
+  h_47cee5fa694435 1-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "cef32622cd18401766af7a49daabad76429dee1f",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+pkg/controller/core/workloadpriorityclass_controller_test.go
+  h_47cee5fa694435 21,22,26-27,104-107,108,109,204,224,227,251,256,290,293,294,316,346-347,349-359
+pkg/controller/core/helpers_test.go
+  h_47cee5fa694435 1-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "6003c59595d06f0e12fd564c5f08c2ecf8c25c06",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

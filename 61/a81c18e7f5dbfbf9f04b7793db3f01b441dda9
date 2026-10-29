@@ -1,0 +1,24 @@
+CHANGELOG/CHANGELOG-0.19.md
+  h_47cee5fa694435 1-56
+site/content/en/v0.19/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+site/content/en/v0.19/docs/concepts/preemption.md
+  h_47cee5fa694435 78-80
+site/content/en/v0.19/docs/concepts/topology_aware_scheduling.md
+  h_47cee5fa694435 296-299
+site/content/zh-CN/v0.19/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+site/content/zh-CN/v0.19/docs/concepts/preemption.md
+  h_47cee5fa694435 65-66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "61a81c18e7f5dbfbf9f04b7793db3f01b441dda9",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

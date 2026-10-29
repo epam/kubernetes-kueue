@@ -1,0 +1,16 @@
+test/performance/scheduler/runner/generator/topology_generator.go
+  h_47cee5fa694435 53
+cmd/experimental/kueue-priority-booster/pkg/config/config.go
+  h_47cee5fa694435 48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "707d0fdc23d8c1ba768e7bff6cae8cba870803ce",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

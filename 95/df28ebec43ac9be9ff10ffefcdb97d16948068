@@ -1,0 +1,46 @@
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  h_47cee5fa694435 2678
+test/integration/multikueue/no_gc_test.go
+  h_47cee5fa694435 166,168,221,223
+test/integration/multikueue/enabled_integration_test.go
+  h_47cee5fa694435 148
+test/integration/multikueue/helpers_test.go
+  h_47cee5fa694435 86,88,232,234
+test/integration/multikueue/scheduler/scheduler_test.go
+  h_47cee5fa694435 249,336,382,469,515,573,576
+test/integration/multikueue/elasticjob_test.go
+  h_47cee5fa694435 123,125,219,524,526
+test/integration/multikueue/dispatcher_test.go
+  h_47cee5fa694435 173,176,377,403,405,673,676
+test/e2e/multikueue/dra/dra_test.go
+  h_47cee5fa694435 418,423,426
+test/integration/multikueue/tas/tas_test.go
+  h_47cee5fa694435 278,283,286
+test/e2e/multikueue/baseline/e2e_test.go
+  h_47cee5fa694435 712,743,789,838,879,913,971,1013,1088,1134,1189,1231
+test/util/behavioral/multikueue.go
+  h_47cee5fa694435 1-81
+test/integration/multikueue/cluster_role_sharing_test.go
+  h_47cee5fa694435 242,244,425,427
+test/integration/multikueue/jobs_test.go
+  h_47cee5fa694435 95,97,304,306,430,432,524,526,699,701,772,774
+test/integration/multikueue/external_job_test.go
+  h_47cee5fa694435 504,507
+test/integration/multikueue/dra_test.go
+  h_47cee5fa694435 198,200
+test/integration/multikueue/pod_test.go
+  h_47cee5fa694435 89,91,205,207,401,403
+test/integration/multikueue/setup_test.go
+  h_47cee5fa694435 798
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "95df28ebec43ac9be9ff10ffefcdb97d16948068",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

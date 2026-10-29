@@ -1,0 +1,14 @@
+.github/ISSUE_TEMPLATE/NEW_RELEASE.md
+  h_47cee5fa694435 52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "fa29f98877efc5fba783db68e4528814c5398388",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

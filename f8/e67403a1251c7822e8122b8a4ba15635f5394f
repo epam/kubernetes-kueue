@@ -1,0 +1,24 @@
+site/layouts/partials/navbar-version-selector.html
+  s_6fdc4b3ff5adf3::t_e57fb523ceddc1 9-11,17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "f8e67403a1251c7822e8122b8a4ba15635f5394f",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_6fdc4b3ff5adf3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "668707c5-9437-4b83-8679-ba39ec8961a8",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

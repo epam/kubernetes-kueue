@@ -1,0 +1,16 @@
+test/util/behavioral/e2e/workload.go
+  h_47cee5fa694435 23-24
+test/util/behavioral/workload.go
+  h_47cee5fa694435 41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f72a048aa935cc05ccd08493a02ea34a9a37bb65",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
