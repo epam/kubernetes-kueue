@@ -1,0 +1,14 @@
+test/util/behavioral/rbac_manifests_test.go
+  h_47cee5fa694435 233
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3ea4d79cfa1d673d827e6828399c2d3aa088035f",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+pkg/features/kube_features.go
+  h_47cee5fa694435 1266,1267
+pkg/webhooks/workload_webhook.go
+  h_47cee5fa694435 194
+pkg/webhooks/workload_webhook_test.go
+  h_47cee5fa694435 346,359,371
+site/data/featuregates/versioned_feature_list.yaml
+  h_47cee5fa694435 724-726,727
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  h_47cee5fa694435 724-726,727
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "cd8e54c30c4a5e9f0ae48ac8264758fdb32ef7b0",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

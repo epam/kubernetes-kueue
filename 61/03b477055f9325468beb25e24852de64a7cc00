@@ -1,0 +1,22 @@
+Makefile
+  h_47cee5fa694435 160
+hack/tools/go.sum
+  h_47cee5fa694435 225
+hack/make/test.mk
+  h_47cee5fa694435 296
+site/content/en/docs/getting-started/installation.md
+  h_47cee5fa694435 266
+site/content/en/docs/concepts/admission_check/provisioning_request.md
+  h_47cee5fa694435 158
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6103b477055f9325468beb25e24852de64a7cc00",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

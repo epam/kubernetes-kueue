@@ -1,0 +1,25 @@
+.github/workflows/set-release-note.yml
+  s_6b3c258217419f::t_894abe4459e8e5 116-117
+  h_47cee5fa694435 122,124-125
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "73dd501f5c6af739a1553eddfbaca71f98fb3d3c",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_6b3c258217419f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8b4e1a8f-bc87-44c5-a43c-f50865de2f95",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

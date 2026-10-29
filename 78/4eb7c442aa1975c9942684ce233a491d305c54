@@ -1,0 +1,19 @@
+hack/releasing/requirements.txt
+  s_a8d9f9d30d42c3::t_07d8e1d47323ea 19-20,23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "784eb7c442aa1975c9942684ce233a491d305c54",
+  "prompts": {},
+  "sessions": {
+    "s_a8d9f9d30d42c3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6567af07-c2c5-46fd-9236-9e2107bdf9c5",
+        "model": "unknown"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,426 @@
+cmd/kueueviz/backend/handlers/api_handlers_test.go
+  h_47cee5fa694435 79
+  h_47cee5fa694435 78
+cmd/kueueviz/backend/handlers/workloads_dashboard_test.go
+  h_47cee5fa694435 166,176
+  h_47cee5fa694435 162-165,173-175
+cmd/kueueviz/backend/handlers/local_queue_workloads_test.go
+  h_47cee5fa694435 58
+  h_47cee5fa694435 57
+pkg/util/testingjobs/tfjob/wrappers_tfjob.go
+  h_47cee5fa694435 38
+  h_47cee5fa694435 36-37
+apis/config/v1beta1/defaults_test.go
+  h_47cee5fa694435 130-131,139-146,149-159,172-179,182-192,200-207,210-220,233-234,242-249,252-262
+apis/config/v1beta2/defaults_test.go
+  h_47cee5fa694435 149-150,158-165,168-178,192-199,202-212,221-228,231-241,255-256,264-271,274-284
+apis/kueue/v1beta1/clusterqueue_conversion_test.go
+  h_47cee5fa694435 444,467
+apis/kueue/v1beta1/localqueue_conversion_test.go
+  h_47cee5fa694435 473-474,505-506,514-515
+apis/kueue/v1beta1/multikueue_conversion_test.go
+  h_47cee5fa694435 250,270,303,324,346
+cmd/experimental/kueue-populator/pkg/controller/controller.go
+  h_47cee5fa694435 212,254-257
+cmd/experimental/kueue-populator/pkg/controller/controller_test.go
+  h_47cee5fa694435 73,81-82,89-91,108,116-117,125-127,146-148,157-158,169,179-182,196-198,207-208,213-215,225-227,238,246-247,258,266-267,272-274,284-286,297,305-306,311-312,322-323,340,348-349,361,366,373-375,392,400-401,408-410,427,433,441-442,449-451,457-459,482,490-491
+cmd/experimental/kueue-populator/test/e2e/populator_test.go
+  h_47cee5fa694435 39,55,83,120,131-132,156
+cmd/experimental/kueue-populator/test/integration/controller_test.go
+  h_47cee5fa694435 45,95-97,127,255
+cmd/experimental/kueue-priority-booster/test/integration/priority_boost_envtest_test.go
+  h_47cee5fa694435 49
+cmd/importer/mapping/mapping_test.go
+  h_47cee5fa694435 173
+cmd/importer/pod/check_test.go
+  h_47cee5fa694435 268
+cmd/importer/pod/import_test.go
+  h_47cee5fa694435 385
+cmd/kueuectl/app/create/create_clusterqueue.go
+  h_47cee5fa694435 269-270
+cmd/kueuectl/app/create/create_clusterqueue_test.go
+  h_47cee5fa694435 59-60
+cmd/kueuectl/app/create/create_localqueue.go
+  h_47cee5fa694435 196-198
+cmd/kueuectl/app/create/create_localqueue_test.go
+  h_47cee5fa694435 40-42
+cmd/kueuectl/app/create/create_resourceflavor.go
+  h_47cee5fa694435 192-193
+cmd/kueuectl/app/create/create_resourceflavor_test.go
+  h_47cee5fa694435 217-218,259-261,269-270,284-285,306-307
+cmd/kueuectl/app/delete/delete_workload_test.go
+  h_47cee5fa694435 71,78,81-82,98-99,106,109-110,113-114,132-133,141,144-145,162-163,171,174-175,191-192,202-203,219-220,228,231-232,248-249,256,259-260,274,281,284-285,297,304,307-308
+cmd/kueuectl/app/list/list_clusterqueue_test.go
+  h_47cee5fa694435 148-149,152
+cmd/kueuectl/app/list/list_localqueue_printer_test.go
+  h_47cee5fa694435 44-47,60-63
+cmd/kueuectl/app/list/list_localqueue_test.go
+  h_47cee5fa694435 205-206,209
+cmd/kueuectl/app/list/list_pods_test.go
+  h_47cee5fa694435 79-83,115-119,149-153,183-186,205-208,231-234,251-254,271-274,291-293,310-314,340-344,376-380,402-406,428-432,466-471,499-504,532-537,565-570,598-603,631-635,663-667,694-698,725-729,947
+cmd/kueuectl/app/list/list_resourceflavor_test.go
+  h_47cee5fa694435 117-118,121
+cmd/kueuectl/app/list/list_workload_test.go
+  h_47cee5fa694435 716-718,844-846,910-912,922-923,930-931,963-964,967
+cmd/kueuectl/app/version/version_test.go
+  h_47cee5fa694435 47-48
+pkg/cache/queue/cluster_queue_test.go
+  h_47cee5fa694435 1588-1589,1592-1593,1596-1597,1611-1612
+pkg/cache/queue/manager_test.go
+  h_47cee5fa694435 1167,1173,1181-1183,1186-1188,1191-1193,1196-1198,1232,1921-1923,1928,1934,1962-1963,1981-1982,2002-2003,2024-2025,2046-2047,2074-2075,2106-2107,2272-2273,2281-2282
+pkg/cache/scheduler/cache_test.go
+  h_47cee5fa694435 559-560,2929,2957,2960,3159-3160,3167-3168,3180-3181,3189-3190
+pkg/cache/scheduler/tas_flavor_snapshot.go
+  h_47cee5fa694435 1191
+pkg/cache/scheduler/tas_flavor_snapshot_bench_test.go
+  h_47cee5fa694435 393-394
+pkg/cache/scheduler/tas_flavor_snapshot_test.go
+  h_47cee5fa694435 72,2737
+pkg/cache/scheduler/tas_flavor_snapshot_was_test.go
+  h_47cee5fa694435 103,122,188
+pkg/cache/scheduler/tas_nodes_cache.go
+  h_47cee5fa694435 139-140
+pkg/cache/scheduler/tas_non_tas_pod_cache_test.go
+  h_47cee5fa694435 162
+pkg/cache/scheduler/tas_topology_tree.go
+  h_47cee5fa694435 168
+pkg/config/config_test.go
+  h_47cee5fa694435 1341,1427,1478-1487,1489-1491,1499-1502,1510,1513
+pkg/config/validation_test.go
+  h_47cee5fa694435 1249-1252,1260-1261,1268-1271,1285-1288,1302-1305,1319-1321,1328-1330,3504-3506,3513-3515,3522-3526,3533-3535,3542-3544,3551-3556,3564-3569,3577-3579,3593-3595,3609-3611,3630-3633,3646-3648,3662-3664,3678-3680,3694-3698,3713-3719,3738-3748,3762-3770,3784-3788,3802-3806,3821-3826,3841-3846,3861-3866,3892-3917
+pkg/controller/admissionchecks/multikueue/admissioncheck.go
+  h_47cee5fa694435 217
+pkg/controller/admissionchecks/multikueue/admissioncheck_test.go
+  h_47cee5fa694435 300
+pkg/controller/admissionchecks/multikueue/clusterqueue.go
+  h_47cee5fa694435 286,329,355,365
+pkg/controller/admissionchecks/multikueue/clusterqueue_test.go
+  h_47cee5fa694435 479
+pkg/controller/admissionchecks/multikueue/fswatch.go
+  h_47cee5fa694435 108
+pkg/controller/admissionchecks/multikueue/metrics_test.go
+  h_47cee5fa694435 87,215,267-268
+pkg/controller/admissionchecks/multikueue/multikueuecluster.go
+  h_47cee5fa694435 1367-1368,1375-1376,1524,1567
+pkg/controller/admissionchecks/multikueue/multikueuecluster_test.go
+  h_47cee5fa694435 154-155,733,893,953,1614,1625,2063
+pkg/controller/admissionchecks/multikueue/workload.go
+  h_47cee5fa694435 1184,1186
+pkg/controller/admissionchecks/multikueue/workload_test.go
+  h_47cee5fa694435 2183,2348,2468,2498,2611
+pkg/controller/admissionchecks/provisioning/admissioncheck_reconciler_test.go
+  h_47cee5fa694435 161
+pkg/controller/admissionchecks/provisioning/controller.go
+  h_47cee5fa694435 308-311,328,397-400,794-795,865
+pkg/controller/admissionchecks/provisioning/controller_test.go
+  h_47cee5fa694435 311-318,611-615,676-680,1575-1576,2175-2176,2270-2274,2366
+pkg/controller/admissionchecks/provisioning/indexer_test.go
+  h_47cee5fa694435 66-67,75-76,79-83,94-95,98-102,107-114,159-160,168-169,172-173,189-190,193-194,204-205
+pkg/controller/admissionchecks/provisioning/provisioning_test.go
+  h_47cee5fa694435 82,108-109
+pkg/controller/concurrentadmission/controller.go
+  h_47cee5fa694435 114,365-371
+pkg/controller/concurrentadmission/controller_test.go
+  h_47cee5fa694435 2285-2286,2466
+pkg/controller/core/admissioncheck_controller.go
+  h_47cee5fa694435 226
+pkg/controller/core/clusterqueue_controller.go
+  h_47cee5fa694435 500-501
+pkg/controller/core/clusterqueue_controller_test.go
+  h_47cee5fa694435 360,448
+pkg/controller/core/cohort_controller.go
+  h_47cee5fa694435 204,314
+pkg/controller/core/dqo/distribution_test.go
+  h_47cee5fa694435 2280
+pkg/controller/core/dqo/reconciler.go
+  h_47cee5fa694435 148,164,190
+pkg/controller/core/dqo/reconciler_test.go
+  h_47cee5fa694435 395
+pkg/controller/core/leader_aware_reconciler_test.go
+  h_47cee5fa694435 77
+pkg/controller/core/localqueue_controller.go
+  h_47cee5fa694435 555-556
+pkg/controller/core/resourceflavor_controller.go
+  h_47cee5fa694435 266
+pkg/controller/core/resourceflavor_controller_test.go
+  h_47cee5fa694435 207
+pkg/controller/core/workload_controller.go
+  h_47cee5fa694435 1874-1875,1984-1985,2007-2008,2093-2094
+pkg/controller/core/workload_controller_dra_test.go
+  h_47cee5fa694435 605,672-673,680-681,739
+pkg/controller/core/workload_controller_test.go
+  h_47cee5fa694435 2175-2177,2523,2541-2543
+pkg/controller/core/workloadpriorityclass_controller_test.go
+  h_47cee5fa694435 335
+pkg/controller/elasticjobs/elastic_job_ungater.go
+  h_47cee5fa694435 95,97,401,403
+pkg/controller/elasticjobs/elastic_job_ungater_test.go
+  h_47cee5fa694435 1121
+pkg/controller/failurerecovery/pod_termination_controller.go
+  h_47cee5fa694435 225-226
+pkg/controller/jobframework/defaults_test.go
+  h_47cee5fa694435 233-234
+pkg/controller/jobframework/integrationmanager.go
+  h_47cee5fa694435 276-277
+pkg/controller/jobframework/integrationmanager_test.go
+  h_47cee5fa694435 277,369,375,379,384,466,470
+pkg/controller/jobframework/multikueue_test.go
+  h_47cee5fa694435 46,117
+pkg/controller/jobframework/reconciler.go
+  h_47cee5fa694435 967-968
+pkg/controller/jobframework/reconciler_test.go
+  h_47cee5fa694435 846,1518-1520,1784-1792,1805-1814,1845-1854,2508-2509,2570,2581,2700
+pkg/controller/jobframework/utils.go
+  h_47cee5fa694435 269-273
+pkg/controller/jobframework/workload_priority_test.go
+  h_47cee5fa694435 136,206,222
+pkg/controller/jobs/job/job_controller.go
+  h_47cee5fa694435 133-134
+pkg/controller/jobs/job/job_controller_test.go
+  h_47cee5fa694435 5233
+pkg/controller/jobs/job/job_webhook_test.go
+  h_47cee5fa694435 1479-1480,1493-1494,1517-1518
+pkg/controller/jobs/jobs_test.go
+  h_47cee5fa694435 48,52
+pkg/controller/jobs/jobset/jobset_webhook_test.go
+  h_47cee5fa694435 412-413,415,437-438,440,462,470-471,478-479,481,488-489,491,509-510,512,537-538,540,562-563,565
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter_test.go
+  h_47cee5fa694435 300-301,308-309,316-317,324-325,332,344-345
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler.go
+  h_47cee5fa694435 668-669,727-728,793-794
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler_test.go
+  h_47cee5fa694435 74,105,327-333,342-348,363-369,378-384,439-440,449-450,464-465,474-475,533-534,543-544,558-559,568-569,2825
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  h_47cee5fa694435 288-289,293-294,304-306,310-312,331-334,339-342,357-358,363-364,379-380,385-386,401-405,410-414,423-425,430-434,443-445,449-451,461-463,467-470,485-487,491-493,508-510,528-530,546-548,552-554,575-577,581-583,604-606,610-612,633-635,639-641,662-663,667-668,683-685,1435-1436,1440-1441,1455-1457,1461-1463
+pkg/controller/jobs/mpijob/mpijob_webhook_test.go
+  h_47cee5fa694435 706-707,709,731-732,734,756,764-765,772-773,775,782-783,785,803-804,806,833-834,836,858-859,861
+pkg/controller/jobs/pod/event_handlers.go
+  h_47cee5fa694435 52-53,61-62,189,191
+pkg/controller/jobs/pod/event_handlers_test.go
+  h_47cee5fa694435 37
+pkg/controller/jobs/pod/pod_controller_test.go
+  h_47cee5fa694435 7669-7672,7675-7676,7679-7680,7691-7694,7697-7698,7701-7702,7705-7708,7721-7724,7737-7740,7753-7756,7759-7760,7773-7776,7779-7782
+pkg/controller/jobs/pod/pod_webhook_test.go
+  h_47cee5fa694435 216-220,740-741,748-749
+pkg/controller/jobs/rayjob/rayjob_controller_test.go
+  h_47cee5fa694435 384-385
+pkg/controller/jobs/rayservice/rayservice_controller_test.go
+  h_47cee5fa694435 82-83,154-155,200-201,235-236,289-292,320-321,355-358,386-387,413-416,460-463
+pkg/controller/jobs/rayservice/rayservice_webhook_test.go
+  h_47cee5fa694435 53-56,85-88,108-111
+pkg/controller/jobs/sparkapplication/sparkapplication_podset.go
+  h_47cee5fa694435 58-60,77-79
+pkg/controller/jobs/sparkapplication/sparkapplication_podset_test.go
+  h_47cee5fa694435 30-31
+pkg/controller/jobs/statefulset/statefulset_reconciler.go
+  h_47cee5fa694435 541-542
+pkg/controller/jobs/statefulset/statefulset_reconciler_test.go
+  h_47cee5fa694435 1333
+pkg/controller/jobs/statefulset/statefulset_webhook_test.go
+  h_47cee5fa694435 398-400,414-416,501-503,507-509,515-516,523-525,540-542,549-551,561-563,570-571,586-587,591-593,600-602,606-608,615-617,621-622
+pkg/controller/tas/node_controller.go
+  h_47cee5fa694435 301,827,839
+pkg/controller/tas/node_controller_test.go
+  h_47cee5fa694435 228,240,253,266,279,298,311,325,338,351,367,383,395,414,432,444,457,470,483,498,506,519,534,552,574-575,596,636,672,686,703,719,736,776,816,840,856,872,911,944,989,1004,1016,1029,1045,1078,1096,1131,1150,1167,1191,1204,1217,1229
+pkg/controller/tas/pod_usage_controller_test.go
+  h_47cee5fa694435 327,333-334
+pkg/controller/tas/resource_flavor.go
+  h_47cee5fa694435 139-140
+pkg/controller/tas/topology_controller.go
+  h_47cee5fa694435 200
+pkg/controller/tas/topology_ungater.go
+  h_47cee5fa694435 134,136
+pkg/controller/tas/topology_ungater_test.go
+  h_47cee5fa694435 3492
+pkg/controller/unscheduledpods/tracker_test.go
+  h_47cee5fa694435 5181-5182,5199-5200,5210-5211,5263-5264,5308-5309,5327-5328,5346-5347,5388-5389,5392-5393,5406-5407,5420-5421,5436-5437,5458-5459,5495-5496
+pkg/controller/workloaddispatcher/incrementaldispatcher_test.go
+  h_47cee5fa694435 161
+pkg/dra/claims_test.go
+  h_47cee5fa694435 49,254,257,288,296,306,343,346,377,380,409,442,445,476,533,574,620,649,670
+pkg/dra/counters_test.go
+  h_47cee5fa694435 64,456
+pkg/dra/extended_resources_test.go
+  h_47cee5fa694435 121,167,174,181,188-189,196-197,206,213,232,267,294,330,357,384,412,439,484,557,613,654,692,738,779,828,872,1162
+pkg/dra/resourceslice_cache_test.go
+  h_47cee5fa694435 35
+pkg/scheduler/effective_resources_test.go
+  h_47cee5fa694435 70
+pkg/scheduler/flavorassigner/flavorassigner.go
+  h_47cee5fa694435 1262
+pkg/scheduler/flavorassigner/flavorassigner_test.go
+  h_47cee5fa694435 4443-4444,4483-4484,4512-4513,4551-4552,6222-6223
+pkg/scheduler/preemption/preempted_workloads_test.go
+  h_47cee5fa694435 70
+pkg/scheduler/preemption/preemption_test.go
+  h_47cee5fa694435 4856,4860,4864,4907-4908,4918-4919,4929-4930,4940-4941,4951-4952
+pkg/scheduler/scheduler_afs_test.go
+  h_47cee5fa694435 975,1086
+pkg/scheduler/scheduler_test.go
+  h_47cee5fa694435 7792-7794,7800-7802,7805-7807,7810-7814,7820-7824,7827-7829,7835-7844,7854-7863,7870-7874,7882-7892,7894-7895,7898-7908,7910-7911,7914-7924,7926-7927,7930-7934,7937-7941,7946-7950,7953,7959-7963,7966,7969-7973,9223-9225,9292,9328-9331,9334-9337,9352-9355,9358-9361,9376-9379,9382-9385,9396-9399,9402-9405,9412-9414,9416,9419-9421,9440-9442,9444,9447-9449,9468-9470,9472,9475-9477,9479,9677,9679
+pkg/util/admissioncheck/admissioncheck_test.go
+  h_47cee5fa694435 292,302,311
+pkg/util/client/client_test.go
+  h_47cee5fa694435 58-60
+pkg/util/priority/priority_test.go
+  h_47cee5fa694435 83-84,104,117,122,127,179-180,234-235,245-246
+pkg/util/roletracker/logger_test.go
+  h_47cee5fa694435 124,138
+pkg/util/testing/v1alpha1/wrappers.go
+  h_47cee5fa694435 38-40,124-126,215-216,263-264
+pkg/util/testing/v1beta2/wrappers.go
+  h_47cee5fa694435 70,801-802,915,991,1355,1430,1464-1465,1562,1644,1671,1701,1756,1850-1852
+pkg/util/testing/wrappers.go
+  h_47cee5fa694435 43,64,86-96,232-233,351,394-396,507-509,543-544,635-637,715-716,737-738,761-762,847,932
+pkg/util/testingjobs/appwrapper/wrappers.go
+  h_47cee5fa694435 42-49
+pkg/util/testingjobs/deployment/wrappers.go
+  h_47cee5fa694435 41-43
+pkg/util/testingjobs/jaxjob/wrappers.go
+  h_47cee5fa694435 36-38
+pkg/util/testingjobs/job/wrappers.go
+  h_47cee5fa694435 41-43
+pkg/util/testingjobs/leaderworkerset/wrappers.go
+  h_47cee5fa694435 43-44
+pkg/util/testingjobs/mpijob/wrappers_mpijob.go
+  h_47cee5fa694435 38-40
+pkg/util/testingjobs/node/wrappers.go
+  h_47cee5fa694435 37
+pkg/util/testingjobs/paddlejob/wrappers.go
+  h_47cee5fa694435 36-38
+pkg/util/testingjobs/pod/wrappers.go
+  h_47cee5fa694435 46-48
+pkg/util/testingjobs/pytorchjob/wrappers_pytorchjob.go
+  h_47cee5fa694435 36-38
+pkg/util/testingjobs/raycluster/wrappers.go
+  h_47cee5fa694435 106-108
+pkg/util/testingjobs/rayjob/wrappers.go
+  h_47cee5fa694435 37-39
+pkg/util/testingjobs/rayservice/wrappers.go
+  h_47cee5fa694435 35-37
+pkg/util/testingjobs/sparkapplication/wrappers_sparkapplication.go
+  h_47cee5fa694435 33-34
+pkg/util/testingjobs/statefulset/wrappers.go
+  h_47cee5fa694435 50-52
+pkg/util/testingjobs/trainjob/wrappers.go
+  h_47cee5fa694435 37-38,184,190,268-269,368,380-381
+pkg/util/testingjobs/xgboostjob/wrappers.go
+  h_47cee5fa694435 36-38
+pkg/visibility/storage/pending_workloads_cq_test.go
+  h_47cee5fa694435 88-90,97-99,128-130,137-139,146-148,155-157,186-188,195-197,227-229,236-238,268-270,317-319,326-328,355-357,364-366
+pkg/visibility/storage/pending_workloads_lq_test.go
+  h_47cee5fa694435 89-91,98-100,130-132,139-141,171-173,180-182,214-216,223-225,257-259,266-268,299-301,308-310,342-344,351-353,385-387,437-439,446-448
+pkg/visibility/storage/utils.go
+  h_47cee5fa694435 46-49
+pkg/webhooks/clusterqueue_webhook_test.go
+  h_47cee5fa694435 235,296,311
+pkg/workload/effective_resources_test.go
+  h_47cee5fa694435 256
+pkg/workload/patching/patching.go
+  h_47cee5fa694435 57-63
+pkg/workloadslicing/workloadslicing_test.go
+  h_47cee5fa694435 74,81,83,91,93,671,678,697-698
+test/e2e/certmanager/certmanager_test.go
+  h_47cee5fa694435 43
+test/e2e/certmanager/metrics_test.go
+  h_47cee5fa694435 64,88-91
+test/e2e/certmanager/visibility_test.go
+  h_47cee5fa694435 116,118
+test/e2e/dra/whole-device/dra_test.go
+  h_47cee5fa694435 455,769
+test/e2e/multikueue/extended/e2e_test.go
+  h_47cee5fa694435 239,639-640,698-699,769-770,888-889,916-921
+test/e2e/multikueue/sequential/e2e_test.go
+  h_47cee5fa694435 632-634,651-652
+test/e2e/sequential/baseline/default_config_test.go
+  h_47cee5fa694435 192,222,230-233,252-253,272-276,282-283,293-294,306-307,310-311,342-343,373-374,390-394
+test/e2e/sequential/baseline/metrics_test.go
+  h_47cee5fa694435 64
+test/e2e/sequential/baseline/quota_check_strategy_test.go
+  h_47cee5fa694435 92
+test/e2e/sequential/baseline/reconcile_test.go
+  h_47cee5fa694435 67-69
+test/e2e/sequential/baseline/visibility_server_test.go
+  h_47cee5fa694435 64
+test/e2e/sequential/baseline/waitforpodsready_test.go
+  h_47cee5fa694435 65,222,369
+test/e2e/sequential/extended/sparkapplication_test.go
+  h_47cee5fa694435 75-76,81-82
+test/e2e/singlecluster/baseline/job_test.go
+  h_47cee5fa694435 145-146
+test/e2e/singlecluster/baseline/metrics_test.go
+  h_47cee5fa694435 60
+test/e2e/singlecluster/baseline/statefulset_test.go
+  h_47cee5fa694435 142,144,151,153
+test/e2e/singlecluster/baseline/visibility_test.go
+  h_47cee5fa694435 197-198,205-206,213-214,289-290,307-308,315-316,370-371,385-386,413-414,431-432,439-440,488-489,521-522
+test/e2e/singlecluster/extended/kuberay_test.go
+  h_47cee5fa694435 230-231,258-259,414-415,453-454,781-782,810-815,891,908,1000-1001,1039-1044
+test/e2e/singlecluster/extended/leaderworkerset_test.go
+  h_47cee5fa694435 473-474
+test/e2e/singlecluster/tasapi/baseline/hotswap_test.go
+  h_47cee5fa694435 96
+test/e2e/singlecluster/tasapi/extended/leaderworkerset_test.go
+  h_47cee5fa694435 109-110,208-209,230-231,335-337,358-360,453-455,478-480,574-578,601-603,721-724,738-741
+test/e2e/singlecluster/tasapi/extended/rayjob_test.go
+  h_47cee5fa694435 172-173
+test/integration/multikueue/scheduler/scheduler_test.go
+  h_47cee5fa694435 104-105,113-114
+test/integration/singlecluster/controller/core/localqueue_controller_test.go
+  h_47cee5fa694435 557-562
+test/integration/singlecluster/controller/dra/dra_test.go
+  h_47cee5fa694435 593,646
+test/integration/singlecluster/controller/jobs/appwrapper/appwrapper_controller_test.go
+  h_47cee5fa694435 76,166-168
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  h_47cee5fa694435 225-227,6626-6638
+test/integration/singlecluster/controller/jobs/jobset/jobset_controller_test.go
+  h_47cee5fa694435 168-170
+test/integration/singlecluster/controller/jobs/kubeflow/kubeflowjob.go
+  h_47cee5fa694435 103-105
+test/integration/singlecluster/controller/jobs/mpijob/mpijob_controller_test.go
+  h_47cee5fa694435 121-123
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_test.go
+  h_47cee5fa694435 132-134
+test/integration/singlecluster/controller/jobs/rayjob/rayjob_controller_test.go
+  h_47cee5fa694435 136-138
+test/integration/singlecluster/controller/jobs/rayservice/rayservice_controller_test.go
+  h_47cee5fa694435 110-111
+test/integration/singlecluster/scheduler/excluderesources/scheduler_test.go
+  h_47cee5fa694435 63,264
+test/integration/singlecluster/scheduler/fairsharing/dra_fair_sharing_test.go
+  h_47cee5fa694435 100,331
+test/integration/singlecluster/scheduler/scheduler_test.go
+  h_47cee5fa694435 4390
+test/integration/singlecluster/tas/tas_test.go
+  h_47cee5fa694435 2975,3082,3539,3545,9151
+test/integration/singlecluster/webhook/core/admissioncheck_test.go
+  h_47cee5fa694435 52,58,164,173
+test/integration/singlecluster/webhook/core/clusterqueue_test.go
+  h_47cee5fa694435 72,75-76,93,107-108,126,132-133,392,414,431,449,493,506,520,530,540,550,561,572,583,594,605
+test/integration/singlecluster/webhook/core/cohort_test.go
+  h_47cee5fa694435 233,255,272
+test/integration/singlecluster/webhook/core/workload_test.go
+  h_47cee5fa694435 68,92
+test/performance/multikueue/benchmark.go
+  h_47cee5fa694435 222-223,269
+test/performance/scheduler/runner/recorder/recorder.go
+  h_47cee5fa694435 475-481
+test/performance/scheduler/runner/recorder/recorder_test.go
+  h_47cee5fa694435 151-154
+test/util/e2e.go
+  h_47cee5fa694435 521,630
+test/util/multikueue.go
+  h_47cee5fa694435 151-152,161-162,170,231,236,241
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "17dbde32e32f9ccd2f7b4251cb435a3dd9b61211",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

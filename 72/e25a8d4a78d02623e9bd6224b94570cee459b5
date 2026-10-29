@@ -1,0 +1,16 @@
+test/integration/singlecluster/controller/core/custom_labels_test.go
+  h_47cee5fa694435 1025
+test/util/behavioral/integration/pods.go
+  h_47cee5fa694435 26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "72e25a8d4a78d02623e9bd6224b94570cee459b5",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.github/actions/krew-release/action.yml
+  s_bdd226083ae4c2::t_1d5fe3959da287 34-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "fe31fc2390f3f821ef88d54692c7e9b9f50837da",
+  "prompts": {},
+  "sessions": {
+    "s_bdd226083ae4c2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "68155802-04d5-4145-bf39-7ae915a5f74b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.github/actions/generate-openvex/action.yml
+  h_47cee5fa694435 21
+.github/actions/generate-sbom/action.yml
+  h_47cee5fa694435 26
+.github/workflows/openvex.yaml
+  h_47cee5fa694435 21
+.github/workflows/sbom.yaml
+  h_47cee5fa694435 22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "712aae875c2b068940c9bb50e5037dbebf5d6291",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

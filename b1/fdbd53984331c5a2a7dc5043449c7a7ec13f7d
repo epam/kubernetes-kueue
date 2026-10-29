@@ -1,0 +1,19 @@
+hack/releasing/requirements.txt
+  s_a8d9f9d30d42c3::t_a171f40db9cd43 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b1fdbd53984331c5a2a7dc5043449c7a7ec13f7d",
+  "prompts": {},
+  "sessions": {
+    "s_a8d9f9d30d42c3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6567af07-c2c5-46fd-9236-9e2107bdf9c5",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

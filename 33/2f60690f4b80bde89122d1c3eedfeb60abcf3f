@@ -1,0 +1,30 @@
+CHANGELOG/CHANGELOG-0.18.md
+  h_47cee5fa694435 1-162
+site/content/en/v0.18/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+site/content/en/v0.18/docs/concepts/multikueue.md
+  h_47cee5fa694435 72-81
+site/content/en/v0.18/docs/reference/kueue-config.v1beta1.md
+  h_47cee5fa694435 1145-1147
+site/content/en/v0.18/docs/reference/kueue-config.v1beta2.md
+  h_47cee5fa694435 1204-1206
+site/content/en/v0.18/docs/reference/metrics.md
+  h_47cee5fa694435 58,83
+site/content/zh-CN/v0.18/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+site/content/zh-CN/v0.18/docs/concepts/multikueue.md
+  h_47cee5fa694435 107-113
+site/static/v0.18/examples/multikueue/create-multikueue-kubeconfig.sh
+  h_47cee5fa694435 122-123,247-248
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "332f60690f4b80bde89122d1c3eedfeb60abcf3f",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

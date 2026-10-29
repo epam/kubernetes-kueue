@@ -1,0 +1,16 @@
+cmd/kueuectl/OWNERS
+  h_47cee5fa694435 1-3,4
+OWNERS_ALIASES
+  h_47cee5fa694435 18-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "04474a52eeb9d62ed67abf41283714a8116e970d",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
