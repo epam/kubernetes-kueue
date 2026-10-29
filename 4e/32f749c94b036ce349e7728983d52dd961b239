@@ -1,0 +1,18 @@
+pkg/controller/core/clusterqueue_controller.go
+  h_47cee5fa694435 397
+pkg/cache/queue/manager_test.go
+  h_47cee5fa694435 265,787
+pkg/cache/queue/manager.go
+  h_47cee5fa694435 410
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "4e32f749c94b036ce349e7728983d52dd961b239",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

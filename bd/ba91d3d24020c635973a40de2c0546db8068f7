@@ -1,0 +1,15 @@
+.github/workflows/release-utils.yml
+  h_47cee5fa694435 648,651-653,655-659,664,671,677,684
+  h_47cee5fa694435 649-650
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "bdba91d3d24020c635973a40de2c0546db8068f7",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

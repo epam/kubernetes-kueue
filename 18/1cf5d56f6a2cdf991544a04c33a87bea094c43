@@ -1,0 +1,14 @@
+AGENTS.md
+  h_47cee5fa694435 37-71
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "181cf5d56f6a2cdf991544a04c33a87bea094c43",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

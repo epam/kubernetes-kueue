@@ -1,0 +1,16 @@
+site/data/featuregates/versioned_feature_list.yaml
+  h_47cee5fa694435 727
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  h_47cee5fa694435 727
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1fe381a3c6712a00417a7990471152302bd33341",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

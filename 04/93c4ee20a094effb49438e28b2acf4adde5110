@@ -1,0 +1,24 @@
+site/content/en/docs/tasks/manage/setup_multikueue.md
+  s_eb4a86b1a567b1::t_8038afcab412ea 193-202
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0493c4ee20a094effb49438e28b2acf4adde5110",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_eb4a86b1a567b1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "713538b4-7354-4c36-a877-98d1688e0e73",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

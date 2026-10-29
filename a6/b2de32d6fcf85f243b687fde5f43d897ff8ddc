@@ -1,0 +1,25 @@
+.github/workflows/krew-release.yml
+  s_3883d320ff37ee::t_781bcf9c82795d 12-15
+.github/workflows/release-utils.yml
+  s_3883d320ff37ee::t_fd453ffa2027d5 672,674-675
+  s_3883d320ff37ee::t_c01279d994dba2 47
+.github/actions/update-krew-index/action.yml
+  s_3883d320ff37ee::t_5afa9ecfc8887a 23-24
+  s_3883d320ff37ee::t_8bfbcfa8cc0f9e 1-22,25-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "a6b2de32d6fcf85f243b687fde5f43d897ff8ddc",
+  "prompts": {},
+  "sessions": {
+    "s_3883d320ff37ee": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5052e0e2-bff5-4d64-8a50-862d6233d1af",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

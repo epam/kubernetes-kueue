@@ -1,0 +1,14 @@
+config/components/kueueviz/frontend-configmap.yaml
+  h_47cee5fa694435 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f0a367530c0b3ef33ae38a11cea321ea62169c43",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

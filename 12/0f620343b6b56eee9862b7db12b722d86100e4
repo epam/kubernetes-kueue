@@ -1,0 +1,26 @@
+site/content/en/v0.20/docs/getting-started/installation.md
+  h_47cee5fa694435 266
+site/content/en/docs/getting-started/installation.md
+  h_47cee5fa694435 266
+hack/make/test.mk
+  h_47cee5fa694435 296
+site/content/en/community/contribution_guidelines/testing.md
+  h_47cee5fa694435 273
+site/content/en/docs/concepts/admission_check/provisioning_request.md
+  h_47cee5fa694435 158
+site/content/zh-CN/community/contribution_guidelines/testing.md
+  h_47cee5fa694435 234
+site/content/en/v0.20/docs/concepts/admission_check/provisioning_request.md
+  h_47cee5fa694435 158
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "120f620343b6b56eee9862b7db12b722d86100e4",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

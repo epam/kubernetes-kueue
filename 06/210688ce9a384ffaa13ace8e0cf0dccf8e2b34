@@ -1,0 +1,19 @@
+test/util/behavioral/e2e/pods.go
+  s_beda7d1c932ba9::t_f27f86c98608bd 24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "06210688ce9a384ffaa13ace8e0cf0dccf8e2b34",
+  "prompts": {},
+  "sessions": {
+    "s_beda7d1c932ba9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7dbcb4e0-11bd-445c-8e6e-3a611c29da21",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

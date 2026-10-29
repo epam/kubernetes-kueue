@@ -1,0 +1,29 @@
+hack/tools/code-generator/generate.sh
+  s_5896fe168d5a47::t_de007fad9a7dca 28-47
+test/integration/singlecluster/controller/jobs/pod/deployment_job_uid_test.go
+  h_47cee5fa694435 132,141
+  h_47cee5fa694435 142-144
+pkg/controller/jobs/pod/pod_controller_test.go
+  h_47cee5fa694435 280-281
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f9bd25daf781b26f59ef672d09960b3c9553e1b1",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_5896fe168d5a47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d296d572-07c1-4312-bf40-e585fbf2f66e",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

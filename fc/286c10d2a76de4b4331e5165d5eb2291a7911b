@@ -1,0 +1,28 @@
+.github/workflows/release-utils.yml
+  h_47cee5fa694435 26-27,143-144,665-699
+  s_e70ca1a87e326e::t_0cf31de0f5de02 175-179
+  s_e70ca1a87e326e::t_5b5a76524f3330 165,170
+.github/actions/merge-main-into-website/action.yml
+  h_47cee5fa694435 1-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "fc286c10d2a76de4b4331e5165d5eb2291a7911b",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_e70ca1a87e326e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1530de20-23c0-4482-9acd-05a1a3c643bd",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

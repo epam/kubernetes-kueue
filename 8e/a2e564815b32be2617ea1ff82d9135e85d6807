@@ -1,0 +1,16 @@
+pkg/util/testing/observability.go
+  h_47cee5fa694435 49,59,105,109,137,143
+pkg/scheduler/scheduler.go
+  h_47cee5fa694435 670
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8ea2e564815b32be2617ea1ff82d9135e85d6807",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

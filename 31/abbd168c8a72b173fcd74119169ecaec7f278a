@@ -1,0 +1,21 @@
+hack/releasing/set_release_note.py
+  s_0d04fe6a98f769::t_246cdb567de8d8 44
+hack/releasing/set_release_note_test.py
+  s_0d04fe6a98f769::t_1fc978ecc3c494 44-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "31abbd168c8a72b173fcd74119169ecaec7f278a",
+  "prompts": {},
+  "sessions": {
+    "s_0d04fe6a98f769": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "40474c91-258a-4d43-af15-b0b2fb72050a",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

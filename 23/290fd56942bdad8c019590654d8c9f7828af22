@@ -1,0 +1,14 @@
+.github/workflows/OWNERS
+  h_47cee5fa694435 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "23290fd56942bdad8c019590654d8c9f7828af22",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

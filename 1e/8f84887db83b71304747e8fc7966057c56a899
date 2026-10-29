@@ -1,0 +1,28 @@
+hack/make/verify.mk
+  h_47cee5fa694435 102
+config/components/kueueviz/frontend-configmap.yaml
+  h_47cee5fa694435 5
+Makefile
+  s_06bcb7dc5b5b3e::t_8bc251a2308b5d 371
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1e8f84887db83b71304747e8fc7966057c56a899",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_06bcb7dc5b5b3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a02971fd-eb3a-4a61-871e-4e0416e53db9",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
