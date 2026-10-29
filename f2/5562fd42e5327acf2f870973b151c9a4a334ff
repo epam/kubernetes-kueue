@@ -1,0 +1,32 @@
+pkg/util/tas/ranks/ranks_test.go
+  s_69184235c573bb::t_ea191db1d249e6 1-83
+pkg/controller/elasticjobs/elastic_job_ungater.go
+  s_69184235c573bb::t_40f525c80098dc 366-372
+  s_69184235c573bb::t_e070b3bdc1c74e 56
+  s_69184235c573bb::t_e3abcc6f9a8e52 363-364
+  s_69184235c573bb::t_1b32a9bfc12d31 380,382-384
+pkg/controller/elasticjobs/elastic_job_ungater_test.go
+  s_69184235c573bb::t_4a1f4fee755570 370
+pkg/util/tas/ranks/ranks.go
+  s_69184235c573bb::t_26d105c4b1c760 1-127
+pkg/controller/tas/topology_ungater.go
+  s_69184235c573bb::t_484c661c730615 213,529
+  s_69184235c573bb::t_d0edd9fde982ee 534
+  s_69184235c573bb::t_2785fae51c313e 56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f25562fd42e5327acf2f870973b151c9a4a334ff",
+  "prompts": {},
+  "sessions": {
+    "s_69184235c573bb": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "3d511c4d-8a92-41c9-b056-3dede9f77d72",
+        "model": "unknown"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
