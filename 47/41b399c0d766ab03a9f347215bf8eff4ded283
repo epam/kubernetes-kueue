@@ -1,0 +1,61 @@
+pkg/metrics/metrics_test.go
+  h_99f506dc258b88 31,334-355
+site/content/en/docs/reference/metrics.md
+  h_99f506dc258b88 126
+  s_dcae80d632ea2f::t_71fd7bf5239f21 110
+pkg/cache/scheduler/cache.go
+  h_99f506dc258b88 540,545-546,943,945-949,951,961,966,982,988-1003,1007,1012
+  s_dcae80d632ea2f::t_a05193dc88058b 547-549
+  s_dcae80d632ea2f::t_2b63ea85d6a731 872,875-890,893,936-942,944,1025,1031,1048
+pkg/controller/core/clusterqueue_controller_test.go
+  h_99f506dc258b88 984-1083
+pkg/cache/scheduler/cache_test.go
+  h_99f506dc258b88 1457
+pkg/cache/scheduler/cohort_metrics_test.go
+  h_99f506dc258b88 35,1360-1410
+  s_dcae80d632ea2f::t_e787a0354864d2 1411-1475,1479-1482,1496
+  s_dcae80d632ea2f::t_f398fdcd9b8159 1476-1478,1483-1495
+pkg/metrics/metrics.go
+  s_dcae80d632ea2f::t_f398fdcd9b8159 1081
+pkg/cache/scheduler/resource_node.go
+  s_dcae80d632ea2f::t_64e70e0b73a37f 81-84,86
+pkg/cache/scheduler/cohort_metrics.go
+  s_dcae80d632ea2f::t_64e70e0b73a37f 92,102,148-149,243-245,248-256,260-266,271-277,279,286,288-291,296-304,312-321
+  s_dcae80d632ea2f::t_3e80c85f8d0d74 94-96
+  s_dcae80d632ea2f::t_f0b68ddeab6c24 287
+  s_dcae80d632ea2f::t_2b63ea85d6a731 151-163,173,176
+  s_dcae80d632ea2f::t_a05193dc88058b 45,49,52,56,62,64-68,139
+  s_dcae80d632ea2f::t_7b94a8ad1c6c3e 136-138
+  s_dcae80d632ea2f::t_75fd891b701019 140-142,145-147
+  s_dcae80d632ea2f::t_fb553e830852c9 150
+  s_dcae80d632ea2f::t_84f7d4880f69ac 322
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "4741b399c0d766ab03a9f347215bf8eff4ded283",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_dcae80d632ea2f": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "cc70b79d-e8b2-4bf4-8126-b12e570b8116",
+        "model": "unknown"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    },
+    "s_e48b8527e132a8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1a8d83cd-8a03-40be-b651-798ce352818c",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}
