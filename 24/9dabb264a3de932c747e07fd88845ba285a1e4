@@ -1,0 +1,23 @@
+cmd/experimental/kueue-priority-booster/OWNERS
+  s_7974f4140f995f::t_90f3f8dd151a5b 2-4
+pkg/cache/scheduler/OWNERS
+  s_7974f4140f995f::t_073f1ab4f27c43 1-4
+pkg/scheduler/OWNERS
+  s_7974f4140f995f::t_31ba84ea005fea 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "249dabb264a3de932c747e07fd88845ba285a1e4",
+  "prompts": {},
+  "sessions": {
+    "s_7974f4140f995f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b3c00e13-1d57-4767-b6da-60af789c5a31",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
