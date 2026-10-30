@@ -1,0 +1,20 @@
+hack/cherry_pick_pull.sh
+  s_13ceb3b1ec883e::t_b873bf434e6f52 349-350,352-355
+  s_13ceb3b1ec883e::t_4ddf64d816dbf8 169-172
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "90deed1141d16a4673f317aaf05720e463c8dc7f",
+  "prompts": {},
+  "sessions": {
+    "s_13ceb3b1ec883e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cc1b6198-0c4f-4aca-ba28-7f07cc2b1475",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
