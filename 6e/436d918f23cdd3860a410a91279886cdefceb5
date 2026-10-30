@@ -1,0 +1,21 @@
+cmd/kueueviz/OWNERS
+  s_7974f4140f995f::t_6e34a890d05032 6
+test/e2e/kueueviz/OWNERS
+  s_7974f4140f995f::t_e75eadf5f1eed0 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6e436d918f23cdd3860a410a91279886cdefceb5",
+  "prompts": {},
+  "sessions": {
+    "s_7974f4140f995f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b3c00e13-1d57-4767-b6da-60af789c5a31",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
