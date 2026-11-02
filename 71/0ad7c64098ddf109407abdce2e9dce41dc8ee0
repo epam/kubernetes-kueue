@@ -1,0 +1,14 @@
+test/util/behavioral/e2e/clients.go
+  h_47cee5fa694435 66,68
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "710ad7c64098ddf109407abdce2e9dce41dc8ee0",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

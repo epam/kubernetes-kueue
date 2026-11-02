@@ -1,0 +1,30 @@
+.github/workflows/release-utils.yml
+  s_bdd226083ae4c2::t_02332b63cc3686 670,675
+  h_47cee5fa694435 648,649-650,651-653,655-659,664,671,678,685
+  s_bdd226083ae4c2::t_76dd27cf87812b 672-673
+  s_bdd226083ae4c2::t_0a481c09da1feb 674
+.github/workflows/krew-release.yml
+  s_bdd226083ae4c2::t_af2f6050326287 9-10
+  h_47cee5fa694435 12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "e87943ce054941cf5533d1911881caa57f25807a",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_bdd226083ae4c2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "68155802-04d5-4145-bf39-7ae915a5f74b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

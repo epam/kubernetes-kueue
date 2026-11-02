@@ -1,0 +1,14 @@
+test/integration/singlecluster/tas/tas_secondpass_fence_test.go
+  h_47cee5fa694435 34,109
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b6fc029925b740ac750462b62a3fb870911f0cbd",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

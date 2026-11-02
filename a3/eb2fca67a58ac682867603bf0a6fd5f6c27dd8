@@ -1,0 +1,14 @@
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler.go
+  h_47cee5fa694435 464
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a3eb2fca67a58ac682867603bf0a6fd5f6c27dd8",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

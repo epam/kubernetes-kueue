@@ -1,0 +1,16 @@
+.github/workflows/sbom.yaml
+  h_47cee5fa694435 8
+.github/workflows/openvex.yaml
+  h_47cee5fa694435 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "1cdcf9d549eb7ad2b76f444978d60cfe303388fd",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

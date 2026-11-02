@@ -1,0 +1,23 @@
+test/integration/singlecluster/controller/jobs/job/job_controller_partial_scaleup_test.go
+  s_09f57b121fcd26::t_2b8896a823d7bd 45,82-209
+  s_09f57b121fcd26::t_732592cad6d077 42-44
+  s_09f57b121fcd26::t_9d6a2e3b6c5073 46-48,79-81
+  s_09f57b121fcd26::t_9f36683a3fddc4 210-212
+  s_09f57b121fcd26::t_7deaa4a276bb4c 1-41,49-78,213-263
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1271af35061569f7f53d9d2837061280dc5c855b",
+  "prompts": {},
+  "sessions": {
+    "s_09f57b121fcd26": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "98b27831-ce13-4037-8239-4f5fc0b031ee",
+        "model": "copilot/claude-opus-5.5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

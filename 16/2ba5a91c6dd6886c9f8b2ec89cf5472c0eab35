@@ -1,0 +1,27 @@
+hack/releasing/prepare_pull.sh
+  s_9365bc79beaa2b::t_680a058bbd6ec6 151,155,161
+.github/workflows/release-utils.yml
+  s_9365bc79beaa2b::t_e20216068db7f1 122,126
+hack/releasing/promote_pull.sh
+  s_9365bc79beaa2b::t_07a3cd3220756a 141,145,151
+hack/releasing/sync-notes.sh
+  s_9365bc79beaa2b::t_d4640f71a541b0 251,256,262
+hack/releasing/ci_pull.sh
+  s_9365bc79beaa2b::t_15af02786171b9 137,141,147
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "162ba5a91c6dd6886c9f8b2ec89cf5472c0eab35",
+  "prompts": {},
+  "sessions": {
+    "s_9365bc79beaa2b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "47c3670d-7d76-40eb-9e64-1f2e0e529b8a",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

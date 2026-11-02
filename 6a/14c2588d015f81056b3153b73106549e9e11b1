@@ -1,0 +1,14 @@
+test/e2e/singlecluster/baseline/e2e_v1beta1_test.go
+  h_47cee5fa694435 44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6a14c2588d015f81056b3153b73106549e9e11b1",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

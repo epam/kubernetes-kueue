@@ -1,0 +1,37 @@
+.github/actions/create-milestone/action.yml
+  s_a7fe37a5319567::t_1bb720e864c4fa 40
+  s_a7fe37a5319567::t_1dc37336d37995 1-27,29-30,32-35,41-43,46-55
+  s_a7fe37a5319567::t_fbeeae720a5025 28,31,36-39
+  h_47cee5fa694435 56
+  s_a7fe37a5319567::t_75754d2db3ea35 44-45
+.github/workflows/release-utils.yml
+  s_a7fe37a5319567::t_4ec0f8b8029b33 29-30
+  s_a7fe37a5319567::t_2e40f06b64dff3 820-823
+  s_a7fe37a5319567::t_efb5506b37c1ec 52
+  s_a7fe37a5319567::t_99aa0b6251da8c 185
+  s_a7fe37a5319567::t_394bb42f18b3f2 800-819,824-837
+  s_a7fe37a5319567::t_5acfcfaaa5795c 156-157
+.github/ISSUE_TEMPLATE/NEW_RELEASE.md
+  s_a7fe37a5319567::t_2d0452b78d223d 61-62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "72c8e1b6c7666ba52f20e6a8d96ffbf3253dc2cd",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_a7fe37a5319567": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b3bc4f91-09be-488e-b905-577841baddae",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+hack/tools/go.mod
+  s_eb4a86b1a567b1::t_76ff3b337d0799 528
+hack/tools/go.sum
+  s_eb4a86b1a567b1::t_acad740ace7a62 1749-1750
+site/content/en/docs/tasks/manage/setup_multikueue.md
+  s_eb4a86b1a567b1::t_656d5e38db1246 210,259,288
+pkg/util/testing/v1beta2/wrappers.go
+  s_eb4a86b1a567b1::t_98fdf1390356d5 1852-1856
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1006698e85d8fe25d235f1bd4f82f115d6081918",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_eb4a86b1a567b1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "713538b4-7354-4c36-a877-98d1688e0e73",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

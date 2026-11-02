@@ -1,0 +1,18 @@
+pkg/controller/admissionchecks/multikueue/multikueuecluster.go
+  h_47cee5fa694435 1221
+pkg/controller/admissionchecks/multikueue/admissioncheck.go
+  h_47cee5fa694435 115,253,296
+pkg/controller/admissionchecks/multikueue/clusterqueue.go
+  h_47cee5fa694435 267,437
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "bbf8cfc15c23c8b80e22764c6ed42e2c5f576051",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

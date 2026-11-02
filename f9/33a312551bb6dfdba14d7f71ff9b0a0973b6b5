@@ -1,0 +1,139 @@
+go.mod
+  h_47cee5fa694435 145,147-148,150-152,154
+  h_47cee5fa694435 145,147-148,150-152
+go.sum
+  h_47cee5fa694435 324-325,330-331,336-337,349-352,355-356,363-364
+hack/tools/go.mod
+  h_47cee5fa694435 478,481-482,484-487,489
+hack/tools/go.sum
+  h_47cee5fa694435 1298-1299,1346-1347,1385-1386,1413-1414,1463-1464,1470-1471,1483-1484,1547-1548
+vendor/golang.org/x/net/html/escape.go
+  h_47cee5fa694435 157
+vendor/golang.org/x/net/http2/ascii.go
+  h_47cee5fa694435 7-9,48-57
+vendor/golang.org/x/net/http2/databuffer.go
+  h_47cee5fa694435 124
+vendor/golang.org/x/net/http2/server_common.go
+  h_47cee5fa694435 28-29,43-44,50-51,57-58,67-69,77-79,86-88,95-97,102-104,111-112,118-120,126-128,135-137,145-147,154-156,169-171,181-182,226-227
+vendor/golang.org/x/net/http2/transport.go
+  h_47cee5fa694435 187-188
+vendor/golang.org/x/net/http2/transport_common.go
+  h_47cee5fa694435 27-28,36-37,46-47,56-57,65,70-71,76-79,90-91,96-97,107-108,118-120,128-130,137-139,150-152,159-160,169-171,177-179,185-187,194-196,212-215,228-229,263-264,277,283-284,292-293,298-300,319-327,484-485
+vendor/golang.org/x/net/http2/transport_wrap.go
+  h_47cee5fa694435 219-220
+vendor/golang.org/x/net/internal/httpcommon/request.go
+  h_47cee5fa694435 394,437-456,460,466-471,475-476,497
+vendor/golang.org/x/net/trace/histogram.go
+  h_47cee5fa694435 73
+vendor/golang.org/x/sys/cpu/cpu.go
+  h_47cee5fa694435 185-191,252,256-259,264-266
+vendor/golang.org/x/sys/cpu/cpu_linux_ppc64x.go
+  h_47cee5fa694435 14,25-27
+vendor/golang.org/x/sys/cpu/cpu_linux_riscv64.go
+  h_47cee5fa694435 133-135,143-150
+vendor/golang.org/x/sys/cpu/cpu_other_x86.go
+  h_47cee5fa694435 5
+vendor/golang.org/x/sys/unix/ifreq_linux.go
+  h_47cee5fa694435 25-31
+vendor/golang.org/x/sys/unix/ioctl_linux.go
+  h_47cee5fa694435 335-341
+vendor/golang.org/x/sys/unix/mkerrors.sh
+  h_47cee5fa694435 540
+vendor/golang.org/x/sys/unix/syscall.go
+  h_47cee5fa694435 79
+vendor/golang.org/x/sys/unix/syscall_bsd.go
+  h_47cee5fa694435 191
+vendor/golang.org/x/sys/unix/syscall_linux.go
+  h_47cee5fa694435 2366
+vendor/golang.org/x/sys/unix/zerrors_linux.go
+  h_47cee5fa694435 2051,3866
+vendor/golang.org/x/sys/unix/zerrors_linux_sparc64.go
+  h_47cee5fa694435 17,19-22,24,26,28-31,94,566-568,647,649-651,671
+vendor/golang.org/x/sys/unix/ztypes_linux.go
+  h_47cee5fa694435 4267-4282,4289,4554-4595,6528-6547
+vendor/golang.org/x/sys/unix/ztypes_linux_386.go
+  h_47cee5fa694435 683-694,729-747
+vendor/golang.org/x/sys/unix/ztypes_linux_amd64.go
+  h_47cee5fa694435 700-711,743-761
+vendor/golang.org/x/sys/unix/ztypes_linux_arm.go
+  h_47cee5fa694435 677-688,723-741
+vendor/golang.org/x/sys/unix/ztypes_linux_arm64.go
+  h_47cee5fa694435 679-690,722-740
+vendor/golang.org/x/sys/unix/ztypes_linux_loong64.go
+  h_47cee5fa694435 680-691,723-741
+vendor/golang.org/x/sys/unix/ztypes_linux_mips.go
+  h_47cee5fa694435 683-694,728-746
+vendor/golang.org/x/sys/unix/ztypes_linux_mips64.go
+  h_47cee5fa694435 682-693,725-743
+vendor/golang.org/x/sys/unix/ztypes_linux_mips64le.go
+  h_47cee5fa694435 682-693,725-743
+vendor/golang.org/x/sys/unix/ztypes_linux_mipsle.go
+  h_47cee5fa694435 683-694,728-746
+vendor/golang.org/x/sys/unix/ztypes_linux_ppc.go
+  h_47cee5fa694435 689-700,736-754
+vendor/golang.org/x/sys/unix/ztypes_linux_ppc64.go
+  h_47cee5fa694435 689-700,731-749
+vendor/golang.org/x/sys/unix/ztypes_linux_ppc64le.go
+  h_47cee5fa694435 689-700,731-749
+vendor/golang.org/x/sys/unix/ztypes_linux_riscv64.go
+  h_47cee5fa694435 707-718,810-828
+vendor/golang.org/x/sys/unix/ztypes_linux_s390x.go
+  h_47cee5fa694435 703-714,745-763
+vendor/golang.org/x/sys/unix/ztypes_linux_sparc64.go
+  h_47cee5fa694435 684-695,726-744
+vendor/golang.org/x/sys/windows/types_windows.go
+  h_47cee5fa694435 1068
+vendor/golang.org/x/term/terminal.go
+  h_47cee5fa694435 109-111,794-798,873-877,884,888-890
+vendor/golang.org/x/text/encoding/japanese/iso2022jp.go
+  h_47cee5fa694435 17-26
+vendor/golang.org/x/text/unicode/bidi/core.go
+  h_47cee5fa694435 250,731
+vendor/golang.org/x/text/unicode/norm/composition.go
+  h_47cee5fa694435 452-461,497-508,513-517
+vendor/golang.org/x/text/unicode/norm/forminfo.go
+  h_47cee5fa694435 194-201,203,207-208,217
+vendor/golang.org/x/text/unicode/norm/normalize.go
+  h_47cee5fa694435 508-511
+vendor/golang.org/x/text/unicode/norm/tables15.0.0.go
+  h_47cee5fa694435 6961,6965-7905
+vendor/golang.org/x/text/unicode/norm/tables17.0.0.go
+  h_47cee5fa694435 7138,7142-8102
+vendor/golang.org/x/text/unicode/norm/transform.go
+  h_47cee5fa694435 36,70,83
+vendor/golang.org/x/tools/go/ast/astutil/imports.go
+  h_47cee5fa694435 475,480
+vendor/golang.org/x/tools/go/gcexportdata/gcexportdata.go
+  h_47cee5fa694435 5-35,39-42,88-90,163
+vendor/golang.org/x/tools/internal/gcimporter/iexport.go
+  h_47cee5fa694435 715,748,825,973,975-977,1153,1300-1305
+vendor/golang.org/x/tools/internal/gcimporter/iimport.go
+  h_47cee5fa694435 96,99,101
+vendor/golang.org/x/tools/internal/gcimporter/ureader.go
+  h_47cee5fa694435 633-651,666-669,674-690,804,806-809,817
+vendor/golang.org/x/tools/internal/imports/fix.go
+  h_47cee5fa694435 466-474,633,649-659
+vendor/golang.org/x/tools/internal/imports/sortimports.go
+  h_47cee5fa694435 301,306
+vendor/golang.org/x/tools/internal/modindex/index.go
+  h_47cee5fa694435 17-18,71-73,126-138,142-156,174-180,187-193
+vendor/golang.org/x/tools/internal/pkgbits/version.go
+  h_47cee5fa694435 40-43,83-86,96
+vendor/golang.org/x/tools/internal/stdlib/deps.go
+  h_47cee5fa694435 47,125,322
+vendor/golang.org/x/tools/internal/typesinternal/types.go
+  h_47cee5fa694435 274-275
+vendor/modules.txt
+  h_47cee5fa694435 549,566-567,571-572,595-596,602-603,605-606,639-640
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f933a312551bb6dfdba14d7f71ff9b0a0973b6b5",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

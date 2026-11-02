@@ -1,0 +1,14 @@
+test/util/behavioral/e2e/kuberay.go
+  h_47cee5fa694435 31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "479e85af4ee122982c1c12561a30ee96b3e1d849",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

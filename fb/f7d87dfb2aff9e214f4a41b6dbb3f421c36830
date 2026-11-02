@@ -1,0 +1,29 @@
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_3f2a7044998c18::t_78bcb2aa8b2b9f 64
+  s_3f2a7044998c18::t_d533fc7c4dbf68 240,343,781,875,944-945,1014,1039-1040,1095,1159,1209,1250,1329,1362,1506,2143-2144,2512-2513,2727,3101,3122,3186,3207,3280,3303,3314,3391,4079,4360,4740,4801,5225,5321,5473
+test/integration/singlecluster/importer/importer_test.go
+  s_3f2a7044998c18::t_482430465187f0 169
+  s_3f2a7044998c18::t_b8ed893d6440d7 37
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  s_3f2a7044998c18::t_598f547b5a6810 74
+  s_3f2a7044998c18::t_dfcc3bfd04dd96 5339,6177,6237
+test/integration/singlecluster/tas/tas_test.go
+  s_3f2a7044998c18::t_d52766c116a1a0 60
+  s_3f2a7044998c18::t_7207a1be7ee9c5 94,1250
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "fbf7d87dfb2aff9e214f4a41b6dbb3f421c36830",
+  "prompts": {},
+  "sessions": {
+    "s_3f2a7044998c18": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1797fa75-7e09-4f37-b3f9-75d36f814ed0",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

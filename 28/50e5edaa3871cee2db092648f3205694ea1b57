@@ -1,0 +1,72 @@
+client-go/clientset/versioned/fake/clientset_generated.go
+  h_47cee5fa694435 91
+client-go/informers/externalversions/factory.go
+  h_47cee5fa694435 22,30,49,96-110,145-148,158-160,173,177-181,195-205,207-211,213-219,241-243,260-278,284,291-292,295-299,314-315,318-321
+client-go/informers/externalversions/internalinterfaces/factory_interfaces.go
+  h_47cee5fa694435 37,42-59
+client-go/informers/externalversions/kueue/v1beta1/admissioncheck.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta1/clusterqueue.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta1/cohort.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta1/localqueue.go
+  h_47cee5fa694435 27,53,60-70,72,74,76,78,80,82,84,86,88,90,92,94,98-102,107
+client-go/informers/externalversions/kueue/v1beta1/multikueuecluster.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta1/multikueueconfig.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta1/provisioningrequestconfig.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta1/resourceflavor.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta1/topology.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta1/workload.go
+  h_47cee5fa694435 27,53,60-70,72,74,76,78,80,82,84,86,88,90,92,94,98-102,107
+client-go/informers/externalversions/kueue/v1beta1/workloadpriorityclass.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta2/admissioncheck.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta2/clusterqueue.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta2/cohort.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta2/localqueue.go
+  h_47cee5fa694435 27,53,60-70,72,74,76,78,80,82,84,86,88,90,92,94,98-102,107
+client-go/informers/externalversions/kueue/v1beta2/multikueuecluster.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta2/multikueueconfig.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta2/provisioningrequestconfig.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta2/resourceflavor.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta2/topology.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/kueue/v1beta2/workload.go
+  h_47cee5fa694435 27,53,60-70,72,74,76,78,80,82,84,86,88,90,92,94,98-102,107
+client-go/informers/externalversions/kueue/v1beta2/workloadpriorityclass.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/visibility/v1beta1/clusterqueue.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/visibility/v1beta1/localqueue.go
+  h_47cee5fa694435 27,53,60-70,72,74,76,78,80,82,84,86,88,90,92,94,98-102,107
+client-go/informers/externalversions/visibility/v1beta2/clusterqueue.go
+  h_47cee5fa694435 27,52,59-69,71,73,75,77,79,81,83,85,87,89,91,93,97-101,106
+client-go/informers/externalversions/visibility/v1beta2/localqueue.go
+  h_47cee5fa694435 27,53,60-70,72,74,76,78,80,82,84,86,88,90,92,94,98-102,107
+hack/tools/go.sum
+  h_47cee5fa694435 1709-1710
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "2850e5edaa3871cee2db092648f3205694ea1b57",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.github/actions/generate-sbom/action.yml
+  s_842d70afbc68ae::t_25d82e8517b601 26
+.github/actions/generate-openvex/action.yml
+  s_842d70afbc68ae::t_2020c992d61fa0 21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "eefe6f18dea852fe01f0aceddb29c5d287398375",
+  "prompts": {},
+  "sessions": {
+    "s_842d70afbc68ae": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ac1d8c6f-5688-415e-89cb-8dd46f5be8e7",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

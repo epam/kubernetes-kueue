@@ -1,0 +1,14 @@
+site/content/en/community/contribution_guidelines/coding_guidelines.md
+  h_47cee5fa694435 366-367,375-376,388,405,446-447
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c350adbf2f957295435dd9fd43e166dd53c8a329",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

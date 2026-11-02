@@ -1,0 +1,68 @@
+config/components/crd/bases/kueue.x-k8s.io_clusterqueues.yaml
+  h_47cee5fa694435 6
+config/components/crd/bases/kueue.x-k8s.io_workloadpriorityclasses.yaml
+  h_47cee5fa694435 6
+config/components/crd/alpha/bases/kueue.x-k8s.io_dynamicquotaorchestrators.yaml
+  h_47cee5fa694435 6
+config/components/crd/bases/kueue.x-k8s.io_workloads.yaml
+  h_47cee5fa694435 6,9469-9470
+charts/kueue/templates/crd/kueue.x-k8s.io_resourceflavors.yaml
+  h_47cee5fa694435 28
+charts/kueue/templates/crd/kueue.x-k8s.io_localqueues.yaml
+  h_47cee5fa694435 28
+config/components/crd/bases/kueue.x-k8s.io_localqueues.yaml
+  h_47cee5fa694435 6
+config/components/crd/bases/kueue.x-k8s.io_multikueueconfigs.yaml
+  h_47cee5fa694435 6
+config/components/crd/alpha/bases/kueue.x-k8s.io_capacityproviders.yaml
+  h_47cee5fa694435 6
+charts/kueue/templates/crd/kueue.x-k8s.io_preemptionconfigs.yaml
+  h_47cee5fa694435 29
+config/components/crd/bases/kueue.x-k8s.io_cohorts.yaml
+  h_47cee5fa694435 6
+config/components/crd/bases/kueue.x-k8s.io_multikueueclusters.yaml
+  h_47cee5fa694435 6,95-96
+charts/kueue/templates/crd/kueue.x-k8s.io_provisioningrequestconfigs.yaml
+  h_47cee5fa694435 28
+charts/kueue/templates/crd/kueue.x-k8s.io_multikueueclusters.yaml
+  h_47cee5fa694435 28,124
+config/components/crd/alpha/bases/kueue.x-k8s.io_preemptionconfigs.yaml
+  h_47cee5fa694435 6
+config/components/crd/bases/kueue.x-k8s.io_resourceflavors.yaml
+  h_47cee5fa694435 6
+charts/kueue/templates/crd/kueue.x-k8s.io_workloadpriorityclasses.yaml
+  h_47cee5fa694435 28
+config/components/crd/bases/kueue.x-k8s.io_admissionchecks.yaml
+  h_47cee5fa694435 6
+config/components/crd/bases/kueue.x-k8s.io_topologies.yaml
+  h_47cee5fa694435 6
+charts/kueue/templates/crd/kueue.x-k8s.io_dynamicquotaorchestrators.yaml
+  h_47cee5fa694435 29
+charts/kueue/templates/crd/kueue.x-k8s.io_workloads.yaml
+  h_47cee5fa694435 28,8924
+charts/kueue/templates/crd/kueue.x-k8s.io_cohorts.yaml
+  h_47cee5fa694435 28
+charts/kueue/templates/crd/kueue.x-k8s.io_capacityproviders.yaml
+  h_47cee5fa694435 29
+charts/kueue/templates/crd/kueue.x-k8s.io_multikueueconfigs.yaml
+  h_47cee5fa694435 28
+charts/kueue/templates/crd/kueue.x-k8s.io_topologies.yaml
+  h_47cee5fa694435 28
+config/components/crd/bases/kueue.x-k8s.io_provisioningrequestconfigs.yaml
+  h_47cee5fa694435 6
+charts/kueue/templates/crd/kueue.x-k8s.io_admissionchecks.yaml
+  h_47cee5fa694435 28
+charts/kueue/templates/crd/kueue.x-k8s.io_clusterqueues.yaml
+  h_47cee5fa694435 28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "88ae49f4910dbd95ceb12d06892f336f89daf58f",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+hack/releasing/milestone_pull.sh
+  s_8f57867ce44b3d::t_e4290f54bd3a94 293-298
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "148e3f4d5ca5fdfb3706c76a335d7275428a24a4",
+  "prompts": {},
+  "sessions": {
+    "s_8f57867ce44b3d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f2878aba-ad22-4d4d-b998-e473f69011fd",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

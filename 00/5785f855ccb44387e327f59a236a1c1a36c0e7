@@ -1,0 +1,20 @@
+pkg/controller/elasticjobs/elastic_job_ungater.go
+  h_99f506dc258b88 278
+pkg/controller/elasticjobs/elastic_job_ungater_test.go
+  h_99f506dc258b88 82,251,412,942,1037
+pkg/workload/podsetscounts.go
+  h_99f506dc258b88 22-23,66-80
+pkg/workload/podsetscounts_test.go
+  h_99f506dc258b88 23,72-148,161
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "005785f855ccb44387e327f59a236a1c1a36c0e7",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

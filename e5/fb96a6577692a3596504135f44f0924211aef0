@@ -1,0 +1,20 @@
+cmd/experimental/skills/kueue-release-notes/SKILL.md
+  s_8e8419a5f120f5::t_c7cf6445d16b75 207-225
+  s_8e8419a5f120f5::t_b8cf6f784876a2 52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "e5fb96a6577692a3596504135f44f0924211aef0",
+  "prompts": {},
+  "sessions": {
+    "s_8e8419a5f120f5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "554b5ea9-0ad0-40ba-83d9-f79729fc25c5",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

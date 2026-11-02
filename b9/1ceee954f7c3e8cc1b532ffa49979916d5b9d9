@@ -1,0 +1,32 @@
+pkg/controller/jobs/job/job_controller_test.go
+  h_99f506dc258b88 182-191,194,197-217,219-223,225,228-230,232-235,238,240,251-253,258-260,265-267,272-274,279-281,286-303,305-310
+  s_7b084ab8b1f2c5::t_52cc605613143d 231,241-247,261,268
+  s_7b084ab8b1f2c5::t_a0db8ad7b1da81 173,181,192-193,195-196,218,224,226-227,236-237,239,248-250,254-257,262-264,269-271,275-278,282-285,304
+pkg/controller/jobs/job/job_controller.go
+  h_99f506dc258b88 49,435,440-441
+  s_7b084ab8b1f2c5::t_c079ad515a2438 429,437-439
+  s_7b084ab8b1f2c5::t_9ee0b9054feda3 436
+pkg/controller/jobframework/reconciler_test.go
+  s_7b084ab8b1f2c5::t_797e8756e3fda3 2788
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b91ceee954f7c3e8cc1b532ffa49979916d5b9d9",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_7b084ab8b1f2c5": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "54b7c845-d4b3-407d-9900-3074b325a8cc",
+        "model": "unknown"
+      },
+      "human_author": null
+    }
+  }
+}

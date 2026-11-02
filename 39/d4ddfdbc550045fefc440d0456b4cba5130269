@@ -1,0 +1,19 @@
+test/util/behavioral/integration/doc.go
+  s_f486f8e42ded9d::t_df5bd66a5da28f 1-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "39d4ddfdbc550045fefc440d0456b4cba5130269",
+  "prompts": {},
+  "sessions": {
+    "s_f486f8e42ded9d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c3cc6eb8-e553-4737-bc59-ddb58150adcd",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

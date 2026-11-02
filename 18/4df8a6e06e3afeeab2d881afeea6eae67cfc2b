@@ -1,0 +1,14 @@
+pkg/cache/queue/manager.go
+  h_47cee5fa694435 204
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "184df8a6e06e3afeeab2d881afeea6eae67cfc2b",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

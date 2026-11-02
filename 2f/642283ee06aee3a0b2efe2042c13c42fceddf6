@@ -1,0 +1,22 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2f642283ee06aee3a0b2efe2042c13c42fceddf6",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_68a64a612a9a39": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "ee3940ad-e84e-4d5e-a079-cd7cbd1329d7",
+        "model": "copilot/claude-sonnet-5.5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

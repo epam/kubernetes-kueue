@@ -1,0 +1,24 @@
+pkg/cache/scheduler/dra/taints.go
+  s_169ae902600244::t_038d2c8322333a 92,94
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b6ab3c77f426fdae77c5deb0f41a15439d612ba3",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_169ae902600244": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5a582289-99a1-4a26-a9b5-42bc8db33475",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

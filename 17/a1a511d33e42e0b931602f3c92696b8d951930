@@ -1,0 +1,86 @@
+go.mod
+  h_47cee5fa694435 46,52-58,132,141,165
+go.sum
+  h_47cee5fa694435 229-230,235-236,288-289,379-380,469,472-475
+pkg/cache/scheduler/was/scheduler_simulator.go
+  h_47cee5fa694435 144-203
+pkg/cache/scheduler/was/scheduler_simulator_test.go
+  h_47cee5fa694435 868-1351
+vendor/github.com/sirupsen/logrus/CHANGELOG.md
+  h_47cee5fa694435 5-11
+vendor/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/common.go
+  h_47cee5fa694435 4
+vendor/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/config.go
+  h_47cee5fa694435 4
+vendor/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/doc.go
+  h_47cee5fa694435 6
+vendor/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/handler.go
+  h_47cee5fa694435 4
+vendor/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/internal/request/body_wrapper.go
+  h_47cee5fa694435 4-6,9
+vendor/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/internal/request/gen.go
+  h_47cee5fa694435 4
+vendor/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/internal/request/resp_writer_wrapper.go
+  h_47cee5fa694435 4-7
+vendor/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/internal/semconv/client.go
+  h_47cee5fa694435 4-6,9,23-24,48,123,139,144-145,156-170,180-186,190,205,225-232,245-246,282,302,307,340,346
+vendor/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/internal/semconv/gen.go
+  h_47cee5fa694435 4
+vendor/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/internal/semconv/server.go
+  h_47cee5fa694435 4-6,9,23-24,70,171-172,220,243-247,282,295,322,338-339,344-345,350-351,360
+vendor/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/internal/semconv/util.go
+  h_47cee5fa694435 4-7,18,35,39,44,50,55,57,87
+vendor/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/labeler.go
+  h_47cee5fa694435 4
+vendor/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/start_time_context.go
+  h_47cee5fa694435 4
+vendor/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/transport.go
+  h_47cee5fa694435 4,8,19,146-148,167,191-204
+vendor/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/version.go
+  h_47cee5fa694435 4,7
+vendor/go.opentelemetry.io/otel/semconv/v1.43.0/httpconv/metric.go
+  h_47cee5fa694435 448-454,596-602,699-705
+vendor/modules.txt
+  h_47cee5fa694435 400,454,478,674,1985,1987-1989,1992,1996
+vendor/sigs.k8s.io/scheduler-library/pkg/framework/framework.go
+  h_47cee5fa694435 25,48-49,57,63-65
+vendor/sigs.k8s.io/scheduler-library/pkg/preemption/preemption.go
+  h_47cee5fa694435 1-276
+vendor/sigs.k8s.io/scheduler-library/pkg/preemption/types.go
+  h_47cee5fa694435 1-87
+vendor/sigs.k8s.io/scheduler-library/pkg/simulator/readonly_client.go
+  h_47cee5fa694435 40-42,54-57
+vendor/sigs.k8s.io/scheduler-library/pkg/simulator/simulator.go
+  h_47cee5fa694435 37,67,71-89,108-121,143-145,151,165-170,172-178,181
+vendor/sigs.k8s.io/scheduler-library/pkg/upstreamsync/framework_init.go
+  h_47cee5fa694435 25,48,50,57,297-312,320,331-335,340-378,388,390-393,404,423,444-445,454-457
+vendor/sigs.k8s.io/scheduler-library/pkg/upstreamsync/podgroup_scheduler.go
+  h_47cee5fa694435 130-163,590,608,612-613,706-718,729,748-749
+vendor/sigs.k8s.io/scheduler-library/pkg/upstreamsync/preemption/default_preemption.go
+  h_47cee5fa694435 1-73
+vendor/sigs.k8s.io/scheduler-library/pkg/upstreamsync/preemption/framework.go
+  h_47cee5fa694435 1-75
+vendor/sigs.k8s.io/scheduler-library/pkg/upstreamsync/preemption/interface.go
+  h_47cee5fa694435 1-96
+vendor/sigs.k8s.io/scheduler-library/pkg/upstreamsync/preemption/podgrouppreemption.go
+  h_47cee5fa694435 1-349
+vendor/sigs.k8s.io/scheduler-library/pkg/upstreamsync/preemption/types.go
+  h_47cee5fa694435 1-48
+vendor/sigs.k8s.io/scheduler-library/pkg/upstreamsync/scheduler.go
+  h_47cee5fa694435 21,31,87,118-121,123-130,132
+vendor/sigs.k8s.io/scheduler-library/pkg/upstreamsync/snapshot/snapshot.go
+  h_47cee5fa694435 27,29-30,35-40,426,430-448,450,456,459-465,473,478,481,484-485,487,489-507,510-512,514-549,551-583,585-588,592
+vendor/sigs.k8s.io/scheduler-library/pkg/upstreamsync/snapshot/types.go
+  h_47cee5fa694435 20,110,119-151
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "17a1a511d33e42e0b931602f3c92696b8d951930",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

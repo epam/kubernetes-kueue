@@ -1,0 +1,27 @@
+.github/ISSUE_TEMPLATE/NEW_RELEASE.md
+  h_47cee5fa694435 26,28,35-36,37-39
+  s_ebc6e7b9c0be3a::t_11f2593f38a652 29-34
+  h_47cee5fa694435 37-39
+  s_ebc6e7b9c0be3a::t_bcbe7792a03547 27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bca0accd1ba0514de4bbc245880a8571fa66163f",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_ebc6e7b9c0be3a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6420a298-4f5a-4e01-92a6-81e6a67970c5",
+        "model": "unknown"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

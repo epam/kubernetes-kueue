@@ -1,0 +1,22 @@
+test/e2e/singlecluster/extended/kuberay_test.go
+  h_47cee5fa694435 354,373,381,391,550,568,640,761,1130,1159
+test/e2e/singlecluster/tasapi/extended/rayjob_test.go
+  h_47cee5fa694435 213
+test/util/behavioral/e2e/kuberay.go
+  h_47cee5fa694435 1-167
+test/e2e/multikueue/extended/ray_autoscaling_test.go
+  h_47cee5fa694435 168,179,189,199,298,301,309,328,331,338,357,364,449,452,460,493,496,503,536,543,633,636,647
+test/e2e/singlecluster/extended/kuberay_autoscaling_test.go
+  h_47cee5fa694435 53,195,204,213,222
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "23d2686729ce837ddeb05ec85a7f48bf4d9e9c68",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

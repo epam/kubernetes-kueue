@@ -1,0 +1,19 @@
+pkg/cache/scheduler/dra/taints_test.go
+  s_169ae902600244::t_f5c1cbf4b64c71 58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f6519157337ded8cac938b775b7a0e4fcc8ed04f",
+  "prompts": {},
+  "sessions": {
+    "s_169ae902600244": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5a582289-99a1-4a26-a9b5-42bc8db33475",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+apis/config/v1beta1/defaults_test.go
+  h_47cee5fa694435 163,198,228,274
+apis/config/v1beta2/defaults_test.go
+  h_47cee5fa694435 182,218,249,296
+.golangci.yaml
+  h_47cee5fa694435 77
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "12a2cde9799b58b863afaa6c2dda8955bee1fea8",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

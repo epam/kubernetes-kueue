@@ -1,0 +1,30 @@
+CHANGELOG/CHANGELOG-0.19.md
+  h_47cee5fa694435 1-52
+site/content/en/v0.19/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+site/content/en/v0.19/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 74
+site/content/en/v0.19/docs/concepts/workload.md
+  h_47cee5fa694435 168
+site/content/en/v0.19/docs/reference/kueue-config.v1beta2.md
+  h_47cee5fa694435 995-998
+site/content/en/v0.19/docs/tasks/manage/observability/configure_custom_metric_labels.md
+  h_47cee5fa694435 81-96
+site/content/zh-CN/v0.19/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+site/static/v0.19/examples/sample-enforce-requests-policy-binding.yaml
+  h_47cee5fa694435 11
+site/static/v0.19/examples/tas/sample-queues.yaml
+  h_47cee5fa694435 42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6798f328c5c0e201c2c8aca767c5112a124bdd96",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

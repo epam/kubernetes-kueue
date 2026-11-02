@@ -1,0 +1,67 @@
+test/integration/singlecluster/controller/jobs/leaderworkerset/leaderworkerset_controller_test.go
+  s_9dceb3c19bd574::t_66809147bafe0d 346
+  s_9dceb3c19bd574::t_1ac1ad386c3654 340-345,347-376
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  s_9dceb3c19bd574::t_3e84a5a0fbb9ca 45,365-366
+  s_9dceb3c19bd574::t_89bed63050a1f7 353
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_9dceb3c19bd574::t_f42a64225a50b8 60,563,566,591-594,763-773,777-779
+  s_9dceb3c19bd574::t_aa5079ec3cac6a 774-776
+  s_9dceb3c19bd574::t_bf9f147567195a 780-781
+pkg/controller/admissionchecks/multikueue/workload_test.go
+  s_9dceb3c19bd574::t_a7817beb177d6e 578-647,662
+  s_9dceb3c19bd574::t_a2f11856c6be25 648-661
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler.go
+  s_9dceb3c19bd574::t_89bed63050a1f7 507-512,514-517
+  s_9dceb3c19bd574::t_e0817000ad03b2 65
+  s_9dceb3c19bd574::t_aa5079ec3cac6a 532-533
+pkg/webhooks/workload_webhook.go
+  s_9dceb3c19bd574::t_93bdacc77190b4 42,405,503,508-510,514-516,522
+pkg/workload/workload_test.go
+  s_9dceb3c19bd574::t_58ff41b0af4867 29,43,143-181,184
+  s_9dceb3c19bd574::t_aa14a254c9fbe2 182-183,185-186
+pkg/workload/workload.go
+  s_9dceb3c19bd574::t_f0d9b3af2c5b37 45,1332-1339
+  s_9dceb3c19bd574::t_ea9cd96d6d3d07 1340-1341
+pkg/util/tolerations/tolerations_test.go
+  s_9dceb3c19bd574::t_aa5079ec3cac6a 20,224-275
+  s_9dceb3c19bd574::t_5cb904cf752803 182-223,276-279
+pkg/webhooks/workload_webhook_test.go
+  s_9dceb3c19bd574::t_52ef9faa848528 1441,1447-1448,1457-1458,1464,1476,1482-1483,1495,1501-1502
+  s_9dceb3c19bd574::t_f69ce238ee5f1b 25,34
+  s_9dceb3c19bd574::t_0ef4a7e94bfc25 1436-1440,1442-1446,1449-1456,1459-1463,1465-1475,1477-1481,1484-1494,1496-1500,1503-1508
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter_test.go
+  s_9dceb3c19bd574::t_472be32a8188fe 137-228
+  s_9dceb3c19bd574::t_7da6cbc3c779d0 25
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler_test.go
+  s_9dceb3c19bd574::t_d54e80e8bede9d 838,847,876
+  s_9dceb3c19bd574::t_cb2ebd1dd3ce92 887-904,906-921,923-938
+  s_9dceb3c19bd574::t_03826f3fefc2a5 905,922
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter.go
+  s_9dceb3c19bd574::t_e0817000ad03b2 36,39,66-67,69-77,100-109
+  s_9dceb3c19bd574::t_8b40f6b644a9e2 110-111
+pkg/features/kube_features.go
+  s_9dceb3c19bd574::t_fcda75f71ab2d0 916-919
+pkg/util/tolerations/tolerations.go
+  s_9dceb3c19bd574::t_aa5079ec3cac6a 69-79
+  s_9dceb3c19bd574::t_5cb904cf752803 23,56-68
+site/content/en/docs/tasks/run/leaderworkerset.md
+  s_9dceb3c19bd574::t_5e77010e49b49c 96
+  s_9dceb3c19bd574::t_fcda75f71ab2d0 95,97-103
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f5a3977448f2b86661984a678b79deb39d08e4fa",
+  "prompts": {},
+  "sessions": {
+    "s_9dceb3c19bd574": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0bcf8565-e506-4642-8cf6-3d5a60a6c6be",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+test/integration/singlecluster/controller/jobs/trainjob/suite_test.go
+  h_47cee5fa694435 108
+cmd/experimental/kueue-populator/test/integration/suite_test.go
+  h_47cee5fa694435 90
+test/integration/singlecluster/webhook/jobs/suite_test.go
+  h_47cee5fa694435 82
+test/integration/singlecluster/controller/jobs/mpijob/suite_test.go
+  h_47cee5fa694435 129
+test/integration/singlecluster/kueuectl/suite_test.go
+  h_47cee5fa694435 99
+test/integration/singlecluster/controller/jobs/tfjob/suite_test.go
+  h_47cee5fa694435 100
+test/integration/singlecluster/scheduler/resourcetransformations/suite_test.go
+  h_47cee5fa694435 84
+test/integration/singlecluster/scheduler/delayedadmission/suite_test.go
+  h_47cee5fa694435 80
+test/integration/singlecluster/controller/jobs/jobset/suite_test.go
+  h_47cee5fa694435 97
+test/integration/singlecluster/scheduler/was/suite_test.go
+  h_47cee5fa694435 151
+test/integration/multikueue/external_job_test.go
+  h_47cee5fa694435 94
+test/integration/singlecluster/controller/jobs/xgboostjob/suite_test.go
+  h_47cee5fa694435 100
+test/integration/singlecluster/controller/jobs/sparkapplication/suite_test.go
+  h_47cee5fa694435 103
+test/integration/singlecluster/controller/jobs/job/suite_test.go
+  h_47cee5fa694435 142
+test/integration/singlecluster/controller/jobs/leaderworkerset/suite_test.go
+  h_47cee5fa694435 92
+test/integration/singlecluster/scheduler/podsready/suite_test.go
+  h_47cee5fa694435 99
+test/integration/multikueue/suite_test.go
+  h_47cee5fa694435 212
+test/integration/singlecluster/controller/jobs/pod/deployment_job_uid_test.go
+  h_47cee5fa694435 68
+test/integration/singlecluster/controller/core/suite_test.go
+  h_47cee5fa694435 152
+test/integration/singlecluster/tas/suite_test.go
+  h_47cee5fa694435 119
+test/integration/singlecluster/controller/jobs/rayservice/suite_test.go
+  h_47cee5fa694435 79
+test/integration/singlecluster/controller/jobs/pod/suite_test.go
+  h_47cee5fa694435 137
+test/integration/singlecluster/controller/jobs/paddlejob/suite_test.go
+  h_47cee5fa694435 100
+test/integration/singlecluster/scheduler/quotacheckstrategy/suite_test.go
+  h_47cee5fa694435 82
+test/integration/singlecluster/controller/jobs/pytorchjob/suite_test.go
+  h_47cee5fa694435 100
+test/integration/singlecluster/scheduler/configurablepreemptions/suite_test.go
+  h_47cee5fa694435 99
+test/integration/singlecluster/controller/jobs/appwrapper/suite_test.go
+  h_47cee5fa694435 100
+test/integration/singlecluster/controller/jobs/raycluster/suite_test.go
+  h_47cee5fa694435 130
+test/integration/singlecluster/controller/jobs/rayclusterwebhook/suite_test.go
+  h_47cee5fa694435 102
+test/integration/singlecluster/controller/admissionchecks/provisioning/suite_test.go
+  h_47cee5fa694435 112
+test/integration/singlecluster/controller/dra/suite_test.go
+  h_47cee5fa694435 142
+test/integration/singlecluster/controller/jobs/jaxjob/suite_test.go
+  h_47cee5fa694435 100
+test/integration/singlecluster/scheduler/fairsharing/suite_test.go
+  h_47cee5fa694435 108
+test/integration/singlecluster/controller/jobs/statefulset/suite_test.go
+  h_47cee5fa694435 89
+test/integration/multikueue/scheduler/suite_test.go
+  h_47cee5fa694435 128
+test/util/behavioral/integration/factory.go
+  h_47cee5fa694435 26,28-29,32
+test/integration/singlecluster/controller/concurrentadmission/suite_test.go
+  h_47cee5fa694435 81
+test/integration/singlecluster/scheduler/inadmissible/suite_test.go
+  h_47cee5fa694435 79
+test/integration/singlecluster/controller/jobs/rayjob/suite_test.go
+  h_47cee5fa694435 97
+test/integration/singlecluster/importer/suite_test.go
+  h_47cee5fa694435 73
+test/integration/singlecluster/scheduler/excluderesources/suite_test.go
+  h_47cee5fa694435 95
+test/integration/multikueue/tas/suite_test.go
+  h_47cee5fa694435 130
+test/integration/singlecluster/webhook/core/suite_test.go
+  h_47cee5fa694435 71
+test/integration/singlecluster/scheduler/suite_test.go
+  h_47cee5fa694435 120
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ca97be48fb01fc28fc1ec36489e77c5b92c1475b",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

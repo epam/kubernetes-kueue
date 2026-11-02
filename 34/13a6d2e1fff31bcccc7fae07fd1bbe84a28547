@@ -1,0 +1,29 @@
+pkg/controller/jobs/mpijob/mpijob_webhook_test.go
+  h_47cee5fa694435 61
+pkg/controller/jobs/job/job_webhook_test.go
+  h_47cee5fa694435 82,196,218,313,324,565,576,587,792-793
+pkg/controller/jobs/statefulset/statefulset_webhook_test.go
+  h_47cee5fa694435 304,314,324
+pkg/util/testing/constant.go
+  h_47cee5fa694435 1-24
+pkg/controller/jobs/jobset/jobset_webhook_test.go
+  h_47cee5fa694435 62
+pkg/controller/jobs/trainjob/trainjob_webhook_test.go
+  h_47cee5fa694435 76
+pkg/controller/jobs/deployment/deployment_webhook_test.go
+  h_47cee5fa694435 339,349,359
+test/util/behavioral/constants.go
+  h_47cee5fa694435 43,45,49,53
+  h_47cee5fa694435 42,50-52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3413a6d2e1fff31bcccc7fae07fd1bbe84a28547",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

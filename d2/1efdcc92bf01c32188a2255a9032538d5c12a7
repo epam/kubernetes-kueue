@@ -1,0 +1,31 @@
+config/components/kueueviz/frontend-configmap.yaml
+  h_47cee5fa694435 1-11
+hack/processing-plan.yaml
+  s_14b0391097c0b6::t_fc5071c25867a1 508,511
+  s_14b0391097c0b6::t_c24c5b5b5e45de 703-707,710-713
+  h_47cee5fa694435 708-709
+  s_14b0391097c0b6::t_7549b7274c8803 509-510
+config/components/kueueviz/kustomization.yaml
+  h_47cee5fa694435 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d21efdcc92bf01c32188a2255a9032538d5c12a7",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_14b0391097c0b6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2766d5fb-80bd-4930-b77b-381e64e69eec",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

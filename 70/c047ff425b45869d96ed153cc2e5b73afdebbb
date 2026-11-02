@@ -1,0 +1,14 @@
+test/util/behavioral/multikueue.go
+  h_47cee5fa694435 20-21,24,26-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "70c047ff425b45869d96ed153cc2e5b73afdebbb",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

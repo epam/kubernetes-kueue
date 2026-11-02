@@ -1,0 +1,157 @@
+test/e2e/sequential/baseline/objectretentionpolicies_test.go
+  h_47cee5fa694435 38,87,134,177,220,267,319
+test/e2e/singlecluster/extended/appwrapper_test.go
+  h_47cee5fa694435 92,131
+test/e2e/singlecluster/baseline/fair_sharing_test.go
+  h_47cee5fa694435 98
+test/e2e/multikueue/extended/pytorchjob_test.go
+  h_47cee5fa694435 58
+test/e2e/multikueue/extended/trainjob_test.go
+  h_47cee5fa694435 54
+test/e2e/singlecluster/extended/kuberay_test.go
+  h_47cee5fa694435 89
+test/e2e/singlecluster/tasapi/extended/trainjob_test.go
+  h_47cee5fa694435 99,169,241
+test/e2e/multikueue/sequential/e2e_test.go
+  h_47cee5fa694435 228,263,305,333,395,466,564,805,852,885,918
+test/e2e/singlecluster/tasapi/extended/appwrapper_test.go
+  h_47cee5fa694435 91,135
+test/e2e/sequential/baseline/custom_metrics_test.go
+  h_47cee5fa694435 38
+test/e2e/sequential/baseline/managejobswithoutqueuename_test.go
+  h_47cee5fa694435 47,94,133,176,198,227,254,288,370
+test/e2e/dra/whole-device/dra_test.go
+  h_47cee5fa694435 92,137,185,194,252,261,270,298,343,376,407,496,536,578,588,638,673,742
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  h_47cee5fa694435 4992,7093,7109
+test/e2e/singlecluster/extended/leaderworkerset_test.go
+  h_47cee5fa694435 91,140,187,242,323,416,506,517,582,592,692,792,866,876,1021,1097,1133,1189,1231,1303,1398,1497
+test/e2e/singlecluster/baseline/metrics_test.go
+  h_47cee5fa694435 79,288,416,437,458,480,489
+test/e2e/singlecluster/baseline/hierarchical_cohort_test.go
+  h_47cee5fa694435 105,123
+test/e2e/sequential/baseline/failure_recovery_policy_test.go
+  h_47cee5fa694435 44,63
+test/e2e/multikueue/extended/ray_autoscaling_test.go
+  h_47cee5fa694435 676
+test/e2e/singlecluster/baseline/concurrent_admission_test.go
+  h_47cee5fa694435 99,160
+test/util/behavioral/e2e/constants.go
+  h_47cee5fa694435 22-35,46-49
+  h_47cee5fa694435 21,50
+test/e2e/singlecluster/extended/jaxjob_test.go
+  h_47cee5fa694435 89
+test/e2e/singlecluster/baseline/statefulset_test.go
+  h_47cee5fa694435 88,113,162,213,265,302,365,414,496,565,603,660,762
+test/e2e/sequential/baseline/waitforpodsready_test.go
+  h_47cee5fa694435 57,106,149,214,269,311,391,457,506,548,621,674,725
+test/e2e/multikueue/extended/leaderworkerset_test.go
+  h_47cee5fa694435 56,147
+test/e2e/singlecluster/tasapi/baseline/statefulset_test.go
+  h_47cee5fa694435 36,80
+test/e2e/singlecluster/tasapi/extended/jobset_test.go
+  h_47cee5fa694435 98,161,226,287,298
+test/e2e/dra/counter/dra_test.go
+  h_47cee5fa694435 87,117,145,172,205,236,271,279,315
+test/e2e/sequential/baseline/metrics_test.go
+  h_47cee5fa694435 34,83
+test/e2e/sequential/baseline/ha_test.go
+  h_47cee5fa694435 38
+test/integration/singlecluster/webhook/jobs/jobset_webhook_test.go
+  h_47cee5fa694435 87
+test/e2e/singlecluster/tasapi/baseline/hotswap_test.go
+  h_47cee5fa694435 44,129,193,265,350,449,601
+test/e2e/singlecluster/tasapi/extended/mpijob_test.go
+  h_47cee5fa694435 104,114,181,191,267,278,337,359
+test/e2e/singlecluster/extended/mpijob_test.go
+  h_47cee5fa694435 84,90,163,169
+test/e2e/singlecluster/baseline/pod_test.go
+  h_47cee5fa694435 95,140,185,192,300,371,422,447,496,561
+test/e2e/certmanager/certmanager_test.go
+  h_47cee5fa694435 71
+test/e2e/sequential/extended/managejobswithoutqueuename_test.go
+  h_47cee5fa694435 97,153,217,280,339,409,467,524,674,682,776
+test/e2e/singlecluster/baseline/tas_test.go
+  h_47cee5fa694435 94,182,236
+test/e2e/multikueue/baseline/tas_test.go
+  h_47cee5fa694435 226,325,548,599
+test/e2e/singlecluster/tasapi/baseline/deployment_test.go
+  h_47cee5fa694435 40,98
+test/e2e/dra/capacity/dra_test.go
+  h_47cee5fa694435 87,116,145,174,202,237,245,282
+test/integration/singlecluster/controller/jobs/jobset/jobset_controller_test.go
+  h_47cee5fa694435 1269,1280
+test/e2e/multikueue/extended/jobset_test.go
+  h_47cee5fa694435 65
+test/e2e/multikueue/baseline/e2e_test.go
+  h_47cee5fa694435 257,340,385,496,554,613,688,719,852,886,944,986,1060,1094,1157,1268,1275
+test/e2e/sequential/baseline/configurable_preemptions_test.go
+  h_47cee5fa694435 123,133,150
+test/e2e/singlecluster/wasapi/job_test.go
+  h_47cee5fa694435 108
+test/e2e/multikueue/extended/appwrapper_test.go
+  h_47cee5fa694435 59
+test/e2e/singlecluster/tasapi/extended/leaderworkerset_test.go
+  h_47cee5fa694435 102,201,223,329,352,447,472,570,595,716,733
+test/e2e/sequential/baseline/visibility_server_test.go
+  h_47cee5fa694435 42
+test/e2e/singlecluster/tasapi/extended/pytorch_test.go
+  h_47cee5fa694435 100,110
+test/e2e/multikueue/extended/kuberay_test.go
+  h_47cee5fa694435 469
+test/e2e/certmanager/visibility_test.go
+  h_47cee5fa694435 76,100
+test/e2e/sequential/extended/workloadidentifierannotations_test.go
+  h_47cee5fa694435 87
+test/e2e/sequential/baseline/reconcile_test.go
+  h_47cee5fa694435 38,108,122,139
+test/e2e/singlecluster/extended/pytorchjob_test.go
+  h_47cee5fa694435 87
+test/e2e/singlecluster/tasapi/baseline/job_test.go
+  h_47cee5fa694435 41,98,119,166,213,239,296,352
+test/e2e/singlecluster/extended/trainjob_test.go
+  h_47cee5fa694435 81,166
+test/e2e/singlecluster/baseline/provisioning_test.go
+  h_47cee5fa694435 162,202,315
+test/e2e/sequential/baseline/quota_check_strategy_test.go
+  h_47cee5fa694435 38,110,137,204,218
+test/util/behavioral/e2e/util.go
+  h_47cee5fa694435 55
+test/e2e/sequential/baseline/workloadpriorityclassdefaulting_test.go
+  h_47cee5fa694435 37,86,132
+test/e2e/multikueue/extended/mpijob_test.go
+  h_47cee5fa694435 56,63
+test/e2e/sequential/baseline/default_config_test.go
+  h_47cee5fa694435 47
+test/e2e/certmanager/metrics_test.go
+  h_47cee5fa694435 82
+test/e2e/singlecluster/baseline/visibility_test.go
+  h_47cee5fa694435 108,150,242,357,611
+test/e2e/singlecluster/tasapi/baseline/pod_group_test.go
+  h_47cee5fa694435 37,93,142,206,308
+test/e2e/sequential/baseline/podintegrationautoenablement_test.go
+  h_47cee5fa694435 39,85,125
+test/e2e/singlecluster/baseline/job_test.go
+  h_47cee5fa694435 60,166,217,235,264,353,376,431,475,536,572,641,731,864,1004
+test/e2e/multikueue/dra/dra_test.go
+  h_47cee5fa694435 183,286,330,407
+test/integration/multikueue/scheduler/scheduler_test.go
+  h_47cee5fa694435 546
+test/e2e/sequential/baseline/admission_fair_sharing_test.go
+  h_47cee5fa694435 38,110,117,145,153,234,241,269
+test/e2e/singlecluster/extended/jobset_test.go
+  h_47cee5fa694435 83,162
+test/e2e/singlecluster/baseline/deployment_test.go
+  h_47cee5fa694435 83,133
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "77cd862eee6e49e752e52829201b96036daa98c6",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+test/integration/singlecluster/controller/jobs/trainjob/trainjob_controller_test.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 205,285
+test/integration/singlecluster/controller/jobs/mpijob/mpijob_controller_test.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 173,205,235,397,438,671,709,955,1263
+test/integration/singlecluster/controller/admissionchecks/provisioning/provisioning_test.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 648,814
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 311,370,815,961,996,1036,1162,1337,1378,1455,1525,1615,2763,3289,4059,4103,4967,5016,5081,5127,5179,5225
+test/integration/singlecluster/controller/jobs/kubeflow/kubeflowjob.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 137,180,254,295
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_test.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 179,224,420,458
+test/integration/singlecluster/controller/jobs/sparkapplication/sparkapplication_test_util.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 116,186,228
+test/integration/singlecluster/controller/jobs/pod/pod_custom_metric_labels_test.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 112
+test/integration/singlecluster/webhook/jobs/raycluster_webhook_test.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 209
+test/integration/singlecluster/controller/jobs/rayjob/rayjob_controller_test.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 188,231,405,443,835
+test/integration/singlecluster/controller/jobs/jobset/jobset_controller_test.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 200,255,337,466,620,662,838,875
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 218,280,328,400,433,710,764,856,923,997,1084,1150,1313,1439,1498,1612,1713,1863,1887,1989,2111,2186,2276,2355,2411,2481,2793,2907,2959,3097,3182,3276,3386,3488,4681
+test/integration/singlecluster/webhook/core/workload_test.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 637,1144
+test/integration/singlecluster/controller/core/workload_controller_test.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 1414,1446,1667,1765,1845,1916,1952
+test/integration/singlecluster/controller/jobs/appwrapper/appwrapper_controller_test.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 198,269,462,502,659,696
+test/integration/singlecluster/controller/jobs/jaxjob/jaxjob_controller_test.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 254,290,594
+test/integration/singlecluster/controller/jobs/pytorchjob/pytorchjob_controller_test.go
+  s_3f2a7044998c18::t_f9c41382acbcbc 265,301,613
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0ceba8b5cd81557e6385f2881623617dd1da2170",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_3f2a7044998c18": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1797fa75-7e09-4f37-b3f9-75d36f814ed0",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

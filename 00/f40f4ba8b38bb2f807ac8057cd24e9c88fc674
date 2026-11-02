@@ -1,0 +1,14 @@
+pkg/cache/scheduler/tas_flavor_snapshot_test.go
+  h_47cee5fa694435 38,2316
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "00f40f4ba8b38bb2f807ac8057cd24e9c88fc674",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

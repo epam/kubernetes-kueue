@@ -1,0 +1,30 @@
+CHANGELOG/CHANGELOG-0.18.md
+  h_47cee5fa694435 1-53
+site/content/en/v0.18/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+site/content/en/v0.18/docs/concepts/dynamic_resource_allocation.md
+  h_47cee5fa694435 73-74
+site/content/en/v0.18/docs/concepts/topology_aware_scheduling.md
+  h_47cee5fa694435 375-398
+site/content/en/v0.18/docs/reference/kubectl-kueue/commands/kueuectl_version/_index.md
+  h_47cee5fa694435 28-30
+site/content/en/v0.18/docs/tasks/manage/rbac.md
+  h_47cee5fa694435 30-34,36-38
+site/content/en/v0.18/docs/tasks/manage/setup_dra.md
+  h_47cee5fa694435 163-166
+site/content/en/v0.18/docs/tasks/run/kubeflow/sparkapplications.md
+  h_47cee5fa694435 71-97
+site/content/zh-CN/v0.18/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7b6e2ca3db43a9ddbc04907706b62d2b98c068bc",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

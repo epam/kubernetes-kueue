@@ -1,0 +1,58 @@
+pkg/controller/jobframework/interface.go
+  s_7b084ab8b1f2c5::t_c7a30f26b4c209 73,79,81-83
+  s_7b084ab8b1f2c5::t_d36461b1edb8a7 80
+  s_7b084ab8b1f2c5::t_39e385b354a685 84-85
+pkg/controller/jobs/job/job_controller.go
+  s_7b084ab8b1f2c5::t_c7a30f26b4c209 429,436-439
+pkg/controller/jobs/raycluster/raycluster_controller.go
+  s_7b084ab8b1f2c5::t_c7a30f26b4c209 158
+pkg/controller/jobs/sparkapplication/sparkapplication_controller.go
+  s_7b084ab8b1f2c5::t_c7a30f26b4c209 323
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  s_7b084ab8b1f2c5::t_4696df468d60e0 3907-3911,3915,3917,3920-3933
+internal/mocks/controller/jobframework/interface.go
+  s_7b084ab8b1f2c5::t_b5d9a39246dd3a 153,155-159,165,167-168
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_7b084ab8b1f2c5::t_b5d9a39246dd3a 410
+pkg/controller/jobs/mpijob/mpijob_controller.go
+  s_7b084ab8b1f2c5::t_c7a30f26b4c209 208
+pkg/controller/jobs/trainjob/trainjob_controller.go
+  s_7b084ab8b1f2c5::t_c7a30f26b4c209 396
+pkg/controller/jobs/kubeflow/kubeflowjob/kubeflowjob_controller.go
+  s_7b084ab8b1f2c5::t_c7a30f26b4c209 144
+pkg/controller/jobs/job/job_controller_test.go
+  s_7b084ab8b1f2c5::t_d36461b1edb8a7 173-174
+  s_7b084ab8b1f2c5::t_b5d9a39246dd3a 305
+pkg/controller/jobs/jobset/jobset_controller.go
+  s_7b084ab8b1f2c5::t_c7a30f26b4c209 185
+pkg/controller/jobs/pod/pod_controller.go
+  s_7b084ab8b1f2c5::t_c7a30f26b4c209 548
+pkg/controller/jobs/rayjob/rayjob_controller.go
+  s_7b084ab8b1f2c5::t_c7a30f26b4c209 240
+pkg/controller/jobframework/reconciler.go
+  s_7b084ab8b1f2c5::t_c7a30f26b4c209 2411
+pkg/controller/jobs/rayservice/rayservice_controller_test.go
+  s_7b084ab8b1f2c5::t_b5d9a39246dd3a 690
+pkg/controller/jobs/jobset/jobset_controller_test.go
+  s_7b084ab8b1f2c5::t_b5d9a39246dd3a 114
+pkg/controller/jobs/rayservice/rayservice_controller.go
+  s_7b084ab8b1f2c5::t_c7a30f26b4c209 249
+pkg/controller/jobs/appwrapper/appwrapper_controller.go
+  s_7b084ab8b1f2c5::t_c7a30f26b4c209 201
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e78a6702e1c5f14d87cf935399cf793f8e95f442",
+  "prompts": {},
+  "sessions": {
+    "s_7b084ab8b1f2c5": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "54b7c845-d4b3-407d-9900-3074b325a8cc",
+        "model": "unknown"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

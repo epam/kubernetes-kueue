@@ -1,0 +1,18 @@
+pkg/scheduler/flavorassigner/flavorassigner.go
+  h_47cee5fa694435 930-941,945-975,977-993,1009-1012,1017
+pkg/scheduler/scheduler_tas_test.go
+  h_47cee5fa694435 6572-6843
+pkg/scheduler/scheduler.go
+  h_47cee5fa694435 479-505
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d4ad460b7d0cfa893d41d10d9cbd582bf1b4ff25",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

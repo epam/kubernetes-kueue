@@ -1,0 +1,14 @@
+pkg/controller/jobs/statefulset/statefulset_reconciler_test.go
+  h_47cee5fa694435 62,76-78,248,280-300,303,458,497,680,739-740,787,789-791
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "684071f997d06dc4026e9fe9568708dac40ba4e7",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
