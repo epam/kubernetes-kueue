@@ -1,0 +1,21 @@
+pkg/controller/concurrentadmission/controller.go
+  s_593d4fc3eee3fa::t_84cd5314319eb1 209-211,245,259-302,719-725,736
+pkg/controller/concurrentadmission/controller_test.go
+  s_593d4fc3eee3fa::t_e6ec1872e3fe10 171-177,2416-2494,2526-2541
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "93eb41715dfe1238edea1ebeffd22be76f3f5a36",
+  "prompts": {},
+  "sessions": {
+    "s_593d4fc3eee3fa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "df5f21b7-6825-4fad-a508-de8343fce249",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

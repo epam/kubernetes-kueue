@@ -1,0 +1,28 @@
+site/content/en/community/contribution_guidelines/writing_tests.md
+  s_5e5c8dc86a7e28::t_8cedd058811037 57
+  s_5e5c8dc86a7e28::t_5537775eb1d974 56
+site/content/en/community/contribution_guidelines/coding_guidelines.md
+  s_5e5c8dc86a7e28::t_5537775eb1d974 120-142,387-404
+  s_5e5c8dc86a7e28::t_5bb201de2d23ba 405
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e6a302d8cb7c9daa1e972d858afabd152e92e7a9",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_5e5c8dc86a7e28": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "5700cd21-1714-4feb-b35a-2016317aa8b9",
+        "model": "copilot/claude-sonnet-5.5"
+      },
+      "human_author": null
+    }
+  }
+}
