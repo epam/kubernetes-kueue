@@ -1,0 +1,23 @@
+pkg/controller/jobframework/OWNERS
+  s_8716820d218e83::t_3de3f5748cf060 1-8,10-11
+  s_8716820d218e83::t_98698afa74bcde 9,12
+OWNERS_ALIASES
+  s_8716820d218e83::t_98698afa74bcde 30
+  s_8716820d218e83::t_c6680a0eb24d0c 31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0a59ab5f1e47e9fa1da77a97e6379f26c82a11c2",
+  "prompts": {},
+  "sessions": {
+    "s_8716820d218e83": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "98bbe009-1c70-416f-8392-0d6841cd5a92",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
