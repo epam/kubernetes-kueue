@@ -9,7 +9,7 @@ pkg/features/kube_features.go
   s_26f0242fe01ba2::t_09abe2e6436bf9 1472-1473
   s_26f0242fe01ba2::t_9973121143bd55 919,938-940,1462
   s_9dceb3c19bd574::t_bb4b499f4465a0 948,1471
-  h_47cee5fa694435 928,1466
+  h_47cee5fa694435 928,937,1466,1470
 site/content/en/docs/tasks/run/leaderworkerset.md
   s_9dceb3c19bd574::t_bb4b499f4465a0 104
   s_26f0242fe01ba2::t_fdf50192084c57 87-91,106
