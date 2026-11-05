@@ -1,0 +1,16 @@
+cmd/experimental/skills/OWNERS
+  h_32169613a39d35 7-8
+test/OWNERS
+  h_32169613a39d35 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7d8521645446d75e8fbecbcf04f23761c2507f43",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}
