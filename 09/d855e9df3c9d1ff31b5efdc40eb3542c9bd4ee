@@ -1,0 +1,18 @@
+OWNERS_ALIASES
+  h_32169613a39d35 22-25
+cmd/kueueviz/OWNERS
+  h_32169613a39d35 4
+test/e2e/kueueviz/OWNERS
+  h_32169613a39d35 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "09d855e9df3c9d1ff31b5efdc40eb3542c9bd4ee",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}
