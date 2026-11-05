@@ -1,0 +1,16 @@
+pkg/controller/concurrentadmission/controller.go
+  h_47cee5fa694435 22,408-409
+pkg/controller/concurrentadmission/controller_test.go
+  h_47cee5fa694435 2868-2891
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4785628e7617c10f68f6a7fa5f7066fac0dad18a",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
