@@ -1,0 +1,19 @@
+Makefile
+  s_343ef116ba72cf::t_ba37eaf4cd8e57 276
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "681111d5006351c7727ee0912e78ef0ba5b30367",
+  "prompts": {},
+  "sessions": {
+    "s_343ef116ba72cf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "732dbb06-08e5-43fe-8478-d3d68a5452e8",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

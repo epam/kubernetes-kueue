@@ -1,0 +1,19 @@
+pkg/features/kube_features.go
+  s_aac402b72fc238::t_ae33da2557e16a 1483
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ab742a73739b1b7a51d0928d9d2b33af7f821d6c",
+  "prompts": {},
+  "sessions": {
+    "s_aac402b72fc238": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bcfb9d4f-2b81-4f2f-acc5-1e0722912502",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
