@@ -1,0 +1,42 @@
+pkg/cache/scheduler/cohort_metrics_test.go
+  s_afeedf270c55fe::t_97170a7f922250 331-332,337,340,343
+  s_afeedf270c55fe::t_e895ce00926d46 1497-1499
+  s_0308056b1e44cb::t_040f00d6d26785 1406,1490,1585-1586
+pkg/controller/core/clusterqueue_controller_test.go
+  s_afeedf270c55fe::t_f3739755a63174 1046-1051,1066-1073,1082-1083
+  s_afeedf270c55fe::t_e59bbca6107f2d 995
+  s_afeedf270c55fe::t_0653ecb32d0c11 1084,1098-1106
+pkg/controller/core/clusterqueue_controller.go
+  s_afeedf270c55fe::t_b53c851238af87 209-212,214
+test/integration/singlecluster/controller/core/clusterqueue_controller_test.go
+  s_afeedf270c55fe::t_03bc552f40cde3 1567,1576-1656
+pkg/cache/scheduler/cohort_metrics.go
+  s_afeedf270c55fe::t_fc0007e109b274 233-239
+pkg/metrics/metrics.go
+  s_afeedf270c55fe::t_7e8c8c3913deb0 1034
+  s_afeedf270c55fe::t_1c3b4135b2e174 1078
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d0161c7a8346601a7d1d20615c7e706e7f16cad8",
+  "prompts": {},
+  "sessions": {
+    "s_0308056b1e44cb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-a158543d8ffc18915",
+        "model": "unknown"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    },
+    "s_afeedf270c55fe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "89595346-87de-44d0-bece-923cf7a40491",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
