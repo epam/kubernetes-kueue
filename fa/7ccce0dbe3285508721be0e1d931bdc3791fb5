@@ -6,6 +6,8 @@ pkg/util/testingjobs/leaderworkerset/wrappers.go
 pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
   s_9dceb3c19bd574::t_64699385ee0bc5 30,45,370,378-381,383-387,418-419,421-422,426-427,431-434,438-445
   s_9dceb3c19bd574::t_580bd90a4ab755 25,244-252,257,264,382,388-389,411-417,420,423-425,428-430
+  s_9c836b75795758::t_60322c7407f847 435-437
+  s_9c836b75795758::t_2299c9507dc137 365,410
 test/compatibility_lifecycle/reference/versioned_feature_list.yaml
   s_9dceb3c19bd574::t_05629df4046af7 36-41
 site/data/featuregates/versioned_feature_list.yaml
@@ -17,6 +19,7 @@ pkg/workload/effective_resources_test.go
 pkg/features/kube_features.go
   s_9dceb3c19bd574::t_7f3cb132c1d75d 926,974-981,1503,1524
   s_9dceb3c19bd574::t_19b956c623189f 1525-1526
+  s_9c836b75795758::t_2cd56da6a1c0ee 973,1523
 test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
   s_9dceb3c19bd574::t_6ddcc49c5b49ae 236-238,240-268
   s_9dceb3c19bd574::t_4a11fcc5377a49 25,30,43-49
@@ -37,6 +40,14 @@ pkg/workload/effective_resources.go
   "base_commit_sha": "fa7ccce0dbe3285508721be0e1d931bdc3791fb5",
   "prompts": {},
   "sessions": {
+    "s_9c836b75795758": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5cabbc8d-fdeb-45f9-9086-3809d606da21",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
     "s_9dceb3c19bd574": {
       "agent_id": {
         "tool": "claude",
