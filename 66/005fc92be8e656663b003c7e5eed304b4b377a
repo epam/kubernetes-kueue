@@ -1,0 +1,16 @@
+OWNERS
+  h_32169613a39d35 21-22,29-30,59-60,70-71
+test/OWNERS
+  h_32169613a39d35 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "66005fc92be8e656663b003c7e5eed304b4b377a",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}
