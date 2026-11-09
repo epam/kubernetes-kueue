@@ -20,6 +20,7 @@ pkg/features/kube_features.go
   s_9dceb3c19bd574::t_7f3cb132c1d75d 926,983-990,1512,1537
   s_9dceb3c19bd574::t_19b956c623189f 1538-1539
   s_9c836b75795758::t_2cd56da6a1c0ee 973,1532
+  h_47cee5fa694435 982,1536
 test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
   s_9dceb3c19bd574::t_6ddcc49c5b49ae 236-238,240-268
   s_9dceb3c19bd574::t_4a11fcc5377a49 25,30,43-49
@@ -39,6 +40,11 @@ pkg/workload/effective_resources.go
   "git_ai_version": "1.7.5",
   "base_commit_sha": "39821e3b8931cf91e3c625dbe44065b1e3f6ef3f",
   "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
   "sessions": {
     "s_9c836b75795758": {
       "agent_id": {
