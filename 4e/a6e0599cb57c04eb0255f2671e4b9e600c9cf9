@@ -1,0 +1,19 @@
+cmd/kueueviz/frontend/src/Dashboard.jsx
+  s_d6d22f85d9d18d::t_33c7636a309c1f 28,302,326
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4ea6e0599cb57c04eb0255f2671e4b9e600c9cf9",
+  "prompts": {},
+  "sessions": {
+    "s_d6d22f85d9d18d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b726d4df-b21b-404b-8db4-530109ed6446",
+        "model": "unknown"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

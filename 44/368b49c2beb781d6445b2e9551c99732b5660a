@@ -1,0 +1,21 @@
+pkg/cache/scheduler/tas_cache_test.go
+  s_81c45a22e0cb64::t_152f654b05a4ea 8134-8189
+pkg/cache/scheduler/tas_flavor_snapshot.go
+  s_81c45a22e0cb64::t_2f84df75385390 2613-2617
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "44368b49c2beb781d6445b2e9551c99732b5660a",
+  "prompts": {},
+  "sessions": {
+    "s_81c45a22e0cb64": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "561e5626-9277-4d71-9c36-b78b1b7bf539",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
