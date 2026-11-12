@@ -1,0 +1,19 @@
+test/integration/singlecluster/controller/jobs/job/elastic_partial_scaleup_resize_test.go
+  s_e4f3208873d8ee::t_9b0a1f03617c39 106-136
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "66c0833239e0eef48e654fe2255b94003528225f",
+  "prompts": {},
+  "sessions": {
+    "s_e4f3208873d8ee": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "55e85b1c-a509-4b1d-a860-e88ae9c7c3de",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

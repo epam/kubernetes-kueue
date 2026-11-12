@@ -1,0 +1,34 @@
+pkg/controller/jobs/trainjob/trainjob_controller.go
+  s_4477a39a84491a::t_a1a02a3e8334b9 166
+  s_519088072ec8db::t_263152275b7ce0 176
+  s_519088072ec8db::t_a63af659536156 196,201
+  s_519088072ec8db::t_8a1d3298a1c5ad 185-195,197-200,202-206
+pkg/controller/jobs/trainjob/trainjob_controller_test.go
+  s_519088072ec8db::t_acd441da7a9e54 865-866
+  s_519088072ec8db::t_a8da68c7009802 864
+  s_519088072ec8db::t_8365beb985f5a4 887,893,913,919-945
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9746dacc8cf07a82ab15afecbe7a65737c5f0042",
+  "prompts": {},
+  "sessions": {
+    "s_4477a39a84491a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4cdcf393-32de-40ec-8b87-a36c8a9e8982",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_519088072ec8db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e26cf538-7e76-45b7-8530-709d435203d0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

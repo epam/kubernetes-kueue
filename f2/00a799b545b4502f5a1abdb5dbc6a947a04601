@@ -1,0 +1,30 @@
+pkg/scheduler/scheduler_concurrent_admission_test.go
+  s_1da303fe7465aa::t_3e2bce93413c69 421,443-444,573-707
+pkg/scheduler/scheduler.go
+  s_1da303fe7465aa::t_7b2aa51c5c7ea3 496-500
+  s_7daca58225f517::t_70c51f365c60a6 487,495,626-629
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f200a799b545b4502f5a1abdb5dbc6a947a04601",
+  "prompts": {},
+  "sessions": {
+    "s_1da303fe7465aa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "94993853-7f7c-4a7e-8c6c-69e79c680ea3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    },
+    "s_7daca58225f517": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bf0508ed-18a1-4e40-8b36-8a207d2ef8c5",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

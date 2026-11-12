@@ -1,0 +1,19 @@
+.github/actions/OWNERS
+  s_a9186fc02fb11e::t_1eb3d294500d4a 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "cc60fe3c8fbf96c52364d79ea6c8a6425cb4831b",
+  "prompts": {},
+  "sessions": {
+    "s_a9186fc02fb11e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a539ce6-0cac-4ad7-b5d8-21c8a90b6bc3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
