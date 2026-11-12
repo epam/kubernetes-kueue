@@ -1,0 +1,19 @@
+pkg/controller/jobs/trainjob/trainjob_controller_test.go
+  s_eb4c17e1aea17b::t_14df69af9f0b81 867,901,991
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9064a18585b9942f88566319571b765426c7b519",
+  "prompts": {},
+  "sessions": {
+    "s_eb4c17e1aea17b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e22723ba-c782-4a92-bb24-338209775fe3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
