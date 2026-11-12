@@ -1,0 +1,54 @@
+test/integration/singlecluster/tas/tas_elastic_ungaters_test.go
+  h_32169613a39d35 1-211
+pkg/util/tas/ranks/ranks.go
+  h_32169613a39d35 41-61
+pkg/controller/tas/topology_ungater.go
+  s_b5ad059dc91025::t_a198c5c3c9d644 335-336
+  h_32169613a39d35 62,212,217-223,225,313,320,328-334
+pkg/util/tas/tas_assignment_test.go
+  h_32169613a39d35 1581-1633
+pkg/util/tas/tas_assignment.go
+  h_32169613a39d35 26,165-187
+pkg/util/pod/pod_test.go
+  s_b5ad059dc91025::t_6a2833b24d50bd 39-40,84-115,118
+  s_b5ad059dc91025::t_96812df5d9d291 116-117
+  s_b5ad059dc91025::t_7f77e80dffc4d0 119-120
+pkg/controller/tas/topology_ungater_elastic_test.go
+  h_32169613a39d35 1-220
+pkg/util/tas/ranks/ranks_test.go
+  h_32169613a39d35 20,24-25,29-72
+pkg/controller/tas/topology_ungater_test.go
+  h_32169613a39d35 57,2937-2987,3340
+pkg/util/pod/pod.go
+  s_b5ad059dc91025::t_a198c5c3c9d644 28,41,49-61
+  s_b5ad059dc91025::t_575bad820e9bb0 62-63
+pkg/controller/elasticjobs/elastic_job_ungater_test.go
+  h_32169613a39d35 32,103,167-169,472-577,579-581,583-584,586-589,591-592,594-597,599,601-602,604-607,609-610,612-616,618-620,622-623,625-626,628-629,631-634,636,638-639,641-642,644-645,647-648,1478,1519,1804
+  s_b5ad059dc91025::t_614a2d6176bbf0 106,123,127-128,141,145-165,578,582,585,590,600,603,608,611,617,621,627,637,643
+  s_b5ad059dc91025::t_37b4bc2c45fdc2 107-122,124-126,129-140,142-144,593,598,624,630,635,640,646
+pkg/controller/elasticjobs/elastic_job_ungater.go
+  s_b5ad059dc91025::t_a198c5c3c9d644 51,316-317,376
+  h_32169613a39d35 48,58,81-88,92-93,95,101-108,302-310,318,330,363-364,366,368-370,372-375,377,379,406-414
+  s_b5ad059dc91025::t_be722f5fb8516c 378
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1fa727c0bc5405d0b1c6973dee6ca50f6b7ba3fa",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_b5ad059dc91025": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1cfa8-1dc0-7433-bae1-95b7865f55da",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": null
+    }
+  }
+}
