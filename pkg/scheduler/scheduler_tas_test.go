@@ -40,7 +40,6 @@ import (
 	"k8s.io/component-base/featuregate"
 	"k8s.io/klog/v2"
 	testingclock "k8s.io/utils/clock/testing"
-	"k8s.io/utils/ptr"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/client/interceptor"
 
@@ -233,7 +232,7 @@ func newTryDeferFailedTASReplacementFixture(t *testing.T) (context.Context, logr
 		t.Fatalf("Taking snapshot: %v", err)
 	}
 	qManager := qcache.NewManagerForUnitTests(cl, cqCache)
-	scheduler := New(qManager, cqCache, cl, &utiltesting.EventRecorder{}, WithFailedTASReplacementRecoveryTimeout(ptr.To(time.Minute)))
+	scheduler := New(qManager, cqCache, cl, &utiltesting.EventRecorder{}, WithFailedTASReplacementRecoveryTimeout(new(time.Minute)))
 	e := &entry{
 		Info:                 *workload.NewInfo(log, &foo),
 		clusterQueueSnapshot: snapshot.ClusterQueue("tas-main"),
@@ -5550,7 +5549,8 @@ type tasScheduleTestCase struct {
 	workloads       []kueue.Workload
 	wantWorkloads   []kueue.Workload
 
-	featureGates map[featuregate.Feature]bool
+	featureGates      map[featuregate.Feature]bool
+	enableFairSharing bool
 
 	// simulatorOverride allows to set a custom simulator.SchedulerSimulator.
 	simulatorOverride func() simulator.SchedulerSimulator
@@ -5798,6 +5798,9 @@ func runTASScheduleTestCases(t *testing.T, cfg tasScheduleTestConfig, cases map[
 						recordingFactory.recorder.failPreempt = tc.failSimulatorPreemption
 						cacheOptions = append(cacheOptions, schdcache.WithSimulatorFactory(recordingFactory))
 					}
+					if tc.enableFairSharing {
+						cacheOptions = append(cacheOptions, schdcache.WithFairSharing(true))
+					}
 					cqCache := schdcache.New(cl, cacheOptions...)
 					fakeClock := testingclock.NewFakeClock(cfg.now)
 					qManager := qcache.NewManagerForUnitTests(cl, cqCache, qcache.WithClock(fakeClock))
@@ -5860,11 +5863,15 @@ func runTASScheduleTestCases(t *testing.T, cfg tasScheduleTestConfig, cases map[
 							t.Fatalf("expected workload %s to be prequeued again for a second pass", workload.Key(wl))
 						}
 					}
+					var fairSharing *config.FairSharing
+					if tc.enableFairSharing {
+						fairSharing = &config.FairSharing{}
+					}
 					recoveryTimeout := 30 * time.Minute
 					if tc.recoveryTimeout != nil {
 						recoveryTimeout = *tc.recoveryTimeout
 					}
-					schedulerOpts := []Option{WithClock(t, fakeClock), WithPreemptionExpectations(preemptexpectations.New())}
+					schedulerOpts := []Option{WithFairSharing(fairSharing), WithClock(t, fakeClock), WithPreemptionExpectations(preemptexpectations.New())}
 					if recoveryTimeout > 0 {
 						schedulerOpts = append(schedulerOpts, WithFailedTASReplacementRecoveryTimeout(new(recoveryTimeout)))
 					}

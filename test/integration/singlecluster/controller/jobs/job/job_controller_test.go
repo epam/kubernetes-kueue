@@ -94,8 +94,7 @@ var _ = ginkgo.Describe("Job controller", ginkgo.Label("job:batch", "area:jobs")
 
 	ginkgo.BeforeEach(func() {
 		unmanagedNsName = "unmanaged-ns-" + rand.String(8)
-		ginkgo.DeferCleanup(fwk.StopManager, ctx)
-		fwk.StartManager(ctx, cfg, managerSetup(
+		fwk.StartManagerForSpec(ctx, cfg, managerSetup(
 			jobframework.WithManageJobsWithoutQueueName(true),
 			jobframework.WithManagedJobsNamespaceSelector(behavioral.NewNamespaceSelectorExcluding(unmanagedNsName)),
 			jobframework.WithLabelKeysToCopy(sets.New("toCopyKey")),
@@ -1597,8 +1596,7 @@ var _ = ginkgo.Describe("When waitForPodsReady enabled", func() {
 	)
 
 	ginkgo.BeforeEach(func() {
-		ginkgo.DeferCleanup(fwk.StopManager, ctx)
-		fwk.StartManager(
+		fwk.StartManagerForSpec(
 			ctx,
 			cfg,
 			managerSetup(
@@ -3761,8 +3759,7 @@ var _ = ginkgo.Describe("Job controller interacting with Workload controller whe
 				},
 				RecoveryTimeout: waitForPodsReadyRecoveryTimeout,
 			}
-			ginkgo.DeferCleanup(fwk.StopManager, ctx)
-			fwk.StartManager(ctx, cfg, managerAndControllersSetup(
+			fwk.StartManagerForSpec(ctx, cfg, managerAndControllersSetup(
 				false,
 				false,
 				&configapi.Configuration{WaitForPodsReady: waitForPodsReady},
@@ -4543,8 +4540,7 @@ var _ = ginkgo.Describe("Job controller with TopologyAwareScheduling", func() {
 	)
 
 	ginkgo.BeforeEach(func() {
-		ginkgo.DeferCleanup(fwk.StopManager, ctx)
-		fwk.StartManager(ctx, cfg, func(ctx context.Context, mgr manager.Manager) {
+		fwk.StartManagerForSpec(ctx, cfg, func(ctx context.Context, mgr manager.Manager) {
 			indexedClient = mgr.GetClient()
 			managerAndControllersSetup(true, true, nil)(ctx, mgr)
 		})
@@ -4826,6 +4822,149 @@ var _ = ginkgo.Describe("Job controller with TopologyAwareScheduling", func() {
 	})
 })
 
+var _ = ginkgo.Describe("Job controller when TopologyAwareScheduling is enabled after admission", ginkgo.Label("job:batch", "area:jobs", "feature:tas"), func() {
+	const (
+		nodeGroupLabel = "node-group"
+		tasBlockLabel  = "cloud.com/topology-block"
+	)
+
+	var (
+		ns             *corev1.Namespace
+		nodes          []corev1.Node
+		topology       *kueue.Topology
+		tasFlavor      *kueue.ResourceFlavor
+		clusterQueue   *kueue.ClusterQueue
+		localQueue     *kueue.LocalQueue
+		managerRunning bool
+	)
+
+	// startManager sets up the TAS controllers only when the TopologyAwareScheduling
+	// feature gate is enabled, as Kueue does.
+	startManager := func() {
+		ginkgo.GinkgoHelper()
+		if !managerRunning {
+			fwk.StartManager(ctx, cfg, managerAndControllersSetup(features.Enabled(features.TopologyAwareScheduling), true, nil))
+			managerRunning = true
+		}
+	}
+
+	stopManager := func() {
+		ginkgo.GinkgoHelper()
+		if managerRunning {
+			fwk.StopManager(ctx)
+			managerRunning = false
+		}
+	}
+
+	restartManagerWithTAS := func(enabled bool) {
+		ginkgo.GinkgoHelper()
+		stopManager()
+		features.SetFeatureGateDuringTest(ginkgo.GinkgoTB(), features.TopologyAwareScheduling, enabled)
+		startManager()
+	}
+
+	ginkgo.BeforeEach(func() {
+		ginkgo.DeferCleanup(stopManager)
+		startManager()
+		ns = behavioral.CreateNamespaceFromPrefixWithLog(ctx, k8sClient, "tas-job-")
+
+		nodes = []corev1.Node{
+			*testingnode.MakeNode("b1").
+				Label(nodeGroupLabel, "tas").
+				Label(tasBlockLabel, "b1").
+				StatusAllocatable(corev1.ResourceList{
+					corev1.ResourceCPU:    resource.MustParse("1"),
+					corev1.ResourceMemory: resource.MustParse("1Gi"),
+					corev1.ResourcePods:   resource.MustParse("10"),
+				}).
+				Ready().
+				Obj(),
+		}
+		integration.CreateNodesWithStatus(ctx, k8sClient, nodes)
+
+		topology = utiltestingapi.MakeTopology("default").Levels(tasBlockLabel).Obj()
+		behavioral.MustCreate(ctx, k8sClient, topology)
+
+		tasFlavor = utiltestingapi.MakeResourceFlavor("tas-flavor").
+			NodeLabel(nodeGroupLabel, "tas").
+			TopologyName("default").Obj()
+		behavioral.MustCreate(ctx, k8sClient, tasFlavor)
+
+		clusterQueue = utiltestingapi.MakeClusterQueue("cluster-queue").
+			ResourceGroup(*utiltestingapi.MakeFlavorQuotas(tasFlavor.Name).Resource(corev1.ResourceCPU, "5").Obj()).
+			Obj()
+		behavioral.MustCreate(ctx, k8sClient, clusterQueue)
+		behavioral.ExpectClusterQueuesToBeActive(ctx, k8sClient, clusterQueue)
+
+		localQueue = utiltestingapi.MakeLocalQueue("local-queue", ns.Name).ClusterQueue(clusterQueue.Name).Obj()
+		behavioral.MustCreate(ctx, k8sClient, localQueue)
+	})
+
+	ginkgo.AfterEach(func() {
+		startManager()
+		gomega.Expect(behavioral.DeleteNamespace(ctx, k8sClient, ns)).To(gomega.Succeed())
+		behavioral.ExpectObjectToBeDeleted(ctx, k8sClient, clusterQueue, true)
+		behavioral.ExpectObjectToBeDeleted(ctx, k8sClient, tasFlavor, true)
+		behavioral.ExpectObjectToBeDeleted(ctx, k8sClient, topology, true)
+		for _, node := range nodes {
+			behavioral.ExpectObjectToBeDeleted(ctx, k8sClient, &node, true)
+		}
+	})
+
+	ginkgo.It("should keep running a Job that requests a topology when its Workload was admitted while the gate was disabled", framework.SlowSpec, func() {
+		ginkgo.By("restarting the manager with TopologyAwareScheduling disabled", func() {
+			restartManagerWithTAS(false)
+		})
+
+		testJob := testingjob.MakeJob("job", ns.Name).
+			Queue(kueue.LocalQueueName(localQueue.Name)).
+			PodAnnotation(kueue.PodSetPreferredTopologyAnnotation, tasBlockLabel).
+			Request(corev1.ResourceCPU, "100m").
+			Obj()
+		ginkgo.By("creating a Job that requests a topology", func() {
+			behavioral.MustCreate(ctx, k8sClient, testJob)
+		})
+
+		wl := &kueue.Workload{}
+		wlLookupKey := types.NamespacedName{
+			Name:      workloadjob.GetWorkloadNameForJob(testJob.Name, testJob.UID),
+			Namespace: ns.Name,
+		}
+		var originalWlUID types.UID
+		ginkgo.By("waiting for the Workload to be admitted without TAS and the Job to be unsuspended", func() {
+			behavioral.ExpectWorkloadsToBeAdmittedByKeys(ctx, k8sClient, wlLookupKey)
+			gomega.Eventually(func(g gomega.Gomega) {
+				g.Expect(k8sClient.Get(ctx, wlLookupKey, wl)).To(gomega.Succeed())
+				g.Expect(wl.Spec.PodSets[0].TopologyRequest).To(gomega.BeNil())
+				g.Expect(workload.IsAdmittedByTAS(wl)).To(gomega.BeFalse())
+				originalWlUID = wl.UID
+				g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(testJob), testJob)).To(gomega.Succeed())
+				g.Expect(ptr.Deref(testJob.Spec.Suspend, true)).To(gomega.BeFalse())
+			}, behavioral.Timeout, behavioral.Interval).Should(gomega.Succeed())
+		})
+
+		ginkgo.By("restarting the manager with TopologyAwareScheduling enabled and triggering reconciliation", func() {
+			restartManagerWithTAS(true)
+			gomega.Eventually(func(g gomega.Gomega) {
+				g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(testJob), testJob)).To(gomega.Succeed())
+				metav1.SetMetaDataLabel(&testJob.ObjectMeta, "test-reconcile", "true")
+				g.Expect(k8sClient.Update(ctx, testJob)).To(gomega.Succeed())
+			}, behavioral.Timeout, behavioral.Interval).Should(gomega.Succeed())
+		})
+
+		ginkgo.By("verifying the Workload is consistently preserved and the Job remains unsuspended", func() {
+			gomega.Consistently(func(g gomega.Gomega) {
+				g.Expect(k8sClient.Get(ctx, wlLookupKey, wl)).To(gomega.Succeed())
+				g.Expect(wl.UID).To(gomega.Equal(originalWlUID))
+				g.Expect(workload.IsAdmitted(wl)).To(gomega.BeTrue())
+				g.Expect(apimeta.IsStatusConditionTrue(wl.Status.Conditions, kueue.WorkloadEvicted)).To(gomega.BeFalse())
+				g.Expect(k8sClient.Get(ctx, client.ObjectKeyFromObject(testJob), testJob)).To(gomega.Succeed())
+				g.Expect(ptr.Deref(testJob.Spec.Suspend, true)).To(gomega.BeFalse())
+			}, behavioral.ConsistentDuration, behavioral.ShortInterval).Should(gomega.Succeed())
+		})
+	})
+})
+
 var _ = ginkgo.Describe("Job controller with TAS and ElasticJobsViaWorkloadSlices", func() {
 	const (
 		nodeGroupLabel = "node-group"
@@ -4843,8 +4982,7 @@ var _ = ginkgo.Describe("Job controller with TAS and ElasticJobsViaWorkloadSlice
 
 	ginkgo.BeforeEach(func() {
 		features.SetFeatureGateDuringTest(ginkgo.GinkgoTB(), features.ElasticJobsViaWorkloadSlices, true)
-		ginkgo.DeferCleanup(fwk.StopManager, ctx)
-		fwk.StartManager(ctx, cfg, managerAndControllersSetup(true, true, nil))
+		fwk.StartManagerForSpec(ctx, cfg, managerAndControllersSetup(true, true, nil))
 
 		ns = behavioral.CreateNamespaceFromPrefixWithLog(ctx, k8sClient, "tas-elastic-")
 
@@ -4993,8 +5131,7 @@ var _ = ginkgo.Describe("Job controller with ObjectRetentionPolicies", func() {
 			WaitForPodsReady: waitForPodsReady,
 		}
 
-		ginkgo.DeferCleanup(fwk.StopManager, ctx)
-		fwk.StartManager(ctx, cfg, managerAndControllersSetup(false, false, configuration,
+		fwk.StartManagerForSpec(ctx, cfg, managerAndControllersSetup(false, false, configuration,
 			jobframework.WithObjectRetentionPolicies(configuration.ObjectRetentionPolicies),
 			jobframework.WithWaitForPodsReady(waitForPodsReady),
 		))
@@ -5349,8 +5486,7 @@ var _ = ginkgo.DescribeTable("Elastic resize preemption retains occupied capacit
 		features.SetFeatureGateDuringTest(ginkgo.GinkgoTB(), features.ElasticJobsViaWorkloadSlices, true)
 		features.SetFeatureGateDuringTest(ginkgo.GinkgoTB(), features.TopologyAwareScheduling, tasEnabled)
 		features.SetFeatureGateDuringTest(ginkgo.GinkgoTB(), features.ElasticJobsViaWorkloadSlicesWithTAS, tasEnabled)
-		ginkgo.DeferCleanup(fwk.StopManager, ctx)
-		fwk.StartManager(ctx, cfg, managerAndControllersSetup(tasEnabled, true, nil))
+		fwk.StartManagerForSpec(ctx, cfg, managerAndControllersSetup(tasEnabled, true, nil))
 
 		ns := behavioral.CreateNamespaceFromPrefixWithLog(ctx, k8sClient, "resize-preemption-")
 		nodes := []corev1.Node{}
@@ -5506,8 +5642,7 @@ var _ = ginkgo.Describe("Job with elastic jobs via workload-slices support", fun
 
 	ginkgo.BeforeEach(func() {
 		features.SetFeatureGateDuringTest(ginkgo.GinkgoTB(), features.ElasticJobsViaWorkloadSlices, true)
-		ginkgo.DeferCleanup(fwk.StopManager, ctx)
-		fwk.StartManager(ctx, cfg, managerAndControllersSetup(false, true, nil))
+		fwk.StartManagerForSpec(ctx, cfg, managerAndControllersSetup(false, true, nil))
 
 		ns = behavioral.CreateNamespaceFromPrefixWithLog(ctx, k8sClient, "core-")
 
@@ -7130,8 +7265,7 @@ var _ = ginkgo.Describe("Job reconciliation", func() {
 		var managedByQueueRequirement, err = labels.NewRequirement("managed-by-kueue", selection.In, []string{"true"})
 		gomega.Expect(err).NotTo(gomega.HaveOccurred())
 
-		ginkgo.DeferCleanup(fwk.StopManager, ctx)
-		fwk.StartManager(ctx, cfg,
+		fwk.StartManagerForSpec(ctx, cfg,
 			managerSetup(
 				jobframework.WithManagedJobsNamespaceSelector(labels.NewSelector().Add(*managedByQueueRequirement)),
 			),
@@ -7240,11 +7374,8 @@ var _ = ginkgo.Describe("Job controller with CustomMetricLabels", ginkgo.Label("
 			constants.JobOwnerNameAnnotation, constants.PriorityBoostAnnotationKey,
 			constants.WorkloadAllowedResourceFlavorAnnotation, kueue.WorkloadSliceNameAnnotation,
 			workloadslicing.WorkloadSliceReplacementFor, podconstants.IsGroupWorkloadAnnotationKey)
-		ginkgo.DeferCleanup(func() {
-			fwk.StopManager(ctx)
-			metrics.InitMetricVectors(nil)
-		})
-		fwk.StartManager(ctx, cfg, managerAndControllersSetup(false, false, configuration,
+		ginkgo.DeferCleanup(func() { metrics.InitMetricVectors(nil) })
+		fwk.StartManagerForSpec(ctx, cfg, managerAndControllersSetup(false, false, configuration,
 			jobframework.WithLabelKeysToCopy(labelKeysToCopy),
 			jobframework.WithAnnotationsToCopy(annotationsToCopy),
 		))
