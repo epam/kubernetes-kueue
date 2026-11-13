@@ -1,0 +1,20 @@
+.github/workflows/OWNERS
+  h_47cee5fa694435 5-6
+OWNERS
+  h_47cee5fa694435 98-99,104-105,110-111,116-117
+.github/actions/OWNERS
+  h_47cee5fa694435 5-6
+site/OWNERS
+  h_47cee5fa694435 24-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "75a5e6839eb8bbbd60641198b6a784c860fea645",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
