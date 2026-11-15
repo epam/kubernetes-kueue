@@ -1,0 +1,20 @@
+pkg/cache/scheduler/cohort_metrics_test.go
+  s_5a19c5e176f7b1::t_ca279999cfa8cd 341-352,354-377
+  s_5a19c5e176f7b1::t_a6a60700cef7cc 353
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "43b3b697fa6225111c2e4f18d589f425577831ff",
+  "prompts": {},
+  "sessions": {
+    "s_5a19c5e176f7b1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2aa4906d-446a-47a1-b51c-4231e4de8c83",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

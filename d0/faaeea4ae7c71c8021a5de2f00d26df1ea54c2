@@ -1,0 +1,21 @@
+test/integration/singlecluster/controller/core/clusterqueue_controller_test.go
+  s_47568a4912cb8d::t_aacfac6bcd6052 1707,1709,1719-1746,1748-1770
+  s_47568a4912cb8d::t_d523663f92a8a6 1747
+  s_47568a4912cb8d::t_44da068ba46583 1699,1706,1708,1710
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d0faaeea4ae7c71c8021a5de2f00d26df1ea54c2",
+  "prompts": {},
+  "sessions": {
+    "s_47568a4912cb8d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c3bec406-6eff-46e7-afff-702ebab125de",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}
