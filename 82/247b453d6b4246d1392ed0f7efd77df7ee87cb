@@ -1,0 +1,23 @@
+pkg/controller/jobframework/reconciler.go
+  s_5f05291671fe10::t_b2d654bfd4a41d 853-855,1063,1277,1352,1358,1370-1371,1376
+  s_5f05291671fe10::t_07c22270e29f09 830-852,1377-1384,1418-1420
+pkg/controller/jobframework/workload_priority_test.go
+  s_5f05291671fe10::t_b2d654bfd4a41d 378
+  s_5f05291671fe10::t_22efbf0990f539 44-45,57,78,80-81,101-102,406-408
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "82247b453d6b4246d1392ed0f7efd77df7ee87cb",
+  "prompts": {},
+  "sessions": {
+    "s_5f05291671fe10": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d0f1bfd0-56c8-4036-ac52-331925ad7edc",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

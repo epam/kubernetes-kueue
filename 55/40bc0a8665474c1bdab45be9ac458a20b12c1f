@@ -1,0 +1,35 @@
+pkg/controller/core/workload_controller_test.go
+  s_12efba480d63f0::t_015a471a6df888 1305-1306
+  s_12efba480d63f0::t_3d22946c2ee1f5 1307-1309
+  s_c318d217800904::t_9eab806520c2b9 1310-1343
+pkg/cache/scheduler/cache.go
+  s_12efba480d63f0::t_feb324c9e5e245 1021-1022,1027-1028,1037,1040,1045,1048-1051,1053
+pkg/controller/core/workload_controller.go
+  s_12efba480d63f0::t_403aa2dd670e01 1414,1420-1421,1423-1425,1438
+test/integration/singlecluster/controller/concurrentadmission/concurrent_admission_test.go
+  s_12efba480d63f0::t_e0d11301d98cfb 92,246,427,532,627,734,823,906,991
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5540bc0a8665474c1bdab45be9ac458a20b12c1f",
+  "prompts": {},
+  "sessions": {
+    "s_12efba480d63f0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35fae528-7634-46f6-9a14-d7f4b855c873",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    },
+    "s_c318d217800904": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-adaf49780c607be3b",
+        "model": "unknown"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

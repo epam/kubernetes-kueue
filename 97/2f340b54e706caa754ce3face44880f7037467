@@ -1,0 +1,23 @@
+pkg/controller/admissionchecks/provisioning/controller.go
+  s_38d9e27474d78d::t_6231d4139c0063 20,27,366-367,497,635-640,1119,1123-1168,1179,1204-1210,1212-1220,1222-1223,1225-1242,1245,1248,1250,1256-1263
+pkg/controller/admissionchecks/provisioning/controller_test.go
+  s_38d9e27474d78d::t_582b8dcb1ffec8 56,330-332,509-511,533-681,1006,2606-2654,3625-3627
+test/integration/singlecluster/controller/admissionchecks/provisioning/provisioning_test.go
+  s_38d9e27474d78d::t_c9ae4e3c88a015 1619,1702,1746-1834
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "972f340b54e706caa754ce3face44880f7037467",
+  "prompts": {},
+  "sessions": {
+    "s_38d9e27474d78d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "321941bd-e7ec-491a-9cd0-5cdaa56d2136",
+        "model": "unknown"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+pkg/scheduler/fair_sharing_iterator.go
+  h_47cee5fa694435 40-43,48-49,53,61-67,73-87,92-93,95-100,106,108,121,124,134-136,146,162,170,175-177,179-180,265,271,275-276
+pkg/scheduler/fair_sharing_iterator_test.go
+  h_47cee5fa694435 134-294
+pkg/scheduler/scheduler.go
+  h_47cee5fa694435 1200-1217,1222,1224-1229,1231-1236,1238,1240-1250,1252-1254
+pkg/scheduler/scheduler_fs_test.go
+  h_47cee5fa694435 33,36,3600-3755
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b8c440556f86efa3f84bc91903b479b3db731f46",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

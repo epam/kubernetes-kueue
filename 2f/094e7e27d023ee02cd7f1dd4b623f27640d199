@@ -1,0 +1,21 @@
+OWNERS
+  s_a9186fc02fb11e::t_2ec2abcf411f1b 103
+.github/actions/OWNERS
+  s_a9186fc02fb11e::t_1eb3d294500d4a 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2f094e7e27d023ee02cd7f1dd4b623f27640d199",
+  "prompts": {},
+  "sessions": {
+    "s_a9186fc02fb11e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a539ce6-0cac-4ad7-b5d8-21c8a90b6bc3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}

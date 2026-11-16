@@ -1,0 +1,24 @@
+pkg/cache/scheduler/cache.go
+  h_47cee5fa694435 197,869-871
+pkg/cache/scheduler/clusterqueue.go
+  h_47cee5fa694435 60-62,509-516,520-523,533-571,579-582,587-589
+pkg/cache/scheduler/workload_slice_test.go
+  h_47cee5fa694435 1-261
+pkg/cache/scheduler/workload_slice_tracker.go
+  h_47cee5fa694435 1-120
+test/integration/singlecluster/controller/core/clusterqueue_controller_test.go
+  h_47cee5fa694435 30,40,646-699
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  h_47cee5fa694435 4953-5018,6435-6473
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "92c1dbeb376745b43a247db038c4d38f0ba5ae4e",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
