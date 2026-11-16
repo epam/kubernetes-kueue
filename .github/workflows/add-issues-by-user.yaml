@@ -39,6 +39,7 @@ on:
           - mykysha
           - reruno
           - ivnovakov
+          - unaimeds
       status:
         description: 'Status'
         required: true
