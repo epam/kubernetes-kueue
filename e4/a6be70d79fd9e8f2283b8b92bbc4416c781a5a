@@ -1,0 +1,56 @@
+site/content/en/docs/tasks/run/leaderworkerset.md
+  s_e429db9fe292e9::t_17f16ae47d12e4 146
+  s_e429db9fe292e9::t_5d05d0317fdb82 119-130,136-138,143,145
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_e429db9fe292e9::t_17f16ae47d12e4 344
+pkg/util/testingjobs/leaderworkerset/wrappers.go
+  s_e429db9fe292e9::t_67917b17ac1422 153-158
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter_test.go
+  s_e429db9fe292e9::t_6f9fee8b185ec5 59,62,638
+  s_e429db9fe292e9::t_17f16ae47d12e4 424,500,537,621,661
+  s_e429db9fe292e9::t_d7e8b1baac6918 464-498,660,665,683
+  s_e429db9fe292e9::t_cf25488a864da1 255-256,575-576
+test/e2e/singlecluster/extended/leaderworkerset_test.go
+  s_e429db9fe292e9::t_4a41bd7ec21ea2 779,815,819-825,838,847,862,869
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter.go
+  s_e429db9fe292e9::t_31642ff240c01d 81-82,91-92,144-152,157,218
+  s_e429db9fe292e9::t_17f16ae47d12e4 90,222
+  s_e429db9fe292e9::t_fe0fbe0323a66a 160-162
+test/integration/multikueue/leaderworkerset_test.go
+  s_e429db9fe292e9::t_cdea05dffc9b6b 135,159-161,165-167,169,173,179
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  s_e429db9fe292e9::t_5b91f9cdad23ca 556-559
+  s_e429db9fe292e9::t_17f16ae47d12e4 273,470
+  s_e429db9fe292e9::t_6731f52365d144 534-535
+  s_e429db9fe292e9::t_98affbcfad392a 274,472-474,476,504-506,509,516-522,526,530-533,536-540,560,562-563,566-571,575-580
+pkg/features/kube_features.go
+  s_e429db9fe292e9::t_294ccba421e6de 1026-1031
+  s_e429db9fe292e9::t_17f16ae47d12e4 1032,1597
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  s_e429db9fe292e9::t_17f16ae47d12e4 1388,1400,1415,1436,1449,1467,1485,1506,1521,1539,1553,1572,1593,1613,1634,1653,1674,1686,1704,1862,2420
+  s_e429db9fe292e9::t_2cbe86ea853962 1382-1383,1716-1717,2316-2317
+  s_e429db9fe292e9::t_67917b17ac1422 1714-1715,1718-1853,1857
+  s_e429db9fe292e9::t_7408be4188c765 1431,1462,1480,1501,1534,1567,1588,1608,1629,1648,1669,1699
+site/data/featuregates/versioned_feature_list.yaml
+  s_e429db9fe292e9::t_17f16ae47d12e4 344
+test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
+  s_e429db9fe292e9::t_cdea05dffc9b6b 242-259,262-278,281-283,311
+  s_e429db9fe292e9::t_31444c38260c62 187
+  s_e429db9fe292e9::t_6731f52365d144 260-261,279-280
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e4a6be70d79fd9e8f2283b8b92bbc4416c781a5a",
+  "prompts": {},
+  "sessions": {
+    "s_e429db9fe292e9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4a09421b-5dcd-4538-a5ec-e4a8307efff6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

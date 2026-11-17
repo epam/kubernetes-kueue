@@ -1,0 +1,21 @@
+pkg/controller/core/workload_controller.go
+  s_5cb9f409940a53::t_f94800b8ecd413 1476-1477
+pkg/controller/core/workload_controller_test.go
+  s_5cb9f409940a53::t_833af18d8b2511 1419-1420,1424-1426,1428-1441,1448,1450,1454-1455,1458-1471,1476-1481,1483,1488-1493
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "53d4f8c97c5cec373fa3d11f06e86b6ebc4f90e1",
+  "prompts": {},
+  "sessions": {
+    "s_5cb9f409940a53": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b915f781-1e59-4b19-8d66-3eb2bd9797ce",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
