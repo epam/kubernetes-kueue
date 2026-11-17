@@ -1,0 +1,19 @@
+cmd/experimental/skills/reviewer/README.md
+  s_26dbc5360e0683::t_5cc71f3dee441e 30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f87692f362ee926d75fb3914830af5cc755be6fb",
+  "prompts": {},
+  "sessions": {
+    "s_26dbc5360e0683": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d67b2e69-a489-424a-9c83-573501624466",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+OWNERS_ALIASES
+  h_47cee5fa694435 22-26,49-50,60-62,70
+OWNERS
+  h_47cee5fa694435 21-22,29-30,61-62,72-73,81-82,90-91,99-100,108-109
+cmd/experimental/skills/OWNERS
+  h_47cee5fa694435 7-8
+hack/releasing/krew-release-bot/OWNERS
+  h_47cee5fa694435 5-6
+hack/testing/OWNERS
+  h_47cee5fa694435 9-10,15-16
+pkg/util/testing/OWNERS
+  h_47cee5fa694435 7-8
+pkg/util/testingjobs/OWNERS
+  h_47cee5fa694435 7-8
+test/OWNERS
+  h_47cee5fa694435 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a50afd184aed0cf79939e5557dc8cea6f566d737",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
