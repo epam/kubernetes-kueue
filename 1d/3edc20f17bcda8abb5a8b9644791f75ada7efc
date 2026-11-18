@@ -1,0 +1,14 @@
+pkg/webhooks/workload_webhook_test.go
+  h_027f582e324e2c 2123-2124
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1d3edc20f17bcda8abb5a8b9644791f75ada7efc",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}
