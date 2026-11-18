@@ -1,0 +1,24 @@
+pkg/scheduler/preemption/strategy_test.go
+  s_79d74d54133035::t_f4a0842b1b9f10 748-749
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "28048d1252cab1e4f9e5933d75804079ca28de0a",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  },
+  "sessions": {
+    "s_79d74d54133035": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec6cc502-1168-474e-9e27-3e3bec7fdd17",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}
