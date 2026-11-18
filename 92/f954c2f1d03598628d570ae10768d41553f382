@@ -1,0 +1,25 @@
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  s_dd6c19f1a4577f::t_92da4e20de7726 529-533
+  s_dd6c19f1a4577f::t_8b321f6ed95305 48
+  s_dd6c19f1a4577f::t_f7b3785a01f7f7 523-527
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  s_dd6c19f1a4577f::t_056976f159aaf7 1639-1663
+site/content/en/docs/tasks/run/leaderworkerset.md
+  s_dd6c19f1a4577f::t_8cc1e6bf7d92d2 90
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "92f954c2f1d03598628d570ae10768d41553f382",
+  "prompts": {},
+  "sessions": {
+    "s_dd6c19f1a4577f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "defd68f2-ec3b-4790-a3e8-6067874f07c6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
