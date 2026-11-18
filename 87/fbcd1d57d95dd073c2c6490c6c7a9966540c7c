@@ -1,0 +1,67 @@
+pkg/controller/tas/topology_ungater.go
+  h_32169613a39d35 62,351,358,366-372
+  s_8e4634e4604a6c::t_8a92b8fae7aa37 242,247-253,255
+  s_b5ad059dc91025::t_a198c5c3c9d644 373-374
+  h_32169613a39d35 209-210,213,235
+pkg/util/tas/tas_assignment.go
+  h_32169613a39d35 26,165-187
+test/integration/singlecluster/tas/tas_elastic_ungaters_test.go
+  h_32169613a39d35 1-46,48-208
+  s_8e4634e4604a6c::t_b550d980d95ff8 47
+pkg/controller/tas/topology_ungater_elastic_test.go
+  h_32169613a39d35 1-50,52-58,60-62,64-224
+  s_8e4634e4604a6c::t_de299db33ca08e 225-301
+  h_32169613a39d35 51,59,63
+pkg/util/tas/ranks/ranks_test.go
+  h_32169613a39d35 20,24-25,33-62,70-83
+  h_32169613a39d35 27-30,63-69,142-178
+pkg/util/tas/tas_assignment_test.go
+  h_32169613a39d35 1581-1633
+pkg/controller/elasticjobs/elastic_job_ungater.go
+  s_b5ad059dc91025::t_a198c5c3c9d644 51,383
+  h_32169613a39d35 48,58,82,85-90,94-95,99,101,107-114,308-316,336,370-371,373,375-377,379-382,384,386,413-421
+  s_8e4634e4604a6c::t_39316c71566682 323-325,342-343
+  s_b5ad059dc91025::t_be722f5fb8516c 385
+  h_32169613a39d35 81,83-84,96-98
+pkg/util/tas/ranks/ranks.go
+  h_32169613a39d35 43-61,77-78
+  h_32169613a39d35 30,36,62-76
+pkg/controller/tas/topology_ungater_test.go
+  h_32169613a39d35 57,2937-2956,2958,2976-3008,3361
+  h_32169613a39d35 2957,2959-2975
+pkg/controller/elasticjobs/elastic_job_ungater_test.go
+  s_b5ad059dc91025::t_37b4bc2c45fdc2 108-123,125-127,130-141,143-145,594,599,612,617,665,679,684,690
+  s_b5ad059dc91025::t_614a2d6176bbf0 107,124,128-129,142,146-166,579,583,586,591,601,604,609,619,622,627,630,636,638,644,667,681,687
+  s_8e4634e4604a6c::t_018ee85c5311fc 610-611,613-614,618,620-621,624-626,635,641,645-654,656-660,666,668-676
+  h_32169613a39d35 32,104,168-170,473-578,580-582,584-585,587-590,592-593,595-598,600,602-603,605-608,628-629,631-634,637,639-640,642-643,655,661-664,680,682-683,685-686,688-689,691-692,1522,1563,1848
+  h_32169613a39d35 101,615-616,623,677-678
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "87fbcd1d57d95dd073c2c6490c6c7a9966540c7c",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_8e4634e4604a6c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1cfbe-9059-7d40-9b2d-f446fb5339ba",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": null
+    },
+    "s_b5ad059dc91025": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1cfa8-1dc0-7433-bae1-95b7865f55da",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": null
+    }
+  }
+}
