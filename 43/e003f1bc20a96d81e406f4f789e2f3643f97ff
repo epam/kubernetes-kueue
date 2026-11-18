@@ -20,6 +20,7 @@ test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
   s_02f458953205fa::t_0e2aa84093de02 216-218,236-238,264-266
   s_9dceb3c19bd574::t_1e9bd04ee01be6 211,223
   s_9dceb3c19bd574::t_6ddcc49c5b49ae 274
+  s_dd6c19f1a4577f::t_8e4792eabf3aff 43
 test/e2e/singlecluster/extended/leaderworkerset_test.go
   s_02f458953205fa::t_8e76cd752e0c4e 775-777
   s_02f458953205fa::t_b5ced0a812d154 778
@@ -169,6 +170,14 @@ pkg/controller/admissionchecks/multikueue/workload.go
       "agent_id": {
         "tool": "claude",
         "id": "dc6a169b-f647-49de-89cf-f8871162feea",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_dd6c19f1a4577f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "defd68f2-ec3b-4790-a3e8-6067874f07c6",
         "model": "claude-opus-5-5"
       },
       "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
