@@ -1,0 +1,169 @@
+.golangci.yaml
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 9
+pkg/controller/core/workload_controller.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 1845-1846,1848,1852-1853,1855,1859-1860,1862
+keps/13396-configurable-preemptions/kep.yaml
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 25
+pkg/cache/queue/variant_parent_counts_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 29,35-37,41-42,51-52,104-105,107-108,110,112,167-170
+  s_d6871c06f3c0fa::t_319385ff69325a 171
+pkg/controller/admissionchecks/multikueue/workload_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 4683,4686,4702-4716,4741-4742,4744,4755-4757,4987
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 39,1380-2051,2055-2073,2514-2515,2617-2618,2862-2865
+pkg/util/testing/wrappers.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 236-241
+pkg/controller/tas/pod_usage_controller_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 35,394,397-398,412-413,426-436,441
+pkg/workload/effective_resources_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 23,27,213-300
+  s_d6871c06f3c0fa::t_c9f6dd9114de85 301
+pkg/workload/evict/evict_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 20-21,23,27-28,30-32,35-38,146-219,221
+  s_d6871c06f3c0fa::t_b57b8cf571e9c9 220,222
+pkg/cache/scheduler/tas_flavor_snapshot_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 3392-3399,3406,3498-3505
+  s_d6871c06f3c0fa::t_177d4e5e040d5b 3506
+pkg/controller/tas/resource_flavor.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 29,117-119,219,240-241,260-261
+site/content/en/docs/tasks/run/kubeflow/sparkapplications.md
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 124-131,146-152
+test/integration/singlecluster/controller/jobs/sparkapplication/sparkapplication_controller_partial_scaleup_test.go
+  s_d6871c06f3c0fa::t_56e8408edcf0dc 1-220
+pkg/controller/tas/node_controller.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 143,243,349,356,514-517,529,531-532,546-547,553,568,668,672,674,683,685,688,799
+test/integration/singlecluster/controller/core/custom_labels_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 878-925
+keps/13396-configurable-preemptions/README.md
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 29,72,391,459-460,473-475,478-512,809-816,819-834,836-879,1090-1091,1098-1102,1259-1261,1265,1267,1269
+keps/16471-copy-annotations-into-workload/kep.yaml
+  s_d6871c06f3c0fa::t_56e8408edcf0dc 1-28
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 22,26-27,47-48,274-282,287,294,453-459,472-479,505-616
+pkg/controller/tas/topology_ungater_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 21-22,3827-3828,3836,3841,4031-4109,4118-4129,4135,4161-4167
+site/content/en/docs/tasks/manage/monitor_pending_workloads/pending_workloads_in_grafana.md
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 126-194
+pkg/controller/admissionchecks/multikueue/multikueuecluster.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 993,999,1014
+pkg/workload/effective_resources.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 85-86,88-89,95-107,155,160-165
+  s_d6871c06f3c0fa::t_1341d54e94a945 166-167
+site/content/zh-CN/docs/tasks/run/kubeflow/sparkapplications.md
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 106-113,127,129-133
+test/integration/multikueue/leaderworkerset_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 34,50-54,167-214
+  s_d6871c06f3c0fa::t_900a385370608c 215
+cmd/kueueviz/backend/handlers/websocket_handler.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 212-213
+test/e2e/singlecluster/extended/leaderworkerset_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 779-887
+pkg/controller/jobs/sparkapplication/sparkapplication_controller.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 199-205,471-472,476-478
+pkg/controller/core/localqueue_controller_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 1339-1342,1345-1349,1352-1355,1358-1363,1366-1370,1373-1376,1379-1383,1386-1389,1395-1400,1426-1434,1440,1456-1463,1465-1466,1472,1478-1482,1522-1537
+  s_d6871c06f3c0fa::t_ae2f2fdbe8276e 1538
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 49,81-82,84-87,89-110,136-178,185-202,204,227-237
+  s_d6871c06f3c0fa::t_56e8408edcf0dc 88
+  s_d6871c06f3c0fa::t_9648dd50a72d83 238
+pkg/controller/tas/topology_ungater.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 22,189,196,241,260,263,277,286,293,321-322,332-333,349-350,356,359,361,501-502,640-641
+site/content/en/docs/tasks/run/leaderworkerset.md
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 119-150
+test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 25,30,39-41,46-52,189,207-342
+  s_d6871c06f3c0fa::t_5570c3dc70c480 343
+test/util/behavioral/e2e/sparkapplication.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 56-70
+test/integration/singlecluster/controller/jobs/sparkapplication/sparkapplication_elastic_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 160,168,180,187,195,215,223,231,250,256,300,313,332,351
+pkg/controller/jobs/sparkapplication/sparkapplication_controller_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 46,359-366,373,570-624,640-641
+  s_d6871c06f3c0fa::t_094d35b9d73302 642
+pkg/cache/scheduler/cache_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 435,2314,2478
+pkg/util/testing/workqueue.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 23-24,54-81
+pkg/workload/evict/evict.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 143-145,180-184,207-208
+  s_d6871c06f3c0fa::t_92425801307ae6 209-210
+site/data/featuregates/versioned_feature_list.yaml
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 36-39
+  s_d6871c06f3c0fa::t_7ee328a0121bd1 34-35
+test/integration/singlecluster/controller/concurrentadmission/concurrent_admission_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 282-314
+pkg/controller/core/localqueue_controller.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 304-308,341
+pkg/cache/queue/variant_parent_counts.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 36-41,46-48,52-55,59-63,66-68,72-74,77-79,156-163,165-166,169,171,176,178
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 36-39
+  s_d6871c06f3c0fa::t_9d16f55063eb5d 34-35
+test/util/behavioral/metrics.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 67,69
+pkg/features/kube_features.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 1033-1045,1614
+  h_47cee5fa694435 1032,1613
+  s_d6871c06f3c0fa::t_845204c6ccba39 1615-1616
+test/integration/singlecluster/controller/core/localqueue_controller_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 709-793
+pkg/cache/queue/local_queue_counts.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 45-49,57-59,63,71-76,79,89-94,100,106,112,118,128,130,137-138,144-145,151-152,156-157,168-170
+pkg/cache/queue/manager_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 23,109-284
+  s_d6871c06f3c0fa::t_60515d5c1efbdf 285
+pkg/controller/tas/topology_controller.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 106,117,142,154-155,173
+pkg/scheduler/preemption/preemption_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 31-32,46,53,4578-4649,4651-4700,4702-4706,4708-4710,4712-4724,4726-4741,4743-4796
+test/e2e/sequential/extended/sparkapplication_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 33,264-383
+  s_d6871c06f3c0fa::t_5b03c5faf575f2 384-385
+cmd/kueueviz/backend/main.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 170-171
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 1413-1414,1416-1419,1425-1454,1458,1461,1463,1465,1467,1555
+pkg/controller/tas/pod_usage_controller.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 122,225,232,239,246,250-253
+  s_d6871c06f3c0fa::t_f28095ecbd2008 254-255
+pkg/cache/queue/local_queue.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 33-35,46,61-63,65-79
+pkg/util/testingjobs/leaderworkerset/wrappers.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 153-170,200-205,268-279
+  s_d6871c06f3c0fa::t_375ab66193597e 280
+keps/16471-copy-annotations-into-workload/README.md
+  s_d6871c06f3c0fa::t_56e8408edcf0dc 1-257
+pkg/cache/queue/manager.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 411-415,533-537,654,729-731,944,1064
+test/integration/singlecluster/controller/jobs/sparkapplication/sparkapplication_test_util.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 315-335
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter_test.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 20,23,59-63,65-66,68-72,254-257,312,354,423-820,1003-1020,1022
+  s_d6871c06f3c0fa::t_ba7e396904ca94 1021,1023-1024
+pkg/controller/jobs/leaderworkerset/leaderworkerset_controller.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 82-85
+pkg/scheduler/preemption/preemption.go
+  s_d6871c06f3c0fa::t_fde29dc4b3bad1 443-449
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8cc584ecb52094228c7542f14f19fd215848b24a",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_d6871c06f3c0fa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "081534da-977c-4b84-b3ad-b1fd7b2cfa6e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
