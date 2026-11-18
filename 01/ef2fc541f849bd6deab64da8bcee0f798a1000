@@ -1,0 +1,15 @@
+pkg/scheduler/scheduler_test.go
+  h_027f582e324e2c 10228
+  h_027f582e324e2c 10205-10206,10216-10218,10226-10227
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "01ef2fc541f849bd6deab64da8bcee0f798a1000",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}
