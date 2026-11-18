@@ -1,0 +1,21 @@
+site/go.mod
+  s_37d44fdebd0793::t_169248bcb20849 5
+site/go.sum
+  s_37d44fdebd0793::t_fd5197b9a2f70f 2-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "efbad840cc86ce5f76bf2055c27056f6d15766ba",
+  "prompts": {},
+  "sessions": {
+    "s_37d44fdebd0793": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8cd1ddb1-10df-4cc1-89b6-621273b63e57",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
