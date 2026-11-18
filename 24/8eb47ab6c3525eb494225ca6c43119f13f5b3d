@@ -1,0 +1,45 @@
+Makefile
+  s_37d44fdebd0793::t_1be6e3163d84fb 380
+site/assets/scss/_styles_project.scss
+  s_37d44fdebd0793::t_e1f8fcee5e5d55 522-549
+site/content/en/community/contribution_guidelines/website.md
+  s_37d44fdebd0793::t_d9987f094c105b 22-23
+site/go.mod
+  s_37d44fdebd0793::t_f2b5324a8d4b2c 5
+site/go.sum
+  s_37d44fdebd0793::t_0960e2f032e258 1-2
+site/hugo.toml
+  s_37d44fdebd0793::t_47f880e54b3948 150-151,197
+site/i18n/zh-CN.yaml
+  s_37d44fdebd0793::t_2b203c2b47f24a 21-24
+site/layouts/partials/navbar.html
+  s_37d44fdebd0793::t_00a68e3958b52b 36
+site/layouts/partials/sidebar-tree.html
+  s_37d44fdebd0793::t_6cd70dc5a2a188 1-10,23-26,28-30,32-34,38-41,43-48,54-56,65-67,69-187,189-190
+site/layouts/shortcodes/blocks/content-section.html
+  s_37d44fdebd0793::t_2dfc80b9caf287 4
+site/package-lock.json
+  s_37d44fdebd0793::t_bbd50635210773 7-9,23-42,119-137,346-349,417-429,842-849
+site/package.json
+  s_37d44fdebd0793::t_fc03a56a3acf71 6-9
+site/packages/hugoautogen/hugo_packagemeta.json
+  s_37d44fdebd0793::t_b9368a0099b5c4 1-10
+site/packages/hugoautogen/package.json
+  s_37d44fdebd0793::t_3f3cd436962abc 1-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "248eb47ab6c3525eb494225ca6c43119f13f5b3d",
+  "prompts": {},
+  "sessions": {
+    "s_37d44fdebd0793": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8cd1ddb1-10df-4cc1-89b6-621273b63e57",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
