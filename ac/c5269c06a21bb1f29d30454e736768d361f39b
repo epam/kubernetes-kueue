@@ -1,0 +1,22 @@
+cmd/experimental/skills/kueue-pr-issue-workflow/SKILL.md
+  s_20987b7e7c5900::t_083f18355a627c 158-159
+  s_20987b7e7c5900::t_c572782402775b 163-166
+  s_20987b7e7c5900::t_0220964899f28b 154-155,160
+  s_20987b7e7c5900::t_9eea02358ba43b 156-157,161-162
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "acc5269c06a21bb1f29d30454e736768d361f39b",
+  "prompts": {},
+  "sessions": {
+    "s_20987b7e7c5900": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "396f050f-f617-410d-86e2-c5d17132c1ec",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
