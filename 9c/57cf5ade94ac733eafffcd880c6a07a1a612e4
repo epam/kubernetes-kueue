@@ -1,0 +1,54 @@
+CHANGELOG/CHANGELOG-0.20.md
+  h_47cee5fa694435 1-41
+Makefile
+  h_47cee5fa694435 120
+README.md
+  h_47cee5fa694435 86
+SECURITY-INSIGHTS.yaml
+  h_47cee5fa694435 4-6,8,31,76
+charts/kueue/Chart.yaml
+  h_47cee5fa694435 19,24
+charts/kueue/README.md
+  h_47cee5fa694435 3,31,53,61
+charts/kueue/README.md.gotmpl
+  h_47cee5fa694435 33,55,63
+cmd/experimental/kueue-populator/README.md
+  h_47cee5fa694435 44
+cmd/experimental/kueue-populator/charts/kueue-populator/Chart.yaml
+  h_47cee5fa694435 5-6,9
+cmd/experimental/kueue-populator/charts/kueue-populator/README.md
+  h_47cee5fa694435 37,115,128
+cmd/experimental/kueue-priority-booster/charts/kueue-priority-booster/Chart.yaml
+  h_47cee5fa694435 5-6,9
+cmd/kueueviz/INSTALL.md
+  h_47cee5fa694435 6,63,84
+cmd/kueueviz/frontend/package-lock.json
+  h_47cee5fa694435 3,9
+cmd/kueueviz/frontend/package.json
+  h_47cee5fa694435 3
+site/content/en/v0.20/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+site/content/en/v0.20/docs/concepts/workload_priority_class.md
+  h_47cee5fa694435 126-132
+site/content/en/v0.20/docs/tasks/manage/observability/configure_custom_metric_labels.md
+  h_47cee5fa694435 166-172
+site/content/zh-CN/v0.20/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+site/hugo.toml
+  h_47cee5fa694435 109,112
+test/e2e/kueueviz/package-lock.json
+  h_47cee5fa694435 3,9
+test/e2e/kueueviz/package.json
+  h_47cee5fa694435 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9c57cf5ade94ac733eafffcd880c6a07a1a612e4",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

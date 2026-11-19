@@ -1,0 +1,41 @@
+pkg/controller/jobs/trainjob/trainjob_webhook.go
+  s_d8c824d0db21d8::t_73bb06d8f48947 34,102,104
+pkg/controller/jobs/trainjob/trainjob_controller_test.go
+  s_d8c824d0db21d8::t_f5b733433ae8e0 46,129,132,157,165,173,206,227,257,287,389,425,454,476,506,526,543,562,644,661,671,678,724,727
+test/e2e/singlecluster/extended/trainjob_test.go
+  s_d8c824d0db21d8::t_f5b733433ae8e0 34,193,197
+pkg/util/trainjob/trainjob_test.go
+  s_d8c824d0db21d8::t_d9f9e84e76af59 1-59
+pkg/controller/jobs/trainjob/trainjob_webhook_test.go
+  s_d8c824d0db21d8::t_f5b733433ae8e0 41,87,112,149,198,204,232
+pkg/util/testingjobs/trainjob/wrappers.go
+  s_d8c824d0db21d8::t_f5b733433ae8e0 27,106,118
+pkg/util/trainjob/trainjob.go
+  s_d8c824d0db21d8::t_219768fe3264ca 1-34
+pkg/controller/jobs/trainjob/trainjob_multikueue_adapter.go
+  s_d8c824d0db21d8::t_73bb06d8f48947 37,78
+test/integration/singlecluster/controller/jobs/trainjob/trainjob_controller_test.go
+  s_d8c824d0db21d8::t_f5b733433ae8e0 47,378,648
+test/integration/singlecluster/webhook/jobs/trainjob_webhook_test.go
+  s_d8c824d0db21d8::t_f5b733433ae8e0 33,88,103
+pkg/controller/jobs/trainjob/trainjob_multikueue_adapter_test.go
+  s_d8c824d0db21d8::t_f5b733433ae8e0 38,91,103
+pkg/controller/jobs/trainjob/trainjob_controller.go
+  s_d8c824d0db21d8::t_73bb06d8f48947 53,350,372,396,411
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5d37b7e46b48af424ded18321043534782ac4a94",
+  "prompts": {},
+  "sessions": {
+    "s_d8c824d0db21d8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b6c9f61-780f-4a46-920a-aefa02b47f51",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

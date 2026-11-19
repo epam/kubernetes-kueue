@@ -1,0 +1,18 @@
+.dockerignore
+  h_47cee5fa694435 45-47
+.gitignore
+  h_47cee5fa694435 35-37
+hack/tools-installer/install_test.py
+  h_47cee5fa694435 423-428
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a16c5cf9ff2e58484b9e62ea7ab1016bdc19e1f0",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

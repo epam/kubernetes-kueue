@@ -1,0 +1,19 @@
+cmd/experimental/skills/reviewer/ctx-structured-logging/SKILL.md
+  s_26dbc5360e0683::t_e47c5d9067779b 29-32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ae6591b3eba4b544c7a949d41b2cda0ea795b567",
+  "prompts": {},
+  "sessions": {
+    "s_26dbc5360e0683": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d67b2e69-a489-424a-9c83-573501624466",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

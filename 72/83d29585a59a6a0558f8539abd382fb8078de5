@@ -1,0 +1,30 @@
+Makefile
+  s_0866d60e69a23f::t_222cc3414f6521 379-380
+site/content/en/community/contribution_guidelines/website.md
+  s_0866d60e69a23f::t_222cc3414f6521 20-21
+cmd/experimental/skills/kueue-doc-writing/SKILL.md
+  s_0866d60e69a23f::t_222cc3414f6521 184-186,189-191,197-198
+hack/make/deps.mk
+  s_0866d60e69a23f::t_222cc3414f6521 66,206-208
+  s_0866d60e69a23f::t_c69208761c34cf 209
+site/scripts/install-dart-sass.sh
+  s_0866d60e69a23f::t_5e3fe3df636422 1-76
+netlify.toml
+  s_0866d60e69a23f::t_222cc3414f6521 4,15,20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7283d29585a59a6a0558f8539abd382fb8078de5",
+  "prompts": {},
+  "sessions": {
+    "s_0866d60e69a23f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3d47203c-cf64-47a3-8602-a23d57807818",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}
