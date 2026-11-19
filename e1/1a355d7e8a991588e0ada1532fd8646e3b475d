@@ -1,0 +1,69 @@
+site/content/en/docs/tasks/run/leaderworkerset.md
+  s_e429db9fe292e9::t_17f16ae47d12e4 146
+  s_e429db9fe292e9::t_5d05d0317fdb82 119
+  s_e429db9fe292e9::t_fc7b408279c8f9 90,120-145
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_e429db9fe292e9::t_17f16ae47d12e4 344
+pkg/util/testingjobs/leaderworkerset/wrappers.go
+  s_e429db9fe292e9::t_67917b17ac1422 153-158
+  s_e429db9fe292e9::t_1ea5208f27fa96 262-274
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter_test.go
+  s_e429db9fe292e9::t_6f9fee8b185ec5 59,62,638
+  s_e429db9fe292e9::t_17f16ae47d12e4 424,500,537,621,738
+  s_e429db9fe292e9::t_d7e8b1baac6918 464-498,737,742,760
+  s_e429db9fe292e9::t_cf25488a864da1 255-256,575-576
+  s_e429db9fe292e9::t_d80fa2f78a443c 660-736,954-970,973
+  s_e429db9fe292e9::t_8223f95065e128 971-972,974-975
+test/e2e/singlecluster/extended/leaderworkerset_test.go
+  s_e429db9fe292e9::t_4a41bd7ec21ea2 779,815,819,821-823,825-826,839,848,864,871
+  s_e429db9fe292e9::t_c08dfaf4966c2a 820,824,857,884
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter.go
+  s_e429db9fe292e9::t_31642ff240c01d 81-82,92,157,162
+  s_e429db9fe292e9::t_17f16ae47d12e4 227
+  s_e429db9fe292e9::t_fe0fbe0323a66a 165-167
+  s_e429db9fe292e9::t_5d00f70df217ed 84,90-91,96-105,130-133,144,146,153-156,170,222-225
+test/integration/multikueue/leaderworkerset_test.go
+  s_e429db9fe292e9::t_cdea05dffc9b6b 168,192-194,198-200,202,206,212
+  s_e429db9fe292e9::t_529a7f7f9a92f0 52
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  s_e429db9fe292e9::t_17f16ae47d12e4 274,471
+  s_e429db9fe292e9::t_6731f52365d144 535-536
+  s_e429db9fe292e9::t_98affbcfad392a 275,475,477,505-507,510,517-523,527,531-534,537,559,579
+  s_e429db9fe292e9::t_e4e2850a887c41 473-474
+  s_e429db9fe292e9::t_595034a0e4ef87 538,552-558,562-578,580-595,598-599
+pkg/features/kube_features.go
+  s_e429db9fe292e9::t_294ccba421e6de 1026-1027
+  s_e429db9fe292e9::t_17f16ae47d12e4 1033,1598
+  s_e429db9fe292e9::t_529a7f7f9a92f0 1028-1032
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  s_e429db9fe292e9::t_17f16ae47d12e4 1388,1400,1415,1436,1449,1467,1485,1506,1521,1539,1553,1566,1587,1607,1628,1647,1668,1680,1698,2007,2565
+  s_e429db9fe292e9::t_2cbe86ea853962 1382-1383,1710-1711,2461-2462
+  s_e429db9fe292e9::t_67917b17ac1422 1708-1709,1712-1799,1801-1813,1815-1817,1819-1829,1981-1998,2002
+  s_e429db9fe292e9::t_7408be4188c765 1431,1462,1480,1501,1534,1623,1642,1663,1693
+  s_e429db9fe292e9::t_1ea5208f27fa96 1830-1980,2564
+  s_e429db9fe292e9::t_9dfadd2b13cb82 1552,1565,1582,1602,1800,1814,1818
+site/data/featuregates/versioned_feature_list.yaml
+  s_e429db9fe292e9::t_17f16ae47d12e4 344
+test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
+  s_e429db9fe292e9::t_cdea05dffc9b6b 245-261,264-280,283-284
+  s_e429db9fe292e9::t_6731f52365d144 262-263,281-282
+  s_e429db9fe292e9::t_6a36a09f001eb0 291-307,333-336
+  s_e429db9fe292e9::t_61a34192f426dd 39-41,189,244,285,338
+  s_e429db9fe292e9::t_126229734b5606 286-290
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e11a355d7e8a991588e0ada1532fd8646e3b475d",
+  "prompts": {},
+  "sessions": {
+    "s_e429db9fe292e9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4a09421b-5dcd-4538-a5ec-e4a8307efff6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
