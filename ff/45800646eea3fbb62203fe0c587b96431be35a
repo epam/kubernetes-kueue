@@ -1,0 +1,16 @@
+pkg/controller/admissionchecks/multikueue/workload.go
+  h_99f506dc258b88 155-157,167,172
+pkg/controller/admissionchecks/multikueue/workload_test.go
+  h_99f506dc258b88 694,734,764,888,927,962,995,1048,1078,1115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "ff45800646eea3fbb62203fe0c587b96431be35a",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

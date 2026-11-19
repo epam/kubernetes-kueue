@@ -1,0 +1,14 @@
+test/util/e2e.go
+  h_47cee5fa694435 476
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "16ee2e972e9a02002204c46f7fad4cc3770f78c2",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

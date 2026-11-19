@@ -1,0 +1,19 @@
+hack/make/verify.mk
+  s_87ff683419ef38::t_f640296e64f568 243,246-247
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "997c387caf0ad2e299953415b36a0477f11af8be",
+  "prompts": {},
+  "sessions": {
+    "s_87ff683419ef38": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "db92d002-037d-4c85-ba1d-b005615a3e9d",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

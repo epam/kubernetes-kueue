@@ -1,0 +1,20 @@
+cmd/kueueviz/frontend/src/useWebSocket.js
+  s_e53d0c31fca938::t_9cfe9ad04b0f21 104
+  s_e53d0c31fca938::t_9a13ba376875af 82
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "ad90118467724bf07956a46b89c3cad6264d3e08",
+  "prompts": {},
+  "sessions": {
+    "s_e53d0c31fca938": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "9307af12-023d-4650-8391-d230f0f7c7e2",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

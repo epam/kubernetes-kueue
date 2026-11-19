@@ -1,0 +1,20 @@
+.github/actions/generate-sbom/action.yml
+  s_a34e3b7ea5ff70::t_daf280feb8b612 19-20
+  s_a34e3b7ea5ff70::t_8cee84c46f1f25 18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c43c3ab7bdb0e132eb8c4d8abb924aaf5a8ed1b2",
+  "prompts": {},
+  "sessions": {
+    "s_a34e3b7ea5ff70": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "34303530-6067-4010-94de-113b0a911af4",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

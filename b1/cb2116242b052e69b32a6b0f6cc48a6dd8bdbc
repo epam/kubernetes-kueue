@@ -1,0 +1,44 @@
+CHANGELOG/CHANGELOG-0.18.md
+  h_47cee5fa694435 1-40
+Makefile
+  h_47cee5fa694435 119
+README.md
+  h_47cee5fa694435 84
+charts/kueue/Chart.yaml
+  h_47cee5fa694435 19,24
+charts/kueue/README.md
+  h_47cee5fa694435 3,31,53,61
+charts/kueue/README.md.gotmpl
+  h_47cee5fa694435 33,55,63
+cmd/experimental/kueue-populator/README.md
+  h_47cee5fa694435 44
+cmd/experimental/kueue-populator/charts/kueue-populator/Chart.yaml
+  h_47cee5fa694435 5-6,9
+cmd/experimental/kueue-populator/charts/kueue-populator/README.md
+  h_47cee5fa694435 37,115,128
+cmd/experimental/kueue-priority-booster/charts/kueue-priority-booster/Chart.yaml
+  h_47cee5fa694435 5-6,9
+cmd/kueueviz/INSTALL.md
+  h_47cee5fa694435 6,63,84
+cmd/kueueviz/frontend/package-lock.json
+  h_47cee5fa694435 3,9
+cmd/kueueviz/frontend/package.json
+  h_47cee5fa694435 3
+site/hugo.toml
+  h_47cee5fa694435 99,102
+test/e2e/kueueviz/package-lock.json
+  h_47cee5fa694435 3,9
+test/e2e/kueueviz/package.json
+  h_47cee5fa694435 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "b1cb2116242b052e69b32a6b0f6cc48a6dd8bdbc",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

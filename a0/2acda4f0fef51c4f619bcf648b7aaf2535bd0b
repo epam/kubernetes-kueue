@@ -1,0 +1,32 @@
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_0cd4f3c2284c53::t_9b9b325a68d8ed 593
+  s_0cd4f3c2284c53::t_b552fdaf276982 591-592
+pkg/workload/workload.go
+  s_0cd4f3c2284c53::t_febe0ed271a6d9 1780-1786
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler.go
+  s_0cd4f3c2284c53::t_9b9b325a68d8ed 516
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter.go
+  s_0cd4f3c2284c53::t_9b9b325a68d8ed 84
+pkg/util/tolerations/tolerations_test.go
+  s_0cd4f3c2284c53::t_2df1dee7793db7 270,272,275
+  s_0cd4f3c2284c53::t_c6baa34c5708dc 276,278,280-327
+  s_0cd4f3c2284c53::t_952733890e1f9f 277,279
+pkg/util/tolerations/tolerations.go
+  s_0cd4f3c2284c53::t_2df1dee7793db7 71-84,86
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a02acda4f0fef51c4f619bcf648b7aaf2535bd0b",
+  "prompts": {},
+  "sessions": {
+    "s_0cd4f3c2284c53": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd86d43b-9aa7-47d6-a856-07b52c4a1f98",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

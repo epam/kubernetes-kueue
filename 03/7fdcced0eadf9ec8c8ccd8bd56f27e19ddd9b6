@@ -1,0 +1,20 @@
+site/content/zh-CN/v0.18/docs/reference/kueue-config.v1beta2.md
+  h_47cee5fa694435 1-1453
+site/content/zh-CN/v0.18/docs/reference/kueue.v1beta2.md
+  h_47cee5fa694435 1-3880
+site/content/zh-CN/v0.19/docs/reference/kueue-config.v1beta2.md
+  h_47cee5fa694435 1-1608
+site/content/zh-CN/v0.19/docs/reference/kueue.v1beta2.md
+  h_47cee5fa694435 1-3882
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "037fdcced0eadf9ec8c8ccd8bd56f27e19ddd9b6",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

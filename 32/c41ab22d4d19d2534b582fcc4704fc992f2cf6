@@ -1,0 +1,43 @@
+pkg/cache/scheduler/tas_flavor_snapshot.go
+  s_6ebe5b9ace332d::t_4c1f684689a125 755,757
+  s_6ebe5b9ace332d::t_9e0dccca4e4e52 754
+  s_6ebe5b9ace332d::t_31d968bca1cc40 760,763-764,821,991-992,1335
+  s_6ebe5b9ace332d::t_000cd3f3afed36 976-978
+  s_6ebe5b9ace332d::t_cbf4aeecfc24dd 1330-1333
+  s_6ebe5b9ace332d::t_5b626408c4cf74 979-980,982-983,985-987
+  s_6ebe5b9ace332d::t_2bed47e9a3f23b 756
+  s_6ebe5b9ace332d::t_153746b117da61 981,984
+  s_6ebe5b9ace332d::t_ad438c35b44b32 758,990,1325
+  s_6ebe5b9ace332d::t_7b85199ac77e6d 1661
+pkg/cache/scheduler/tas_flavor_snapshot_test.go
+  s_6ebe5b9ace332d::t_c0ebaf34a2f670 1011,1019,1027,1035,1047,1064,1074,1084
+  s_6ebe5b9ace332d::t_eaaf04da899383 1030-1034,1036-1038,1040-1041,1125-1127,1147,1170-1172,1177
+  s_6ebe5b9ace332d::t_bda4fd86555a34 1192
+  h_99f506dc258b88 1039,1101,1108,1164,1168
+  s_6ebe5b9ace332d::t_b40b09c5196db5 1129-1146,1148-1163,1165-1167,1169,1173-1176,1178-1188
+  s_6ebe5b9ace332d::t_abc17b93390506 1003
+  s_6ebe5b9ace332d::t_ad438c35b44b32 1319,1321,1324
+  s_6ebe5b9ace332d::t_b24e744fc42c08 1128
+  s_6ebe5b9ace332d::t_4d4be2d71ae58d 999-1002,1004-1010,1012-1018,1020-1026,1028-1029,1042-1046,1048-1063,1065-1073,1075-1083,1085-1100,1102-1107,1109-1124,1189-1191,1193-1318,1320,1322-1323,1325-1328
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "32c41ab22d4d19d2534b582fcc4704fc992f2cf6",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_6ebe5b9ace332d": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "cf326058-4893-4fdc-ace4-f8ca31d79d2c",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    }
+  }
+}

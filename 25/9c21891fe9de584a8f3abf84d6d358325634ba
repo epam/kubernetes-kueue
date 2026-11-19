@@ -1,0 +1,37 @@
+cmd/importer/pod/import.go
+  s_b1b85ee75b9f2e::t_5fa8bf7fdda514 273-275
+  s_b1b85ee75b9f2e::t_fb0d5c571f71be 24,49-65,217,223-224,227,272,276-287
+  s_c33db259f6bfaa::t_c584e8fdbd8606 218-222,225-226,229-231
+  h_99f506dc258b88 228
+cmd/importer/pod/import_test.go
+  h_99f506dc258b88 80-104,116-120,123-124,129,135-136,151-152,173-174,183-218,224-225,234,254-267,273-326
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "259c21891fe9de584a8f3abf84d6d358325634ba",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_b1b85ee75b9f2e": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "35ab957d-de95-408e-9f91-bcf7875b57b5",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    },
+    "s_c33db259f6bfaa": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "010ba047-dbb2-49b6-910a-fba6da55b5f4",
+        "model": "claude-sonnet-4.6"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

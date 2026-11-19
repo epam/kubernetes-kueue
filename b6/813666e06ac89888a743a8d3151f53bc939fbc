@@ -1,0 +1,39 @@
+site/content/en/docs/reference/metrics.md
+  s_dcae80d632ea2f::t_71fd7bf5239f21 108
+pkg/metrics/metrics.go
+  s_dcae80d632ea2f::t_f398fdcd9b8159 1047
+pkg/cache/scheduler/resource_node.go
+  s_dcae80d632ea2f::t_64e70e0b73a37f 68-71,73
+pkg/cache/scheduler/cache.go
+  s_dcae80d632ea2f::t_a05193dc88058b 508-510
+  s_dcae80d632ea2f::t_2b63ea85d6a731 801,804-819,822,824-830,832,883,889,893-896,904-907
+pkg/cache/scheduler/cohort_metrics.go
+  s_dcae80d632ea2f::t_64e70e0b73a37f 91,101,147-148,242-244,247-255,259-265,270-276,278,285,287-290,295-303,311-320
+  s_dcae80d632ea2f::t_3e80c85f8d0d74 93-95
+  s_dcae80d632ea2f::t_f0b68ddeab6c24 286
+  s_dcae80d632ea2f::t_2b63ea85d6a731 150-162,172,175
+  s_dcae80d632ea2f::t_a05193dc88058b 44,48,51,55,61,63-67,138
+  s_dcae80d632ea2f::t_7b94a8ad1c6c3e 135-137
+  s_dcae80d632ea2f::t_75fd891b701019 139-141,144-146
+  s_dcae80d632ea2f::t_fb553e830852c9 149
+  s_dcae80d632ea2f::t_84f7d4880f69ac 321
+pkg/cache/scheduler/cohort_metrics_test.go
+  s_dcae80d632ea2f::t_e787a0354864d2 918-982,986-989,1003
+  s_dcae80d632ea2f::t_f398fdcd9b8159 983-985,990-1002
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b6813666e06ac89888a743a8d3151f53bc939fbc",
+  "prompts": {},
+  "sessions": {
+    "s_dcae80d632ea2f": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "cc70b79d-e8b2-4bf4-8126-b12e570b8116",
+        "model": "unknown"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

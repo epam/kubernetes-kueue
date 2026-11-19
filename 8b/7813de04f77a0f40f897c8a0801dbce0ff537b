@@ -1,0 +1,43 @@
+pkg/controller/jobs/ray/ray_multikueue_adapter.go
+  h_99f506dc258b88 139-142
+pkg/controller/jobs/kubeflow/kubeflowjob/kubeflowjob_multikueue_adapter.go
+  h_99f506dc258b88 133-136
+pkg/controller/jobs/job/job_multikueue_adapter.go
+  h_99f506dc258b88 184-187
+pkg/controller/jobs/trainjob/trainjob_multikueue_adapter.go
+  h_99f506dc258b88 87-90
+pkg/controller/jobs/mpijob/mpijob_multikueue_adapter.go
+  h_99f506dc258b88 81-84
+pkg/controller/jobs/appwrapper/appwrapper_multikueue_adapter.go
+  h_99f506dc258b88 82-85
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter.go
+  h_99f506dc258b88 88-91
+pkg/controller/jobframework/multikueue.go
+  s_4f877edabca15a::t_5eb8cfd1af3296 68-69
+  h_99f506dc258b88 52,55,82
+pkg/controller/jobs/statefulset/statefulset_multikueue_adapter.go
+  h_99f506dc258b88 80-83
+pkg/controller/jobs/jobset/jobset_multikueue_adapter.go
+  h_99f506dc258b88 81-84
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "8b7813de04f77a0f40f897c8a0801dbce0ff537b",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_4f877edabca15a": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "2803b876-6414-4c13-909d-ed8b3e84762d",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    }
+  }
+}

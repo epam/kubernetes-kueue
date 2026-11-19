@@ -1,0 +1,19 @@
+.github/actions/merge-main-into-website/action.yml
+  s_d0606d985d1456::t_6ea29b12106e05 18-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "e33eb7d9cbb0e3e123754db095b4b4a2d4594bcc",
+  "prompts": {},
+  "sessions": {
+    "s_d0606d985d1456": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c480ad64-4d5c-449b-8052-0a744416017f",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

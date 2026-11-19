@@ -1,0 +1,19 @@
+.github/dependabot.yml
+  s_0866d60e69a23f::t_dc1a5206472b0e 42-56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6e69db3f865df9254118b3e3f10c617f77ddd15a",
+  "prompts": {},
+  "sessions": {
+    "s_0866d60e69a23f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3d47203c-cf64-47a3-8602-a23d57807818",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

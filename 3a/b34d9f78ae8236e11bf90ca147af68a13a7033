@@ -1,0 +1,14 @@
+keps/2936-local-queue-defaulting/kep.yaml
+  h_47cee5fa694435 31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.10",
+  "base_commit_sha": "3ab34d9f78ae8236e11bf90ca147af68a13a7033",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

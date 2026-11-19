@@ -1,0 +1,24 @@
+.github/workflows/unit-coverage.yaml
+  s_4eb02d991ba5cf::t_72814af80af3ec 136,142-156,168
+  s_4eb02d991ba5cf::t_1cdc9e3dbd4bcf 1-135,137-141,157-167,169-174
+codecov.yml
+  s_4eb02d991ba5cf::t_d9b7f0865ec588 1-22
+site/content/en/community/contribution_guidelines/development.md
+  s_4eb02d991ba5cf::t_32ed22730f5884 124-127
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "aeca8e1a23ef583316ecdc244757f3d1b3f3654b",
+  "prompts": {},
+  "sessions": {
+    "s_4eb02d991ba5cf": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6a52750b-c745-4955-80b3-3e1fc0d8f916",
+        "model": "grok-4.7-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

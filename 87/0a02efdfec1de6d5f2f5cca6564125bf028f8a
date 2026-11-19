@@ -1,0 +1,18 @@
+.github/workflows/release-utils.yml
+  h_47cee5fa694435 6-7,9-17,44-45,49,50,60-64,65,66,67,68,69,70-71,72-73,74-90,107,114-130,131-132,133,134-135,136,137-138,138-142,143,144,146-147,148-149,150,151-153,154,155,156,157-158,160-164,165,166-174,175-181
+hack/releasing/wait_for_images.sh
+  h_47cee5fa694435 22,27-28,33,39-40,47-58,80-81,92-93,94-96,137-138,144-150
+.github/ISSUE_TEMPLATE/NEW_RELEASE.md
+  h_47cee5fa694435 45,48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "870a02efdfec1de6d5f2f5cca6564125bf028f8a",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

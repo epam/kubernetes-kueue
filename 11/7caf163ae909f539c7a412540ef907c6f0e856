@@ -1,0 +1,25 @@
+hack/tools/go.mod
+  s_7da79b95a3236c::t_e58dd8d9f0b9e2 40
+pkg/controller/admissionchecks/multikueue/controllers.go
+  s_7da79b95a3236c::t_72e216f3b98d86 22,138,140,145
+go.mod
+  s_7da79b95a3236c::t_e58dd8d9f0b9e2 42
+pkg/controller/admissionchecks/multikueue/multikueuecluster.go
+  s_7da79b95a3236c::t_72e216f3b98d86 51,486
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "117caf163ae909f539c7a412540ef907c6f0e856",
+  "prompts": {},
+  "sessions": {
+    "s_7da79b95a3236c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4aaf8000-fe2f-4d80-a0fa-030af3a80265",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

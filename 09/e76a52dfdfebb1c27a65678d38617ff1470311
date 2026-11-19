@@ -1,0 +1,21 @@
+pkg/scheduler/scheduler.go
+  s_d7c1fc1a83d5d2::t_404edc53d68ebe 558-559
+pkg/util/testing/observability.go
+  s_d7c1fc1a83d5d2::t_313181a62ba314 48-49,57-58,102-103,105-106,132-133,137-138
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "09e76a52dfdfebb1c27a65678d38617ff1470311",
+  "prompts": {},
+  "sessions": {
+    "s_d7c1fc1a83d5d2": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6240a31a-6ac4-4ec7-b4f7-674f99ca102f",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

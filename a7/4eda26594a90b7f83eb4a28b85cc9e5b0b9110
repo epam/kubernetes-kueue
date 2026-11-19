@@ -1,0 +1,20 @@
+cmd/importer/cache/cache.go
+  h_99f506dc258b88 33,102-103,115,118-121,123,131,133
+cmd/importer/cache/cache_test.go
+  h_99f506dc258b88 85,107
+cmd/importer/pod/check.go
+  h_99f506dc258b88 120
+cmd/importer/pod/import.go
+  h_99f506dc258b88 233
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "a74eda26594a90b7f83eb4a28b85cc9e5b0b9110",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

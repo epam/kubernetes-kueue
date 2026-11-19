@@ -1,0 +1,72 @@
+Makefile-kueue-priority-booster.mk
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 17-19
+  s_3ba1ac8a2cec2e::t_d6422e53578336 15
+cmd/experimental/kueue-priority-booster/config/rbac/role_binding.yaml
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 4,8,11
+cmd/experimental/kueue-priority-booster/Dockerfile
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 1,3,11,14-16,19,21
+cmd/experimental/kueue-priority-booster/README.md
+  s_3ba1ac8a2cec2e::t_ec3577450caa0d 33-36
+  s_3ba1ac8a2cec2e::t_ad31814b7b0c1e 1
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 3,66-67,112
+cmd/experimental/kueue-priority-booster/pkg/controller/controller_test.go
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 36-37,40-51,53,56-64,67-70,72-102,107-115,118-156,161-165,169-170,176,178-279,283-296,298,300-301,308-313,315-336,339-361,367,380,382,385-386,390,393-443
+cmd/experimental/kueue-priority-booster/charts/kueue-priority-booster/Chart.yaml
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 2
+cmd/experimental/kueue-priority-booster/Makefile
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 10-16,25,30-31,34-36,42-45,50,58
+cmd/experimental/kueue-priority-booster/main.go
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 32-33,83
+cmd/experimental/kueue-priority-booster/pkg/constants/constants.go
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 20
+cmd/experimental/kueue-priority-booster/pkg/config/config.go
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 29
+Makefile
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 43,49,126,290-291,333,345,369-372,481-484,486,492,494-496,498-502
+cmd/experimental/kueue-priority-booster/config/manager/controller_config_map.yaml
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 4
+cmd/experimental/kueue-priority-booster/config/rbac/role.yaml
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 5
+cmd/experimental/README.md
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 15
+cmd/experimental/kueue-priority-booster/test/integration/suite_test.go
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 1-25,27
+  s_3ba1ac8a2cec2e::t_c0d399bbee454d 26
+cmd/experimental/kueue-priority-booster/config/manager/manager.yaml
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 4,9,13,54,58
+cmd/experimental/kueue-priority-booster/charts/kueue-priority-booster/templates/manager.yaml
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 4,10,32,36,39,45,49-51,53,55-56,62,65,67,72-73,78-79,82,91-92,122,129
+cmd/experimental/kueue-priority-booster/charts/kueue-priority-booster/values.yaml
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 1,3
+cmd/experimental/kueue-priority-booster/pkg/controller/controller.go
+  s_3ba1ac8a2cec2e::t_14264bb07baf29 129-133
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 39
+cmd/experimental/kueue-priority-booster/test/integration/priority_boost_controller_test.go
+  s_3ba1ac8a2cec2e::t_860d2a77792e4f 36
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 20,23-24,33-35,39-65,75-76
+  s_3ba1ac8a2cec2e::t_7ec921ea4acb7d 66-74
+cmd/experimental/kueue-priority-booster/charts/kueue-priority-booster/README.md
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 1,8,15
+cloudbuild.yaml
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 16
+cmd/experimental/kueue-priority-booster/config/rbac/service_account.yaml
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 4
+cmd/experimental/kueue-priority-booster/config/kustomization.yaml
+  s_3ba1ac8a2cec2e::t_16526e6ccf58d5 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "c5578f245f894bb045eff7a96ff6b148965c6c99",
+  "prompts": {},
+  "sessions": {
+    "s_3ba1ac8a2cec2e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "9e68f93d-9e14-4e02-aae9-b108c19e84d4",
+        "model": "composer-2"
+      },
+      "human_author": null
+    }
+  }
+}

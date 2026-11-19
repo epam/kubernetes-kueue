@@ -1,0 +1,14 @@
+test/util/behavioral/e2e/suite.go
+  h_47cee5fa694435 20,22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "85aff27fa122f26f7c6717fa801358b32ba7cb3b",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

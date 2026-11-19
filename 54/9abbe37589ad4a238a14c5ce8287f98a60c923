@@ -1,0 +1,14 @@
+pkg/scheduler/flavorassigner/podset_reducer.go
+  h_99f506dc258b88 101-103
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "549abbe37589ad4a238a14c5ce8287f98a60c923",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

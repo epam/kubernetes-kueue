@@ -1,0 +1,19 @@
+.github/actions/create-milestone/action.yml
+  s_a7fe37a5319567::t_75754d2db3ea35 44-45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c2f7098e0254b796f0697fcc17123db70ac6ef1f",
+  "prompts": {},
+  "sessions": {
+    "s_a7fe37a5319567": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b3bc4f91-09be-488e-b905-577841baddae",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

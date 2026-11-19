@@ -1,0 +1,22 @@
+hack/testing/e2e-common.sh
+  s_43583405a7c34e::t_b68f8b6d0a83ed 1460-1461
+  s_43583405a7c34e::t_e93d152423c92a 1477-1478
+Makefile
+  s_43583405a7c34e::t_6a1c1ebfa40a52 73-74,80
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "3720c8bfa02dfe583b9e2ee8f852dbe7571c1f23",
+  "prompts": {},
+  "sessions": {
+    "s_43583405a7c34e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "faceb586-7f34-430f-a18c-18569433815b",
+        "model": "claude-opus-5"
+      },
+      "human_author": null
+    }
+  }
+}

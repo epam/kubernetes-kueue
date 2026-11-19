@@ -1,0 +1,27 @@
+pkg/controller/admissionchecks/provisioning/controller_test.go
+  s_937e755ca88346::t_03a0f4c0c84f23 244-254
+  s_937e755ca88346::t_e9867c99221961 2032-2037
+  s_937e755ca88346::t_8afee24cf8def3 347-351
+  s_937e755ca88346::t_4d0693a9f3c380 564-565
+  s_937e755ca88346::t_94968296d2b374 1940-1946
+  s_937e755ca88346::t_c8c7995ca9f317 543-563,566-586,2043-2101
+pkg/controller/admissionchecks/provisioning/controller.go
+  s_937e755ca88346::t_59991d98fad3e9 435-444
+  s_937e755ca88346::t_c1a6e490642960 325-326,328-329,335-346,352
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "d66cffe0a14bb2ce6227f225080a02b11d8de3d5",
+  "prompts": {},
+  "sessions": {
+    "s_937e755ca88346": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bcee8377-ad7c-484e-9b55-7983802f3201",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

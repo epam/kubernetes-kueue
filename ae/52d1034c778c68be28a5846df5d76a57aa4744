@@ -1,0 +1,14 @@
+site/content/en/docs/tasks/manage/setup_multikueue.md
+  h_47cee5fa694435 288
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ae52d1034c778c68be28a5846df5d76a57aa4744",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

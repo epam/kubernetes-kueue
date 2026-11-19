@@ -1,0 +1,20 @@
+pkg/cache/scheduler/cache_test.go
+  h_99f506dc258b88 1457
+pkg/controller/core/clusterqueue_controller_test.go
+  h_99f506dc258b88 860-959
+pkg/cache/scheduler/cohort_metrics_test.go
+  h_99f506dc258b88 1359-1409
+pkg/cache/scheduler/cache.go
+  h_99f506dc258b88 526,531-533,855,894-910,912,923,928,943,949-964,983
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "fd7a2ede0472ce9827fcc73663e4999b17157b0c",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+pkg/controller/admissionchecks/multikueue/externalframeworks/adapter.go
+  s_4f877edabca15a::t_b56edd6ac290bc 83
+pkg/controller/jobs/appwrapper/appwrapper_multikueue_adapter.go
+  h_99f506dc258b88 82-85
+  s_4f877edabca15a::t_b56edd6ac290bc 57
+pkg/controller/jobs/job/job_multikueue_adapter_test.go
+  s_4f877edabca15a::t_b7ecd2dc156e9a 619-650,652
+  s_4f877edabca15a::t_eb3914c960e22f 662,672
+Makefile
+  s_4f877edabca15a::t_aa722bf5f7a7cc 171
+pkg/controller/jobs/statefulset/statefulset_multikueue_adapter.go
+  s_4f877edabca15a::t_b56edd6ac290bc 57
+  h_99f506dc258b88 80-83
+pkg/controller/jobs/ray/ray_multikueue_adapter.go
+  h_99f506dc258b88 139-142
+  s_4f877edabca15a::t_b56edd6ac290bc 117
+pkg/controller/jobs/trainjob/trainjob_multikueue_adapter.go
+  h_99f506dc258b88 87-90
+  s_4f877edabca15a::t_b56edd6ac290bc 58
+pkg/controller/jobframework/multikueue_test.go
+  s_4f877edabca15a::t_1abae879cc5c57 93
+  s_4f877edabca15a::t_ebe5b8a127508f 98-99
+  s_4f877edabca15a::t_a7e19445eba0af 49,52
+  s_4f877edabca15a::t_134be31c1b8df7 97,100
+  s_4f877edabca15a::t_d10e7f52b3784a 24,34,134-136,145-146
+  h_99f506dc258b88 73-74,147-148
+  s_4f877edabca15a::t_f4d36c5bc3348a 109
+  s_4f877edabca15a::t_44197b4be6c9ef 88,101-103,105,121-122
+  s_4f877edabca15a::t_821935ae41d093 21,81-87,89-92,94,96,104,106-108,110-117,119,124-133,137-142,149-150
+  s_4f877edabca15a::t_a91749ad4836bb 95,118,123,143
+  s_4f877edabca15a::t_e9fb3d45a39196 120,144
+pkg/controller/jobs/job/job_multikueue_adapter.go
+  s_4f877edabca15a::t_b56edd6ac290bc 67
+  h_99f506dc258b88 184-187
+internal/mocks/controller/jobframework/interface.go
+  s_4f877edabca15a::t_32ce8a318946fd 17,21,33,400-480
+pkg/controller/jobs/mpijob/mpijob_multikueue_adapter.go
+  s_4f877edabca15a::t_b56edd6ac290bc 57
+  h_99f506dc258b88 81-84
+pkg/controller/jobs/jobset/jobset_multikueue_adapter.go
+  s_4f877edabca15a::t_b56edd6ac290bc 57
+  h_99f506dc258b88 81-84
+pkg/controller/jobs/pod/pod_multikueue_adapter.go
+  s_4f877edabca15a::t_b56edd6ac290bc 157
+pkg/controller/jobframework/multikueue.go
+  s_4f877edabca15a::t_6a9a1b68b9f03f 54-59,65-67,69-73
+  s_4f877edabca15a::t_a7e19445eba0af 35,44
+  s_4f877edabca15a::t_5eb8cfd1af3296 78
+  s_4f877edabca15a::t_7a8bf22f4c62fd 60-64
+  s_4f877edabca15a::t_79a37b3a49335c 43
+  s_4f877edabca15a::t_b56edd6ac290bc 39-41
+pkg/controller/jobs/kubeflow/kubeflowjob/kubeflowjob_multikueue_adapter.go
+  s_4f877edabca15a::t_b56edd6ac290bc 110
+  h_99f506dc258b88 133-136
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter.go
+  h_99f506dc258b88 88-91
+  s_4f877edabca15a::t_b56edd6ac290bc 62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "fa4e7b99af885894e9e384887ec3e8c3224d2990",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_4f877edabca15a": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "2803b876-6414-4c13-909d-ed8b3e84762d",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    }
+  }
+}

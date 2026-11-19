@@ -1,0 +1,16 @@
+pkg/features/kube_features.go
+  h_47cee5fa694435 732
+pkg/controller/jobs/rayservice/rayservice_controller.go
+  h_47cee5fa694435 152-156
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b5805ca1b64e0f928f31677ef7b75696b1d34faf",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

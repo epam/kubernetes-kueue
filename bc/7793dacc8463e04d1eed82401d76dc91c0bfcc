@@ -1,0 +1,39 @@
+pkg/controller/jobs/pod/pod_webhook.go
+  s_8bc4fd9e6bced4::t_13a46e908f5ba4 159-167
+pkg/controller/jobframework/reconciler.go
+  s_7256d051a7be1c::t_322242e6dbb24b 1219-1225
+pkg/controller/jobs/pod/pod_webhook_test.go
+  s_fed9a44cdca194::t_49081e2909d1a2 165
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "bc7793dacc8463e04d1eed82401d76dc91c0bfcc",
+  "prompts": {},
+  "sessions": {
+    "s_7256d051a7be1c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7e5dd68f-6a1c-49b6-9457-d41ea871a3ce",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_8bc4fd9e6bced4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9da3b800-d79a-48af-9a7d-b32584fc4918",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    },
+    "s_fed9a44cdca194": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "687fba51-ca83-495c-97a9-ce6640ac82df",
+        "model": "gpt-5.5-medium"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

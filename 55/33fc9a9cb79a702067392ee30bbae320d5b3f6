@@ -1,0 +1,24 @@
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter_test.go
+  s_aac402b72fc238::t_a1a31ac78795ca 201-277
+site/content/en/docs/tasks/run/leaderworkerset.md
+  s_aac402b72fc238::t_01575b1cf0aedd 113-114
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter.go
+  s_aac402b72fc238::t_fd69fd21e9bc84 84,120-132
+  s_aac402b72fc238::t_97b3f1dd085a49 133-134
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5533fc9a9cb79a702067392ee30bbae320d5b3f6",
+  "prompts": {},
+  "sessions": {
+    "s_aac402b72fc238": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bcfb9d4f-2b81-4f2f-acc5-1e0722912502",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

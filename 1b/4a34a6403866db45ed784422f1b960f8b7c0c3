@@ -1,0 +1,52 @@
+pkg/controller/jobs/trainjob/trainjob_controller.go
+  s_4477a39a84491a::t_a1a02a3e8334b9 176
+  s_519088072ec8db::t_263152275b7ce0 186
+  s_519088072ec8db::t_a63af659536156 206,211
+  s_519088072ec8db::t_8a1d3298a1c5ad 195-205,207-210,212-216
+  s_61f58471d51dcc::t_cb42820e8587c4 50,111,125-130
+  s_61f58471d51dcc::t_0b1536fc5b3836 131-132
+pkg/controller/jobs/trainjob/trainjob_controller_test.go
+  s_519088072ec8db::t_acd441da7a9e54 867-868
+  s_519088072ec8db::t_a8da68c7009802 866
+  s_519088072ec8db::t_8365beb985f5a4 914,920,940,946-972
+  s_61f58471d51dcc::t_7bb4b9b26970d2 24,32,871-894,899,981-990,1002-1009
+  s_61f58471d51dcc::t_efd07254442339 1010,1029-1031
+pkg/util/equality/podset.go
+  s_61f58471d51dcc::t_324dcb550bf4c9 33,56-61,72,75,84-100
+  s_61f58471d51dcc::t_d839b6101288fa 101
+pkg/util/equality/podset_test.go
+  s_61f58471d51dcc::t_138150a5a30ebc 115,363-394,408-409
+  s_61f58471d51dcc::t_7e74aa40611511 410
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1b4a34a6403866db45ed784422f1b960f8b7c0c3",
+  "prompts": {},
+  "sessions": {
+    "s_4477a39a84491a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4cdcf393-32de-40ec-8b87-a36c8a9e8982",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_519088072ec8db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e26cf538-7e76-45b7-8530-709d435203d0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_61f58471d51dcc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6b787fe2-406b-427e-90b9-5a4fb9109714",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

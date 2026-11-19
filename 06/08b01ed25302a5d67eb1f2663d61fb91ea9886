@@ -1,0 +1,19 @@
+pkg/util/testing/v1alpha1/wrappers.go
+  s_d6d22f85d9d18d::t_1c65169afaa697 147-152
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0608b01ed25302a5d67eb1f2663d61fb91ea9886",
+  "prompts": {},
+  "sessions": {
+    "s_d6d22f85d9d18d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b726d4df-b21b-404b-8db4-530109ed6446",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

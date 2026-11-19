@@ -1,0 +1,14 @@
+pkg/controller/elasticjobs/elastic_job_ungater.go
+  h_47cee5fa694435 28,57-72,75,86-90,93,169,171-172
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "f384f47d4cb88c8eeab7fdb8fbbe9b53a9e5714e",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

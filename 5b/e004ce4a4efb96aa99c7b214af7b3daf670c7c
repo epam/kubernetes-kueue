@@ -1,0 +1,15 @@
+keps/13746-topology-spreading/README.md
+  h_47cee5fa694435 445-448,450-452
+  h_47cee5fa694435 449,453
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "5be004ce4a4efb96aa99c7b214af7b3daf670c7c",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

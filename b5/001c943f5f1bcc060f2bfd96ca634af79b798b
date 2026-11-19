@@ -1,0 +1,17 @@
+hack/tools/go.mod
+  h_47cee5fa694435 40
+  h_47cee5fa694435 491
+hack/tools/go.sum
+  h_47cee5fa694435 945-946,1740-1741
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b5001c943f5f1bcc060f2bfd96ca634af79b798b",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

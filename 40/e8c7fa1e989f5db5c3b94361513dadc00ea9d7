@@ -1,0 +1,48 @@
+site/content/en/docs/concepts/local_queue.md
+  h_47cee5fa694435 41
+site/content/en/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 96
+site/content/zh-CN/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 26,30
+site/content/zh-CN/docs/concepts/workload_priority_class.md
+  h_47cee5fa694435 112
+site/content/zh-CN/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 93
+site/content/zh-CN/docs/admission-check-controllers/provisioning.md
+  h_47cee5fa694435 12,140,144
+site/content/zh-CN/docs/concepts/cohort.md
+  h_47cee5fa694435 87
+config/default/kustomization.yaml
+  h_47cee5fa694435 109,360,378
+site/content/zh-CN/docs/concepts/workload.md
+  h_47cee5fa694435 55,201
+site/content/en/docs/concepts/workload.md
+  h_47cee5fa694435 58,216
+site/content/zh-CN/docs/concepts/preemption.md
+  h_47cee5fa694435 21
+site/content/en/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 534,561
+site/content/zh-CN/docs/concepts/local_queue.md
+  h_47cee5fa694435 41
+site/content/zh-CN/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 24,40,44
+site/content/zh-CN/docs/concepts/admission_check.md
+  h_47cee5fa694435 128
+site/content/zh-CN/docs/installation/_index.md
+  h_47cee5fa694435 143,285
+site/content/zh-CN/docs/tasks/run/using_hami.md
+  h_47cee5fa694435 69
+site/content/zh-CN/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 480,507
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "40e8c7fa1e989f5db5c3b94361513dadc00ea9d7",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

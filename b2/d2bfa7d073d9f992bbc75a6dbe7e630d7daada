@@ -1,0 +1,38 @@
+site/content/en/v0.18/docs/tasks/run/using_hami.md
+  h_47cee5fa694435 58
+site/content/zh-CN/v0.18/docs/tasks/run/using_hami.md
+  h_47cee5fa694435 69
+site/content/en/v0.18/docs/concepts/preemption.md
+  h_47cee5fa694435 23
+site/content/zh-CN/v0.18/docs/admission-check-controllers/provisioning.md
+  h_47cee5fa694435 140
+site/content/zh-CN/v0.18/docs/installation/_index.md
+  h_47cee5fa694435 143,285
+site/content/en/v0.18/docs/getting-started/installation.md
+  h_47cee5fa694435 148,265,314
+site/content/zh-CN/v0.18/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 26,30
+site/content/en/v0.18/docs/concepts/admission_check/provisioning_request.md
+  h_47cee5fa694435 158
+site/content/en/docs/concepts/admission_check/provisioning_request.md
+  h_47cee5fa694435 158
+site/content/en/docs/tasks/run/using_hami.md
+  h_47cee5fa694435 58
+site/content/zh-CN/v0.18/docs/concepts/preemption.md
+  h_47cee5fa694435 21
+site/content/en/v0.18/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 27,29
+site/content/en/docs/getting-started/installation.md
+  h_47cee5fa694435 265
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "b2d2bfa7d073d9f992bbc75a6dbe7e630d7daada",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

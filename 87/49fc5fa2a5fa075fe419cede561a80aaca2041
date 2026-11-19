@@ -1,0 +1,22 @@
+CHANGELOG/CHANGELOG-0.18.md
+  h_47cee5fa694435 1-51
+site/content/en/v0.18/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+site/content/en/v0.18/docs/reference/kubectl-kueue/commands/kueuectl_list/kueuectl_list_workload.md
+  h_47cee5fa694435 136
+site/content/en/v0.18/docs/tasks/manage/enable_kueueviz.md
+  h_47cee5fa694435 126-170,179-182,187-201,215-230,235-237
+site/content/zh-CN/v0.18/docs/_index.md
+  h_47cee5fa694435 5-6,11-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8749fc5fa2a5fa075fe419cede561a80aaca2041",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

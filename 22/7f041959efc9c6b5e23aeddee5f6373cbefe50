@@ -1,0 +1,22 @@
+pkg/controller/elasticjobs/elastic_job_ungater_test.go
+  h_32169613a39d35 26,60,292-408,1209
+pkg/util/tas/ranks/ranks.go
+  h_32169613a39d35 1-127
+pkg/controller/tas/topology_ungater.go
+  h_32169613a39d35 56,214,530,535
+pkg/util/tas/ranks/ranks_test.go
+  h_32169613a39d35 1-83
+pkg/controller/elasticjobs/elastic_job_ungater.go
+  h_32169613a39d35 23,27,54-55,319,321,336-397
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "227f041959efc9c6b5e23aeddee5f6373cbefe50",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

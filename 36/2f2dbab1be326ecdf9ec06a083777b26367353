@@ -1,0 +1,14 @@
+pkg/workload/patching/patching.go
+  h_47cee5fa694435 66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "362f2dbab1be326ecdf9ec06a083777b26367353",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

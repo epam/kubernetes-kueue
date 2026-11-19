@@ -1,0 +1,16 @@
+hack/testing/rbac/verify_manifests.sh
+  h_47cee5fa694435 25
+site/content/en/community/contribution_guidelines/coding_guidelines.md
+  h_47cee5fa694435 361,422
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "5e33f52cbaaefe369a42f1031718b1a74b29cdfd",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

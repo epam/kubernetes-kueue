@@ -1,0 +1,18 @@
+apis/kueue/v1beta1/workload_types.go
+  h_99f506dc258b88 151
+apis/kueue/v1beta2/workload_types.go
+  h_99f506dc258b88 234
+keps/2724-topology-aware-scheduling/README.md
+  h_99f506dc258b88 1032
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "bd3e40d5c6e2ad0e1d7b57ed216e8805d34291f2",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

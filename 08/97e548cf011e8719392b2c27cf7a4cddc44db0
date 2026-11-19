@@ -1,0 +1,15 @@
+keps/12100-partial-scaleup-for-elasticjob/README.md
+  h_99f506dc258b88 411
+  h_99f506dc258b88 270,272-274,412,420-421
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0897e548cf011e8719392b2c27cf7a4cddc44db0",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

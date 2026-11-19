@@ -1,0 +1,19 @@
+.github/ISSUE_TEMPLATE/NEW_RELEASE.md
+  s_af3f07148fe7f0::t_ebf9b119460dc9 26,40-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f472e74ea10df565029de4f5147f7ac99f54db12",
+  "prompts": {},
+  "sessions": {
+    "s_af3f07148fe7f0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a2b3618c-7f4b-4df1-aa2e-6879b222d73e",
+        "model": "unknown"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

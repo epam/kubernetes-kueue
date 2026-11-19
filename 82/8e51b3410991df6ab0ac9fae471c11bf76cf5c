@@ -1,0 +1,21 @@
+pkg/controller/jobs/trainjob/trainjob_controller.go
+  s_eb4c17e1aea17b::t_78b22c49fa66c2 198
+pkg/controller/jobs/trainjob/trainjob_controller_test.go
+  s_eb4c17e1aea17b::t_e78018bfeb7937 1021
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "828e51b3410991df6ab0ac9fae471c11bf76cf5c",
+  "prompts": {},
+  "sessions": {
+    "s_eb4c17e1aea17b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e22723ba-c782-4a92-bb24-338209775fe3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

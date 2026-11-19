@@ -1,0 +1,30 @@
+test/integration/singlecluster/tas/tas_test.go
+  s_9dd78eb5de22a0::t_6fbec510c4f1da 3506-3507
+pkg/webhooks/workload_webhook.go
+  h_99f506dc258b88 175
+pkg/features/kube_features.go
+  h_99f506dc258b88 518-519,521,800-801
+pkg/webhooks/workload_webhook_test.go
+  h_99f506dc258b88 258,271,283,295,297
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "decd4eae6a04ee945a27be77a329474d87dfd6ac",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_9dd78eb5de22a0": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "026d0ae5-b3ce-4ee5-b138-402b14f2ef54",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    }
+  }
+}

@@ -1,0 +1,19 @@
+hack/tools/code-generator/generate.sh
+  s_634b7e0cbac677::t_3f034b58e961c6 28-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "e960b8f8902de52e5b63217c55b46db013db1001",
+  "prompts": {},
+  "sessions": {
+    "s_634b7e0cbac677": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fd65a7bc-2166-4d81-b235-34fa69afe332",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

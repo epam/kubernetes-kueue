@@ -1,0 +1,30 @@
+pkg/controller/jobframework/reconciler.go
+  h_99f506dc258b88 1961
+pkg/controller/jobframework/utils.go
+  h_99f506dc258b88 37,346-349,352-353
+pkg/controller/jobs/job/job_webhook.go
+  h_99f506dc258b88 37,48,151,204-224,249
+pkg/controller/jobs/job/job_webhook_test.go
+  h_99f506dc258b88 631,634,636-638,640-659,663,665-666,669,678-692,703-719,1205,1219,1228-1243,1250,1253,1259-1282,1286,1290,1292-1296,1299-1302,1306
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1111b8895d176f68c7720efbbe85f2a8ce186269",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_97498c31896c72": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "c959feb0-2b41-4c2e-a76f-af902c969d5e",
+        "model": "copilot/claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

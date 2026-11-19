@@ -1,0 +1,14 @@
+pkg/controller/jobs/rayservice/rayservice_controller.go
+  h_47cee5fa694435 129-130
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "8e78a850dfb5cd8b3af324a9a4bb0b3ee7779526",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

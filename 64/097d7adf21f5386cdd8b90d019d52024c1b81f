@@ -1,0 +1,24 @@
+Makefile
+  h_47cee5fa694435 160
+site/content/en/docs/concepts/admission_check/provisioning_request.md
+  h_47cee5fa694435 158
+hack/make/test.mk
+  h_47cee5fa694435 296
+site/content/en/docs/getting-started/installation.md
+  h_47cee5fa694435 266
+hack/tools/go.sum
+  h_47cee5fa694435 225
+site/content/en/docs/reference/kueue-config.v1beta1.md
+  h_47cee5fa694435 1-1411
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "64097d7adf21f5386cdd8b90d019d52024c1b81f",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+site/content/en/docs/reference/kubectl-kueue/commands/kueuectl_delete/kueuectl_delete_workload.md
+  s_22f4fe7323348f::t_41539e89dfc307 19
+cmd/kueuectl/app/delete/delete_workload.go
+  s_22f4fe7323348f::t_d30f1ea08432b3 90
+  s_22f4fe7323348f::t_41539e89dfc307 47,49
+  s_22f4fe7323348f::t_61cb3aefbf1459 127
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6910e048f4806dd53f75ebf3e26ed6da7120aad3",
+  "prompts": {},
+  "sessions": {
+    "s_22f4fe7323348f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ab651b3e-dcd4-44d3-b90e-4c0425231dbd",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

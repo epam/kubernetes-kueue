@@ -1,0 +1,14 @@
+test/util/behavioral/e2e/exec.go
+  h_47cee5fa694435 26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "37c7768fd452a71e1e8b52c264ca21a63bd892f1",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

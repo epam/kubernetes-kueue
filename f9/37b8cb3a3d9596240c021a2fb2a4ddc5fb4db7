@@ -1,0 +1,19 @@
+pkg/features/kube_features.go
+  s_e01a488a1579be::t_4a784024e3dcf9 332
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "f937b8cb3a3d9596240c021a2fb2a4ddc5fb4db7",
+  "prompts": {},
+  "sessions": {
+    "s_e01a488a1579be": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e34b6b3a-405f-4d56-8e6a-3fdb3ac24550",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

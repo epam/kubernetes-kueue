@@ -1,0 +1,55 @@
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_66f19917081bc7::t_2ee7fc10db5986 384,415,536
+  s_66f19917081bc7::t_03712f775560ea 385-388,416-419
+  s_66f19917081bc7::t_3714d2d7638b8d 537-540
+  h_99f506dc258b88 155-157,167,172
+Makefile
+  h_99f506dc258b88 173
+pkg/controller/admissionchecks/multikueue/workload_test.go
+  s_66f19917081bc7::t_03712f775560ea 672-705,734-736
+  s_66f19917081bc7::t_d2a23463c995d4 706-733
+  h_99f506dc258b88 759,799,829,953,992,1027,1060,1113,1143,1180
+pkg/controller/jobframework/utils.go
+  s_66f19917081bc7::t_2ee7fc10db5986 247-250,261-264,268,271,285-286,293-295
+  s_66f19917081bc7::t_ee41e06d138555 287-292
+  h_99f506dc258b88 21,28-29,242-245,251-252,258-260,265-267,269-270,272-281,297-298
+  s_66f19917081bc7::t_7b89809fcb1fb5 246
+  s_49be4c602cf3ca::t_2b0e6d8921abbf 253-257
+  s_66f19917081bc7::t_e16b51b876a1cf 282-284
+  s_66f19917081bc7::t_62bbaa4163a188 296
+pkg/controller/jobframework/multikueue_test.go
+  s_66f19917081bc7::t_655a1f4eb0f992 84,88
+  s_66f19917081bc7::t_4e94b14280d2c9 1-41,45,47-49,54-55,60,66,71-72,77-78,83,89-92,103,105-106,110-188
+  s_49be4c602cf3ca::t_b08520d1cdc2bc 61-65
+  s_66f19917081bc7::t_2ee7fc10db5986 50-53,56-59,67-70,73-76,79-82,85-87,104,107-109
+  s_66f19917081bc7::t_2b949a1a4ef6fa 42-44,46,93-102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "26e7089f94ae341b51ee2728829972945d07ae43",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_49be4c602cf3ca": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "1e1ae685-6c43-4fff-8b79-892f10738da7",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    },
+    "s_66f19917081bc7": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "d3425c43-6559-46bc-9fea-26b65cf13e89",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    }
+  }
+}

@@ -1,0 +1,38 @@
+pkg/controller/concurrentadmission/controller_test.go
+  s_03c3823608cd5e::t_0e53df24ee994c 414
+  s_03c3823608cd5e::t_b579716721755b 246,248-251,253-257,259-262,267-271,273-276,278-282,284-293,295-297,299-301,305-306,308-313,316-327,337-413,415
+  s_03c3823608cd5e::t_8eb5c56912f220 245
+  s_03c3823608cd5e::t_0651039dc01256 247
+  s_03c3823608cd5e::t_4ee767cb78f725 252
+  s_03c3823608cd5e::t_fb84b6de8ea377 258
+  s_03c3823608cd5e::t_f737600f712b86 263-266
+  s_03c3823608cd5e::t_2353ab9d170bd0 272
+  s_03c3823608cd5e::t_6dff384c533006 277
+  s_03c3823608cd5e::t_8ae3ccfc8d8b0a 283
+  s_03c3823608cd5e::t_97aabfb6da4eb5 294
+  s_03c3823608cd5e::t_f230ce66980cd3 298
+  s_03c3823608cd5e::t_3b570484be425e 302-304
+  s_03c3823608cd5e::t_c852de712f1d08 307
+  s_03c3823608cd5e::t_f01c4aca51585c 314-315
+  s_03c3823608cd5e::t_d090256bdc08ba 328-330,334-336
+  s_03c3823608cd5e::t_228b9628de10bf 33,138-145,331-333,2118-2119,2208-2268
+pkg/controller/concurrentadmission/controller.go
+  s_03c3823608cd5e::t_92c74e430c4fd7 57,114-119,128-171,174-175,200-202,204-207,325-344
+  s_03c3823608cd5e::t_b7eeed7a45a9af 312-315
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "4e8b1c0e0b556fdd769fc46e25b1f877d94e9f8c",
+  "prompts": {},
+  "sessions": {
+    "s_03c3823608cd5e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93d1df4e-6209-49b9-aea2-e87a41d36c1f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}

@@ -1,0 +1,207 @@
+apis/kueue/v1beta1/admissioncheck_types.go
+  h_47cee5fa694435 106
+apis/kueue/v1beta1/clusterqueue_types.go
+  h_47cee5fa694435 543
+apis/kueue/v1beta1/cohort_types.go
+  h_47cee5fa694435 84
+apis/kueue/v1beta1/localqueue_types.go
+  h_47cee5fa694435 194
+apis/kueue/v1beta1/multikueue_types.go
+  h_47cee5fa694435 95
+apis/kueue/v1beta1/provisioningrequestconfig_types.go
+  h_47cee5fa694435 164
+apis/kueue/v1beta1/resourceflavor_types.go
+  h_47cee5fa694435 27
+apis/kueue/v1beta1/topology_types.go
+  h_47cee5fa694435 127
+apis/kueue/v1beta1/workload_types.go
+  h_47cee5fa694435 780
+apis/kueue/v1beta1/workloadpriorityclass_types.go
+  h_47cee5fa694435 26
+charts/kueue/templates/crd/kueue.x-k8s.io_admissionchecks.yaml
+  h_47cee5fa694435 180
+charts/kueue/templates/crd/kueue.x-k8s.io_clusterqueues.yaml
+  h_47cee5fa694435 815
+charts/kueue/templates/crd/kueue.x-k8s.io_cohorts.yaml
+  h_47cee5fa694435 318
+charts/kueue/templates/crd/kueue.x-k8s.io_localqueues.yaml
+  h_47cee5fa694435 444
+charts/kueue/templates/crd/kueue.x-k8s.io_multikueueclusters.yaml
+  h_47cee5fa694435 192
+charts/kueue/templates/crd/kueue.x-k8s.io_provisioningrequestconfigs.yaml
+  h_47cee5fa694435 196
+charts/kueue/templates/crd/kueue.x-k8s.io_resourceflavors.yaml
+  h_47cee5fa694435 208
+charts/kueue/templates/crd/kueue.x-k8s.io_topologies.yaml
+  h_47cee5fa694435 103
+charts/kueue/templates/crd/kueue.x-k8s.io_workloadpriorityclasses.yaml
+  h_47cee5fa694435 85
+charts/kueue/templates/crd/kueue.x-k8s.io_workloads.yaml
+  h_47cee5fa694435 8956
+config/components/crd/bases/kueue.x-k8s.io_admissionchecks.yaml
+  h_47cee5fa694435 159
+config/components/crd/bases/kueue.x-k8s.io_clusterqueues.yaml
+  h_47cee5fa694435 802
+config/components/crd/bases/kueue.x-k8s.io_cohorts.yaml
+  h_47cee5fa694435 290
+config/components/crd/bases/kueue.x-k8s.io_localqueues.yaml
+  h_47cee5fa694435 425
+config/components/crd/bases/kueue.x-k8s.io_multikueueclusters.yaml
+  h_47cee5fa694435 161
+config/components/crd/bases/kueue.x-k8s.io_provisioningrequestconfigs.yaml
+  h_47cee5fa694435 178
+config/components/crd/bases/kueue.x-k8s.io_resourceflavors.yaml
+  h_47cee5fa694435 196
+config/components/crd/bases/kueue.x-k8s.io_topologies.yaml
+  h_47cee5fa694435 84
+config/components/crd/bases/kueue.x-k8s.io_workloadpriorityclasses.yaml
+  h_47cee5fa694435 64
+config/components/crd/bases/kueue.x-k8s.io_workloads.yaml
+  h_47cee5fa694435 9455
+test/e2e/config/certmanager/values.yaml
+  h_47cee5fa694435 33
+test/e2e/config/certmanager/controller_manager_config.yaml
+  h_47cee5fa694435 1
+hack/testing/e2e-common.sh
+  h_47cee5fa694435 887
+pkg/visibility/server.go
+  h_47cee5fa694435 187
+test/e2e/config/certmanager/cainjection-templates/apiservice_cainjection_patch.yaml
+  h_47cee5fa694435 7
+pkg/util/tas/tas_assignment.go
+  h_47cee5fa694435 27-28,30,266-282,283-284
+  h_47cee5fa694435 283-284
+internal/mocks/controller/core/resourceflavor_controller.go
+  h_47cee5fa694435 1-68
+internal/mocks/controller/jobframework/interface.go
+  h_47cee5fa694435 1-482
+site/content/en/docs/concepts/local_queue.md
+  h_47cee5fa694435 41
+site/content/en/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 96
+site/content/zh-CN/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 26,30
+site/content/zh-CN/docs/concepts/workload_priority_class.md
+  h_47cee5fa694435 112
+site/content/zh-CN/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 93
+site/content/zh-CN/docs/admission-check-controllers/provisioning.md
+  h_47cee5fa694435 12,140,144
+site/content/zh-CN/docs/concepts/cohort.md
+  h_47cee5fa694435 87
+config/default/kustomization.yaml
+  h_47cee5fa694435 109,360,378
+site/content/zh-CN/docs/concepts/workload.md
+  h_47cee5fa694435 55,201
+site/content/en/docs/concepts/workload.md
+  h_47cee5fa694435 58,216
+site/content/zh-CN/docs/concepts/preemption.md
+  h_47cee5fa694435 21
+site/content/en/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 534,561
+site/content/zh-CN/docs/concepts/local_queue.md
+  h_47cee5fa694435 41
+site/content/zh-CN/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 24,40,44
+site/content/zh-CN/docs/concepts/admission_check.md
+  h_47cee5fa694435 128
+site/content/zh-CN/docs/installation/_index.md
+  h_47cee5fa694435 143,285
+site/content/zh-CN/docs/tasks/run/using_hami.md
+  h_47cee5fa694435 69
+site/content/zh-CN/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 480,507
+site/content/zh-CN/v0.19/docs/reference/kueue-config.v1beta1.md
+  h_47cee5fa694435 1-1206
+site/content/zh-CN/v0.19/docs/reference/kueue.v1beta1.md
+  h_47cee5fa694435 1-3167
+hack/make/test.mk
+  h_47cee5fa694435 396
+config/components/visibility/apiservice_v1beta1.yaml
+  h_47cee5fa694435 1-13
+config/components/visibility/kustomization.yaml
+  h_47cee5fa694435 2
+site/content/en/docs/getting-started/installation.md
+  h_47cee5fa694435 148,314
+site/content/en/docs/concepts/cohort.md
+  h_47cee5fa694435 85
+site/content/zh-CN/docs/reference/kueue-config.v1beta2.md
+  s_06604283cb235a::t_7418b89f62bdef 6,10,20,24,31,35-37,40,43-44,47,51-57,60,64-76,80,83,87-89,92,96-97,100,104-105,108,112,115,119,122,126,129,133,136,140-142,149,156,165,172,175,179-180,183,187-188,191,195-197,206,213,216,220-222,225,229,238,243,247,255,262-263,272,277,281,285,289,292,296,305,310-311,315,323-330,337-338,347,352,356,364-366,373,380,389,396,404,411-412,419,426,433-436,443-444,451-452,461,466,470,478-481,488,495-496,503,512,517-518,522,526,530-533,540-543,550-552,559-562,575-578,587,592,596,604-605,612-613,620-622,631,636,640,644,648-649,652,656-658,661,665-667,679,683,687,691-695,698,702-704,707,711-714,723,728-729,733,737,741-747,750,754-760,767-771,780,785-786,790,798-799,806-808,817,824,828,832-834,836-846,848,850-852,854,863,868,872,880-881,890,897,901,905-906,908-925,929,933-934,937,941,949,954,957,961-969,972,976-977,980,984-985,993,997-998,1001,1008,1015,1027,1034-1035,1042-1044,1051-1052,1059,1061-1062,1070,1077,1084-1086,1094,1100,1103,1107-1108,1116,1122,1129-1130,1138,1140,1146,1148,1159,1166,1168-1169,1177-1180,1182-1187,1189,1196-1197,1204-1205,1213,1215,1221,1226,1229,1233,1236,1240-1241,1248-1250,1253,1257-1258,1266,1268,1278,1285,1288,1292,1295,1299-1300,1307-1308,1316,1318,1324,1330,1337-1340,1347-1350,1357-1360,1372,1379-1380,1387-1388,1400-1401,1404,1407,1411-1413,1420-1422,1429,1436-1440,1448,1452,1455,1462-1466,1473-1477,1481-1482,1485-1491
+  h_47cee5fa694435 1-5,7-9,11-19,21-23,25-30,32-34,38-39,41-42,45-46,48-50,58-59,61-63,77-79,81-82,84-86,90-91,93-95,98-99,101-103,106-107,109-111,113-114,116-118,120-121,123-125,127-128,130-132,134-135,137-139,143-148,150-155,157-164,166-171,173-174,176-178,181-182,184-186,189-190,192-194,198-205,207-212,214-215,217-219,223-224,226-228,230-237,239-242,244-246,248-254,256-261,264-271,273-276,278-280,282-284,286-288,290-291,293-295,297-304,306-309,312-314,316-322,331-336,339-346,348-351,353-355,357-363,367-372,374-379,381-388,390-395,397-403,405-410,413-418,420-425,427-432,437-442,445-450,453-460,462-465,467-469,471-477,482-487,489-494,497-502,504-511,513-516,519-521,523-525,527-529,534-539,544-549,553-558,563-574,579-586,588-591,593-595,597-603,606-611,614-619,623-630,632-635,637-639,641-643,645-647,650-651,653-655,659-660,662-664,668-678,680-682,684-686,688-690,696-697,699-701,705-706,708-710,715-722,724-727,730-732,734-736,738-740,748-749,751-753,761-766,772-779,781-784,787-789,791-797,800-805,809-816,818-823,825-827,829-831,835,847,849,853,855-862,864-867,869-871,873-879,882-889,891-896,898-900,902-904,907,926-928,930-932,935-936,938-940,942-948,950-953,955-956,958-960,970-971,973-975,978-979,981-983,986-992,994-996,999-1000,1002-1007,1009-1014,1016-1026,1028-1033,1036-1041,1045-1050,1053-1058,1060,1063-1069,1071-1076,1078-1083,1087-1093,1095-1099,1101-1102,1104-1106,1109-1115,1117-1121,1123-1128,1131-1137,1139,1141-1145,1147,1149-1158,1160-1165,1167,1170-1176,1181,1188,1190-1195,1198-1203,1206-1212,1214,1216-1220,1222-1225,1227-1228,1230-1232,1234-1235,1237-1239,1242-1247,1251-1252,1254-1256,1259-1265,1267,1269-1277,1279-1284,1286-1287,1289-1291,1293-1294,1296-1298,1301-1306,1309-1315,1317,1319-1323,1325-1329,1331-1336,1341-1346,1351-1356,1361-1371,1373-1378,1381-1386,1389-1399,1402-1403,1405-1406,1408-1410,1414-1419,1423-1428,1430-1435,1441-1447,1449-1451,1453-1454,1456-1461,1467-1472,1478-1480,1495-1616
+  s_06604283cb235a::t_14680d2f33291d 1483-1484
+  s_06604283cb235a::t_9b621ab4a464ab 1492-1494
+  h_47cee5fa694435 1495-1616
+site/content/zh-CN/docs/reference/kueue.v1beta2.md
+  h_47cee5fa694435 1-3882
+site/content/en/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 132
+site/content/en/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 27,29
+site/content/en/docs/concepts/preemption.md
+  h_47cee5fa694435 23
+site/content/en/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 22,35,37
+site/content/en/v0.18/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 132
+site/content/en/v0.18/docs/concepts/cohort.md
+  h_47cee5fa694435 85
+site/content/en/v0.18/docs/concepts/preemption.md
+  h_47cee5fa694435 23
+site/content/en/v0.18/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 22,35
+site/content/en/v0.19/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 132
+site/content/en/v0.19/docs/concepts/cohort.md
+  h_47cee5fa694435 85
+site/content/en/v0.19/docs/concepts/preemption.md
+  h_47cee5fa694435 23
+site/content/en/v0.19/docs/getting-started/installation.md
+  h_47cee5fa694435 315
+site/content/en/v0.19/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 22,35
+site/content/en/v0.19/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 27,29
+site/content/en/docs/concepts/workload_priority_class.md
+  h_47cee5fa694435 136
+site/content/zh-CN/v0.19/docs/concepts/cohort.md
+  h_47cee5fa694435 87
+site/content/zh-CN/v0.18/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 140-141
+site/content/zh-CN/v0.19/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 140
+site/content/zh-CN/v0.18/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 24,26
+site/content/zh-CN/v0.18/docs/concepts/local_queue.md
+  h_47cee5fa694435 41
+site/content/zh-CN/v0.18/docs/concepts/admission_check.md
+  h_47cee5fa694435 128-129
+site/content/zh-CN/v0.19/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 24,26
+site/content/zh-CN/v0.19/docs/concepts/admission_check.md
+  h_47cee5fa694435 128-129
+site/content/zh-CN/v0.18/docs/concepts/cohort.md
+  h_47cee5fa694435 87
+site/content/zh-CN/docs/concepts/admission_check/_index.md
+  h_47cee5fa694435 140-141
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "0fa74c37689b34d308ef7d076344110a677a5027",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_06604283cb235a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e9bf251e-027f-488a-b456-0cefc9cd4614",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

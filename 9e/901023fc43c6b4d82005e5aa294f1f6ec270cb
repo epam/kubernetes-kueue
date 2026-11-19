@@ -1,0 +1,170 @@
+pkg/controller/jobs/leaderworkerset/leaderworkerset_controller.go
+  s_624999a5bff120::t_46c1772f75dd1d 82-85
+site/data/featuregates/versioned_feature_list.yaml
+  s_bf79e6dc9bd462::t_361c5024a3dbe5 332-337
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  s_9dceb3c19bd574::t_8710eca045297e 39,2464-2466
+  s_9dceb3c19bd574::t_c052298e663203 1353,1355-1361,1363-1364,1401,1403-1405,1407-1410,1412-1414,1416-1422,1424-1431,1486,1488-1494,1496-1503,1518,1520-1522,1524-1527,1529-1536,1669,1671-1677,1679-1687,1689-1695,1697-1704
+  s_02f458953205fa::t_3464c67cc53f9e 1362,1406,1411,1423,1441,1462,1483,1495,1523,1528,1542-1543,1548-1549,1590,1604,1609,1623-1624,1629-1630,1644,1656,1678,1696
+  s_bf79e6dc9bd462::t_928c1f23adb227 1537-1541,1544-1547,1550-1557,1578-1583,1585-1587,1589,1591-1603,1605-1608,1610-1622,1625-1628,1631-1643,1645-1655,1657-1668
+  s_bf79e6dc9bd462::t_c868ef281db406 1354,1402,1415,1433,1451,1472,1487,1519,1670,1688,2219
+  s_02f458953205fa::t_a63d5b86ef51e3 1504-1517
+  s_9dceb3c19bd574::t_30683dce7a4550 1432,1434-1440,1442-1450,1452-1461,1463-1471,1473-1482,1484-1485
+  s_02f458953205fa::t_e2539d020bdd69 1558-1577
+  s_02f458953205fa::t_b238b6d892667b 1584,1588
+  s_02f458953205fa::t_c4ac003aa0c54f 2463
+  s_d41fee267d5f75::t_13b9f3e5ddbfd4 1365-1400
+test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
+  s_02f458953205fa::t_8e76cd752e0c4e 205-211,213-216,220-223,225-236,240-264,268-274
+  s_9dceb3c19bd574::t_4a11fcc5377a49 25,30,43-49
+  s_02f458953205fa::t_0e2aa84093de02 217-219,237-239,265-267
+  s_9dceb3c19bd574::t_1e9bd04ee01be6 212,224
+  s_9dceb3c19bd574::t_6ddcc49c5b49ae 275
+test/e2e/singlecluster/extended/leaderworkerset_test.go
+  s_02f458953205fa::t_8e76cd752e0c4e 775-777
+  s_02f458953205fa::t_b5ced0a812d154 778
+  s_02f458953205fa::t_0e2aa84093de02 819-822,824-827
+  s_02f458953205fa::t_469a4a367314bc 812
+  s_02f458953205fa::t_8e877d948a1591 872
+  s_02f458953205fa::t_05c182062fcdbb 779-811,813-818,828-863,865
+  s_02f458953205fa::t_e9dc21112f392e 864,866-871,873
+  s_02f458953205fa::t_2f7019aa44f9fc 823
+pkg/util/testingjobs/leaderworkerset/wrappers.go
+  s_bf79e6dc9bd462::t_542600b9000e69 188-193
+  s_9dceb3c19bd574::t_64699385ee0bc5 153-158
+test/integration/multikueue/leaderworkerset_test.go
+  s_02f458953205fa::t_eb3b4275e542c9 134-176
+  s_624999a5bff120::t_7b4720911d8c7e 49-52
+  s_624999a5bff120::t_a2de9abb2a63a4 34
+pkg/util/testing/wrappers.go
+  s_02f458953205fa::t_2f7019aa44f9fc 236-241
+pkg/workload/effective_resources.go
+  s_9dceb3c19bd574::t_14b1057d0b1e64 85-86,88-89,95-107,151,156-161
+  s_9dceb3c19bd574::t_4040471e49511e 162-163
+pkg/workload/effective_resources_test.go
+  s_9dceb3c19bd574::t_4a95f6a0a1f1f9 23,27,159-240,242-246
+  s_9dceb3c19bd574::t_94ee8d8d7e86cc 241
+  s_9dceb3c19bd574::t_951abda3f04c39 247
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter.go
+  s_02f458953205fa::t_b28106b07d33bf 26,83-84,86-96,122-125,127-136,141-145,153-160,166-167,170
+  s_624999a5bff120::t_271c309a8cd9c1 146-152,168-169,186-195,197
+  s_02f458953205fa::t_bb38e934d3c21b 126,140
+  s_02f458953205fa::t_70aa1f38004243 178-185,229
+  s_624999a5bff120::t_7b4720911d8c7e 51,220-227
+  s_02f458953205fa::t_5b99a6f91cd06c 171
+  s_02f458953205fa::t_7275732ae30642 25,161,163,165
+  s_02f458953205fa::t_b3d3fd01086e99 137-139,162,164
+  s_02f458953205fa::t_2dc670f8e445de 230
+  s_624999a5bff120::t_761d8a73496ee2 228
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter_test.go
+  s_624999a5bff120::t_271c309a8cd9c1 254-257,498-517,521,523-528,530-534
+  s_02f458953205fa::t_e2539d020bdd69 464-497,535-537
+  s_02f458953205fa::t_7bb85cf60d1464 20,23,59-63,65-66,68-72,312,354,423-428,431-437,440-449,452-458,461-463,539-545,547-548,550-555,557,559-568,570-571,573-578,580,582-590,592-599,601-611,613-620,622-629,631-636,638-646,648-653,655-657
+  s_02f458953205fa::t_4c2a3176107517 429-430,438-439,450-451,459-460,549,558,572,581,591,600,612,621,630,637,647,654
+  s_624999a5bff120::t_25dc71795f9134 518-520,522,529
+  s_02f458953205fa::t_bb38e934d3c21b 538,546,556,569,579
+pkg/features/kube_features.go
+  s_9dceb3c19bd574::t_7f3cb132c1d75d 992-997
+  s_02f458953205fa::t_25ea2f12f0911b 998
+  s_bf79e6dc9bd462::t_c868ef281db406 1001,1552
+  s_624999a5bff120::t_8c4932396f1be1 999-1000
+  s_9dceb3c19bd574::t_19b956c623189f 1553-1554
+  s_624999a5bff120::t_91763f3bfb9d79 991,1551
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  s_bf79e6dc9bd462::t_d73abe1137516f 546-553,561-562,564
+  s_9c836b75795758::t_2299c9507dc137 501
+  s_02f458953205fa::t_dab1d754cf7b75 22
+  s_bf79e6dc9bd462::t_65dc553fa0e2aa 450-456
+  s_bf79e6dc9bd462::t_c868ef281db406 272,469
+  s_02f458953205fa::t_b3d3fd01086e99 527-528,555-557
+  s_9dceb3c19bd574::t_64699385ee0bc5 46,470-471,474-475,511-512,517-518,522-523,525-526,530,534,560,565-567
+  s_9dceb3c19bd574::t_580bd90a4ab755 26,271,274-279,284,291,473,502,513,519-521
+  s_02f458953205fa::t_628d25f7d0ee0d 472
+  s_624999a5bff120::t_09ce29ca330146 514-516
+  s_02f458953205fa::t_70aa1f38004243 529,554,558-559,563
+  s_9c836b75795758::t_60322c7407f847 531-533
+  s_02f458953205fa::t_fad37e12cbd44a 273,503-510
+  s_d41fee267d5f75::t_83499032206ca4 524
+  s_d41fee267d5f75::t_ff8772cf124619 535-545
+  s_d41fee267d5f75::t_22119313750698 27
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_bf79e6dc9bd462::t_361c5024a3dbe5 332-337
+site/content/en/docs/tasks/run/leaderworkerset.md
+  s_02f458953205fa::t_25ea2f12f0911b 122-123,127-128
+  s_02f458953205fa::t_a63d5b86ef51e3 124
+  s_02f458953205fa::t_39338b74ca74fb 135-136
+  s_02f458953205fa::t_8e877d948a1591 125-126,130-131
+  s_9dceb3c19bd574::t_c56c8b3c6ac9fe 119-121,133,145-146
+  s_bf79e6dc9bd462::t_c868ef281db406 144
+  s_9dceb3c19bd574::t_b2ec65e4f6e8f4 129
+  s_02f458953205fa::t_628d25f7d0ee0d 134
+  s_624999a5bff120::t_8c4932396f1be1 137-138
+  s_d41fee267d5f75::t_39e880ce34b875 132
+  s_d41fee267d5f75::t_aa745aa700c00d 139-143
+pkg/controller/admissionchecks/multikueue/workload_test.go
+  s_d41fee267d5f75::t_50a89a795d7cbb 4709-4793
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_d41fee267d5f75::t_242e5915e27059 1448-1449
+  s_d41fee267d5f75::t_fe81abc4688365 1494-1499,1501-1507
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9e901023fc43c6b4d82005e5aa294f1f6ec270cb",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_02f458953205fa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "01a4668c-1b23-4758-8e15-dfb64d1f2afd",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    },
+    "s_624999a5bff120": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b8714e0-fc91-4420-b8e6-df215fc3900f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    },
+    "s_9c836b75795758": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5cabbc8d-fdeb-45f9-9086-3809d606da21",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_9dceb3c19bd574": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0bcf8565-e506-4642-8cf6-3d5a60a6c6be",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_bf79e6dc9bd462": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec8b7b68-f8b7-424a-ac5d-5a6a610f43dd",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_d41fee267d5f75": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dc6a169b-f647-49de-89cf-f8871162feea",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

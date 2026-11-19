@@ -1,0 +1,30 @@
+pkg/controller/jobframework/reconciler.go
+  s_73d8962fade7f4::t_fe65c4e1511ee2 1496,1822,2085-2090
+pkg/controller/jobframework/reconciler_internal_test.go
+  s_73d8962fade7f4::t_15f5e3dd87b1c7 32,76-141
+pkg/scheduler/scheduler.go
+  s_73d8962fade7f4::t_add1cc8580a14d 941
+pkg/workload/workload.go
+  s_73d8962fade7f4::t_0485c89d084dbe 1721-1738
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "52f4b3c9eb174458cd6b929ed626f1a6935e122f",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_73d8962fade7f4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0791df95-dea7-486f-a130-aec4a3f664f5",
+        "model": "unknown"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

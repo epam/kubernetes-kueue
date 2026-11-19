@@ -1,0 +1,38 @@
+test/e2e/sequential/baseline/admission_fair_sharing_test.go
+  h_47cee5fa694435 37
+test/e2e/sequential/baseline/workloadpriorityclassdefaulting_test.go
+  h_47cee5fa694435 36
+test/e2e/multikueue/sequential/e2e_test.go
+  h_47cee5fa694435 210,300,371,469,700
+test/e2e/sequential/baseline/reconcile_test.go
+  h_47cee5fa694435 36
+test/e2e/sequential/baseline/metrics_test.go
+  h_47cee5fa694435 33
+test/e2e/sequential/baseline/quota_check_strategy_test.go
+  h_47cee5fa694435 40
+test/e2e/sequential/baseline/podintegrationautoenablement_test.go
+  h_47cee5fa694435 38
+test/e2e/sequential/baseline/default_config_test.go
+  h_47cee5fa694435 47
+test/util/constants.go
+  h_47cee5fa694435 98-102
+test/e2e/sequential/baseline/objectretentionpolicies_test.go
+  h_47cee5fa694435 39,136,270
+test/e2e/sequential/baseline/failure_recovery_policy_test.go
+  h_47cee5fa694435 44
+test/e2e/sequential/baseline/visibility_server_test.go
+  h_47cee5fa694435 42
+test/e2e/sequential/baseline/waitforpodsready_test.go
+  h_47cee5fa694435 47,204,351
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "d483d5494643f9f16cee2cf09e4e88a05c5039c1",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

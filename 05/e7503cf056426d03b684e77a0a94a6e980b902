@@ -1,0 +1,40 @@
+cmd/experimental/time-sharing-priority-boost-controller/Makefile
+  s_cd6d21dfecda8b::t_8dae8baa66a1b2 10-16,30-31,34-36,42-45,50,58
+cmd/experimental/time-sharing-priority-boost-controller/Dockerfile
+  s_cd6d21dfecda8b::t_c8dcd8c655320a 1,3,11,14-16,19,21
+cmd/experimental/time-sharing-priority-boost-controller/test/integration/priority_boost_controller_test.go
+  s_cd6d21dfecda8b::t_5ff07735f729d8 20,23-24,35,38-74
+cmd/experimental/time-sharing-priority-boost-controller/test/integration/suite_test.go
+  s_cd6d21dfecda8b::t_2a605f2f565929 1-27
+cmd/experimental/time-sharing-priority-boost-controller/README.md
+  s_cd6d21dfecda8b::t_50ed32e9cf6227 62-63
+cmd/experimental/time-sharing-priority-boost-controller/pkg/controller/controller_test.go
+  s_cd6d21dfecda8b::t_7cde1e1d64fa5a 249
+  s_cd6d21dfecda8b::t_3c5e20d00668d2 292-295
+  s_cd6d21dfecda8b::t_22e8e5db94f749 178,187
+  s_cd6d21dfecda8b::t_492b05f1cb73b0 271
+  s_cd6d21dfecda8b::t_b104f231dd4804 227
+  s_cd6d21dfecda8b::t_5f95eb3017cd72 210
+  s_cd6d21dfecda8b::t_9e54b97af895ba 240-245
+  s_cd6d21dfecda8b::t_382ef3019fc8d6 37,40-51,53,56-57,64,67-70,72-102,107-115,118-156,161-165,169-170,176,179-186,188-201,208-209,211-226,228-239,246-248,250-260,267-270,272-279,283-291,296,298,300-301,308-313,315-316,323-328,335-336,339-361,367,380,382,385-386,390,393-443
+  s_cd6d21dfecda8b::t_0bea8f2f2e22ce 317-322,329-334
+  s_cd6d21dfecda8b::t_7c3473ab5a2397 261-266
+  s_cd6d21dfecda8b::t_310c668dad8ec0 58-63
+  s_cd6d21dfecda8b::t_05338484500845 202-207
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.7",
+  "base_commit_sha": "05e7503cf056426d03b684e77a0a94a6e980b902",
+  "prompts": {},
+  "sessions": {
+    "s_cd6d21dfecda8b": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "f3407a1d-1638-46bd-8db7-7ec81d2fa7bd",
+        "model": "composer-2"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

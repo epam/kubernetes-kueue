@@ -1,0 +1,42 @@
+test/e2e/dra/whole-device/suite_test.go
+  h_47cee5fa694435 54
+test/e2e/dra/capacity/suite_test.go
+  h_47cee5fa694435 54
+test/util/behavioral/e2e/e2e.go
+  h_47cee5fa694435 590,596,728
+test/e2e/dra/whole-device/dra_test.go
+  h_47cee5fa694435 84,129,172,177,234,239,244,289,334,369,397,457,570,628,760
+test/util/behavioral/e2e/kuberay.go
+  h_47cee5fa694435 79
+test/util/behavioral/e2e/dra.go
+  h_47cee5fa694435 1-47
+test/e2e/sequential/baseline/waitforpodsready_test.go
+  h_47cee5fa694435 372
+test/e2e/singlecluster/extended/kuberay_test.go
+  h_47cee5fa694435 883,968,1123,1148
+test/e2e/multikueue/dra/suite_test.go
+  h_47cee5fa694435 108-110
+test/e2e/multikueue/dra/dra_test.go
+  h_47cee5fa694435 165,170,175,278,315,320,396
+test/e2e/certmanager/metrics_test.go
+  h_47cee5fa694435 211,234,255
+test/e2e/dra/counter/suite_test.go
+  h_47cee5fa694435 54
+test/e2e/dra/counter/dra_test.go
+  h_47cee5fa694435 78,108,136,164,191,196,227,262,306
+test/util/behavioral/e2e/pods.go
+  h_47cee5fa694435 1-58
+test/e2e/dra/capacity/dra_test.go
+  h_47cee5fa694435 78,108,136,165,193,228,272
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "27b1af5bdb80542a39aa8db48bb7fc3166ef40c5",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

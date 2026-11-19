@@ -1,0 +1,32 @@
+pkg/cache/scheduler/tas_flavor_snapshot.go
+  s_455a7a3ba0757b::t_3fa017310005b0 1237
+  s_455a7a3ba0757b::t_5cbf1cc6551f65 1235-1236,1238-1245
+pkg/cache/scheduler/tas_flavor_snapshot_test.go
+  s_455a7a3ba0757b::t_f57b740e029587 943
+  h_99f506dc258b88 945,948,950,953,955,960,962,972,974,976,980,982,984-985,990,992-993,996,998,1000-1001,1004,1016,1023-1024
+  s_455a7a3ba0757b::t_da7639483253d4 944,946-947,949,951-952,954,956-959,961,963-971,973,975,977-979,981,983,986-987,989,991,994-995,997,999,1002-1003,1005-1015,1017-1022,1025-1028
+  s_455a7a3ba0757b::t_a5213fbb04a1b6 988
+test/integration/singlecluster/tas/ginkgo-fix.report
+  s_455a7a3ba0757b::t_60bed21dc664c0 1-278
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "56ea053cb69ae52981698792e77530f17244f24e",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_455a7a3ba0757b": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "81af69b6-650a-4f4f-a81b-fc8842a44c19",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

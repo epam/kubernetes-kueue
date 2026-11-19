@@ -1,0 +1,53 @@
+test/util/behavioral/e2e/workload.go
+  h_47cee5fa694435 20-26,43-69
+  h_47cee5fa694435 31,33-34,70
+test/util/behavioral/workload.go
+  h_47cee5fa694435 39
+test/e2e/multikueue/baseline/tas_test.go
+  h_47cee5fa694435 303-304,580-581,651-652
+test/e2e/multikueue/extended/pytorchjob_test.go
+  h_47cee5fa694435 99-100
+test/e2e/multikueue/extended/mpijob_test.go
+  h_47cee5fa694435 100-101
+test/util/behavioral/objects.go
+  h_47cee5fa694435 41,46,63,67,71
+test/e2e/multikueue/dra/dra_test.go
+  h_47cee5fa694435 260-261
+test/e2e/multikueue/sequential/e2e_test.go
+  h_47cee5fa694435 300,347,380-381
+test/e2e/dra/whole-device/dra_test.go
+  h_47cee5fa694435 120,218-219,276,325,390,434,523,621-622,664,696,783
+test/util/behavioral/e2e/job.go
+  h_47cee5fa694435 1-28,30-60
+  h_47cee5fa694435 29
+test/e2e/multikueue/extended/kuberay_test.go
+  h_47cee5fa694435 113-114
+test/util/behavioral/e2e/objects.go
+  h_47cee5fa694435 20-21,27,38-45
+  h_47cee5fa694435 26,46-47
+test/e2e/multikueue/extended/appwrapper_test.go
+  h_47cee5fa694435 97-98
+test/e2e/dra/capacity/dra_test.go
+  h_47cee5fa694435 98,101,127,129,156,158,185,261
+test/e2e/multikueue/extended/jobset_test.go
+  h_47cee5fa694435 117-118
+test/e2e/singlecluster/baseline/pod_test.go
+  h_47cee5fa694435 262,475
+test/e2e/dra/counter/dra_test.go
+  h_47cee5fa694435 98,101,128,156,183,217,220,295
+test/util/behavioral/e2e/events.go
+  h_47cee5fa694435 1-50
+test/e2e/multikueue/baseline/e2e_test.go
+  h_47cee5fa694435 669-670,1288,1303-1304
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "632b62dac5e29c5a55029c2a1edad43e60bc146a",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+test/integration/singlecluster/kueuectl/list_test.go
+  h_47cee5fa694435 419
+test/integration/singlecluster/controller/core/workload_hash_freshness_test.go
+  h_47cee5fa694435 43,62
+test/integration/singlecluster/controller/core/custom_labels_test.go
+  h_47cee5fa694435 28
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_test.go
+  h_47cee5fa694435 57-58
+test/integration/singlecluster/scheduler/preemption_test.go
+  h_47cee5fa694435 34
+test/util/behavioral/e2e/dra.go
+  h_47cee5fa694435 29
+test/util/behavioral/e2e/pods.go
+  h_47cee5fa694435 26
+test/util/behavioral/multikueue.go
+  h_47cee5fa694435 25
+test/util/behavioral/namespace.go
+  h_47cee5fa694435 25
+test/util/behavioral/queues.go
+  h_47cee5fa694435 22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e443ee0b5df3c489e1766e32d96723753eca7f9a",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

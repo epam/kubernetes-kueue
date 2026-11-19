@@ -1,0 +1,32 @@
+pkg/controller/jobframework/reconciler.go
+  s_73d8962fade7f4::t_859261bec84db1 2085-2088
+  s_73d8962fade7f4::t_11bf606bb2de2d 1496
+  s_73d8962fade7f4::t_b04d54a5ea26f3 1822
+  s_73d8962fade7f4::t_3d9292c9bc0e90 2092-2094
+pkg/controller/jobframework/reconciler_internal_test.go
+  s_73d8962fade7f4::t_8378f182ecf7a3 123
+  s_73d8962fade7f4::t_8b951b0ede1679 76-79,81-122,124-136
+  s_73d8962fade7f4::t_69ad75d6a377b5 32
+  s_73d8962fade7f4::t_e5e1c5a6d5f3aa 80
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "586e6b39221353b7f4659a08309317f1ff646173",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_73d8962fade7f4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0791df95-dea7-486f-a130-aec4a3f664f5",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

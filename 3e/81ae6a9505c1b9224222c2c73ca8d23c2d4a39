@@ -1,0 +1,42 @@
+pkg/controller/admissionchecks/provisioning/controller_test.go
+  s_903cfa242f4c05::t_5d69874cae1b22 256-264
+  s_903cfa242f4c05::t_9f742d6f10e48e 356
+  s_903cfa242f4c05::t_1fe017e9e58b3f 79-86
+  s_903cfa242f4c05::t_8f91cb471d5153 644,658-659,661
+  s_903cfa242f4c05::t_ebd4e6945dcb69 2138-2142
+hack/testing/e2e-common.sh
+  s_bdbbf960764ef0::t_011d653cf82f17 275-278
+  s_bdbbf960764ef0::t_b6e7c7619c6aab 1015-1033
+  s_bdbbf960764ef0::t_04d2147c0b6634 757-759
+test/e2e/singlecluster/baseline/provisioning_test.go
+  s_bdbbf960764ef0::t_5f5ea42835e033 1-174,176-335
+  s_bdbbf960764ef0::t_8ecf0082c54b01 175
+pkg/util/equality/podset_test.go
+  s_903cfa242f4c05::t_a4c39be0fa55b2 53
+Makefile-test.mk
+  s_bdbbf960764ef0::t_40b355fa57e2fb 293
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "3e81ae6a9505c1b9224222c2c73ca8d23c2d4a39",
+  "prompts": {},
+  "sessions": {
+    "s_903cfa242f4c05": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "9c9165c4-5362-42fc-ada6-81dcd9aa4f56",
+        "model": "composer-2.5"
+      },
+      "human_author": null
+    },
+    "s_bdbbf960764ef0": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "f2c873fa-aaae-47ba-9ec4-b4bf0354a7e9",
+        "model": "composer-2.5"
+      },
+      "human_author": null
+    }
+  }
+}

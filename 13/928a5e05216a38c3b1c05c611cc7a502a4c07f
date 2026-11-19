@@ -1,0 +1,16 @@
+test/e2e/tas/extended/leaderworkerset_test.go
+  h_47cee5fa694435 40
+test/e2e/tas/extended/jobset_test.go
+  h_47cee5fa694435 40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "13928a5e05216a38c3b1c05c611cc7a502a4c07f",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

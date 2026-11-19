@@ -1,0 +1,14 @@
+pkg/controller/core/workload_controller_test.go
+  h_47cee5fa694435 3365,3367,3374,3377-3378,3381-3392,3395-3400,3402-3407,3409-3410,3412-3414,3416-3423,3426-3433,3436-3454,3457,3459-3464,3466-3473,3476-3477,3479-3486,3488-3490,3492,3495,3516,3532-3534,3537,3541,3545-3548,3551
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "dd0e69538f669fa46438b0147b060dded4ba4356",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

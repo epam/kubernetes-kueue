@@ -1,0 +1,40 @@
+test/util/e2e.go
+  s_aae8fe9e7c6219::t_7e2ce3b1e59ad4 53,215
+  s_aae8fe9e7c6219::t_e7e7ace5003d36 216-217
+site/data/featuregates/versioned_feature_list.yaml
+  s_aae8fe9e7c6219::t_a268888d6f934e 76-81
+test/e2e/singlecluster/baseline/provisioning_test.go
+  s_aae8fe9e7c6219::t_c099435d1a6778 265,274
+  s_aae8fe9e7c6219::t_aa0ba1b2e9587d 20,38,116-117,129
+  s_aae8fe9e7c6219::t_998031c6b1be4d 76,80-91,96-98,109-112,118-121,125-127,256,261-263,270-272,276-278,281
+pkg/controller/admissionchecks/provisioning/controller.go
+  s_aae8fe9e7c6219::t_2baceb996e51a0 364,368
+  s_aae8fe9e7c6219::t_a268888d6f934e 361,372
+  s_aae8fe9e7c6219::t_1259a89534d211 358-360
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_aae8fe9e7c6219::t_a268888d6f934e 76-81
+hack/testing/e2e-common.sh
+  s_aae8fe9e7c6219::t_78cd22e1979b9d 294,776
+pkg/features/kube_features.go
+  s_aae8fe9e7c6219::t_3c14700f3257af 480-482
+  s_aae8fe9e7c6219::t_a268888d6f934e 483,833
+pkg/controller/admissionchecks/provisioning/controller_test.go
+  s_aae8fe9e7c6219::t_9337ebf5540a13 597,1963
+  s_aae8fe9e7c6219::t_a268888d6f934e 748
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "2ae4d4d6a80683f91dca6253fbe88ae72fedc8c5",
+  "prompts": {},
+  "sessions": {
+    "s_aae8fe9e7c6219": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ebece8f3-3bb2-4482-8e09-3ba0f69a2f7b",
+        "model": "claude-opus-5"
+      },
+      "human_author": null
+    }
+  }
+}

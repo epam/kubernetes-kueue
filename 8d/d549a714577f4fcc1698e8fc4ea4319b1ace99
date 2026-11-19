@@ -1,0 +1,67 @@
+pkg/controller/jobs/trainjob/trainjob_controller.go
+  s_4477a39a84491a::t_a1a02a3e8334b9 177
+  s_519088072ec8db::t_263152275b7ce0 187
+  s_519088072ec8db::t_a63af659536156 207,212
+  s_519088072ec8db::t_8a1d3298a1c5ad 196-197,199-206,208-211,213-217
+  s_61f58471d51dcc::t_cb42820e8587c4 50,111,130-131
+  s_61f58471d51dcc::t_0b1536fc5b3836 132-133
+  s_eb4c17e1aea17b::t_346895e55a906f 125-129
+  s_eb4c17e1aea17b::t_78b22c49fa66c2 198
+pkg/controller/jobs/trainjob/trainjob_controller_test.go
+  s_519088072ec8db::t_acd441da7a9e54 868
+  s_519088072ec8db::t_a8da68c7009802 866
+  s_519088072ec8db::t_8365beb985f5a4 938,944,964,970-989,991-996
+  s_61f58471d51dcc::t_7bb4b9b26970d2 24,32,895,899,902-905,908-913,915,916-918,923,1006-1009,1014,1026-1033
+  s_61f58471d51dcc::t_efd07254442339 1034,1053-1055
+  s_eb4c17e1aea17b::t_7d300f95bde2a2 892
+  s_eb4c17e1aea17b::t_07cbd0931566b4 871-891,893-894,896-898,900,906-907,914
+  s_eb4c17e1aea17b::t_e7169f6c58f3e9 1005,1010-1013
+  s_eb4c17e1aea17b::t_14df69af9f0b81 867,901,990
+  s_eb4c17e1aea17b::t_e78018bfeb7937 1021
+pkg/util/equality/podset.go
+  s_61f58471d51dcc::t_324dcb550bf4c9 33,56-61,72,75,84-100
+  s_61f58471d51dcc::t_d839b6101288fa 101
+pkg/util/equality/podset_test.go
+  s_61f58471d51dcc::t_138150a5a30ebc 115,363-394,408-409
+  s_61f58471d51dcc::t_7e74aa40611511 410
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8dd549a714577f4fcc1698e8fc4ea4319b1ace99",
+  "prompts": {},
+  "sessions": {
+    "s_4477a39a84491a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4cdcf393-32de-40ec-8b87-a36c8a9e8982",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_519088072ec8db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e26cf538-7e76-45b7-8530-709d435203d0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_61f58471d51dcc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6b787fe2-406b-427e-90b9-5a4fb9109714",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_eb4c17e1aea17b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e22723ba-c782-4a92-bb24-338209775fe3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

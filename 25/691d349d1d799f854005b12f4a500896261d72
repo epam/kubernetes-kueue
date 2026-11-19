@@ -1,0 +1,21 @@
+test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
+  s_0bb391658ee619::t_1d04c902b53dd2 114-122,125-129,131-161,163-164
+  s_0bb391658ee619::t_aa62c7ec5a2938 123-124,130,162,165-187
+  s_0bb391658ee619::t_836af8b27ffe17 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "25691d349d1d799f854005b12f4a500896261d72",
+  "prompts": {},
+  "sessions": {
+    "s_0bb391658ee619": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "03debcb5-a3fe-4262-bc96-7a6d7ef70275",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

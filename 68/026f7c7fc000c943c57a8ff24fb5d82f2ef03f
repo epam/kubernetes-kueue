@@ -1,0 +1,14 @@
+pkg/metrics/metrics.go
+  h_47cee5fa694435 1082
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "68026f7c7fc000c943c57a8ff24fb5d82f2ef03f",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

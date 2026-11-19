@@ -1,0 +1,90 @@
+pkg/scheduler/flavorassigner/flavorassigner.go
+  s_e2796491a9bc83::t_4cc022ed5a34b2 853-860
+  s_bbccb2ec907e25::t_e5eba736cacc33 758,829,841-843,862
+  s_e2796491a9bc83::t_5d1cbdacd81f7c 822-828,830-840,844-848,864-868
+  s_e2796491a9bc83::t_25378bb0bd88e2 849-852,861,863
+pkg/scheduler/flavorassigner/flavorassigner_test.go
+  s_cbf300a7f9d2c8::t_e9a11a76f43013 5755,5760-5761
+  s_823d8695a60c76::t_00cef1a55b199f 32
+  h_99f506dc258b88 5676,5697,5722,5753-5754,5790-5791,5833,5837,5841-5842
+  s_e2796491a9bc83::t_cd4ff9d8ae7edc 5699-5700
+  s_823d8695a60c76::t_6d1ea40764c3bd 5656,5673,5678,5701-5702,5798-5802,5824,5829,5832,5835-5836,5838,5840,5843,5846-5847
+  s_e2796491a9bc83::t_892119e3e2b2a2 5657-5666,5668-5671,5679-5680,5691-5696,5698,5707,5716-5721,5756,5762-5763,5769,5774,5779-5789,5793-5796,5803-5819,5821-5823,5825-5828,5830-5831,5834,5839,5844-5845,5848-5853,5855-5862
+  s_e2796491a9bc83::t_109d53e572fe14 5725
+  s_e2796491a9bc83::t_41eb7f4d259360 5703-5706,5723,5726-5752,5757-5759
+  s_a834a8417f5bb4::t_1f79caebfb3e70 5863-5864,5867-5916
+  s_e2796491a9bc83::t_7c92e893817709 5674-5675,5677,5854
+  s_e2796491a9bc83::t_b15a1099241cf2 5724
+  s_cbf300a7f9d2c8::t_1f31ff26f166e3 5667,5672,5681-5690,5708-5715,5764-5768,5770-5773,5775-5778,5792,5797,5820
+  s_e2796491a9bc83::t_d5baf702a6c96d 5866
+  s_e2796491a9bc83::t_0b620603c2a84d 5865
+pkg/scheduler/flavorassigner/tas_flavorassigner.go
+  s_e2796491a9bc83::t_66a8efa616ece0 40-41
+  s_a834a8417f5bb4::t_36dd5ec8ccfdf1 50,52-53
+  s_0742dedf0f47e2::t_239f0111db97cc 51
+  s_e2796491a9bc83::t_61fcd43e1abd35 181-192
+  s_e2796491a9bc83::t_2083af9ca6ae5d 39,42-43
+  s_e2796491a9bc83::t_8a443212a2fc06 166,178
+  s_e2796491a9bc83::t_dbb75fcf9d7999 179-180
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "a8f5a35a1d3a460a0509d9dbc2f878948262e1da",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_0742dedf0f47e2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4698d4d8-bd86-4228-abf3-a79e1c630f0b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": null
+    },
+    "s_823d8695a60c76": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "b8a5a524-f97d-4358-b582-35ef0ed834d7",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    },
+    "s_a834a8417f5bb4": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "788a3bae-f995-4a8f-8abf-6808b0013779",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    },
+    "s_bbccb2ec907e25": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "a0d617ba-9b17-4cad-816f-270ad6d7ea8f",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    },
+    "s_cbf300a7f9d2c8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "13c8e3b2-73d0-4f03-a99e-f76432361783",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": null
+    },
+    "s_e2796491a9bc83": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5bce7833-96ee-437f-b498-e977ba2234bc",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}

@@ -1,0 +1,19 @@
+site/content/en/docs/reference/kubectl-kueue/OWNERS
+  s_087b2cdd0db981::t_e906b6b840ad57 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6f320aca12888b90639ac5d8d02d7da990a02b8a",
+  "prompts": {},
+  "sessions": {
+    "s_087b2cdd0db981": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "843dd73d-71e2-4ea0-aa99-658eeec6d860",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+OWNERS_ALIASES
+  s_7974f4140f995f::t_8b61ca771fe871 28-32,48-51
+hack/testing/OWNERS
+  s_7974f4140f995f::t_85365ac746b67a 7-8
+pkg/controller/jobs/deployment/OWNERS
+  s_7974f4140f995f::t_383e34e2e35e1b 1-7
+pkg/controller/jobs/leaderworkerset/OWNERS
+  s_7974f4140f995f::t_73e2fb2f6338c6 1-7
+pkg/controller/jobs/statefulset/OWNERS
+  s_7974f4140f995f::t_77d17b020a2390 1-7
+pkg/util/testing/OWNERS
+  s_7974f4140f995f::t_935aa07bb22dcc 5-7
+pkg/util/testingjobs/OWNERS
+  s_7974f4140f995f::t_054f87dc0907bb 5-7
+test/OWNERS
+  s_7974f4140f995f::t_659013eae7997c 8-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8eaafef68da59fde30c5346367dea9c1691b4afc",
+  "prompts": {},
+  "sessions": {
+    "s_7974f4140f995f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b3c00e13-1d57-4767-b6da-60af789c5a31",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

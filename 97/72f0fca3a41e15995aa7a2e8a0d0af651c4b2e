@@ -1,0 +1,18 @@
+test/integration/singlecluster/webhook/core/workload_test.go
+  h_47cee5fa694435 1853
+test/e2e/dra/whole-device/dra_test.go
+  h_47cee5fa694435 464,779
+test/integration/singlecluster/conversion/conversions_v1beta1_test.go
+  h_47cee5fa694435 57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9772f0fca3a41e15995aa7a2e8a0d0af651c4b2e",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

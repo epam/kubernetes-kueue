@@ -1,0 +1,31 @@
+.github/workflows/release-utils.yml
+  h_47cee5fa694435 5-8,222
+  s_fed210f6ad584b::t_0dca1f4e0d837c 518
+  s_fed210f6ad584b::t_d8a5a3bad279bb 155
+  s_fed210f6ad584b::t_f0dc8c1e4c16a8 117
+  s_fed210f6ad584b::t_17426afd4b9b83 13
+  s_fed210f6ad584b::t_cf7e536d31b569 456
+  s_fed210f6ad584b::t_f41fc33a1d5481 373
+  s_fed210f6ad584b::t_14829088470346 292
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "61566cf4eb5cecd0b427e6bae1f8f873411e7487",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_fed210f6ad584b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5b97d3f5-09f2-4bd7-8aed-98bb0ad2222f",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

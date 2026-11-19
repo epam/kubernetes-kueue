@@ -1,0 +1,16 @@
+test/util/behavioral/jobs.go
+  h_47cee5fa694435 21
+cmd/experimental/kueue-populator/test/integration/suite_test.go
+  h_47cee5fa694435 29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d1011adf32acf7b208dfd0a99780f73ee01c10a0",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+cmd/experimental/skills/kueue-pr-issue-workflow/SKILL.md
+  s_21768441286127::t_4f047b0afac6c2 70-77
+  s_21768441286127::t_36114725a76499 3
+  s_21768441286127::t_9c5c0bc42fe6c8 116,118-119
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d2edd0d10ddf1bf667cee88bcf66e19e0fb58ac1",
+  "prompts": {},
+  "sessions": {
+    "s_21768441286127": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "ce0034f9-6298-441a-a3ab-0f0ec9446ccd",
+        "model": "grok-4.7-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

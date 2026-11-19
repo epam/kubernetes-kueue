@@ -1,0 +1,29 @@
+hack/releasing/wait_for_images.sh
+  s_8f3c57a85fadd1::t_e498367476cbc8 96
+hack/helm-chart-package.sh
+  s_8f3c57a85fadd1::t_df9e3c77e5368d 71-72
+  s_8f3c57a85fadd1::t_de7c80b972ee35 95-96
+  s_8f3c57a85fadd1::t_b6a002e0b20ee3 108-109
+  s_8f3c57a85fadd1::t_50a978f6f0f5ed 114
+  s_8f3c57a85fadd1::t_a1ce233b160806 84-85
+  s_8f3c57a85fadd1::t_51b64d7ce0a3d6 56-57
+  s_8f3c57a85fadd1::t_159ca2a60ad75d 90-91
+hack/releasing/promote_pull.sh
+  s_8f3c57a85fadd1::t_8445edfe8f04fd 343
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "df1c284838799380ffdc7fe1c93108e02cfc2e37",
+  "prompts": {},
+  "sessions": {
+    "s_8f3c57a85fadd1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "10b86c81-beaa-4272-94d5-aa4eb5632c22",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

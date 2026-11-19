@@ -1,0 +1,33 @@
+hack/testing/e2e-common_test.sh
+  s_b233db9c96eb22::t_c06c9659f00c59 142,144-147,151,163,167,312-313,334,338,357,361,380,384,401,405,421-422,437-438,455,459,476,480,497,501
+  s_b233db9c96eb22::t_fc8e7742d5ad38 143
+  s_b233db9c96eb22::t_19bdf7e3543103 24
+  s_4bd1f8ee1ed647::t_6ba505f7b3fe0a 148
+  s_b233db9c96eb22::t_da982a5baa2ac7 141
+  s_4bd1f8ee1ed647::t_a825dc459e74d6 25-26
+  s_4bd1f8ee1ed647::t_c603144bea1bd8 310,332,355,378,399,419,435,453,474,495
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3bf44d22b88e5c5395cba4b155b1894630a12705",
+  "prompts": {},
+  "sessions": {
+    "s_4bd1f8ee1ed647": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9785c45f-044f-4c73-8841-b06eedfc49a8",
+        "model": "claude-opus-5"
+      },
+      "human_author": null
+    },
+    "s_b233db9c96eb22": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d96874a6-de5f-4bdb-ac82-bf9eac9bbcfa",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}

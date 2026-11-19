@@ -1,0 +1,26 @@
+cmd/kueueviz/frontend/src/Workloads.jsx
+  s_0bf7b5de966479::t_e0db9b10eafa7d 79-81
+cmd/kueueviz/frontend/src/Dashboard.jsx
+  s_0bf7b5de966479::t_ec3a9d225daa85 17,79,132-161,270,382-385
+cmd/kueueviz/backend/handlers/handlers.go
+  s_0bf7b5de966479::t_5c35af4217c83f 66,70-73,75,87
+  s_0bf7b5de966479::t_9f14884ff67547 74
+cmd/kueueviz/frontend/src/LocalQueues.jsx
+  s_0bf7b5de966479::t_edadbf6cf446b4 17,27-40,63-83
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "6933dda9902cbfd3993782f8d8b88b86be84b3f4",
+  "prompts": {},
+  "sessions": {
+    "s_0bf7b5de966479": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "ee49bdb8-6f30-48ea-9996-9fdf905957dc",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

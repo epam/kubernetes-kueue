@@ -1,0 +1,21 @@
+hack/make/verify.mk
+  s_87ff683419ef38::t_d98798d13ae903 238
+hack/testing/skillsaw/Dockerfile
+  s_87ff683419ef38::t_f79c2a51eb6120 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "fb00c5800729f64c177a6d8b1f430b7734d7a735",
+  "prompts": {},
+  "sessions": {
+    "s_87ff683419ef38": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "db92d002-037d-4c85-ba1d-b005615a3e9d",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

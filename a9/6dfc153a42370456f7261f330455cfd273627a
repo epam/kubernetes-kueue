@@ -1,0 +1,31 @@
+pkg/cache/scheduler/tas_flavor_snapshot.go
+  s_455a7a3ba0757b::t_ece1d5f3b5da64 741
+  s_455a7a3ba0757b::t_5adfe1acb726a2 675-677,734,737,747,751-753,762,766,770,776,781,787
+  h_99f506dc258b88 669-672,674,750,894,1227,1251-1252
+pkg/cache/scheduler/tas_flavor_snapshot_test.go
+  h_99f506dc258b88 944-945,952,967,982,993,1079,1093-1094
+  s_455a7a3ba0757b::t_1c847e20947c28 997
+  s_455a7a3ba0757b::t_3b7891b3e5072b 946-951,953,957-966,968-977,979-980,983-992,994-996,998-1000,1003-1006,1008-1023
+  s_455a7a3ba0757b::t_24d060d156e944 954-956,978,981,1001-1002,1007,1024-1026
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a96dfc153a42370456f7261f330455cfd273627a",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_455a7a3ba0757b": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "81af69b6-650a-4f4f-a81b-fc8842a44c19",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

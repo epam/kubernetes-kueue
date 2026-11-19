@@ -1,0 +1,33 @@
+site/hugo.toml
+  s_37d44fdebd0793::t_cbd9f3a9524b8d 197
+site/go.mod
+  s_37d44fdebd0793::t_8ca4f3891fc8a5 5
+site/go.sum
+  s_37d44fdebd0793::t_0a0ff2802c1f4d 1-2
+site/package-lock.json
+  s_37d44fdebd0793::t_ca50abc8253e5e 7-9,23-42,119-137,346-349,842-849
+site/package.json
+  s_37d44fdebd0793::t_75972c47473777 6-9
+site/packages/hugoautogen/hugo_packagemeta.json
+  s_37d44fdebd0793::t_f882558eb43353 1-10
+site/packages/hugoautogen/package.json
+  s_37d44fdebd0793::t_ea4e3465920188 1-10
+site/content/en/community/contribution_guidelines/website.md
+  s_37d44fdebd0793::t_9b3f4841a908c2 21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2c7062c2f298bcc02968be6ddbeb76b7a04814ec",
+  "prompts": {},
+  "sessions": {
+    "s_37d44fdebd0793": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8cd1ddb1-10df-4cc1-89b6-621273b63e57",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

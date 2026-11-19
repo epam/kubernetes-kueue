@@ -1,0 +1,21 @@
+pkg/scheduler/flavorassigner/flavorassigner_test.go
+  s_9794b8fb9e4974::t_ad903469d134f0 5925-5926
+  s_9794b8fb9e4974::t_7fb20827e3b9fc 5922-5924
+  s_9794b8fb9e4974::t_f653781fda534d 5927-5929
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "310fc6a351cf52284d5b7814a3057857405760b5",
+  "prompts": {},
+  "sessions": {
+    "s_9794b8fb9e4974": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "b59fffee-90a7-439d-bc9b-015bf8d0a250",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

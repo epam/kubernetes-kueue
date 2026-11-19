@@ -1,0 +1,36 @@
+pkg/controller/jobs/pod/pod_webhook_test.go
+  s_ee95ab08b1477b::t_5de42c7970c41f 129-166
+  s_ee95ab08b1477b::t_786326550e169d 167-185
+  s_ee95ab08b1477b::t_7b412ab7caffca 1411,1415-1461
+  s_ee95ab08b1477b::t_8d8e7a43c7918d 1082-1094
+  s_ee95ab08b1477b::t_4b781c1f25ea84 1412-1414
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_ee95ab08b1477b::t_c47a9e1c394436 870-907
+pkg/controller/jobs/pod/pod_webhook.go
+  s_ee95ab08b1477b::t_232057bd992b75 281,289-290,294,296-304,320-336
+  s_ee95ab08b1477b::t_ed2f8fe56d3a19 258-259
+  s_ee95ab08b1477b::t_567395800778fd 53
+  s_ee95ab08b1477b::t_e65267f67e3a6a 92-99
+  s_ee95ab08b1477b::t_fdba930e08258a 295,305-319
+  s_ee95ab08b1477b::t_6f131001bf0063 205-209
+  s_ee95ab08b1477b::t_0a6e89764e080d 90-91,100,105-113
+  s_ee95ab08b1477b::t_8deadc40b2a91c 232
+  s_ee95ab08b1477b::t_12eb21702bca20 337
+  s_ee95ab08b1477b::t_99129005926508 282-288,291-293
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "d0cde65c5cebe9b124228938b717659beafc32be",
+  "prompts": {},
+  "sessions": {
+    "s_ee95ab08b1477b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "64c27037-d575-48e4-ac30-35a0c70ab72e",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

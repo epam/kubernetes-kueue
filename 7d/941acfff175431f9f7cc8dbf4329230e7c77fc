@@ -1,0 +1,120 @@
+keps/5993-kueueviz-authentication/README.md
+  s_e1bb7718e27bbb::t_155824a8a162eb 53-58,62-64,68,74-75,105,108-122,133-135,161,163,204-206,283
+cmd/kueueviz/backend/handlers/handlers.go
+  s_c78398a587563e::t_fd1f12fcfe8c02 61,63,67-78,100,105-106,108,116-118,121-122,125-126,128,160,188
+  s_c78398a587563e::t_c61f524af37945 64,79,81,84-85,99,104,107,112-115,119-120,123-124,127,132,135,142-145,152-159,166-172,175,179-185
+  s_e1bb7718e27bbb::t_f29f60d32bb149 60,62,65-66,86-87
+  s_e1bb7718e27bbb::t_bdf6607b231a35 101-103,109-111,129-131
+  s_c78398a587563e::t_17832a00f2ee7c 140-141
+  s_c78398a587563e::t_9c06cedd5765a8 83
+  s_c78398a587563e::t_4d3f592b52f73c 161-162
+  s_c78398a587563e::t_f06ea4d28b4afe 186-187
+  s_c78398a587563e::t_068f88aa9f51f3 25-26,28,38-40,50,54,146-147,173-174
+  s_c78398a587563e::t_ab064a5e211dc3 97-98
+  s_c78398a587563e::t_ad54634776bf7c 133-134
+  s_c78398a587563e::t_28f3aa3e8833c9 95-96
+  s_c78398a587563e::t_4b3b1a2e4916bf 80
+  s_c78398a587563e::t_d0cfe5ac7b677e 82
+  s_c78398a587563e::t_39316203e9e73b 93-94
+  s_c78398a587563e::t_6d05760cb2f4f3 138-139
+  s_c78398a587563e::t_1d52842991a766 150-151
+  s_c78398a587563e::t_e3901076950c76 165
+cmd/kueueviz/backend/handlers/workloads.go
+  s_c78398a587563e::t_c8c61bf5f10061 45,48,68,76,78-79
+  s_e1bb7718e27bbb::t_919f5d1ea2909d 77
+  s_c78398a587563e::t_881e1f1062d0cb 80-81
+cmd/kueueviz/backend/handlers/websocket_handler_test.go
+  s_c78398a587563e::t_49df4b5a86a0ad 23,554-566
+  s_c78398a587563e::t_a41c08031b936b 551-553
+  s_c78398a587563e::t_778b3fbd040420 33,530-550
+  s_0bf7b5de966479::t_4c7bad4d42a3a4 253,285,342,373,440,491
+cmd/kueueviz/backend/handlers/workloads_dashboard.go
+  s_c78398a587563e::t_4782fe7b0492cf 64
+  s_c78398a587563e::t_3adf914270f6be 81
+  s_c78398a587563e::t_d04dc6c019719a 28
+  s_c78398a587563e::t_71d77d781e41a2 41-43,45,58-63,65-67,69-79
+  s_e1bb7718e27bbb::t_d27c7456cb4d5a 109
+  s_c78398a587563e::t_0dd2a69b6c0f03 82,86,99,107-108,110-115,117,122
+cmd/kueueviz/backend/handlers/local_queues.go
+  s_c78398a587563e::t_eb75482a7bcf3e 34-38,54,56-61,66-67,69-72,74
+  s_e1bb7718e27bbb::t_2525910b10f8ce 68
+  s_c78398a587563e::t_bd324e29cd0ba1 32-33
+cmd/kueueviz/backend/middleware/auth_test.go
+  s_930df8340c88c3::t_bb811f9c0d4371 21,25,32,190-222,343-403
+cmd/kueueviz/backend/handlers/workloads_dashboard_test.go
+  s_c78398a587563e::t_d86d193459b580 92,120
+cmd/kueueviz/backend/handlers/namespaces.go
+  s_c78398a587563e::t_c620152210e35e 53-55
+  s_c78398a587563e::t_1a461220fff847 56,76-77,79-80
+  s_e1bb7718e27bbb::t_0c0dc93c91592e 57-62
+  s_c78398a587563e::t_69482280915aa4 73
+  s_c78398a587563e::t_ebd7295f42920e 75
+  s_c78398a587563e::t_cf0c0c80744fcc 24,32-37,41,71,74
+  s_c78398a587563e::t_6c96688b4cd6ae 70
+  s_c78398a587563e::t_29e3b10cf426b0 72
+cmd/kueueviz/backend/middleware/auth.go
+  s_c78398a587563e::t_be9b132127925a 51-54,57-65,73,174,184-186,194,198,200,202,211,213,221,225,236,239,269-330
+  s_c78398a587563e::t_5a57d3117bed0d 33
+hack/make/test.mk
+  s_e1bb7718e27bbb::t_764d75714d0620 837-839
+  s_e1bb7718e27bbb::t_a052d6625ca53a 828
+  s_e1bb7718e27bbb::t_dea765ae6f2794 827
+hack/testing/e2e-kueueviz-rbac-bypass.sh
+  s_e1bb7718e27bbb::t_cdc5ff0882c631 29-43
+  s_930df8340c88c3::t_8d7be666b62da2 56-57
+  s_e1bb7718e27bbb::t_fa7475feceb99d 45-55
+  s_4bb03d8b9b4d7e::t_46c24f76bda941 135-138,141
+  s_930df8340c88c3::t_3192a6a52c9f50 1-22,58-134,139-140
+  s_930df8340c88c3::t_e9d536ba36c645 26-28,44
+  s_930df8340c88c3::t_522c5f7faa32f3 23-25
+cmd/kueueviz/backend/handlers/api_handlers_test.go
+  s_0bf7b5de966479::t_7dfd2f435c5d43 13,16,18-19,22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "7d941acfff175431f9f7cc8dbf4329230e7c77fc",
+  "prompts": {},
+  "sessions": {
+    "s_0bf7b5de966479": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "ee49bdb8-6f30-48ea-9996-9fdf905957dc",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    },
+    "s_4bb03d8b9b4d7e": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "566bc11a-089c-49e1-a35f-de88097770f1",
+        "model": "unknown"
+      },
+      "human_author": null
+    },
+    "s_930df8340c88c3": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "b5c1997f-43e1-47ca-9742-469c4f8b82d0",
+        "model": "unknown"
+      },
+      "human_author": null
+    },
+    "s_c78398a587563e": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "125a9339-129c-4ea0-b422-fad73913cb7a",
+        "model": "unknown"
+      },
+      "human_author": null
+    },
+    "s_e1bb7718e27bbb": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "22c6feb5-13f0-472d-a4ce-f221e6746c24",
+        "model": "unknown"
+      },
+      "human_author": null
+    }
+  }
+}

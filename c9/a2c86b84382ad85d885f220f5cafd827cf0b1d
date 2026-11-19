@@ -1,0 +1,25 @@
+hack/testing/e2e-common.sh
+  s_ce5996fdbc8e90::t_b0c9e6980f15f6 106-107
+  s_ce5996fdbc8e90::t_9e6a903b49ba6d 664-667,669
+  s_ce5996fdbc8e90::t_0ba594dbd69e41 102-105,108-126
+  s_ce5996fdbc8e90::t_cad704f0e28dba 696
+hack/testing/e2e-common_test.sh
+  s_ce5996fdbc8e90::t_cddccc280777aa 130-156
+  s_ce5996fdbc8e90::t_077eac851b0077 274-314
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "c9a2c86b84382ad85d885f220f5cafd827cf0b1d",
+  "prompts": {},
+  "sessions": {
+    "s_ce5996fdbc8e90": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e4f6c3bd-66ed-4ae9-992c-d7e00869b845",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

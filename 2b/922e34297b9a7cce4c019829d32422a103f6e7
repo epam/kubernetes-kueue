@@ -1,0 +1,44 @@
+test/integration/singlecluster/controller/jobs/statefulset/statefulset_controller_test.go
+  h_47cee5fa694435 202
+test/integration/singlecluster/controller/core/custom_labels_test.go
+  h_47cee5fa694435 340
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  h_47cee5fa694435 4492,4594
+test/integration/multikueue/scheduler/scheduler_test.go
+  h_47cee5fa694435 722
+test/integration/singlecluster/kueuectl/create_test.go
+  h_47cee5fa694435 158,245
+test/integration/singlecluster/kueuectl/stop_test.go
+  h_47cee5fa694435 161,249
+test/integration/singlecluster/kueuectl/resume_test.go
+  h_47cee5fa694435 159,245
+test/integration/singlecluster/tas/tas_test.go
+  h_47cee5fa694435 1896,2004,2663,3166
+test/integration/multikueue/provisioning_test.go
+  h_47cee5fa694435 346
+test/e2e/multikueue/sequential/e2e_test.go
+  h_47cee5fa694435 906
+test/e2e/dra/counter/dra_test.go
+  h_47cee5fa694435 273
+test/integration/multikueue/dra_test.go
+  h_47cee5fa694435 303
+test/integration/singlecluster/scheduler/preemption_test.go
+  h_47cee5fa694435 1379
+test/integration/singlecluster/scheduler/fairsharing/fair_sharing_test.go
+  h_47cee5fa694435 1551
+test/integration/singlecluster/scheduler/workload_controller_test.go
+  h_47cee5fa694435 1119
+test/integration/singlecluster/controller/concurrentadmission/concurrent_admission_test.go
+  h_47cee5fa694435 332,442,517,640
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "2b922e34297b9a7cce4c019829d32422a103f6e7",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

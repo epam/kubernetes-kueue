@@ -1,0 +1,36 @@
+pkg/scheduler/flavorassigner/flavorassigner_test.go
+  s_b991cb2a59620d::t_480c8f344282b6 4352,4590
+  s_b991cb2a59620d::t_d59364d491f12e 50
+pkg/scheduler/flavorassigner/errors.go
+  s_b991cb2a59620d::t_3f5da7dd4d5856 22,53-54,56-69
+  s_f390d0457d0c4d::t_59149836cff1d8 40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "cefa95ac94a8bc54fab3db3385e0bde2b3814af5",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_b991cb2a59620d": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "3ea06b0b-9bf6-4baa-83dd-2dd1565a396a",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    },
+    "s_f390d0457d0c4d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b9a08f84-b1c3-4b8e-b165-7cdda661f2f3",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

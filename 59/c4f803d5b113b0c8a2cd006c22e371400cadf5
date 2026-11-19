@@ -1,0 +1,19 @@
+test/util/behavioral/integration/pods.go
+  s_3f2a7044998c18::t_fc48db846199ae 1-58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "59c4f803d5b113b0c8a2cd006c22e371400cadf5",
+  "prompts": {},
+  "sessions": {
+    "s_3f2a7044998c18": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1797fa75-7e09-4f37-b3f9-75d36f814ed0",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

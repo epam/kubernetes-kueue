@@ -1,0 +1,14 @@
+pkg/features/kube_features.go
+  h_f3e429a3560394 550-557,863-865
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "4b2472291cc332f4a5ab0437b474360adc8fa70a",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

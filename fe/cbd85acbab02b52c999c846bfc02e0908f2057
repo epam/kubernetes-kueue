@@ -1,0 +1,37 @@
+keps/13746-tas-topology-spreading/README.md
+  s_d3c35f54838556::t_12571efc59afb3 320-326,337-343
+  s_d3c35f54838556::t_1b2fcf5535e7c3 386-401,403-404,406-407,413-414,420
+  s_d3c35f54838556::t_0a5cbce22fe28a 877-878
+  s_d3c35f54838556::t_1948a6ded9fa8b 373
+  s_d3c35f54838556::t_99339fd2cc4372 124,126
+  s_d3c35f54838556::t_e40ea75394df97 213
+  s_d3c35f54838556::t_91968b5f0c09e4 231
+  s_d3c35f54838556::t_c2c4889858dc46 150
+  s_d3c35f54838556::t_01752ec12c9e97 201
+  s_d3c35f54838556::t_f647f40c76281b 467-468
+  s_d3c35f54838556::t_4fd674cd468ee7 521-528
+  s_d3c35f54838556::t_766eadd85d7363 240
+  s_d3c35f54838556::t_96f0264c6d1fd2 361
+  s_d3c35f54838556::t_bbba946652a66e 677-679
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "fecbd85acbab02b52c999c846bfc02e0908f2057",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_d3c35f54838556": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f9c3d597-bcca-47f9-a99f-424693093b1e",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

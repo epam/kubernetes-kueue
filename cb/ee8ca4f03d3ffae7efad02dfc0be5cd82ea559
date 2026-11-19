@@ -1,0 +1,27 @@
+pkg/workloadslicing/workloadslicing.go
+  s_3130ac198eb516::t_8dd28bec5ea045 238
+  s_3130ac198eb516::t_2873a515ba9d90 231-234
+  s_3130ac198eb516::t_dc5e2cc7c408c5 154-156,164-168
+  s_3130ac198eb516::t_71287ee0816001 229-230
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "cbee8ca4f03d3ffae7efad02dfc0be5cd82ea559",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_3130ac198eb516": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ce409d67-3944-4dd7-8c21-1e967ebd8ee0",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

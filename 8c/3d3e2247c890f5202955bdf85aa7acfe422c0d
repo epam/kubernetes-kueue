@@ -1,0 +1,34 @@
+Makefile
+  h_99f506dc258b88 173
+pkg/controller/jobframework/utils.go
+  h_99f506dc258b88 21,28-29,242-288
+pkg/controller/admissionchecks/multikueue/workload_test.go
+  s_66f19917081bc7::t_d2a23463c995d4 706-733
+  s_66f19917081bc7::t_03712f775560ea 672-705,734-736
+  h_99f506dc258b88 759,799,829,953,992,1027,1060,1113,1143,1180
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_66f19917081bc7::t_03712f775560ea 385-388,416-419
+  s_66f19917081bc7::t_3714d2d7638b8d 537-540
+  h_99f506dc258b88 155-157,167,172,384,415,536
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "8c3d3e2247c890f5202955bdf85aa7acfe422c0d",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_66f19917081bc7": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "d3425c43-6559-46bc-9fea-26b65cf13e89",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    }
+  }
+}

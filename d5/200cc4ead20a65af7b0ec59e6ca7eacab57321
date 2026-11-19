@@ -1,0 +1,35 @@
+pkg/controller/jobs/pod/event_handlers.go
+  s_00d1ea132ef837::t_d7078c67371440 38,58-61,65,136,143-159,175
+pkg/controller/jobs/pod/event_handlers_test.go
+  s_00d1ea132ef837::t_a7dedb69323fd0 1-82
+pkg/controller/jobs/pod/pod_controller.go
+  s_00d1ea132ef837::t_ea4a48f2256e9b 79,91,1261-1278
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_00d1ea132ef837::t_5b074ca29bcd48 39,378,623,635,639,651,705,717,721,733,1048,1060,1114,1168,1179,1237,1286,1322,1388,1402,1417-1582,1635,1653,1730,1744,1799,1813,1859,1878,1943,1958,1997,2022,2129,2207,2227,2299,2357,2449,2464,2519,2546,2599,2627,2726,2742,2807,2827,2871,2893,3000,3135,3160,3261,3286,3380,3405,3467,3551,3564,3621,3643,3743,3755,3825,3840,3914,3978,3984,3994,4000,4070,4090,4189,4216,4287,4311,4474,4496,4598,4612,4712,4732,4838,5304,5331,5414,5457,5513,5549,5589,5625,5672,5709,5756,5799,5854,5902,5954,6004,6058,6100,6431,6452,6514,6659,6744,7163
+pkg/features/kube_features.go
+  s_00d1ea132ef837::t_3beaec7a441484 550-556,862-865
+pkg/util/testing/v1beta2/wrappers.go
+  s_00d1ea132ef837::t_4b95cca2421317 36,322-326
+site/data/featuregates/versioned_feature_list.yaml
+  s_00d1ea132ef837::t_95c87dbe7ca42f 274-279
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_00d1ea132ef837::t_b52055e308a459 274-279
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_00d1ea132ef837::t_25e4fbdea55820 32,1892-1969
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "d5200cc4ead20a65af7b0ec59e6ca7eacab57321",
+  "prompts": {},
+  "sessions": {
+    "s_00d1ea132ef837": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "04f014cb-7af8-44d0-b2c7-81d1b0c08f63",
+        "model": "claude-opus-5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

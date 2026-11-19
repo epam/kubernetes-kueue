@@ -1,0 +1,24 @@
+hack/tools/code-generator/generate.sh
+  s_7daca58225f517::t_8b280e73f6b4bd 31-46
+hack/testing/generate-code_test.sh
+  s_7daca58225f517::t_8b280e73f6b4bd 1-67
+hack/make/verify.mk
+  s_7daca58225f517::t_8b280e73f6b4bd 132,304-306
+  s_7daca58225f517::t_9e655be256c912 307
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ed6292d49e1ab5b4f524684145b893a5c987403e",
+  "prompts": {},
+  "sessions": {
+    "s_7daca58225f517": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bf0508ed-18a1-4e40-8b36-8a207d2ef8c5",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

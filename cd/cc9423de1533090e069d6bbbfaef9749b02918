@@ -1,0 +1,16 @@
+apis/config/v1beta1/groupversion_info.go
+  h_47cee5fa694435 39-42,50-56
+apis/config/v1beta2/groupversion_info.go
+  h_47cee5fa694435 37-40,51-57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "cdcc9423de1533090e069d6bbbfaef9749b02918",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+pkg/controller/jobs/statefulset/statefulset_reconciler.go
+  s_527ce5901326b9::t_c0b666719ab740 48
+  s_527ce5901326b9::t_c8e8de6cfe9474 129
+  s_527ce5901326b9::t_c9af84c4bf8fc9 126-128
+  s_527ce5901326b9::t_708a6ab319a741 130-132
+  s_527ce5901326b9::t_ed04e1d83f0561 114,133-135
+pkg/controller/jobs/statefulset/statefulset_controller.go
+  s_527ce5901326b9::t_482d81ac628971 77-79
+  s_527ce5901326b9::t_3d6afe62f3375f 31
+  s_527ce5901326b9::t_0bd9ae7c3815e9 86
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "dc65bd11c19ffb87f1329a95fb8e9e997c6390db",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_527ce5901326b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0383358a-0bc7-4835-b29d-b2ff3525d56c",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

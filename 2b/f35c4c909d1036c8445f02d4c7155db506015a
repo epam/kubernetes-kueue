@@ -1,0 +1,77 @@
+pkg/controller/jobs/rayjob/rayjob_controller_test.go
+  s_cc1abaa361def2::t_659074a35e9435 904
+  s_cc1abaa361def2::t_1ab0c022018f96 969
+pkg/controller/jobs/kubeflow/jobs/pytorchjob/pytorchjob_controller_test.go
+  s_cc1abaa361def2::t_d7b8a4427410b2 269
+pkg/controller/jobs/pod/pod_controller.go
+  s_cc1abaa361def2::t_2ac258c5b7072a 351
+pkg/controller/jobs/raycluster/common.go
+  s_cc1abaa361def2::t_decc9dca87c562 269-271
+pkg/controller/jobs/jobset/jobset_controller_test.go
+  s_cc1abaa361def2::t_982ed50fd0ce46 408
+pkg/controller/jobs/mpijob/mpijob_controller.go
+  s_cc1abaa361def2::t_3d56428670e222 30
+  s_cc1abaa361def2::t_6c0a1708ca0b25 156,159
+pkg/controller/jobs/appwrapper/appwrapper_controller.go
+  s_cc1abaa361def2::t_15203cea57670a 183
+pkg/controller/jobs/sparkapplication/sparkapplication_controller_test.go
+  s_cc1abaa361def2::t_93c6db1719e7c4 611
+pkg/controller/jobframework/interface.go
+  s_cc1abaa361def2::t_34648999b54148 53
+  h_f3e429a3560394 50-52
+pkg/controller/jobs/job/job_controller.go
+  s_cc1abaa361def2::t_1dca495565cf41 288
+  s_cc1abaa361def2::t_2aa2c9db1e6c41 195
+pkg/controller/jobs/job/job_controller_test.go
+  s_cc1abaa361def2::t_5b814004e9d21d 326
+pkg/controller/jobs/jobset/jobset_controller.go
+  s_cc1abaa361def2::t_81d2b1fe67d5e3 31
+  s_cc1abaa361def2::t_25b1491bbc7754 156,158
+pkg/controller/jobs/trainjob/trainjob_controller.go
+  s_cc1abaa361def2::t_98f04e6fdd1265 305
+  s_cc1abaa361def2::t_352de0d000ceea 315
+pkg/controller/jobs/raycluster/raycluster_controller.go
+  s_cc1abaa361def2::t_34a931c78f8eea 124-125
+pkg/controller/jobs/raycluster/common_test.go
+  s_cc1abaa361def2::t_db2afae5966c08 999
+pkg/controller/jobs/rayjob/rayjob_controller.go
+  s_cc1abaa361def2::t_a4e47085933d65 31
+  s_cc1abaa361def2::t_95dd268e18011a 194-196,202
+internal/mocks/controller/jobframework/interface.go
+  s_cc1abaa361def2::t_61b878987f75ac 167,169,175,177
+pkg/controller/jobs/sparkapplication/sparkapplication_controller.go
+  s_cc1abaa361def2::t_17cd9524514124 33
+  s_cc1abaa361def2::t_02639e757e5bad 227,230
+pkg/controller/jobs/mpijob/mpijob_controller_test.go
+  s_cc1abaa361def2::t_7132a195e8a5fd 388
+pkg/controller/jobs/trainjob/trainjob_controller_test.go
+  s_cc1abaa361def2::t_83588e07ce8b85 359
+pkg/controller/jobs/kubeflow/kubeflowjob/kubeflowjob_controller.go
+  s_cc1abaa361def2::t_dd7283b67780b0 27
+  s_cc1abaa361def2::t_9c61f36b3b7ca0 78,81
+pkg/controller/jobs/rayservice/rayservice_controller.go
+  s_cc1abaa361def2::t_a8f2e2b2393401 202-203
+pkg/controller/jobframework/reconciler.go
+  s_cc1abaa361def2::t_f811c02856afad 1396
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "2bf35c4c909d1036c8445f02d4c7155db506015a",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_cc1abaa361def2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ee9f7d21-2c34-4e51-8b43-ca5dd10b8ac6",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

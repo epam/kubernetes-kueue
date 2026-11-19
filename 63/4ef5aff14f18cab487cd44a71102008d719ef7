@@ -1,0 +1,14 @@
+pkg/controller/tas/topology_ungater_test.go
+  h_f3e429a3560394 184-209,2824-2840,2893-2910,2958-2980
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "634ef5aff14f18cab487cd44a71102008d719ef7",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

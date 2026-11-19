@@ -1,0 +1,14 @@
+cmd/experimental/skills/kueue-release-notes/SKILL.md
+  h_47cee5fa694435 213
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "ba779594a1b7dec39840fcb304a8e49a6799b5ae",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

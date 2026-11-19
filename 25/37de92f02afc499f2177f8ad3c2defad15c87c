@@ -1,0 +1,29 @@
+site/content/en/docs/tasks/run/leaderworkerset.md
+  s_dd6c19f1a4577f::t_75c115db4b4631 130-131
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  s_dd6c19f1a4577f::t_9a3f350ca78521 1606-1639
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter.go
+  s_dd6c19f1a4577f::t_b52790ca1915a4 91-97,99-103
+pkg/util/testingjobs/leaderworkerset/wrappers.go
+  s_dd6c19f1a4577f::t_1f47755e48540d 165-170
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter_test.go
+  s_dd6c19f1a4577f::t_fee704fcf81478 536-584
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  s_dd6c19f1a4577f::t_b52790ca1915a4 600-606,609
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2537de92f02afc499f2177f8ad3c2defad15c87c",
+  "prompts": {},
+  "sessions": {
+    "s_dd6c19f1a4577f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "defd68f2-ec3b-4790-a3e8-6067874f07c6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

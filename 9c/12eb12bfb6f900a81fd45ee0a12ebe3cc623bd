@@ -1,0 +1,14 @@
+test/e2e/singlecluster/extended/trainjob_test.go
+  h_47cee5fa694435 36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "9c12eb12bfb6f900a81fd45ee0a12ebe3cc623bd",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

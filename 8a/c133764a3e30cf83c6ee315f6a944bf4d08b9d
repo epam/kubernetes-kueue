@@ -1,0 +1,29 @@
+site/hugo.toml
+  s_37d44fdebd0793::t_5b5ba573705a82 207-208
+  s_37d44fdebd0793::t_fe6080d5415fc6 209
+site/go.mod
+  s_37d44fdebd0793::t_2071d6ac992208 5
+site/go.sum
+  s_37d44fdebd0793::t_92cb2cb3c8fe83 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8ac133764a3e30cf83c6ee315f6a944bf4d08b9d",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_37d44fdebd0793": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8cd1ddb1-10df-4cc1-89b6-621273b63e57",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

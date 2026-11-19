@@ -1,0 +1,14 @@
+pkg/controller/jobframework/reconciler.go
+  h_99f506dc258b88 456
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "3b1f7d0183e17d17f04bd33035176d7fada1a08c",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

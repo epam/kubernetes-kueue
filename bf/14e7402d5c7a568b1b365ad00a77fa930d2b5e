@@ -1,0 +1,29 @@
+pkg/controller/elasticjobs/elastic_job_ungater.go
+  h_99f506dc258b88 47,55-56,315,333-339,342,345-355,357
+pkg/controller/tas/topology_ungater.go
+  h_99f506dc258b88 457,500
+  s_2c1e4e875a511d::t_633e5299cd3fa7 214
+pkg/util/tas/tas.go
+  s_2c1e4e875a511d::t_959562b55f35fb 20,99-142
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bf14e7402d5c7a568b1b365ad00a77fa930d2b5e",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_2c1e4e875a511d": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "4ecbf835-4a3e-4a0e-bc4c-402de53d2286",
+        "model": "copilot/claude-sonnet-5.5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

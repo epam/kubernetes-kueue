@@ -1,0 +1,38 @@
+test/e2e/sequential/extended/suite_test.go
+  s_8c0df96e12f980::t_261f0ad81379f4 27,37,51,58,63
+test/e2e/singlecluster/tasapi/extended/suite_test.go
+  s_8c0df96e12f980::t_96c65ea559193e 26,35,47,58
+test/util/behavioral/e2e/components.go
+  s_8c0df96e12f980::t_5411dd3cdbad96 167,171-180,184-204
+  s_2ec2a3a23f7168::t_2026dacead33c2 181-183
+test/e2e/singlecluster/extended/suite_test.go
+  s_8c0df96e12f980::t_9cbcc6db17eb34 62
+test/e2e/singlecluster/tasapi/deepintegration/suite_test.go
+  s_8c0df96e12f980::t_1a2755c3ca732f 26,41,53,64
+test/e2e/multikueue/extended/suite_test.go
+  s_8c0df96e12f980::t_48524f8c884120 116-118
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "fc493a5fa5db9ba5d6e4cf8e0557b92db5009a0c",
+  "prompts": {},
+  "sessions": {
+    "s_2ec2a3a23f7168": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9d74c4a7-e911-40fd-904c-961b74b82d50",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    },
+    "s_8c0df96e12f980": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dd01f73a-d9c0-4ad8-a938-6e34c3c5b19e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

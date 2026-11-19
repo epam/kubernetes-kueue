@@ -1,0 +1,51 @@
+pkg/controller/jobframework/reconciler.go
+  s_a080329cdc72a0::t_d19ca0fb4af6f4 71,736,746
+test/integration/singlecluster/controller/core/workload_controller_test.go
+  s_a080329cdc72a0::t_ca114c52444e5b 41,407,500,615
+test/performance/scheduler/runner/recorder/recorder.go
+  s_a080329cdc72a0::t_a5a3d605840fc0 34,462
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_a080329cdc72a0::t_0efee00d83dae4 58,417
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  s_a080329cdc72a0::t_97fa936e35e87d 55,2802,2815
+pkg/controller/admissionchecks/provisioning/controller.go
+  s_a080329cdc72a0::t_c09cde80f7062c 57,134
+pkg/scheduler/scheduler.go
+  s_a080329cdc72a0::t_2685d3f0ff4db9 63,514,516,811,813
+pkg/controller/core/workload_controller.go
+  s_a080329cdc72a0::t_2d2baae9f11ca7 74,562,587,599,881,903,969,975,1011,1018,1135,1158,1170
+pkg/workloadslicing/workloadslicing.go
+  s_a080329cdc72a0::t_b0463d16df8106 41,262,279
+pkg/controller/tas/indexer/indexer.go
+  s_a080329cdc72a0::t_6fbd3c36dcad76 30,93
+test/util/util_scheduling.go
+  s_a080329cdc72a0::t_afc3ef2f1d1df3 30,57
+pkg/workload/workload.go
+  s_a080329cdc72a0::t_cc20abce4331e0 62,867,1082,1086
+test/integration/singlecluster/controller/admissionchecks/provisioning/provisioning_test.go
+  s_a080329cdc72a0::t_4d1b7d414229a7 45,381,442,490,537,866,900,1014,1123,1153,1326,1385
+test/performance/scheduler/runner/controller/controller.go
+  s_a080329cdc72a0::t_d255bbacd525b9 41,121
+pkg/workload/evict/evict.go
+  s_a080329cdc72a0::t_ec7e2b54586321 1-342
+test/integration/multikueue/scheduler/scheduler_test.go
+  s_a080329cdc72a0::t_0797973e309a2a 43,348,481,658,662
+pkg/controller/tas/node_controller.go
+  s_a080329cdc72a0::t_371b38182051dd 62,338,489,496-500,536
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "ffc3ce70f21afb3c684c14264746b06f1f13b6da",
+  "prompts": {},
+  "sessions": {
+    "s_a080329cdc72a0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3ce39176-9df7-437d-b3d1-33ba3dfca6a4",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

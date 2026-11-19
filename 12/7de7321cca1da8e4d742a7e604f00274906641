@@ -1,0 +1,26 @@
+pkg/workload/patching/patching.go
+  s_03f1798bcc9f5e::t_c972ab9f4248ed 216
+  s_03f1798bcc9f5e::t_c9097999c2872e 185
+  s_03f1798bcc9f5e::t_b7d0da34b4ea77 198
+  s_03f1798bcc9f5e::t_9f5ef4a9434b75 182-184
+  s_03f1798bcc9f5e::t_b89731c00721e5 186-188,195-197
+  s_03f1798bcc9f5e::t_8332e234032ad2 199-201,213-215
+  s_03f1798bcc9f5e::t_99131933ba5210 217-219
+  s_03f1798bcc9f5e::t_56e7df1b4db38b 1-181,189-194,202-212,220-305
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "127de7321cca1da8e4d742a7e604f00274906641",
+  "prompts": {},
+  "sessions": {
+    "s_03f1798bcc9f5e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "839ccb03-ab07-4909-94ba-5b7904e261e9",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

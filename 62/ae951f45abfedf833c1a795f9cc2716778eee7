@@ -1,0 +1,21 @@
+pkg/webhooks/workload_webhook_test.go
+  s_7c8864a8dec34b::t_e726c258da7de7 155-178
+pkg/resources/requests.go
+  s_7c8864a8dec34b::t_ca558554d5bdc8 104
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.13",
+  "base_commit_sha": "62ae951f45abfedf833c1a795f9cc2716778eee7",
+  "prompts": {},
+  "sessions": {
+    "s_7c8864a8dec34b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "feec6abe-7048-497f-b1c1-c88b1aae199f",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

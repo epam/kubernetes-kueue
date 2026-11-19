@@ -1,0 +1,30 @@
+pkg/controller/jobframework/validation.go
+  s_d154beb6ef582a::t_72105d757b177e 151-156,163-165
+pkg/controller/jobs/job/job_webhook_test.go
+  s_d154beb6ef582a::t_1c272e96524819 669,674,692-705
+  s_d154beb6ef582a::t_f979ba9f624a57 643,648
+  s_d154beb6ef582a::t_9d3caf7f4eec89 1162,1170
+  s_d154beb6ef582a::t_04f9557525c5e2 1193,1201,1222-1238
+site/content/en/docs/concepts/elastic_workload.md
+  s_d154beb6ef582a::t_9f1d9ebf41bd44 70
+pkg/controller/jobframework/validation_test.go
+  s_d154beb6ef582a::t_ea38398a02e462 492
+  s_d154beb6ef582a::t_f1e85e11903c2b 517,532-533,546-547,553-561
+  s_d154beb6ef582a::t_c5236b78cb90bf 562-563
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "685085c8691a9262bf67d7456af2e970f265edc8",
+  "prompts": {},
+  "sessions": {
+    "s_d154beb6ef582a": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "9e8b6a3f-f913-4dc3-9b19-49bf74973b52",
+        "model": "cursor-grok-4.6-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

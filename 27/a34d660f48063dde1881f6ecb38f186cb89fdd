@@ -1,0 +1,34 @@
+pkg/controller/jobs/pod/OWNERS
+  h_47cee5fa694435 1-3
+  s_0e3bb985261a2b::t_c58746591babe2 4
+pkg/controller/jobs/deployment/OWNERS
+  h_47cee5fa694435 1-4
+pkg/controller/jobs/leaderworkerset/OWNERS
+  h_47cee5fa694435 1-4
+pkg/controller/jobs/statefulset/OWNERS
+  h_47cee5fa694435 1-3
+  s_0e3bb985261a2b::t_c58746591babe2 4
+OWNERS_ALIASES
+  h_47cee5fa694435 20-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "27a34d660f48063dde1881f6ecb38f186cb89fdd",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_0e3bb985261a2b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b470fb3d-9f60-4eae-adda-20dfbb81a537",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

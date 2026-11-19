@@ -1,0 +1,78 @@
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_9d725faa01456d::t_a371908dced416 521-525
+  s_9d725faa01456d::t_299b39489e285b 520
+pkg/controller/jobs/rayservice/rayservice_webhook_test.go
+  s_9d725faa01456d::t_7fcc59b1ccf051 223,231
+  s_9d725faa01456d::t_01e78cdae9daac 150-153
+  s_9d725faa01456d::t_18b4ada0ee1cc4 156-161,165-166,168-172,176-182,184,188-192,194-195,201-207,213-214,216-217,220,224-230,232,238
+  s_9d725faa01456d::t_d14aa794786273 28,30-32,35
+  s_9d725faa01456d::t_13f19301febced 22,25,27,36,38,155,162-163,167,173-175,183,185-187,193,196-200,208-212,215,218-219,221-222,239-249
+pkg/controller/jobs/rayjob/rayjob_webhook.go
+  s_9d725faa01456d::t_7fcc59b1ccf051 169
+  s_9d725faa01456d::t_999f9daf97cd79 180-181
+  s_9d725faa01456d::t_df77c5774f01dd 165-168,170-174,179
+  s_9d725faa01456d::t_15c290cbc64890 183-187,189-190
+pkg/controller/jobs/raycluster/raycluster_webhook.go
+  s_9d725faa01456d::t_7a7485f155250d 272-273
+  s_9d725faa01456d::t_7fcc59b1ccf051 261
+  s_9d725faa01456d::t_b2e383e9dd5393 257-260,262-266,271
+  s_9d725faa01456d::t_e2d48162250f67 275-279,281-282
+pkg/controller/jobs/rayjob/rayjob_webhook_test.go
+  s_9d725faa01456d::t_5d0e74f9c572dd 675-683,685,687,717-725,729,731-739,741-742,757
+  s_9d725faa01456d::t_7fcc59b1ccf051 730,740
+  s_9d725faa01456d::t_205849b646a36a 634-638
+  s_9d725faa01456d::t_6aa6508e345252 674,684,686,716,726-728,758-761,764-765
+pkg/controller/jobs/raycluster/raycluster_webhook_test.go
+  s_9d725faa01456d::t_fb4b5413eeb9b9 607-611
+  s_9d725faa01456d::t_7fcc59b1ccf051 668,676
+  s_9d725faa01456d::t_c75685de5c0e65 621-627,629,631,657-663,667,669-675,677-678,693
+  s_9d725faa01456d::t_3dff0c9b603196 620,628,630,656,664-666,694-697,700-701
+pkg/controller/jobs/sparkapplication/sparkapplication_webhook_test.go
+  s_9d725faa01456d::t_2f85881b2f5a1a 122-125
+  s_9d725faa01456d::t_7fcc59b1ccf051 160,163
+  s_9d725faa01456d::t_ea94d50f60d440 135,140,147,154,159,161-162,164-170
+  s_9d725faa01456d::t_62499f4b21a0ed 25,119-121,126-134,136-139,141-146,148-153,155-158,171-186
+site/data/featuregates/versioned_feature_list.yaml
+  s_9d725faa01456d::t_a371908dced416 521-525
+  s_9d725faa01456d::t_299b39489e285b 520
+pkg/controller/jobs/rayservice/rayservice_webhook.go
+  s_9d725faa01456d::t_737dc020edd1e3 181-182
+  s_9d725faa01456d::t_f8939fe99dc9cf 166-169,171-175,180
+  s_9d725faa01456d::t_7fcc59b1ccf051 170
+  s_9d725faa01456d::t_f0099ec3194806 184-188,190-191
+pkg/controller/jobs/sparkapplication/sparkapplication_webhook.go
+  s_9d725faa01456d::t_f05b64a100aef4 171-174,176-180,183
+  s_9d725faa01456d::t_80fbc43a2e2aef 184-185
+  s_9d725faa01456d::t_7fcc59b1ccf051 175
+  s_9d725faa01456d::t_7eb4a94ff5a72a 187-191,193-194
+pkg/features/kube_features.go
+  s_9d725faa01456d::t_a93c45a0666c5c 811,813-814
+  s_9d725faa01456d::t_7fcc59b1ccf051 530,812
+  s_9d725faa01456d::t_1ef80d4c5afa31 522-529
+test/integration/singlecluster/webhook/jobs/raycluster_webhook_test.go
+  s_9d725faa01456d::t_300413e7fe455c 30,64-83
+test/integration/singlecluster/webhook/jobs/rayjob_webhook_test.go
+  s_9d725faa01456d::t_b172563f257444 22,24,26,112-131
+test/integration/singlecluster/webhook/jobs/rayservice_webhook_test.go
+  s_9d725faa01456d::t_63eab072fbdb6b 1-67
+test/integration/singlecluster/webhook/jobs/sparkapplication_webhook_test.go
+  s_9d725faa01456d::t_58077a219613d2 1-67
+test/integration/singlecluster/webhook/jobs/suite_test.go
+  s_9d725faa01456d::t_57be65789e4fc6 61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "791ba672cc703a9727fc0690475c84f035577933",
+  "prompts": {},
+  "sessions": {
+    "s_9d725faa01456d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aedbefa2-8b27-4ec3-82cd-a0163fe06412",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

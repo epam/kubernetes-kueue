@@ -1,0 +1,19 @@
+site/content/en/docs/tasks/run/leaderworkerset.md
+  s_aac402b72fc238::t_8acd67b8c21efc 102-110
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "79034b38ef508e6203a6eac77942e554e121a483",
+  "prompts": {},
+  "sessions": {
+    "s_aac402b72fc238": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bcfb9d4f-2b81-4f2f-acc5-1e0722912502",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

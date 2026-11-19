@@ -1,0 +1,28 @@
+pkg/webhooks/workload_webhook.go
+  s_b788ba3617c140::t_ef79c7e43a82bb 476-480
+  h_99f506dc258b88 175-178,475,481-507
+pkg/webhooks/workload_webhook_test.go
+  s_b788ba3617c140::t_8cb3bedcdc6e1d 259-261,264-267,269-282,284-286,288-291,293-294,299-300,304-306,308
+  s_b788ba3617c140::t_5de3372df8db37 258,262-263,268,283,287,292,295-298,301-303,307
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "b50fe25e3568342658c36dd179bbe7a56d854835",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_b788ba3617c140": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "3c99ab28-9b75-4978-85bf-b7e061d7b5a9",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

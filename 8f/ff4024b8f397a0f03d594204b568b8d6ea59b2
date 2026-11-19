@@ -1,0 +1,14 @@
+test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
+  h_47cee5fa694435 23,114-187
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8fff4024b8f397a0f03d594204b568b8d6ea59b2",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

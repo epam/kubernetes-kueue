@@ -1,0 +1,176 @@
+test/integration/multikueue/cluster_role_sharing_test.go
+  h_47cee5fa694435 121
+pkg/controller/admissionchecks/provisioning/indexer.go
+  h_47cee5fa694435 41
+pkg/controller/admissionchecks/multikueue/workload_test.go
+  h_47cee5fa694435 1626,1961,1977,1996,2000,2057
+test/integration/multikueue/dispatcher_test.go
+  h_47cee5fa694435 106,285,515,729
+pkg/controller/admissionchecks/multikueue/admissioncheck_test.go
+  h_47cee5fa694435 52,59,88,98,114,129,145,163,179,197,213,228
+apis/config/v1beta1/groupversion_info.go
+  h_47cee5fa694435 24,28,29,32,34-35,36,37-39,42,43,44-48
+pkg/controller/admissionchecks/provisioning/controller_test.go
+  h_47cee5fa694435 249,1951
+pkg/controller/admissionchecks/multikueue/indexer.go
+  h_47cee5fa694435 42
+pkg/controller/tas/topology_controller.go
+  h_47cee5fa694435 88
+pkg/controller/concurrentadmission/controller.go
+  h_47cee5fa694435 132
+pkg/config/config.go
+  h_47cee5fa694435 209
+apis/kueue/v1beta1/groupversion_info.go
+  h_47cee5fa694435 23,25,31,32,35,40-41,46,49
+pkg/workload/concurrentadmission/concurrentadmission.go
+  h_47cee5fa694435 66,79
+pkg/controller/admissionchecks/multikueue/multikueuecluster.go
+  h_47cee5fa694435 189-190,273
+pkg/controller/tas/resource_flavor.go
+  h_47cee5fa694435 94
+test/integration/multikueue/scheduler/scheduler_test.go
+  h_47cee5fa694435 136
+pkg/controller/concurrentadmission/controller_test.go
+  h_47cee5fa694435 181,187,215,227,233,255,261,268,280,286,313,322,344,372,380,397,431,439,454,463,488,496,511,519,544,552,566,574,590,598,613,621,646,654,668,676,693,701,709,723,731,739,760,766,794,803,836,845,862,869,891,898,916,932,955,971,988,1004,1019,1053,1078,1085,1092,1129,1136,1144,1170,1177,1186,1221,1228,1237,1262,1271,1278,1313,1322,1330,1361,1368,1375,1412,1419,1426,1444,1451,1460,1495,1502,1511,1536,1545,1552,1587,1596,1604,1635,1642,1649,1686,1694,1702,1740,1747,1767,1780,1803,1810,1825,1833,1872,1887,1909,1924,1948,1963,1985,2000,2022,2037,2078,2093,2281
+pkg/podset/podset_test.go
+  h_47cee5fa694435 151
+test/integration/multikueue/external_job_test.go
+  h_47cee5fa694435 222
+test/integration/multikueue/no_gc_test.go
+  h_47cee5fa694435 102
+test/performance/scheduler/runner/main.go
+  h_47cee5fa694435 424
+pkg/controller/admissionchecks/provisioning/admissioncheck_reconciler_test.go
+  h_47cee5fa694435 73,87,101
+apis/config/v1beta2/groupversion_info.go
+  h_47cee5fa694435 24,28,29,32,34-35,36,37,42,43,44-49
+apis/kueue/v1alpha1/groupversion_info.go
+  h_47cee5fa694435 24,28,29,32,40
+test/integration/multikueue/provisioning_test.go
+  h_47cee5fa694435 109,135,161
+pkg/controller/core/localqueue_controller.go
+  h_47cee5fa694435 587
+test/integration/singlecluster/tas/tas_test.go
+  h_47cee5fa694435 4014
+test/integration/multikueue/enabled_integration_test.go
+  h_47cee5fa694435 93
+pkg/controller/elasticjobs/elastic_job_ungater.go
+  h_47cee5fa694435 107
+test/e2e/multikueue/baseline/tas_test.go
+  h_47cee5fa694435 116,454
+pkg/controller/core/workload_controller.go
+  h_47cee5fa694435 1452
+pkg/controller/core/workloadpriorityclass_controller.go
+  h_47cee5fa694435 163
+pkg/controller/tas/topology_ungater.go
+  h_47cee5fa694435 132
+test/integration/multikueue/tas/tas_test.go
+  h_47cee5fa694435 128,374,380
+apis/kueue/v1beta2/groupversion_info.go
+  h_47cee5fa694435 24,28,29,32,40
+test/e2e/multikueue/dra/dra_test.go
+  h_47cee5fa694435 81
+pkg/controller/core/cohort_controller.go
+  h_47cee5fa694435 127
+test/integration/multikueue/jobs_test.go
+  h_47cee5fa694435 153
+test/integration/multikueue/setup_test.go
+  h_47cee5fa694435 119,164,290,428,542,626
+test/e2e/multikueue/baseline/e2e_test.go
+  h_47cee5fa694435 116
+pkg/controller/core/clusterqueue_controller.go
+  h_47cee5fa694435 497
+test/e2e/multikueue/extended/e2e_test.go
+  h_47cee5fa694435 129
+pkg/controller/workloaddispatcher/incrementaldispatcher_test.go
+  h_47cee5fa694435 64,130
+pkg/controller/core/resourceflavor_controller.go
+  h_47cee5fa694435 266
+test/integration/multikueue/dra_test.go
+  h_47cee5fa694435 105
+pkg/controller/admissionchecks/multikueue/clusterqueue_test.go
+  h_47cee5fa694435 73,120,171,226,281,329,362,387,429,536,588
+pkg/util/admissioncheck/admissioncheck_test.go
+  h_47cee5fa694435 63,70,77,84,91,137,143,149,161,333
+pkg/config/config_test.go
+  h_47cee5fa694435 474,501,530,562,585,606,638,668,690,735,760,803,842,896,1005,1055,1105,1157,1203
+pkg/controller/core/admissioncheck_controller.go
+  h_47cee5fa694435 251
+test/integration/singlecluster/webhook/core/multikueue_cluster_test.go
+  h_47cee5fa694435 147
+pkg/controller/admissionchecks/provisioning/indexer_test.go
+  h_47cee5fa694435 282,300,309,318,328,332,336
+test/e2e/multikueue/sequential/e2e_test.go
+  h_47cee5fa694435 114
+test/performance/scheduler/minimalkueue/main.go
+  h_47cee5fa694435 147-150,153
+test/integration/singlecluster/controller/admissionchecks/provisioning/provisioning_test.go
+  h_47cee5fa694435 106,781,1256,1456,1620,1626
+pkg/visibility/server.go
+  h_47cee5fa694435 186,188-190
+apis/visibility/v1beta2/groupversion_info.go
+  h_47cee5fa694435 27,31,32,35,37-38,39,40,47
+apis/visibility/v1beta1/groupversion_info.go
+  h_47cee5fa694435 27,31,32,35,39,40-42,47
+pkg/workload/patching/patching.go
+  h_47cee5fa694435 66
+apis/visibility/v1beta2/types.go
+  h_47cee5fa694435 109-115
+apis/kueue/v1beta2/workloadpriorityclass_types.go
+  h_47cee5fa694435 59-62
+apis/kueue/v1beta1/admissioncheck_types.go
+  h_47cee5fa694435 131-134
+apis/kueue/v1beta1/topology_types.go
+  h_47cee5fa694435 148-151
+apis/config/v1beta2/zz_generated.deepcopy.go
+  h_47cee5fa694435 26
+apis/kueue/v1beta1/resourceflavor_types.go
+  h_47cee5fa694435 120-123
+apis/kueue/v1beta2/zz_generated.deepcopy.go
+  h_47cee5fa694435 26
+apis/kueue/v1beta2/localqueue_types.go
+  h_47cee5fa694435 215-218
+apis/kueue/v1beta1/cohort_types.go
+  h_47cee5fa694435 108-111
+apis/kueue/v1beta2/cohort_types.go
+  h_47cee5fa694435 114-117
+apis/kueue/v1beta2/admissioncheck_types.go
+  h_47cee5fa694435 135-138
+apis/kueue/v1beta1/localqueue_types.go
+  h_47cee5fa694435 221-224
+apis/kueue/v1beta1/workloadpriorityclass_types.go
+  h_47cee5fa694435 55-58
+apis/kueue/v1beta1/multikueue_types.go
+  h_47cee5fa694435 156-159
+apis/kueue/v1beta2/provisioningrequestconfig_types.go
+  h_47cee5fa694435 190-193
+apis/kueue/v1beta2/multikueue_types.go
+  h_47cee5fa694435 208-211
+apis/visibility/v1beta1/types.go
+  h_47cee5fa694435 109-115
+apis/kueue/v1beta1/workload_types.go
+  h_47cee5fa694435 813-816
+apis/kueue/v1beta2/clusterqueue_types.go
+  h_47cee5fa694435 631-634
+apis/kueue/v1beta2/workload_types.go
+  h_47cee5fa694435 1215-1218
+apis/kueue/v1beta1/provisioningrequestconfig_types.go
+  h_47cee5fa694435 185-188
+apis/kueue/v1beta2/resourceflavor_types.go
+  h_47cee5fa694435 122-125
+apis/kueue/v1beta2/topology_types.go
+  h_47cee5fa694435 163-166
+apis/kueue/v1beta1/clusterqueue_types.go
+  h_47cee5fa694435 571-574
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "80b3545b381357c3a71012e3d68b508aa47f9241",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

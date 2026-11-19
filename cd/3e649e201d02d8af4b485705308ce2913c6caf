@@ -1,0 +1,19 @@
+pkg/controller/jobframework/OWNERS
+  s_7974f4140f995f::t_29b8a4ff1ce44f 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "cd3e649e201d02d8af4b485705308ce2913c6caf",
+  "prompts": {},
+  "sessions": {
+    "s_7974f4140f995f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b3c00e13-1d57-4767-b6da-60af789c5a31",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

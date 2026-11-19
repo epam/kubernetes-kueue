@@ -1,0 +1,14 @@
+test/integration/singlecluster/webhook/core/workload_test.go
+  h_47cee5fa694435 1853
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0082a991b81cb27a9793ffe65ecbac5aef4783df",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

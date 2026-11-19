@@ -1,0 +1,103 @@
+cmd/kueueviz/backend/handlers/namespaces.go
+  s_be4ae927880600::t_847a2316f59cdf 31-35
+charts/kueue/templates/kueueviz/clusterrole.yaml
+  s_be4ae927880600::t_17aec04fa8dd5a 39-41
+cmd/kueueviz/backend/handlers/workloads.go
+  s_be4ae927880600::t_5a410ad50f5c25 45-53
+  s_be4ae927880600::t_2e5472942a97b4 62-66
+  s_be4ae927880600::t_4ca8a7a10f64db 129-133
+cmd/kueueviz/backend/handlers/websocket_handler_test.go
+  s_be4ae927880600::t_a34ff028741ffa 23
+  s_be4ae927880600::t_44af8852c35731 468-472,475-476,481-482,487-491,500-506
+  s_dc51b5a276adc2::t_c772c44813e824 473-474,477-480,483-486,492-499
+cmd/kueueviz/backend/handlers/local_queue_workloads.go
+  s_be4ae927880600::t_683b88dd6462b4 34-38
+cmd/kueueviz/backend/handlers/api_handlers_test.go
+  s_be4ae927880600::t_a9c3f69db24598 110,112-117,119-120,124,127-128,131-132,134-138,140,145-146,148-151,195-196
+  s_be4ae927880600::t_9836e862d65eaf 20-21,29,39,41-44,61-62,64-102,105-108,118,121-122,125-126,129-130,139,147,152-163,165-166,170-171,173-183,185-194
+  s_dc51b5a276adc2::t_700774bf56483f 38
+  s_be4ae927880600::t_45d205de95ee1c 109,141
+  s_be4ae927880600::t_c0516fe893758e 1-19,22-28,30-34,40,46-58,60,63,103-104,111,123,133,197-198,202
+  s_dc51b5a276adc2::t_ac1d4f516cc518 35-37,45,59,142-144,164,167-169,172,184
+  s_be4ae927880600::t_02004b60d1c7c8 199-201
+  s_be4ae927880600::t_addb9eee8ccd20 203-204
+cmd/kueueviz/backend/middleware/auth_test.go
+  s_be4ae927880600::t_2751fce8f90c95 25
+  s_be4ae927880600::t_27bfa225780182 184-216
+cmd/kueueviz/backend/middleware/auth.go
+  s_be4ae927880600::t_c93499e5c46239 44-58,270
+  s_be4ae927880600::t_0ea0752d430393 171,174
+  s_be4ae927880600::t_535264e015f5fc 70
+  s_be4ae927880600::t_fa909c2f446697 128,132,134,136,145,148
+  s_be4ae927880600::t_fd80c19f69930b 108,118-120
+  s_be4ae927880600::t_834151fed8adc2 156
+  s_be4ae927880600::t_5fdbd8bc1d451b 160
+  s_be4ae927880600::t_80eece1d55959a 271-273
+cmd/kueueviz/backend/handlers/handlers.go
+  s_be4ae927880600::t_8ccbe28164df8d 119
+  s_be4ae927880600::t_a1d9bbbe0e84e9 25-26,28,38-40,46,50
+cmd/kueueviz/backend/handlers/api_handlers.go
+  s_be4ae927880600::t_669f5afe6069e5 49,69
+  s_be4ae927880600::t_81a0f515a500f3 70-72
+cmd/kueueviz/backend/main.go
+  s_be4ae927880600::t_f089c77adbfe02 81,91-92
+cmd/kueueviz/backend/handlers/websocket_handler.go
+  s_be4ae927880600::t_706c6da559a647 60,66,69-71
+  s_be4ae927880600::t_9e19cb46424992 72
+cmd/kueueviz/backend/handlers/cluster_queues.go
+  s_be4ae927880600::t_f27a76e2c811d4 43-50
+  s_be4ae927880600::t_28f49f2345ac2a 31-35
+hack/testing/e2e-kueueviz-rbac-bypass.sh
+  s_dc51b5a276adc2::t_fa6269cea98296 128-129
+  s_be4ae927880600::t_17a0c605630596 1-16,25-29,36-39,45-46,48-54,58,63,66-73,89,98-110,145
+  s_be4ae927880600::t_fe704c29cf644b 17,19-23,30-33,35,40-42,47,55-57,59-61,64-65,74,76,82
+  s_36c824c4ed1905::t_6675242b8a13fe 62
+  s_be4ae927880600::t_cd0a85c2cb0e99 18,24,34,43-44,75,77-81,83-88,90-97,111-127,130-144,146-162
+cmd/kueueviz/backend/handlers/workloads_dashboard.go
+  s_be4ae927880600::t_1b2bec2cfaa975 45-53
+hack/testing/e2e-kueueviz-local.sh
+  s_be4ae927880600::t_4463d728103185 66-71
+cmd/kueueviz/backend/handlers/cohorts.go
+  s_be4ae927880600::t_b32a64940eb69f 47-54
+  s_be4ae927880600::t_cd02031d41156f 32-39
+cmd/kueueviz/backend/handlers/resource_flavors.go
+  s_be4ae927880600::t_9d23e0298dd6db 32-36
+  s_be4ae927880600::t_39e2076f7c169c 45-53
+hack/processing-plan.yaml
+  s_be4ae927880600::t_ee6c3923aa8a3a 613-615
+cmd/kueueviz/backend/handlers/local_queues.go
+  s_be4ae927880600::t_e1788fd579b74f 44-48
+  s_be4ae927880600::t_32be4a1fde3fb2 31-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "f676910ddf7080c60026568ee13309567df1cb0f",
+  "prompts": {},
+  "sessions": {
+    "s_36c824c4ed1905": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "82d19555-a53d-42e0-9d40-7ff997d98763",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    },
+    "s_be4ae927880600": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c470f6aa-1ab2-4b87-b8a5-fdd975d042ba",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    },
+    "s_dc51b5a276adc2": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "d375c16d-83b1-4c44-9171-982328a1ca65",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

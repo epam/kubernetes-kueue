@@ -1,0 +1,14 @@
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  h_47cee5fa694435 42,2331-2355
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "9e531d95f332a87844963008ecf554fe8c430aaf",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

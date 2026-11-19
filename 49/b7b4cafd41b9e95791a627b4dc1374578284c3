@@ -1,0 +1,27 @@
+site/content/en/docs/reference/metrics.md
+  h_99f506dc258b88 105
+pkg/cache/scheduler/cache_resync_metrics_test.go
+  s_6aeeda3131e573::t_dc88edd5f36d49 77-89
+  s_6aeeda3131e573::t_c88d0448038f24 93,110,113
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "49b7b4cafd41b9e95791a627b4dc1374578284c3",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_6aeeda3131e573": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "fe596c74-bf76-4a1b-b8e7-a9d4e11cd023",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": null
+    }
+  }
+}

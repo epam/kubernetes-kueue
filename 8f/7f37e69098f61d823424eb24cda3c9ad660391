@@ -1,0 +1,24 @@
+hack/testing/kind-k8s-main-image-build_test.sh
+  s_1dd057ba3af6e7::t_4d67b4d789c143 1-59
+hack/make/verify.mk
+  s_1dd057ba3af6e7::t_87175bc78a22e7 127
+  s_1dd057ba3af6e7::t_351a191e32c956 335-338
+hack/make/test.mk
+  s_1dd057ba3af6e7::t_7d896a526e2193 747,749
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8f7f37e69098f61d823424eb24cda3c9ad660391",
+  "prompts": {},
+  "sessions": {
+    "s_1dd057ba3af6e7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "97df7912-1a25-434a-8827-abaa77d6cdd1",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

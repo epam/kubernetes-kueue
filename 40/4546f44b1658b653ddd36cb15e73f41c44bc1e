@@ -1,0 +1,19 @@
+pkg/controller/jobs/statefulset/statefulset_controller_test.go
+  s_527ce5901326b9::t_fced4ce330471e 46-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "404546f44b1658b653ddd36cb15e73f41c44bc1e",
+  "prompts": {},
+  "sessions": {
+    "s_527ce5901326b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0383358a-0bc7-4835-b29d-b2ff3525d56c",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

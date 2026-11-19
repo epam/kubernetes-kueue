@@ -1,0 +1,16 @@
+pkg/util/pod/pod.go
+  h_47cee5fa694435 198
+pkg/controller/tas/topology_ungater.go
+  h_47cee5fa694435 307
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.10",
+  "base_commit_sha": "8e85a87145ae5c8701179b6f608e679ee344af07",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

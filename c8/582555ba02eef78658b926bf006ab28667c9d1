@@ -1,0 +1,23 @@
+pkg/controller/tas/topology_ungater_test.go
+  s_1c91862166aa9d::t_e92deb257b35d7 186-209,2906,2908-2922,2927-2943,2945-2960
+  s_1c91862166aa9d::t_67bdb62ccd2b01 184-185,2902-2905,2907,2923-2926,2944
+pkg/controller/tas/topology_ungater.go
+  s_1c91862166aa9d::t_0ece03d86ae2ae 441-443,479,482-483,488,490,495
+  s_1c91862166aa9d::t_e92deb257b35d7 461,473
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c8582555ba02eef78658b926bf006ab28667c9d1",
+  "prompts": {},
+  "sessions": {
+    "s_1c91862166aa9d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d67d37aa-db42-496f-b5fc-04e96b4d8c61",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

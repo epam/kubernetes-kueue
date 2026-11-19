@@ -1,0 +1,19 @@
+test/integration/singlecluster/controller/concurrentadmission/concurrent_admission_test.go
+  s_554c55546b98d9::t_d927ba418ba90c 130-193
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4615d9db7ed0124261223e06758111ab5083ae93",
+  "prompts": {},
+  "sessions": {
+    "s_554c55546b98d9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e18c00c3-cf33-4ba0-b162-99376cb085fe",
+        "model": "unknown"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

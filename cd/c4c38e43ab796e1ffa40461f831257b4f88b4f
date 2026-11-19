@@ -1,0 +1,41 @@
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_85ac95c2e0708a::t_ddffdb9010aacb 6351-6352
+  s_85ac95c2e0708a::t_01fa910eb0fa51 6713
+  s_85ac95c2e0708a::t_45624732f50225 510
+  s_85ac95c2e0708a::t_2c06b337eb0179 1636
+pkg/controller/jobs/pod/pod_webhook_test.go
+  s_85ac95c2e0708a::t_5cc9c565378497 239
+  s_85ac95c2e0708a::t_03ab27aff5cba1 273
+pkg/controller/jobframework/reconciler.go
+  s_85ac95c2e0708a::t_48bb5482b23d2f 1229-1230
+  s_85ac95c2e0708a::t_031fc0ad4ad602 900-901
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_85ac95c2e0708a::t_1e78441f067cea 959-960
+pkg/controller/jobs/pod/pod_controller.go
+  s_85ac95c2e0708a::t_058bb04b367683 673-674
+  s_85ac95c2e0708a::t_b7387f476e2cb1 1259-1260
+  s_85ac95c2e0708a::t_529f193bc4e630 1277-1278
+  s_85ac95c2e0708a::t_0260c6cb03f4d4 1317
+pkg/controller/jobframework/reconciler_test.go
+  s_85ac95c2e0708a::t_8e6704c638982d 890
+pkg/controller/jobs/pod/pod_webhook.go
+  s_85ac95c2e0708a::t_dd009a873fc6ea 114-115
+  s_85ac95c2e0708a::t_18dbcf80a4b5d8 99
+  s_85ac95c2e0708a::t_f92dc48525ae41 102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "cdc4c38e43ab796e1ffa40461f831257b4f88b4f",
+  "prompts": {},
+  "sessions": {
+    "s_85ac95c2e0708a": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "642b01b3-39b4-4100-b2e2-be9113a94e11",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

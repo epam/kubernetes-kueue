@@ -1,0 +1,23 @@
+pkg/controller/admissionchecks/provisioning/controller.go
+  s_c677b2a6bfb5fc::t_cb1b6c9ad01a8d 344-364
+  s_c677b2a6bfb5fc::t_413591ce41ba27 471-475,478
+pkg/controller/admissionchecks/provisioning/controller_test.go
+  s_c677b2a6bfb5fc::t_2722bcc56a146b 557-594
+  s_c677b2a6bfb5fc::t_2a6e9641de326e 2172,2175-2188
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "3754e19846efb42e3ecaf0fef52502778389450c",
+  "prompts": {},
+  "sessions": {
+    "s_c677b2a6bfb5fc": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "dc7291a9-aae1-4004-91f5-92141c9b33ca",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

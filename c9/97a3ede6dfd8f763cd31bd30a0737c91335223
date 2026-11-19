@@ -1,0 +1,16 @@
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler.go
+  h_32169613a39d35 468,471-495,499,502,504,507-509,513,515-516,520,530-532
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler_test.go
+  h_32169613a39d35 3473-3587
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c997a3ede6dfd8f763cd31bd30a0737c91335223",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

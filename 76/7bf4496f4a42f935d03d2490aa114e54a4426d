@@ -1,0 +1,16 @@
+site/data/featuregates/removed_feature_list.yaml
+  h_47cee5fa694435 161-175
+keps/2349-multikueue-external-custom-job-support/README.md
+  h_47cee5fa694435 120
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "767bf4496f4a42f935d03d2490aa114e54a4426d",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

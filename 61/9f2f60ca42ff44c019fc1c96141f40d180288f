@@ -1,0 +1,25 @@
+.github/workflows/OWNERS
+  h_47cee5fa694435 3-5,6-7,8-10,11
+  h_47cee5fa694435 6-7
+.github/actions/create-draft-release/OWNERS
+  h_47cee5fa694435 1-4
+.github/actions/create-release-tag/OWNERS
+  h_47cee5fa694435 1-4
+.github/actions/publish-release/OWNERS
+  h_47cee5fa694435 1-4
+.github/actions/report-result/OWNERS
+  h_47cee5fa694435 1-4
+hack/releasing/OWNERS
+  h_47cee5fa694435 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "619f2f60ca42ff44c019fc1c96141f40d180288f",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

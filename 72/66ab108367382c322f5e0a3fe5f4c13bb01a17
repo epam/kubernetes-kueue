@@ -1,0 +1,31 @@
+pkg/controller/admissionchecks/multikueue/workload.go
+  h_99f506dc258b88 66-69,873
+  s_312b2fa03ed8ae::t_d99b3ed5303f72 76,506
+  s_312b2fa03ed8ae::t_12e629e6f568ba 505,507-512
+pkg/controller/admissionchecks/multikueue/workload_test.go
+  s_312b2fa03ed8ae::t_ce29a812f0ff96 652-724
+  s_312b2fa03ed8ae::t_77023b90ad1cd8 503-571
+pkg/controller/jobframework/multikueue.go
+  h_99f506dc258b88 24,65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "7266ab108367382c322f5e0a3fe5f4c13bb01a17",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_312b2fa03ed8ae": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "d9630df8-7e48-4e33-9622-2fb6443e1c7e",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

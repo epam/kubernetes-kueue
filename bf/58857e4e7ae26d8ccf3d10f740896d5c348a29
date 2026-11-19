@@ -1,0 +1,22 @@
+cmd/importer/Dockerfile
+  h_47cee5fa694435 1
+cmd/kueueviz/backend/Dockerfile
+  h_47cee5fa694435 2
+cmd/experimental/kueue-priority-booster/Dockerfile
+  h_47cee5fa694435 1
+cmd/experimental/kueue-populator/Dockerfile
+  h_47cee5fa694435 1
+Dockerfile
+  h_47cee5fa694435 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "bf58857e4e7ae26d8ccf3d10f740896d5c348a29",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

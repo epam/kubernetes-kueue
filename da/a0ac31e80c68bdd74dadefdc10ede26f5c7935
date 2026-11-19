@@ -1,0 +1,19 @@
+README.md
+  s_6bd1a0a83bc6d5::t_c65adc72a6e40a 140-141
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "daa0ac31e80c68bdd74dadefdc10ede26f5c7935",
+  "prompts": {},
+  "sessions": {
+    "s_6bd1a0a83bc6d5": {
+      "agent_id": {
+        "tool": "mock_ai",
+        "id": "ai-thread-1778897210657928000",
+        "model": "unknown"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

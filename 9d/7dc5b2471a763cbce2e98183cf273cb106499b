@@ -1,0 +1,48 @@
+pkg/controller/jobframework/reconciler.go
+  s_e563d444090ac1::t_2d4d3c47025be8 914-920
+  s_137158967f31f4::t_161af7187522dd 899-908
+  s_e37c51d69a653b::t_770749e132104b 909-913
+pkg/controller/jobs/job/job_controller_test.go
+  s_e563d444090ac1::t_07c539f56899cd 3238,3246,3254,3280,3287,3294,3326,3335,3344
+pkg/controller/jobframework/reconciler_test.go
+  s_137158967f31f4::t_590851bbc013dd 655
+  s_e563d444090ac1::t_479fd5677295d4 878-885,895
+  s_e563d444090ac1::t_e3c1f665df6aad 862
+  s_e563d444090ac1::t_9397d0032661c2 886-894
+  s_e563d444090ac1::t_39132f841a3e78 904
+pkg/controller/jobs/pod/pod_webhook_test.go
+  s_e563d444090ac1::t_0c5c040844b174 184-256
+  s_137158967f31f4::t_51ecd5a6f39e9c 257-296
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "9d7dc5b2471a763cbce2e98183cf273cb106499b",
+  "prompts": {},
+  "sessions": {
+    "s_137158967f31f4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dd21691e-a6f8-4c14-a762-cb7eebe6fad4",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_e37c51d69a653b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d6aeb4c0-3815-4b1a-9a03-3c46830d584b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_e563d444090ac1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1a4865de-788a-47a5-a2d4-622110145c19",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

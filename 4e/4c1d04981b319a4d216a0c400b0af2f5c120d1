@@ -1,0 +1,117 @@
+site/data/featuregates/versioned_feature_list.yaml
+  s_336c520b22e15c::t_f4aac355ec109a 566-570
+  s_6ca7c1fcda43a6::t_b99332af7ae0c9 571
+pkg/workload/workload_test.go
+  s_04f1afe093206f::t_a750df5d0576f1 174-186,188-195
+  s_6ca7c1fcda43a6::t_921ca66c282dc6 187
+pkg/features/kube_features.go
+  s_336c520b22e15c::t_4c25c75a2a3a5f 772,774
+  s_336c520b22e15c::t_c242189aaf812a 496,497-498,500
+  s_bbd44f7b59cc51::t_22ce2322880ac2 499
+  s_6ca7c1fcda43a6::t_81ed8efd2a21c1 771
+  s_6ca7c1fcda43a6::t_8daf72655ee8a1 773
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_336c520b22e15c::t_f4aac355ec109a 566-570
+  s_6ca7c1fcda43a6::t_f48cb4b07fd087 571
+pkg/webhooks/workload_webhook_test.go
+  s_336c520b22e15c::t_c1538ecb6718ab 205-243
+  s_b1fa686dce77e5::t_226e4c87ffdc45 133,147,161,179,203
+  s_04f1afe093206f::t_e6e444cf9eae4f 26
+  s_7c8864a8dec34b::t_e726c258da7de7 181-202
+  s_c55a51275eb543::t_f00175b510cf08 110-132,134
+  s_f1594a1cf8d39c::t_765592998ddec1 109
+  s_04f1afe093206f::t_e165985056d087 135-146,148-160,162-178,180,204,244-255
+pkg/resources/requests.go
+  s_7c8864a8dec34b::t_ca558554d5bdc8 125
+  s_04f1afe093206f::t_505834f57a5acb 124,126-128
+  s_bbd44f7b59cc51::t_181b5184b8c503 119-122
+  s_6ca7c1fcda43a6::t_f44ad426503e72 123
+pkg/webhooks/workload_webhook.go
+  s_336c520b22e15c::t_2e44ad2b63a1c6 169-173,191-192
+  s_bbd44f7b59cc51::t_ce769b2ca7c3a0 168,184
+  s_c55a51275eb543::t_cfc0c1723be35a 179-183,185,187,189
+  s_6ca7c1fcda43a6::t_2dfbc127520d7b 190
+test/integration/singlecluster/webhook/core/workload_test.go
+  s_336c520b22e15c::t_5a88a4bc9bdd64 286-296
+  s_f1594a1cf8d39c::t_765592998ddec1 28,254-265
+  s_04f1afe093206f::t_b11a6b40fc8bb9 271-285
+  s_f1594a1cf8d39c::t_c61ce868a3f97b 266-270
+pkg/resources/requests_test.go
+  s_04f1afe093206f::t_a19ae90b2b8ebb 537-538,541-542,545-546,548-550,552-556,558-560,562-575
+  s_336c520b22e15c::t_d46865c4c1107d 536
+  s_6ca7c1fcda43a6::t_87be8cd85f5fc9 539-540,543-544,547,551,557,561,576
+pkg/workload/workload.go
+  s_04f1afe093206f::t_c1d7ab40f27085 654
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "4e4c1d04981b319a4d216a0c400b0af2f5c120d1",
+  "prompts": {},
+  "sessions": {
+    "s_04f1afe093206f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5f42d237-e9b9-4ad2-920f-9bf47d7832a0",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_336c520b22e15c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "a3cceb7a-d846-499b-915d-57c02d4a34ce",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_6ca7c1fcda43a6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "837068d8-de2f-485a-81fb-dc6699be0686",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_7c8864a8dec34b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "feec6abe-7048-497f-b1c1-c88b1aae199f",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_b1fa686dce77e5": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "7fc20933-3788-490f-afd9-8f12721484c5",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_bbd44f7b59cc51": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "9d12ade8-babd-432a-b7ca-21fbb1b1ba1a",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_c55a51275eb543": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "50ec0e7e-e1b1-4604-919a-4004bab20e08",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_f1594a1cf8d39c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9af280c2-36b2-47e9-96bf-74fc43e09d94",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

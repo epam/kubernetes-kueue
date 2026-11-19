@@ -1,0 +1,30 @@
+cmd/experimental/kueue-populator/Dockerfile
+  h_47cee5fa694435 1,2
+cmd/importer/Dockerfile
+  h_47cee5fa694435 1,2
+.github/dependabot.yml
+  h_47cee5fa694435 55-56
+cmd/experimental/kueue-priority-booster/Makefile
+  h_47cee5fa694435 13,41-43
+Makefile
+  h_47cee5fa694435 67-68
+cmd/experimental/kueue-priority-booster/Dockerfile
+  h_47cee5fa694435 1,2
+cmd/experimental/kueue-populator/Makefile
+  h_47cee5fa694435 13,45-47
+cmd/kueueviz/backend/Dockerfile
+  h_47cee5fa694435 2,3
+Dockerfile
+  h_47cee5fa694435 2,3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "6e7471f478a526b4c81a7b6e8db379959f925bf4",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

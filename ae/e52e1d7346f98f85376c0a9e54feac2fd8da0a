@@ -1,0 +1,14 @@
+test/integration/singlecluster/scheduler/preemption_test.go
+  h_47cee5fa694435 1598,1601,1605-1607,1617-1618,1637,1641,1643,1650
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "aee52e1d7346f98f85376c0a9e54feac2fd8da0a",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

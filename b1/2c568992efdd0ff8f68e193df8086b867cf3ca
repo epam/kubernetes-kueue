@@ -1,0 +1,14 @@
+site/content/zh-CN/v0.18/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "b12c568992efdd0ff8f68e193df8086b867cf3ca",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

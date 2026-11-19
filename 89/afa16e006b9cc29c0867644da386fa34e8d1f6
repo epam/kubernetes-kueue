@@ -1,0 +1,23 @@
+keps/11143-kueueviz-authorization/README.md
+  s_95504458a0a879::t_700a688576acf6 179-186,188-195
+  s_95504458a0a879::t_1eb824b6005ad0 408,410-413
+  s_95504458a0a879::t_d93ea74c22fb52 220
+  s_95504458a0a879::t_4753e89704f693 447,450,452-453
+  s_95504458a0a879::t_4363a56dff51eb 280-281,298-323
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "89afa16e006b9cc29c0867644da386fa34e8d1f6",
+  "prompts": {},
+  "sessions": {
+    "s_95504458a0a879": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "a101442b-cd30-4c23-8a4d-6234abab10c7",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

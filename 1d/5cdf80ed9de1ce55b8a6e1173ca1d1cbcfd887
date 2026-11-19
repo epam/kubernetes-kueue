@@ -1,0 +1,14 @@
+test/integration/multikueue/setup_test.go
+  h_47cee5fa694435 626
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "1d5cdf80ed9de1ce55b8a6e1173ca1d1cbcfd887",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

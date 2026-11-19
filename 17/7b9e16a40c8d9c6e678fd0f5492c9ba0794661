@@ -1,0 +1,24 @@
+pkg/controller/jobs/pod/pod_controller.go
+  s_b699660cb6e907::t_b914ca3c43b7ba 957,959,961-963,965-967,970
+  s_b699660cb6e907::t_6fba4fa02a71e3 988
+  s_b699660cb6e907::t_44e48c30eca491 1051,1060,1063-1067,1069-1070,1073-1084,1086-1090
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_b699660cb6e907::t_c92d0214f4131b 1542,1554-1558,1563
+  s_b699660cb6e907::t_30f293f0ad28a2 1450,1461-1465,1470,1477,1482
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "177b9e16a40c8d9c6e678fd0f5492c9ba0794661",
+  "prompts": {},
+  "sessions": {
+    "s_b699660cb6e907": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "83a95b66-129c-4736-8999-297c64f9534a",
+        "model": "grok-4.7-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

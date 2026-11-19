@@ -1,0 +1,29 @@
+pkg/util/equality/podset.go
+  s_61f58471d51dcc::t_324dcb550bf4c9 33,56-61,72,75,84-100
+  s_61f58471d51dcc::t_d839b6101288fa 101
+pkg/util/equality/podset_test.go
+  s_61f58471d51dcc::t_138150a5a30ebc 115,363-394,408-409
+  s_61f58471d51dcc::t_7e74aa40611511 410
+pkg/controller/jobs/trainjob/trainjob_controller.go
+  s_61f58471d51dcc::t_cb42820e8587c4 50,111,125-130
+  s_61f58471d51dcc::t_0b1536fc5b3836 131-132
+pkg/controller/jobs/trainjob/trainjob_controller_test.go
+  s_61f58471d51dcc::t_7bb4b9b26970d2 24,32,871-894,899,981-990,1002-1009
+  s_61f58471d51dcc::t_efd07254442339 1010,1029-1031
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "cc84f2b148ac392888b5c5f855c3f7bdf72bdada",
+  "prompts": {},
+  "sessions": {
+    "s_61f58471d51dcc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6b787fe2-406b-427e-90b9-5a4fb9109714",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

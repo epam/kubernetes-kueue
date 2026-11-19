@@ -1,0 +1,14 @@
+test/util/constants.go
+  h_f3e429a3560394 21,104-107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "e8513e0e72129a330f45d79c2a8bc562ea7189a3",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

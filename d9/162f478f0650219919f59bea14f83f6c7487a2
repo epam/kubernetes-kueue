@@ -1,0 +1,14 @@
+apis/kueue/v1beta1/groupversion_info.go
+  h_47cee5fa694435 69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "d9162f478f0650219919f59bea14f83f6c7487a2",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

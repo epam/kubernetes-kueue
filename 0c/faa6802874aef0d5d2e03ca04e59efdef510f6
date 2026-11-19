@@ -1,0 +1,28 @@
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  s_ec639dc75146d7::t_13d38cac7493b8 292-295,300-315,320-323,325-327,334-337,347-351,354-356
+  s_ec639dc75146d7::t_1cd1d9819270dd 296-299,316-319,324,328-333,338-346,352-353
+  s_ec639dc75146d7::t_b75a863fbe4213 32
+pkg/scheduler/scheduler.go
+  h_99f506dc258b88 1661-1663
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0cfaa6802874aef0d5d2e03ca04e59efdef510f6",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_ec639dc75146d7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d83670c-d35c-4ab7-96b9-90c7d482374e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

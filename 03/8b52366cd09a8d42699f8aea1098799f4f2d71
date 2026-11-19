@@ -1,0 +1,43 @@
+pkg/util/testing/v1beta2/wrappers.go
+  s_eb4a86b1a567b1::t_d39b4241bd823c 30,1845,1860,1870
+test/util/behavioral/e2e/clients.go
+  s_eb4a86b1a567b1::t_d39b4241bd823c 38,101
+pkg/config/config.go
+  s_eb4a86b1a567b1::t_d39b4241bd823c 36,52
+pkg/controller/admissionchecks/multikueue/multikueuecluster.go
+  s_eb4a86b1a567b1::t_d39b4241bd823c 55,850,855,1124,1415,1572
+cmd/kueue/main.go
+  s_eb4a86b1a567b1::t_d39b4241bd823c 43,114
+pkg/controller/admissionchecks/multikueue/indexer_test.go
+  s_eb4a86b1a567b1::t_d39b4241bd823c 28,50
+pkg/controller/admissionchecks/multikueue/multikueuecluster_test.go
+  s_eb4a86b1a567b1::t_d39b4241bd823c 49,123,152-153,156-157,199,533,565,589,662,687
+test/e2e/multikueue/sequential/e2e_test.go
+  s_eb4a86b1a567b1::t_6d3ab838e784e6 760,763
+  s_eb4a86b1a567b1::t_d39b4241bd823c 37,467,531,580,755,757
+test/integration/framework/framework.go
+  s_eb4a86b1a567b1::t_d39b4241bd823c 46,189
+test/integration/multikueue/setup_test.go
+  s_eb4a86b1a567b1::t_d39b4241bd823c 38,895-896,1226
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "038b52366cd09a8d42699f8aea1098799f4f2d71",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_eb4a86b1a567b1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "713538b4-7354-4c36-a877-98d1688e0e73",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

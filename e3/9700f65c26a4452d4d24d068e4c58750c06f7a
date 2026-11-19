@@ -1,0 +1,31 @@
+pkg/controller/admissionchecks/multikueue/workload_test.go
+  s_d41fee267d5f75::t_50a89a795d7cbb 4709-4793
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_d41fee267d5f75::t_242e5915e27059 1448-1449
+  s_d41fee267d5f75::t_fe81abc4688365 1494-1499,1501-1507
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  s_d41fee267d5f75::t_13b9f3e5ddbfd4 1365-1400
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  s_d41fee267d5f75::t_83499032206ca4 524
+  s_d41fee267d5f75::t_ff8772cf124619 535-545
+  s_d41fee267d5f75::t_22119313750698 27
+site/content/en/docs/tasks/run/leaderworkerset.md
+  s_d41fee267d5f75::t_39e880ce34b875 132
+  s_d41fee267d5f75::t_aa745aa700c00d 139-143
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e39700f65c26a4452d4d24d068e4c58750c06f7a",
+  "prompts": {},
+  "sessions": {
+    "s_d41fee267d5f75": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dc6a169b-f647-49de-89cf-f8871162feea",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

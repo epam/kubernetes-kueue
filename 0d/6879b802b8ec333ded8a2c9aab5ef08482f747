@@ -1,0 +1,16 @@
+.github/workflows/release-utils.yml
+  h_47cee5fa694435 298,305-311,315-324,327-329,331-333,345,352-358,367-376,380,466-473
+.github/actions/create-draft-release/action.yml
+  h_47cee5fa694435 1-114
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "0d6879b802b8ec333ded8a2c9aab5ef08482f747",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

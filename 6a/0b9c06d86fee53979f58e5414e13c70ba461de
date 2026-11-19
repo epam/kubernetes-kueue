@@ -1,0 +1,24 @@
+pkg/controller/jobframework/validation.go
+  s_b3fa45ebdab409::t_b2fd1a0bf41d1b 153-155,166-168
+pkg/controller/jobs/job/job_webhook_test.go
+  s_b3fa45ebdab409::t_24ce57c992a493 638-653,666-667
+  s_b3fa45ebdab409::t_4bf7f913176675 1148-1166,1181-1182
+pkg/controller/jobframework/validation_test.go
+  s_b3fa45ebdab409::t_74bc32f9d7cacb 488-503,512-513
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "6a0b9c06d86fee53979f58e5414e13c70ba461de",
+  "prompts": {},
+  "sessions": {
+    "s_b3fa45ebdab409": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "56e3ffb6-cb8c-40a2-929f-02da4429bf8e",
+        "model": "cursor-grok-4.6-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

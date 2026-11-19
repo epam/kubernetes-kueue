@@ -1,0 +1,37 @@
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_4a644bb6c94ee2::t_7d6ecdeb8a24a2 368-373
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_4a644bb6c94ee2::t_f11d3489a5fde7 278-281,285-289
+  s_4a644bb6c94ee2::t_399f656ade71a3 282,325,427
+  s_4a644bb6c94ee2::t_d51431274bff51 240-260,262-269,277,283-284,291-311,313-324,326-339,341-354,356-375,377-396,398-410,412-426,428,433-438,440-443,452,454,459-474
+  s_4a644bb6c94ee2::t_a666eac2203a68 479,1095-1103
+  s_4a644bb6c94ee2::t_7943f43ca5b365 290,312,340,355,376,397
+  s_4a644bb6c94ee2::t_9b0c3e22728551 411
+  s_4a644bb6c94ee2::t_3bf989c78b13c1 475-478
+site/data/featuregates/versioned_feature_list.yaml
+  s_4a644bb6c94ee2::t_cdc9e22590054a 368-373
+pkg/controller/jobs/pod/pod_controller.go
+  s_4a644bb6c94ee2::t_a87734cd9954fe 342-343
+  s_4a644bb6c94ee2::t_f11d3489a5fde7 82-85
+  s_4a644bb6c94ee2::t_403f4e19412259 973-979,986,989-1028
+pkg/features/kube_features.go
+  s_4a644bb6c94ee2::t_5fa3abb5c4e6c7 693-702
+  s_4a644bb6c94ee2::t_1e059941ddc901 1160,1179-1181
+  s_4a644bb6c94ee2::t_5e69a4d0359409 1171
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "447be8f1d059aa0f81cb653db38ac1bd7871ffd6",
+  "prompts": {},
+  "sessions": {
+    "s_4a644bb6c94ee2": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "fd645e8e-0451-45a5-b070-5f3d08ca3688",
+        "model": "cursor-grok-4.6-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

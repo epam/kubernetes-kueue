@@ -1,0 +1,40 @@
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_f5b01c42f7c070::t_86f843a6dd8c2a 7507-7549,7551-7554,7570-7590
+  s_f5b01c42f7c070::t_0a2acccf7f2226 7550,7555-7569
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_f5b01c42f7c070::t_1b6e2eb085edd6 3799-3995,3997-4010
+  s_f5b01c42f7c070::t_c9785fad28a950 3996
+pkg/controller/jobs/pod/pod_controller.go
+  s_f5b01c42f7c070::t_4e9a2a9b2e1050 926-930
+  s_f5b01c42f7c070::t_07cc7b7eaabccb 532,536-540,542
+  s_f5b01c42f7c070::t_485c9ee692ead8 533
+  s_f5b01c42f7c070::t_aa52307137f974 909-914
+  s_f5b01c42f7c070::t_d6039c00087b93 569
+  s_f5b01c42f7c070::t_5d6308d3aa6446 918-920
+  s_f5b01c42f7c070::t_b414bdaf5be819 535
+  s_f5b01c42f7c070::t_b26fb27884c49e 915-917
+  s_f5b01c42f7c070::t_aaf44620756d2d 923-924
+  s_f5b01c42f7c070::t_59b295d992b92c 534
+  s_f5b01c42f7c070::t_37fd43a921f327 570-573
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "37eeacd46a56603197b223a271c41abf188e377a",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_f5b01c42f7c070": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "05c13984-9a9f-407e-8308-7ff83c3af83e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}

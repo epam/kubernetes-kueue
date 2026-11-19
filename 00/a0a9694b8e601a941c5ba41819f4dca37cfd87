@@ -1,0 +1,21 @@
+keps/12100-partial-scaleup-for-elasticjob/README.md
+  s_7b084ab8b1f2c5::t_48d56d0b1f4a49 47,58,67,97,260,270-273,416
+keps/77-dynamically-sized-jobs/README.md
+  s_7b084ab8b1f2c5::t_9b1e0c53dabe44 383-392
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "00a0a9694b8e601a941c5ba41819f4dca37cfd87",
+  "prompts": {},
+  "sessions": {
+    "s_7b084ab8b1f2c5": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "54b7c845-d4b3-407d-9900-3074b325a8cc",
+        "model": "unknown"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

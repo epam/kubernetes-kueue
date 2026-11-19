@@ -1,0 +1,21 @@
+pkg/workload/patching/patching.go
+  s_d4bfc56e05045a::t_6244a8de2b0a11 176
+  s_d4bfc56e05045a::t_d2c2ce58e6359c 177-208
+  s_d4bfc56e05045a::t_fe4fd9c0ec6937 173
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "c35f5af099110f5ca2300e2d118c8981565fb0e0",
+  "prompts": {},
+  "sessions": {
+    "s_d4bfc56e05045a": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "b6cb88bf-5560-4504-974c-aac7d85409d3",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

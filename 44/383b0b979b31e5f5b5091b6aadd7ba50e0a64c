@@ -1,0 +1,27 @@
+hack/testing/e2e-test.sh
+  h_47cee5fa694435 73-74,76-81
+pkg/controller/jobframework/reconciler.go
+  s_80d402340baf7e::t_7d8a95d69fefc0 729-738,745-762
+  s_80d402340baf7e::t_5b18bda490fb6b 763-764
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "44383b0b979b31e5f5b5091b6aadd7ba50e0a64c",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_80d402340baf7e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4187d5af-39af-4bf4-9320-34b06feee58d",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

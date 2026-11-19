@@ -1,0 +1,22 @@
+config/components/manager/kustomization.yaml
+  h_47cee5fa694435 17
+config/components/kueueviz/kustomization.yaml
+  h_47cee5fa694435 18,21
+Makefile
+  h_47cee5fa694435 408
+cmd/experimental/kueue-populator/config/kustomization.yaml
+  h_47cee5fa694435 14
+cmd/experimental/kueue-priority-booster/config/kustomization.yaml
+  h_47cee5fa694435 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3bb6a9eb3729115eeb3dc3f4a6c1fc13d802e975",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

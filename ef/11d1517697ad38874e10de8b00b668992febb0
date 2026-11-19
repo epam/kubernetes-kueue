@@ -1,0 +1,21 @@
+keps/13746-topology-spreading/README.md
+  s_210b6799c5d12d::t_09fdd47a77d61c 214-217
+  s_210b6799c5d12d::t_77f021f42ddf82 498
+  s_210b6799c5d12d::t_02714cd5a4393e 829
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "ef11d1517697ad38874e10de8b00b668992febb0",
+  "prompts": {},
+  "sessions": {
+    "s_210b6799c5d12d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9b959bdf-3cb1-4351-8f12-5e75a50dbe39",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+keps/12100-partial-scaleup-for-elasticjob/README.md
+  s_e5ec37bbf4c854::t_d69c0a0e3fe415 47
+  s_e5ec37bbf4c854::t_dd50bb8fb8d7a4 63
+  s_e5ec37bbf4c854::t_2ba82e1b484a8d 275-277
+  s_e5ec37bbf4c854::t_fbdaa1c07eea56 434-436
+  s_e5ec37bbf4c854::t_4406a6d70d732d 447-449
+  s_e5ec37bbf4c854::t_ff3a1ccfdeb133 97
+keps/77-dynamically-sized-jobs/README.md
+  s_e5ec37bbf4c854::t_b415623b39e7de 382-383
+  s_e5ec37bbf4c854::t_3cd8fd4ef914ea 389
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ade32648f76aa3d6cad19c80c3854da3a71d210d",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_e5ec37bbf4c854": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "217958b7-8441-4888-a4e4-b361978aa03c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}

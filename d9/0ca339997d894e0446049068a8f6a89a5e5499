@@ -1,0 +1,14 @@
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_test.go
+  h_47cee5fa694435 1307
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d90ca339997d894e0446049068a8f6a89a5e5499",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

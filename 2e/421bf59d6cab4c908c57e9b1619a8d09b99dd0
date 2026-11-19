@@ -1,0 +1,26 @@
+hack/testing/e2e-common_test.sh
+  s_ce5996fdbc8e90::t_cddccc280777aa 130-156
+  s_ce5996fdbc8e90::t_077eac851b0077 274-314
+hack/testing/e2e-common.sh
+  s_ce5996fdbc8e90::t_80d90595637580 105-106,115
+  s_ce5996fdbc8e90::t_c93ebc642abaee 111
+  s_ce5996fdbc8e90::t_9e6a903b49ba6d 655-658,660
+  s_ce5996fdbc8e90::t_cad704f0e28dba 687
+  s_ce5996fdbc8e90::t_0ba594dbd69e41 102-104,107-110,112-114,116-117
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "2e421bf59d6cab4c908c57e9b1619a8d09b99dd0",
+  "prompts": {},
+  "sessions": {
+    "s_ce5996fdbc8e90": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e4f6c3bd-66ed-4ae9-992c-d7e00869b845",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}

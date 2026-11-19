@@ -1,0 +1,19 @@
+.github/ISSUE_TEMPLATE/NEW_RELEASE.md
+  s_a7fe37a5319567::t_2d0452b78d223d 61-62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f78d736f61e3ce141960c03f0c4301660af8fcba",
+  "prompts": {},
+  "sessions": {
+    "s_a7fe37a5319567": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b3bc4f91-09be-488e-b905-577841baddae",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

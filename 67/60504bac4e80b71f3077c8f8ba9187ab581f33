@@ -1,0 +1,86 @@
+pkg/metrics/metrics.go
+  s_26f0242fe01ba2::t_7947c01c060f15 614,769,802,827,867-868
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  s_26f0242fe01ba2::t_42c70f723ffab2 406-407,409-413
+  s_26f0242fe01ba2::t_7e3763f985c7e1 248,373,384
+  s_26f0242fe01ba2::t_6ba1e771e6ef09 358,362-364
+  s_26f0242fe01ba2::t_5556b38fd388b4 25
+  s_26f0242fe01ba2::t_610b47e5dc0a9a 359
+  s_26f0242fe01ba2::t_fc7bce513710ab 414
+  s_26f0242fe01ba2::t_14d284986dae8e 247,249-253,360-361,369-372,374-383,385-405,408
+  s_26f0242fe01ba2::t_82d9d8615d832f 368
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  s_26f0242fe01ba2::t_a15d69d817a8e2 1031,1042,1046,1056,1067-1070,1078,1080-1084,1086-1088,1109-1115,1124,1126,1128-1129,1131,1133-1136,1141
+  s_26f0242fe01ba2::t_787b63ad54fa0c 1033-1041,1043-1045,1048-1055,1057-1066,1137-1140,1143-1157
+  s_26f0242fe01ba2::t_610b47e5dc0a9a 1032,1047,1072,1117,1142
+  s_26f0242fe01ba2::t_d94d2de8f2c14d 1071,1073-1077,1079,1085,1089-1108,1116,1118-1123,1125,1130
+  s_26f0242fe01ba2::t_ef8cf2693952d9 1127,1132
+site/content/en/docs/reference/metrics.md
+  s_26f0242fe01ba2::t_39ceb047b7c73e 60-61,67,75,90
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler_test.go
+  s_26f0242fe01ba2::t_99d33bad827820 885,932-981,993,1002-1003,3125
+  s_26f0242fe01ba2::t_dfa9989927d9f2 982-988
+  s_26f0242fe01ba2::t_5483a750aa43dc 3101
+  s_26f0242fe01ba2::t_801d4eff9bd7ce 3122
+  s_26f0242fe01ba2::t_a5236555f6440c 989-992,994-1001
+  s_26f0242fe01ba2::t_a0b927dabfcac4 833,835-858,860-884,887-931,1004,1006-1039,1041-1075
+  s_26f0242fe01ba2::t_195dea979fe963 37
+  s_26f0242fe01ba2::t_610b47e5dc0a9a 834,886,1005,1040
+  h_47cee5fa694435 859
+test/integration/singlecluster/controller/jobs/leaderworkerset/leaderworkerset_controller_test.go
+  s_26f0242fe01ba2::t_0cc2b1ebdeaeeb 291-296,301
+  s_26f0242fe01ba2::t_4497357d1be458 303
+  s_26f0242fe01ba2::t_f19883df21090b 379
+  s_26f0242fe01ba2::t_610b47e5dc0a9a 289
+  s_26f0242fe01ba2::t_92d7d82e7b596a 290,297-298,300,302,305-310,312,314-316,318-326,328,380-382
+  s_26f0242fe01ba2::t_20cee67705da94 288,299,304,311,313,317,327,329-378
+pkg/util/testingjobs/leaderworkerset/wrappers.go
+  s_26f0242fe01ba2::t_ef264571329509 144-149
+  s_26f0242fe01ba2::t_b084100e0678fe 173-178
+pkg/features/kube_features.go
+  s_26f0242fe01ba2::t_39ceb047b7c73e 915-919
+  s_26f0242fe01ba2::t_09abe2e6436bf9 1419-1420
+  s_26f0242fe01ba2::t_610b47e5dc0a9a 920,1418
+  s_26f0242fe01ba2::t_9973121143bd55 911-914,1417
+apis/kueue/v1beta2/workload_types.go
+  s_26f0242fe01ba2::t_8bdd198f2d31cc 1146-1150
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler.go
+  s_26f0242fe01ba2::t_98f5df1db3a451 31
+  s_26f0242fe01ba2::t_d57111683c5cbf 39,69,95,114,467-475,519-527,530-540,552-575,577-581
+  s_26f0242fe01ba2::t_35a33eb09933c4 528-529,541-551,582-583
+  s_26f0242fe01ba2::t_d3b4bd5417ae7a 516-518
+  s_26f0242fe01ba2::t_2b4eddd1a7299d 576
+  s_26f0242fe01ba2::t_cfd5950918cea8 476-477
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_26f0242fe01ba2::t_39ceb047b7c73e 294-299
+site/content/en/docs/tasks/run/leaderworkerset.md
+  s_26f0242fe01ba2::t_fdf50192084c57 87-91,104
+  s_26f0242fe01ba2::t_39ceb047b7c73e 92-101
+  s_26f0242fe01ba2::t_1473728440f046 103
+  s_26f0242fe01ba2::t_610b47e5dc0a9a 102
+site/data/featuregates/versioned_feature_list.yaml
+  s_26f0242fe01ba2::t_39ceb047b7c73e 294-299
+pkg/controller/jobframework/reconciler.go
+  s_26f0242fe01ba2::t_939b8385f61447 823-825
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6760504bac4e80b71f3077c8f8ba9187ab581f33",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_26f0242fe01ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5fcb8e8d-a1b4-40f8-9d8c-e39d36904adb",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}

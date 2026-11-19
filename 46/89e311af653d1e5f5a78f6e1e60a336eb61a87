@@ -1,0 +1,14 @@
+.github/workflows/krew-release.yml
+  h_47cee5fa694435 12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "4689e311af653d1e5f5a78f6e1e60a336eb61a87",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

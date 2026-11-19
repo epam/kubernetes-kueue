@@ -1,0 +1,14 @@
+pkg/controller/tas/topology_ungater.go
+  h_47cee5fa694435 64-79,104-108,111
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.10",
+  "base_commit_sha": "7cc304f83310ba765f45e2e22420f3d2b2123307",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

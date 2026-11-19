@@ -1,0 +1,16 @@
+cmd/experimental/kueue-populator/Makefile
+  h_47cee5fa694435 13
+cmd/experimental/kueue-priority-booster/Makefile
+  h_47cee5fa694435 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "c292537a3582eadce86788b1bbf29d5e9f8f505b",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

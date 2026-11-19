@@ -1,0 +1,27 @@
+pkg/controller/jobframework/reconciler_test.go
+  s_3130ac198eb516::t_4b5340b4bb1665 195
+  s_3130ac198eb516::t_ad965830d3fb1b 209
+pkg/controller/jobframework/reconciler.go
+  s_3130ac198eb516::t_c6f94943e42299 38
+  s_3130ac198eb516::t_2a42d661baaa94 1736,1740-1749,1758,1761,1770
+  s_3130ac198eb516::t_163054e93672d0 1750
+  s_3130ac198eb516::t_b76b1e4f4c0fee 1751-1757
+pkg/workloadslicing/workloadslicing.go
+  s_3130ac198eb516::t_35ea8abfa50d3a 154,156-157
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7aa4e7f4d8abedb413120a4d4bfa1617d5a4e772",
+  "prompts": {},
+  "sessions": {
+    "s_3130ac198eb516": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ce409d67-3944-4dd7-8c21-1e967ebd8ee0",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+cmd/kueueviz/frontend/src/useWebSocket.js
+  s_b70abef2eb7473::t_6306966a25eb49 98-102
+cmd/kueueviz/backend/handlers/websocket_handler_test.go
+  s_b70abef2eb7473::t_255a6317289fa1 23,33
+  s_b70abef2eb7473::t_a036837f36b1ff 628-764
+cmd/kueueviz/backend/handlers/websocket_handler.go
+  s_b70abef2eb7473::t_c418a3b3825350 252
+  s_b70abef2eb7473::t_69aea8b188e63d 29
+  s_b70abef2eb7473::t_91aaf810b84018 99
+  s_b70abef2eb7473::t_fd0d451bdc4ea8 268-315
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "4487e464e8c3f0a76c0aa10c41d26491f3288291",
+  "prompts": {},
+  "sessions": {
+    "s_b70abef2eb7473": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "2c3cac4f-3182-4943-85aa-95dbce523e69",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+pkg/controller/tas/topology_ungater.go
+  h_32169613a39d35 343-346
+  s_5c936ec5d8e25e::t_9f37d41fc43f88 347-349
+test/integration/singlecluster/tas/elastic_ungaters_test.go
+  s_5c936ec5d8e25e::t_90d480c0940836 1-28,30-47,49-64,66-104,109-124,132,137-145,147-149,153-160,165-196
+  s_5c936ec5d8e25e::t_bae0c2f47cb834 48
+  s_5c936ec5d8e25e::t_3157eca87ed9ef 65,133-136
+  s_5c936ec5d8e25e::t_ac5886beb53ef2 105-108
+  s_5c936ec5d8e25e::t_ce875f86eeef4c 125-131,146,150-152,161-164
+  s_5c936ec5d8e25e::t_b83a3661b857d1 29
+pkg/controller/elasticjobs/elastic_job_ungater.go
+  h_32169613a39d35 81-84,90-93
+pkg/controller/tas/topology_ungater_elastic_test.go
+  h_32169613a39d35 1-19,22-30,32-79,92-94,96-113,119-125,132-211
+  s_5c936ec5d8e25e::t_074030b15112af 20-21,31,80-91,95,114-118,126-131
+pkg/controller/tas/topology_ungater_test.go
+  h_32169613a39d35 2936-2968
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "268150dcb24e7ac4235aece88c374a795a3764b8",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_5c936ec5d8e25e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1bfea-b7f8-73d2-8215-82554983653c",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": null
+    }
+  }
+}

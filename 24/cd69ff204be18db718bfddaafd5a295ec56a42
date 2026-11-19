@@ -1,0 +1,14 @@
+pkg/controller/core/workload_controller_dra_test.go
+  h_47cee5fa694435 20-23,32-33,35,39,50-51,59,139-152,827-987
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "24cd69ff204be18db718bfddaafd5a295ec56a42",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

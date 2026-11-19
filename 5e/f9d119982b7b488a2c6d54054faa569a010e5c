@@ -1,0 +1,16 @@
+test/util/behavioral/e2e/images.go
+  h_47cee5fa694435 34-35
+test/util/behavioral/e2e/metrics.go
+  h_47cee5fa694435 33-34,43,72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5ef9d119982b7b488a2c6d54054faa569a010e5c",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

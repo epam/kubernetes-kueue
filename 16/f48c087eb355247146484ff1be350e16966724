@@ -1,0 +1,19 @@
+Makefile
+  s_e2c8194604ccbf::t_22cf953b710b63 78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "16f48c087eb355247146484ff1be350e16966724",
+  "prompts": {},
+  "sessions": {
+    "s_e2c8194604ccbf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8aed5b03-5441-4279-822b-bf8775506013",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}

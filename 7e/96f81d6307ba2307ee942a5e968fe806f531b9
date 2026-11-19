@@ -1,0 +1,19 @@
+pkg/controller/core/workload_controller.go
+  s_eef31c9429bac2::t_fa93e89867afdd 542-546
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "7e96f81d6307ba2307ee942a5e968fe806f531b9",
+  "prompts": {},
+  "sessions": {
+    "s_eef31c9429bac2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "33551c6e-7f99-4fc6-8a4d-8fda66fdfd61",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

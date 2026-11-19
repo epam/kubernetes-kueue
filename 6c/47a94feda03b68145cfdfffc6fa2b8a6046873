@@ -1,0 +1,24 @@
+pkg/workload/finish/finish.go
+  s_3130ac198eb516::t_cf65db63efefa0 45,51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6c47a94feda03b68145cfdfffc6fa2b8a6046873",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_3130ac198eb516": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ce409d67-3944-4dd7-8c21-1e967ebd8ee0",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}

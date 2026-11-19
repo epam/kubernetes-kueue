@@ -1,0 +1,19 @@
+cmd/importer/pod/import.go
+  s_b1b85ee75b9f2e::t_e36fa72e2e1250 47-54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "13e247928961cc8ad069272c2b5a1c94dadce043",
+  "prompts": {},
+  "sessions": {
+    "s_b1b85ee75b9f2e": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "35ab957d-de95-408e-9f91-bcf7875b57b5",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

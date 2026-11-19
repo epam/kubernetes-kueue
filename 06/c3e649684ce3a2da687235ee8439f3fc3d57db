@@ -1,0 +1,144 @@
+cmd/kueueviz/backend/handlers/workloads_dashboard_test.go
+  s_0bf7b5de966479::t_2ec55c28c608cf 127-128,130-131
+  s_0bf7b5de966479::t_633a2a8b8c3013 28
+  s_0bf7b5de966479::t_7d3a76f581a21a 93,122
+  s_0bf7b5de966479::t_19dc065916ca32 94
+cmd/kueueviz/backend/handlers/workloads.go
+  s_0bf7b5de966479::t_3dd3fdd39ba655 28
+  s_0bf7b5de966479::t_cca17d3d2599f0 45,47,67
+  s_0bf7b5de966479::t_a0135fa273e64e 75-77
+  s_c78398a587563e::t_881e1f1062d0cb 78
+cmd/kueueviz/backend/middleware/auth.go
+  s_c78398a587563e::t_5a57d3117bed0d 33
+  s_0bf7b5de966479::t_450d0bd8f96e06 245-250,313,349,353-355,362
+  s_0bf7b5de966479::t_4b37345d2c6575 298-300,303-311,314-340,342-348,370-375,377-379
+  s_0bf7b5de966479::t_1f8c351edc03e9 52,56-74,81,182,192,201,205,207,209,217,219,231,242,251-260,293,341,350-352,359-361,388,396
+  s_c78398a587563e::t_be9b132127925a 51,53,193,290-292,294-297,301-302,312,356-358,363-369,376,380-387,389,395,397-418
+  s_0bf7b5de966479::t_60db16e09a0ba6 390-394
+  s_0bf7b5de966479::t_41c5e7ab87e604 35
+hack/make/test.mk
+  s_e1bb7718e27bbb::t_dea765ae6f2794 827
+  s_e1bb7718e27bbb::t_a052d6625ca53a 828
+  s_e1bb7718e27bbb::t_764d75714d0620 837-839
+cmd/kueueviz/backend/handlers/local_queues.go
+  s_0bf7b5de966479::t_23d9d54eb6d469 34,36,54
+  s_c78398a587563e::t_eb75482a7bcf3e 35,37-38,56-61,66,70,72
+  s_0bf7b5de966479::t_ce8b07c7a28f8a 24
+  s_c78398a587563e::t_bd324e29cd0ba1 32-33
+  s_0bf7b5de966479::t_c415dee6937006 67-69
+cmd/kueueviz/backend/handlers/workloads_dashboard.go
+  s_0bf7b5de966479::t_8435214c338c6e 114,155-156,166-172,174
+  s_0bf7b5de966479::t_bdb554e61eb00c 41,44,57,63,81,85,98
+  s_c78398a587563e::t_3adf914270f6be 80
+  s_c78398a587563e::t_d04dc6c019719a 28
+  s_0bf7b5de966479::t_590bf8a77bd09a 107-109
+  s_c78398a587563e::t_71d77d781e41a2 42,58-62,64-66,68-78
+  s_c78398a587563e::t_0dd2a69b6c0f03 106,110-112,119
+cmd/kueueviz/backend/handlers/namespaces.go
+  s_c78398a587563e::t_cf0c0c80744fcc 24,32,34,36-37,71,74
+  s_e1bb7718e27bbb::t_0c0dc93c91592e 57-62
+  s_c78398a587563e::t_1a461220fff847 76-77,79-80
+  s_c78398a587563e::t_c620152210e35e 53-55
+  s_c78398a587563e::t_6c96688b4cd6ae 70
+  s_0bf7b5de966479::t_a72480770807de 33,35,41,56,72
+  s_c78398a587563e::t_69482280915aa4 73
+  s_c78398a587563e::t_ebd7295f42920e 75
+cmd/kueueviz/backend/middleware/auth_test.go
+  s_930df8340c88c3::t_bb811f9c0d4371 21,25,32,190-205,208-222,343-369,371-373,375-403
+  s_0bf7b5de966479::t_c2b56781632104 370
+  s_0bf7b5de966479::t_96a15f3b72abcf 66,206-207,374
+cmd/kueueviz/backend/handlers/handlers.go
+  s_c78398a587563e::t_17832a00f2ee7c 125-126
+  s_c78398a587563e::t_068f88aa9f51f3 26-27,29,39-41,51,55,131-132,158-159
+  s_c78398a587563e::t_c61f524af37945 82,85,96,102-104,108-109,112,117,120,127-130,137-144,151-157,160,164-169,171
+  s_c78398a587563e::t_f06ea4d28b4afe 172-173
+  s_c78398a587563e::t_d0cfe5ac7b677e 83
+  s_c78398a587563e::t_1d52842991a766 135-136
+  s_e1bb7718e27bbb::t_f29f60d32bb149 63,66-67,86-88
+  s_0bf7b5de966479::t_362a3634048f69 61,65,80
+  s_c78398a587563e::t_9c06cedd5765a8 84
+  s_c78398a587563e::t_6d05760cb2f4f3 123-124
+  s_c78398a587563e::t_e3901076950c76 150
+  s_c78398a587563e::t_4d3f592b52f73c 146-147
+  s_c78398a587563e::t_ad54634776bf7c 118-119
+  s_0bf7b5de966479::t_d41ba454f59da5 170
+  s_0bf7b5de966479::t_594c8994355b71 21
+  s_c78398a587563e::t_39316203e9e73b 94
+  s_e1bb7718e27bbb::t_bdf6607b231a35 98,100,114-116
+  s_0bf7b5de966479::t_ecbe8f3d55bce4 95,99,111
+  s_c78398a587563e::t_4b3b1a2e4916bf 81
+  s_c78398a587563e::t_fd1f12fcfe8c02 62,64,68-79,105-107,110,113,145,174
+cmd/kueueviz/backend/handlers/websocket_handler_test.go
+  s_0bf7b5de966479::t_4c7bad4d42a3a4 253,285,342,373,440,491
+  s_c78398a587563e::t_778b3fbd040420 33,530-550
+  s_c78398a587563e::t_a41c08031b936b 551-553
+  s_c78398a587563e::t_49df4b5a86a0ad 23,554-566
+hack/testing/e2e-kueueviz-rbac-bypass.sh
+  s_4bb03d8b9b4d7e::t_46c24f76bda941 135-138,141
+  s_930df8340c88c3::t_e9d536ba36c645 26-28,44
+  s_e1bb7718e27bbb::t_cdc5ff0882c631 29-43
+  s_e1bb7718e27bbb::t_fa7475feceb99d 45-55
+  s_930df8340c88c3::t_522c5f7faa32f3 23-25
+  s_930df8340c88c3::t_3192a6a52c9f50 1-22,58-134,139-140
+  s_930df8340c88c3::t_8d7be666b62da2 56-57
+keps/5993-kueueviz-authentication/README.md
+  s_e1bb7718e27bbb::t_155824a8a162eb 53-58,62-64,68,74-75,105,108-122,133-135,161,163,204-206,283
+cmd/kueueviz/backend/handlers/api_handlers_test.go
+  s_0bf7b5de966479::t_96b17017b18581 121-132
+  s_0bf7b5de966479::t_86c0a22778afab 118-120
+  s_0bf7b5de966479::t_2711e639b6328f 4,6,115-117,136-269
+  s_0bf7b5de966479::t_34a3c7fa7ee4e2 133-135
+  s_0bf7b5de966479::t_7dfd2f435c5d43 13,16,18-19,22
+cmd/kueueviz/backend/main.go
+  s_0bf7b5de966479::t_f28158439e0305 96
+  s_0bf7b5de966479::t_61620a278c99a9 97
+  s_0bf7b5de966479::t_d1f721eec22c1a 81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "06c3e649684ce3a2da687235ee8439f3fc3d57db",
+  "prompts": {},
+  "sessions": {
+    "s_0bf7b5de966479": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "ee49bdb8-6f30-48ea-9996-9fdf905957dc",
+        "model": "unknown"
+      },
+      "human_author": null
+    },
+    "s_4bb03d8b9b4d7e": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "566bc11a-089c-49e1-a35f-de88097770f1",
+        "model": "unknown"
+      },
+      "human_author": null
+    },
+    "s_930df8340c88c3": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "b5c1997f-43e1-47ca-9742-469c4f8b82d0",
+        "model": "unknown"
+      },
+      "human_author": null
+    },
+    "s_c78398a587563e": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "125a9339-129c-4ea0-b422-fad73913cb7a",
+        "model": "unknown"
+      },
+      "human_author": null
+    },
+    "s_e1bb7718e27bbb": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "22c6feb5-13f0-472d-a4ce-f221e6746c24",
+        "model": "unknown"
+      },
+      "human_author": null
+    }
+  }
+}

@@ -1,0 +1,15 @@
+pkg/controller/jobframework/interface.go
+  h_99f506dc258b88 69-72
+  h_99f506dc258b88 68
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "da3dbcf2b408838e0f1845b044527166d221cb87",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

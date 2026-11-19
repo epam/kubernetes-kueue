@@ -1,0 +1,29 @@
+cmd/importer/pod/import_test.go
+  s_b23e3c7fcfd872::t_970ad718cea651 303
+cmd/importer/pod/import.go
+  s_b23e3c7fcfd872::t_53d5f56133e63a 77,82-84,88,105
+cmd/importer/cache/cache.go
+  s_b23e3c7fcfd872::t_a7868cc61b0613 94-126
+  s_b23e3c7fcfd872::t_bded5a2ff0dd3b 24,51-53
+cmd/importer/pod/check.go
+  s_b23e3c7fcfd872::t_af0850ce20f6a4 104,148
+  s_b23e3c7fcfd872::t_d8f3a3cb40b6e5 69
+  s_b23e3c7fcfd872::t_cf12f431db9992 23,32,37-45,58,63,81-90,92,94-103,105-147
+  s_b23e3c7fcfd872::t_c8d219fdfcb08e 68
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "845fd43de5b1ce63a5e42999b6a0838d2101ea47",
+  "prompts": {},
+  "sessions": {
+    "s_b23e3c7fcfd872": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "e4a39f7a-e5ca-4e5d-9ae0-a34cbbe9ea21",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

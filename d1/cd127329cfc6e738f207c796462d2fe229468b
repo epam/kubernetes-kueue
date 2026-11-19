@@ -1,0 +1,30 @@
+site/content/en/docs/reference/metrics.md
+  s_30b8c12d86e412::t_3a741ad48f7d42 106,122
+pkg/metrics/metrics.go
+  s_30b8c12d86e412::t_0627ba202d6051 296-298,311-313
+  s_30b8c12d86e412::t_a3559d13ad16b9 1306-1310,1328-1332,1349-1352
+  s_30b8c12d86e412::t_6a4b8e8c4ae2f3 1509,1570,1576
+  s_30b8c12d86e412::t_605049573f1c1d 927-935,971-978
+  s_30b8c12d86e412::t_161453a5780784 295,314,979,1353
+test/util/metrics.go
+  s_30b8c12d86e412::t_d6691d71bfbb18 336-341
+pkg/metrics/metrics_test.go
+  s_30b8c12d86e412::t_e76232f11fd756 28-29,227-249
+  s_30b8c12d86e412::t_16899c19007357 250
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "d1cd127329cfc6e738f207c796462d2fe229468b",
+  "prompts": {},
+  "sessions": {
+    "s_30b8c12d86e412": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "a38959fd-c2f2-4952-8cfd-2f2a7b6f24fd",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

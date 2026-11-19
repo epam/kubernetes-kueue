@@ -1,0 +1,48 @@
+test/e2e/tas/extended/pytorch_test.go
+  h_47cee5fa694435 36
+test/e2e/tas/extended/suite_test.go
+  h_47cee5fa694435 54,56-57,59-63,65-72
+test/e2e/singlecluster/extended/kuberay_test.go
+  h_47cee5fa694435 75
+test/e2e/singlecluster/extended/appwrapper_test.go
+  h_47cee5fa694435 38
+test/e2e/singlecluster/extended/jobset_test.go
+  h_47cee5fa694435 34
+test/e2e/tas/extended/mpijob_test.go
+  h_47cee5fa694435 41
+test/e2e/tas/extended/appwrapper_test.go
+  h_47cee5fa694435 36
+test/e2e/singlecluster/extended/leaderworkerset_test.go
+  h_47cee5fa694435 45
+test/e2e/singlecluster/extended/trainjob_test.go
+  h_47cee5fa694435 36
+test/e2e/singlecluster/extended/pytorchjob_test.go
+  h_47cee5fa694435 35
+test/e2e/singlecluster/extended/suite_test.go
+  h_47cee5fa694435 69
+hack/testing/e2e-common.sh
+  h_47cee5fa694435 175,180,186,199,213,218,499,502,505,508,515,522,566,569,572,579,586,589
+test/e2e/tas/extended/rayjob_test.go
+  h_47cee5fa694435 38
+test/e2e/tas/extended/trainjob_test.go
+  h_47cee5fa694435 40
+test/e2e/tas/extended/jobset_test.go
+  h_47cee5fa694435 40
+Makefile-test.mk
+  h_47cee5fa694435 204,209,228,232
+test/e2e/singlecluster/extended/jaxjob_test.go
+  h_47cee5fa694435 35
+test/e2e/tas/extended/leaderworkerset_test.go
+  h_47cee5fa694435 40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "c925635509a0a8da4d246bcd334816594f500ff3",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+pkg/features/kube_features.go
+  h_f3e429a3560394 838
+  h_f3e429a3560394 534-542,836-837,839
+pkg/controller/jobs/leaderworkerset/leaderworkerset_controller.go
+  h_f3e429a3560394 44-47
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  h_f3e429a3560394 136,211-219
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  h_f3e429a3560394 963-1017
+site/data/featuregates/versioned_feature_list.yaml
+  h_f3e429a3560394 194-199
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  h_f3e429a3560394 194-199
+test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
+  h_f3e429a3560394 1-155
+test/integration/singlecluster/webhook/jobs/suite_test.go
+  h_f3e429a3560394 57
+test/util/constants.go
+  h_f3e429a3560394 67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "d570236c91bac529bbe6a56dd6eafab3491cd170",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

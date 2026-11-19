@@ -1,0 +1,53 @@
+pkg/scheduler/scheduler.go
+  s_15c4badc5a7202::t_989122cfe568cc 46
+  s_15c4badc5a7202::t_47d76da7934d95 54
+  s_15c4badc5a7202::t_3d37e0e891efa7 791-816
+pkg/constants/constants.go
+  s_15c4badc5a7202::t_4d209026deed4c 89-95
+apis/kueue/v1beta2/workload_types.go
+  s_15c4badc5a7202::t_a6430e3e556731 961-964
+  s_15c4badc5a7202::t_b35b0b535ace6b 1029-1034
+pkg/cache/scheduler/tas_elastic_workloads.go
+  s_15c4badc5a7202::t_178ef8f66549ed 89
+pkg/topologyspreading/spreading.go
+  s_15c4badc5a7202::t_d07f1614f50a1f 1-123,125,127,129,138,143-246
+  s_15c4badc5a7202::t_be3c82fb0be5e7 124,126,128,130-137,139-142
+pkg/scheduler/flavorassigner/flavorassigner.go
+  s_15c4badc5a7202::t_54d9f044a175ef 837-840,842,856,860
+  s_15c4badc5a7202::t_351e40619dbe18 606-610
+  s_15c4badc5a7202::t_c2d8a46b234525 635-642
+pkg/cache/scheduler/tas_flavor_snapshot.go
+  s_15c4badc5a7202::t_2adef3f5e7b77c 616-627
+  s_15c4badc5a7202::t_1bf1250ecb2a95 35
+  s_15c4badc5a7202::t_ad3e9282f2c620 960-962,970-971
+  s_15c4badc5a7202::t_beead6373663ea 1404-1411
+  s_15c4badc5a7202::t_56ff2df7f434ff 519-522
+  s_15c4badc5a7202::t_21e4669038dfe6 702
+  s_15c4badc5a7202::t_ae441377e93164 775
+  s_15c4badc5a7202::t_270f76ba914996 488
+  s_15c4badc5a7202::t_0fdf76ebad4ac7 925-941
+pkg/controller/jobframework/reconciler.go
+  s_15c4badc5a7202::t_d3f6d8b7218622 1144-1162
+  s_15c4badc5a7202::t_92b6329a7c7f2f 1567-1569
+pkg/topologyspreading/spreading_test.go
+  s_15c4badc5a7202::t_8774fb7258c375 126
+  s_15c4badc5a7202::t_a6189c17eaac69 370
+  s_15c4badc5a7202::t_4f6b011c2e68a5 160,162,164-178
+  s_15c4badc5a7202::t_697430b613c1cb 1-125,127-159,161,163,179-369,371-405
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "8af0817f9b1ee8030f0c41db59cb332615e2ce03",
+  "prompts": {},
+  "sessions": {
+    "s_15c4badc5a7202": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "38383f30-303e-4cc1-92d7-15b86ce09584",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

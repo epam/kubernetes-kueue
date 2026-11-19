@@ -1,0 +1,28 @@
+site/content/en/docs/tasks/run/jobs.md
+  s_089eb388156967::t_339cbe853857e9 313-318,320-327,330
+  s_e1c663d7a8ca23::t_b4f3c753f80424 319,328-329,331
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3404524fb5494061329513b19a0715a97d60d6f9",
+  "prompts": {},
+  "sessions": {
+    "s_089eb388156967": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0536970b-ee9d-4ec2-9018-306aa14c0030",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    },
+    "s_e1c663d7a8ca23": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "53bc81d2-a279-461f-bac3-53530bae8f0b",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}

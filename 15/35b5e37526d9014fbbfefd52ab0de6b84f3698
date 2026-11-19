@@ -1,0 +1,135 @@
+apis/kueue/v1beta1/admissioncheck_types.go
+  h_47cee5fa694435 106
+apis/kueue/v1beta1/clusterqueue_types.go
+  h_47cee5fa694435 543
+apis/kueue/v1beta1/cohort_types.go
+  h_47cee5fa694435 84
+apis/kueue/v1beta1/localqueue_types.go
+  h_47cee5fa694435 194
+apis/kueue/v1beta1/multikueue_types.go
+  h_47cee5fa694435 95
+apis/kueue/v1beta1/provisioningrequestconfig_types.go
+  h_47cee5fa694435 164
+apis/kueue/v1beta1/resourceflavor_types.go
+  h_47cee5fa694435 27
+apis/kueue/v1beta1/topology_types.go
+  h_47cee5fa694435 127
+apis/kueue/v1beta1/workload_types.go
+  h_47cee5fa694435 780
+apis/kueue/v1beta1/workloadpriorityclass_types.go
+  h_47cee5fa694435 26
+charts/kueue/templates/crd/kueue.x-k8s.io_admissionchecks.yaml
+  h_47cee5fa694435 180
+charts/kueue/templates/crd/kueue.x-k8s.io_clusterqueues.yaml
+  h_47cee5fa694435 815
+charts/kueue/templates/crd/kueue.x-k8s.io_cohorts.yaml
+  h_47cee5fa694435 318
+charts/kueue/templates/crd/kueue.x-k8s.io_localqueues.yaml
+  h_47cee5fa694435 444
+charts/kueue/templates/crd/kueue.x-k8s.io_multikueueclusters.yaml
+  h_47cee5fa694435 192
+charts/kueue/templates/crd/kueue.x-k8s.io_provisioningrequestconfigs.yaml
+  h_47cee5fa694435 196
+charts/kueue/templates/crd/kueue.x-k8s.io_resourceflavors.yaml
+  h_47cee5fa694435 208
+charts/kueue/templates/crd/kueue.x-k8s.io_topologies.yaml
+  h_47cee5fa694435 103
+charts/kueue/templates/crd/kueue.x-k8s.io_workloadpriorityclasses.yaml
+  h_47cee5fa694435 85
+charts/kueue/templates/crd/kueue.x-k8s.io_workloads.yaml
+  h_47cee5fa694435 8956
+config/components/crd/bases/kueue.x-k8s.io_admissionchecks.yaml
+  h_47cee5fa694435 159
+config/components/crd/bases/kueue.x-k8s.io_clusterqueues.yaml
+  h_47cee5fa694435 802
+config/components/crd/bases/kueue.x-k8s.io_cohorts.yaml
+  h_47cee5fa694435 290
+config/components/crd/bases/kueue.x-k8s.io_localqueues.yaml
+  h_47cee5fa694435 425
+config/components/crd/bases/kueue.x-k8s.io_multikueueclusters.yaml
+  h_47cee5fa694435 161
+config/components/crd/bases/kueue.x-k8s.io_provisioningrequestconfigs.yaml
+  h_47cee5fa694435 178
+config/components/crd/bases/kueue.x-k8s.io_resourceflavors.yaml
+  h_47cee5fa694435 196
+config/components/crd/bases/kueue.x-k8s.io_topologies.yaml
+  h_47cee5fa694435 84
+config/components/crd/bases/kueue.x-k8s.io_workloadpriorityclasses.yaml
+  h_47cee5fa694435 64
+config/components/crd/bases/kueue.x-k8s.io_workloads.yaml
+  h_47cee5fa694435 9455
+test/e2e/config/certmanager/values.yaml
+  h_47cee5fa694435 33
+test/e2e/config/certmanager/controller_manager_config.yaml
+  h_47cee5fa694435 1
+hack/testing/e2e-common.sh
+  h_47cee5fa694435 887
+pkg/visibility/server.go
+  h_47cee5fa694435 187
+test/e2e/config/certmanager/cainjection-templates/apiservice_cainjection_patch.yaml
+  h_47cee5fa694435 7
+pkg/util/tas/tas_assignment.go
+  h_47cee5fa694435 27-28,30,266-282,283-284
+  h_47cee5fa694435 283-284
+internal/mocks/controller/core/resourceflavor_controller.go
+  h_47cee5fa694435 1-68
+internal/mocks/controller/jobframework/interface.go
+  h_47cee5fa694435 1-482
+site/content/en/docs/concepts/local_queue.md
+  h_47cee5fa694435 41
+site/content/en/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 96
+site/content/zh-CN/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 26,30
+site/content/zh-CN/docs/concepts/workload_priority_class.md
+  h_47cee5fa694435 112
+site/content/zh-CN/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 93
+site/content/zh-CN/docs/admission-check-controllers/provisioning.md
+  h_47cee5fa694435 12,140,144
+site/content/zh-CN/docs/concepts/cohort.md
+  h_47cee5fa694435 87
+config/default/kustomization.yaml
+  h_47cee5fa694435 109,360,378
+site/content/zh-CN/docs/concepts/workload.md
+  h_47cee5fa694435 55,201
+site/content/en/docs/concepts/workload.md
+  h_47cee5fa694435 58,216
+site/content/zh-CN/docs/concepts/preemption.md
+  h_47cee5fa694435 21
+site/content/en/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 534,561
+site/content/zh-CN/docs/concepts/local_queue.md
+  h_47cee5fa694435 41
+site/content/zh-CN/docs/tasks/dev/develop-acc.md
+  h_47cee5fa694435 24,40,44
+site/content/zh-CN/docs/concepts/admission_check.md
+  h_47cee5fa694435 128
+site/content/zh-CN/docs/installation/_index.md
+  h_47cee5fa694435 143,285
+site/content/zh-CN/docs/tasks/run/using_hami.md
+  h_47cee5fa694435 69
+site/content/zh-CN/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 480,507
+site/content/zh-CN/v0.19/docs/reference/kueue-config.v1beta1.md
+  h_47cee5fa694435 1-1206
+site/content/zh-CN/v0.19/docs/reference/kueue.v1beta1.md
+  h_47cee5fa694435 1-3167
+hack/make/test.mk
+  h_47cee5fa694435 396
+config/components/visibility/apiservice_v1beta1.yaml
+  h_47cee5fa694435 1-13
+config/components/visibility/kustomization.yaml
+  h_47cee5fa694435 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "1535b5e37526d9014fbbfefd52ab0de6b84f3698",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

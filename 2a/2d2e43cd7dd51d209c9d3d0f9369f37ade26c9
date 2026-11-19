@@ -1,0 +1,16 @@
+cloudbuild.yaml
+  h_47cee5fa694435 17
+Makefile-test.mk
+  h_47cee5fa694435 211
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "2a2d2e43cd7dd51d209c9d3d0f9369f37ade26c9",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

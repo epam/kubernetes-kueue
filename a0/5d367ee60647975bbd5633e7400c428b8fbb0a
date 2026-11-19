@@ -1,0 +1,24 @@
+site/static/examples/multikueue/create-multikueue-kubeconfig.sh
+  s_2394ef94bd6724::t_990ff59f3c9114 328-329
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a05d367ee60647975bbd5633e7400c428b8fbb0a",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_2394ef94bd6724": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "5d547794-3e80-47d0-a155-533f6a94ea32",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

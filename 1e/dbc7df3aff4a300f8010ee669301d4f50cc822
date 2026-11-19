@@ -1,0 +1,20 @@
+apis/kueue/v1alpha1/dynamicquotaorchestrator_types.go
+  h_47cee5fa694435 190-194
+keps/12382-dynamic-quota-orchestration/README.md
+  h_47cee5fa694435 478-481,516,522-562
+pkg/controller/core/dqo/distribution.go
+  h_47cee5fa694435 81-83
+pkg/controller/core/dqo/redistribution_condition_test.go
+  h_47cee5fa694435 1-303
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1edbc7df3aff4a300f8010ee669301d4f50cc822",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

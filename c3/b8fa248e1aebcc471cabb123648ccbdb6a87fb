@@ -1,0 +1,14 @@
+site/content/zh-CN/v0.18/docs/concepts/topology.md
+  h_47cee5fa694435 78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "c3b8fa248e1aebcc471cabb123648ccbdb6a87fb",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

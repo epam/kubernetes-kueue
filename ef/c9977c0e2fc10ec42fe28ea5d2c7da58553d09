@@ -1,0 +1,81 @@
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_09632c23619853::t_2781df793fd5dc 21,1028,1059-1060,1864,2369,2391-2446,2478,2491,2500,2505,2519,2527,2594,2608,2617,2662,2676,2721,2740,2803,2818,2857,2882,2986,3055,3064,3071,3084,3091,3119,3155,3160,3165,3175,3204,3213,3218,3220,3228,3304,3319,3373,3400,3452,3480,3594,3939,3959,4005,4027,4129,4266,4291,4391,4416,4509,4534,4591,4674,4687,4746,4768,4864,4876,4945,4960,5033,5266,5286,5384,5411,5481,5505,5667,5689,5790,5804,5903,5923,6027,6196,6260,6356,6493,6520,6559,6592,6600,6613,6625,6635,6644,6690,6697,6726,6733,6765,6772,6980,7027,7075,8369,8375
+  s_9c18b85f67cd6b::t_4d7b97e25fc0d0 35,60,667-1006,1008,1023,8289-8290,8299,8304,8334,8348,8354,8358,8367,8373,8376,8381,8429
+  s_4a644bb6c94ee2::t_77c312e7c7446f 1007,1009-1022,1024-1027,1029-1058,1061-1071,1113-1122,1447,1463,1528,1544,1929,1982,2199,2213,2389-2390,6801,6808,6847,6854,6884,6891,6930,6937,6973,7034,7082,7126,7133,7176,7183,7229,7236,7271,7278,7598,7619,8291-8298,8300-8303,8305-8333,8335-8347,8349-8353,8355-8357,8359-8366,8368,8370-8372,8374,8377-8380,8382,8389-8390
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_09632c23619853::t_a1ab8640761082 24,945-1000
+pkg/controller/jobs/pod/pod_controller.go
+  s_069bbc017b0249::t_7451df09aac66a 857-864,867,869,871-904,906-920,924-935,937-941,943-945,954-1008,1012-1016,1025,1028-1032,1034-1035,1037-1043,1045-1047,1569-1574,1577,1579
+  s_a1b985c66d5f79::t_6866f4e60af944 921
+  s_4d61c3c2aa0bd7::t_050355af47db76 942
+  s_4d61c3c2aa0bd7::t_a0241aee8c160d 948-953
+  s_df1c5c71eeab80::t_7541c82267023e 58
+  s_a1b985c66d5f79::t_880042ac298e65 946-947
+  s_069bbc017b0249::t_7dbab194319c29 923
+  s_069bbc017b0249::t_c94d8f56b96686 1575-1576
+  s_069bbc017b0249::t_894125a134606c 1578
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "efc9977c0e2fc10ec42fe28ea5d2c7da58553d09",
+  "prompts": {},
+  "sessions": {
+    "s_069bbc017b0249": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1c473df2-51f0-4eb3-a935-4020cbb38a7d",
+        "model": "composer-2.5"
+      },
+      "human_author": null
+    },
+    "s_09632c23619853": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "ab6db909-92d8-4836-93a0-27f3b37a5458",
+        "model": "cursor-grok-4.5-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_4a644bb6c94ee2": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "fd645e8e-0451-45a5-b070-5f3d08ca3688",
+        "model": "cursor-grok-4.6-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_4d61c3c2aa0bd7": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "f036973a-7c55-4c83-8477-46d12768f358",
+        "model": "cursor-grok-4.6-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_9c18b85f67cd6b": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "53911625-0778-4dca-a23f-c45362c07603",
+        "model": "composer-2.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_a1b985c66d5f79": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1495850b-9dfd-4326-9930-03fa99e00045",
+        "model": "cursor-grok-4.6-high-fast"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_df1c5c71eeab80": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b0ed0e62-cfe5-4ee4-b71f-7f287d4e4197",
+        "model": "cursor-grok-4.5-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

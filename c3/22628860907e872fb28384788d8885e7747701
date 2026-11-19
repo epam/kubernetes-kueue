@@ -1,0 +1,19 @@
+pkg/controller/jobframework/reconciler.go
+  s_7256d051a7be1c::t_322242e6dbb24b 1208-1214
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.13",
+  "base_commit_sha": "c322628860907e872fb28384788d8885e7747701",
+  "prompts": {},
+  "sessions": {
+    "s_7256d051a7be1c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7e5dd68f-6a1c-49b6-9457-d41ea871a3ce",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,356 @@
+test/integration/singlecluster/controller/jobs/job/elastic_custom_metric_labels_test.go
+  h_47cee5fa694435 67
+test/integration/singlecluster/controller/jobs/sparkapplication/sparkapplication_controller_test.go
+  h_47cee5fa694435 68,116,232,390
+test/integration/singlecluster/webhook/jobs/appwrapper_webhook_test.go
+  h_47cee5fa694435 38
+test/integration/singlecluster/kueuectl/create_test.go
+  h_47cee5fa694435 48
+test/integration/singlecluster/webhook/jobs/mpijob_webhook_test.go
+  h_47cee5fa694435 35
+test/integration/singlecluster/controller/jobframework/setup/setup_controllers_test.go
+  h_47cee5fa694435 56
+test/integration/singlecluster/webhook/jobs/trainjob_webhook_test.go
+  h_47cee5fa694435 53
+test/e2e/singlecluster/tasapi/baseline/job_test.go
+  h_47cee5fa694435 44
+test/util/behavioral/namespace.go
+  h_47cee5fa694435 1-24,26-43
+test/integration/singlecluster/scheduler/preemption_test.go
+  h_47cee5fa694435 61
+test/e2e/multikueue/extended/e2e_test.go
+  h_47cee5fa694435 75-77
+test/integration/singlecluster/tas/tas_test.go
+  h_47cee5fa694435 183,10276,10518
+test/integration/singlecluster/scheduler/scheduler_test.go
+  h_47cee5fa694435 81,1104,2548
+test/e2e/singlecluster/tasapi/extended/mpijob_test.go
+  h_47cee5fa694435 51
+test/integration/singlecluster/kueuectl/list_test.go
+  h_47cee5fa694435 44,188
+test/e2e/dra/whole-device/dra_test.go
+  h_47cee5fa694435 45
+test/e2e/singlecluster/tasapi/extended/leaderworkerset_test.go
+  h_47cee5fa694435 51
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  h_47cee5fa694435 107,1580,1940,3727,4449,4753,4905,5260,5421,7156,7224
+test/e2e/sequential/baseline/default_config_test.go
+  h_47cee5fa694435 66
+test/e2e/sequential/baseline/podintegrationautoenablement_test.go
+  h_47cee5fa694435 62
+test/integration/singlecluster/kueuectl/resume_test.go
+  h_47cee5fa694435 44
+test/integration/singlecluster/controller/jobs/leaderworkerset/leaderworkerset_controller_test.go
+  h_47cee5fa694435 60
+test/e2e/singlecluster/tasapi/extended/jobset_test.go
+  h_47cee5fa694435 44
+test/e2e/singlecluster/baseline/statefulset_test.go
+  h_47cee5fa694435 53
+test/e2e/singlecluster/wasapi/job_test.go
+  h_47cee5fa694435 53
+test/e2e/singlecluster/baseline/pod_test.go
+  h_47cee5fa694435 54
+test/e2e/singlecluster/baseline/visibility_test.go
+  h_47cee5fa694435 63-64
+test/e2e/multikueue/baseline/e2e_test.go
+  h_47cee5fa694435 101-103,802,807,938
+test/e2e/dra/counter/dra_test.go
+  h_47cee5fa694435 40
+test/integration/singlecluster/controller/jobs/rayservice/rayservice_controller_test.go
+  h_47cee5fa694435 62
+test/integration/singlecluster/webhook/core/localqueue_test.go
+  h_47cee5fa694435 38
+test/e2e/singlecluster/baseline/provisioning_test.go
+  h_47cee5fa694435 68
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  h_47cee5fa694435 133,621,2605,2845,3041,3458,3539,3772,3956,4234,4530,4642,4855,4991,5070
+test/e2e/sequential/baseline/configurable_preemptions_test.go
+  h_47cee5fa694435 79
+test/e2e/multikueue/baseline/tas_test.go
+  h_47cee5fa694435 101-103,411-413
+test/integration/singlecluster/tas/tas_zero_count_group_test.go
+  h_47cee5fa694435 53
+test/integration/multikueue/enabled_integration_test.go
+  h_47cee5fa694435 76-77
+test/e2e/singlecluster/tasapi/extended/appwrapper_test.go
+  h_47cee5fa694435 47
+test/integration/singlecluster/controller/concurrentadmission/concurrent_admission_test.go
+  h_47cee5fa694435 53
+test/e2e/certmanager/visibility_test.go
+  h_47cee5fa694435 47
+test/integration/singlecluster/controller/jobs/job/elastic_flavor_test.go
+  h_47cee5fa694435 64
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_test.go
+  h_47cee5fa694435 81,251,379,578,680,798
+test/integration/singlecluster/controller/jobs/tfjob/tfjob_controller_test.go
+  h_47cee5fa694435 70,130,288,365
+test/integration/singlecluster/scheduler/limitrange_wakeup_probe_test.go
+  h_47cee5fa694435 50
+test/integration/singlecluster/scheduler/scheduler_nodetaints_test.go
+  h_47cee5fa694435 45
+test/integration/singlecluster/tas/tas_preserve_flavor_scan_progress_test.go
+  h_47cee5fa694435 67
+test/integration/singlecluster/scheduler/inadmissible/equivalence_test.go
+  h_47cee5fa694435 41,103
+test/integration/singlecluster/scheduler/observability_test.go
+  h_47cee5fa694435 49
+test/integration/singlecluster/webhook/jobs/pytorchjob_webhook_test.go
+  h_47cee5fa694435 36
+test/integration/multikueue/provisioning_test.go
+  h_47cee5fa694435 84-86
+test/integration/multikueue/dra_test.go
+  h_47cee5fa694435 78-80
+test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
+  h_47cee5fa694435 44
+test/integration/singlecluster/controller/jobs/pytorchjob/pytorchjob_controller_test.go
+  h_47cee5fa694435 74,116,349,503,648
+test/integration/singlecluster/kueuectl/delete_test.go
+  h_47cee5fa694435 38
+test/integration/singlecluster/webhook/jobs/raycluster_webhook_test.go
+  h_47cee5fa694435 51,157
+test/e2e/singlecluster/extended/pytorchjob_test.go
+  h_47cee5fa694435 48
+test/integration/singlecluster/webhook/jobs/xgboostjob_webhook_test.go
+  h_47cee5fa694435 36
+test/integration/singlecluster/tas/tas_topology_spreading_test.go
+  h_47cee5fa694435 113
+test/e2e/sequential/baseline/quota_check_strategy_test.go
+  h_47cee5fa694435 90,177
+test/e2e/singlecluster/extended/jaxjob_test.go
+  h_47cee5fa694435 48
+test/e2e/singlecluster/tasapi/extended/rayjob_test.go
+  h_47cee5fa694435 48
+test/integration/singlecluster/webhook/jobs/rayservice_webhook_test.go
+  h_47cee5fa694435 41
+test/integration/singlecluster/webhook/core/elastic_partial_scaleup_test.go
+  h_47cee5fa694435 49
+test/integration/singlecluster/controller/core/workload_hash_freshness_test.go
+  h_47cee5fa694435 165-166
+test/integration/singlecluster/controller/core/resourceflavor_controller_test.go
+  h_47cee5fa694435 35
+test/integration/singlecluster/scheduler/fairsharing/refill_test.go
+  h_47cee5fa694435 56
+test/integration/singlecluster/tas/tas_workload_slice_refill_test.go
+  h_47cee5fa694435 63
+test/e2e/sequential/extended/sparkapplication_test.go
+  h_47cee5fa694435 67
+test/integration/singlecluster/controller/jobs/rayjob/rayjob_controller_partial_scaleup_test.go
+  h_47cee5fa694435 74
+test/e2e/sequential/baseline/metrics_test.go
+  h_47cee5fa694435 59
+test/integration/singlecluster/controller/jobs/jaxjob/jaxjob_controller_test.go
+  h_47cee5fa694435 74,112,338,490,629
+test/e2e/multikueue/dra/dra_test.go
+  h_47cee5fa694435 67-69
+test/integration/singlecluster/controller/jobs/rayjob/rayjob_controller_test.go
+  h_47cee5fa694435 84,287,358,569,662
+test/integration/multikueue/tas/tas_test.go
+  h_47cee5fa694435 100-102
+test/e2e/singlecluster/baseline/tas_test.go
+  h_47cee5fa694435 44
+test/integration/singlecluster/controller/jobs/mpijob/mpijob_controller_test.go
+  h_47cee5fa694435 72,483,623,850,990,1199
+test/e2e/sequential/baseline/waitforpodsready_test.go
+  h_47cee5fa694435 119,282,519,687
+test/integration/multikueue/setup_test.go
+  h_47cee5fa694435 91-93
+test/integration/singlecluster/controller/core/custom_labels_test.go
+  h_47cee5fa694435 63,206,256,307,361,415,478,638,736,949,1001,1326,1574
+test/integration/singlecluster/webhook/jobs/statefulset_webhook_test.go
+  h_47cee5fa694435 56
+test/integration/singlecluster/scheduler/limits_default_order_probe_test.go
+  h_47cee5fa694435 47
+test/e2e/singlecluster/baseline/deployment_test.go
+  h_47cee5fa694435 49
+test/integration/multikueue/external_job_test.go
+  h_47cee5fa694435 171,176,181
+test/e2e/singlecluster/baseline/hierarchical_cohort_test.go
+  h_47cee5fa694435 42
+test/integration/singlecluster/scheduler/inadmissible/requeueing_test.go
+  h_47cee5fa694435 41
+test/integration/multikueue/cluster_role_sharing_test.go
+  h_47cee5fa694435 92-94
+test/integration/singlecluster/scheduler/quotacheckstrategy/quota_check_strategy_test.go
+  h_47cee5fa694435 63,171
+test/integration/singlecluster/controller/failurerecovery/pod_termination_controller_test.go
+  h_47cee5fa694435 44
+test/integration/singlecluster/scheduler/resourcetransformations/resource_transformations_test.go
+  h_47cee5fa694435 93,303
+test/integration/singlecluster/controller/core/clusterqueue_controller_test.go
+  h_47cee5fa694435 94
+test/integration/singlecluster/controller/jobs/paddlejob/paddlejob_controller_test.go
+  h_47cee5fa694435 70,125,279,351
+test/integration/singlecluster/scheduler/podsready/scheduler_test.go
+  h_47cee5fa694435 89,689
+test/integration/singlecluster/controller/jobs/xgboostjob/xgboostjob_controller_test.go
+  h_47cee5fa694435 70,125,277,348
+test/integration/singlecluster/importer/importer_test.go
+  h_47cee5fa694435 57,69
+test/integration/singlecluster/kueuectl/passthrough_test.go
+  h_47cee5fa694435 72
+test/integration/multikueue/scheduler/scheduler_test.go
+  h_47cee5fa694435 93-95
+test/integration/singlecluster/webhook/jobs/sparkapplication_webhook_test.go
+  h_47cee5fa694435 40
+test/e2e/sequential/baseline/failure_recovery_policy_test.go
+  h_47cee5fa694435 60
+test/e2e/sequential/baseline/objectretentionpolicies_test.go
+  h_47cee5fa694435 47,154,296
+test/e2e/certmanager/metrics_test.go
+  h_47cee5fa694435 58
+test/integration/singlecluster/controller/jobs/job/job_controller_tas_replacement_test.go
+  h_47cee5fa694435 54
+test/e2e/sequential/extended/workloadidentifierannotations_test.go
+  h_47cee5fa694435 48
+test/e2e/singlecluster/tasapi/baseline/statefulset_test.go
+  h_47cee5fa694435 46
+test/integration/multikueue/helpers_test.go
+  h_47cee5fa694435 275-277
+test/integration/singlecluster/controller/core/admissioncheck_controller_test.go
+  h_47cee5fa694435 37
+test/integration/singlecluster/scheduler/delayedadmission/delayed_admission_test.go
+  h_47cee5fa694435 53
+test/e2e/singlecluster/baseline/job_test.go
+  h_47cee5fa694435 57
+test/integration/singlecluster/webhook/jobs/jobset_webhook_test.go
+  h_47cee5fa694435 36
+test/integration/singlecluster/scheduler/scheduler_request_overflow_test.go
+  h_47cee5fa694435 53
+test/integration/singlecluster/controller/jobs/jobset/jobset_controller_test.go
+  h_47cee5fa694435 79,703,786,1022,1210
+test/integration/singlecluster/webhook/core/resourceflavor_test.go
+  h_47cee5fa694435 43
+test/integration/singlecluster/webhook/core/workload_test.go
+  h_47cee5fa694435 55,112,1441,1546,1692,1846,1858
+test/e2e/singlecluster/extended/jobset_test.go
+  h_47cee5fa694435 38
+test/e2e/singlecluster/baseline/concurrent_admission_test.go
+  h_47cee5fa694435 42
+test/integration/singlecluster/webhook/core/clusterqueue_test.go
+  h_47cee5fa694435 53
+test/e2e/sequential/extended/managejobswithoutqueuename_test.go
+  h_47cee5fa694435 68,629,741
+test/integration/multikueue/no_gc_test.go
+  h_47cee5fa694435 75-77
+test/e2e/sequential/baseline/workloadpriorityclassdefaulting_test.go
+  h_47cee5fa694435 66
+test/integration/singlecluster/scheduler/scheduler_request_scaling_test.go
+  h_47cee5fa694435 72
+test/integration/singlecluster/scheduler/scheduler_rf_spec_fields_test.go
+  h_47cee5fa694435 45,134
+test/e2e/sequential/baseline/managejobswithoutqueuename_test.go
+  h_47cee5fa694435 62
+test/e2e/sequential/baseline/ha_test.go
+  h_47cee5fa694435 71,199
+test/e2e/dra/capacity/dra_test.go
+  h_47cee5fa694435 40
+test/integration/singlecluster/controller/jobs/trainjob/trainjob_controller_test.go
+  h_47cee5fa694435 91,376,444,660
+test/e2e/sequential/baseline/custom_metrics_test.go
+  h_47cee5fa694435 46
+test/integration/singlecluster/controller/jobs/rayservice/rayservice_controller_partial_scaleup_test.go
+  h_47cee5fa694435 81
+test/integration/singlecluster/webhook/jobs/job_webhook_test.go
+  h_47cee5fa694435 62,159,290
+test/e2e/singlecluster/extended/trainjob_test.go
+  h_47cee5fa694435 42
+test/e2e/singlecluster/tasapi/baseline/hotswap_test.go
+  h_47cee5fa694435 47
+test/e2e/singlecluster/baseline/kueuectl_test.go
+  h_47cee5fa694435 42
+test/e2e/singlecluster/extended/kuberay_test.go
+  h_47cee5fa694435 112
+test/integration/singlecluster/controller/jobs/pod/deployment_job_uid_test.go
+  h_47cee5fa694435 114
+test/e2e/singlecluster/tasapi/extended/trainjob_test.go
+  h_47cee5fa694435 43
+test/integration/singlecluster/scheduler/fairsharing/dra_fair_sharing_test.go
+  h_47cee5fa694435 97,326
+test/integration/singlecluster/controller/core/workload_preemption_eviction_metrics_test.go
+  h_47cee5fa694435 47
+test/e2e/singlecluster/baseline/metrics_test.go
+  h_47cee5fa694435 55
+test/integration/singlecluster/kueuectl/stop_test.go
+  h_47cee5fa694435 44
+test/e2e/singlecluster/extended/kuberay_autoscaling_test.go
+  h_47cee5fa694435 81
+test/e2e/multikueue/sequential/e2e_test.go
+  h_47cee5fa694435 100-102
+test/integration/singlecluster/controller/core/workload_controller_test.go
+  h_47cee5fa694435 64,1188,1383,1537,1632,1730,1997
+test/integration/singlecluster/controller/jobs/pod/pod_custom_metric_labels_test.go
+  h_47cee5fa694435 76
+test/e2e/singlecluster/tasapi/baseline/pod_group_test.go
+  h_47cee5fa694435 40
+test/integration/singlecluster/webhook/jobs/tfjob_webhook_test.go
+  h_47cee5fa694435 36
+test/integration/singlecluster/controller/core/localqueue_controller_test.go
+  h_47cee5fa694435 80,569
+test/integration/singlecluster/webhook/jobs/rayjob_webhook_test.go
+  h_47cee5fa694435 40
+test/e2e/singlecluster/baseline/prometheus_test.go
+  h_47cee5fa694435 57
+test/e2e/singlecluster/tasapi/baseline/deployment_test.go
+  h_47cee5fa694435 50
+test/e2e/singlecluster/extended/leaderworkerset_test.go
+  h_47cee5fa694435 57
+test/e2e/singlecluster/tasapi/extended/pytorch_test.go
+  h_47cee5fa694435 47
+test/integration/singlecluster/controller/core/workload_backoff_accounting_test.go
+  h_47cee5fa694435 50
+test/integration/singlecluster/webhook/jobs/pod_webhook_test.go
+  h_47cee5fa694435 69,192,281
+test/e2e/sequential/baseline/admission_fair_sharing_test.go
+  h_47cee5fa694435 57
+test/util/behavioral/queues.go
+  h_47cee5fa694435 1-21,23-38
+test/e2e/singlecluster/extended/mpijob_test.go
+  h_47cee5fa694435 39
+test/integration/singlecluster/scheduler/configurablepreemptions/cases_test.go
+  h_47cee5fa694435 63
+test/integration/singlecluster/scheduler/fairsharing/fair_sharing_test.go
+  h_47cee5fa694435 109,1717,2046
+test/integration/singlecluster/controller/jobs/rayclusterwebhook/elastic_partial_scaleup_test.go
+  h_47cee5fa694435 76,282
+test/integration/singlecluster/webhook/jobs/paddlejob_webhook_test.go
+  h_47cee5fa694435 36
+test/integration/singlecluster/controller/jobs/statefulset/statefulset_controller_test.go
+  h_47cee5fa694435 60
+test/integration/singlecluster/controller/core/workload_effective_info_test.go
+  h_47cee5fa694435 42
+test/integration/singlecluster/controller/jobs/appwrapper/appwrapper_controller_test.go
+  h_47cee5fa694435 85,531,610,830,911
+test/integration/multikueue/dispatcher_test.go
+  h_47cee5fa694435 81-83,260-262,581-583,795-797
+test/integration/singlecluster/scheduler/scheduler_dynamicquota_test.go
+  h_47cee5fa694435 47
+test/integration/singlecluster/controller/core/workload_accounting_restart_test.go
+  h_47cee5fa694435 58
+test/integration/singlecluster/scheduler/workload_controller_test.go
+  h_47cee5fa694435 64
+test/e2e/singlecluster/baseline/fair_sharing_test.go
+  h_47cee5fa694435 47
+test/integration/singlecluster/scheduler/fairsharing/metrics_test.go
+  h_47cee5fa694435 112
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  h_47cee5fa694435 96,228
+test/integration/singlecluster/webhook/jobs/deployment_webhook_test.go
+  h_47cee5fa694435 54
+test/integration/singlecluster/controller/admissionchecks/provisioning/provisioning_test.go
+  h_47cee5fa694435 97,857,1331,1528,1671,1886
+test/integration/singlecluster/controller/dra/dra_prioritized_list_test.go
+  h_47cee5fa694435 65
+test/e2e/singlecluster/extended/appwrapper_test.go
+  h_47cee5fa694435 51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "618348cf63eebfc78ebafc75107067bced41a937",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

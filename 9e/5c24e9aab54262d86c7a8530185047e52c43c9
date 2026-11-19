@@ -1,0 +1,20 @@
+pkg/workloadslicing/workloadslicing_test.go
+  s_e4e78540aa53d4::t_daaf29911dd13f 1273-1290
+  s_e4e78540aa53d4::t_591c86aaef36a4 1291-1293
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.13",
+  "base_commit_sha": "9e5c24e9aab54262d86c7a8530185047e52c43c9",
+  "prompts": {},
+  "sessions": {
+    "s_e4e78540aa53d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "79bfc856-c939-43dd-8382-bd6b11be7ca3",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

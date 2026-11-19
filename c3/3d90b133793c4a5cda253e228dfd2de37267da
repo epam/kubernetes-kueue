@@ -1,0 +1,16 @@
+site/data/featuregates/removed_feature_list.yaml
+  h_47cee5fa694435 121-125
+keps/2936-local-queue-defaulting/kep.yaml
+  h_47cee5fa694435 31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.10",
+  "base_commit_sha": "c33d90b133793c4a5cda253e228dfd2de37267da",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

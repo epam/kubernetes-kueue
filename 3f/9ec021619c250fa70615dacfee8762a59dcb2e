@@ -1,0 +1,65 @@
+pkg/controller/tas/topology_ungater_test.go
+  s_2b3ba0ed07e2e9::t_a4a376f7e7cfbd 3425-3428
+  s_2b3ba0ed07e2e9::t_458a4ad3f5a0eb 128-130
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 2699,2713,2718-2720,2736
+  s_2b3ba0ed07e2e9::t_08383122d7fc8e 36,127,131-166,168,2693-2698,2700-2712,2714-2717,2721-2735,2737-2857,3413
+keps/77-dynamically-sized-jobs/README.md
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 590
+pkg/util/pod/pod.go
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 24,110-114
+pkg/util/pod/pod_test.go
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 175-216,271
+  s_6fa2bca8aaec6d::t_7609be30184198 172-174
+test/integration/singlecluster/tas/tas_test.go
+  s_dd9ef663244309::t_6b29b37d0c67e6 4174
+  s_dd9ef663244309::t_72b77ad3f5bcf6 9861-9879,9881-9886,9888-9901,9903-9918,9920-9926,9928-9934,9936-9938,9940-9950,9952-9954,9956-9964,9966-9967,9970-9977,9985-9992,9995-10007,10009-10016,10018-10020,10022-10026
+  s_dd9ef663244309::t_f1b2941ee000d9 4175-4196,4198-4207,4209-4216,4218-4220,4222-4226
+  h_f3e429a3560394 4197,4208,4217,4221,4227,9880,9887,9902,9919,9927,9935,9939,9951,9955,9965,9968-9969,9981
+  s_2b3ba0ed07e2e9::t_42147af0b5371b 139-149,9978-9980,9982-9984,9993-9994,10008,10017,10021,10027-10028
+pkg/controller/tas/topology_ungater.go
+  s_6fa2bca8aaec6d::t_158d1d7f8e200a 569
+  s_2b3ba0ed07e2e9::t_e46662ff93aafb 244,267,412,414-417,443-460,462-470,475,478,480-490,549-550,568,570-571,573-574,576
+  s_2b3ba0ed07e2e9::t_9f27ad1f3d6bf9 540-543,597-599
+  s_2b3ba0ed07e2e9::t_38f9d3ff574124 436-442
+  s_6fa2bca8aaec6d::t_03aa556f732e0b 554,604,616
+  s_dd9ef663244309::t_53686aa2515efc 491
+  s_2b3ba0ed07e2e9::t_f13b02cd8ba6b1 494-496
+  s_2b3ba0ed07e2e9::t_c8001f5b404b02 461,471-474,476-477,479,492-493
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3f9ec021619c250fa70615dacfee8762a59dcb2e",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_2b3ba0ed07e2e9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9424a7b4-5e27-4406-a403-2d0f98816c78",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    },
+    "s_6fa2bca8aaec6d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "70cd7a6b-5f53-4dc7-a343-6850e77bf5cb",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    },
+    "s_dd9ef663244309": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65af457b-77c0-4782-8249-3523d3126242",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}

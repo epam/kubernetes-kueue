@@ -1,0 +1,14 @@
+site/content/en/v0.18/docs/_index.md
+  h_47cee5fa694435 18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "3d4f03f65843e82a2f036b5027c2fc4de07f96e9",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

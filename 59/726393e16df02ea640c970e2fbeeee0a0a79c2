@@ -1,0 +1,24 @@
+Makefile
+  s_766a3d66c93520::t_52910c3c6ae7cd 78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "59726393e16df02ea640c970e2fbeeee0a0a79c2",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_766a3d66c93520": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cf35f827-8eac-4424-9c82-894620429463",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

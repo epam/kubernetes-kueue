@@ -1,0 +1,28 @@
+site/layouts/shortcodes/blocks/content-section.html
+  s_37d44fdebd0793::t_32ac527d9e11d5 4
+site/go.mod
+  s_37d44fdebd0793::t_82a5960c8c49ba 5
+site/assets/scss/_styles_project.scss
+  s_37d44fdebd0793::t_1227ba406f97a8 524-525
+  s_37d44fdebd0793::t_32ac527d9e11d5 522-523,526-527
+site/layouts/partials/sidebar-tree.html
+  s_37d44fdebd0793::t_32ac527d9e11d5 174
+site/go.sum
+  s_37d44fdebd0793::t_8a944af05e5277 2-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "63164b6f20db86eca19c110c395a153f148ccf46",
+  "prompts": {},
+  "sessions": {
+    "s_37d44fdebd0793": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8cd1ddb1-10df-4cc1-89b6-621273b63e57",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

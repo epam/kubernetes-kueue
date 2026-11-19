@@ -1,0 +1,33 @@
+hack/make/verify.mk
+  s_1dd057ba3af6e7::t_351a191e32c956 335-338
+  s_1dd057ba3af6e7::t_87175bc78a22e7 127
+hack/make/test.mk
+  s_1dd057ba3af6e7::t_7d896a526e2193 751
+  s_34fbad50e9d20f::t_d7645a32e0de4b 747-749
+hack/testing/kind-k8s-main-image-build_test.sh
+  s_1dd057ba3af6e7::t_4d67b4d789c143 1-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c42d49c0b55601799b33f6fd2ac77866c3b71570",
+  "prompts": {},
+  "sessions": {
+    "s_1dd057ba3af6e7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "97df7912-1a25-434a-8827-abaa77d6cdd1",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    },
+    "s_34fbad50e9d20f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7a7e1285-dc2f-4674-a9ea-a3626c60cc5c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}

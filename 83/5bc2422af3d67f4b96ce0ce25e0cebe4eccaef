@@ -1,0 +1,20 @@
+cmd/kueuectl/app/list/helpers.go
+  s_3dacd70b5cdc9f::t_237905546cfd58 40-45
+  s_3dacd70b5cdc9f::t_419e61b474bb50 60-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "835bc2422af3d67f4b96ce0ce25e0cebe4eccaef",
+  "prompts": {},
+  "sessions": {
+    "s_3dacd70b5cdc9f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3d452e58-5207-430e-9d55-5b132b2d3e58",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

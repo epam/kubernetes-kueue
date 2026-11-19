@@ -1,0 +1,18 @@
+pkg/controller/jobs/pod/pod_controller.go
+  h_47cee5fa694435 331
+pkg/metrics/metrics.go
+  h_47cee5fa694435 20,921
+test/util/metrics.go
+  h_47cee5fa694435 20,386
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "e39b1c41f666e5f8e5537b9246edc7d90682b3a2",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

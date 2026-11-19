@@ -1,0 +1,22 @@
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  h_47cee5fa694435 2458-2556,2557-2558,2559,2560-2565,2566-2580,2581-2585
+pkg/workload/workload.go
+  h_47cee5fa694435 1153-1154
+pkg/controller/jobs/pod/pod_controller.go
+  h_47cee5fa694435 80
+test/util/util.go
+  h_47cee5fa694435 936,938,941,948-950,1523-1528
+apis/kueue/v1beta2/workload_types.go
+  h_47cee5fa694435 1019-1022
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "bf19a4498ac20c9ed6fd91bb4b061c8576a79a80",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

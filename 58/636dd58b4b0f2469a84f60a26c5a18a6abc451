@@ -1,0 +1,14 @@
+pkg/controller/jobframework/multikueue_test.go
+  h_99f506dc258b88 34,89,97,105,150,152
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "58636dd58b4b0f2469a84f60a26c5a18a6abc451",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

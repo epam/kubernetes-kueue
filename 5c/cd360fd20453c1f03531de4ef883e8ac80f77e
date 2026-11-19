@@ -1,0 +1,16 @@
+pkg/controller/jobframework/reconciler.go
+  h_47cee5fa694435 636-637
+pkg/controller/jobframework/interface.go
+  h_47cee5fa694435 128-129
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "5ccd360fd20453c1f03531de4ef883e8ac80f77e",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

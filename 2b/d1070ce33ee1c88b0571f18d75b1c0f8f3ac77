@@ -1,0 +1,14 @@
+site/content/en/docs/concepts/workload_priority_class.md
+  h_47cee5fa694435 136
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "2bd1070ce33ee1c88b0571f18d75b1c0f8f3ac77",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

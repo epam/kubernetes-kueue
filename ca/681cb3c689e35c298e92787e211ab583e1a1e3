@@ -1,0 +1,36 @@
+keps/12100-partial-scaleup-for-elasticjob/README.md
+  s_344abdd867a1d8::t_5d917521154c3a 284
+  s_344abdd867a1d8::t_f67689c7236293 93
+  s_344abdd867a1d8::t_b3356466fd37d7 193,197,200,202,212,216,224
+  s_344abdd867a1d8::t_49b33722c2dce7 261,263
+  s_344abdd867a1d8::t_9a0cdad68e1d26 279
+  s_344abdd867a1d8::t_c4813c0e96ec18 247
+  s_344abdd867a1d8::t_32192e763a96d2 255
+  s_344abdd867a1d8::t_f5e8f688caaccf 398
+  s_344abdd867a1d8::t_e38649389a8b2e 177
+  s_344abdd867a1d8::t_5441e789df5997 253
+  s_344abdd867a1d8::t_fc91c5cea9a01c 96,346,390,404
+  s_344abdd867a1d8::t_ee74aab89b4d30 280
+  s_344abdd867a1d8::t_fd795d85d3cf58 61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ca681cb3c689e35c298e92787e211ab583e1a1e3",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_344abdd867a1d8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d3cb22c7-1724-4aed-91c8-1daabfea1b0f",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": null
+    }
+  }
+}

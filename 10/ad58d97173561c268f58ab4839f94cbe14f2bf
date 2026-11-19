@@ -1,0 +1,82 @@
+pkg/controller/jobs/sparkapplication/sparkapplication_webhook.go
+  s_69d481b6c44b86::t_55ad42f9ac21ed 174-178,180-181
+pkg/controller/jobs/rayjob/rayjob_webhook.go
+  s_69d481b6c44b86::t_c443e949c24f81 170-174,176-177
+pkg/controller/jobs/rayservice/rayservice_webhook_test.go
+  s_69d481b6c44b86::t_3b2fffdd89fe9c 153-158,162-169,173-177,179-180,185-192,198-202,204-205,212-220
+  s_b8c74a74ea3134::t_281d5e238ea7ca 160,171,184,196
+  s_b8c74a74ea3134::t_172a524b359632 22,25,27,29
+  s_b8c74a74ea3134::t_c3db77952386c3 150,159,170,181,183,193-195,206,221-222
+  s_69d481b6c44b86::t_c940b725814bd3 30-31,34,36
+  s_69d481b6c44b86::t_11c96a420ff1ed 152
+  s_69d481b6c44b86::t_61d608fd956a3a 178
+  s_b8c74a74ea3134::t_96d072f7cba2c8 182
+  s_69d481b6c44b86::t_03b987953fe7ab 203
+pkg/controller/jobs/rayjob/rayjob_webhook_test.go
+  s_69d481b6c44b86::t_16adfa205ec2b6 749-752,755-756
+  s_69d481b6c44b86::t_cbb4bee59a56d9 674-678,692,721-734
+  s_69d481b6c44b86::t_9a4e700a4d4178 673
+  s_69d481b6c44b86::t_466928c460262c 679-681,689-691
+pkg/controller/jobs/rayservice/rayservice_webhook.go
+  s_69d481b6c44b86::t_9ff75913d158a4 171-175,177-178
+test/integration/singlecluster/webhook/jobs/suite_test.go
+  s_69d481b6c44b86::t_077b6112ba3cc7 61
+pkg/controller/jobs/raycluster/raycluster_webhook.go
+  s_69d481b6c44b86::t_6c6efbc44a91cc 250-254,256-257
+pkg/controller/jobs/sparkapplication/sparkapplication_webhook_test.go
+  s_69d481b6c44b86::t_ba2f15140bb3b0 25
+  s_69d481b6c44b86::t_ffdf7efe0223ee 119-155,157-185
+  s_69d481b6c44b86::t_837c7a549a991e 156
+test/integration/singlecluster/webhook/jobs/rayjob_webhook_test.go
+  s_69d481b6c44b86::t_0fdd6ffd396100 112-114,116-127
+  s_b8c74a74ea3134::t_dad55357c048e5 115
+  s_69d481b6c44b86::t_3624ac223bf978 22,24,26
+pkg/controller/jobs/raycluster/raycluster_webhook_test.go
+  s_69d481b6c44b86::t_67e97c06c1592c 662-665,668-669
+  s_69d481b6c44b86::t_f75fa032220669 595-598,611,636-647
+  s_69d481b6c44b86::t_c5bb5048b7ae91 594
+  s_69d481b6c44b86::t_98f796430fcd69 599-601,608-610
+pkg/controller/jobframework/validation.go
+  h_f3e429a3560394 171
+test/integration/singlecluster/webhook/jobs/sparkapplication_webhook_test.go
+  s_69d481b6c44b86::t_aa4f951661df12 67
+  s_69d481b6c44b86::t_3359e266a0649d 1-48,50-65
+  s_b8c74a74ea3134::t_5c9f5cc3e0f655 49
+  s_69d481b6c44b86::t_cba771f90362de 66
+test/integration/singlecluster/webhook/jobs/raycluster_webhook_test.go
+  s_b8c74a74ea3134::t_92be1fae713a75 67
+  s_69d481b6c44b86::t_88486090c42db4 30
+  s_69d481b6c44b86::t_6c8c6d6f2998bf 64-66,68-83
+test/integration/singlecluster/webhook/jobs/rayservice_webhook_test.go
+  s_69d481b6c44b86::t_d08aa568786c3b 1-48,50-67
+  s_b8c74a74ea3134::t_4fde6eaf9b0853 49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "10ad58d97173561c268f58ab4839f94cbe14f2bf",
+  "prompts": {},
+  "humans": {
+    "h_f3e429a3560394": {
+      "author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_69d481b6c44b86": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a1e0e8f-0d87-4d98-bbe2-e56ee137cd1f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    },
+    "s_b8c74a74ea3134": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65ca0809-5aa6-4006-9d46-2c4a845bd11b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}

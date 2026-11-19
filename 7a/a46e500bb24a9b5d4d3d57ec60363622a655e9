@@ -1,0 +1,21 @@
+.cache/tool-installation/install-golangci-lint.log
+  s_a9186fc02fb11e::t_f63179b2a472cd 1-9
+.cache/tool-installation/install-mdtoc.log
+  s_a9186fc02fb11e::t_5f6fe3ca92aeb8 1-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7aa46e500bb24a9b5d4d3d57ec60363622a655e9",
+  "prompts": {},
+  "sessions": {
+    "s_a9186fc02fb11e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a539ce6-0cac-4ad7-b5d8-21c8a90b6bc3",
+        "model": "unknown"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

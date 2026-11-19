@@ -1,0 +1,19 @@
+.github/workflows/release-utils.yml
+  s_07c659350600da::t_fa4f8e35fdc2ad 14-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "d4470c407178428b8b382965902fe57910a42682",
+  "prompts": {},
+  "sessions": {
+    "s_07c659350600da": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "14f6483a-1988-4350-ae8b-3c811897a0de",
+        "model": "unknown"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

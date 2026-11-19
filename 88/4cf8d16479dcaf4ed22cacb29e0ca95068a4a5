@@ -1,0 +1,18 @@
+site/content/zh-CN/docs/admission-check-controllers/provisioning.md
+  h_47cee5fa694435 12,144
+site/content/zh-CN/v0.19/docs/reference/kueue-config.v1beta1.md
+  h_47cee5fa694435 1-1206
+site/content/zh-CN/v0.19/docs/reference/kueue.v1beta1.md
+  h_47cee5fa694435 1-3167
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "884cf8d16479dcaf4ed22cacb29e0ca95068a4a5",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

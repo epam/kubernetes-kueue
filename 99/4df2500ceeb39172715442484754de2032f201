@@ -1,0 +1,101 @@
+cmd/kueueviz/backend/middleware/auth_test.go
+  h_32169613a39d35 21,25,32,66-69,193-225,346-406
+cmd/kueueviz/backend/handlers/local_queues.go
+  h_32169613a39d35 24,32-37,56-60,66
+  h_32169613a39d35 38,54,61,67,69
+hack/processing-plan.yaml
+  h_32169613a39d35 664-666
+cmd/kueueviz/backend/main.go
+  h_32169613a39d35 81,96-97
+cmd/kueueviz/backend/handlers/workloads.go
+  h_32169613a39d35 28,45
+  h_32169613a39d35 47,67
+cmd/kueueviz/backend/handlers/websocket_handler_test.go
+  h_32169613a39d35 23,33,253,285,342,373,440,491,530-566
+cmd/kueueviz/backend/handlers/namespaces.go
+  h_32169613a39d35 24,32-37,41,53-62,70-77,79-80
+cmd/kueueviz/frontend/src/LocalQueues.jsx
+  h_32169613a39d35 17,27-39,47,64-85,90-95
+cmd/kueueviz/backend/middleware/auth.go
+  s_d62b051d57115d::t_4e1e3832eb974d 444,448
+  s_d62b051d57115d::t_0265caaa5175ab 24
+  s_d62b051d57115d::t_2eb014f28ac117 56-57
+  s_d62b051d57115d::t_c7d672947f651a 187,193,197
+  s_d62b051d57115d::t_b62659f46f7545 260,272-281
+  s_d62b051d57115d::t_2ef107d105caca 426-429
+  h_32169613a39d35 27,35,37,53-55,65-83,90,191,201-202,210,214,216,218,226,228,240,251-259,262-266,269,306-425,430-443,445-447,449-464
+  s_d62b051d57115d::t_3c23f5b9fecfe9 58-62
+  h_32169613a39d35 261
+charts/kueue/templates/kueueviz/clusterrole.yaml
+  h_32169613a39d35 39-41
+cmd/kueueviz/frontend/src/Workloads.jsx
+  h_32169613a39d35 78-80,85,90
+cmd/kueueviz/backend/handlers/handlers.go
+  h_32169613a39d35 21,26,28,38-40,50,54,65,81-82,88-95,100-105,112-119,122-124,127-129,131-134,137,141-144,146-147,151
+  s_55505ba1511e6f::t_5a84478cc2c420 66,68-80,96,106-107
+  s_55505ba1511e6f::t_57fc9a9199a7a4 83-87,120,130,135,145,148
+  s_55505ba1511e6f::t_7231de0df0b65d 67
+  s_55505ba1511e6f::t_55934b55b94465 97
+  s_55505ba1511e6f::t_2febfe321760fa 108-109
+  h_32169613a39d35 121,136,149-150
+cmd/kueueviz/backend/handlers/workloads_dashboard_test.go
+  h_32169613a39d35 28,93-94,122,127-128,130-131
+hack/testing/e2e-kueueviz-rbac-bypass.sh
+  h_32169613a39d35 1-16,20-80,83-98,101-105,109-127,133-156
+  s_0fd3f4b8151709::t_1bee9b2ee516b5 128-132
+  s_0fd3f4b8151709::t_6e2ae47c44b480 106-108
+  s_0fd3f4b8151709::t_adfe2c982ab420 81-82
+  s_0fd3f4b8151709::t_f11dcf441cce48 99-100
+  s_0fd3f4b8151709::t_d44cb7c7e53d43 17-19
+cmd/kueueviz/backend/handlers/workloads_dashboard.go
+  s_55505ba1511e6f::t_b6563201ff19b8 81
+  h_32169613a39d35 28,41-42,44,57-66,68-78,80,85,98,106-108,110,115,151-152,162-168,170
+hack/make/test.mk
+  h_32169613a39d35 827-828,837-839
+cmd/kueueviz/frontend/src/useWebSocket.js
+  s_d62b051d57115d::t_82d12613bd6c6a 102,105,108
+  s_d62b051d57115d::t_3e5188b42bce8d 25-29
+  s_d62b051d57115d::t_dd85c752c1e305 103-104,106-107,109-110
+cmd/kueueviz/backend/handlers/websocket_handler.go
+  s_d62b051d57115d::t_9063edb89d3579 80-90
+  h_32169613a39d35 66
+cmd/kueueviz/backend/handlers/api_handlers_test.go
+  h_32169613a39d35 20,22,29,32,34-35,38,131-285
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "994df2500ceeb39172715442484754de2032f201",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_0fd3f4b8151709": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "ccf73428-735d-41e3-927f-15daef76022c",
+        "model": "unknown"
+      },
+      "human_author": null
+    },
+    "s_55505ba1511e6f": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "c9b58151-2a4d-4a30-8ddb-ea7438c84d69",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    },
+    "s_d62b051d57115d": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "b39c9f5a-cffd-4f23-8f75-c4c45c5d1ac5",
+        "model": "unknown"
+      },
+      "human_author": null
+    }
+  }
+}

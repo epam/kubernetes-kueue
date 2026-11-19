@@ -1,0 +1,24 @@
+pkg/features/kube_features.go
+  h_99f506dc258b88 522-526,812-815
+pkg/webhooks/workload_webhook.go
+  h_99f506dc258b88 175-178,475-507
+pkg/webhooks/workload_webhook_test.go
+  h_99f506dc258b88 256-306
+site/data/featuregates/versioned_feature_list.yaml
+  h_99f506dc258b88 522-527
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  h_99f506dc258b88 522-527
+test/integration/singlecluster/tas/tas_test.go
+  h_99f506dc258b88 3605-3606
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "5b62f9e8a58342a967d6d0c822a407cbd2f2af96",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

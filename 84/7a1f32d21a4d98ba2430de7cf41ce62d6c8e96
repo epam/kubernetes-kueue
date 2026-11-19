@@ -1,0 +1,36 @@
+site/data/featuregates/versioned_feature_list.yaml
+  s_e2dfbdf90dcd49::t_77fe543be224c7 327
+pkg/features/kube_features.go
+  s_3410220f4f93b6::t_66afc45e723da4 801
+pkg/util/equality/podset_test.go
+  s_3410220f4f93b6::t_fdad50cea27c6d 100
+  s_3410220f4f93b6::t_26214a5e76642f 24,30-99
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  s_e2dfbdf90dcd49::t_77fe543be224c7 327
+pkg/controller/admissionchecks/provisioning/controller.go
+  s_3410220f4f93b6::t_e73acf81df8169 339
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "847a1f32d21a4d98ba2430de7cf41ce62d6c8e96",
+  "prompts": {},
+  "sessions": {
+    "s_3410220f4f93b6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "0448481a-639f-4934-8bf9-d8319842a6a5",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_e2dfbdf90dcd49": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "e4ba7ccf-a293-4cff-a2ca-ac75b372b4da",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

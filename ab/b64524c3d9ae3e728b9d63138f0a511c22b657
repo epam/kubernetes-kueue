@@ -1,0 +1,19 @@
+pkg/webhooks/workload_webhook_test.go
+  s_10fb7eb51ed9c0::t_6a056610b31c6d 133,147,161,179,203,215,227
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "abb64524c3d9ae3e728b9d63138f0a511c22b657",
+  "prompts": {},
+  "sessions": {
+    "s_10fb7eb51ed9c0": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d0b4810b-74c1-4d8b-8928-6dd8ff64a240",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

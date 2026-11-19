@@ -1,0 +1,36 @@
+test/integration/singlecluster/webhook/jobs/pod_webhook_test.go
+  s_b8c316a866aad0::t_d88759cf21d2b8 170-255
+  s_b8c316a866aad0::t_59478cdfe0d06a 22,28,36
+  s_b8c316a866aad0::t_821cf6c3ba7aae 27,32
+pkg/controller/jobframework/reconciler.go
+  s_b8c316a866aad0::t_9fdc14534ba5c0 939-948
+pkg/controller/jobframework/reconciler_test.go
+  s_df1c5c71eeab80::t_61058969e26e1f 888
+  s_df1c5c71eeab80::t_dd9a02ff43a77b 904-921
+  s_df1c5c71eeab80::t_9c1b5a5adda900 681
+  s_df1c5c71eeab80::t_b06042c42b4c38 930
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "c67d3562367d1708b8967e443f9d54e70314407c",
+  "prompts": {},
+  "sessions": {
+    "s_b8c316a866aad0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7766f32e-035a-49c4-ab39-7f7394bae70f",
+        "model": "claude-opus-5"
+      },
+      "human_author": null
+    },
+    "s_df1c5c71eeab80": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b0ed0e62-cfe5-4ee4-b71f-7f287d4e4197",
+        "model": "cursor-grok-4.5-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+cmd/importer/pod/import.go
+  s_b1b85ee75b9f2e::t_0e2613086bc5ea 47,57-62
+  s_b1b85ee75b9f2e::t_95928db3253538 63-64
+cmd/importer/pod/import_test.go
+  h_99f506dc258b88 90-99,123-124,135-136,151-152,173-174,196-197,210-211
+  s_b1b85ee75b9f2e::t_0e2613086bc5ea 223
+  s_b1b85ee75b9f2e::t_0db785ee1b035e 80-89,100-104,171,176,194,200
+  s_b1b85ee75b9f2e::t_bbd3892ca2f94b 198
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "7bae7e18a376936454ea6564ede4ae53afa691bf",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_b1b85ee75b9f2e": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "35ab957d-de95-408e-9f91-bcf7875b57b5",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

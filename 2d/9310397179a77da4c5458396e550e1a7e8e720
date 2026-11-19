@@ -1,0 +1,77 @@
+pkg/cache/scheduler/clusterqueue.go
+  s_dcae80d632ea2f::t_91d3d470edf978 708-710
+  s_dcae80d632ea2f::t_b4f0cd713d0e27 711-713
+  s_dcae80d632ea2f::t_2e7959e0db2c30 714-716
+pkg/metrics/metrics_test.go
+  h_99f506dc258b88 333-356
+  s_dcae80d632ea2f::t_fa40257a4694be 28
+test/integration/singlecluster/controller/core/clusterqueue_controller_test.go
+  s_dcae80d632ea2f::t_3815cd5625e0b4 1613-1615,1618-1620
+  s_dcae80d632ea2f::t_86e4bae75dea9a 1542,1546-1555,1588,1594,1601-1612,1622-1623,1628
+  s_dcae80d632ea2f::t_0a896dc674125a 1591-1593
+  s_dcae80d632ea2f::t_33ff0963c085ab 1584-1587
+  s_dcae80d632ea2f::t_7e8d11bb0fa001 1501-1509,1616-1617
+  s_dcae80d632ea2f::t_ef34117ee4fb46 1589
+  s_dcae80d632ea2f::t_3ed2ca035a571a 1624-1625
+  s_dcae80d632ea2f::t_02a54a55c9c31c 1543
+  s_dcae80d632ea2f::t_ae927edb258722 1510-1512
+  s_dcae80d632ea2f::t_a4a91108036333 1597-1600
+  s_dcae80d632ea2f::t_3aa5f9f27efc63 1513-1538,1544,1556-1583,1590,1596,1621,1626-1627,1629-1630
+  s_dcae80d632ea2f::t_c9bbf8b44843a7 1631-1632
+  s_dcae80d632ea2f::t_280934c9b377e8 1539-1541
+  s_dcae80d632ea2f::t_c81fbf798db8fb 1595
+  s_dcae80d632ea2f::t_775e37686ac1d2 1545
+site/content/en/docs/reference/metrics.md
+  s_dcae80d632ea2f::t_71fd7bf5239f21 110
+  h_99f506dc258b88 126
+test/util/behavioral/metrics.go
+  h_99f506dc258b88 374-385
+pkg/cache/scheduler/resource_node.go
+  s_dcae80d632ea2f::t_c328d43581b537 255-260,263,265-267
+pkg/cache/scheduler/cohort_metrics.go
+  s_dcae80d632ea2f::t_f2e52b30e2f91a 156-157
+  s_dcae80d632ea2f::t_9ef17256942b35 250
+  s_dcae80d632ea2f::t_94419681d2b1e9 41,78,88-90,112,118,129,133
+  s_dcae80d632ea2f::t_64e70e0b73a37f 92,167,200,202-206,208-211,213,215-219,224-225,227-228,230,237,239-241,243-249,251-252,256-258
+  s_dcae80d632ea2f::t_84f7d4880f69ac 259
+  s_dcae80d632ea2f::t_3e80c85f8d0d74 94-96
+  s_dcae80d632ea2f::t_c328d43581b537 102-105,158-166,201,207,212,214,220-223,226,229,233-236,238,242,253-255
+  s_dcae80d632ea2f::t_a05193dc88058b 45,49-54,56,62-67
+  s_dcae80d632ea2f::t_71cc603e73c90a 231-232
+pkg/metrics/metrics.go
+  s_dcae80d632ea2f::t_393d3475341c40 1080-1082
+  s_dcae80d632ea2f::t_4927410f9c2067 1032-1034
+  s_dcae80d632ea2f::t_9ef17256942b35 1035-1039,1075-1079
+  s_dcae80d632ea2f::t_118921ec808245 333-336,349-352,1031,1083,1498-1509,1527-1538,1555-1559,1747,1813,1819
+pkg/controller/core/clusterqueue_controller_test.go
+  s_dcae80d632ea2f::t_3aa5f9f27efc63 1063,1065-1070,1080-1092,1144
+  h_99f506dc258b88 1040-1062,1064,1071-1079,1093-1143,1145-1151
+pkg/cache/scheduler/cohort_metrics_test.go
+  s_dcae80d632ea2f::t_b747aa0682f243 1802-1807
+  s_dcae80d632ea2f::t_f398fdcd9b8159 1962-1964,1969-1981
+  s_dcae80d632ea2f::t_9ef17256942b35 1789,1800-1801,1808-1818,1820-1831,1833-1862,1883-1930,1967-1968
+  s_dcae80d632ea2f::t_5b30cb229fb2ad 1863-1882
+  s_dcae80d632ea2f::t_e787a0354864d2 1798-1799,1819,1832,1931-1961,1965-1966,1982
+  h_99f506dc258b88 1384,1748-1788,1790-1797
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2d9310397179a77da4c5458396e550e1a7e8e720",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_dcae80d632ea2f": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "cc70b79d-e8b2-4bf4-8126-b12e570b8116",
+        "model": "unknown"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

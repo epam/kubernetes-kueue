@@ -1,0 +1,25 @@
+pkg/spreading/spreading.go
+  h_47cee5fa694435 1-237
+pkg/constants/constants.go
+  h_47cee5fa694435 95
+pkg/controller/jobframework/reconciler.go
+  h_47cee5fa694435 1549
+pkg/scheduler/scheduler.go
+  h_47cee5fa694435 54,795,806
+pkg/spreading/spreading_test.go
+  h_47cee5fa694435 1-405
+pkg/controller/jobframework/utils.go
+  h_47cee5fa694435 34,318-338
+  h_47cee5fa694435 339
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "3cf3aa44afcce7cc2f4230ad9213735e9e637581",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

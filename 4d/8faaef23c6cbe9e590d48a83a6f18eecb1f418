@@ -1,0 +1,45 @@
+keps/420-partial-admission/README.md
+  s_ded4bbc51fb94f::t_0c78af6a8543b8 191
+  s_ded4bbc51fb94f::t_1e682ca9252c89 115
+  s_ded4bbc51fb94f::t_3826979b759b75 82
+apis/kueue/v1beta2/workload_types.go
+  s_a6d8daeb9af386::t_968489c947e488 557
+  s_a6d8daeb9af386::t_03f6d94bd15dc9 597
+apis/kueue/v1beta1/workload_types.go
+  s_a6d8daeb9af386::t_208478fd6a9736 344
+  s_a6d8daeb9af386::t_fb3174005e2806 307
+test/integration/singlecluster/webhook/core/workload_test.go
+  s_4b5267cb449f5e::t_03465b17698090 370-387
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "4d8faaef23c6cbe9e590d48a83a6f18eecb1f418",
+  "prompts": {},
+  "sessions": {
+    "s_4b5267cb449f5e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "bcc53a6b-9ce6-4c97-869a-551c8aacaf8c",
+        "model": "cursor-grok-4.6-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_a6d8daeb9af386": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "be79ac5e-379f-4190-9139-c2fa88488b48",
+        "model": "cursor-grok-4.6-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_ded4bbc51fb94f": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6ac319cf-8f49-47fd-841e-508ea9d66d1f",
+        "model": "cursor-grok-4.6-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

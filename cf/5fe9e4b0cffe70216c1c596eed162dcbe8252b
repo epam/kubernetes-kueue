@@ -1,0 +1,14 @@
+pkg/cache/queue/inadmissible_workloads.go
+  h_47cee5fa694435 36,233
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "cf5fe9e4b0cffe70216c1c596eed162dcbe8252b",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

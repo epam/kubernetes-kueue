@@ -1,0 +1,60 @@
+charts/kueue/templates/kueueviz/clusterrole.yaml
+  h_32169613a39d35 38-40
+cmd/kueueviz/backend/handlers/api_handlers_test.go
+  h_32169613a39d35 20,22,29,32,34-35,38,131-285
+cmd/kueueviz/backend/handlers/cluster_queues.go
+  h_32169613a39d35 24,41,44,95,103-110,113-118,121-142,164-165
+cmd/kueueviz/backend/handlers/cohorts.go
+  h_32169613a39d35 22,25,36,43,46-47,62,98,105-112,115-141,149-153,159
+cmd/kueueviz/backend/handlers/gvr.go
+  h_32169613a39d35 102-110
+cmd/kueueviz/backend/handlers/handlers.go
+  h_32169613a39d35 21,26,28,38-40,50,54,65-128,131-143,146-158,161-173,177-194
+cmd/kueueviz/backend/handlers/local_queues.go
+  h_32169613a39d35 24,32-38,54,56-61,66-67,69
+cmd/kueueviz/backend/handlers/namespaces.go
+  h_32169613a39d35 24,32-37,41,53-62,70-77,79-80
+cmd/kueueviz/backend/handlers/resource_flavors.go
+  h_32169613a39d35 25,43,46,82,90-95,99-105,107-130,132,139-153,161-168,171-175
+cmd/kueueviz/backend/handlers/websocket_handler.go
+  h_32169613a39d35 66,80-90
+cmd/kueueviz/backend/handlers/websocket_handler_test.go
+  h_32169613a39d35 23,33,253,285,341,372,439,490,529-565
+cmd/kueueviz/backend/handlers/workloads.go
+  h_32169613a39d35 28,45,47,67
+cmd/kueueviz/backend/handlers/workloads_dashboard.go
+  h_32169613a39d35 28,41-42,44,57-84,86-92,94-99,101-109,113-117,123,128,133,136-138,140,142,145,171,181-182,191,193-200,202-203,218
+cmd/kueueviz/backend/handlers/workloads_dashboard_test.go
+  h_32169613a39d35 28,93-94,122,127-128,130-131
+cmd/kueueviz/backend/main.go
+  h_32169613a39d35 81,96-97
+cmd/kueueviz/backend/middleware/auth.go
+  h_32169613a39d35 24,27,35,37,53-63,66-84,91,188,192,194,198,202-203,211,215,217,219,227,229,241,252-267,270,273-282,307-465
+cmd/kueueviz/backend/middleware/auth_test.go
+  h_32169613a39d35 21,25,32,66-69,193-225,346-406
+cmd/kueueviz/frontend/src/Dashboard.jsx
+  h_32169613a39d35 45-46
+cmd/kueueviz/frontend/src/LocalQueues.jsx
+  h_32169613a39d35 17,27-39,47,64-85,90-95
+cmd/kueueviz/frontend/src/Workloads.jsx
+  h_32169613a39d35 78-80,85,90
+cmd/kueueviz/frontend/src/useWebSocket.js
+  h_32169613a39d35 25-30,103-114
+hack/make/test.mk
+  h_32169613a39d35 822-823,832-834
+hack/processing-plan.yaml
+  h_32169613a39d35 692-694
+hack/testing/e2e-kueueviz-rbac-bypass.sh
+  h_32169613a39d35 1-156
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "851f0ca372a25657d7e88ccdbde8ca5637b86da5",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

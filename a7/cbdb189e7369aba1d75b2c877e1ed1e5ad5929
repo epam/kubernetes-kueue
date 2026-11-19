@@ -1,0 +1,25 @@
+pkg/controller/jobframework/reconciler_test.go
+  s_df1c5c71eeab80::t_9c1b5a5adda900 681
+  s_df1c5c71eeab80::t_b06042c42b4c38 931
+  s_df1c5c71eeab80::t_61058969e26e1f 888
+  s_df1c5c71eeab80::t_71a4d445e7864a 971
+  s_df1c5c71eeab80::t_dd9a02ff43a77b 904-922
+pkg/controller/jobframework/reconciler.go
+  s_df1c5c71eeab80::t_0304d2af16c4f7 939-948
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "a7cbdb189e7369aba1d75b2c877e1ed1e5ad5929",
+  "prompts": {},
+  "sessions": {
+    "s_df1c5c71eeab80": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b0ed0e62-cfe5-4ee4-b71f-7f287d4e4197",
+        "model": "cursor-grok-4.5-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+test/e2e/singlecluster/baseline/visibility_test.go
+  s_85ad8f56453934::t_a9f80721cb88a6 660-662,665-669,673
+  s_85ad8f56453934::t_2788c9bccc7c6e 605,608,614,636-647,650-651,681,686-687
+  s_85ad8f56453934::t_effcc6a5920e79 606-607,609-613,615-635,648-649,652-659,663-664,670-672,674-680,682-685
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f349305ec82618ac9f3e8500639b9b13865f82da",
+  "prompts": {},
+  "sessions": {
+    "s_85ad8f56453934": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "40467806-3b05-4055-96ef-92806d8866ab",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

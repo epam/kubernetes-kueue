@@ -1,0 +1,36 @@
+keps/13746-topology-spreading/kep.yaml
+  h_47cee5fa694435 1-40,4,5,9-10,12-13,29-30
+keps/13746-topology-spreading/README.md
+  h_47cee5fa694435 1-204,103-104,208-445,221,335,342,357,358-362,363,368,380,422,425,442,446-449,450,451-453,454,455-647,551
+  s_6d7cb4bda6cbef::t_3de8ef0781586d 365-367,369-371
+  s_422c3e1c5e1d5d::t_77aa8370d98465 205-207
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "6579e89645e46edafd57ff0a4ce6bfec11b536a5",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_422c3e1c5e1d5d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5f72d87b-f4cd-4a9f-b37f-149c72f24b13",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_6d7cb4bda6cbef": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0f83d3a3-3171-4fbe-bab5-4ef90ca669f1",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+pkg/workloadslicing/workloadslicing_test.go
+  s_3130ac198eb516::t_8643e0f98cb296 1745
+  s_3130ac198eb516::t_ca6d8f7a2a937c 1681-1683,1714-1727,1729-1742,1744,1746,1850-1852
+  s_3130ac198eb516::t_e9fe7db8fae9f1 1728,1743
+pkg/workloadslicing/workloadslicing.go
+  s_3130ac198eb516::t_6617cee278ab5b 377-382
+  h_99f506dc258b88 435,485
+  s_3130ac198eb516::t_b8417ea9dbfb5f 433-434
+  s_3130ac198eb516::t_ef5ca0655b0568 494
+  s_3130ac198eb516::t_5164b86737ec6d 46,226,232,239-240,242,436-448,475-476,484,486-493
+  s_3130ac198eb516::t_55c8821abe3c69 223-225
+  s_3130ac198eb516::t_dd88715f93f51a 227-231
+  s_3130ac198eb516::t_0616cceb9e66f8 233-238
+  s_3130ac198eb516::t_689494bb38eaa1 241
+  s_3130ac198eb516::t_0aa20ffc53c002 243-245
+  h_99f506dc258b88 154-156,164-168,222,246
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  s_3130ac198eb516::t_8bca58b70f51e7 354-362,403-406,416-421,423-427,429-430,433-442,449-450,457-458,510-512,520-532,534-538
+pkg/controller/jobframework/reconciler_test.go
+  h_99f506dc258b88 107,198,212
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "646bb4a93b684edd7394188c40e6ccdb3bc72b87",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_3130ac198eb516": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ce409d67-3944-4dd7-8c21-1e967ebd8ee0",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+hack/make/verify.mk
+  s_761d3c4324063a::t_4daabb7abf8f1f 82-83,86-87,89-90
+  s_761d3c4324063a::t_0ddaf32a0c4fb3 65
+  s_761d3c4324063a::t_77103a58070ac9 84-85
+  s_761d3c4324063a::t_b82595c88850fe 88
+hack/testing/e2e-common_test.sh
+  s_761d3c4324063a::t_832106c2af17f7 22-32
+  s_761d3c4324063a::t_dddcfd83cba10f 498
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b3ae0e9607518e92d09a2201edc83b6248f70d8d",
+  "prompts": {},
+  "sessions": {
+    "s_761d3c4324063a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7d5cb21c-caa9-48e3-8635-6449ed3a1d69",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

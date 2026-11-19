@@ -1,0 +1,76 @@
+site/content/zh-CN/v0.18/docs/concepts/workload_priority_class.md
+  h_47cee5fa694435 112
+site/content/zh-CN/v0.19/docs/concepts/topology.md
+  h_47cee5fa694435 78
+site/content/zh-CN/v0.19/docs/concepts/workload.md
+  h_47cee5fa694435 55,201
+site/content/zh-CN/v0.19/docs/tasks/dev/setup_dev_monitoring.md
+  h_47cee5fa694435 159
+site/content/zh-CN/v0.18/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 480,507
+site/content/zh-CN/v0.18/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 93
+site/content/zh-CN/v0.18/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 26,30
+site/content/zh-CN/v0.18/docs/overview/_index.md
+  h_47cee5fa694435 41
+site/content/zh-CN/v0.18/docs/tasks/manage/observability/configure_custom_metric_labels.md
+  h_47cee5fa694435 99
+site/content/zh-CN/v0.18/docs/concepts/topology.md
+  h_47cee5fa694435 78
+site/content/zh-CN/v0.19/docs/concepts/preemption.md
+  h_47cee5fa694435 21,118
+site/content/zh-CN/v0.18/docs/tasks/troubleshooting/troubleshooting_delete_clusterqueue.md
+  h_47cee5fa694435 40
+site/content/zh-CN/v0.18/docs/installation/_index.md
+  h_47cee5fa694435 40,143,285
+site/content/zh-CN/v0.19/docs/tasks/troubleshooting/troubleshooting_delete_clusterqueue.md
+  h_47cee5fa694435 40
+site/content/zh-CN/v0.19/docs/tasks/manage/observability/common_grafana_queries.md
+  h_47cee5fa694435 156
+site/content/zh-CN/v0.19/docs/tasks/manage/observability/setup_prometheus.md
+  h_47cee5fa694435 105
+site/content/zh-CN/v0.18/docs/tasks/dev/setup_dev_monitoring.md
+  h_47cee5fa694435 159
+site/content/zh-CN/v0.19/docs/installation/_index.md
+  h_47cee5fa694435 40,143,285
+site/content/zh-CN/v0.19/docs/tasks/manage/setup_concurrent_admission.md
+  h_47cee5fa694435 183
+site/content/zh-CN/v0.19/docs/concepts/concurrent_admission.md
+  h_47cee5fa694435 151
+site/content/zh-CN/v0.19/docs/tasks/manage/observability/configure_custom_metric_labels.md
+  h_47cee5fa694435 99
+site/content/zh-CN/v0.19/docs/concepts/resource_flavor.md
+  h_47cee5fa694435 93
+site/content/zh-CN/v0.19/docs/tasks/troubleshooting/troubleshooting_pods.md
+  h_47cee5fa694435 26,30
+site/content/zh-CN/v0.19/docs/concepts/cluster_queue.md
+  h_47cee5fa694435 480,507
+site/content/zh-CN/v0.18/docs/tasks/manage/observability/setup_prometheus.md
+  h_47cee5fa694435 105
+site/content/zh-CN/v0.18/docs/concepts/workload.md
+  h_47cee5fa694435 55,201
+site/content/zh-CN/v0.19/docs/concepts/workload_priority_class.md
+  h_47cee5fa694435 112
+site/content/zh-CN/v0.18/docs/tasks/manage/setup_concurrent_admission.md
+  h_47cee5fa694435 183
+site/content/zh-CN/v0.18/docs/concepts/preemption.md
+  h_47cee5fa694435 21,118
+site/content/zh-CN/v0.18/docs/tasks/manage/observability/common_grafana_queries.md
+  h_47cee5fa694435 156
+site/content/zh-CN/v0.18/docs/concepts/concurrent_admission.md
+  h_47cee5fa694435 151
+site/content/zh-CN/v0.19/docs/overview/_index.md
+  h_47cee5fa694435 41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "0ce2f2577fe2f96c8153ef44109d5ec7f650d5a4",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

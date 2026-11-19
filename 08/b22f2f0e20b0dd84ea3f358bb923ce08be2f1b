@@ -1,0 +1,33 @@
+Makefile
+  s_3d2f32e424ccd5::t_d20a9faf538b77 317
+  s_3d2f32e424ccd5::t_a78a15db593787 347,400,408-409
+cmd/experimental/kueue-populator/config/kustomization.yaml
+  s_3d2f32e424ccd5::t_f0bef8aa35b1e1 14
+cmd/experimental/kueue-priority-booster/config/kustomization.yaml
+  s_3d2f32e424ccd5::t_5a265bb6701600 14
+config/components/kueueviz/kustomization.yaml
+  s_3d2f32e424ccd5::t_b99493e41790e0 18,21
+config/components/manager/kustomization.yaml
+  s_3d2f32e424ccd5::t_2db110f4c93462 17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "08b22f2f0e20b0dd84ea3f358bb923ce08be2f1b",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_3d2f32e424ccd5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bbdc127d-ce87-469a-8278-a55df865064f",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

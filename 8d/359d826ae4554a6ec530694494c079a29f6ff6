@@ -1,0 +1,27 @@
+site/content/en/docs/tasks/run/leaderworkerset.md
+  s_aac402b72fc238::t_24d15ad2b95db3 101-105
+pkg/util/testingjobs/leaderworkerset/wrappers.go
+  s_aac402b72fc238::t_28e8b390f4753d 262-270
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler.go
+  s_aac402b72fc238::t_28e8b390f4753d 520-522
+  s_aac402b72fc238::t_1a4cc3f79e4650 82-86,251,269,274,277,302,458,469,515,519,523-525,529-534
+  s_aac402b72fc238::t_fa61b6ca7d0521 535
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler_test.go
+  s_aac402b72fc238::t_28e8b390f4753d 938-997
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8d359d826ae4554a6ec530694494c079a29f6ff6",
+  "prompts": {},
+  "sessions": {
+    "s_aac402b72fc238": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bcfb9d4f-2b81-4f2f-acc5-1e0722912502",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

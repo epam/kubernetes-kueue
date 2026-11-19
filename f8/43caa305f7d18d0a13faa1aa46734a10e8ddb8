@@ -1,0 +1,95 @@
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_test.go
+  s_f2faf642940cae::t_a00f65cf861f02 49
+  s_f2faf642940cae::t_350f1eaa41a9a7 842,863
+test/e2e/singlecluster/extended/kuberay_test.go
+  s_f2faf642940cae::t_75ef4ab1fff580 332,532,994
+  s_f2faf642940cae::t_13400f82ec9b26 47
+pkg/controller/tas/indexer/indexer.go
+  s_f2faf642940cae::t_97b2b4b61fddb1 31
+  s_f2faf642940cae::t_a51e2ad89c09e4 94
+pkg/controller/jobframework/reconciler.go
+  s_f2faf642940cae::t_b3030f7a3ba937 72
+  s_f2faf642940cae::t_2a536f0cc1ba51 431,457
+  s_f2faf642940cae::t_2ecd8ba008f2ab 462,587,1207
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_f2faf642940cae::t_83caa59247d65e 405
+  s_f2faf642940cae::t_21e307099ab91d 59
+  s_f2faf642940cae::t_26a3fa13779c6d 125
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  s_f2faf642940cae::t_f5219b493f2170 4342,4613
+  s_f2faf642940cae::t_6048933ec87550 56
+pkg/controller/admissionchecks/provisioning/controller.go
+  s_f2faf642940cae::t_78f0e45abc0819 58
+  s_f2faf642940cae::t_9dc7e29de8bdce 134,584
+test/util/util.go
+  s_f2faf642940cae::t_01847ace4d8c72 87
+  s_f2faf642940cae::t_84be95fb11480f 1408,1437
+pkg/controller/jobs/statefulset/statefulset_reconciler.go
+  s_f2faf642940cae::t_b26b409b568feb 57
+  s_f2faf642940cae::t_e9d4644b185f4c 222,292
+pkg/workloadslicing/workloadslicing.go
+  s_f2faf642940cae::t_d362306e650bf7 42
+  s_f2faf642940cae::t_bfaa2ad1ba3b22 312
+  s_f2faf642940cae::t_1856000b048bf4 138
+test/integration/singlecluster/controller/core/workload_controller_test.go
+  s_f2faf642940cae::t_3d50cc706543be 769,827
+  s_f2faf642940cae::t_324e2ac2688e8f 42
+pkg/controller/concurrentadmission/controller.go
+  s_f2faf642940cae::t_e551799960417b 53
+  s_f2faf642940cae::t_a0837916236b19 548
+  s_f2faf642940cae::t_9b9393202b0a4b 565
+test/integration/multikueue/jobs_test.go
+  s_f2faf642940cae::t_7cdade54072d5e 79
+  s_f2faf642940cae::t_e22322a5a00a3b 1821,1862
+test/performance/scheduler/runner/controller/controller.go
+  s_f2faf642940cae::t_5b21bd53141192 42
+  s_f2faf642940cae::t_0734de129aceb2 85,105
+pkg/scheduler/scheduler.go
+  s_f2faf642940cae::t_c4ea388a7b39f5 1123
+  s_f2faf642940cae::t_48829b07dffac9 64
+  s_f2faf642940cae::t_5957df706ebab3 1117
+pkg/workloadslicing/workloadslicing_test.go
+  s_f2faf642940cae::t_702d5ed6c778c4 51
+  s_f2faf642940cae::t_bce8c627486ee6 1141
+pkg/cache/queue/manager.go
+  s_f2faf642940cae::t_0e84639f5c8df4 244,487
+  s_f2faf642940cae::t_8eb13b41ec744d 48
+test/e2e/singlecluster/baseline/job_test.go
+  s_f2faf642940cae::t_ac0d40f1e168ae 44
+  s_f2faf642940cae::t_41d76229ce241a 252
+test/util/util_scheduling.go
+  s_f2faf642940cae::t_b7df6cbc427e4e 41
+  s_f2faf642940cae::t_609e9bd54c7626 31
+pkg/workload/workload.go
+  s_f2faf642940cae::t_79afe42ed113a9 1313
+  s_f2faf642940cae::t_b52f2b26a12da4 63
+  s_f2faf642940cae::t_5737116444469c 85,868,1153,1173
+pkg/controller/workloaddispatcher/incrementaldispatcher.go
+  s_f2faf642940cae::t_b0e2456187ca27 127
+  s_f2faf642940cae::t_4e5b8d54fd2d89 43
+pkg/controller/tas/node_controller.go
+  s_f2faf642940cae::t_176e75294078e6 63
+  s_f2faf642940cae::t_55b65c81c992e2 339
+test/performance/scheduler/runner/recorder/recorder.go
+  s_f2faf642940cae::t_643ae94785c581 464
+  s_f2faf642940cae::t_02315f07ad889d 35
+pkg/controller/jobs/pod/pod_controller.go
+  s_f2faf642940cae::t_d0c7291cf60b98 1297
+  s_f2faf642940cae::t_9f5d7478013933 62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "f843caa305f7d18d0a13faa1aa46734a10e8ddb8",
+  "prompts": {},
+  "sessions": {
+    "s_f2faf642940cae": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "067f8152-1892-472d-8057-fb4faddad627",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

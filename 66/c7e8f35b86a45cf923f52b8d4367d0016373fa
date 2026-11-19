@@ -1,0 +1,17 @@
+site/OWNERS
+  h_47cee5fa694435 4
+OWNERS
+  h_47cee5fa694435 26,28-49,60
+  h_47cee5fa694435 27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "66c7e8f35b86a45cf923f52b8d4367d0016373fa",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

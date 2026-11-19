@@ -1,0 +1,14 @@
+config/default/apiservice_cainjection_patch.yaml
+  h_47cee5fa694435 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "14f0415d3d1757904425daad9f8fa90363be4fab",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

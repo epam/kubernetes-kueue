@@ -1,0 +1,14 @@
+pkg/cache/scheduler/tas_flavor_snapshot_test.go
+  h_99f506dc258b88 1201,1228,1246
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "28b113f158c607cb04fd53ab794f5ef6c9a6469a",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

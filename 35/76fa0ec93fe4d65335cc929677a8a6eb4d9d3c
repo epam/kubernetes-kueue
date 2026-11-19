@@ -1,0 +1,39 @@
+test/OWNERS
+  h_32169613a39d35 4
+OWNERS
+  h_32169613a39d35 21-22,29-30,61-62,72-73
+  h_32169613a39d35 81-82,90-91,99-100,108-109
+OWNERS_ALIASES
+  s_8e4634e4604a6c::t_733d1c5ed73b04 50-51,60-62,70
+cmd/experimental/skills/OWNERS
+  h_32169613a39d35 7-8
+hack/releasing/krew-release-bot/OWNERS
+  h_32169613a39d35 5-6
+hack/testing/OWNERS
+  h_32169613a39d35 9-10,15-16
+pkg/util/testing/OWNERS
+  h_32169613a39d35 7-8
+pkg/util/testingjobs/OWNERS
+  h_32169613a39d35 7-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3576fa0ec93fe4d65335cc929677a8a6eb4d9d3c",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_8e4634e4604a6c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1cfbe-9059-7d40-9b2d-f446fb5339ba",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

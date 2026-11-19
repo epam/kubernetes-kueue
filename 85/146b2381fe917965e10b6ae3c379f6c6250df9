@@ -1,0 +1,19 @@
+cmd/kueueviz/backend/middleware/auth_test.go
+  s_930df8340c88c3::t_bb811f9c0d4371 21,25,32,190-222,343-403
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "85146b2381fe917965e10b6ae3c379f6c6250df9",
+  "prompts": {},
+  "sessions": {
+    "s_930df8340c88c3": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "b5c1997f-43e1-47ca-9742-469c4f8b82d0",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

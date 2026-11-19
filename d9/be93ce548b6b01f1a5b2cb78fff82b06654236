@@ -1,0 +1,21 @@
+.github/workflows/unit-coverage.yaml
+  s_c8e303f840d908::t_4d949b4ec01508 161
+hack/testing/unit-coverage-auth-re_test.sh
+  s_c8e303f840d908::t_1f823813da8f37 62,67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d9be93ce548b6b01f1a5b2cb78fff82b06654236",
+  "prompts": {},
+  "sessions": {
+    "s_c8e303f840d908": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6c2eaabe-1589-418e-b0d0-e9bcc07df876",
+        "model": "grok-4.7-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

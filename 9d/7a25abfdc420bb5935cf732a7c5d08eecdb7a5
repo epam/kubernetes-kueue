@@ -1,0 +1,19 @@
+test/e2e/singlecluster/extended/kuberay_test.go
+  s_2489a1c6177952::t_3e467c59726a1f 538-542,546,550,554-555,558-559,563
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "9d7a25abfdc420bb5935cf732a7c5d08eecdb7a5",
+  "prompts": {},
+  "sessions": {
+    "s_2489a1c6177952": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7be274d4-c827-4ce6-a3b9-909b77cca986",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

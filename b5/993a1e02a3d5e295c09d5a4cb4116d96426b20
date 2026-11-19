@@ -1,0 +1,19 @@
+Makefile
+  s_80e47e0654f8bb::t_8e7d708b0c67e4 78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "b5993a1e02a3d5e295c09d5a4cb4116d96426b20",
+  "prompts": {},
+  "sessions": {
+    "s_80e47e0654f8bb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "47496567-5199-429f-812f-82a23e7ab47f",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

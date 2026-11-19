@@ -1,0 +1,44 @@
+test/integration/singlecluster/tas/tas_test.go
+  s_ba5a60d81e0213::t_852c61dfc16298 3521
+  s_ba5a60d81e0213::t_84106dff359c48 3580
+  s_ba5a60d81e0213::t_f5633f58f76286 3447
+  s_ba5a60d81e0213::t_c7367b649c76b9 3454-3520,3522-3540,3544,3547-3552,3554-3555,3609
+  s_ba5a60d81e0213::t_3ee34f3420a639 3541-3543,3545-3546
+  s_ba5a60d81e0213::t_a09f7a6ebe77ab 3558-3560,3562
+  s_ba5a60d81e0213::t_59cd43d941cc39 3561
+  s_ba5a60d81e0213::t_336a33de544cbc 3553
+  s_ba5a60d81e0213::t_ca736b4ec40454 3448
+  s_ba5a60d81e0213::t_b7ef725bf69f80 3449-3452
+  s_ba5a60d81e0213::t_c2ea30226e9090 3453,3557
+  s_ba5a60d81e0213::t_2286a809104e02 3556,3563-3579,3581-3608
+pkg/controller/tas/topology_ungater.go
+  s_ba5a60d81e0213::t_a323148df9bd3b 478
+  s_ba5a60d81e0213::t_8556abf89793b6 476-477
+  s_ba5a60d81e0213::t_c1f94c4ff09fb0 470-475,479-480
+pkg/controller/tas/topology_ungater_test.go
+  s_ba5a60d81e0213::t_7622a8f489407d 2159-2160,2211
+  s_ba5a60d81e0213::t_41426ffd6d662e 2265-2266,2268-2270
+  s_ba5a60d81e0213::t_1934dbdb69d28c 2163
+  s_ba5a60d81e0213::t_c6910aeac6f1da 2161-2162,2164
+  s_ba5a60d81e0213::t_06c5f355f36892 2267
+  s_ba5a60d81e0213::t_cbabf64b97f453 2271-2324
+  s_ba5a60d81e0213::t_28c3a42870d170 2165-2210,2213-2222,2224-2263
+  s_ba5a60d81e0213::t_9d7fc7760822c1 2212,2223
+  s_ba5a60d81e0213::t_5c44129135ab32 2264
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "961c89a706bd40c66ada772de8840cf754c5f1f8",
+  "prompts": {},
+  "sessions": {
+    "s_ba5a60d81e0213": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "570dd35b-4bd2-48c2-9cd0-6fa94d03c2b8",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}

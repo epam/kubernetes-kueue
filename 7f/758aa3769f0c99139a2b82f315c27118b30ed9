@@ -1,0 +1,15 @@
+keps/NNNN-topology-spreading/README.md
+  h_47cee5fa694435 356,362
+  h_47cee5fa694435 357-361
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "7f758aa3769f0c99139a2b82f315c27118b30ed9",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

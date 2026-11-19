@@ -1,0 +1,32 @@
+test/integration/singlecluster/webhook/core/workload_test.go
+  s_04f1afe093206f::t_b11a6b40fc8bb9 255-269
+pkg/resources/requests.go
+  s_04f1afe093206f::t_505834f57a5acb 99-109
+pkg/webhooks/workload_webhook.go
+  s_04f1afe093206f::t_a5a9fe76c241a6 175,179-183
+pkg/workload/workload.go
+  s_04f1afe093206f::t_c1d7ab40f27085 644
+pkg/resources/requests_test.go
+  s_04f1afe093206f::t_a19ae90b2b8ebb 416-455
+pkg/workload/workload_test.go
+  s_04f1afe093206f::t_a750df5d0576f1 160-181
+pkg/webhooks/workload_webhook_test.go
+  s_04f1afe093206f::t_e165985056d087 109-166
+  s_04f1afe093206f::t_e6e444cf9eae4f 26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "81c80d14ea02c850faaed5854904702b49e2b729",
+  "prompts": {},
+  "sessions": {
+    "s_04f1afe093206f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5f42d237-e9b9-4ad2-920f-9bf47d7832a0",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,77 @@
+cmd/kueueviz/backend/handlers/websocket_handler_test.go
+  h_32169613a39d35 23,33,253,285,342,373,440,491,530-566
+hack/testing/e2e-kueueviz-rbac-bypass.sh
+  s_0fd3f4b8151709::t_adfe2c982ab420 81-82
+  s_0fd3f4b8151709::t_1bee9b2ee516b5 128-132
+  h_32169613a39d35 1-16,20-80,83-98,101-105,109-127,133-156
+  s_0fd3f4b8151709::t_f11dcf441cce48 99-100
+  s_0fd3f4b8151709::t_d44cb7c7e53d43 17-19
+  s_0fd3f4b8151709::t_6e2ae47c44b480 106-108
+cmd/kueueviz/frontend/src/Workloads.jsx
+  h_32169613a39d35 78-80,85,90
+cmd/kueueviz/backend/main.go
+  h_32169613a39d35 81,96-97
+cmd/kueueviz/backend/handlers/workloads_dashboard_test.go
+  h_32169613a39d35 28,93-94,122,127-128,130-131
+cmd/kueueviz/backend/handlers/workloads_dashboard.go
+  h_32169613a39d35 28,41-42,44,57-66,68-78,80,85,98,106-108,110,115,151-152,162-168,170
+  s_55505ba1511e6f::t_b6563201ff19b8 81
+hack/make/test.mk
+  h_32169613a39d35 827-828,837-839
+cmd/kueueviz/backend/handlers/namespaces.go
+  h_32169613a39d35 24,32-37,41,53-62,70-77,79-80
+charts/kueue/templates/kueueviz/clusterrole.yaml
+  h_32169613a39d35 39-41
+hack/processing-plan.yaml
+  h_32169613a39d35 664-666
+cmd/kueueviz/backend/middleware/auth.go
+  h_32169613a39d35 26,34,36,52-54,57-75,82,183,193-194,202,206,208,210,218,220,232,243-251,254-261,291-445
+cmd/kueueviz/backend/handlers/websocket_handler.go
+  h_32169613a39d35 66
+cmd/kueueviz/backend/handlers/workloads.go
+  h_32169613a39d35 28,45
+  h_32169613a39d35 47,67
+cmd/kueueviz/backend/handlers/handlers.go
+  s_55505ba1511e6f::t_5a84478cc2c420 66-70,96-97
+  s_55505ba1511e6f::t_57fc9a9199a7a4 73-79,120,135,148
+  h_32169613a39d35 21,26,28,38-40,50,54,65,71-72,80-95,100-107,112-119,122-124,127-134,137,141-147,151
+  h_32169613a39d35 108-109,121,136,149-150
+cmd/kueueviz/backend/handlers/api_handlers_test.go
+  h_32169613a39d35 20,22,29,32,34-35,38,131-285
+cmd/kueueviz/backend/handlers/local_queues.go
+  h_32169613a39d35 24,32-37,56-60,66
+  h_32169613a39d35 38,54,61,67,69
+cmd/kueueviz/frontend/src/LocalQueues.jsx
+  h_32169613a39d35 17,27-39,47,64-85,90-95
+cmd/kueueviz/backend/middleware/auth_test.go
+  h_32169613a39d35 21,25,32,66-69,193-225,346-406
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "3e84b458fcd159b67c2172b710badf6b7a381496",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_0fd3f4b8151709": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "ccf73428-735d-41e3-927f-15daef76022c",
+        "model": "unknown"
+      },
+      "human_author": null
+    },
+    "s_55505ba1511e6f": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "c9b58151-2a4d-4a30-8ddb-ea7438c84d69",
+        "model": "unknown"
+      },
+      "human_author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

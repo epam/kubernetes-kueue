@@ -1,0 +1,14 @@
+cmd/importer/pod/import.go
+  h_99f506dc258b88 208
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "5d77b7391e4200f8236b8f722090c4fc305c6983",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

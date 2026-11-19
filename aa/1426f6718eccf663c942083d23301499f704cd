@@ -1,0 +1,29 @@
+pkg/controller/jobframework/reconciler.go
+  h_99f506dc258b88 1655-1661,1663-1668
+pkg/controller/jobframework/reconciler_test.go
+  s_176f3118174ca2::t_a3e6cd6235ac7b 1492,1508,1512,1529
+  s_176f3118174ca2::t_2d92c59427c605 1434-1442
+  s_176f3118174ca2::t_ac9ab4fa818b34 1482-1488,1491,1511,1540-1543,1552,1585-1586
+  s_176f3118174ca2::t_b2f5a9d2a8707c 1461-1462
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "aa1426f6718eccf663c942083d23301499f704cd",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_176f3118174ca2": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "8407701c-5a84-47a0-a962-f189be1a067e",
+        "model": "copilot/gpt-5.6-sol"
+      },
+      "human_author": null
+    }
+  }
+}

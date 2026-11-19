@@ -1,0 +1,19 @@
+pkg/features/kube_features.go
+  s_7cc5008cc07019::t_fcacadc7b76bb1 576-581,888-889
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "f7c556c83a2d9cc66d0dae36b578173d3e28bfd2",
+  "prompts": {},
+  "sessions": {
+    "s_7cc5008cc07019": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "ace7d537-e482-4269-9118-feab7bbdf9e2",
+        "model": "cursor-grok-4.5-high"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

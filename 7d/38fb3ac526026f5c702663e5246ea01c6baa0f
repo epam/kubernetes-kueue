@@ -1,0 +1,280 @@
+test/integration/singlecluster/controller/jobs/pod/pod_controller_test.go
+  s_3f2a7044998c18::t_78bcb2aa8b2b9f 64
+  s_3f2a7044998c18::t_d533fc7c4dbf68 240,343,781,875,944-945,1014,1039-1040,1095,1159,1209,1250,1329,1362,1506,2143-2144,2512-2513,2727,3101,3122,3186,3207,3280,3303,3314,3391,4079,4360,4740,4801,5225,5321,5473
+  h_47cee5fa694435 217,279,327,399,432,709,763,855,922,996,1013,1083,1149,1312,1438,1497,1611,1617,1712,1718,1862,1886,1988,2110,2185,2275,2354,2410,2480,2792,2906,2958,3096,3181,3275,3385,3487,3489,3787,3997,4072,4159,4265,4358,4680,4721
+  s_3f2a7044998c18::t_f9c41382acbcbc 218,280,328,400,433,710,764,856,923,997,1084,1150,1313,1439,1498,1612,1713,1863,1887,1989,2111,2186,2276,2355,2411,2481,2793,2907,2959,3097,3182,3276,3386,3488,4681
+test/integration/singlecluster/importer/importer_test.go
+  s_3f2a7044998c18::t_482430465187f0 169
+  s_3f2a7044998c18::t_b8ed893d6440d7 37
+test/integration/singlecluster/controller/jobs/job/job_controller_test.go
+  s_3f2a7044998c18::t_598f547b5a6810 74
+  s_3f2a7044998c18::t_dfcc3bfd04dd96 5339,6177,6237
+  h_47cee5fa694435 310,369,814,960,995,1035,1161,1336,1377,1454,1524,1614,1625,1654,2762,3288,3763,3820,3879,3956,4058,4102,4193-4194,4288,4360,4464,4778,4966,5015,5080,5126,5178,5224,5270,5338,7335,7413,7458,7528,7553,7596,7603,7704,7711,7767,7776,7835,7844,7913,7957,8026,8092,8201,8270,8341
+  s_3f2a7044998c18::t_f9c41382acbcbc 311,370,815,961,996,1036,1162,1337,1378,1455,1525,1615,2763,3289,4059,4103,4967,5016,5081,5127,5179,5225
+test/integration/singlecluster/tas/tas_test.go
+  s_3f2a7044998c18::t_d52766c116a1a0 60
+  s_3f2a7044998c18::t_7207a1be7ee9c5 94,1250
+  h_47cee5fa694435 366,484,612,798,1001,1187,1435,1536,1589,1739,1813,2035,2166,2336,2489,2598,3353,3492,3639,3782,3821,3890,3974,4046,4211,4979,5151,5561,5772,5870,5998,6152,6387,6450,6606,6659,6737,6843,7049,7186,7306,7399,7524,7643,7752,7907,8030,8239,8300,8551,8609,8703,8755,9048,9491,9976,10175,10275,10381,10576
+test/util/behavioral/integration/pods.go
+  s_3f2a7044998c18::t_fc48db846199ae 1-58
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  h_47cee5fa694435 29,38,609
+test/integration/multikueue/setup_test.go
+  h_47cee5fa694435 42,55,786
+test/integration/singlecluster/scheduler/inadmissible/suite_test.go
+  h_47cee5fa694435 42,79
+test/integration/singlecluster/webhook/core/suite_test.go
+  h_47cee5fa694435 38,71
+test/integration/singlecluster/tas/tas_zero_count_group_test.go
+  h_47cee5fa694435 35,70,209
+test/integration/singlecluster/scheduler/fairsharing/refill_test.go
+  h_47cee5fa694435 24,29,128
+test/integration/singlecluster/controller/admissionchecks/provisioning/provisioning_test.go
+  h_47cee5fa694435 38,53,204,226,280,312,334,361,430,475,538,585,609,631,677,772,927,961,1038,1075,1152,1214,1281,1387,1439,1498,1609,1643,1733,1791,1829
+  s_3f2a7044998c18::t_f9c41382acbcbc 648,814
+test/integration/singlecluster/controller/jobs/paddlejob/paddlejob_controller_test.go
+  h_47cee5fa694435 47,367
+test/integration/singlecluster/controller/jobs/pod/deployment_job_uid_test.go
+  h_47cee5fa694435 51,68
+test/integration/singlecluster/controller/jobs/jaxjob/jaxjob_controller_test.go
+  h_47cee5fa694435 50,253,289,593,645
+  s_3f2a7044998c18::t_f9c41382acbcbc 254,290,594
+test/integration/singlecluster/controller/dra/dra_test.go
+  h_47cee5fa694435 30,40,365,1590
+test/integration/singlecluster/controller/jobs/rayjob/suite_test.go
+  h_47cee5fa694435 42,97
+test/integration/multikueue/no_gc_test.go
+  h_47cee5fa694435 29,39,159,177,214
+test/integration/singlecluster/scheduler/configurablepreemptions/cases_test.go
+  h_47cee5fa694435 37,101
+test/integration/multikueue/pod_test.go
+  h_47cee5fa694435 33,42,82,100,198,213,354,409
+test/integration/singlecluster/scheduler/fairsharing/dra_fair_sharing_test.go
+  h_47cee5fa694435 29,37,200,243,423,446
+test/integration/singlecluster/controller/jobs/appwrapper/appwrapper_controller_test.go
+  h_47cee5fa694435 55,197,268,461,501,658,669,695,926
+  s_3f2a7044998c18::t_f9c41382acbcbc 198,269,462,502,659,696
+test/integration/singlecluster/controller/jobs/raycluster/suite_test.go
+  h_47cee5fa694435 51,130
+test/integration/singlecluster/controller/jobs/sparkapplication/sparkapplication_controller_test.go
+  h_47cee5fa694435 46,406
+test/integration/singlecluster/scheduler/suite_test.go
+  h_47cee5fa694435 49,120
+test/integration/singlecluster/scheduler/excluderesources/scheduler_test.go
+  h_47cee5fa694435 35,252
+cmd/experimental/kueue-populator/test/integration/suite_test.go
+  h_47cee5fa694435 39,90
+test/integration/singlecluster/scheduler/configurablepreemptions/suite_test.go
+  h_47cee5fa694435 47,99
+test/integration/singlecluster/controller/jobs/statefulset/suite_test.go
+  h_47cee5fa694435 47,89
+test/integration/singlecluster/scheduler/scheduler_request_scaling_test.go
+  h_47cee5fa694435 26,30,129
+test/integration/multikueue/trainjob_test.go
+  h_47cee5fa694435 32,40,93
+test/integration/singlecluster/controller/core/clusterqueue_controller_test.go
+  h_47cee5fa694435 37,47,247,357,461,522,561,600,637,1059,1081,1154,1177,1199,1239,1256,1276,1286
+test/integration/singlecluster/controller/jobs/mpijob/suite_test.go
+  h_47cee5fa694435 50,129
+test/integration/multikueue/dra_test.go
+  h_47cee5fa694435 31,40,191,209,290
+test/integration/singlecluster/importer/suite_test.go
+  h_47cee5fa694435 42,73
+test/performance/scheduler/runner/generator/topology_generator.go
+  h_47cee5fa694435 32,98
+test/util/behavioral/integration/scheduling.go
+  h_47cee5fa694435 1-26,27-32,33,34-70
+test/integration/singlecluster/scheduler/fairsharing/fair_sharing_test.go
+  h_47cee5fa694435 44,185,190,195,200,211,306,321,755-756,935,968,994,1021,1092,1145,1179,1288,1320,1350,1356,1566,1806,1858,1882,1920
+test/integration/singlecluster/tas/tas_preserve_flavor_scan_progress_test.go
+  h_47cee5fa694435 33,94
+test/integration/singlecluster/scheduler/podsready/suite_test.go
+  h_47cee5fa694435 41,99
+test/integration/singlecluster/scheduler/preemption_test.go
+  h_47cee5fa694435 34,45,250,324,502
+test/integration/multikueue/tas/tas_test.go
+  h_47cee5fa694435 45,244-245
+test/integration/singlecluster/controller/core/custom_labels_test.go
+  h_47cee5fa694435 28,39,1077
+test/integration/singlecluster/controller/jobs/appwrapper/suite_test.go
+  h_47cee5fa694435 44,100
+test/integration/singlecluster/controller/dra/suite_test.go
+  h_47cee5fa694435 43,142
+test/integration/singlecluster/controller/jobs/paddlejob/suite_test.go
+  h_47cee5fa694435 44,100
+test/integration/multikueue/tas/suite_test.go
+  h_47cee5fa694435 54,130
+test/integration/singlecluster/scheduler/resourcetransformations/resource_transformations_test.go
+  h_47cee5fa694435 27,32,394
+test/integration/singlecluster/controller/jobs/job/job_controller_tas_replacement_test.go
+  h_47cee5fa694435 40,67,129
+test/integration/multikueue/kuberay_test.go
+  h_47cee5fa694435 33,48,89,227,232,365,377,417,464
+test/integration/singlecluster/controller/jobs/leaderworkerset/suite_test.go
+  h_47cee5fa694435 48,92
+test/integration/singlecluster/scheduler/excluderesources/suite_test.go
+  h_47cee5fa694435 45,95
+test/integration/singlecluster/controller/core/suite_test.go
+  h_47cee5fa694435 43,152
+test/integration/singlecluster/controller/jobs/jobset/suite_test.go
+  h_47cee5fa694435 44,97
+test/integration/singlecluster/kueuectl/list_test.go
+  h_47cee5fa694435 32,38,354,358,362
+test/integration/singlecluster/scheduler/workload_controller_test.go
+  h_47cee5fa694435 31,42,574,602
+test/integration/singlecluster/controller/core/localqueue_controller_test.go
+  h_47cee5fa694435 26,34,269,355,466
+test/integration/singlecluster/controller/jobs/rayjob/rayjob_controller_test.go
+  h_47cee5fa694435 36,49,187,230,404,415,442,834
+  s_3f2a7044998c18::t_f9c41382acbcbc 188,231,405,443,835
+test/integration/singlecluster/scheduler/scheduler_test.go
+  h_47cee5fa694435 46,310,326,395,457,486,510,546,582,646,744,775,796,1509,1516,3082,3211,3268,3279,3368,3539,3548,3595,4084,4610
+test/util/behavioral/integration/factory.go
+  h_47cee5fa694435 1-39
+test/integration/singlecluster/scheduler/was/was_test.go
+  h_47cee5fa694435 39,103,640
+test/integration/singlecluster/controller/jobs/tfjob/tfjob_controller_test.go
+  h_47cee5fa694435 47,381
+test/integration/singlecluster/controller/jobs/jobset/jobset_controller_test.go
+  h_47cee5fa694435 54,199,254,336,465,619,661,837,848,874,1225
+  s_3f2a7044998c18::t_f9c41382acbcbc 200,255,337,466,620,662,838,875
+test/util/behavioral/integration/integration_objects.go
+  h_47cee5fa694435 1-25,26,27-55
+test/integration/singlecluster/scheduler/resourcetransformations/suite_test.go
+  h_47cee5fa694435 41,84
+test/integration/singlecluster/tas/suite_test.go
+  h_47cee5fa694435 49,119
+test/integration/singlecluster/controller/jobs/tfjob/suite_test.go
+  h_47cee5fa694435 44,100
+test/integration/singlecluster/controller/jobs/job/suite_test.go
+  h_47cee5fa694435 50,142
+test/integration/multikueue/cluster_role_sharing_test.go
+  h_47cee5fa694435 35,43,228,233,261,411,416,444,601
+test/integration/singlecluster/webhook/jobs/suite_test.go
+  h_47cee5fa694435 39,82
+test/integration/singlecluster/controller/core/workload_backoff_accounting_test.go
+  h_47cee5fa694435 29,37,131
+test/integration/multikueue/helpers_test.go
+  h_47cee5fa694435 37,45,78,94,221
+test/integration/singlecluster/scheduler/podsready/scheduler_test.go
+  h_47cee5fa694435 31,42,364,378,414,560,566,780
+test/integration/singlecluster/tas/tas_topology_spreading_test.go
+  h_47cee5fa694435 39,162
+test/integration/multikueue/provisioning_test.go
+  h_47cee5fa694435 32,41,227,245,322,341
+test/integration/multikueue/external_job_test.go
+  h_47cee5fa694435 50,94,308,412,489,532
+test/integration/singlecluster/controller/concurrentadmission/suite_test.go
+  h_47cee5fa694435 42,81
+test/integration/singlecluster/kueuectl/suite_test.go
+  h_47cee5fa694435 43,99
+test/util/behavioral/integration/integration_workload.go
+  h_47cee5fa694435 1-30,31,32-119
+test/util/behavioral/integration/integration_pods.go
+  h_47cee5fa694435 1-39
+test/integration/singlecluster/scheduler/fairsharing/suite_test.go
+  h_47cee5fa694435 45,108
+test/integration/singlecluster/controller/jobs/xgboostjob/suite_test.go
+  h_47cee5fa694435 44,100
+test/integration/singlecluster/controller/jobs/trainjob/trainjob_controller_test.go
+  h_47cee5fa694435 50,204,284,676
+  s_3f2a7044998c18::t_f9c41382acbcbc 205,285
+test/integration/multikueue/scheduler/suite_test.go
+  h_47cee5fa694435 52,128
+test/integration/singlecluster/scheduler/delayedadmission/suite_test.go
+  h_47cee5fa694435 41,80
+test/integration/singlecluster/controller/jobs/rayservice/suite_test.go
+  h_47cee5fa694435 44,79
+test/integration/multikueue/dispatcher_test.go
+  h_47cee5fa694435 33,43,166,189,345,419,470,666,689,885
+test/integration/multikueue/suite_test.go
+  h_47cee5fa694435 76,212
+test/integration/singlecluster/controller/jobs/sparkapplication/suite_test.go
+  h_47cee5fa694435 45,103
+test/integration/singlecluster/webhook/core/workload_test.go
+  h_47cee5fa694435 33,43,636,1104,1126,1143,1216,1238,1240,1249,1262,1264,1413
+  s_3f2a7044998c18::t_f9c41382acbcbc 637,1144
+test/integration/multikueue/elasticjob_test.go
+  h_47cee5fa694435 34,46,115,131,211,245,395,402,441,519,532,587,591
+test/integration/singlecluster/controller/admissionchecks/provisioning/suite_test.go
+  h_47cee5fa694435 44,112
+test/integration/singlecluster/controller/jobs/sparkapplication/sparkapplication_test_util.go
+  h_47cee5fa694435 33,41,115,185,195,227
+  s_3f2a7044998c18::t_f9c41382acbcbc 116,186,228
+test/integration/singlecluster/controller/jobs/trainjob/suite_test.go
+  h_47cee5fa694435 45,108
+test/integration/multikueue/enabled_integration_test.go
+  h_47cee5fa694435 36,46,141,157,245
+test/integration/singlecluster/scheduler/fairsharing/metrics_test.go
+  h_47cee5fa694435 28,34,1209,1216
+test/integration/singlecluster/controller/jobs/jaxjob/suite_test.go
+  h_47cee5fa694435 44,100
+test/integration/singlecluster/controller/jobs/pytorchjob/suite_test.go
+  h_47cee5fa694435 44,100
+test/integration/singlecluster/scheduler/was/suite_test.go
+  h_47cee5fa694435 54,151
+test/integration/singlecluster/controller/jobs/mpijob/mpijob_controller_test.go
+  h_47cee5fa694435 54,172,234,396,437,670,681,708,954,1006,1260,1310,1321
+  s_3f2a7044998c18::t_f9c41382acbcbc 173,205,235,397,438,671,709,955,1263
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_test.go
+  h_47cee5fa694435 61,182,227,423,434,461,1187,1233,1307
+  s_3f2a7044998c18::t_f9c41382acbcbc 183,228,424,462
+test/integration/singlecluster/controller/jobs/pytorchjob/pytorchjob_controller_test.go
+  h_47cee5fa694435 50,264,300,612,664
+  s_3f2a7044998c18::t_f9c41382acbcbc 265,301,613
+test/integration/singlecluster/webhook/jobs/raycluster_webhook_test.go
+  h_47cee5fa694435 27,43,208
+  s_3f2a7044998c18::t_f9c41382acbcbc 209
+test/integration/singlecluster/controller/core/workload_controller_test.go
+  h_47cee5fa694435 33,47,388,448,506,600,705,843,880,921,1413,1445,1666,1764,1844,1915,1951
+  s_3f2a7044998c18::t_f9c41382acbcbc 1414,1446,1667,1765,1845,1916,1952
+test/integration/singlecluster/controller/jobs/pod/suite_test.go
+  h_47cee5fa694435 48,137
+test/integration/multikueue/jobs_test.go
+  h_47cee5fa694435 37,50,88,106,185,190,240,245,297,315,423,443,517,534,692,710,764,783
+test/integration/singlecluster/controller/jobs/kubeflow/kubeflowjob.go
+  h_47cee5fa694435 34,43,136,179,253,264,294
+  s_3f2a7044998c18::t_f9c41382acbcbc 137,180,254,295
+test/integration/singlecluster/controller/jobs/xgboostjob/xgboostjob_controller_test.go
+  h_47cee5fa694435 47,364
+test/integration/singlecluster/controller/jobs/rayclusterwebhook/suite_test.go
+  h_47cee5fa694435 57,102
+test/integration/singlecluster/scheduler/quotacheckstrategy/suite_test.go
+  h_47cee5fa694435 41,82
+test/integration/singlecluster/tas/tas_workload_slice_refill_test.go
+  h_47cee5fa694435 36,77,166
+test/integration/singlecluster/controller/jobs/pod/pod_custom_metric_labels_test.go
+  h_47cee5fa694435 25,36,111
+  s_3f2a7044998c18::t_f9c41382acbcbc 112
+test/e2e/sequential/baseline/ha_test.go
+  h_47cee5fa694435 29
+test/integration/singlecluster/controller/concurrentadmission/concurrent_admission_test.go
+  h_47cee5fa694435 32
+test/integration/singlecluster/controller/core/workload_preemption_eviction_metrics_test.go
+  h_47cee5fa694435 26
+test/integration/singlecluster/scheduler/delayedadmission/delayed_admission_test.go
+  h_47cee5fa694435 25
+test/integration/singlecluster/tas/tas_secondpass_fence_test.go
+  h_47cee5fa694435 34,109
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7d38fb3ac526026f5c702663e5246ea01c6baa0f",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_3f2a7044998c18": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1797fa75-7e09-4f37-b3f9-75d36f814ed0",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

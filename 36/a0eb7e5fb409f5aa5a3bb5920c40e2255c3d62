@@ -1,0 +1,28 @@
+OWNERS
+  h_32169613a39d35 21-22,29-30,61-62,72-73,81-82,90-91,99-100,108-109
+OWNERS_ALIASES
+  h_32169613a39d35 45-46,55-57,65
+cmd/experimental/skills/OWNERS
+  h_32169613a39d35 7-8
+hack/releasing/krew-release-bot/OWNERS
+  h_32169613a39d35 5-6
+hack/testing/OWNERS
+  h_32169613a39d35 9-10,15-16
+pkg/util/testing/OWNERS
+  h_32169613a39d35 7-8
+pkg/util/testingjobs/OWNERS
+  h_32169613a39d35 7-8
+test/OWNERS
+  h_32169613a39d35 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "36a0eb7e5fb409f5aa5a3bb5920c40e2255c3d62",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

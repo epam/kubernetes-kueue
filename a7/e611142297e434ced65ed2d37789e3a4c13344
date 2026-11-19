@@ -1,0 +1,20 @@
+test/e2e/singlecluster/extended/suite_test.go
+  h_47cee5fa694435 57,63
+hack/testing/e2e-common.sh
+  h_47cee5fa694435 178,183,493,496,560,563
+test/e2e/singlecluster/extended/appwrapper_test.go
+  h_47cee5fa694435 38
+test/e2e/singlecluster/extended/jobset_test.go
+  h_47cee5fa694435 34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "a7e611142297e434ced65ed2d37789e3a4c13344",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

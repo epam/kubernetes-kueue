@@ -1,0 +1,32 @@
+pkg/controller/admissionchecks/provisioning/controller_test.go
+  s_0650d81c9374b0::t_4f7298393bb705 418
+  s_0650d81c9374b0::t_9c3a44124527ac 52,261-263,285-417,419-433,739,2081-2129,2756-2758
+pkg/controller/admissionchecks/provisioning/controller.go
+  s_0650d81c9374b0::t_8f9b31531d2fc0 20,27,326,328-329,460,1018-1062,1072,1086-1092,1094-1102,1104-1105,1107-1124,1127,1130,1132,1138-1145
+test/integration/singlecluster/controller/admissionchecks/provisioning/provisioning_test.go
+  s_38d9e27474d78d::t_65856ace363e62 1616,1699,1743-1831
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c6f061588cce32030d01dd9375f456eda3133024",
+  "prompts": {},
+  "sessions": {
+    "s_0650d81c9374b0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "837da9f2-114a-49c6-8815-ea70b1a18605",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_38d9e27474d78d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "321941bd-e7ec-491a-9cd0-5cdaa56d2136",
+        "model": "unknown"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

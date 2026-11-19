@@ -1,0 +1,20 @@
+.github/workflows/release-utils.yml
+  h_47cee5fa694435 292,299-305,309-316,319-321,323-325,337,344-352,359-366,370,372,446-451,457
+.github/actions/create-draft-release/action.yml
+  h_47cee5fa694435 1-10,11-13,14-26,27,28-29,30,31-35,36-38,40-45,47,51,52,53-59,60,61-64,65,66-78,79,80-83,84,85-88
+.github/actions/create-release-tag/action.yml
+  h_47cee5fa694435 1-78,82,84,87
+.github/actions/publish-release/action.yml
+  h_47cee5fa694435 18,20,42,47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "0cd592545417cc22d6d9cc8d265caba5c58f799e",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+cmd/importer/cache/cache.go
+  s_b23e3c7fcfd872::t_9ce9aed8c0644c 49-50
+cmd/importer/pod/check_test.go
+  s_b23e3c7fcfd872::t_084e4a8e432b5b 113,114-119,136,137-145,146
+  s_b23e3c7fcfd872::t_9e984facf18c85 136,137-145,146
+  s_b23e3c7fcfd872::t_858cbb216460e4 113,114-119
+cmd/importer/pod/import_test.go
+  s_b23e3c7fcfd872::t_f313150092912d 153,156-159,161-167,169-174
+  s_b23e3c7fcfd872::t_298c52420ab49b 153,156-159,161-167,169-174
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "e3209bd8014fa575144d9eca78d6aba2e78f4ddb",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_06eff7e3c8c407": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "f52d0b82-e1f2-4c81-9631-63d000713095",
+        "model": "claude-sonnet-4.6"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    },
+    "s_b23e3c7fcfd872": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "e4a39f7a-e5ca-4e5d-9ae0-a34cbbe9ea21",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

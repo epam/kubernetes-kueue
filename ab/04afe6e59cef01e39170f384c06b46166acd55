@@ -1,0 +1,19 @@
+Makefile-test.mk
+  s_30b47ab0b26002::t_e4b630d2ac05e6 16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "ab04afe6e59cef01e39170f384c06b46166acd55",
+  "prompts": {},
+  "sessions": {
+    "s_30b47ab0b26002": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1bdd8faa-5131-4b7d-ab0c-199224beadc2",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

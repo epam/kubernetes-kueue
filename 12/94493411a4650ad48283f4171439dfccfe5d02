@@ -1,0 +1,26 @@
+Makefile
+  s_d6ced69f87f9d9::t_15a15181e048c9 33-34
+  s_d6ced69f87f9d9::t_51861881961f2f 543
+  s_d6ced69f87f9d9::t_87cf5479871079 555
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "1294493411a4650ad48283f4171439dfccfe5d02",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_d6ced69f87f9d9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "902f6e55-f6e8-458c-b93f-ed80fdf36c0f",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

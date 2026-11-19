@@ -1,0 +1,16 @@
+pkg/controller/admissionchecks/multikueue/workload.go
+  h_32169613a39d35 757-759,761,946-997,1001-1003
+pkg/controller/admissionchecks/multikueue/workload_test.go
+  h_32169613a39d35 5127-5416
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "462add276ea9d9fa047c845765d8042b61a2da3f",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}

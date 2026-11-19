@@ -1,0 +1,21 @@
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_60ff1771ed4908::t_fb32689ab5b31e 417
+pkg/workload/patching/patching_test.go
+  s_60ff1771ed4908::t_acab288d308436 59,66,69,72,80-82,88,97,105-107,116,123-124,131,139,146-148,156,163-165,174,181-182,188,195,202-205,223,230-231,234,236,238,240-245,247-251,253-256,258-576,578-585,587-590,592-614,617-619,621-624,626-632
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.10",
+  "base_commit_sha": "86f9c82ad854c7ab3e5152c8e10ac1f754fa1aa6",
+  "prompts": {},
+  "sessions": {
+    "s_60ff1771ed4908": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "53b9c678-2ee6-4b81-a49d-f65e5995271d",
+        "model": "unknown"
+      },
+      "human_author": null
+    }
+  }
+}

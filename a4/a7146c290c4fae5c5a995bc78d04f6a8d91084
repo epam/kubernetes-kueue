@@ -1,0 +1,30 @@
+pkg/controller/core/cohort_controller_test.go
+  s_38d9e27474d78d::t_3b60532c522618 35,39,734-846,848
+  s_38d9e27474d78d::t_7c12e27e1be814 847,849
+pkg/controller/core/clusterqueue_controller_test.go
+  s_38d9e27474d78d::t_3b60532c522618 772,775-781,784,786,788-796,798,800-805,812,851-852,890-904
+pkg/controller/core/cohort_controller.go
+  s_38d9e27474d78d::t_3b60532c522618 254,256-257,264-272
+pkg/metrics/custom_labels.go
+  s_38d9e27474d78d::t_3b60532c522618 100-116,150-168,277,280-283
+pkg/metrics/metrics.go
+  s_38d9e27474d78d::t_3b60532c522618 20,1147-1157,1160,1179-1182,1184,1187-1188,1191,1207-1215,1217
+pkg/metrics/metrics_test.go
+  s_38d9e27474d78d::t_3b60532c522618 34,371-426,736-774
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a4a7146c290c4fae5c5a995bc78d04f6a8d91084",
+  "prompts": {},
+  "sessions": {
+    "s_38d9e27474d78d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "321941bd-e7ec-491a-9cd0-5cdaa56d2136",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

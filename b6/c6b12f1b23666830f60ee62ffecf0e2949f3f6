@@ -1,0 +1,47 @@
+keps/77-dynamically-sized-jobs/README.md
+  s_4501db8e1f44ea::t_f68038a1b22467 355-356,373
+  s_4501db8e1f44ea::t_2eb3d4db1bacdf 21,206-218,395,399-401
+keps/12100-partial-scaleup-for-elasticjob/README.md
+  s_25509777d66115::t_1533b44a4eb790 58,67,97
+  h_99f506dc258b88 275-277
+  s_dcae80d632ea2f::t_b0098deb54a758 30,47,260,268-274,411,419-420
+keps/12100-partial-scaleup-for-elasticjob/kep.yaml
+  h_99f506dc258b88 18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b6c6b12f1b23666830f60ee62ffecf0e2949f3f6",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_25509777d66115": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f093a414-856a-4c64-b90b-0dac450c882c",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    },
+    "s_4501db8e1f44ea": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "9e21fc72-6d80-4731-b4c1-8e18675af9c4",
+        "model": "copilot/claude-sonnet-5.5"
+      },
+      "human_author": null
+    },
+    "s_dcae80d632ea2f": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "cc70b79d-e8b2-4bf4-8126-b12e570b8116",
+        "model": "unknown"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

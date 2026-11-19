@@ -1,0 +1,14 @@
+hack/cherry_pick_pull.sh
+  h_47cee5fa694435 245
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "696fbdb24a65064a967ec6253d7b3af64323fe3d",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

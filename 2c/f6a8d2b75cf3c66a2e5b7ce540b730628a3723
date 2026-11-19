@@ -1,0 +1,21 @@
+pkg/cache/scheduler/tas_flavor_snapshot.go
+  s_6ebe5b9ace332d::t_31d968bca1cc40 756,759-760,817,975-976,1314-1317,1319
+pkg/cache/scheduler/tas_flavor_snapshot_test.go
+  s_6ebe5b9ace332d::t_4d4be2d71ae58d 999-1244
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "2cf6a8d2b75cf3c66a2e5b7ce540b730628a3723",
+  "prompts": {},
+  "sessions": {
+    "s_6ebe5b9ace332d": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "cf326058-4893-4fdc-ace4-f8ca31d79d2c",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

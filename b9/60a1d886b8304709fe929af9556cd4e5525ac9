@@ -1,0 +1,21 @@
+hack/testing/ray-mini/Dockerfile
+  h_e4bdc46d73e6f7 1,6
+hack/testing/e2e-common.sh
+  s_63cf3203757a3e::t_4af2e2d4fe8867 44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "b960a1d886b8304709fe929af9556cd4e5525ac9",
+  "prompts": {},
+  "sessions": {
+    "s_63cf3203757a3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "df05ca90-0fdb-45c8-9420-1cb4cb76fcff",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}

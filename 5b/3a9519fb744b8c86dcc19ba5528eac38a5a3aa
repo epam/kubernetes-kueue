@@ -1,0 +1,20 @@
+hack/releasing/log_to_issue.py
+  s_07c659350600da::t_2ff365d51af6ea 41
+  s_07c659350600da::t_19c3344d58d809 20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "5b3a9519fb744b8c86dcc19ba5528eac38a5a3aa",
+  "prompts": {},
+  "sessions": {
+    "s_07c659350600da": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "14f6483a-1988-4350-ae8b-3c811897a0de",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

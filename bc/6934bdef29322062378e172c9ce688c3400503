@@ -1,0 +1,24 @@
+pkg/controller/jobframework/reconciler.go
+  s_d9bf326cec2bcc::t_cdaada6ab273e3 618-632,636,640,648-649,652,654,657-659,667-669
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bc6934bdef29322062378e172c9ce688c3400503",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_d9bf326cec2bcc": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "d015470f-d174-4c8b-9e87-8419f30a6f47",
+        "model": "copilot/claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}

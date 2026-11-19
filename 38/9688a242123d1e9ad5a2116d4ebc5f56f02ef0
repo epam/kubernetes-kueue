@@ -1,0 +1,50 @@
+hack/testing/secretreader/Dockerfile
+  s_728a843956d289::t_cfa5741e8babfb 8-10
+hack/tools/go.mod
+  s_4a10f8891a0ff0::t_cda369ac59a603 40
+test/util/e2e.go
+  s_728a843956d289::t_c51d049b44643d 651
+go.mod
+  s_4a10f8891a0ff0::t_98ace234e89f1c 39,43,78-91,152
+  s_4a10f8891a0ff0::t_0c06a2d976287b 162
+pkg/controller/admissionchecks/multikueue/multikueuecluster.go
+  s_4a10f8891a0ff0::t_68869fa2ae2199 53
+  s_4a10f8891a0ff0::t_265699ef478a57 625
+test/e2e/multikueue/sequential/e2e_test.go
+  s_728a843956d289::t_9d12067b6f75ab 474-479
+  s_4a10f8891a0ff0::t_ed89356533ba6a 493-500
+  s_4a10f8891a0ff0::t_b49bdc0da9c312 532
+  s_728a843956d289::t_df3dbde35ed829 551
+hack/testing/e2e-common.sh
+  s_728a843956d289::t_ef6d764887cbf6 71-76
+  s_728a843956d289::t_33e1160a9a5ba2 239-247
+  s_4a10f8891a0ff0::t_70e71691e7ecef 554,556
+  s_728a843956d289::t_6ea01880c98b8d 555
+pkg/controller/admissionchecks/multikueue/controllers.go
+  s_4a10f8891a0ff0::t_1a2447b3734f4d 22
+  s_4a10f8891a0ff0::t_884eb8789d6196 138,140,145
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "389688a242123d1e9ad5a2116d4ebc5f56f02ef0",
+  "prompts": {},
+  "sessions": {
+    "s_4a10f8891a0ff0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "131eab45-45f1-400d-bcf0-07e7a563ce3f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    },
+    "s_728a843956d289": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "04c057b6-41c5-4d99-b7de-1d998524ccd9",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.github/workflows/openvex.yaml
+  s_05a41ca25cbd78::t_079148a0d20752 18-19
+.github/workflows/sbom.yaml
+  s_05a41ca25cbd78::t_66077a5fda0966 19-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "07690741b35db3d7dad2184032e88b95d8126e1d",
+  "prompts": {},
+  "sessions": {
+    "s_05a41ca25cbd78": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "168c1b50-b7a5-4a91-9a24-822ffbcfa44b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

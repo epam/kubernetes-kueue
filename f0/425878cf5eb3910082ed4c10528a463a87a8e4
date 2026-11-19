@@ -1,0 +1,22 @@
+test/e2e/singlecluster/baseline/visibility_test.go
+  s_85ad8f56453934::t_30321a1058d973 628
+  s_85ad8f56453934::t_a9f80721cb88a6 659-661,664-668,672
+  s_85ad8f56453934::t_effcc6a5920e79 605-606,608-612,614-627,629-634,647-648,651-658,662-663,669-671,673-679,681-684
+  s_85ad8f56453934::t_2788c9bccc7c6e 604,607,613,635-646,649-650,680,685-686
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f0425878cf5eb3910082ed4c10528a463a87a8e4",
+  "prompts": {},
+  "sessions": {
+    "s_85ad8f56453934": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "40467806-3b05-4055-96ef-92806d8866ab",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}

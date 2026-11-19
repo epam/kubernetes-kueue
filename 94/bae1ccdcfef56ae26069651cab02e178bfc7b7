@@ -1,0 +1,28 @@
+cmd/importer/pod/check_test.go
+  h_99f506dc258b88 32,270-323
+  h_99f506dc258b88 324-327
+cmd/importer/pod/import.go
+  s_ba4fe21cefce22::t_7b5fda313b2cea 236-238
+  h_99f506dc258b88 113,115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "94bae1ccdcfef56ae26069651cab02e178bfc7b7",
+  "prompts": {},
+  "humans": {
+    "h_99f506dc258b88": {
+      "author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_ba4fe21cefce22": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "100c54a0-5ca9-4c0c-8209-97da7691f766",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Michal Szadkowski <michal_szadkowski@epam.com>"
+    }
+  }
+}

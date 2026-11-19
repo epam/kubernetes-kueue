@@ -1,0 +1,14 @@
+hack/releasing/wait_for_images.sh
+  h_47cee5fa694435 22,27-28,33,39-40,47-58,137-138,144-150
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "47f6805f038404db3d7f235dbdb178cc82fee327",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

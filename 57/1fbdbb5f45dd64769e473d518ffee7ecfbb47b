@@ -1,0 +1,26 @@
+pkg/features/kube_features.go
+  s_6d441cc3dffcc2::t_1bdc3298a1a93f 500
+pkg/controller/admissionchecks/provisioning/controller_test.go
+  s_6d441cc3dffcc2::t_d2e469a2a8534e 553,643,732,994,1024,1070,1096,1297,1346,1478,1527,1687,1739
+pkg/controller/admissionchecks/provisioning/controller.go
+  s_6d441cc3dffcc2::t_2d5d89713699b1 763
+  s_6d441cc3dffcc2::t_678eb12dcdc9f4 459-487
+  s_6d441cc3dffcc2::t_2004d7865a8f71 239-244
+  s_6d441cc3dffcc2::t_a8b83e49c7ec3d 488
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "571fbdbb5f45dd64769e473d518ffee7ecfbb47b",
+  "prompts": {},
+  "sessions": {
+    "s_6d441cc3dffcc2": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "e67518a6-6950-4228-a47a-d340a3d5dba3",
+        "model": "grok-4.5"
+      },
+      "human_author": "vladikkuzn <vladikkuzn1@gmail.com>"
+    }
+  }
+}
