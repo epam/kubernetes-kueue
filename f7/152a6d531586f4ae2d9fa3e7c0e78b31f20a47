@@ -1,0 +1,21 @@
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_8e4634e4604a6c::t_aa46badf9dd0d1 757-759,761,946-997,1001-1003
+pkg/controller/admissionchecks/multikueue/workload_test.go
+  s_8e4634e4604a6c::t_fb96abc1b8df9e 5127-5416
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f7152a6d531586f4ae2d9fa3e7c0e78b31f20a47",
+  "prompts": {},
+  "sessions": {
+    "s_8e4634e4604a6c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1cfbe-9059-7d40-9b2d-f446fb5339ba",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": null
+    }
+  }
+}
