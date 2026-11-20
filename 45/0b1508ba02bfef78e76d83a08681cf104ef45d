@@ -29,7 +29,7 @@ pkg/util/testingjobs/leaderworkerset/wrappers.go
 pkg/controller/jobs/statefulset/statefulset_webhook_test.go
   h_027f582e324e2c 42,1082-1337,1507
 pkg/features/kube_features.go
-  h_027f582e324e2c 1036,1051,1060-1073,1649,1654-1656
+  h_027f582e324e2c 1036,1051,1059-1073,1649,1653-1656
 ---
 {
   "schema_version": "authorship/3.0.0",
