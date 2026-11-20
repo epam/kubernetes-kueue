@@ -1,0 +1,41 @@
+pkg/cache/scheduler/fair_sharing.go
+  s_36ad0553f820b5::t_54bf54945a6436 162-166,174-180
+pkg/cache/scheduler/cache.go
+  s_36ad0553f820b5::t_43dac88841c2b5 648,1111,1134
+pkg/cache/scheduler/cohort_snapshot.go
+  s_36ad0553f820b5::t_43dac88841c2b5 71
+pkg/cache/scheduler/fair_sharing_test.go
+  s_36ad0553f820b5::t_43dac88841c2b5 1125,1136,1154,1165,1358
+  s_36ad0553f820b5::t_7ff781b17684a6 408
+  s_36ad0553f820b5::t_1f88581f136f77 435
+  s_36ad0553f820b5::t_629275d37e489e 314-315
+  h_027f582e324e2c 312
+  s_36ad0553f820b5::t_da9d565bfedfa9 340
+  s_36ad0553f820b5::t_90db68e667e0b6 361-362
+  s_36ad0553f820b5::t_996bbe1c6452da 387
+pkg/cache/scheduler/clusterqueue.go
+  s_36ad0553f820b5::t_43dac88841c2b5 730
+pkg/cache/scheduler/clusterqueue_snapshot.go
+  s_36ad0553f820b5::t_43dac88841c2b5 222
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a01f2c3837ef7f3b50f4445963d2f895055e0069",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  },
+  "sessions": {
+    "s_36ad0553f820b5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "da2eb4f1-5d15-4f9d-ab90-a69be6dc7afa",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+pkg/controller/jobframework/validation.go
+  h_027f582e324e2c 20,37,51,55,347-421
+pkg/controller/jobframework/validation_test.go
+  h_027f582e324e2c 45-46,48,130-134,328-441,446-447
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter.go
+  h_027f582e324e2c 25-26,181-185
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  h_027f582e324e2c 272-274,475,501-504,507-508,511,520-525,536,540-547
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  h_027f582e324e2c 1639-1672,1706-1711,1725-1730,1743-2768
+pkg/controller/jobs/statefulset/statefulset_webhook.go
+  h_027f582e324e2c 226-234
+pkg/controller/jobs/statefulset/statefulset_webhook_test.go
+  h_027f582e324e2c 42,1082-1337,1507
+pkg/features/kube_features.go
+  h_027f582e324e2c 1036-1050,1618-1621
+pkg/util/testingjobs/leaderworkerset/wrappers.go
+  h_027f582e324e2c 281-293
+pkg/util/testingjobs/statefulset/wrappers.go
+  h_027f582e324e2c 256-281,293-298
+site/content/en/docs/tasks/run/leaderworkerset.md
+  h_027f582e324e2c 151-164
+site/content/en/docs/tasks/run/statefulset.md
+  h_027f582e324e2c 75-104
+site/data/featuregates/versioned_feature_list.yaml
+  h_027f582e324e2c 874-879
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  h_027f582e324e2c 874-879
+test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
+  h_027f582e324e2c 313-354
+test/integration/singlecluster/webhook/jobs/statefulset_webhook_test.go
+  h_027f582e324e2c 24,27,32,56-61,124-196
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "146244b9679b98b37f78dc86aaf68721b569a99c",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}
