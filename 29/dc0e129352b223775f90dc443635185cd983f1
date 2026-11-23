@@ -1,0 +1,14 @@
+test/integration/singlecluster/controller/dra/dra_cc_test.go
+  h_027f582e324e2c 746-748
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "29dc0e129352b223775f90dc443635185cd983f1",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}

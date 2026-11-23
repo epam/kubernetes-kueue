@@ -1,0 +1,53 @@
+test/integration/singlecluster/controller/jobs/xgboostjob/xgboostjob_controller_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 30,56,58-59,62-65,88-95,101,104,107-108,118,125,257,267-268,317,332-333
+test/integration/singlecluster/scheduler/excluderesources/scheduler_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 38,46,55,202,212,220
+test/integration/singlecluster/controller/jobs/rayservice/rayservice_controller_partial_scaleup_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 44,70,75
+test/integration/singlecluster/controller/jobs/tfjob/tfjob_controller_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 30,56,58-59,62-65,93-100,106,109,112-113,123,130,267,277-278,333,348-349
+test/integration/singlecluster/controller/jobs/sparkapplication/sparkapplication_controller_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 30,41,55,57-58,61-64,79-86,93,96,99-100,110,117,212,222-223,251,360,375-376
+test/integration/singlecluster/controller/jobs/rayjob/rayjob_controller_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 32,45,72,74-75,78-81,255-262,278,283-284,320,331-336,346,353,544,554-555,576,633,643-644
+test/integration/singlecluster/controller/jobs/rayservice/rayservice_controller_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 44,52,54
+test/integration/singlecluster/scheduler/fairsharing/dra_fair_sharing_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 41,81-83,124-129,293,306-308,352-357
+test/integration/singlecluster/scheduler/quotacheckstrategy/quota_check_strategy_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 39,48-49,156-157
+test/integration/singlecluster/controller/jobs/rayclusterwebhook/elastic_partial_scaleup_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 56,64,70,256,264,270
+test/integration/singlecluster/controller/jobs/jaxjob/jaxjob_controller_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 30,60,62-63,66-69,88-95,101,106,307,310,313-314,324,331,462,472-473,590,605-606
+test/integration/singlecluster/controller/jobs/appwrapper/appwrapper_controller_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 37,50,74-83,93-94,223-227,229-230,530,535,579,590-593,595-596,606,611,614,814,824-825,883,899-900,943
+test/integration/singlecluster/controller/jobs/paddlejob/paddlejob_controller_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 30,56,58-59,62-65,89-96,102,105,108-109,119,126,259,269-270,320,335-336
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 35,49,74,76-77,80-83,242,247-248,341,352-357,367,374,612,622-623,709,719-720,1395,1427,1473
+test/integration/singlecluster/controller/jobs/pytorchjob/pytorchjob_controller_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 30,60,62-63,66-69,92-99,105,110-111,319,322,325-326,336,343,476,486-487,610,625-626
+test/integration/singlecluster/controller/jobs/mpijob/mpijob_controller_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 32,45,68-69,73,75,265-272,475,483,596,609,612-613,616,623,830,840-841,862,960,975-976,1020,1173,1181
+test/integration/singlecluster/controller/jobs/trainjob/trainjob_controller_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 33,42,80,82-83,86-89,254-261,511,516-517,569,579-580,601,775,790-791
+test/integration/singlecluster/controller/jobs/rayjob/rayjob_controller_partial_scaleup_test.go
+  s_644de07aa63f18::t_e5a5db43fa665d 39,63,68
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a07146f7b2e18932521e10c1491b0199423d319b",
+  "prompts": {},
+  "sessions": {
+    "s_644de07aa63f18": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c545ae9d-5cc3-4073-921d-10e408091ee7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}

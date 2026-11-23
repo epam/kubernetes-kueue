@@ -1,0 +1,20 @@
+pkg/cache/queue/inadmissible_requeue_retry_test.go
+  s_fafe0136c71bdd::t_34c8bfb4009901 99-259
+  s_fafe0136c71bdd::t_8f267beae80446 1-98,260-262
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e7ee042ff5de03053ba49bbdc5a84d81556432db",
+  "prompts": {},
+  "sessions": {
+    "s_fafe0136c71bdd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ee6b5a35-0b6a-4fe8-b8dd-3d2965bd3343",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

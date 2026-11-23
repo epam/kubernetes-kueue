@@ -1,0 +1,29 @@
+pkg/webhooks/workload_webhook_test.go
+  s_5b14048df1a857::t_0f7d2ae16f90f8 20,1696-1811
+pkg/workload/podsetscounts.go
+  s_5b14048df1a857::t_a386a10f950f5b 25,106-114,123,125-130
+pkg/workload/podsetscounts_test.go
+  s_5b14048df1a857::t_34f1608f46edb6 21,27,29,307-313,319-321,380-410,414
+test/e2e/singlecluster/extended/kuberay_test.go
+  s_5b14048df1a857::t_f651bdf97ef5cb 40,700-787
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  s_5b14048df1a857::t_d000fecc6edf88 266-312
+test/integration/singlecluster/webhook/core/elastic_partial_scaleup_test.go
+  s_5b14048df1a857::t_87614d6699ed6f 23,25,29,32,156-195
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "29926343c40e15c70c0666d6e4467f2ecb9f8603",
+  "prompts": {},
+  "sessions": {
+    "s_5b14048df1a857": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dbb832fb-8997-4eeb-a0af-933f6da1bbab",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
