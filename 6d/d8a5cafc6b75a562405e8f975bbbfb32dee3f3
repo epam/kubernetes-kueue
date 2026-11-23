@@ -47,7 +47,7 @@ site/data/featuregates/versioned_feature_list.yaml
 pkg/util/testingjobs/leaderworkerset/wrappers.go
   h_027f582e324e2c 287-299
 pkg/features/kube_features.go
-  h_027f582e324e2c 1067,1075-1087,1089,1675,1680-1682
+  h_027f582e324e2c 1067,1074-1087,1089,1675,1679-1682
   s_bb7406f908c52a::t_dcedd8a37ad529 1088
 pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
   h_027f582e324e2c 272-275,473-474,501-504,507-508,511,519-521,523-540,542,544,546,548-555
