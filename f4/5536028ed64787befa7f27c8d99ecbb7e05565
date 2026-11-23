@@ -1,0 +1,25 @@
+keps/12100-partial-scaleup-for-elasticjob/README.md
+  s_522d59e79214be::t_53a2a3ed0cda9a 99-100
+pkg/workload/podsetscounts.go
+  s_522d59e79214be::t_7723270670e866 25,107-111,114-115,118-120
+pkg/workload/podsetscounts_test.go
+  s_522d59e79214be::t_2946115646d0a0 313-314,413-454
+test/integration/singlecluster/controller/jobs/raycluster/raycluster_controller_partial_scaleup_test.go
+  s_522d59e79214be::t_8f083645b1c538 266-296
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f45536028ed64787befa7f27c8d99ecbb7e05565",
+  "prompts": {},
+  "sessions": {
+    "s_522d59e79214be": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6c50757e-ee5f-46ac-81cb-f7344d896f24",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
