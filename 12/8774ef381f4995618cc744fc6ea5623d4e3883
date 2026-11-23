@@ -1,0 +1,32 @@
+pkg/controller/jobs/raycluster/raycluster_multikueue_adapter_test.go
+  s_e8909dbc75c796::t_13a8fe86d20cf6 242,273,302,329,356
+pkg/controller/jobs/rayjob/rayjob_webhook_test.go
+  s_e8909dbc75c796::t_13a8fe86d20cf6 206
+pkg/controller/jobs/job/job_controller_test.go
+  s_e8909dbc75c796::t_eb24657f501711 3159,3207,3264,3321,3410,3492
+pkg/workloadslicing/workloadslicing_test.go
+  s_e8909dbc75c796::t_a847995cef1267 512,526,536
+  s_e8909dbc75c796::t_13a8fe86d20cf6 318,320,323,326-327,380,388,395,424,476,478-480,489,492-493,505-507,553,560,567,1830
+pkg/controller/jobs/job/job_webhook_test.go
+  s_e8909dbc75c796::t_13a8fe86d20cf6 1261
+pkg/controller/jobs/rayservice/rayservice_controller_test.go
+  s_e8909dbc75c796::t_13a8fe86d20cf6 327,389,438,487
+pkg/controller/jobframework/reconciler_test.go
+  s_e8909dbc75c796::t_13a8fe86d20cf6 140,176-178,184,199
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "128774ef381f4995618cc744fc6ea5623d4e3883",
+  "prompts": {},
+  "sessions": {
+    "s_e8909dbc75c796": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e0a4eaab-195a-4045-9133-540ec82d0e50",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}

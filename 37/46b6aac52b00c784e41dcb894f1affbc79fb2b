@@ -1,0 +1,65 @@
+test/integration/singlecluster/webhook/jobs/leaderworkerset_webhook_test.go
+  h_027f582e324e2c 313-354
+test/compatibility_lifecycle/reference/versioned_feature_list.yaml
+  h_027f582e324e2c 906-911
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
+  h_027f582e324e2c 1639-1672,1706-1711,1725-1730,1743-2768
+pkg/controller/jobframework/validation.go
+  h_027f582e324e2c 20,37,51,55,371-445
+test/integration/singlecluster/webhook/jobs/statefulset_webhook_test.go
+  h_027f582e324e2c 24,27,32,56-61,124-196
+pkg/util/testingjobs/statefulset/wrappers.go
+  h_027f582e324e2c 268-293,305-310
+pkg/controller/jobs/statefulset/statefulset_webhook.go
+  h_027f582e324e2c 226-235
+site/data/featuregates/versioned_feature_list.yaml
+  h_027f582e324e2c 906-911
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  h_027f582e324e2c 272-275,476,502-505,508-509,512,521-526,537,541-548
+pkg/controller/jobs/leaderworkerset/leaderworkerset_multikueue_adapter.go
+  h_027f582e324e2c 25-26,181-185
+pkg/controller/jobframework/validation_test.go
+  h_027f582e324e2c 46-47,49,131-135,329-442,447-448
+site/content/en/docs/tasks/run/leaderworkerset.md
+  h_027f582e324e2c 151-164
+site/content/en/docs/tasks/run/statefulset.md
+  h_027f582e324e2c 75-104
+pkg/util/testingjobs/leaderworkerset/wrappers.go
+  h_027f582e324e2c 287-299
+pkg/controller/jobs/statefulset/statefulset_webhook_test.go
+  h_027f582e324e2c 42,1082-1337,1507
+pkg/features/kube_features.go
+  h_027f582e324e2c 1036,1051,1059,1067-1080,1082,1659,1663,1667-1670
+  s_bb7406f908c52a::t_dcedd8a37ad529 1081
+pkg/controller/jobs/disaggregatedset/disaggregatedset_webhook_test.go
+  s_bb7406f908c52a::t_6f36d2c9746736 40,1045-1048
+  s_bb7406f908c52a::t_2889dc60ddb585 794-803,956-957,965-966,969-970,976-977
+  s_bb7406f908c52a::t_af96ec1fe04c9a 955,958-964,967-968,971-975,978-982
+pkg/util/testingjobs/disaggregatedset/wrappers.go
+  s_bb7406f908c52a::t_af96ec1fe04c9a 303-310
+pkg/controller/jobs/disaggregatedset/disaggregatedset_webhook.go
+  s_bb7406f908c52a::t_5ea20e337608e5 237-243,560,577-578,588-604,617,622
+site/content/en/docs/tasks/run/disaggregatedset.md
+  s_bb7406f908c52a::t_dcedd8a37ad529 119-125
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3746b6aac52b00c784e41dcb894f1affbc79fb2b",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  },
+  "sessions": {
+    "s_bb7406f908c52a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "40f04786-e9ef-4af4-9243-5a694f208df0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}
