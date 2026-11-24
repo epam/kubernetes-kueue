@@ -1,0 +1,19 @@
+pkg/cache/scheduler/cache_test.go
+  s_f8da2ebc182599::t_bfb20ae1c1ab6e 103,109,177,203,223,301,402,489-492,547,611,685,721,749,781,814,847,942,1004,1013,1022,1049-1050,1146,1153,1183,1207,1230,1253,1274,1295,1320,1344,1367,1384,1399,1417,1458,1479-1480,2641,2645,2651,2656,2668-2669,2864,2869,2873,2883,2896,2909,2931,2956,2985,3003-3004,3035,3040,3064,3090-3091
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "5bd05d922e645fb65994c5d56aa91e93a28aecb4",
+  "prompts": {},
+  "sessions": {
+    "s_f8da2ebc182599": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9fef5123-69f1-412a-be09-6a7ab25f7752",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
