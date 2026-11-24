@@ -1,0 +1,19 @@
+pkg/cache/scheduler/clusterqueue_test.go
+  s_df125a6259f197::t_98424e7643ee86 44,74,189,456
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "bce0b394dcd0515231d92760fa125cd8511608d6",
+  "prompts": {},
+  "sessions": {
+    "s_df125a6259f197": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "407cd3a3-4373-495c-bae3-5292dce892e6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
