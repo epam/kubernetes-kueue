@@ -1,0 +1,19 @@
+pkg/webhooks/cohort_webhook_test.go
+  s_671ec774d99804::t_aabb1f9cb7a1b2 34,38,49-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "5968a629470e8c0b9a479d34a34e28658cc06fba",
+  "prompts": {},
+  "sessions": {
+    "s_671ec774d99804": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1908c569-028a-4596-aa23-fa0a687b0a0f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

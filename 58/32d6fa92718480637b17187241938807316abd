@@ -1,0 +1,14 @@
+pkg/controller/tas/pod_usage_controller_test.go
+  h_47cee5fa694435 47,51,55,59,63,70,74,80-81,92,96,100,104,111,117-118,129,133,137,141,148,154-155,164,170,175,180,185,197,202,214,227,236,245,258,268,273,286,291,296,304-305
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "5832d6fa92718480637b17187241938807316abd",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

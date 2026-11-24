@@ -1,0 +1,19 @@
+pkg/cache/scheduler/cohort_metrics_test.go
+  s_671ec774d99804::t_b25f322ddeadce 56,61,66,71,133-134,338-339,341,367,389,413-414,423-424,426,469,513-514,732-733,735,770,803-804
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "19d56b3f5b1ddab86bf30db1c6b0c89bbd38569a",
+  "prompts": {},
+  "sessions": {
+    "s_671ec774d99804": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1908c569-028a-4596-aa23-fa0a687b0a0f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

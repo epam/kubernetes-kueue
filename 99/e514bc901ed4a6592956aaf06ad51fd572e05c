@@ -1,0 +1,14 @@
+pkg/controller/admissionchecks/multikueue/externalframeworks/config_test.go
+  h_47cee5fa694435 29,33,40,46,52,59,69-70
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "99e514bc901ed4a6592956aaf06ad51fd572e05c",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
