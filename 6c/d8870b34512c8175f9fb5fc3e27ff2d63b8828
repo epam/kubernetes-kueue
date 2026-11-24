@@ -1,0 +1,19 @@
+pkg/cache/scheduler/tas_flavor_test.go
+  s_671ec774d99804::t_7b859169b2bcc3 38,42,61,95,115,123-124
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "6cd8870b34512c8175f9fb5fc3e27ff2d63b8828",
+  "prompts": {},
+  "sessions": {
+    "s_671ec774d99804": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1908c569-028a-4596-aa23-fa0a687b0a0f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
