@@ -1,0 +1,20 @@
+pkg/cache/queue/manager_test.go
+  s_e3f39a028389ad::t_9be34de41d0477 2356,2361,2372,2385,2400
+  s_e3f39a028389ad::t_09d1ba80e5c0fd 2351,2399
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "754f23deb28f3904516342afceb30bd0435b75be",
+  "prompts": {},
+  "sessions": {
+    "s_e3f39a028389ad": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3cefacd4-9866-4127-b07c-d5f7f1b6e167",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
