@@ -1,0 +1,19 @@
+pkg/controller/jobframework/base_webhook_test.go
+  s_671ec774d99804::t_87a60c4448e262 58,155,257-258,266-267,269-270,279,292-293,339,344,350,363,373-374
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "ca96f07c553342943e08a3ee392a841f1d48d473",
+  "prompts": {},
+  "sessions": {
+    "s_671ec774d99804": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1908c569-028a-4596-aa23-fa0a687b0a0f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

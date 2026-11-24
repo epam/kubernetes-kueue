@@ -1,0 +1,20 @@
+hack/make/verify.mk
+  s_f9ad7672a0d986::t_d8fa45fd510425 146-154
+  s_f9ad7672a0d986::t_a8645c3344579a 132-145,284-293
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "dcf120cbf89e974b699a72afc59f4ac5f4506464",
+  "prompts": {},
+  "sessions": {
+    "s_f9ad7672a0d986": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "06b7150c-b289-4315-9fbb-f46f8ab4e795",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
