@@ -1,0 +1,18 @@
+pkg/controller/admissionchecks/multikueue/workload.go
+  h_32169613a39d35 756-757,760,949,953-957,959-967,969,973-975,979-984,993-1014,1018-1020
+  h_32169613a39d35 755,758,950-952,958,968,970-972,976-978,985-992
+pkg/controller/admissionchecks/multikueue/workload_test.go
+  h_32169613a39d35 1639-1641,1707-1711,1778-1780,1826-1828,1952-1954,1971-1973,1987-1989,2006-2008,2090-2092
+  h_32169613a39d35 1557-1638,1642-1706,1712-1777,1781-1825,1829-1951,1955-1970,1974-1986,1990-2005,2009-2089,2093-2158
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5ecca706f0719306ba7b75e82e9f364e18090e73",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}
