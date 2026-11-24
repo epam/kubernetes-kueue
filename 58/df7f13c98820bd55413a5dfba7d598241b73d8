@@ -1,0 +1,25 @@
+pkg/controller/jobs/mpijob/mpijob_webhook_test.go
+  s_671ec774d99804::t_3dcaf58491b995 1060-1062
+  h_47cee5fa694435 47,52,56,60,64,81,112,132,159,178,203,228,259,290,321,341,362,386,406,426-427,818,829,858,882,889,896,905,925,949,978,997,1002,1007,1012,1043,1076,1092,1106,1136,1164,1195,1207,1240,1274-1275
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "58df7f13c98820bd55413a5dfba7d598241b73d8",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_671ec774d99804": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1908c569-028a-4596-aa23-fa0a687b0a0f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}
