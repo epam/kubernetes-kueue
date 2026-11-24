@@ -1,0 +1,15 @@
+pkg/config/config_test.go
+  h_47cee5fa694435 461,469,483,501,509,538,570,593,614,646,675,697,742,767,810,849,895,902,929,1002,1009,1059,1110,1157,1162,1208,1257-1258,1322,1328,1340,1411
+  h_47cee5fa694435 930,1412
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "da80c6e1b28c5747b0b529d7d16a5c4cad4ebea6",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

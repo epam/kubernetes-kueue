@@ -1,0 +1,20 @@
+pkg/config/config_test.go
+  s_a9a1e564a1d071::t_6776bf7cab8baa 469,477,491,509,517,546,578,601,622,654,685,707,752,779,822,861,907,914,941-942
+  s_a9a1e564a1d071::t_8bfcb3b2ccad12 1014,1019,1067,1112,1118-1119,1172,1178,1190,1262-1263
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "549b664b85931d844782b9db8ca655ed184aea9f",
+  "prompts": {},
+  "sessions": {
+    "s_a9a1e564a1d071": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e7b02a5c-44a4-49cb-99c1-2d2c45e09f2e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

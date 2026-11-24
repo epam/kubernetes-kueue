@@ -1,0 +1,19 @@
+pkg/controller/core/cohort_controller_test.go
+  s_671ec774d99804::t_9d9ff5cac148ba 417,427,432,437,442,448,454,460,464,475-476
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "4a2e7e2a4f55c6d9fbca77d9639b48d83f2d84ef",
+  "prompts": {},
+  "sessions": {
+    "s_671ec774d99804": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1908c569-028a-4596-aa23-fa0a687b0a0f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
