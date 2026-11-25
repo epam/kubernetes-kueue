@@ -1,0 +1,14 @@
+pkg/controller/jobs/jobset/jobset_webhook_test.go
+  h_47cee5fa694435 47,52,56,60,64,69,75,88,105,120,135,175,199,229,259,291-292,307,314,326,344-345,360,371,400,426,433,442,453,475,501,530,551,556,561,568-569
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "b06537949cd343b3eecd8684e52fd871153aa2cb",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
