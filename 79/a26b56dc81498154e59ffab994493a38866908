@@ -50,7 +50,7 @@ pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook_test.go
   h_027f582e324e2c 1660,1664-1665,1669,1671-1676
 pkg/features/kube_features.go
   s_bb7406f908c52a::t_dcedd8a37ad529 1113
-  h_027f582e324e2c 1080,1096-1112,1114,1709,1718-1720
+  h_027f582e324e2c 1080,1095-1112,1114,1709,1717-1720
 test/compatibility_lifecycle/reference/versioned_feature_list.yaml
   h_027f582e324e2c 924-929
 pkg/util/testingjobs/disaggregatedset/wrappers.go
