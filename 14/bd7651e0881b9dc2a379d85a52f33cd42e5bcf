@@ -1,0 +1,19 @@
+pkg/controller/jobframework/reconciler.go
+  s_fa6d03d5b770fd::t_f1462a506ca883 855
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "14bd7651e0881b9dc2a379d85a52f33cd42e5bcf",
+  "prompts": {},
+  "sessions": {
+    "s_fa6d03d5b770fd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4e214b1b-fbb2-49b9-b5f7-afef3f4b4121",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
