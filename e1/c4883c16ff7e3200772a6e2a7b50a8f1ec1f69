@@ -1,0 +1,30 @@
+pkg/cache/scheduler/tas_dra_test.go
+  h_027f582e324e2c 92
+  h_027f582e324e2c 93
+pkg/cache/scheduler/tas_cache_test.go
+  s_8458e524bc41a4::t_3c996a6c2f32c8 2634-2635,2695-2696,2737-2738,2755-2756,2794-2795
+pkg/scheduler/scheduler_tas_dra_test.go
+  h_027f582e324e2c 132
+  h_027f582e324e2c 131
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "e1c4883c16ff7e3200772a6e2a7b50a8f1ec1f69",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  },
+  "sessions": {
+    "s_8458e524bc41a4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e6c2fdfe-b2c2-4bd2-95e2-aec60113fe40",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}

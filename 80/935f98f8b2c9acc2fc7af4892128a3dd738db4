@@ -1,0 +1,19 @@
+pkg/util/wait/backoff_test.go
+  s_671ec774d99804::t_74e29f142e01f9 57-58,62,66,70,74,78,83-84,110,115,120,125,130,135,140,147-148,157,162,167,172,179-180
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "80935f98f8b2c9acc2fc7af4892128a3dd738db4",
+  "prompts": {},
+  "sessions": {
+    "s_671ec774d99804": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1908c569-028a-4596-aa23-fa0a687b0a0f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+cmd/kueuectl/app/list/list_pods_test.go
+  s_671ec774d99804::t_de4b0a5ee06f5a 78-79,89,125,159,193,215,243,265,289,311,333,357,378,398,417,447,483,509,535,573,606,639,672,705,738,770,801,832,865-866
+cmd/kueueviz/backend/config/server_test.go
+  s_671ec774d99804::t_9e7b7468e2c646 110,115,119,123,128,133,137,141,145,150-151
+cmd/kueueviz/backend/middleware/cors_test.go
+  s_671ec774d99804::t_c9588a0937b496 33,40,45,50,55,61,67,74,80,88-89,111,115,119,123,127,131,137-138
+hack/testing/filter-unit-test-packages.sh
+  s_671ec774d99804::t_f2918c032bfd2d 22-23
+hack/testing/unit-test-selection_test.sh
+  s_671ec774d99804::t_a036535fce5612 36,38,49
+test/performance/scheduler/runner/controller/controller_test.go
+  s_671ec774d99804::t_4bcf80609311e2 34,38,42,46-48,55,74-75
+test/util/behavioral/rbac_manifests_test.go
+  s_671ec774d99804::t_e6558bbd02790e 365,369,375,381,387,393,399,409,415,421,429-430
+  s_671ec774d99804::t_4480cc121a2744 365,369,375,381,387,393,399,409,415,421,429-430
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "8ce45bba3ece5fd72f5528a152afaf7cf4b8ff30",
+  "prompts": {},
+  "sessions": {
+    "s_671ec774d99804": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1908c569-028a-4596-aa23-fa0a687b0a0f",
+        "model": "unknown"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
