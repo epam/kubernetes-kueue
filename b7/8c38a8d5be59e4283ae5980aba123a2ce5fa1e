@@ -1,0 +1,21 @@
+pkg/util/roletracker/tracker_test.go
+  s_671ec774d99804::t_793de0b192d76e 40,45,49,55-56,91,98,104,109,117-118,153,157,161,165,169,175-176
+pkg/util/roletracker/logger_test.go
+  s_671ec774d99804::t_793de0b192d76e 31,35,39,43,47,53-54,74,79,88,97,108,121,136-137
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "b78c38a8d5be59e4283ae5980aba123a2ce5fa1e",
+  "prompts": {},
+  "sessions": {
+    "s_671ec774d99804": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1908c569-028a-4596-aa23-fa0a687b0a0f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
