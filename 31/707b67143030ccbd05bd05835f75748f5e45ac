@@ -1,0 +1,19 @@
+pkg/util/logging/logging_test.go
+  s_413f9a81ec6f8c::t_260989eabe0f53 834-836,838-839,841-842,844-845,848,855
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "31707b67143030ccbd05bd05835f75748f5e45ac",
+  "prompts": {},
+  "sessions": {
+    "s_413f9a81ec6f8c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "826d7972-271f-43aa-a5f8-9dbb6edbda10",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
