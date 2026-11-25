@@ -12,6 +12,7 @@ test/performance/scheduler/runner/controller/controller_test.go
   s_671ec774d99804::t_4bcf80609311e2 34,38,42,46-48,55,74-75
 test/util/behavioral/rbac_manifests_test.go
   s_671ec774d99804::t_e6558bbd02790e 365,369,375,381,387,393,399,409,415,421,429-430
+  s_671ec774d99804::t_4480cc121a2744 365,369,375,381,387,393,399,409,415,421,429-430
 ---
 {
   "schema_version": "authorship/3.0.0",
