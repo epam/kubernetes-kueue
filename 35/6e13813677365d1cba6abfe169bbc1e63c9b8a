@@ -1,0 +1,14 @@
+cmd/kueuectl/app/list/list_pods_test.go
+  h_47cee5fa694435 74-75,85,120-121,154-155,188-189,210-211,236-237,256-257,276-277,296-297,315-316,345-346,381-382,407-408,433-434,471-472,504-505,537-538,570-571,603-604,636-637,668-669,699-700,730-731,764-765
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "356e13813677365d1cba6abfe169bbc1e63c9b8a",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
