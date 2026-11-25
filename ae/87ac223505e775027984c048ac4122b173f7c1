@@ -1,0 +1,65 @@
+pkg/controller/admissionchecks/multikueue/fswatch_test.go
+  s_671ec774d99804::t_abde7b8ddbf88e 455
+site/content/en/community/contribution_guidelines/coding_guidelines.md
+  s_671ec774d99804::t_abde7b8ddbf88e 326-329
+hack/ruleguard/dsl.go
+  s_671ec774d99804::t_abde7b8ddbf88e 1-25
+cmd/kueueviz/backend/go.mod
+  s_671ec774d99804::t_48587ebfcb47bb 12
+cmd/experimental/webhook-conversion-repro/ruleguard.go
+  s_671ec774d99804::t_abde7b8ddbf88e 1-25
+cmd/kueueviz/backend/ruleguard.go
+  s_671ec774d99804::t_abde7b8ddbf88e 1-25
+hack/tools/ruleguard/rules.go
+  s_671ec774d99804::t_abde7b8ddbf88e 1-36
+go.mod
+  s_671ec774d99804::t_48587ebfcb47bb 23
+.golangci.yaml
+  s_671ec774d99804::t_abde7b8ddbf88e 35,40-43
+cmd/experimental/webhook-conversion-repro/go.mod
+  s_671ec774d99804::t_48587ebfcb47bb 7
+hack/tools/go.mod
+  s_671ec774d99804::t_48587ebfcb47bb 34
+cmd/experimental/webhook-conversion-repro/go.sum
+  s_671ec774d99804::t_948192ea782278 50-51
+cmd/kueueviz/backend/go.sum
+  s_671ec774d99804::t_cc1bb5d938d819 153-154
+go.sum
+  s_671ec774d99804::t_ddee6a11c5e628 223-224
+vendor/github.com/quasilyte/go-ruleguard/dsl/LICENSE
+  s_671ec774d99804::t_4f04c68134bf8d 1-29
+vendor/github.com/quasilyte/go-ruleguard/dsl/bundle.go
+  s_671ec774d99804::t_39934e4ab1aed3 1-19
+vendor/github.com/quasilyte/go-ruleguard/dsl/do.go
+  s_671ec774d99804::t_5ca9c052192519 1-19
+vendor/github.com/quasilyte/go-ruleguard/dsl/dsl.go
+  s_671ec774d99804::t_5861806355879e 1-365
+vendor/github.com/quasilyte/go-ruleguard/dsl/filter.go
+  s_671ec774d99804::t_f2ac4fc607cfed 1-24
+vendor/github.com/quasilyte/go-ruleguard/dsl/internal.go
+  s_671ec774d99804::t_278212dfcb9be0 1-6
+vendor/github.com/quasilyte/go-ruleguard/dsl/types/ext.go
+  s_671ec774d99804::t_45ec2cad1042bd 1-21
+vendor/github.com/quasilyte/go-ruleguard/dsl/types/type_impl.go
+  s_671ec774d99804::t_7cc05e66dd9a9d 1-17
+vendor/github.com/quasilyte/go-ruleguard/dsl/types/types.go
+  s_671ec774d99804::t_c03f91575c50a1 1-68
+vendor/modules.txt
+  s_671ec774d99804::t_f4c31825b81bd8 381-384
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "ae87ac223505e775027984c048ac4122b173f7c1",
+  "prompts": {},
+  "sessions": {
+    "s_671ec774d99804": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1908c569-028a-4596-aa23-fa0a687b0a0f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
