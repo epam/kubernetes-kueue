@@ -1,0 +1,19 @@
+pkg/util/tlsconfig/tlsconfig_test.go
+  s_671ec774d99804::t_793de0b192d76e 31,37,41-42,52,72,85,98,119,140,150,159,168,183,202,210-211,241,246,250,254,264,272-273,294,299,303,307,311,316,321,328-329,398,405,409,417,425,439,453,461,469,485-486
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "09d072e4a43b6fa33b2b4e8fe372b63802b62826",
+  "prompts": {},
+  "sessions": {
+    "s_671ec774d99804": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1908c569-028a-4596-aa23-fa0a687b0a0f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

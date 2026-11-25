@@ -1,0 +1,21 @@
+pkg/util/tas/tas_assignment_performance_test.go
+  s_671ec774d99804::t_7bc1f6d5e302b9 218-219,231,243,255,263,270,282-283,292,294,320,330
+pkg/util/tas/tas_assignment_test.go
+  s_671ec774d99804::t_7bc1f6d5e302b9 21,41-42,53,85,127,171,209,253,297,338,375,416-417,479,575-581,600-601,1098-1099,1116-1117,1144-1145,1174-1175,1202-1203,1301,1306,1311,1316,1329,1342,1357-1358,1368,1373,1378,1383,1394,1421,1448,1475,1504,1552-1553
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "36dea41a739c45d026f6e93fc7cf6f5496443c3e",
+  "prompts": {},
+  "sessions": {
+    "s_671ec774d99804": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1908c569-028a-4596-aa23-fa0a687b0a0f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

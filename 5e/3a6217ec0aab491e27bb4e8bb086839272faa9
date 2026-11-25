@@ -1,0 +1,19 @@
+cmd/kueuectl/app/list/list_pods_test.go
+  s_671ec774d99804::t_683acfcdcd20e2 78-79,89,125,159,193,215,243,265,289,311,333,357,378,398,417,447,483,509,535,573,606,639,672,705,738,770,801,832,865-866
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "5e3a6217ec0aab491e27bb4e8bb086839272faa9",
+  "prompts": {},
+  "sessions": {
+    "s_671ec774d99804": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1908c569-028a-4596-aa23-fa0a687b0a0f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
