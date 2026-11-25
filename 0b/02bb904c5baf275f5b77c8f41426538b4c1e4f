@@ -1,0 +1,14 @@
+pkg/visibility/server_test.go
+  h_47cee5fa694435 37,41,53,68,83,99,117-118
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "0b02bb904c5baf275f5b77c8f41426538b4c1e4f",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
