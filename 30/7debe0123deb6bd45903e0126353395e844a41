@@ -1,0 +1,54 @@
+pkg/controller/elasticjobs/elastic_job_ungater.go
+  h_32169613a39d35 50,61,85-94,98-103,105,111-118,319-327,353-355,373-382,438-439,441,443-450,452,454
+  s_8e4634e4604a6c::t_39316c71566682 350-351
+  s_b5ad059dc91025::t_a198c5c3c9d644 54,451
+pkg/controller/elasticjobs/elastic_job_ungater_test.go
+  h_32169613a39d35 36,111,1291-1301,1308-1311,1314,1358,1645
+pkg/util/tas/tas_assignment.go
+  h_32169613a39d35 26,165-254
+test/integration/singlecluster/tas/tas_elastic_ungaters_test.go
+  h_32169613a39d35 1-105,113-124,128-130,134,136-140,142,145-149,152-174,177-185
+  h_32169613a39d35 106-112,125-127,131-133,135,141,143-144,150-151,175-176,186-362
+pkg/controller/tas/topology_ungater.go
+  s_b5ad059dc91025::t_a198c5c3c9d644 503-504
+  s_8e4634e4604a6c::t_8a92b8fae7aa37 259
+  h_32169613a39d35 226-227,230,252,481,488,496-502
+pkg/controller/tas/topology_ungater_test.go
+  h_32169613a39d35 2939-3010
+pkg/controller/tas/topology_ungater_elastic_test.go
+  s_8e4634e4604a6c::t_de299db33ca08e 107,229-336
+  h_32169613a39d35 1-106,108-228
+pkg/util/tas/assigned_domain_set_test.go
+  h_32169613a39d35 1-170
+pkg/controller/elasticjobs/elastic_job_ungater_tas_test.go
+  h_32169613a39d35 1-334
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "307debe0123deb6bd45903e0126353395e844a41",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  },
+  "sessions": {
+    "s_8e4634e4604a6c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1cfbe-9059-7d40-9b2d-f446fb5339ba",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": null
+    },
+    "s_b5ad059dc91025": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1cfa8-1dc0-7433-bae1-95b7865f55da",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": null
+    }
+  }
+}
