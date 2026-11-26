@@ -1,0 +1,16 @@
+pkg/scheduler/preemption/preemption_test.go
+  h_027f582e324e2c 5186
+pkg/scheduler/scheduler_afs_test.go
+  h_027f582e324e2c 835,916,946,980
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "d0697512877f9c02fa31caabae33c1535d582b0f",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}
