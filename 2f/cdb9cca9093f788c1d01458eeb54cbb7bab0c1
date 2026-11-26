@@ -1,0 +1,16 @@
+pkg/controller/jobs/statefulset/statefulset_reconciler.go
+  h_32169613a39d35 293,299,303-308,310-313,317-323,325-328,331-337,339-344,347-350,352-361,364-374,377-379,382,384,387-391,399
+pkg/controller/jobs/statefulset/statefulset_reconciler_test.go
+  h_32169613a39d35 1292-1442
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2fcdb9cca9093f788c1d01458eeb54cbb7bab0c1",
+  "prompts": {},
+  "humans": {
+    "h_32169613a39d35": {
+      "author": "Mykyta Derhunov <mykyta_derhunov@epam.com>"
+    }
+  }
+}
