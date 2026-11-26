@@ -1,0 +1,18 @@
+pkg/cache/scheduler/tas_cache_test.go
+  h_027f582e324e2c 1634,1690-1691,1812,1882,1939,2068,9102-9103,9179-9180
+pkg/controller/core/workload_controller_dra_test.go
+  h_027f582e324e2c 447
+pkg/controller/core/workload_controller_test.go
+  h_027f582e324e2c 4188
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "6ada7f51898cb0772a4a203ca51aa6cc45052500",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}
