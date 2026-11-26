@@ -1,0 +1,26 @@
+pkg/config/validation_test.go
+  s_d100e08adb0ff8::t_61dd11fa8ecbcf 1599
+  s_d100e08adb0ff8::t_530738756467c2 1730
+pkg/workload/workload_test.go
+  s_d100e08adb0ff8::t_530738756467c2 3994-3995
+pkg/controller/core/workload_controller_test.go
+  s_d100e08adb0ff8::t_530738756467c2 3179
+pkg/controller/core/workload_controller_dra_test.go
+  s_d100e08adb0ff8::t_530738756467c2 60,193,237,301,335,428,472,515,572,613,654-655,681-683,710
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "5bf9bdc166876c2c498c236b6c078142a7e8e7ce",
+  "prompts": {},
+  "sessions": {
+    "s_d100e08adb0ff8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8c39f4d3-4b5f-42b4-83ea-793c526d3a2e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}
