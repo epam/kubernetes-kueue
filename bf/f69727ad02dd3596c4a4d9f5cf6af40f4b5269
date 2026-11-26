@@ -1,0 +1,21 @@
+pkg/controller/jobframework/reconciler_test.go
+  s_5e1238e1866bae::t_b7aeab799b723f 1818,1893
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_5e1238e1866bae::t_b7aeab799b723f 7195,7212,7235,7251
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "bff69727ad02dd3596c4a4d9f5cf6af40f4b5269",
+  "prompts": {},
+  "sessions": {
+    "s_5e1238e1866bae": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c700273c-b3be-4204-bfbc-283d8439b66b",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}

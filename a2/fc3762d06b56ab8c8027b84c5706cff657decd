@@ -1,0 +1,19 @@
+pkg/scheduler/scheduler_refill_test.go
+  s_5e1238e1866bae::t_a233c11d54e375 1340
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "a2fc3762d06b56ab8c8027b84c5706cff657decd",
+  "prompts": {},
+  "sessions": {
+    "s_5e1238e1866bae": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c700273c-b3be-4204-bfbc-283d8439b66b",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}
