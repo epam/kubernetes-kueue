@@ -1,0 +1,19 @@
+pkg/scheduler/scheduler_tas_bench_test.go
+  s_0212d644c6f3b2::t_b5db5fee2b6f9d 48,62,70-71
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "aa8b0600d63d7790787b5d8ea9efc8bd39446db6",
+  "prompts": {},
+  "sessions": {
+    "s_0212d644c6f3b2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a2dbc84-9f78-434d-b6bb-24a37713c618",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
