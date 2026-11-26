@@ -1,0 +1,19 @@
+hack/tools/ruleguard/rules.go
+  s_0212d644c6f3b2::t_748d0512adadc2 37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "1bbfe9c648e853714851374fe2bb762ee38ef44d",
+  "prompts": {},
+  "sessions": {
+    "s_0212d644c6f3b2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a2dbc84-9f78-434d-b6bb-24a37713c618",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

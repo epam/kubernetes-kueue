@@ -1,0 +1,19 @@
+pkg/scheduler/preemption/preemption_test.go
+  s_9bdbb71048b013::t_ab95583fd36761 4930,4937,4941,4945,4949,4957-4963
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "8a47829709c2c265aff30e210a6666d248af4ea5",
+  "prompts": {},
+  "sessions": {
+    "s_9bdbb71048b013": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8c16ddba-604b-4493-98f8-abfaf23da2cf",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

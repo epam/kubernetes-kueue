@@ -1,0 +1,38 @@
+site/content/en/community/contribution_guidelines/writing_tests.md
+  s_67faa144d3d8f8::t_756fbdcd285b85 22-25,30-31,36-39
+  s_67faa144d3d8f8::t_8994b60a3aa7f8 61-63
+  s_0bc5ee15d07469::t_639c1154337f04 138-139
+  s_67faa144d3d8f8::t_fc1b6b84d2388a 64-65
+  s_67faa144d3d8f8::t_089500c91ec67b 26-29
+  s_67faa144d3d8f8::t_66ae734ebf2d1e 32-35
+  s_0bc5ee15d07469::t_f7cb073e723b8f 136-137
+  s_0bc5ee15d07469::t_64bf4674c2861c 48-52,76-79,122-130,133
+site/content/en/community/contribution_guidelines/coding_guidelines.md
+  s_67faa144d3d8f8::t_a8b937f1d0399c 325-327
+  s_67faa144d3d8f8::t_bb3657cdd89721 491-493,495
+  s_0bc5ee15d07469::t_601025b4a5d2ee 328-331,461-463,494,496-498
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "f6f66954c0d90c35481c242e49e18494200f4493",
+  "prompts": {},
+  "sessions": {
+    "s_0bc5ee15d07469": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "58ead8e2-3cb4-4163-bb38-35f5ba7cc603",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    },
+    "s_67faa144d3d8f8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "42b49c65-9d21-461b-80e5-7a6d90e35037",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

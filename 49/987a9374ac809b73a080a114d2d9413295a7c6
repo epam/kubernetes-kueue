@@ -1,0 +1,19 @@
+pkg/cache/scheduler/tas_flavor_snapshot_bench_test.go
+  s_c9a6e84b02db03::t_914832ad00d897 290,293-295,297,299
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "49987a9374ac809b73a080a114d2d9413295a7c6",
+  "prompts": {},
+  "sessions": {
+    "s_c9a6e84b02db03": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "efa9859e-a219-4963-844f-44dd3a96493c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

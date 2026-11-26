@@ -1,0 +1,19 @@
+pkg/controller/admissionchecks/multikueue/fswatch_test.go
+  s_0212d644c6f3b2::t_d2b9848e90bdae 211-221,229-230,236,242,259-262,280-284,302-306,326-331,333,352-357,359,363,369,374,378,382,385-391,414-420,441-444,461-464,475-498,500-503
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "d499a661f0d4818ee907b154bd8be2d8c05b666c",
+  "prompts": {},
+  "sessions": {
+    "s_0212d644c6f3b2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a2dbc84-9f78-434d-b6bb-24a37713c618",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

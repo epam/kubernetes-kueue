@@ -1,0 +1,25 @@
+pkg/workload/podsetscounts.go
+  s_fa6d03d5b770fd::t_daca15018383e3 130,134-136,143-166
+pkg/workload/podsetscounts_test.go
+  s_fa6d03d5b770fd::t_3fdaae48141da1 450,452-490,548-593
+pkg/workloadslicing/manager.go
+  s_fa6d03d5b770fd::t_ad5e4001746ae3 71-80
+pkg/workloadslicing/workloadslicing_test.go
+  s_fa6d03d5b770fd::t_8b8c5980d9f4b8 2612-2639
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "7252eaeac2531800c113b8e93cece52ab373b5b2",
+  "prompts": {},
+  "sessions": {
+    "s_fa6d03d5b770fd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4e214b1b-fbb2-49b9-b5f7-afef3f4b4121",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

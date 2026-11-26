@@ -1,0 +1,19 @@
+pkg/resources/amount_test.go
+  s_0212d644c6f3b2::t_b4deaccb37fb4d 382,386-389,391,393
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "7259283c560d9e76ffaf5604870556f83a5d96bb",
+  "prompts": {},
+  "sessions": {
+    "s_0212d644c6f3b2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a2dbc84-9f78-434d-b6bb-24a37713c618",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
