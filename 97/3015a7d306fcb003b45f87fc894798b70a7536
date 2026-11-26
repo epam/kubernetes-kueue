@@ -1,0 +1,27 @@
+site/content/en/community/contribution_guidelines/coding_guidelines.md
+  s_0212d644c6f3b2::t_410130e60efa08 404
+  s_0212d644c6f3b2::t_953303293a3c8a 405
+cmd/experimental/skills/reviewer/cmp-diff-assertions/SKILL.md
+  s_0212d644c6f3b2::t_953303293a3c8a 14-17,45-46
+  s_0212d644c6f3b2::t_04f488086bda5b 40-41
+  s_0212d644c6f3b2::t_e0fe2e17daab51 42-44
+  s_0212d644c6f3b2::t_a5b93025f69f15 3,13
+cmd/experimental/skills/reviewer/README.md
+  s_0212d644c6f3b2::t_982b294c744a02 45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "973015a7d306fcb003b45f87fc894798b70a7536",
+  "prompts": {},
+  "sessions": {
+    "s_0212d644c6f3b2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a2dbc84-9f78-434d-b6bb-24a37713c618",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}
