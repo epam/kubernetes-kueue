@@ -1,11 +1,18 @@
 pkg/scheduler/scheduler_refill_test.go
   s_5e1238e1866bae::t_a233c11d54e375 1340
+pkg/scheduler/scheduler_test.go
+  h_027f582e324e2c 9539,9640
 ---
 {
   "schema_version": "authorship/3.0.0",
   "git_ai_version": "1.7.6",
   "base_commit_sha": "a2fc3762d06b56ab8c8027b84c5706cff657decd",
   "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  },
   "sessions": {
     "s_5e1238e1866bae": {
       "agent_id": {
