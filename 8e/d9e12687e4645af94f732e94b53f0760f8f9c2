@@ -1,0 +1,19 @@
+pkg/cache/scheduler/tas_overlapping_flavor_bench_test.go
+  s_0212d644c6f3b2::t_4480390beba9bf 59-63,65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "8ed9e12687e4645af94f732e94b53f0760f8f9c2",
+  "prompts": {},
+  "sessions": {
+    "s_0212d644c6f3b2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a2dbc84-9f78-434d-b6bb-24a37713c618",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
