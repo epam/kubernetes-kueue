@@ -1,0 +1,16 @@
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  h_027f582e324e2c 534
+pkg/controller/jobframework/validation.go
+  h_027f582e324e2c 386
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "e30e9eeef09ea0f21562f2b14c620b97606e1461",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}

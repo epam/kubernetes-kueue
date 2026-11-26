@@ -1,0 +1,16 @@
+pkg/workload/flavor_scan_state_test.go
+  h_47cee5fa694435 97,103,114,125,137,149,161,175,189,203,217,230-231
+pkg/workload/workload_test.go
+  h_47cee5fa694435 3814,3823,3829,3847,3865,3883,3901,3913,3928,3944,3958,3969,3993-3994
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "0439ddb7a4c6ca770da5300aeed5243c34b27ecc",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

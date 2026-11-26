@@ -1,0 +1,22 @@
+cmd/experimental/skills/reviewer/README.md
+  s_4c7e1ff7bb7bec::t_e50ecd7da40d36 42
+  s_4c7e1ff7bb7bec::t_01a5f2de54d347 28
+cmd/experimental/skills/reviewer/inline-test-steps/SKILL.md
+  s_4c7e1ff7bb7bec::t_aaab4e6916fbe6 1-79
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "44763fb679ca17e03a73d8ad7ab202829a9397e0",
+  "prompts": {},
+  "sessions": {
+    "s_4c7e1ff7bb7bec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7eb03a57-52d6-4ae4-83bc-e1a2bd7ee6e8",
+        "model": "unknown"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

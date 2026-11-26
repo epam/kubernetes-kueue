@@ -1,0 +1,34 @@
+test/integration/singlecluster/scheduler/fairsharing/suite_test.go
+  s_b7c002514feade::t_ea7ba7c6a938c2 104-105
+pkg/controller/core/workload_controller_test.go
+  s_b7c002514feade::t_f6de5ea5781199 3855
+pkg/config/validation_test.go
+  h_027f582e324e2c 2383
+pkg/workload/workload_test.go
+  s_b7c002514feade::t_6afe617d543d59 4048-4049
+pkg/controller/core/workload_controller_dra_test.go
+  h_027f582e324e2c 60,193,237,301,365,399,492,714,757,821,922,970,1018-1019,1052-1054,1157
+pkg/scheduler/scheduler_tas_dra_test.go
+  h_027f582e324e2c 130
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "34ef7004a84c5eff2cc322527ad5d7401538f4fb",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  },
+  "sessions": {
+    "s_b7c002514feade": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "62181782-10ce-4591-8977-164209e6437e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}

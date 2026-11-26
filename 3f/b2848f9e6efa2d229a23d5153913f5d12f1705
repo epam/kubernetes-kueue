@@ -1,0 +1,19 @@
+test/integration/singlecluster/controller/core/custom_labels_test.go
+  s_5260a87b7e2aa9::t_6a9c1dea5778eb 2121
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "3fb2848f9e6efa2d229a23d5153913f5d12f1705",
+  "prompts": {},
+  "sessions": {
+    "s_5260a87b7e2aa9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a062193-9c81-4936-b754-7927a7b9b263",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}

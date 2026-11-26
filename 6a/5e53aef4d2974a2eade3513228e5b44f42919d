@@ -1,0 +1,14 @@
+cmd/kueueviz/backend/middleware/cors_test.go
+  h_47cee5fa694435 33,40,45,50,55,61,67,74,80,88-89,111,115,119,123,127,131,137-138
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "6a5e53aef4d2974a2eade3513228e5b44f42919d",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+cmd/experimental/skills/kueue-test-writing/SKILL.md
+  s_0bc5ee15d07469::t_b0e5f0e6a3ccdd 15-17,21-22,38-41
+  s_67faa144d3d8f8::t_6f7c3b548eb001 1-2,4-14,18-20,24-26,28-37,42
+  s_67faa144d3d8f8::t_877b3ab8c7cb8f 3,23,27
+cmd/experimental/skills/README.md
+  s_0bc5ee15d07469::t_9202201a5d98b9 8,38-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "13b9f9b488a565fba10176a5622f519f8f8c3463",
+  "prompts": {},
+  "sessions": {
+    "s_0bc5ee15d07469": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "58ead8e2-3cb4-4163-bb38-35f5ba7cc603",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    },
+    "s_67faa144d3d8f8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "42b49c65-9d21-461b-80e5-7a6d90e35037",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
