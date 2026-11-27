@@ -1,0 +1,23 @@
+pkg/cache/scheduler/cache_resync_metrics_test.go
+  s_8034ee22436598::t_afecf0224b9d53 263-266,307-310,318-323,331-334,409-471
+pkg/metrics/metrics.go
+  s_8034ee22436598::t_cff3d214d4b9e7 1656-1660
+pkg/cache/scheduler/clusterqueue.go
+  s_8034ee22436598::t_2a857573349682 137-139,669,671-672,674-676
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "2fed0208f34a97af7db2d19253e171b50dbc1469",
+  "prompts": {},
+  "sessions": {
+    "s_8034ee22436598": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a27b183c-fff9-4e32-a023-00146ccd332e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
