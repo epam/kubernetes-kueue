@@ -1,0 +1,19 @@
+pkg/config/validation_test.go
+  s_5e1238e1866bae::t_1ccf1966f8bfd0 2159,3058
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "a6c21956fb81e8d68448a09cd6713c1cb444da02",
+  "prompts": {},
+  "sessions": {
+    "s_5e1238e1866bae": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c700273c-b3be-4204-bfbc-283d8439b66b",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}
