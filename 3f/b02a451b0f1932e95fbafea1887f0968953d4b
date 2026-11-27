@@ -1,0 +1,27 @@
+pkg/workload/workload_test.go
+  h_027f582e324e2c 4337
+  s_b7c002514feade::t_f312b405bcc975 4021,4028,4056,4065,4075-4076,4091-4092,4110-4111,4121,4130-4131,4140-4141,4155-4156,4171-4172
+pkg/scheduler/scheduler_test.go
+  s_b7c002514feade::t_63907451e0f0ad 9441
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "3fb02a451b0f1932e95fbafea1887f0968953d4b",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  },
+  "sessions": {
+    "s_b7c002514feade": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "62181782-10ce-4591-8977-164209e6437e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}

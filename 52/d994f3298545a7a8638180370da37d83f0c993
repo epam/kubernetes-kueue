@@ -1,0 +1,16 @@
+hack/tools/ruleguard/rules.go
+  h_47cee5fa694435 33
+site/content/en/community/contribution_guidelines/coding_guidelines.md
+  h_47cee5fa694435 331
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "52d994f3298545a7a8638180370da37d83f0c993",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler_test.go
+  s_5e1238e1866bae::t_37692e9b56e81e 1420,1492
+pkg/controller/core/workload_controller_test.go
+  s_5e1238e1866bae::t_daa3758bd14f27 3714
+pkg/controller/jobs/statefulset/statefulset_reconciler_test.go
+  s_5e1238e1866bae::t_37692e9b56e81e 993,1030,1066,1106,1142
+pkg/controller/jobframework/reconciler_test.go
+  s_5e1238e1866bae::t_37692e9b56e81e 444,457-459,470,496,514
+pkg/controller/jobs/deployment/deployment_webhook_test.go
+  s_5e1238e1866bae::t_37692e9b56e81e 354,361,368,375,382,389,466,696,706,717,741
+pkg/controller/jobs/statefulset/statefulset_webhook_test.go
+  s_5e1238e1866bae::t_37692e9b56e81e 300,307,314,321,328,335,412,1121,1131,1142,1166
+pkg/controller/core/workload_controller_inadmissible_test.go
+  s_5e1238e1866bae::t_37692e9b56e81e 583-585
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "4fd25b441707c8d20509dbd4b7bae45c938ae2d5",
+  "prompts": {},
+  "sessions": {
+    "s_5e1238e1866bae": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c700273c-b3be-4204-bfbc-283d8439b66b",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}
