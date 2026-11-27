@@ -1,0 +1,19 @@
+pkg/workload/resources.go
+  h_027f582e324e2c 23,26,28,32,53-115
+  h_027f582e324e2c 116
+pkg/controller/jobframework/validation.go
+  h_027f582e324e2c 391
+pkg/controller/jobs/leaderworkerset/leaderworkerset_webhook.go
+  h_027f582e324e2c 534
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "be00efbe74769df5f09f7970d17beaca8ea24557",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}

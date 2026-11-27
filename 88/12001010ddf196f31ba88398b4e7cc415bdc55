@@ -1,0 +1,22 @@
+pkg/util/testingjobs/pod/wrappers.go
+  s_20afaad21e66fc::t_b313fb52504adf 380-391
+pkg/controller/jobframework/validation_test.go
+  s_20afaad21e66fc::t_3dc4150ac7d3d0 53
+  s_20afaad21e66fc::t_526485c954ae58 1184-1187,1190-1193,1197-1200,1205-1208,1214-1221,1228-1235,1241-1244,1250-1253
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "8812001010ddf196f31ba88398b4e7cc415bdc55",
+  "prompts": {},
+  "sessions": {
+    "s_20afaad21e66fc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4f1eaf8b-9caf-4051-a21f-c5b95f69ebe8",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}

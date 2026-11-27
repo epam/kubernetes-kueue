@@ -1,0 +1,27 @@
+pkg/controller/core/workload_controller_dra_test.go
+  s_620767ce9fa731::t_c4ca0bff4ece50 59,192,236,300,364,398,491,706,749,806,847,888-889,915-917,1013
+test/integration/singlecluster/scheduler/fairsharing/suite_test.go
+  s_620767ce9fa731::t_c4ca0bff4ece50 104-105
+pkg/workload/workload_test.go
+  s_620767ce9fa731::t_c4ca0bff4ece50 4049-4050
+pkg/config/validation_test.go
+  s_620767ce9fa731::t_c4ca0bff4ece50 1935
+pkg/controller/core/workload_controller_test.go
+  s_620767ce9fa731::t_c4ca0bff4ece50 4004
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "da58c4c2a2dd17524f341ea19e6c9a1bee709792",
+  "prompts": {},
+  "sessions": {
+    "s_620767ce9fa731": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "61dd1fcc-af01-4654-a5fb-a4f8afbdecf3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}

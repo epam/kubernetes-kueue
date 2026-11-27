@@ -1,0 +1,35 @@
+cmd/experimental/skills/reviewer/README.md
+  s_0212d644c6f3b2::t_982b294c744a02 45
+site/content/en/community/contribution_guidelines/coding_guidelines.md
+  s_2e81a40785a1e8::t_fe15ee6c5affa0 420,428-430
+  s_2e81a40785a1e8::t_80ec58fab6e78a 431
+cmd/experimental/skills/reviewer/cmp-diff-assertions/SKILL.md
+  s_0212d644c6f3b2::t_953303293a3c8a 14-17,46-47
+  s_0212d644c6f3b2::t_04f488086bda5b 40-41
+  s_0212d644c6f3b2::t_a5b93025f69f15 3,13
+  s_2e81a40785a1e8::t_fe15ee6c5affa0 42-45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "6bb44f375fdcd7277bdaa20db808646318505bfb",
+  "prompts": {},
+  "sessions": {
+    "s_0212d644c6f3b2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a2dbc84-9f78-434d-b6bb-24a37713c618",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    },
+    "s_2e81a40785a1e8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "95f8633e-4add-405c-8c10-2d027e8d3f83",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}
