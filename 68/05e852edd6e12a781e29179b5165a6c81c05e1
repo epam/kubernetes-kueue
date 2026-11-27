@@ -1,0 +1,43 @@
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_33de5bed238948::t_94384d7d60a7f1 6939,6956,6979,6995
+pkg/scheduler/scheduler_test.go
+  s_33de5bed238948::t_94384d7d60a7f1 8471,8572
+pkg/controller/jobs/deployment/deployment_webhook_test.go
+  s_33de5bed238948::t_94384d7d60a7f1 297,304,311,318,325,332,409,629,639,650,674
+pkg/scheduler/preemption/preemption_test.go
+  s_33de5bed238948::t_94384d7d60a7f1 5009
+pkg/scheduler/scheduler_afs_test.go
+  s_33de5bed238948::t_94384d7d60a7f1 834,915,945,979
+pkg/controller/core/workload_controller_dra_test.go
+  s_33de5bed238948::t_94384d7d60a7f1 106-107,149-150,381,926
+pkg/controller/jobframework/reconciler_test.go
+  s_33de5bed238948::t_94384d7d60a7f1 264,277-279,290,316,334,1128,1203
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler_test.go
+  s_33de5bed238948::t_94384d7d60a7f1 1062,1134
+pkg/controller/jobs/statefulset/statefulset_webhook_test.go
+  s_33de5bed238948::t_94384d7d60a7f1 298,305,312,319,326,333,410,1127,1137,1148,1172
+pkg/controller/jobs/statefulset/statefulset_reconciler_test.go
+  s_33de5bed238948::t_94384d7d60a7f1 917,957,993
+pkg/controller/core/workload_controller_test.go
+  s_33de5bed238948::t_94384d7d60a7f1 2718,2747-2751,3158
+pkg/config/validation_test.go
+  s_33de5bed238948::t_94384d7d60a7f1 2406
+pkg/controller/core/workload_controller_inadmissible_test.go
+  s_33de5bed238948::t_94384d7d60a7f1 583-585
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "6805e852edd6e12a781e29179b5165a6c81c05e1",
+  "prompts": {},
+  "sessions": {
+    "s_33de5bed238948": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "59ae72e0-a686-4034-9f00-18282c44b71e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}
