@@ -1,0 +1,21 @@
+pkg/controller/admissionchecks/multikueue/workload.go
+  s_8bfe4a952281a9::t_f234dcf48cc186 1468-1469,1514-1519,1521-1527
+pkg/controller/admissionchecks/multikueue/workload_test.go
+  s_8bfe4a952281a9::t_d3add7581c8bd0 5034-5118
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "881aa5aa0a9e8c2a6e746c2106f44b7d751e5593",
+  "prompts": {},
+  "sessions": {
+    "s_8bfe4a952281a9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "35efdd77-0335-4d38-b47e-125615f3e6f5",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

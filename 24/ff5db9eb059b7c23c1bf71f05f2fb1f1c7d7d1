@@ -1,0 +1,21 @@
+hack/make/verify.mk
+  s_dcc96f102e9294::t_cbd32ee22bb1db 132-161,331-340
+hack/make/deps.mk
+  s_dcc96f102e9294::t_cbd32ee22bb1db 356-372
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "24ff5db9eb059b7c23c1bf71f05f2fb1f1c7d7d1",
+  "prompts": {},
+  "sessions": {
+    "s_dcc96f102e9294": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "88c542a4-0408-405d-99c6-7160626facac",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
