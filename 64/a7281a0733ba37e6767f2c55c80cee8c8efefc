@@ -1,0 +1,14 @@
+pkg/controller/core/cohort_controller_test.go
+  h_47cee5fa694435 404,413,418,423,428,434,438,449-450
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "64a7281a0733ba37e6767f2c55c80cee8c8efefc",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

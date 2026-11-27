@@ -1,0 +1,15 @@
+pkg/cache/queue/cluster_queue_test.go
+  h_47cee5fa694435 1811,1817,1830,1839,1855,1874,1888-1890,1892,1901,1907-1908,1914-1915
+  h_47cee5fa694435 1887
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "8da5bdae5cbd292c2b4b644bd20a016f75b27d9b",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}

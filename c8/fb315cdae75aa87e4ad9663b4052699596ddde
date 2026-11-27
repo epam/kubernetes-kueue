@@ -1,0 +1,14 @@
+.github/workflows/issue-assignee-cap.yml
+  h_47cee5fa694435 19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c8fb315cdae75aa87e4ad9663b4052699596ddde",
+  "prompts": {},
+  "humans": {
+    "h_47cee5fa694435": {
+      "author": "Mykhailo Bobrovskyi <mikhail.bobrovsky@gmail.com>"
+    }
+  }
+}
