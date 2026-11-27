@@ -1,0 +1,14 @@
+pkg/controller/core/workload_controller_test.go
+  h_027f582e324e2c 3731-3735
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "f198e1e5f1e11644d5c685b5c286a267e6fa83e6",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}
