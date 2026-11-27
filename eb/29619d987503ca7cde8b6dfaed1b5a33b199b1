@@ -1,0 +1,47 @@
+pkg/controller/core/workload_controller_dra_test.go
+  s_3da82e2dff2b3c::t_cbe6b221e72a43 105-106,148-149,444,1254
+pkg/scheduler/scheduler_refill_test.go
+  s_3da82e2dff2b3c::t_cbe6b221e72a43 1340
+pkg/scheduler/preemption/preemption_test.go
+  s_3da82e2dff2b3c::t_cbe6b221e72a43 5202
+pkg/scheduler/scheduler_afs_test.go
+  s_3da82e2dff2b3c::t_cbe6b221e72a43 835,916,946,980
+pkg/controller/jobs/deployment/deployment_webhook_test.go
+  s_3da82e2dff2b3c::t_cbe6b221e72a43 342,349,356,363,370,377,454,672,682,693,717
+pkg/controller/jobs/leaderworkerset/leaderworkerset_reconciler_test.go
+  s_3da82e2dff2b3c::t_cbe6b221e72a43 1146,1218
+pkg/controller/core/workload_controller_inadmissible_test.go
+  s_3da82e2dff2b3c::t_cbe6b221e72a43 583-585
+pkg/scheduler/scheduler_test.go
+  s_3da82e2dff2b3c::t_cbe6b221e72a43 9478,9579
+pkg/controller/jobs/statefulset/statefulset_reconciler_test.go
+  s_3da82e2dff2b3c::t_cbe6b221e72a43 914,951,987,1027,1063
+pkg/controller/jobs/pod/pod_controller_test.go
+  s_3da82e2dff2b3c::t_cbe6b221e72a43 7130,7147,7170,7186
+pkg/controller/jobs/statefulset/statefulset_webhook_test.go
+  s_3da82e2dff2b3c::t_cbe6b221e72a43 300,307,314,321,328,335,412,1098,1108,1119,1143
+pkg/controller/core/workload_controller_test.go
+  s_3da82e2dff2b3c::t_cbe6b221e72a43 3517,3544-3548,3982
+pkg/controller/jobframework/reconciler_test.go
+  s_3da82e2dff2b3c::t_cbe6b221e72a43 334,347-349,360,386,404,1557,1632
+pkg/cache/scheduler/tas_cache_test.go
+  s_3da82e2dff2b3c::t_cbe6b221e72a43 1634,1690,1762-1763,1884,1954,2011,2140,9227-9228,9304-9305
+pkg/config/validation_test.go
+  s_3da82e2dff2b3c::t_cbe6b221e72a43 2609
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "eb29619d987503ca7cde8b6dfaed1b5a33b199b1",
+  "prompts": {},
+  "sessions": {
+    "s_3da82e2dff2b3c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "68e87bdb-6bb0-4a82-b32d-9c4cbc34d13f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}
