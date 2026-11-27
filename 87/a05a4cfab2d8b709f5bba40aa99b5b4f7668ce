@@ -1,0 +1,21 @@
+pkg/controller/core/clusterqueue_controller.go
+  s_7a57dfaf8b6f38::t_ed470780e72e28 414-422
+test/integration/singlecluster/controller/core/custom_labels_test.go
+  s_7a57dfaf8b6f38::t_ca15209cbb267d 1581-1629
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "87a05a4cfab2d8b709f5bba40aa99b5b4f7668ce",
+  "prompts": {},
+  "sessions": {
+    "s_7a57dfaf8b6f38": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "de3ba1d0-e226-4823-9075-226a24d2152e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Ivan Novakov <ivan.novakov.dev@gmail.com>"
+    }
+  }
+}
