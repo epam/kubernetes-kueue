@@ -1,0 +1,14 @@
+site/content/en/docs/tasks/run/disaggregatedset.md
+  h_027f582e324e2c 125
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "13190d96d08d38b11e06d80a8ac03793c23f83b0",
+  "prompts": {},
+  "humans": {
+    "h_027f582e324e2c": {
+      "author": "Damian Kuranda <damian.kuranda@startmail.com>"
+    }
+  }
+}
